@@ -887,6 +887,7 @@ table.tam tr.tcrow:hover td{background:var(--raised)}
 .tbk.up{background:var(--long-bg);color:var(--long)}
 .tbk.dn{background:var(--short-bg);color:var(--short)}
 .tbk.best{background:var(--amber-bg);color:var(--amber);border-color:var(--amber)}
+.tam td.bestcell .tbwrap .tbk:not(:first-child){display:none}
 .tbstar{font-size:8px;line-height:1;margin-right:1px}
 .tb-mobonly{display:inline-flex}
 .tbtk{font-size:9.5px;font-weight:700}
@@ -1107,6 +1108,8 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   /* order them: # stocks, L/S, total, avg — set via source order (already in that order-ish) */
   table.tam tr.taparent td[data-lbl="Top / bottom 3"]{display:none!important}
   table.tam tr.taparent td[data-lbl="★ Best"]{display:block}
+  table.tam tr.taparent td.bestcell .tbwrap .tbk:not(:first-child){display:inline-flex!important}
+  table.tam tr.taparent td[data-lbl="★ Best"]::before{content:"Starred (by upside)"}
   table.tam tr.tanote-row{display:none!important}
   .tam tr.taparent .tb-mobonly{display:inline-flex!important;flex-direction:row!important;order:-1}   /* drop top/bottom chips on phone to save space */
 
@@ -2222,7 +2225,7 @@ function rowHTML(r){
   const vd=(r.value_driver&&r.value_driver!=='Lead drug')?'<span class="vd-flag" title="Value driver beyond lead drug"></span>':'';
   const runwayHtml=r.runway_q!=null?`<span class="${r.runway_q<4?'rw-low':r.runway_q>8?'rw-ok':''}">${(+r.runway_q).toFixed(1)}Q</span>`:'<span class="ph-dash">—</span>';
   const shortHtml=r.short_int!=null?`<span class="${r.short_int>=0.15?'rw-low':''}">${Math.round(r.short_int*100)}%</span>`:'<span class="ph-dash">—</span>';
-  return `<tr class="${dir}${best}${tint?' '+tint:''} ${callDir(r.call)==='long'?'cdl':callDir(r.call)==='short'?'cds':''}" data-i="${r._i}">
+  return `<tr class="${dir}${best}${tint?' '+tint:''} ${(r.call==='STRONG BUY'||r.call==='LONG')?'cdl':(r.call==='SHORT'||r.call==='STRONG SHORT')?'cds':''}" data-i="${r._i}">
     <td class="rail"></td>
     <td class="namecell${qname}"><div class="tk">${esc(r.ticker)}<a class="newslink" href="https://www.stocktitan.net/news/${encodeURIComponent(r.ticker)}/" target="_blank" rel="noopener noreferrer" title="News &amp; press releases for ${esc(r.ticker)}" onclick="event.stopPropagation()">\u2197</a> ${vd}<span class="nm1">${esc((r.name||'').split(/[\s,]+/)[0])}</span></div><div class="nm">${esc(r.name||'')}</div></td>
     <td class="col-hide2"><span class="ta-cell"><span class="ta-dot" style="background:${taColor(r.ta)}"></span><span class="tatext">${esc(r.ta||'')}</span></span></td>
@@ -3550,8 +3553,8 @@ function starredBestCell(s){
   const cands=s.rows.filter(r=>starSet.has(r.ticker)).map(r=>({r,up:callUpPct(r)})).filter(x=>x.up!=null&&isFinite(x.up));
   if(!cands.length) return '<span style="color:var(--faint)">—</span>';
   cands.sort((a,b)=>b.up-a.up);
-  const x=cands[0], up=Math.round(x.up), fnpv=npvVal(x.r), npv=fnpv!=null?fmtSales(fnpv):null;
-  return `<div class="tbwrap"><span class="tbk best" data-i="${x.r._i}" title="Starred name with the highest calculated upside in this area"><span class="tbtk"><span class="tbstar">\u2605</span>${esc(x.r.ticker)}</span><span class="tbu">${up>=0?'+':''}${up}%</span>${npv?`<span class="tbnpv" title="fNPV">${npv}</span>`:''}</span></div>`;
+  return `<div class="tbwrap">`+cands.map(x=>{const up=Math.round(x.up),fnpv=npvVal(x.r),npv=fnpv!=null?fmtSales(fnpv):null;
+    return `<span class="tbk best" data-i="${x.r._i}" title="Starred \u2014 ranked by calculated upside"><span class="tbtk"><span class="tbstar">\u2605</span>${esc(x.r.ticker)}</span><span class="tbu">${up>=0?'+':''}${up}%</span>${npv?`<span class="tbnpv" title="fNPV">${npv}</span>`:''}</span>`;}).join('')+`</div>`;
 }
 function topBottomCell(s){
   const list=s.rows.map(r=>({r,up:callUpPct(r)})).filter(x=>x.up!=null&&isFinite(x.up));
@@ -3603,7 +3606,7 @@ function buildTAsummary(){
     const hdr=`<tr class="tachild tchead"><td colspan="8"><div class="tcgrid"><span>Ticker</span><span>Drug</span><span>Stage</span><span>Call</span><span>Elevator pitch</span><span class="tc-r">Upside</span><span class="tc-r">Mkt cap</span><span class="tc-r">fNPV</span><span class="tc-r">Peak</span><span>Indication</span><span>Differentiation</span></div></td></tr>`;
     const rowc=r=>{
       const up=callUpPct(r), npv=npvVal(r);
-      return `<tr class="tachild tcrow ${callDir(r.call)==='long'?'tc-long':callDir(r.call)==='short'?'tc-short':''}${starSet.has(r.ticker)?' starred':''}" data-i="${r._i}"><td colspan="8"><div class="tcgrid">
+      return `<tr class="tachild tcrow ${(r.call==='STRONG BUY'||r.call==='LONG')?'tc-long':(r.call==='SHORT'||r.call==='STRONG SHORT')?'tc-short':''}${starSet.has(r.ticker)?' starred':''}" data-i="${r._i}"><td colspan="8"><div class="tcgrid">
       <span class="tc-tk"><span class="tc-star${starSet.has(r.ticker)?' on':''}" data-star="${esc(r.ticker)}" title="Star / unstar">${starSet.has(r.ticker)?'★':'☆'}</span>${esc(r.ticker)}</span>
       <span class="tc-drug" title="${esc(r.drug||'')}">${esc(r.drug||'—')}</span>
       <span class="tc-stg"><span class="badge stg ${stageClass(r.stage)}">${esc(r.stage||'—')}</span></span>
