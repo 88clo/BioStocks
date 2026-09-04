@@ -1040,8 +1040,9 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   .tap-title{font-size:16px}
   .tap-sub{font-size:10px}
   .backbtn{order:-1}
-  .tap-content{flex-direction:column;padding:12px 12px 80px;gap:16px;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0}
-  .tap-tablewrap{width:100%!important;overflow-x:visible!important}
+  .tap-content{flex-direction:column;align-items:stretch;padding:12px 12px 80px;gap:16px;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0}
+  .tap-tablewrap{width:100%!important;max-width:100%!important;overflow-x:visible!important}
+  .tap-side{max-width:100%!important;width:100%;flex:0 0 auto}
   .tap-chart{width:100%;min-width:0!important;position:static!important;order:2}
   .savenotes{font-size:11px;padding:8px 12px}
 
@@ -1104,7 +1105,9 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   table.tam tr.taparent td[data-lbl="Avg cap"]::before{
     padding-top:0;margin-bottom:1px;font-size:8.5px}
   /* order them: # stocks, L/S, total, avg — set via source order (already in that order-ish) */
-  table.tam tr.taparent td[data-lbl="Top / bottom 3"]{display:block}
+  table.tam tr.taparent td[data-lbl="Top / bottom 3"]{display:none!important}
+  table.tam tr.taparent td[data-lbl="★ Best"]{display:block}
+  table.tam tr.tanote-row{display:none!important}
   .tam tr.taparent .tb-mobonly{display:inline-flex!important;flex-direction:row!important;order:-1}   /* drop top/bottom chips on phone to save space */
 
   /* Stage mix: label + bar on the SAME row */
@@ -1131,7 +1134,16 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   table.tam tr.tachild td{display:block;padding:0}
   table.tam tr.tachild.tchead{display:none}   /* the mini column header isn't useful stacked */
   table.tam tr.tcrow .tcgrid{
-    display:block!important;padding:10px 12px;border-top:1px solid var(--line-soft)}
+    display:flex!important;flex-direction:column;gap:2px;padding:10px 12px;border-top:1px solid var(--line-soft)}
+  table.tam tr.tcrow .tc-drug,table.tam tr.tcrow .tc-stg,table.tam tr.tcrow .tc-call,table.tam tr.tcrow .tc-ind{display:none!important}
+  table.tam tr.tcrow .tc-tk{order:1}
+  table.tam tr.tcrow .tc-pitch{order:2;display:block;font-size:12px!important;color:var(--text)!important;line-height:1.4;margin:2px 0 4px}
+  table.tam tr.tcrow .tc-diff{order:3;margin-bottom:6px}
+  table.tam tr.tcrow .tc-fin{order:4;display:flex!important;flex-wrap:wrap;gap:12px;margin-top:4px;padding-top:6px;border-top:1px solid var(--line-soft)}
+  table.tam tr.tcrow .tc-fin>span{flex:0 0 auto;font-size:11.5px;text-align:left;margin:0}
+  table.tam tr.tcrow .tc-peak::before{content:"Peak: ";color:var(--faint);font-size:10px;text-transform:uppercase;letter-spacing:.03em;display:block;margin-bottom:1px}
+  table.tam tr.tcrow.tc-long{border-left:3px solid var(--long)}
+  table.tam tr.tcrow.tc-short{border-left:3px solid var(--short)}
   table.tam tr.tcrow .tcgrid > span{display:block;text-align:left;font-size:12px;
     overflow:visible!important;white-space:normal!important;text-overflow:clip!important;
     -webkit-line-clamp:unset!important;line-height:1.4;margin-bottom:2px}
@@ -1243,6 +1255,14 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   .wrap > table tr[data-i].hovlit td,.wrap > table tr[data-i] .hovzone.hovlit{background:transparent!important;box-shadow:none!important}
   /* tap affordance */
   .wrap > table tr[data-i]::after{content:'›';position:absolute;right:10px;top:12px;color:var(--faint);font-size:18px;line-height:1}
+  /* uniform green(long)/red(short) card coloring; no per-field colors */
+  .wrap > table tr[data-i].cdl{background:var(--long-bg)!important;border-color:var(--long)!important;border-left:4px solid var(--long)!important}
+  .wrap > table tr[data-i].cds{background:var(--short-bg)!important;border-color:var(--short)!important;border-left:4px solid var(--short)!important}
+  .wrap > table tr[data-i] .mc-cell .mcv{color:var(--text)!important}
+  .wrap > table tr[data-i] .call-cell .up{color:var(--text)!important}
+  .wrap > table tr[data-i] .call-cell .cbadge{background:transparent!important;color:var(--text)!important;border:1px solid var(--line)!important}
+  .wrap > table tr[data-i] td:nth-of-type(4) .badge.stg{background:transparent!important;color:var(--dim)!important;border:1px solid var(--line)!important}
+  .wrap > table tr[data-i] td.namecell,.wrap > table tr[data-i] td.mc-cell,.wrap > table tr[data-i] td.call-cell,.wrap > table tr[data-i]>td{background:transparent!important}
   /* the tooltip stays disabled on touch; tapping opens the drawer (which shows the highlighted thesis) */
   .tbtip{display:none!important}
 
@@ -1282,7 +1302,7 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
     <button data-view="dcf">∫ DCF <span class="wip-dot" title="Work in progress">WIP</span></button>
     <button data-view="sh">◱ Shareholders</button>
   </div>
-  <button class="gbtn on" id="grpindbtn" title="Show indication sub-headers within each therapeutic area (e.g. Prostate / Bladder within Cancer GU)">⊞ Indication sub-groups</button>
+  <button class="gbtn on" id="grpindbtn" title="Show indication sub-headers within each therapeutic area (e.g. Prostate / Bladder within Cancer GU)">⊞ Indications</button>
   <button class="gbtn" id="tasumbtn">▦ TA summary</button>
   <button class="gbtn" id="methbtn" title="Call grid & thesis methodology">◈ Methodology</button>
   <span class="nav-sp"></span>
@@ -1551,7 +1571,7 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
     <button class="backbtn" id="backbtn">← Back to landscape</button>
     <div class="tap-titles"><div class="tap-title">Therapeutic Area Summary</div><div class="tap-sub" id="tamsub">37 therapeutic areas · 487 names · live caps</div></div>
     <button class="tap-btn" id="tacBtn" title="Show the 36-month share-price chart for the selected therapeutic area" onclick="document.getElementById('tacModal').classList.add('open');renderTAchart(tamSelectedTA,'tacModalBody');">↗ Price chart</button>
-    <button class="tap-btn" id="taGrpIndBtn" title="Group each therapeutic area's companies by lead indication (sub-headers)">⊞ Indication sub-groups</button>
+    <button class="tap-btn" id="taGrpIndBtn" title="Group each therapeutic area's companies by lead indication (sub-headers)">⊞ Indications</button>
     <button class="savenotes" id="saveNotesBtn" title="Save your notes and portfolio into a copy of this dashboard. In Chrome/Edge you can pick the file location and re-save straight back to it; other browsers download a dated copy.">⬇ Save 26 notes + 7 holdings to file</button>
   </div>
   <div class="tap-content">
@@ -2202,7 +2222,7 @@ function rowHTML(r){
   const vd=(r.value_driver&&r.value_driver!=='Lead drug')?'<span class="vd-flag" title="Value driver beyond lead drug"></span>':'';
   const runwayHtml=r.runway_q!=null?`<span class="${r.runway_q<4?'rw-low':r.runway_q>8?'rw-ok':''}">${(+r.runway_q).toFixed(1)}Q</span>`:'<span class="ph-dash">—</span>';
   const shortHtml=r.short_int!=null?`<span class="${r.short_int>=0.15?'rw-low':''}">${Math.round(r.short_int*100)}%</span>`:'<span class="ph-dash">—</span>';
-  return `<tr class="${dir}${best}${tint?' '+tint:''}" data-i="${r._i}">
+  return `<tr class="${dir}${best}${tint?' '+tint:''} ${callDir(r.call)==='long'?'cdl':callDir(r.call)==='short'?'cds':''}" data-i="${r._i}">
     <td class="rail"></td>
     <td class="namecell${qname}"><div class="tk">${esc(r.ticker)}<a class="newslink" href="https://www.stocktitan.net/news/${encodeURIComponent(r.ticker)}/" target="_blank" rel="noopener noreferrer" title="News &amp; press releases for ${esc(r.ticker)}" onclick="event.stopPropagation()">\u2197</a> ${vd}<span class="nm1">${esc((r.name||'').split(/[\s,]+/)[0])}</span></div><div class="nm">${esc(r.name||'')}</div></td>
     <td class="col-hide2"><span class="ta-cell"><span class="ta-dot" style="background:${taColor(r.ta)}"></span><span class="tatext">${esc(r.ta||'')}</span></span></td>
@@ -3583,16 +3603,16 @@ function buildTAsummary(){
     const hdr=`<tr class="tachild tchead"><td colspan="8"><div class="tcgrid"><span>Ticker</span><span>Drug</span><span>Stage</span><span>Call</span><span>Elevator pitch</span><span class="tc-r">Upside</span><span class="tc-r">Mkt cap</span><span class="tc-r">fNPV</span><span class="tc-r">Peak</span><span>Indication</span><span>Differentiation</span></div></td></tr>`;
     const rowc=r=>{
       const up=callUpPct(r), npv=npvVal(r);
-      return `<tr class="tachild tcrow${starSet.has(r.ticker)?' starred':''}" data-i="${r._i}"><td colspan="8"><div class="tcgrid">
+      return `<tr class="tachild tcrow ${callDir(r.call)==='long'?'tc-long':callDir(r.call)==='short'?'tc-short':''}${starSet.has(r.ticker)?' starred':''}" data-i="${r._i}"><td colspan="8"><div class="tcgrid">
       <span class="tc-tk"><span class="tc-star${starSet.has(r.ticker)?' on':''}" data-star="${esc(r.ticker)}" title="Star / unstar">${starSet.has(r.ticker)?'★':'☆'}</span>${esc(r.ticker)}</span>
       <span class="tc-drug" title="${esc(r.drug||'')}">${esc(r.drug||'—')}</span>
       <span class="tc-stg"><span class="badge stg ${stageClass(r.stage)}">${esc(r.stage||'—')}</span></span>
       <span class="tc-call"><span class="cbadge ${callBadgeCls(r.call)}">${esc((r.call||'—').replace('STRONG ','S.'))}</span></span>
       <span class="tc-pitch">${r.pitch?esc(r.pitch):'\u2014'}</span>
-      <span class="tc-up ${up==null?'':(up>=0?'pos':'neg')}">${up==null?'—':(up>=0?'+':'')+Math.round(up)+'%'}</span>
+      <span class="tc-fin"><span class="tc-up ${up==null?'':(up>=0?'pos':'neg')}">${up==null?'—':(up>=0?'+':'')+Math.round(up)+'%'}</span>
       <span class="tc-mc ${r._live?'live':''}">${fmtMC(r.mc)}</span>
       <span class="tc-npv">${npv!=null?fmtSales(npv):'—'}</span>
-      <span class="tc-peak" title="${esc(r.peak_basis||'')}">${r.peak_sales?fmtSales(r.peak_sales):'—'}</span>
+      <span class="tc-peak" title="${esc(r.peak_basis||'')}">${r.peak_sales?fmtSales(r.peak_sales):'—'}</span></span>
       <span class="tc-ind">${esc(r.indication||'—')}</span>
       <span class="tc-diff" title="${esc(r.diff_detail||r.diff||'')}">${r.diff?`<span class="tc-difftier ${diffTierCls(r.diff)}">${esc(r.diff)}</span> `:''}${esc(diffDetailBody(r)||(r.diff?'':'—'))}</span>
     </div></td></tr>`;};
