@@ -992,7 +992,7 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   #viewseg button{flex:1;padding:9px 4px;font-size:11px;white-space:nowrap;text-indent:0}
   /* hide the icon glyph (first chars) — use font-size trick: relabel via ::first-line not reliable, so hide non-essential views */
   #viewseg button[data-view="map"],#viewseg button[data-view="cal"],
-  #viewseg button[data-view="port"],#viewseg button[data-view="dcf"],#viewseg button[data-view="sh"]{display:none}
+  #viewseg button[data-view="port"],#viewseg button[data-view="dcf"],#viewseg button[data-view="sh"],#viewseg button[data-view="thesis"]{display:none}
   #tasumbtn,#methbtn{flex:1;padding:9px 4px;font-size:11px;white-space:nowrap}
   .nav-sp{display:none}
 
@@ -1275,6 +1275,55 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
 }
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== Thesis tab ===== */
+.theswrap{padding:22px 26px 70px}
+.thes-wrap-inner{max-width:1000px;margin:0 auto}
+.thes-search{margin-bottom:18px}
+.thes-search input{width:100%;box-sizing:border-box;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:13px 16px;font-size:15px;color:var(--text);font-family:inherit;outline:none}
+.thes-search input:focus{border-color:var(--accent,#5b8def)}
+.thes-search input::placeholder{color:var(--faint)}
+.thes-empty{color:var(--faint);font-size:14px;padding:24px 4px;text-align:center}
+.thes-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.thes-card.long{border-left:4px solid var(--long)}
+.thes-card.short{border-left:4px solid var(--short)}
+.thes-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;padding:16px 20px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+.thes-tk{font-family:var(--mono);font-weight:700;font-size:22px;color:var(--text);letter-spacing:.01em}
+.thes-nm{font-size:14px;color:var(--dim)}
+.thes-ta{margin-left:auto;font-size:11.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.04em}
+.thes-call{font-family:var(--mono);font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;border:1px solid var(--line);color:var(--dim)}
+.thes-call.long{color:var(--long);border-color:var(--long);background:var(--long-bg)}
+.thes-call.short{color:var(--short);border-color:var(--short);background:var(--short-bg)}
+.thes-row{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:13px 20px;border-top:1px solid var(--line-soft,rgba(255,255,255,.05))}
+.thes-row:first-of-type{border-top:none}
+.thes-k{color:var(--faint);text-transform:uppercase;font-size:11px;letter-spacing:.06em;font-weight:700;padding-top:2px}
+.thes-v{font-size:13.5px;line-height:1.55;color:var(--text);min-width:0;overflow-wrap:anywhere}
+.thes-v b{color:var(--text)}
+.thes-v .pos{color:var(--long)}
+.thes-v .neg{color:var(--short)}
+.thes-mono{font-family:var(--mono);font-size:12.5px;line-height:1.7}
+.thes-dim{color:var(--faint)}
+.tap-thes{display:flex;align-items:center;position:relative;z-index:400}
+.tap-thes input{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font-size:12.5px;color:var(--text);width:158px;outline:none;font-family:inherit}
+.tap-thes input:focus{border-color:var(--accent,#5b8def);width:200px}
+.tap-thes input::placeholder{color:var(--faint)}
+table.tam tr.tcrow .tc-tk{cursor:pointer}
+table.tam tr.tcrow .tc-tk:hover{text-decoration:underline;text-decoration-color:var(--faint)}
+.thesmodal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;z-index:300;align-items:flex-start;justify-content:center;padding:78px 16px 24px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.thesmodal.open{display:flex}
+.thesm-card{position:relative;width:100%;max-width:920px;margin:auto 0}
+.thesm-x{position:absolute;top:-32px;right:0;background:none;border:none;color:#fff;font-size:20px;cursor:pointer;opacity:.8}
+.thesm-x:hover{opacity:1}
+@media(max-width:560px){.tap-thes{flex:1 1 100%;order:9}.tap-thes input,.tap-thes input:focus{width:100%}.thesmodal{padding:60px 10px 20px}.thesm-x{top:-28px}}
+@media(max-width:560px){
+  .theswrap{padding:12px 12px 80px}
+  .thes-row{grid-template-columns:1fr;gap:3px;padding:11px 14px}
+  .thes-k{padding-top:0}
+  .thes-tk{font-size:19px}
+  .thes-ta{margin-left:0;flex-basis:100%}
+  .thes-mono{font-size:11.5px}
+}
 </style>
 </head>
 <body class="light" style="">
@@ -1304,6 +1353,7 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
     <button data-view="port" class="on">★ Portfolio</button>
     <button data-view="dcf">∫ DCF <span class="wip-dot" title="Work in progress">WIP</span></button>
     <button data-view="sh">◱ Shareholders</button>
+    <button data-view="thesis">◎ Thesis</button>
   </div>
   <button class="gbtn on" id="grpindbtn" title="Show indication sub-headers within each therapeutic area (e.g. Prostate / Bladder within Cancer GU)">⊞ Indications</button>
   <button class="gbtn" id="tasumbtn">▦ TA summary</button>
@@ -1500,10 +1550,12 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   <div class="portwrap" id="portwrap" style="display: block;"></div>
   <div class="dcfwrap" id="dcfwrap" style="display:none"></div>
   <div class="shwrap" id="shwrap" style="display:none"></div>
+  <div class="theswrap" id="theswrap" style="display:none"></div>
   <div class="empty" id="empty" style="display: none;">No names match these filters.</div>
 </div>
 </div>
 <div class="dcfmodal" id="dcfmodal"><div class="dcfm-box" id="dcfmBox"></div></div>
+<div class="thesmodal" id="thesModal" onclick="if(event.target===this)this.classList.remove('open')"><div class="thesm-card"><button class="thesm-x" onclick="document.getElementById('thesModal').classList.remove('open')">✕</button><div id="thesModalBody"></div></div></div>
 <div class="methmodal" id="methmodal">
   <div class="mback" onclick="closeMeth()"></div>
   <div class="methm-box">
@@ -1575,6 +1627,7 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
     <div class="tap-titles"><div class="tap-title">Therapeutic Area Summary</div><div class="tap-sub" id="tamsub">37 therapeutic areas · 487 names · live caps</div></div>
     <button class="tap-btn" id="tacBtn" title="Show the 36-month share-price chart for the selected therapeutic area" onclick="document.getElementById('tacModal').classList.add('open');renderTAchart(tamSelectedTA,'tacModalBody');">↗ Price chart</button>
     <button class="tap-btn" id="taGrpIndBtn" title="Group each therapeutic area's companies by lead indication (sub-headers)">⊞ Indications</button>
+    <div class="tap-thes"><input id="taThesInput" type="text" placeholder="◎ Thesis — ticker…" autocomplete="off" spellcheck="false"></div>
     <button class="savenotes" id="saveNotesBtn" title="Save your notes and portfolio into a copy of this dashboard. In Chrome/Edge you can pick the file location and re-save straight back to it; other browsers download a dated copy.">⬇ Save 26 notes + 7 holdings to file</button>
   </div>
   <div class="tap-content">
@@ -2259,6 +2312,7 @@ function render(){
   document.getElementById('shwrap').style.display=(v==='sh')?'block':'none';
   document.getElementById('calwrap').style.display=(v==='cal')?'block':'none';
   document.getElementById('portwrap').style.display=(v==='port')?'block':'none';
+  document.getElementById('theswrap').style.display=(v==='thesis')?'block':'none';
   document.getElementById('empty').style.display=(rows.length||v!=='table')?'none':'block';
   if(v==='map'){renderMap(rows);return;}
   if(v==='returns'){renderReturns(rows);return;}
@@ -2266,6 +2320,7 @@ function render(){
   if(v==='sh'){renderShareholders();return;}
   if(v==='cal'){renderCalendar(rows);return;}
   if(v==='port'){renderPortfolio();return;}
+  if(v==='thesis'){renderThesis();return;}
   const tb=document.getElementById('tbody');
   const grouped=state.group||state.groupInd;
   if(!grouped){
@@ -2335,6 +2390,83 @@ function portPricePath(h){
   pts.push({mo:0, p:P0});
   pts.sort((a,b)=>a.mo-b.mo);
   return pts;
+}
+function renderThesis(){
+  const w=document.getElementById('theswrap');
+  if(!w.dataset.init){
+    w.innerHTML=`<div class="thes-wrap-inner"><div class="thes-search"><input id="thesInput" type="text" placeholder="Search a ticker or company (e.g. KPTI, Karyopharm)…" autocomplete="off" spellcheck="false"></div><div class="thes-note" id="thesNote"></div></div>`;
+    const inp=w.querySelector('#thesInput');
+    inp.addEventListener('input',()=>thesLookup(inp.value));
+    inp.value='KPTI';
+    w.dataset.init='1';
+  }
+  thesLookup((document.getElementById('thesInput').value)||'KPTI');
+  setTimeout(()=>{const i=document.getElementById('thesInput'); if(i){i.focus(); i.select&&i.select();}},30);
+}
+function thesLookup(q){
+  const note=document.getElementById('thesNote'); if(!note)return;
+  q=(q||'').trim().toLowerCase();
+  if(!q){note.innerHTML='<div class="thes-empty">Type a ticker or company name to generate an investment note.</div>';return;}
+  let r=DATA.find(d=>d.ticker.toLowerCase()===q)
+      || DATA.find(d=>d.ticker.toLowerCase().startsWith(q))
+      || DATA.find(d=>(d.name||'').toLowerCase().includes(q));
+  if(!r){note.innerHTML='<div class="thes-empty">No match for &ldquo;'+esc(q)+'&rdquo;.</div>';return;}
+  note.innerHTML=thesisNote(r);
+}
+function openThesisModal(q){
+  q=(q||'').trim(); if(!q)return;
+  const ql=q.toLowerCase();
+  const r=DATA.find(d=>d.ticker.toLowerCase()===ql)||DATA.find(d=>d.ticker.toLowerCase().startsWith(ql))||DATA.find(d=>(d.name||'').toLowerCase().includes(ql));
+  const body=document.getElementById('thesModalBody');
+  body.innerHTML=r?thesisNote(r):'<div class="thes-empty">No match for &ldquo;'+esc(q)+'&rdquo;.</div>';
+  document.getElementById('thesModal').classList.add('open');
+}
+function liveThesis(q){const m=document.getElementById('thesModal');if(!(q||'').trim()){if(m)m.classList.remove('open');return;}openThesisModal(q);}
+function thesisNote(r){
+  const kmt=v=>{ if(v==null||v==='')return '—'; v=Number(v);
+    if(v>=1e6){const x=v/1e6;return (x>=100?Math.round(x):(+x.toFixed(1)))+'M';}
+    if(v>=1e3){const x=v/1e3;return (x>=100?Math.round(x):(+x.toFixed(1)))+'K';}
+    return String(v); };
+  const price=v=>v==null?'—':'$'+kmt(v);
+  const bn=v=>(v==null||!isFinite(v))?'—':(typeof fmtSales==='function'?fmtSales(v):'$'+Math.round(v/1e6)+'M');
+  const pos=r.pos!=null?Math.round(r.pos*100)+'%':'—';
+  const npv=npvVal(r), up=callUpPct(r);
+  const upcls=up==null?'':(up>=0?'pos':'neg'), upS=up!=null?((up>=0?'+':'')+Math.round(up)+'%'):'—';
+  const dir=(r.call==='STRONG BUY'||r.call==='LONG')?'long':(r.call==='SHORT'||r.call==='STRONG SHORT')?'short':'';
+  const thesis=`${esc(r.pitch||'—')}${r.value_driver?' <span class="thes-dim">Beyond lead:</span> '+esc(r.value_driver):''}`;
+  const drug=`${r.stage?'['+esc(r.stage)+'] ':''}<b>${esc(r.drug||'—')}</b>${r.moa?' ('+esc(r.moa)+')':''} for ${esc(r.indication||'—')}`;
+  const indShort=(r.indication||"").split(/[(;]/)[0].trim();
+  const mkt=`${indShort?"<b>"+esc(indShort)+"</b>: ":""}${kmt(r.prevalence)} → ${kmt(r.treated)} treated × ${price(r.net_price)} = <b>${bn(r.peak_sales)}</b> peak × ${pos} PoS = <b>${bn(r.probadj_sales)}</b> prob-adj → <b>${bn(npv)}</b> NPV vs ${bn(r.mc)} mkt cap = <b class="${upcls}">${upS}</b> upside`;
+  const fmtH=x=>`${esc(x.name)}${x.pct!=null?' <span class="thes-dim">('+(+x.pct).toFixed(1)+'%)</span>':''}`;
+  const SPEC=['ra capital','baker bro','perceptive','deep track','venbio','orbimed','redmile','boxer capital','cormorant','avoro','ecor1','logos capital','braidwell','bvf','rock springs','vivo capital','vivo opportunity','sofinnova','frazier','foresite capital','suvretta','casdin','great point partners','commodore capital','soleus','catalio','bain capital life sciences','deerfield','samsara biocapital','fairmount funds','population health partners','cowen healthcare','venrock','arch venture','third rock','5am ventures','flagship','omega fund','decheng','hbm healthcare','sectoral','opaleye','tang capital','tekla','rtw investments','sio capital','atlas venture','abingworth','sr one','longitude capital','versant','aisling','nextech','delos capital','ally bridge'];
+  const isSpec=n=>{n=(n||'').toLowerCase();return SPEC.some(s=>n.includes(s));};
+  let insiders='<span class="thes-dim">— (no holder data on file)</span>';
+  const hb=(typeof HOLDERS_BAKED!=='undefined')?HOLDERS_BAKED[r.ticker]:null;
+  if(hb&&hb.rows&&hb.rows.length){
+    const sorted=hb.rows.slice().sort((a,b)=>(b.pct||0)-(a.pct||0));
+    const specs=sorted.filter(x=>isSpec(x.name));
+    insiders = specs.length ? specs.map(fmtH).join(' · ')
+      : '<span class="thes-dim">No biotech specialists.</span> Top: '+sorted.slice(0,2).map(fmtH).join(' · ');
+  }
+  const rows=[
+    ['Thesis',thesis],
+    ['Drug',drug],
+    ['Market size',`<span class="thes-mono">${mkt}</span>`],
+    ['Efficacy',esc(r.efficacy||'—')],
+    ['Differentiation',esc(r.diff_detail||r.diff||'—')],
+    ['Catalyst',(()=>{const t=r.cat_timing||(function(d){if(!d)return null;const m=/^(\d{4})-(\d{2})/.exec(d);if(!m)return d;return 'Q'+(Math.floor((+m[2]-1)/3)+1)+' '+m[1];})(r.cat_date);return `${esc(r.catalyst||'—')}${t?' <span class="thes-dim">('+esc(t)+')</span>':''}`;})()],
+    ['Insiders',insiders],
+    ['Risk',esc(r.sci_risk||'—')],
+  ];
+  return `<div class="thes-card ${dir}">
+    <div class="thes-head">
+      <span class="thes-tk">${esc(r.ticker)}</span>
+      <span class="thes-nm">${esc(r.name||'')}</span>
+      ${r.call?`<span class="thes-call ${dir}">${esc(r.call)}</span>`:''}
+      <span class="thes-ta">${esc(r.ta||'')}${r.indgroup?' · '+esc(r.indgroup):''}</span>
+    </div>
+    ${rows.map(x=>`<div class="thes-row"><span class="thes-k">${x[0]}</span><span class="thes-v">${x[1]}</span></div>`).join('')}
+  </div>`;
 }
 function renderPortfolio(){
   const wrap=document.getElementById('portwrap');
@@ -3775,6 +3907,11 @@ function renderTAchart(ta, targetId){
 function openTApage(){if(![...new Set(DATA.map(r=>r.ta))].includes(tamSelectedTA))tamSelectedTA=DATA[0].ta;buildTAsummary();document.getElementById('tapage').classList.add('open');document.body.style.overflow='hidden';updateNotesSaveBtn();}
 function closeTApage(){document.getElementById('tapage').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('tasumbtn').onclick=openTApage;
+(function(){const ti=document.getElementById('taThesInput');if(ti){ti.addEventListener('input',debounce(()=>liveThesis(ti.value),110));ti.addEventListener('keydown',e=>{if(e.key==='Enter')liveThesis(ti.value);});}
+  const tb=document.getElementById('tambody');
+  if(tb)tb.addEventListener('click',e=>{if(e.target.closest('[data-star]'))return;const isPhone=window.matchMedia('(max-width:560px)').matches;if(isPhone){const row=e.target.closest('tr.tcrow[data-i]');if(!row)return;const r=DATA[+row.getAttribute('data-i')];if(r){e.stopPropagation();openThesisModal(r.ticker);}return;}const t=e.target.closest('.tc-tk');if(!t)return;const row=t.closest('tr[data-i]');const i=row&&row.getAttribute('data-i');const r=(i!=null)&&DATA[+i];if(r){e.stopPropagation();openThesisModal(r.ticker);}},true);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){const m=document.getElementById('thesModal');if(m)m.classList.remove('open');}});
+})();
 document.getElementById('backbtn').onclick=closeTApage;
 document.getElementById('saveNotesBtn').onclick=saveNotesToFile;
 
