@@ -1114,22 +1114,18 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   .brand h1,.brand-title{font-size:18px;white-space:nowrap;margin:0}
   .stats{flex:1 1 100%;justify-content:space-between}                          /* stats wrap to next row */
   .brand .tape{display:none!important}            /* hide LIVE/updated/snapshot text on iPhone */
-  .brand .sheetlink{display:none!important}        /* de-clutter — sheet link not needed on phone */
   thead th{top:0!important}
   tr.grp td{top:0!important}
 
   /* ===== iPhone: single-row nav, no icons ===== */
-  .nav-row,.navbar,.viewbar{flex-wrap:nowrap!important}
   #viewseg{flex:1;min-width:0;padding:9px 8px;font-size:11px}
-  #methbtn{flex:0 0 auto;padding:9px 10px;font-size:11px;white-space:nowrap}
-  #methbtn{font-size:0}
-  #methbtn::after{content:"Methodology";font-size:11px}
+  #methbtn,#tasumbtn,#grpbyBtn{flex:0 0 auto;padding:7px 9px;font-size:10.5px;white-space:nowrap}
   .nav-sp{display:none}
 
   /* ===== iPhone: two clean filter rows ===== */
   .controlswrap{position:static}
   .controls{position:static;padding:8px 10px;display:flex;flex-wrap:wrap;gap:6px;overflow:visible;align-items:stretch}
-  .navrow{flex:1 1 100%;order:-1}    /* view switcher + action buttons keep their own top row, as before the merge */
+  .navrow{flex:1 1 100%;order:-1;flex-wrap:wrap;row-gap:6px}    /* view switcher + action buttons keep their own top row, as before the merge */
   .search{order:0;flex:1 1 100%;min-width:100%}
   /* Row 1: call / TA / stage / cat  (4 x 25%) */
   .flt#callflt{order:1}
@@ -1306,6 +1302,19 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   #dcfwrap table{min-width:820px}
   #dcfwrap,#calwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .porttbl{min-width:900px}
+  /* ===== iPhone CATALYSTS: narrow sticky TA label, compact overdue + cells ===== */
+  .calgrid{min-width:560px}
+  .calrow,.calhead{grid-template-columns:104px 40px 1fr}
+  .callane{padding:6px 6px;font-size:10.5px;position:sticky;left:0;z-index:4;background:var(--panel)}
+  .calrow:hover .callane{background:var(--raised)}
+  .calta{font-size:10.5px}
+  .caln{font-size:9px;padding:1px 4px}
+  .calchev{width:7px}
+  .caloverh,.calover{padding:4px 2px}
+  .calmo,.calyr{font-size:8.5px;padding:3px 0}
+  .calcell{padding:4px 2px;min-height:24px;overflow:hidden}
+  .calk{font-size:9px!important;padding:1px 4px!important;white-space:nowrap}
+  .calheadwrap .callane{background:var(--bg);position:sticky;left:0;z-index:13}
 
   /* ===== iPhone RETURNS: ticker + 1M/3M/12M/24M + upside%, ticker frozen ===== */
   #retwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 8px 70px}
@@ -1315,6 +1324,7 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   #retwrap .rt-name,#retwrap .rt-nameh{width:58px}
   #retwrap .rt-p,#retwrap .rt-ph{width:60px}
   #retwrap .rt-up,#retwrap .rt-uph{width:64px}
+  #retwrap .rt-call,#retwrap .rt-callh{width:52px}
   /* off-screen columns (scroll to reveal) */
   #retwrap .rt-di,#retwrap .rt-dih{width:184px;white-space:normal}
   #retwrap .rt-stg,#retwrap .rt-stgh{width:88px}
@@ -1325,11 +1335,13 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   #retwrap .rk,#retwrap .rt-barcol,
   #retwrap .rt-mch,#retwrap .rt-mc,
   #retwrap .rt-pvh,#retwrap .rt-pv,
+  #retwrap .rt-psh,#retwrap .rt-ps,
   #retwrap .r36col{display:none!important}
   /* ticker only (hide full name) */
   #retwrap .rt-nm{display:none}
-  #retwrap .rt-name,#retwrap .rt-nameh{padding:7px 6px!important;white-space:nowrap;overflow:hidden}
-  #retwrap .rt-tk{font-size:12.5px;font-weight:700}
+  #retwrap .rt-name,#retwrap .rt-nameh,#retwrap .rt-gname{padding:7px 6px!important;white-space:nowrap;overflow:hidden;position:sticky;left:0;z-index:3;background:var(--bg);box-shadow:2px 0 4px rgba(0,0,0,.25)}
+  #retwrap .rt-gname{width:58px;font-size:9.5px;padding-right:6px!important}
+  #retwrap .rt-tk{font-size:13px;font-weight:700}
   #retwrap .rt-p,#retwrap .rt-up{text-align:right}
   /* upside as % */
   #retwrap .upx{display:none}
@@ -1341,6 +1353,7 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   /* freeze the ticker column */
   #retwrap .rt-name,#retwrap .rt-nameh{position:sticky;left:0;z-index:3;background:var(--panel);box-shadow:1px 0 0 var(--line)}
   #retwrap tr.grp .rt-name{background:transparent}
+  #retwrap tr.grp .rt-gname{background:var(--grp-bg)!important;color:var(--grp-fg)!important;box-shadow:none}
   #retwrap tr.grp td{white-space:nowrap;overflow:hidden}
   #retwrap .rt-name .rt-tk{display:inline-block;max-width:52px;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}
   #retwrap thead .rt-nameh{z-index:5;background:var(--bg2,var(--panel))}
@@ -1394,6 +1407,30 @@ table.tam td.stagecell{padding-top:6px;padding-bottom:6px}
   /* drawer: full-width sheet on mobile, thesis prominent */
   .drawer{width:100%!important;max-width:100%!important}
   .thesis mark.thi{padding:1px 3px}
+
+  /* ===== iPhone TA SUMMARY — Simple view: stack ticker row + pitch below ===== */
+  .tas-colhead{grid-template-columns:auto auto auto auto auto;gap:6px 8px;font-size:8.5px}
+  .tas-colhead span:last-child{display:none}
+  .tas-row{grid-template-columns:repeat(5,auto);grid-template-rows:auto auto;row-gap:5px;column-gap:8px;padding:8px 8px}
+  .tas-pitch{grid-column:1/-1;grid-row:2;white-space:normal;font-size:12px;line-height:1.4;color:var(--dim)}
+  .tas-tk{font-size:13px}
+  .tas-mc,.tas-peak,.tas-up{font-size:11px}
+
+  /* ===== iPhone TA SUMMARY — Best ideas view: stack as a card, not a cramped 7-col grid ===== */
+  /* multi-indication rows (XFOR/CLLS/OCS/OKUR) set inline grid-column/grid-row per cell for desktop;
+     !important here overrides those inline styles so everything stacks in DOM order instead */
+  .tab-colhead{display:none}
+  .tab-row{display:flex!important;flex-direction:column!important;gap:6px;padding:12px 10px;font-size:12px}
+  .tab-row>*{grid-column:unset!important;grid-row:unset!important;width:100%!important;margin-top:0!important}
+  .tab-mcap{font-size:11px;line-height:1.4;order:-1}
+  .tab-formula{font-size:11px;line-height:1.4;white-space:normal}
+  .tab-thesis2{font-size:12.5px;line-height:1.45}
+  .tab-own2{font-size:10.5px;line-height:1.4;border-top:1px solid var(--line-soft);padding-top:6px;margin-top:2px!important}
+  .tab-tk{font-size:13px}
+  .tab-ind-label-line{font-size:9.5px;margin-top:8px!important}
+  .tab-ind-label-line:first-of-type{margin-top:0!important}
+  .tab-stage-badge,.tab-risk-badge,.tab-btd{font-size:8.5px;padding:1px 5px}
+  .tab-rk{width:auto!important;display:inline}
 }
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
