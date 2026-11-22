@@ -1,0 +1,1145 @@
+{
+ "asof": "2026-11-22",
+ "under": [
+  {
+   "group": "Alopecia",
+   "ta": "Derm",
+   "n": 2,
+   "n_strong": 0,
+   "n_late": 1,
+   "prevalence": 80000000,
+   "treated": 700000,
+   "best": {
+    "t": "MANE",
+    "sci": 3.0,
+    "stage": "Phase 3",
+    "drug": "VDPHL01 \u2014 extended-release oral minoxidil tablet",
+    "eff": "Study 304 Ph3 (Oct 2026): at Month 6 non-vellus hair count +36.4/cm2 (BID) and +28.6/cm2 (QD); improved/much improved coverage 68.7% BID, 55.7% QD; no treatment"
+   },
+   "cap": 6333364400.0,
+   "tickers": [
+    "MANE",
+    "ABSI"
+   ]
+  },
+  {
+   "group": "Other kidney",
+   "ta": "Kidney",
+   "n": 1,
+   "n_strong": 0,
+   "n_late": 1,
+   "prevalence": 10000000,
+   "treated": 100000,
+   "best": {
+    "t": "MENS",
+    "sci": 1.5,
+    "stage": "Phase 3",
+    "drug": "MCS-2 (BOTRESO) \u2014 botanical extract",
+    "eff": "Botreso (API-1) is a botanical drug targeting bladder outlet/detrusor smooth muscle function in BPH-related LUTS \u2014 fits the Muscle TA as a bladder smooth-muscle"
+   },
+   "cap": 107638817.14999999,
+   "tickers": [
+    "MENS"
+   ]
+  },
+  {
+   "group": "Celiac / EoE",
+   "ta": "Immuno GI",
+   "n": 2,
+   "n_strong": 0,
+   "n_late": 0,
+   "prevalence": 2000000,
+   "treated": 40000,
+   "best": {
+    "t": "EPRX",
+    "sci": 2.5,
+    "stage": "Phase 2",
+    "drug": "EP-104GI \u2014 locally-injected sustained-release fluticasone (D",
+    "eff": "Ph1b/2a RESOLVE (31 patients, 230+ patient-months follow-up, no drug-related SAEs, no oral/GI candidiasis): highest dose cohort (Cohort 9) showed 66% clinical r"
+   },
+   "cap": 2196038120.0,
+   "tickers": [
+    "TRAX",
+    "EPRX"
+   ]
+  },
+  {
+   "group": "Hemophilia / bleeding",
+   "ta": "Blood",
+   "n": 2,
+   "n_strong": 0,
+   "n_late": 0,
+   "prevalence": 1000000,
+   "treated": 300000,
+   "best": {
+    "t": "COAG",
+    "sci": 3.0,
+    "stage": "Phase 1/2",
+    "drug": "HMB-002 \u2014 subcutaneous anti-VWF antibody",
+    "eff": "HMB-002 first-in-human (ISTH Jul 2026): dose-dependent \u22652.4x peak rises in VWF + FVIII, normalized thrombin generation/APTT, ~9x reduction in treated bleeding e"
+   },
+   "cap": 2936940880.0,
+   "tickers": [
+    "COAG",
+    "CTY"
+   ]
+  },
+  {
+   "group": "Lupus nephritis",
+   "ta": "Immuno kidney",
+   "n": 2,
+   "n_strong": 0,
+   "n_late": 1,
+   "prevalence": 200000,
+   "treated": 10000,
+   "best": {
+    "t": "AUPH",
+    "sci": 3.0,
+    "stage": "Approved",
+    "drug": "LUPKYNIS (voclosporin) + zetomipzomib (immunoproteasome inhi",
+    "eff": "LUPKYNIS: FDA-approved, generating revenue ($315-325M 2026 guidance), 53% reduction in risk of renal-related event/death (AURORA program); kidney biopsy sub-stu"
+   },
+   "cap": 2054442900.0,
+   "tickers": [
+    "AUPH",
+    "NKTX"
+   ]
+  },
+  {
+   "group": "Stroke",
+   "ta": "Neuro",
+   "n": 1,
+   "n_strong": 0,
+   "n_late": 0,
+   "prevalence": 160000,
+   "treated": 15000,
+   "best": {
+    "t": "DMAC",
+    "sci": 2.0,
+    "stage": "Phase 2/3",
+    "drug": "DM199 (rinvecalinase alfa) \u2014 recombinant KLK1",
+    "eff": "DM199 (recombinant tissue kallikrein) for acute ischemic stroke (non-thrombectomy): ReMEDy2 Ph2/3 STILL ENROLLING \u2014 no topline yet. The whole thesis rests on an"
+   },
+   "cap": 445145250.00000006,
+   "tickers": [
+    "DMAC"
+   ]
+  },
+  {
+   "group": "Other liver",
+   "ta": "Liver",
+   "n": 1,
+   "n_strong": 0,
+   "n_late": 0,
+   "prevalence": 120000,
+   "treated": 20000,
+   "best": {
+    "t": "BHC",
+    "sci": 3.0,
+    "stage": "Pre-Phase 3 (Ph3 program in planning)",
+    "drug": "Larsucosterol (DURECT) -- now a wholly-owned Bausch Health a",
+    "eff": "Diversified, heavily-indebted pharma (Xifaxan/Salix GI + a Bausch+Lomb stake + Solta). Larsucosterol (acquired via DURECT): AHFIRM Ph2b FAILED the global 90-day"
+   },
+   "cap": 3129354000.0000005,
+   "tickers": [
+    "BHC"
+   ]
+  }
+ ],
+ "crowded": [
+  {
+   "group": "DMD",
+   "ta": "Muscle",
+   "n": 10,
+   "n_strong": 4,
+   "n_late": 5,
+   "prevalence": 42000000,
+   "treated": 30000,
+   "best": {
+    "t": "DYN",
+    "sci": 4.0,
+    "stage": "Filed",
+    "drug": "DYNE-251 (exon 51) + multi-exon (53/45) \u2014 muscle-targeted ol",
+    "eff": "DELIVER: dystrophin 0.83%\u21925.46% of normal at 6mo (p<0.00001), functional benefit sustained to 24mo across 6 measures \u2014 a next-gen (muscle-targeted) exon-skipper"
+   },
+   "cap": 7416261600.0,
+   "tickers": [
+    "DYN",
+    "SRPT",
+    "SLDB",
+    "WVE",
+    "RGNX",
+    "CAPR",
+    "KROS",
+    "TRDA",
+    "MSLE",
+    "CPIX"
+   ]
+  },
+  {
+   "group": "Atopic dermatitis",
+   "ta": "Immuno skin",
+   "n": 9,
+   "n_strong": 3,
+   "n_late": 2,
+   "prevalence": 17000000,
+   "treated": 300000,
+   "best": {
+    "t": "NKTR",
+    "sci": 4.0,
+    "stage": "Phase 3",
+    "drug": "Rezpegaldesleukin (REZPEG) \u2014 regulatory-T-cell (IL-2) agonis",
+    "eff": "REZOLVE-AD Ph2b (393 patients, AD): met primary + key secondary endpoints at Wk16 (p<0.001), published in The Lancet; 36-week maintenance data showed durable, d"
+   },
+   "cap": 16550215905.000002,
+   "tickers": [
+    "KYMR",
+    "NKTR",
+    "CRVS",
+    "BBTX",
+    "ATTO",
+    "ACRS",
+    "TRXB",
+    "EVMN",
+    "TTRX"
+   ]
+  },
+  {
+   "group": "Bladder / urothelial",
+   "ta": "Cancer GU",
+   "n": 9,
+   "n_strong": 5,
+   "n_late": 2,
+   "prevalence": 744000,
+   "treated": 26784,
+   "best": {
+    "t": "URGN",
+    "sci": 4.0,
+    "stage": "Approved",
+    "drug": "ZUSDURI (UGN-102, mitomycin gel) + UGN-103 next-gen",
+    "eff": "ZUSDURI Q3 2026 net revenue $68.0M (+35% QoQ), 1,538 activated sites, 662 prescribers (50% repeat). UGN-103 UTOPIA Ph3: 77.8% 3-mo CRR, 94.5% 6-mo DOR (May 2026"
+   },
+   "cap": 18175650410.0,
+   "tickers": [
+    "CGON",
+    "IBRX",
+    "TYRA",
+    "URGN",
+    "AKTS",
+    "RLMD",
+    "BCYC",
+    "TARA",
+    "ENGN"
+   ]
+  },
+  {
+   "group": "Cardiomyopathy",
+   "ta": "Cardio",
+   "n": 9,
+   "n_strong": 5,
+   "n_late": 4,
+   "prevalence": 700000,
+   "treated": 45000,
+   "best": {
+    "t": "ALNY",
+    "sci": 4.5,
+    "stage": "Approved",
+    "drug": "Amvuttra (vutrisiran)",
+    "eff": "Q3 2026 (Oct 29): Amvuttra net revenue $1,130.4M, total TTR $1,150.0M (+59% y/y). HELIOS-B: vutrisiran cut all-cause mortality and recurrent CV events 28% (HR 0"
+   },
+   "cap": 48922130589.99999,
+   "tickers": [
+    "ALNY",
+    "BBIO",
+    "CYTK",
+    "EWTX",
+    "BRVE",
+    "KARD",
+    "RCKT",
+    "RNA",
+    "TNYA"
+   ]
+  },
+  {
+   "group": "Alzheimer's",
+   "ta": "Neurodegeneration",
+   "n": 8,
+   "n_strong": 2,
+   "n_late": 3,
+   "prevalence": 21000000,
+   "treated": 500000,
+   "best": {
+    "t": "AXSM",
+    "sci": 4.5,
+    "stage": "Approved",
+    "drug": "Auvelity (dextromethorphan/bupropion) + Symbravo, Sunosi, Su",
+    "eff": "ADVANCE-1/ACCORD-2 (AD agitation): CMAI \u22123.9 vs placebo + 72% relapse-risk reduction \u2014 Auvelity APPROVED for AD agitation (Apr 2026), adding to its MDD franchis"
+   },
+   "cap": 12583950604.000002,
+   "tickers": [
+    "AXSM",
+    "ACAD",
+    "KRSA",
+    "ALEC",
+    "ACOG",
+    "VYGR",
+    "NMRA",
+    "AVXL"
+   ]
+  },
+  {
+   "group": "Colorectal",
+   "ta": "Cancer GI",
+   "n": 7,
+   "n_strong": 3,
+   "n_late": 2,
+   "prevalence": 154000,
+   "treated": 25000,
+   "best": {
+    "t": "RXRX",
+    "sci": 4.0,
+    "stage": "Phase 2",
+    "drug": "REC-4881 (MEK inhibitor) \u2014 lead of an AI-discovery platform",
+    "eff": "TUPELO FAP (4 mg QD, Nov 2 2026): 13/15 (87%) had total polyp-burden reduction at 12 wks, median -47%; upper GI median -55%, 6/12 improved >=1 Spigelman stage; "
+   },
+   "cap": 18420958089.999996,
+   "tickers": [
+    "EXEL",
+    "RXRX",
+    "AGEN",
+    "CTMX",
+    "ADAG",
+    "CRDF",
+    "PDSB"
+   ]
+  },
+  {
+   "group": "Melanoma",
+   "ta": "Cancer skin",
+   "n": 7,
+   "n_strong": 5,
+   "n_late": 6,
+   "prevalence": 30000,
+   "treated": 12000,
+   "best": {
+    "t": "IDYA",
+    "sci": 4.5,
+    "stage": "Filed",
+    "drug": "Darovasertib (IDE196) + crizotinib \u2014 PKC inhibitor combo",
+    "eff": "OptimUM-02 (1L HLA-A*02:01-negative mUM, n=313): mPFS 6.9 vs 3.1mo (HR 0.42, p<0.0001), ORR 37.1% vs 5.8% (5 CRs), mDOR 6.8mo; OS immature but trending favorabl"
+   },
+   "cap": 11729085750.0,
+   "tickers": [
+    "IOVA",
+    "IDYA",
+    "REPL",
+    "IMCR",
+    "IMTX",
+    "AURA",
+    "OBX"
+   ]
+  },
+  {
+   "group": "Obesity",
+   "ta": "Metabolic",
+   "n": 7,
+   "n_strong": 3,
+   "n_late": 5,
+   "prevalence": 110000000,
+   "treated": 400000,
+   "best": {
+    "t": "GUTS",
+    "sci": 4.0,
+    "stage": "Phase 3",
+    "drug": "Revita \u2014 duodenal mucosal resurfacing (endoscopic) for GLP-1",
+    "eff": "REMAIN-1 pivotal 6-month (n=308, Oct 2026): Revita patients kept about 80% of GLP-1-induced weight loss vs 67% sham (p=0.0023, co-primary met); post hoc 20cm+ a"
+   },
+   "cap": 14133176190.0,
+   "tickers": [
+    "RYTM",
+    "VKTX",
+    "KLRA",
+    "GPCR",
+    "GUTS",
+    "VANI",
+    "RANI"
+   ]
+  },
+  {
+   "group": "NSCLC other",
+   "ta": "Cancer lung",
+   "n": 6,
+   "n_strong": 1,
+   "n_late": 1,
+   "prevalence": 250000,
+   "treated": 40000,
+   "best": {
+    "t": "MAIA",
+    "sci": 3.5,
+    "stage": "Phase 2/3",
+    "drug": "Ateganosine (THIO) \u2014 telomere-targeting agent (+ checkpoint)",
+    "eff": "THIO-101 Part C interim (Nov 17 2026): disease control rate 88% (38/43 patients scanned) as of Oct 1 2026 in 3L NSCLC; company says data may support an accelera"
+   },
+   "cap": 21427653040.0,
+   "tickers": [
+    "BNTX",
+    "CBIO",
+    "WHWK",
+    "EIKN",
+    "XLO",
+    "MAIA"
+   ]
+  },
+  {
+   "group": "Parkinson's",
+   "ta": "Neurodegeneration",
+   "n": 6,
+   "n_strong": 4,
+   "n_late": 1,
+   "prevalence": 1000000,
+   "treated": 200000,
+   "best": {
+    "t": "ATHE",
+    "sci": 4.0,
+    "stage": "Phase 2",
+    "drug": "ATH434 \u2014 oral iron-redistribution / \u03b1-synuclein aggregation ",
+    "eff": "ATH434-201 Ph2 (MSA, n=77): UMSARS-I 48% slowing vs placebo at 52wk (50mg, p=0.03) + biomarker support \u2014 a rare positive signal in MSA (a rapidly-fatal Parkinso"
+   },
+   "cap": 1726510980.0,
+   "tickers": [
+    "ARVN",
+    "PRTA",
+    "ASPE",
+    "ATHE",
+    "ACIU",
+    "CGTX"
+   ]
+  },
+  {
+   "group": "Ovarian",
+   "ta": "Cancer GYN",
+   "n": 6,
+   "n_strong": 3,
+   "n_late": 2,
+   "prevalence": 40000,
+   "treated": 15000,
+   "best": {
+    "t": "CORT",
+    "sci": 4.0,
+    "stage": "Approved",
+    "drug": "Relacorilant (Lifyorli) \u2014 cortisol modulator (+ nab-paclitax",
+    "eff": "ROSELLA Ph3 (PROC): mOS 16.0 vs 11.9mo (HR 0.65, p=0.0004); 18-mo OS 46% vs 27% \u2014 approved. On top of a profitable Cushing's (Korlym) franchise."
+   },
+   "cap": 8581921820.0,
+   "tickers": [
+    "CORT",
+    "CGEN",
+    "ZNTL",
+    "GNLX",
+    "ANIX",
+    "PMVP"
+   ]
+  },
+  {
+   "group": "Head/neck",
+   "ta": "Cancer lung",
+   "n": 6,
+   "n_strong": 2,
+   "n_late": 3,
+   "prevalence": 65000,
+   "treated": 8000,
+   "best": {
+    "t": "BCAX",
+    "sci": 3.5,
+    "stage": "Phase 3",
+    "drug": "Ficerafusp alfa \u2014 EGFR \u00d7 TGF-\u03b2 bispecific (+ pembro)",
+    "eff": "EGFR\u00d7TGF-\u03b2 bispectific roughly doubling 1L HNSCC responses vs pembro (cORR 48-54%, CR 26%, mOS 21.3mo); 3-yr OS 31%, doubling SoC. Pivotal FORTIFI-HN01 interim "
+   },
+   "cap": 2378353420.0,
+   "tickers": [
+    "NBTX",
+    "BCAX",
+    "PYXS",
+    "MGNX",
+    "CHRS",
+    "CRBP"
+   ]
+  },
+  {
+   "group": "Miscellaneous tumors",
+   "ta": "Cancer solid",
+   "n": 6,
+   "n_strong": 2,
+   "n_late": 1,
+   "prevalence": 150000,
+   "treated": 30000,
+   "best": {
+    "t": "FENC",
+    "sci": 3.5,
+    "stage": "Approved",
+    "drug": "PEDMARK (sodium thiosulfate) \u2014 otoprotectant",
+    "eff": "Q3 2026 PEDMARK net sales $19.4M (+56% YoY vs $12.5M); adj EBITDA $5.8M; cash $48.7M. NCCN 2A for AYA; Japan STS-J01 Ph2 data at SIOP 2026."
+   },
+   "cap": 6407094525.52,
+   "tickers": [
+    "ERAS",
+    "ANL",
+    "FENC",
+    "IAM",
+    "VRXA",
+    "STRO"
+   ]
+  },
+  {
+   "group": "Retina (AMD / DME)",
+   "ta": "Eye",
+   "n": 6,
+   "n_strong": 3,
+   "n_late": 4,
+   "prevalence": 8700000,
+   "treated": 200000,
+   "best": {
+    "t": "OCUL",
+    "sci": 4.0,
+    "stage": "Phase 3",
+    "drug": "AXPAXLI (axitinib intravitreal hydrogel implant) \u2014 sustained",
+    "eff": "SOL-1 Ph3 (SPA-agreement, superiority design): met primary endpoint, maintained vision at Wk36 (p=0.0006), treatment effect strengthened over time; new post hoc"
+   },
+   "cap": 8999833510.0,
+   "tickers": [
+    "KOD",
+    "OCUL",
+    "FDMT",
+    "SRZN",
+    "LCTX",
+    "OTLK"
+   ]
+  },
+  {
+   "group": "Bone / mineral",
+   "ta": "Metabolic protein",
+   "n": 6,
+   "n_strong": 3,
+   "n_late": 4,
+   "prevalence": 10200000,
+   "treated": 489600,
+   "best": {
+    "t": "ASND",
+    "sci": 4.0,
+    "stage": "Approved",
+    "drug": "YORVIPATH (palopegteriparatide) + navepegritide (achondropla",
+    "eff": "Q3 2026 product revenue EUR366M (+89% YoY): YORVIPATH EUR291M (+103%), SKYTROFA EUR59M, YUVIWEL EUR16M in first full quarter. 2026 operating cash flow guided to"
+   },
+   "cap": 34896595234.99999,
+   "tickers": [
+    "ASND",
+    "BMRN",
+    "MBX",
+    "SEPN",
+    "RARE",
+    "ENTX"
+   ]
+  }
+ ],
+ "shells": [
+  {
+   "ticker": "JANX",
+   "name": "Janux",
+   "ta": "Cancer GU",
+   "mc": 635947200.0000001,
+   "net_cash": 945700000.0,
+   "ev": -309752799.9999999,
+   "stage": "Phase 1b",
+   "drug": "JANX007 \u2014 PSMA \u00d7 CD3 T-cell engager",
+   "sci": 3.5,
+   "runway_q": 44.0,
+   "status": ""
+  },
+  {
+   "ticker": "LKFT",
+   "name": "Lakefront",
+   "ta": "Immuno organ",
+   "mc": 2195029070.0000005,
+   "net_cash": 2478900000.0,
+   "ev": -283870929.9999995,
+   "stage": "Phase 1b",
+   "drug": "Gamgertamig (OM336) \u2014 BCMA \u00d7 CD3 bispecific T-cell engager",
+   "sci": 3.0,
+   "runway_q": 44.1,
+   "status": ""
+  },
+  {
+   "ticker": "BCYC",
+   "name": "Bicycle",
+   "ta": "Cancer GU",
+   "mc": 202942000.0,
+   "net_cash": 469900000.0,
+   "ev": -266958000.0,
+   "stage": "Phase 2",
+   "drug": "Zelenectide pevedotin (BT8009) \u2014 Nectin-4 \"bicycle\" toxin conjugate",
+   "sci": 3.0,
+   "runway_q": 8.9,
+   "status": ""
+  },
+  {
+   "ticker": "EIKN",
+   "name": "Eikon",
+   "ta": "Cancer lung",
+   "mc": 256841639.99999997,
+   "net_cash": 461700000.0,
+   "ev": -204858360.00000003,
+   "stage": "Phase 2/3",
+   "drug": "EIK1001 \u2014 TLR7/8 agonist (+ pembro + chemo)",
+   "sci": 3.0,
+   "runway_q": 6.6,
+   "status": ""
+  },
+  {
+   "ticker": "ALT",
+   "name": "Altimmune",
+   "ta": "Metabolic lipid",
+   "mc": 272703200.0,
+   "net_cash": 445000000.0,
+   "ev": -172296800.0,
+   "stage": "Phase 3",
+   "drug": "Pemvidutide \u2014 dual GLP-1/glucagon agonist",
+   "sci": 3.5,
+   "runway_q": 25.1,
+   "status": ""
+  },
+  {
+   "ticker": "ALLO",
+   "name": "Allogene",
+   "ta": "Cancer blood lymphoid",
+   "mc": 218276100.0,
+   "net_cash": 388900000.0,
+   "ev": -170623900.0,
+   "stage": "Phase 2",
+   "drug": "Cema-cel \u2014 off-the-shelf (allogeneic) CD19 CAR-T",
+   "sci": 3.5,
+   "runway_q": 10.4,
+   "status": ""
+  },
+  {
+   "ticker": "BBOT",
+   "name": "BridgeBio Oncology",
+   "ta": "Cancer lung",
+   "mc": 145134850.0,
+   "net_cash": 315300000.0,
+   "ev": -170165150.0,
+   "stage": "Phase 1",
+   "drug": "BBO-8520 \u2014 dual-mechanism KRAS G12C inhibitor",
+   "sci": 3.0,
+   "runway_q": 11.0,
+   "status": ""
+  },
+  {
+   "ticker": "BIOA",
+   "name": "BioAge",
+   "ta": "Metabolic lipid",
+   "mc": 196670280.00000003,
+   "net_cash": 352300000.0,
+   "ev": -155629719.99999997,
+   "stage": "Phase 2",
+   "drug": "BGE-102 \u2014 oral NLRP3 inflammasome inhibitor",
+   "sci": 3.5,
+   "runway_q": 11.4,
+   "status": ""
+  },
+  {
+   "ticker": "CABA",
+   "name": "Cabaletta",
+   "ta": "Immuno organ",
+   "mc": 158698800.0,
+   "net_cash": 299400000.0,
+   "ev": -140701200.0,
+   "stage": "Phase 2",
+   "drug": "Rese-cel \u2014 autologous CD19 CAR-T (\"immune reset\")",
+   "sci": 3.5,
+   "runway_q": 7.1,
+   "status": ""
+  },
+  {
+   "ticker": "ARVN",
+   "name": "Arvinas",
+   "ta": "Neurodegeneration",
+   "mc": 423130000.0,
+   "net_cash": 558700000.0,
+   "ev": -135570000.0,
+   "stage": "Phase 1",
+   "drug": "ARV-102 -- brain-penetrant LRRK2 degrader (PROTAC); + out-licensed vep",
+   "sci": 4.0,
+   "runway_q": 13.6,
+   "status": ""
+  },
+  {
+   "ticker": "NKTX",
+   "name": "Nkarta",
+   "ta": "Immuno kidney",
+   "mc": 84716400.0,
+   "net_cash": 216000000.0,
+   "ev": -131283600.0,
+   "stage": "Phase 1/2",
+   "drug": "NKX019 \u2014 off-the-shelf allogeneic anti-CD19 CAR-NK",
+   "sci": 1.5,
+   "runway_q": 7.9,
+   "status": ""
+  },
+  {
+   "ticker": "ARTV",
+   "name": "Artiva",
+   "ta": "Immuno systemic",
+   "mc": 193006800.0,
+   "net_cash": 319100000.0,
+   "ev": -126093200.0,
+   "stage": "Phase 1/2",
+   "drug": "AlloNK (AB-101) \u2014 off-the-shelf CAR-NK (+ rituximab)",
+   "sci": 4.0,
+   "runway_q": 15.7,
+   "status": "strategic review"
+  },
+  {
+   "ticker": "SION",
+   "name": "Sionna",
+   "ta": "Lung",
+   "mc": 127548750.0,
+   "net_cash": 249800000.0,
+   "ev": -122251250.0,
+   "stage": "Phase 1",
+   "drug": "SION-451 + SION-2222 (dual NBD1/NBD2 CFTR corrector combination)",
+   "sci": 2.0,
+   "runway_q": 13.5,
+   "status": ""
+  },
+  {
+   "ticker": "UPB",
+   "name": "Upstream",
+   "ta": "Immuno lung",
+   "mc": 88165500.00000001,
+   "net_cash": 207400000.0,
+   "ev": -119234499.99999999,
+   "stage": "Phase 2",
+   "drug": "Verekitug (UPB-101) \u2014 anti-TSLP-RECEPTOR antibody",
+   "sci": 3.5,
+   "runway_q": 6.1,
+   "status": ""
+  },
+  {
+   "ticker": "RNA",
+   "name": "Atrium",
+   "ta": "Cardio",
+   "mc": 113487999.99999999,
+   "net_cash": 232100000.0,
+   "ev": -118612000.00000001,
+   "stage": "Phase 1/2",
+   "drug": "ATR-1072 \u2014 siRNA targeting PRKAG2 (+ ATR-1086 for PLN cardiomyopathy)",
+   "sci": 2.0,
+   "runway_q": 15.0,
+   "status": ""
+  },
+  {
+   "ticker": "ENGN",
+   "name": "enGene",
+   "ta": "Cancer GU",
+   "mc": 121452000.0,
+   "net_cash": 232700000.0,
+   "ev": -111248000.0,
+   "stage": "Phase 2",
+   "drug": "Detalimogene voraplasmid (EG-70) \u2014 intravesical gene therapy",
+   "sci": 2.5,
+   "runway_q": 10.2,
+   "status": ""
+  },
+  {
+   "ticker": "MPLT",
+   "name": "MapLight",
+   "ta": "Psych",
+   "mc": 357534540.00000006,
+   "net_cash": 463400000.0,
+   "ev": -105865459.99999994,
+   "stage": "Phase 2",
+   "drug": "ML-007C-MA \u2014 M1/M4 muscarinic agonist (+ tolerability agent)",
+   "sci": 2.0,
+   "runway_q": 13.0,
+   "status": ""
+  },
+  {
+   "ticker": "LENZ",
+   "name": "LENZ",
+   "ta": "Eye",
+   "mc": 93163265.0,
+   "net_cash": 197300000.0,
+   "ev": -104136735.0,
+   "stage": "Approved",
+   "drug": "VIZZ (aceclidine 1.44%) \u2014 miotic eye drop",
+   "sci": 4.5,
+   "runway_q": 6.3,
+   "status": "strategic review"
+  },
+  {
+   "ticker": "AMRN",
+   "name": "Amarin",
+   "ta": "Metabolic lipid",
+   "mc": 222741610.0,
+   "net_cash": 323400000.0,
+   "ev": -100658390.0,
+   "stage": "Approved",
+   "drug": "VASCEPA/VAZKEPA (icosapent ethyl)",
+   "sci": 2.5,
+   "runway_q": 99,
+   "status": "strategic review"
+  },
+  {
+   "ticker": "AVTX",
+   "name": "Avalo",
+   "ta": "Immuno skin",
+   "mc": 364519480.0,
+   "net_cash": 460800000.0,
+   "ev": -96280520.0,
+   "stage": "Phase 2 completed / Phase 3 planned",
+   "drug": "Abdakibart (AVTX-009) \u2014 anti-IL-1\u03b2 antibody",
+   "sci": 3.5,
+   "runway_q": 28.2,
+   "status": ""
+  },
+  {
+   "ticker": "CRBP",
+   "name": "Corbus",
+   "ta": "Cancer lung",
+   "mc": 42456600.0,
+   "net_cash": 115300000.0,
+   "ev": -72843400.0,
+   "stage": "Phase 1/2",
+   "drug": "CRB-701 (SYS6002) \u2014 next-gen Nectin-4 ADC (DAR2)",
+   "sci": 3.0,
+   "runway_q": 4.6,
+   "status": ""
+  },
+  {
+   "ticker": "ZURA",
+   "name": "Zura",
+   "ta": "Immuno skin",
+   "mc": 116952220.00000001,
+   "net_cash": 187700000.0,
+   "ev": -70747779.99999999,
+   "stage": "Phase 2",
+   "drug": "Tibulizumab (ZB-106) \u2014 IL-17 \u00d7 BAFF bispecific",
+   "sci": 3.0,
+   "runway_q": 9.5,
+   "status": ""
+  },
+  {
+   "ticker": "AVXL",
+   "name": "Anavex",
+   "ta": "Neurodegeneration",
+   "mc": 54876624.0,
+   "net_cash": 118300000.0,
+   "ev": -63423376.0,
+   "stage": "Phase 2/3",
+   "drug": "Blarcamesine (ANAVEX 2-73) \u2014 oral SIGMAR1 agonist",
+   "sci": 2.0,
+   "runway_q": 17.5,
+   "status": ""
+  },
+  {
+   "ticker": "FBIO",
+   "name": "Fortress",
+   "ta": "Metabolic protein",
+   "mc": 63631000.0,
+   "net_cash": 126600000.0,
+   "ev": -62969000.0,
+   "stage": "Approved",
+   "drug": "Holding company: ZYCUBO (Menkes) + Journey Medical (derm) + royalties",
+   "sci": 3.5,
+   "runway_q": 3.8,
+   "status": ""
+  },
+  {
+   "ticker": "RCKT",
+   "name": "Rocket",
+   "ta": "Cardio",
+   "mc": 217204650.0,
+   "net_cash": 279400000.0,
+   "ev": -62195350.0,
+   "stage": "Phase 2",
+   "drug": "RP-A501 \u2014 AAV9 gene therapy (LAMP2)",
+   "sci": 2.5,
+   "runway_q": 6.8,
+   "status": ""
+  },
+  {
+   "ticker": "GPCR",
+   "name": "Structure",
+   "ta": "Metabolic lipid",
+   "mc": 1179554639.9999998,
+   "net_cash": 1240000000.0,
+   "ev": -60445360.00000024,
+   "stage": "Phase 3",
+   "drug": "Aleniglipron (GSBR-1290) \u2014 oral small-molecule GLP-1",
+   "sci": 4.0,
+   "runway_q": 18.0,
+   "status": ""
+  },
+  {
+   "ticker": "ZNTL",
+   "name": "Zentalis",
+   "ta": "Cancer GYN",
+   "mc": 133443200.00000001,
+   "net_cash": 191200000.0,
+   "ev": -57756800.0,
+   "stage": "Phase 2/3",
+   "drug": "Azenosertib (ZN-c3) \u2014 oral WEE1 inhibitor",
+   "sci": 3.5,
+   "runway_q": 5.0,
+   "status": ""
+  },
+  {
+   "ticker": "XBIT",
+   "name": "XBiotech",
+   "ta": "Immuno systemic",
+   "mc": 52747699.99999999,
+   "net_cash": 105000000.0,
+   "ev": -52252300.00000001,
+   "stage": "Phase 2",
+   "drug": "Vilamakitug \u2014 \"True Human\" anti-IL-1\u03b1/related antibody",
+   "sci": 2.0,
+   "runway_q": 17.5,
+   "status": ""
+  },
+  {
+   "ticker": "PMVP",
+   "name": "PMV",
+   "ta": "Cancer GYN",
+   "mc": 66146760.0,
+   "net_cash": 108500000.0,
+   "ev": -42353240.0,
+   "stage": "Phase 2",
+   "drug": "Rezatapopt (PC14586) \u2014 TP53 Y220C reactivator",
+   "sci": 3.5,
+   "runway_q": 6.2,
+   "status": ""
+  },
+  {
+   "ticker": "TENX",
+   "name": "Tenax",
+   "ta": "Cardio",
+   "mc": 71595000.0,
+   "net_cash": 113700000.0,
+   "ev": -42105000.0,
+   "stage": "Phase 3",
+   "drug": "Levosimendan (TNX-103) \u2014 oral calcium sensitizer",
+   "sci": 1.0,
+   "runway_q": 26.4,
+   "status": ""
+  },
+  {
+   "ticker": "KROS",
+   "name": "Keros",
+   "ta": "Muscle",
+   "mc": 219727480.0,
+   "net_cash": 259500000.0,
+   "ev": -39772520.0,
+   "stage": "Phase 2",
+   "drug": "Rinvatercept (KER-065, renamed) \u2014 ActRII ligand trap (+ elritercept/MD",
+   "sci": 1.5,
+   "runway_q": 12.6,
+   "status": ""
+  },
+  {
+   "ticker": "CMPX",
+   "name": "Compass",
+   "ta": "Cancer GI",
+   "mc": 123901919.99999999,
+   "net_cash": 163000000.0,
+   "ev": -39098080.000000015,
+   "stage": "Phase 2/3",
+   "drug": "Tovecimig (CTX-009) \u2014 DLL4 \u00d7 VEGF bispecific (+ paclitaxel)",
+   "sci": 4.0,
+   "runway_q": 10.1,
+   "status": ""
+  },
+  {
+   "ticker": "VYGR",
+   "name": "Voyager",
+   "ta": "Neurodegeneration",
+   "mc": 94584600.00000001,
+   "net_cash": 132100000.0,
+   "ev": -37515399.999999985,
+   "stage": "Phase 1",
+   "drug": "VY7523 (anti-tau) + VY1706 (tau antisense)",
+   "sci": 2.5,
+   "runway_q": 5.7,
+   "status": ""
+  },
+  {
+   "ticker": "FHTX",
+   "name": "Foghorn",
+   "ta": "Cancer blood myeloid",
+   "mc": 124785999.99999999,
+   "net_cash": 156200000.0,
+   "ev": -31414000.000000015,
+   "stage": "Preclinical",
+   "drug": "Selective EP300 degrader - small-molecule targeted protein degrader",
+   "sci": 2.0,
+   "runway_q": 7.4,
+   "status": ""
+  },
+  {
+   "ticker": "OKUR",
+   "name": "OnKure",
+   "ta": "Cancer GYN",
+   "mc": 134821800.0,
+   "net_cash": 163300000.0,
+   "ev": -28478200.0,
+   "stage": "Preclinical",
+   "drug": "OKI-345 \u2014 oral PIK3CA pan-mutant inhibitor (preclinical)",
+   "sci": 2.0,
+   "runway_q": 13.5,
+   "status": ""
+  },
+  {
+   "ticker": "ACRV",
+   "name": "Acrivon",
+   "ta": "Cancer GYN",
+   "mc": 49346499.99999999,
+   "net_cash": 77800000.0,
+   "ev": -28453500.000000007,
+   "stage": "Phase 2",
+   "drug": "ACR-368 (prexasertib) \u2014 CHK1 inhibitor (biomarker-selected)",
+   "sci": 4.5,
+   "runway_q": 4.9,
+   "status": ""
+  },
+  {
+   "ticker": "BDTX",
+   "name": "Black Diamond",
+   "ta": "Cancer lung",
+   "mc": 75259500.0,
+   "net_cash": 102000000.0,
+   "ev": -26740500.0,
+   "stage": "Phase 2",
+   "drug": "Silevertinib (BDTX-1535) \u2014 EGFR non-classical-mutation TKI",
+   "sci": 3.5,
+   "runway_q": 12.3,
+   "status": ""
+  },
+  {
+   "ticker": "IFRX",
+   "name": "InflaRx",
+   "ta": "Immuno skin",
+   "mc": 153262720.0,
+   "net_cash": 179100000.0,
+   "ev": -25837280.0,
+   "stage": "Phase 2",
+   "drug": "Izicopan (INF904) - oral C5aR1 inhibitor",
+   "sci": 2.5,
+   "runway_q": 33.0,
+   "status": ""
+  },
+  {
+   "ticker": "AGMB",
+   "name": "Agomab",
+   "ta": "Immuno GI",
+   "mc": 268412500.00000003,
+   "net_cash": 287800000.0,
+   "ev": -19387499.99999997,
+   "stage": "Phase 2",
+   "drug": "Ontunisertib (AGMB-129) \u2014 oral GI-restricted ALK5/TGF-\u03b2 inhibitor",
+   "sci": 3.5,
+   "runway_q": 16.9,
+   "status": ""
+  },
+  {
+   "ticker": "DRUG",
+   "name": "Bright Minds",
+   "ta": "Neuro",
+   "mc": 208182000.0,
+   "net_cash": 224650000.0,
+   "ev": -16468000.0,
+   "stage": "Phase 2/3",
+   "drug": "BMB-101 \u2014 biased 5-HT2C agonist",
+   "sci": 3.0,
+   "runway_q": 39.4,
+   "status": ""
+  },
+  {
+   "ticker": "CUE",
+   "name": "Cue",
+   "ta": "Immuno allergy",
+   "mc": 43832300.0,
+   "net_cash": 57900000.0,
+   "ev": -14067700.0,
+   "stage": "Phase 2 (CSU topline reported; advancing toward Ph2b/3)",
+   "drug": "CUE-221 \u2014 long-acting dual-mechanism anti-IgE antibody",
+   "sci": 3.0,
+   "runway_q": 3.4,
+   "status": ""
+  },
+  {
+   "ticker": "FATE",
+   "name": "Fate",
+   "ta": "Immuno systemic",
+   "mc": 128311479.99999999,
+   "net_cash": 139100000.0,
+   "ev": -10788520.000000015,
+   "stage": "Phase 2",
+   "drug": "FT819 \u2014 off-the-shelf iPSC-derived CD19 CAR-T",
+   "sci": 3.0,
+   "runway_q": 5.0,
+   "status": ""
+  },
+  {
+   "ticker": "TRDA",
+   "name": "Entrada",
+   "ta": "Muscle",
+   "mc": 184948950.0,
+   "net_cash": 193000000.0,
+   "ev": -8051050.0,
+   "stage": "Phase 1/2",
+   "drug": "ENTR-601-44 \u2014 cell-penetrating (EEV) exon-44 oligo",
+   "sci": 3.0,
+   "runway_q": 5.6,
+   "status": ""
+  },
+  {
+   "ticker": "TARA",
+   "name": "Protara",
+   "ta": "Cancer GU",
+   "mc": 136727040.0,
+   "net_cash": 143100000.0,
+   "ev": -6372960.0,
+   "stage": "Phase 2",
+   "drug": "TARA-002 (OK-432) \u2014 intravesical immunostimulant",
+   "sci": 3.0,
+   "runway_q": 6.6,
+   "status": ""
+  },
+  {
+   "ticker": "IVVD",
+   "name": "Invivyd",
+   "ta": "Infectious viral",
+   "mc": 122082800.0,
+   "net_cash": 126400000.0,
+   "ev": -4317200.0,
+   "stage": "Phase 3",
+   "drug": "VYD2311 \u2014 long-acting anti-SARS-CoV-2 monoclonal antibody",
+   "sci": 2.5,
+   "runway_q": 3.2,
+   "status": ""
+  },
+  {
+   "ticker": "TNYA",
+   "name": "Tenaya",
+   "ta": "Cardio",
+   "mc": 65415910.0,
+   "net_cash": 66800000.0,
+   "ev": -1384090.0,
+   "stage": "Phase 1",
+   "drug": "TN-201 \u2014 AAV9 MYBPC3 gene therapy",
+   "sci": 3.0,
+   "runway_q": 3.9,
+   "status": ""
+  }
+ ],
+ "method": "Indication groups from the lead program of each covered company. Under-served = >=100K US prevalence, <=3 public companies, and no public asset with science >=3.5. Crowded = >=6 public companies with the same lead indication group. Fields led by companies above our $30B coverage cap (type 2 diabetes, obesity, cosmetic derm, COVID) are left out of Under-served because they only look empty here. Cash shells = net cash (cash - debt) above market cap (negative EV), cap >=$20M."
+}

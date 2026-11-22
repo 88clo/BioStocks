@@ -1,0 +1,2391 @@
+{
+ "ALNY": {
+  "mech": 4,
+  "tail": 2,
+  "data": 3,
+  "why": "Q2'26 guide cut to TTR $4.2-4.5B (from 4.4-4.7B): 2L pent-up demand normalised; Amvuttra Q2 $1.01B",
+  "basis": "searched"
+ },
+ "BBIO": {
+  "mech": 3,
+  "tail": 4,
+  "data": 3,
+  "why": "BBP-418 priority review PDUFA 11/27/26, encaleret PDUFA 5/8/27; Attruby Q2 $222M; cash ~$1.7B post $1B pref",
+  "basis": "searched"
+ },
+ "BRVE": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Oral CMI class validated by mavacamten/aficamten; Ph2 only, data mid-2027, ADV ~$12M",
+  "basis": "knowledge"
+ },
+ "CYTK": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "ACACIA nHCM KCCQ diff only ~3pt at 36w; LVEF<50% 10.5% vs 0.8%; MAPLE PDUFA 11/14/26 (binary)",
+  "basis": "searched"
+ },
+ "EWTX": {
+  "mech": 4,
+  "tail": 3,
+  "data": 2,
+  "why": "CIRRUS nHCM KCCQ +13 open-label vs ACACIA placebo arm +8.4: placebo-unadjusted; oHCM gradient -55%",
+  "basis": "searched"
+ },
+ "GLUE": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "NLRP3 route validated by CANTOS (IL-1b) and CAPS GoF; degrader Ph1 only, coronary Ph2 H1'27",
+  "basis": "knowledge"
+ },
+ "KARD": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Myosin activator in genetic DCM, KINSHIP Ph2b H1'27; opposite-direction to inhibitors, no data checked",
+  "basis": "knowledge"
+ },
+ "LQDA": {
+  "mech": 2,
+  "tail": 1,
+  "data": 3,
+  "why": "10/13/26 settlement: $380.7M payments, PH-ILD indication being removed from label; PAH only; +51% after hours",
+  "basis": "searched"
+ },
+ "LXEO": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "AAV frataxin for FA cardiomyopathy; small, cash $72M vs cap $235M, dilution risk; unchecked",
+  "basis": "knowledge"
+ },
+ "LXRX": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Sotagliflozin in HCM Ph3 (SONATA) Q1'27; SGLT mechanism in HCM unproven; INPEFA small",
+  "basis": "knowledge"
+ },
+ "MLYS": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Aldosterone synthase inhibition validated (sibling baxdrostat); PDUFA 12/22/26; tested=true so not re-reviewed",
+  "basis": "knowledge"
+ },
+ "PTCT": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "Sephience ramp, ST-920 Fabry rolling BLA; vatiquinone FA history of CRL; not researched",
+  "basis": "knowledge"
+ },
+ "PVLA": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Topical sirolimus for microcystic LM, mTOR validated in vascular anomalies; NDA acceptance ~10/30/26; unchecked",
+  "basis": "knowledge"
+ },
+ "RCKT": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Danon LAMP2 is monogenic, but RP-A501 had prior patient death on high dose; topline mid-2028; unchecked",
+  "basis": "knowledge"
+ },
+ "TECX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "TX45 Ph1b PCWP -17.9%, CO +17.4% (n=16 open-label); APEX n<=180, Moldova sites; serelaxin AHF failed",
+  "basis": "searched"
+ },
+ "AKBA": {
+  "mech": 2,
+  "tail": 1,
+  "data": 2,
+  "why": "TDAPA expires 12/31/26 -> Vafseo price reset (headwind); cap $184M, below nominee threshold",
+  "basis": "knowledge"
+ },
+ "MAZE": {
+  "mech": 5,
+  "tail": 3,
+  "data": 3,
+  "why": "APOL1 Mendelian risk alleles; MZE829 uACR -35.6% n=12 open-label (FSGS -61.8% n=5); Vertex interim early 2027",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "APOL1 kidney disease has the cleanest human genetics in nephrology, and Vertex's inaxaplin interim (early 2027, 48 wk, possible accelerated approval) is a read-through catalyst for MZE829, which showed uACR -35.6% (n=12) incl. -61.8% in FSGS (n=5).",
+   "mechanism": {
+    "score": 5,
+    "finding": "APOL1 G1/G2 high-risk genotype is Mendelian cause; every HORIZON patient carried it. Inaxaplin (same target class) cut UPCR 44.7% in modest-proteinuria AMKD, so target engagement translates clinically in a sibling programme."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "Vertex AMPLITUDE interim at 48 wk (early 2027) could support US accelerated approval, creating a proteinuria-surrogate pathway MZE829 could follow. Maze guides pivotal start 1H27 pending regulators; cash $494.9M into 2029. Risk: Vertex is 1-2 years ahead."
+   },
+   "data": {
+    "score": 3,
+    "finding": "HORIZON is open-label basket, n=15 (12 evaluable): uACR -35.6% overall, non-diabetic -48.6%, FSGS -61.8% (n=5), diabetic only 2 of 5 reached >=30% reduction. Comparable to, not clearly better than, inaxaplin; no dose breakout, no placebo."
+   },
+   "priced_in": "Cap $1.76B, cash ~$352M per file (Q2 reports $494.9M; file stale) -> EV ~$1.3B or less. APOL1 high-risk US patients with proteinuric kidney disease number in the low hundreds of thousands (unverified). At 20-25% PoS to approval x $2B peak x 3x = $1.2-1.5B, so roughly fairly priced; edge is the Vertex interim read-through, not mispricing.",
+   "counter": "Read-through cuts both ways: a Vertex miss would hit MAZE as hard as a hit lifts it, and MZE829 data (n=12 open-label) are not clearly better than inaxaplin's."
+  }
+ },
+ "PROK": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "Autologous cell therapy, eGFR-slope AA cohort n~320 mid-2027; ADV $2.2M illiquid; unchecked",
+  "basis": "knowledge"
+ },
+ "BHC": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Larsucosterol AH Ph3 not started, CVR structure; conglomerate, thesis dominated by Salix/B+L",
+  "basis": "knowledge"
+ },
+ "AMLX": {
+  "mech": 4,
+  "tail": 4,
+  "data": 4,
+  "why": "Avexitide Ph3 LUCIDITY: -55% L2/L3 events vs PBO p=3e-6 n=78; BTD+orphan; no approved PBH drug; NDA YE26",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 4,
+   "insight": "LUCIDITY Ph3 cut Level 2/3 hypoglycemia events 55% vs placebo (p=3e-6, n=78) in post-bariatric hypoglycemia, with Breakthrough and Orphan status and no approved therapy; NDA by YE2026 for a 2027 launch.",
+   "mechanism": {
+    "score": 4,
+    "finding": "Avexitide (exendin 9-39) blocks the GLP-1 receptor, the proposed driver of post-RYGB hyperinsulinemia. Earlier randomized crossover (PREVENT) and Ph2 work supported the mechanism; Ph3 now confirms it on an FDA-agreed endpoint."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "Breakthrough Therapy plus Orphan designation; first-in-class with no FDA-approved PBH drug; NDA planned by YE2026, launch 2027. Priority review not yet confirmed. Daily SC injection is a convenience limit."
+   },
+   "data": {
+    "score": 4,
+    "finding": "n=78 (3:2), 90 mg SC daily, 16 wk double-blind, 21 US sites, tight p-value; no per-arm event rates, event-free %, dropout or CGM nadir disclosed. Safety: no related SAEs, GI AEs and injection-site reactions, weight neutral. 32-wk OLE ongoing."
+   },
+   "priced_in": "Cap $3.55B, cash ~$280M (file, may be stale) -> EV ~$3.3B. At 75% PoS (NDA+approval), 10x-ish rare-disease multiple needs ~$450M-$1.1B peak risk-adjusted; EV pays for roughly $1.5B peak at 3x sales. PBH eligible-patient count and price not verified, so edge is thin; stock already +64% on the day.",
+   "counter": "The binary was removed and the stock already re-rated (+64% day, +132% YTD vs close $28.07). Remaining upside depends on an unquantified patient pool and a single n=78 trial."
+  }
+ },
+ "AMPH": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Baqsimi plus injectable generics; no specific insight identified",
+  "basis": "knowledge"
+ },
+ "PLX": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Pegylated uricase PRX-115 Ph2 vs pegloticase benchmark not checked; cap $203M",
+  "basis": "knowledge"
+ },
+ "RDY": {
+  "mech": 1,
+  "tail": 3,
+  "data": 2,
+  "why": "Generic semaglutide launch (Nov 2026) is guided event; patent-expiry arbitrage likely priced; unchecked",
+  "basis": "knowledge"
+ },
+ "RYTM": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "EMANATE Ph3 missed primary in all 4 MC4R substudies (3/16/26); HO label approved 3/19/26; Q1 rev $60.1M",
+  "basis": "searched"
+ },
+ "RZLT": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "sunRIZE (CHI) missed primary/key secondary, rare hypersensitivity; upLIFT TIH Ph3 12/2026 design unchecked; +64% 3m",
+  "basis": "searched"
+ },
+ "VOGX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Gut-restricted SGLT1 for PBH is mechanistically distinct from avexitide; Ph2b mid-2027; unchecked",
+  "basis": "knowledge"
+ },
+ "ALT": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "IMPACT 48wk: MASH resolution strong, fibrosis by NITs; PERFORMA Ph3 not until 2029; EOP2 detail not checked",
+  "basis": "knowledge"
+ },
+ "ARWR": {
+  "mech": 3,
+  "tail": 4,
+  "data": 4,
+  "why": "SHASTA-3/4: TG -79/-81%, pooled AP -78% (p=0.008, NNT 24); sNDA by YE26 w/ PRV (6-mo review); glycemic AE 14% vs 8.7%",
+  "basis": "searched"
+ },
+ "BIOA": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "NLRP3 mechanism clinically validated by CANTOS (IL-1b) but oral NLRP3 inhibitors lack CV outcome data; Ph2 biomarker PoC only",
+  "basis": "knowledge"
+ },
+ "CRSP": {
+  "mech": 4,
+  "tail": 2,
+  "data": 3,
+  "why": "ANGPTL3 human LoF genetics validate target; Ph1 single-dose TG/LDL drops large; durability/safety at n small, AHA Nov 9",
+  "basis": "knowledge"
+ },
+ "EDIT": {
+  "mech": 3,
+  "tail": 2,
+  "data": 1,
+  "why": "Preclinical LDLR upregulation; PCSK9-like biology validated but no human data; cash 124M vs 399M cap",
+  "basis": "knowledge"
+ },
+ "GPCR": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Oral small-molecule GLP-1; Ph2 ~11-15% placebo-adj weight loss with dropout from GI AEs; Ph3 ACCOMPLISH not read",
+  "basis": "knowledge"
+ },
+ "IONS": {
+  "mech": 3,
+  "tail": 4,
+  "data": 3,
+  "why": "Selloff to $44.90 on partnered misses (eplontersen, pelacarsen); owned Tryngolza AP -85% (CORE) vs ARWR -78%; bepirovirsen approved Oct 20",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 6,
+   "insight": "IONS fell ~43% YTD to $44.90 on two PARTNERED misses (eplontersen ATTR-CM, pelacarsen Lp(a)) while its owned APOC3 drug Tryngolza has the best pancreatitis data (-85% AP) and a June sHTG label; bepirovirsen was approved Oct 20 with 10-12% royalty.",
+   "mechanism": {
+    "score": 3,
+    "finding": "APOC3 lowering is genetically validated (LoF carriers have lower TG/CV risk). Olezarsen CORE/CORE2 TG -49 to -72% placebo-adjusted and prespecified pooled AP -85%; plozasiran pooled AP -78% (p=0.008). Market read-through from Lp(a)/TTR misses is unrelated biology."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "Tryngolza sHTG label (Jun 24 2026) includes AP risk reduction, ~6+ months ahead of plozasiran (sNDA by YE26, 6-mo PRV review). Bepirovirsen approved Oct 20, 10-12% royalty. 2026 revenue guide $875-900M. Headwind: net price cut Apr 1, slow reimbursement."
+   },
+   "data": {
+    "score": 3,
+    "finding": "Cross-trial: AP reduction -85% (olezarsen) vs -78% (plozasiran), different designs; TG reduction similar order. Q2 revenue $268M; Dawnzera +63% q/q. Launch data on sHTG not disclosed, which is the gap."
+   },
+   "priced_in": "EV ~ $7.31B - $2.1B cash = ~$5.2B (debt not netted, unverified) = ~5.8x 2026 revenue guide of ~$890M. Management cites Tryngolza peak >$3B; at 50% PoS-adjusted $1.5B x 4x = $6B for Tryngolza alone, before Dawnzera, royalties and bepirovirsen.",
+   "counter": "Two consecutive pipeline failures, slow payer rollout with a net price cut, forward P/E ~91, and Arrowhead's PRV-speed follow-on; momentum is negative and sHTG launch may disappoint."
+  }
+ },
+ "IVA": {
+  "mech": 4,
+  "tail": 4,
+  "data": 3,
+  "why": "NATiV3 topline Q4: pan-PPAR Ph2b 49% MASH resolution @1200mg vs 22% pbo; Breakthrough; default/financing hinge on primary composite",
+  "basis": "searched"
+ },
+ "KLRA": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "GLP-1/GIP obesity, crowded class; no specific edge checked",
+  "basis": "knowledge"
+ },
+ "MDGL": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "THR-b validated; Rezdiffra F4c NIT/portal-HTN data; outcomes trial later; competition from semaglutide MASH label not quantified",
+  "basis": "searched"
+ },
+ "NAMS": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "CETP/apoB biology; BROADWAY 4pt MACE -21% exploratory; PREVAIL interim needs both 4pt and 3pt MACE; DSMB Q1 2027 not 4Q26",
+  "basis": "searched"
+ },
+ "SCTX": {
+  "mech": 2,
+  "tail": 2,
+  "data": 1,
+  "why": "Preclinical CasX epigenetic/editing; IND timing unguided",
+  "basis": "knowledge"
+ },
+ "VKTX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "VK2735 Ph3 VANQUISH-1 n~4,650 78wk enrolled; no topline date; oral Ph2 had high discontinuations",
+  "basis": "searched"
+ },
+ "ASND": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Yorvipath validated PTH replacement; navepegritide EMA decision; competition in achondroplasia not checked",
+  "basis": "knowledge"
+ },
+ "BEAM": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "AATD PiZ genetically validated, base editing corrects root cause; BEAM-302 early total AAT data strong; risto-cel BLA YE26",
+  "basis": "knowledge"
+ },
+ "BMRN": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Voxzogo faces navepegritide/infigratinib competition; Amicus integration; FDA long-term outcomes action Feb 28 2027",
+  "basis": "knowledge"
+ },
+ "DNLI": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Transport-vehicle BBB platform; AVLAYAH launch small ($10-12M guide); BIIB122 LRRK2 Ph2b missed primary (knowledge)",
+  "basis": "knowledge"
+ },
+ "IRON": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Bitopertin CRL: PPIX drop accepted but not tied to sunlight endpoints; APOLLO Q4 is the test; updated FDA decision mid-2027",
+  "basis": "searched"
+ },
+ "MBX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Ph2 canvuparatide responder 63% vs 31% placebo, narrower than hoped vs Yorvipath; +89% 3m run; Ph3 readout 2H27",
+  "basis": "searched"
+ },
+ "MNPR": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "ALXN1840 Ph3 hit copper mobilization vs SoC (surrogate), no effect sizes; rolling NDA only first sections submitted Jul 22",
+  "basis": "searched"
+ },
+ "PRME": {
+  "mech": 3,
+  "tail": 2,
+  "data": 1,
+  "why": "Prime editing of H1069Q ATP7B plausible; Ph1/2 data 2027; needs financing",
+  "basis": "knowledge"
+ },
+ "RARE": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Crysvita mature; FAYUVI approved with PRV sale $210M; GTX-102 disposition pending",
+  "basis": "knowledge"
+ },
+ "SEPN": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Oral PTH1R agonist unproven in humans; Ph1 SAD/MAD Q1 2027; +37% 3m on hope",
+  "basis": "knowledge"
+ },
+ "XERS": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "XP-8121 Ph3 start; Recorlev small; no specific edge checked",
+  "basis": "knowledge"
+ },
+ "ZVRA": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "MIPLYFFA Q3 print Nov 3 vs $30.2M Q2; EMA re-exam; NPC ultra-rare",
+  "basis": "knowledge"
+ },
+ "ABEO": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Zevaskyn RDEB one-time cell therapy; ramp depends on center activations; Vyjuvek is cheaper redosable comparator",
+  "basis": "knowledge"
+ },
+ "ABSI": {
+  "mech": 2,
+  "tail": 2,
+  "data": 1,
+  "why": "$1.8B on Ph1/2 anti-PRLR for hair loss; human genetic link PRLR-AGA unproven; interim PoC is binary, run-up +111%",
+  "basis": "knowledge"
+ },
+ "EOLS": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Aesthetic neurotoxin/filler; no specific scientific or regulatory edge identified",
+  "basis": "knowledge"
+ },
+ "KRYS": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Vyjuvek Q2 rev $119.2M (+24%), NI $54.8M, cash $1.1B; 4Q26 IOLITE/EMERALD-1 near-term; largely priced",
+  "basis": "searched"
+ },
+ "MANE": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "VDPHL01 304: +28.6/+36.4 vs +6.6 hairs/cm2 placebo; 17mg/day BID dose vs cheap generic LDOM; label/boxed-warning risk unverified",
+  "basis": "searched"
+ },
+ "SGMT": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Oral FASN inhibitor acne; China Ph3 positive per file; US Ph3 just starting; no verified edge",
+  "basis": "knowledge"
+ },
+ "ABVX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 4,
+  "why": "ABTECT maint wk44 remission 50.8/51.3% vs 10.4% pbo; induction 50mg pooled +16.4pt; ABTECT-2 25mg missed; known",
+  "basis": "searched"
+ },
+ "EPRX": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Locally injected sustained-release fluticasone for EoE; Ph2b topline Dec; thin liquidity, no checked edge",
+  "basis": "knowledge"
+ },
+ "ODTX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "RIPK2 (NOD2 pathway) has Crohn's genetics but UC Ph2b unproven; no checked data",
+  "basis": "knowledge"
+ },
+ "PALI": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Gut-restricted PDE4 in UC/FSCD; small cap, Ph2 start 2H26; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "STTK": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "DR3 antagonist: TL1A-DR3 axis clinically validated by sibling anti-TL1A; direct DR3 blockade unproven; data 2028",
+  "basis": "knowledge"
+ },
+ "SYRE": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "alpha4beta7 and TL1A both validated; Part A uncontrolled PoC SPY003 20% remit/30% EI wk12 n=44; Part B 2027; richly valued",
+  "basis": "searched"
+ },
+ "TRAX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Anti-CD122 + PD-1 agonist in celiac; stock +106% in 3m on early Ph1b; unproven biology",
+  "basis": "knowledge"
+ },
+ "ADRX": {
+  "mech": 4,
+  "tail": 3,
+  "data": 2,
+  "why": "KLKB1 siRNA validated by lonvo-z 87% attack cut; Ph2a n=3, only kallikrein data, Ph3 ~90 pts untimed; q3-6mo dosing",
+  "basis": "searched"
+ },
+ "AQST": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Anaphylm CRL 1/30/26 (human factors + PK); resubmitted Sept, class/PDUFA not yet set; neffy already marketed",
+  "basis": "searched"
+ },
+ "BCRX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Orladeyo FY26 guide $625-645M; oral HAE prophylaxis faces lonvo-z/siRNA/injectables; navenibart 2027",
+  "basis": "knowledge"
+ },
+ "CLDX": {
+  "mech": 4,
+  "tail": 3,
+  "data": 4,
+  "why": "Ph3 CSU wk12 CR 42-46% vs 9-13% pbo; remibrutinib CR 28-31% (REMIX); stock fell on 2 grade-4 anaphylaxis (1 pbo)",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 6,
+   "insight": "Barzolvolimab Ph3 CSU: wk12 UAS7=0 in 42-46% vs 9-13% placebo (wk24 45-54%) beats remibrutinib's 28-31% wk12 cross-trial. Stock fell on 2 grade-4 anaphylaxis (1 on placebo), EV ~$1.6B.",
+   "mechanism": {
+    "score": 4,
+    "finding": "Anti-KIT depletes mast cells (upstream of IgE and BTK). Active in omalizumab-refractory pts; sibling mast-cell pathway validated by remibrutinib approval. Q8W 300mg arm matches Q4W 150mg (UAS7 -19.7/-20.5 vs -20.2)."
+   },
+   "tailwind": {
+    "score": 3,
+    "finding": "BLA planned 2027 (not 2026): dated slowly. Q8W dosing and 1,939-pt dataset support label; CSU market has Xolair, Dupixent, Rhapsido. No voucher or designation verified."
+   },
+   "data": {
+    "score": 4,
+    "finding": "Placebo-adjusted UAS7 -8.3 to -9.8 vs remibrutinib -6.3/-7.9; CR (UAS7=0) wk12 42.1-45.7% vs 9.3-12.6% pbo vs remibrutinib 31.1%/27.9% (pbo 11.1/6.5). AAS7=0 63-74% vs ~34%. Cross-trial, not head-to-head."
+   },
+   "priced_in": "Mkt cap $2.32B (10/26 close $29.50) less ~$718M cash (file) = EV ~$1.6B. At 85% PoS x $2.5B peak CSU (my estimate, unverified) x ~3x sales = ~$6B risk-adj vs EV 1.6B before CIndU/EoE/AD. Market prices roughly a 25% CSU franchise.",
+   "counter": "Safety unresolved: 2 grade-4 anaphylaxis, hair color/neutropenia rates not seen by me, and BLA is 2027 so there is a long dead zone; remibrutinib is oral and already launched."
+  }
+ },
+ "DBVT": {
+  "mech": 3,
+  "tail": 4,
+  "data": 3,
+  "why": "Palforzia exited US 7/31/26; Viaskin VITESSE 46.6% vs 14.8% responders, BTD, BLA filed 9/29; CRL history, dilution",
+  "basis": "searched"
+ },
+ "NTLA": {
+  "mech": 4,
+  "tail": 4,
+  "data": 4,
+  "why": "Lonvo-z HAELO: -87% attacks, 62% attack-free off therapy vs 11%; PDUFA 3/10/27 priority, no AdCom; ALT/AST rises 10-15%",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "Lonvo-z: one-time CRISPR HAE therapy with -87% attacks and 62% attack-free off all therapy vs 11%, priority-reviewed (PDUFA 3/10/27, no AdCom planned). Stock $11.26 is ~28% below the $15.67 post-data close; EV ~$0.95B.",
+   "mechanism": {
+    "score": 4,
+    "finding": "KLKB1 knockout removes plasma kallikrein, the validated HAE node (same target class as lanadelumab/berotralstat/donidalorsen); one-time edit with durability off prophylaxis through Feb 2026 cutoff."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "Priority review, PDUFA 3/10/27, FDA not planning AdCom; first in vivo CRISPR therapy; H1 2027 launch. HAE patients' cost >$1M/yr per CEO; price not set."
+   },
+   "data": {
+    "score": 4,
+    "finding": "HAELO: 52 lonvo-z vs 28 pbo; monthly attacks 0.19 vs 1.79 on-demand; no SAEs in lonvo-z arm; transient AST/ALT elevations ~10-15%. One-time dose, n small."
+   },
+   "priced_in": "Mkt cap ~$1.58B (10/27: $11.26) less ~$628M cash = EV ~$0.95B. At 80% PoS x $1.5B peak (my estimate, unverified; HAE prevalent pool ~7-10k US pts) x 3x = ~$3.6B vs EV 0.95B. Market is pricing a heavy regulatory/commercial discount.",
+   "counter": "Crowded HAE market (Dawnzera, Ekterly, Andembry) with weak need to move to gene editing; LFT elevations and the unresolved nex-z program risk; binary regulator event."
+  }
+ },
+ "PHVS": {
+  "mech": 4,
+  "tail": 3,
+  "data": 4,
+  "why": "Deucrictibant XR CHAPTER-3 -83% attacks (-87% type 1/2); oral B2 antagonist; IR PDUFA 4/23/27, XR NDA 1H27",
+  "basis": "searched"
+ },
+ "SPRY": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "neffy commercial reset; CSU Ph2b interim Q1 2027; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "BHVN": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "MoDE IgG degrader Graves' Ph3; FcRn class validated in Graves' but no human BHV-1300 data verified",
+  "basis": "knowledge"
+ },
+ "IMVT": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "FcRn in Graves': batoclimab 17/21 (80%) held T3/T4 normal off tx 6mo, 8 ATD-free; IMVT-1402 registrational toplines 2027",
+  "basis": "searched"
+ },
+ "MNKD": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "Afrezza + FUROSCIX + Tyvaso DPI royalty; no specific checked edge; +50% in 3m",
+  "basis": "knowledge"
+ },
+ "SANA": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Hypoimmune islet cells; prior single-patient C-peptide without immunosuppression; SC451 preclinical, IND 2026",
+  "basis": "knowledge"
+ },
+ "VRDN": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Tested name; LUMVOA approved TED, Q3 print Nov 4; not re-reviewed",
+  "basis": "knowledge"
+ },
+ "YARW": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Anti-TSHR antibody Graves'; trades below cash but sub-$250M and Ph2a data 2027",
+  "basis": "knowledge"
+ },
+ "AUPH": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Lupkynis commercial + zetomipzomib via Kezar; no checked edge",
+  "basis": "knowledge"
+ },
+ "CLYM": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Budoprutug pMN n=13: immunologic remission 38% wk12, PLA2R -70%; no proteinuria response yet; proteinuria speeds drug clearance",
+  "basis": "searched"
+ },
+ "JBIO": {
+  "mech": 4,
+  "tail": 2,
+  "data": 2,
+  "why": "APRIL blockade validated in IgAN, but JADE101 is 5th+ entrant behind Voyxact/Trutakna/povetacicept",
+  "basis": "knowledge"
+ },
+ "TVTX": {
+  "mech": 4,
+  "tail": 2,
+  "data": 3,
+  "why": "Filspari faces Voyxact, Trutakna (eGFR slope +5.0/yr) and povetacicept (PDUFA 11/30); CEO handover Dec",
+  "basis": "knowledge"
+ },
+ "VERA": {
+  "mech": 4,
+  "tail": 3,
+  "data": 4,
+  "why": "ORIGIN 3 2yr: eGFR slope +5.0/yr vs pbo, composite HR 0.24 (11 vs 38 events), 0 dialysis/death vs 7-8; stock -50% off high",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "ORIGIN 3 2-year: eGFR slope +5.0 mL/min/yr vs placebo (sibeprenlimab +4.5) and progression HR 0.24 (11 vs 38 events), yet stock is ~$28, -50% from the $56 high, on launch/price skepticism.",
+   "mechanism": {
+    "score": 4,
+    "finding": "Dual BAFF/APRIL: Gd-IgA1 -67 pts, hematuria resolution 80.9% vs 21.4% at wk52, tracking the disease driver. APRIL class validated by sibeprenlimab eGFR slope +0.3 vs -4.2/yr."
+   },
+   "tailwind": {
+    "score": 3,
+    "finding": "Trutakna approved (accelerated, interim UPCR); final eGFR now supports full approval (filing timing unverified). Headwinds: Voyxact already launched; povetacicept FDA decision by 11/30/26 (priority voucher, Q4W autoinjector)."
+   },
+   "data": {
+    "score": 4,
+    "finding": "n=428: wk52 eGFR +5.58 (CI 3.68-7.48); slope diff ~5.0/yr; composite HR 0.24 (CI 0.12-0.48); 0 dialysis/transplant/death vs 7 (placebo; one death). AEs 74.8% vs 78%; related AEs 35% vs 17.8% (injection site). Cross-trial caution on populations."
+   },
+   "priced_in": "Mkt cap ~$2.04B at $28.30 less ~$499M cash (file) = EV ~$1.5B. Consensus ~$3.1B sales by 2037 (S&P). At 90% PoS and 3x peak-discounted sales, EV looks low, but launch uptake and 3-4 APRIL/BAFF entrants cap share; I assume ~15-20% IgAN share.",
+   "counter": "Launch is the only thing that matters: three APRIL/BAFF drugs, CEO share sales ($35-44), skepticism on price and uptake, and ORIGIN 3 eGFR cross-trial is not head-to-head."
+  }
+ },
+ "GENB": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Ultra-high-affinity anti-TSLP; TSLP validated by tezepelumab; Ph3 just enrolling",
+  "basis": "knowledge"
+ },
+ "SVRA": {
+  "mech": 4,
+  "tail": 4,
+  "data": 3,
+  "why": "aPAP GM-CSF replacement; priority review extended to 11/22/26 after major amendment (no safety/efficacy concern cited); binary",
+  "basis": "searched"
+ },
+ "UPB": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Anti-TSLPR verekitug; needs financing/partner before Ph3; sub-$250M mkt cap",
+  "basis": "knowledge"
+ },
+ "ANNX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "BLA Q4'26 leans on 10-pt open-label FORWARD cohort + Bangladesh Ph3; ex-US data acceptance is a stated risk; ARCHER II GA Q4'26",
+  "basis": "searched"
+ },
+ "DNTH": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Sanofi C1s MOBILIZE CIDP stopped for futility 6/10; CAPTIVATE Part A 75% responders (n=40, open-label) vs 50% bar; stock -16% then recovered",
+  "basis": "searched"
+ },
+ "KYTX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "CD19 CAR-T SPS with RMAT, rolling BLA; previously reviewed; no new evidence gathered",
+  "basis": "knowledge"
+ },
+ "TGTX": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Briumvi subQ Ph3 topline pending; no specific edge identified",
+  "basis": "knowledge"
+ },
+ "VOR": {
+  "mech": 4,
+  "tail": 3,
+  "data": 4,
+  "why": "Telitacicept China Ph3 gMG MG-ADL -5.74 vs -0.91 pbo (n=114); 5 China approvals incl IgAN (NEJM); global UPSTREAM 1H27",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "Telitacicept's China Ph3 in gMG cut MG-ADL 5.74 vs 0.91 on placebo (n=114) vs about -1.2 to -1.8 placebo-adjusted AUC for FcRn drugs; five China approvals incl. IgAN (NEJM). EV ~$0.6B ahead of global UPSTREAM readout 1H27.",
+   "mechanism": {
+    "score": 4,
+    "finding": "BAFF/APRIL dual blockade is human-validated across five Chinese approvals (SLE, RA, gMG, SjD, IgAN) with an NEJM Ph3 in IgAN (TELIGAN); upstream of FcRn/complement. 48-wk post hoc: ~42% reached MSE, >94% had >=5-pt MG-ADL gain."
+   },
+   "tailwind": {
+    "score": 3,
+    "finding": "Global Ph3 UPSTREAM-MG (~180 pts, 13+ countries, primary MG-ADL wk24, 1:1 vs placebo) reads out mid-2027; SjD Ph3 also enrolling. Cash ~$514M pro forma funds into early 2029. No designations verified; licence economics to RemeGen undisclosed in the release."
+   },
+   "data": {
+    "score": 4,
+    "finding": "Placebo-adjusted MG-ADL -4.8 at wk24 in China vs FcRn benchmarks of -1.2 to -1.8 cumulative AUC (different timepoint metric; cross-trial). Main caveat: Chinese-only pop, placebo -0.91 is unusually low; global placebo response likely higher, and 98% responder rate is atypically high."
+   },
+   "priced_in": "EV ~$0.60B (cap $1.07B less cash/inv ~$0.47-0.51B). At 65% PoS and 3x sales, EV implies only ~$310M peak ex-China sales; my estimate for gMG+SjD ex-China is $1.2-2.0B (unverified; royalty/milestones to RemeGen undisclosed and would reduce value).",
+   "counter": "Binary Ph3 8 months out; Chinese data on a low-placebo population may not translate; short interest ~21%; ATM dilution continues. Return skew is only ~+18% probability-weighted."
+  }
+ },
+ "CABA": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Rese-cel CD19 CAR-T myositis registrational cohort; RMAT; small n, not researched this session",
+  "basis": "knowledge"
+ },
+ "KNSA": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Arcalyst Q2 net rev $243.6M (+55% y/y), FY guide $900-920M; growth known; IRA/KPL-387 not checked",
+  "basis": "searched"
+ },
+ "LKFT": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "BCMAxCD3 in AIHA/ITP Ph1b; cash ($2.98B per file) exceeds market cap; not researched, file figures unverified",
+  "basis": "knowledge"
+ },
+ "MIRM": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "IBAT class in cholestatic pruritus; AZURE-2 HDV Q4'26 and PSC NDA H1'27 not researched",
+  "basis": "knowledge"
+ },
+ "NVCT": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Ciprocopan China-only approval; H2H vs eculizumab Hb>=12 59.5% vs 8.3%; US IND only Q4'26, years from US filing; $115M raise",
+  "basis": "searched"
+ },
+ "ADMA": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Q2 rev $124.4M (+2%), Asceniv +24%, Bivigam -49%; FY guide $530-560M needs H2 ~$291-321M ramp; ~9x EBITDA guide",
+  "basis": "searched"
+ },
+ "ELDN": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Anti-CD40L tegoprubart in kidney transplant; Ph3 start pending; micro-cap, not researched",
+  "basis": "knowledge"
+ },
+ "MESO": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "Revascor LVAD accelerated approval path; Ryoncil launched; not researched",
+  "basis": "knowledge"
+ },
+ "OMER": {
+  "mech": 3,
+  "tail": 4,
+  "data": 4,
+  "why": "Q2 net rev $28.5M vs ~$12.7M consensus; J-code 7/1, NTAP 10/1; ext-control mortality HR 0.32; CHMP negative twice (Oct 16)",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "YARTEMLEA Q2 net revenue was $28.5M vs ~$12.7M consensus (gross 2.9x Q1); permanent J-code (7/1) and NTAP (10/1) land in Q3/Q4. The stock is -30% on EU CHMP negatives that do not touch the US franchise.",
+   "mechanism": {
+    "score": 3,
+    "finding": "MASP-2 (lectin pathway) inhibition in HSCT-TMA: pivotal single-arm n=28, 100-day survival 73% (CI 52-86), CR 61%; external-control mortality HR 0.32 (0.23-0.44). Biology is plausible but there is no randomized or human-genetic proof; CHMP twice found the evidence insufficient."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "FDA approval 12/23/2025 (priority review, breakthrough, orphan), no boxed warning/REMS; WAC ~$36k/vial, 8-10 vials/course (~$290-360k). Permanent J-code effective 7/1/2026; CMS NTAP effective 10/1/2026. P&T listing was ~30% of top-80 centers in March, so formulary conversion is the lever."
+   },
+   "data": {
+    "score": 4,
+    "finding": "Launch data beat: Q1 net $9.9M -> Q2 $28.5M vs consensus ~$12.7M per press (stocktwits). External-control quality caveat (CRL in 2021 over effect-size estimation) is now priced. Also 2029 notes cut to ~$40M, buyback ~$5.7M. Score reflects launch/effect size, not trial rigor."
+   },
+   "priced_in": "EV ~$1.2-1.34B (stockanalysis $1.34B incl. derivative/royalty liabilities). Q2 annualizes to ~$114M net; at 1,500-2,500 treated US pts x ~$300k x 0.885 = $400-660M peak (my assumptions, unverified). EV is ~2-3x that peak: not cheap on US sales alone. Edge: Novo zaltenibart milestones (up to $2.1B, $410M dev/approval) and royalties are un-modelled.",
+   "counter": "Q2 may include one-time stocking and expanded-access conversions; run-rate could flatten. External-control evidence got two CHMP negatives, and short interest is 16%."
+  }
+ },
+ "ACRS": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Anti-TSLP validated by tezepelumab; extended half-life angle; Ph2 AD topline Q4'26 is binary; not researched",
+  "basis": "knowledge"
+ },
+ "ALMS": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Allosteric TYK2 psoriasis NDA planned; previously reviewed; no new evidence",
+  "basis": "knowledge"
+ },
+ "ARQT": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "Zoryve infant-AD PDUFA 2/23/27; topical PDE4 franchise ramp; not researched",
+  "basis": "knowledge"
+ },
+ "ATTO": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "IL-31 axis validated by nemolizumab; Ph1 long-acting antibody; data mid-2027",
+  "basis": "knowledge"
+ },
+ "AVTX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Anti-IL-1b in HS Ph2 completed; Ph3 timing TBD; not researched",
+  "basis": "knowledge"
+ },
+ "CRVS": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "ITK inhibitor PTCL Ph3 futility analysis 1/2027; not researched",
+  "basis": "knowledge"
+ },
+ "EVMN": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "IL-18BP in AD, Ph2b mid-2027; -52% 3m; below $250M cap threshold; not researched",
+  "basis": "knowledge"
+ },
+ "INCY": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Povorcitinib HS (EU decision late 2026) JAK1 sibling-validated; large cap, not researched",
+  "basis": "knowledge"
+ },
+ "KYMR": {
+  "mech": 4,
+  "tail": 2,
+  "data": 3,
+  "why": "STAT6 degradation mimics IL-4R/IL-13 biology (dupilumab-validated); BROADEN2 Ph2b imminent binary; priced richly",
+  "basis": "knowledge"
+ },
+ "MLTX": {
+  "mech": 4,
+  "tail": 4,
+  "data": 3,
+  "why": "EV ~$0.57B vs Bimzelx HS ~EUR1.0B/yr run-rate; FDA accepts MIRA+VELA-1 package; priority review decision ~end Nov; VELA-2 p=0.053",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 6,
+   "insight": "EV ~$0.57B (mkt cap $1.01B, cash $537M, debt $102M) for a BLA-filed IL-17A/F nanobody; Bimzelx HS alone is ~33% of EUR1.53B H1 sales (~EUR1B/yr). FDA decision on priority review is due ~end Nov.",
+   "mechanism": {
+    "score": 4,
+    "finding": "Dual IL-17A/F blockade validated in HS by Bimzelx (HS = 33% of EUR1,528M H1'26 Bimzelx sales, +91% y/y). SLK Ph2 MIRA HiSCR75 43% (+29 pts vs pbo, wk12). Mechanism risk is low; the debate is competitiveness, not biology."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "FDA (Type B Jan 2026, pre-BLA Apr 2026) accepted MIRA + VELA-1/-2 as substantial evidence without new HS trials and accepted VELA-TEEN for a 12+ label; company ties a Priority Review decision to the adolescent data at acceptance (~end Nov 2026). Priority review would pull PDUFA toward mid-2027 (my arithmetic, unverified)."
+   },
+   "data": {
+    "score": 3,
+    "finding": "Mixed: VELA-1 clean (HiSCR75 35%, +17 pts, wk16) but VELA-2 only +10 pts (P=.033 treatment-policy; P=.053 composite) on a 26% implied placebo rate. Durability strong: wk52 HiSCR75 67.2% as-observed (n=396) vs company-cited ~60% for IL-17A/F class; crossovers ~60%. Cross-trial and company-run."
+   },
+   "priced_in": "EV ~$573M (stockanalysis). Bimzelx HS ~33% x EUR1.53B per half = ~EUR0.5B/half. If SLK reaches only $600-800M US+EU HS peak, PoS 65%, 3x sales: 0.65x$700Mx3 = ~$1.4B vs EV $0.57B, before PsA. Market is pricing roughly 30-40% approval odds or a ~$250M peak. My estimates; peak sales unverified.",
+   "counter": "VELA-2 missed its primary composite (p=0.053) after the 2025 collapse; FDA flagged that mechanistic data cannot confirm a single trial. Bimzelx has 2+ years of share lead and SLK needs a commercial build. Short interest 14.5%."
+  }
+ },
+ "NKTR": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Treg IL-2 rezpeg AD; previously reviewed; no new evidence",
+  "basis": "knowledge"
+ },
+ "ORKA": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Ultra-long-acting IL-23 relies on PK extrapolation; EVERLAST-A 52-wk Dec'26 is binary; not researched",
+  "basis": "knowledge"
+ },
+ "PTGX": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Icotrokinra (oral IL-23R) approved as ICOTYDE, royalty stream; rusfertide launch; large re-rating already",
+  "basis": "knowledge"
+ },
+ "QTTB": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Anti-IL-7Ra in alopecia areata; stock +148% 3m; cash ($306M per file) above market cap; not read in detail",
+  "basis": "knowledge"
+ },
+ "TRXB": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "TNFR2 agonist Ph1 in AD; data mid-2027; early",
+  "basis": "knowledge"
+ },
+ "ZURA": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "IL-17xBAFF bispecific HS Ph2 topline imminent (binary); not researched",
+  "basis": "knowledge"
+ },
+ "ARTV": {
+  "mech": 2,
+  "tail": 2,
+  "data": 3,
+  "why": "CAR-NK RA ACR oral Nov 9; previously reviewed; no new evidence",
+  "basis": "knowledge"
+ },
+ "AUTL": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Obe-cel lupus longer-term data at ACR Nov 10; small Ph1; not researched",
+  "basis": "knowledge"
+ },
+ "FATE": {
+  "mech": 2,
+  "tail": 2,
+  "data": 3,
+  "why": "iPSC CD19 CAR-T SLE; stock +113% 3m; below $250M cap threshold; not researched",
+  "basis": "knowledge"
+ },
+ "PCRX": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Viatris tender ~$36.50 cash (per file): merger-arb setup, no science edge",
+  "basis": "knowledge"
+ },
+ "ZBIO": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Obexelimab IgG4-RD flare HR 0.44, 73.2% vs 45.4% flare-free; PDUFA 5/27/27; weaker than Uplizna cross-trial (knowledge); SLE Q4'26",
+  "basis": "searched"
+ },
+ "ABCL": {
+  "mech": 4,
+  "tail": 2,
+  "data": 3,
+  "why": "ABCL635 wk4: 83% vs 33% fewer hot flashes (n=92, single 600mg dose); NK3R validated; 4wk only, +44% already priced",
+  "basis": "searched"
+ },
+ "ALKS": {
+  "mech": 4,
+  "tail": 2,
+  "data": 3,
+  "why": "Takeda oveporexton approved 8/5/26 (insomnia 55-60%, urinary 53-58%); alix once-daily tolerability edge unproven; P3 mid-2027",
+  "basis": "searched"
+ },
+ "DRUG": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Biased 5-HT2C agonist in absence seizures/DEE; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "HRMY": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "Tested name; Q3 print and pitolisant GR PDUFA are known events; nothing new checked",
+  "basis": "knowledge"
+ },
+ "NGNE": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "FDA-aligned single-arm pivotal, stricter CGI-I responder bar than TSHA; earlier high-dose death; no new data checked",
+  "basis": "searched"
+ },
+ "OVID": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "GABA-AT inhibition has vigabatrin precedent; small cap, low ADV; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "PRAX": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Relutrigine PDUFA slipped 9/27->12/27 (major amendment, no new studies); ET NDA PDUFA 1/29/27, BTD; Essential3 numbers unverified",
+  "basis": "searched"
+ },
+ "RAPP": {
+  "mech": 4,
+  "tail": 2,
+  "data": 3,
+  "why": "TARP-g8 selective AMPA; OLE n=30 90%/59% median seizure cut, t1/2 22d; P3 FOCUS 1/2 enrolling, cash into 2H29",
+  "basis": "searched"
+ },
+ "STOK": {
+  "mech": 5,
+  "tail": 4,
+  "data": 3,
+  "why": "SCN1A haploinsufficiency; BTD+RPD; 73.6% convulsive seizure cut vs natural history; sham-controlled P3 n=162 reads Q3 27",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "Dravet is SCN1A haploinsufficiency and zorevunersen raises the healthy allele: 73.6% convulsive seizure cut vs natural history, BTD, 162-pt sham-controlled P3 reads Q3 27. Stock -15% 3m and -36% from 52w high; EV ~$1.2B.",
+   "mechanism": {
+    "score": 5,
+    "finding": "Direct genetic cause: heterozygous SCN1A loss of function; ASO targets-poison-exon to upregulate NaV1.1 from the intact allele. EEG showed dose-dependent normalization. Mechanism is the disease cause, not a surrogate."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "FDA Breakthrough, Orphan, Rare Pediatric designations; PRV program reauthorized to Sept 2029 (NDA completion H2 27, approval early 2028 inside window). Biogen holds ex-NA rights. Cash $420M funds to launch."
+   },
+   "data": {
+    "score": 3,
+    "finding": "Phase 1/2a+OLE n=81; comparison is propensity-weighted natural history (ONTERFLY), not placebo; OLE 53-87% median reduction. P3 EMPEROR n=162, sham via lumbar puncture, primary major motor seizures at Wk 28; no dropouts so far. Sham seizure drift and Vineland effect sizes not disclosed."
+   },
+   "priced_in": "Close $25.68 (10/21), mkt cap ~$1.66B, cash ~$420M => EV ~$1.24B. At ~65-70% PoS the market implies ~$1.8B unrisked value (my arithmetic); a disease-modifying Dravet therapy with Biogen ex-US could plausibly support multi-$B, but price and patient numbers unverified.",
+   "counter": "Open-label vs natural history overstates effect; sham-controlled Dravet seizure counts are noisy and the readout is 11 months away with ATM dilution ongoing. Binary outcome with no near-term catalyst."
+  }
+ },
+ "SUPN": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Indivior merger pending; SPN-817 Ph2b not checked",
+  "basis": "knowledge"
+ },
+ "TSHA": {
+  "mech": 4,
+  "tail": 4,
+  "data": 4,
+  "why": "Pivotal bar 33% responders (null 6.7%) vs 100% in Part A (n=12); BTD, RPD, PRV program renewed to 9/2029; interim 1H27",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 6,
+   "insight": "REVEAL pivotal success needs only a 33% responder rate (>=1 of 28 milestones, null 6.7%) in 17 girls; Part A showed 100% (n=12) at >=12 mo. Interim 1H27 with BTD, RPD voucher renewed. EV ~$0.9B.",
+   "mechanism": {
+    "score": 4,
+    "finding": "Rett is monogenic MECP2 loss of function; MECP2 dosage toxicity is the known hazard, addressed by miRARE-regulated expression. Trofinetide approval shows milestone/CGI outcomes move in this disease. Zero treatment-related SAEs/DLTs in 33 pts."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "Single-arm, own-baseline pivotal agreed with FDA; Breakthrough; Rare Pediatric designation and the PRV program was reauthorized through Sept 2029 (voucher at approval is plausible, not confirmed). ASPIRE extrapolates efficacy to ages 2-<6. Catalent licensed facility."
+   },
+   "data": {
+    "score": 4,
+    "finding": "Pivotal n=17 dosed (6 to <22 y), high dose IT; success threshold 33% vs natural-history null 6.7% (FDA-aligned). Part A: 100% of 12 gained/regained >=1 milestone by >=12 mo, 31 milestones, 279 other gains. Caveat: 6-mo rate (the interim timepoint) not disclosed; open-label, no placebo."
+   },
+   "priced_in": "Mkt cap ~$1.35B (close $4.13), cash $455M (Q2) => EV ~$0.9B. Rett US ~ several thousand pts (unverified); at $2M price x ~3,000 eligible x 30% penetration ~ $1.8B peak. At 70% PoS and 10x-ish deferred, the PoS-weighted value is ~$1.3-1.6B EV vs $0.9B. My estimate, not sourced.",
+   "counter": "Part A 100% is at 12+ months in a smaller, partly low-dose cohort; the 6-month interim may look much weaker. Single-arm open-label milestones are subjective; FDA could ask for more. AAV safety tail."
+  }
+ },
+ "XENE": {
+  "mech": 4,
+  "tail": 2,
+  "data": 4,
+  "why": "X-TOLE2 25mg: 54.8% vs 20.8% responders, -42.7% pbo-adj; stock halved on MDD tolerability pause, epilepsy NDA unaffected so far",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "Stock fell ~50% from $73 on a psychiatric-trial tolerability pause, but the epilepsy package is intact: X-TOLE2 25mg 54.8% vs 20.8% responders (-42.7% pbo-adj, up from -34.6% in X-TOLE). Epilepsy-only EV ~$2.4B vs Xcopri ~$600M/yr run-rate.",
+   "mechanism": {
+    "score": 4,
+    "finding": "Kv7.2/7.3 opening is clinically validated (ezogabine; KCNQ2/3 channelopathies), azetukalner is a more potent, better-tolerated opener. Same effect size replicated across X-TOLE and X-TOLE2."
+   },
+   "tailwind": {
+    "score": 2,
+    "finding": "NDA submission guided Q3 26 after pre-NDA meeting with no exposure concern per H.C. Wainwright; runway into 2029 ($1.245B). No special designation known. Headwind: neuropsychiatric AEs may cause FDA to look at CNS safety; Xcopri entrenched."
+   },
+   "data": {
+    "score": 4,
+    "finding": "X-TOLE2 median seizure change 25mg -53.2%, 15mg -34.5%, placebo -10.4%; >=50% responders 54.8%/37.6%/20.8%. Dose-response clean. Cost: dizziness 20.5% vs 3.2%, AE discontinuation 14.5% at 25mg vs 3.2% placebo."
+   },
+   "priced_in": "Price ~$35.8, mkt cap ~$3.5B; cash $1.245B at 6/30 less ~$110M/qtr loss => ~$1.1B; EV ~$2.4B. Epilepsy only: if peak US FOS sales ~$1.5B (Xcopri ~$0.6B run-rate, growing) at 75% PoS and 4x sales, value ~$4.5B vs $3.5B cap. My estimate; MDD/bipolar now ~free but could add risk.",
+   "counter": "The psychiatric AEs (confusion, ataxia, psychosis) at higher exposure could be a class/compound CNS liability that surfaces in the epilepsy review; 14.5% discontinuation at 25mg is high. Equity at ~$36 may still sit above fair for epilepsy only."
+  }
+ },
+ "ACAD": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Daybue Rett franchise plus RADIANT; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "ALEC": {
+  "mech": 2,
+  "tail": 1,
+  "data": 1,
+  "why": "Preclinical/IND stage with cash > market cap; no specific insight",
+  "basis": "knowledge"
+ },
+ "ARVN": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Tested name; LRRK2 has human genetic validation but Ph1 only",
+  "basis": "knowledge"
+ },
+ "AXSM": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Auvelity AD agitation launch; LOE/generic timeline not checked",
+  "basis": "knowledge"
+ },
+ "DSGN": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Frataxin GeneTAC; strategic update pending, nothing checked",
+  "basis": "knowledge"
+ },
+ "KRSA": {
+  "mech": 2,
+  "tail": 2,
+  "data": 1,
+  "why": "Preclinical AD antibody, ADV $2.3M, illiquid; nothing checked",
+  "basis": "knowledge"
+ },
+ "LRMR": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Tested name; frataxin replacement rolling BLA, micro-liquidity",
+  "basis": "knowledge"
+ },
+ "PRTA": {
+  "mech": 3,
+  "tail": 4,
+  "data": 2,
+  "why": "EV ~$150M; Roche funds ~900-pt PARAISO; $55M BMS PRX019 option decision by YE26; PASADENA missed, OLE vs external comp",
+  "basis": "searched"
+ },
+ "QURE": {
+  "mech": 4,
+  "tail": 3,
+  "data": 2,
+  "why": "36m cUHDRS -75% p=.003 (n=12 vs Enroll-HD); 48m only -44% p=.144, 53% control data missing; BLA 9/2/26 accel. approval",
+  "basis": "searched"
+ },
+ "ANIK": {
+  "mech": 1,
+  "tail": 2,
+  "data": 2,
+  "why": "Device/HA pain name, PMA deficiency pending; nothing specific",
+  "basis": "knowledge"
+ },
+ "LTGO": {
+  "mech": 4,
+  "tail": 2,
+  "data": 2,
+  "why": "Nav1.8 validated by suzetrigine in acute pain; Ph3 not started, differentiation unchecked",
+  "basis": "knowledge"
+ },
+ "ACHV": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Tested name; cytisinicline post-CRL resubmission",
+  "basis": "knowledge"
+ },
+ "ANRO": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Biomarker-selected TRD story; nothing checked",
+  "basis": "knowledge"
+ },
+ "COLL": {
+  "mech": 1,
+  "tail": 2,
+  "data": 2,
+  "why": "Commercial ADHD/pain portfolio, no pipeline insight checked",
+  "basis": "knowledge"
+ },
+ "DFTX": {
+  "mech": 3,
+  "tail": 4,
+  "data": 3,
+  "why": "Voyage GAD: HAM-A -5.4 vs pbo (d=0.81), remission 14% vs 4%; BTD in MDD; stock +101%, functional unblinding is the gap",
+  "basis": "searched"
+ },
+ "GHRS": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Inhaled 5-MeO-DMT, Ph3 start pending FDA alignment; nothing checked",
+  "basis": "knowledge"
+ },
+ "HELP": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Binary Ph3 APPROACH topline imminent; no edge identified",
+  "basis": "knowledge"
+ },
+ "INDV": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Sublocade plus Supernus merger and special dividend; nothing checked",
+  "basis": "knowledge"
+ },
+ "LBRX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Tested name; amisulpride is established mechanism",
+  "basis": "knowledge"
+ },
+ "MPLT": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "M1/M4 agonist with Cobenfy precedent; tolerability add-on unverified",
+  "basis": "knowledge"
+ },
+ "NBIX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "AMPA potentiator adjunctive MDD Ph3; large cap, nothing checked",
+  "basis": "knowledge"
+ },
+ "SPTX": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Allopregnanolone prodrug Ph2 MDD; nothing checked",
+  "basis": "knowledge"
+ },
+ "VNDA": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Tested name; multiple Dec 12 PDUFAs",
+  "basis": "knowledge"
+ },
+ "AGEN": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "BOT/BAL MSS CRC: CTLA-4 Fc-enhanced signal in refractory MSS; neoadj Ph3 ROBBIN not yet started; FDA path unclear",
+  "basis": "knowledge"
+ },
+ "CTMX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "EpCAM ADC (topo-1 payload) CRC; dose optimization pending; Ph1 ORR in 3L+ CRC unverified here",
+  "basis": "knowledge"
+ },
+ "EXEL": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Zanza PDUFA extended Dec 3 2026 -> Mar 3 2027; STELLAR-303 ITT OS HR 0.80 (10.9 v 9.4mo) but non-liver-met dual primary missed (HR 0.83)",
+  "basis": "searched"
+ },
+ "IMRX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "MEK deep inhibition + chemo 1L PDAC; reviewed before (tested)",
+  "basis": "knowledge"
+ },
+ "JAZZ": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Zanidatamab HER2 bispecific 1L GEA launch (HERIZON-GEA-01); diversified Xywav cliff offsets; not re-checked",
+  "basis": "knowledge"
+ },
+ "RVMD": {
+  "mech": 5,
+  "tail": 4,
+  "data": 4,
+  "why": "Daraxonrasib approved Aug 2026 2L PDAC: RASolute 302 OS 13.2 v 6.7mo HR 0.40; validation fully in $40B price",
+  "basis": "searched"
+ },
+ "RXRX": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "REC-4881 MEK in FAP: polyp burden reduction signal; MEK sibling validation; pivotal design pending",
+  "basis": "knowledge"
+ },
+ "TNGX": {
+  "mech": 4,
+  "tail": 3,
+  "data": 4,
+  "why": "MTAP-del ~22-24% of PDAC; +daraxonrasib 92% ORR n=12 (6mo PFS 90%) vs dara mono 31.6% ORR 2L; Ph3 design 2H26, $1.0B cash",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "~22-24% of PDAC are MTAP-deleted (worse prognosis). Vopimetostat+daraxonrasib gave 92% ORR/90% 6-mo PFS (n=12) vs daraxonrasib alone 31.6% ORR, 7.2mo PFS in 2L. Ph3 design due 2H26; $1.0B cash vs ~$3.9B cap.",
+   "mechanism": {
+    "score": 5,
+    "finding": "MTAP homozygous deletion (co-deleted with CDKN2A) in 24%/22% of PDAC; MTA accumulation makes PRMT5 inhibition synthetic lethal. RAS(ON) inhibition is clinically validated: RASolute 302 OS 13.2 v 6.7mo (HR 0.40), approved Aug 2026."
+   },
+   "tailwind": {
+    "score": 3,
+    "finding": "Clinical collaboration with Revolution Medicines, regulator talks on registrational path; no breakthrough designation mentioned in Q2 release. Gilead collab ended. Risk: RVMD controls the partner drug and own PRMT5/other combos."
+   },
+   "data": {
+    "score": 4,
+    "finding": "Daraxonrasib combo n=12 evaluable: ORR 92% (9/11 confirmed), DCR 100%, 6-mo PFS 90%; more than half were 3L, a harder population than RASolute 302 2L. Zoldonrasib combo n=27 ORR 52%. Dose level 2 had 3 DLTs (rash, stomatitis). Tiny n, interim cutoff May 28 2026."
+   },
+   "priced_in": "EV ~ $3.9B-$1.0B = ~$2.9B (file cap; ~$22.2 price, ~174M shares implied). If MTAP-del PDAC 1L (~22% of ~65k US PDAC/yr treated, ~14k pts) reaches ~$1.5B peak at 40% PoS, risk-adjusted value ~$2.5-3.5B: roughly fairly priced; edge is Ph3 design and ESMO detail.",
+   "counter": "n=12 with a single dose cohort; October drift (-11%) may reflect ESMO detail I could not read; RVMD can change partner or build own combo; 3L-heavy mix may flatter ORR."
+  }
+ },
+ "ZYME": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Royalty on zanidatamab; tied to Jazz GEA launch; royalty/milestone leverage; not re-checked",
+  "basis": "knowledge"
+ },
+ "AKTS": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Ac-225 Nectin-4 (EV validates target); first-in-human NECTINIUM-2 only just enrolling, no efficacy/tox data yet",
+  "basis": "searched"
+ },
+ "CADL": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "CAN-2409 prostate Ph3 DFS positive; tested before; BLA Q4 2026",
+  "basis": "knowledge"
+ },
+ "CGON": {
+  "mech": 3,
+  "tail": 4,
+  "data": 3,
+  "why": "Cretostimogene BCG-unresponsive NMIBC rolling BLA; BTD; competes with Anktiva/Inlexzo; BOND-003 CR ~75% single arm",
+  "basis": "knowledge"
+ },
+ "IBRX": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Anktiva BCG-naive sBLA; ~$9B cap on small sales base; competitive TAR-200 entrant; not re-checked",
+  "basis": "knowledge"
+ },
+ "JANX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "PSMA x CD3 masked TCE; early Ph1 data, next update H1 2027",
+  "basis": "knowledge"
+ },
+ "LNTH": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "Curium acquisition at $102.50 + CVR; deal-arb; Pylarify fundamentals mature",
+  "basis": "knowledge"
+ },
+ "ORIC": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "PRC2/EED + darolutamide RP3D 400mg: 5mo rPFS 84% (n=18), PSA50 47% (7/15); Himalayas-1 600pt Ph3 vs AR/chemo; small n",
+  "basis": "searched"
+ },
+ "RCUS": {
+  "mech": 5,
+  "tail": 3,
+  "data": 4,
+  "why": "Casdatifan: 1L ORR 50% (n=30) vs ipi/nivo 39%; 2L +cabo PFS 14.5mo ~ belz+lenva 14.6 (LS-011); sold off 29% in Oct on $250M raise",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 6,
+   "insight": "Oct 20 casdatifan data were read as a miss on 2L PFS (14.5 vs >=15 expected) and a $250M raise at $17.50 cut the stock ~29% in Oct, yet 1L ORR 50% beats ipi/nivo 39% and pembro 36% and EV is ~$1.3B.",
+   "mechanism": {
+    "score": 5,
+    "finding": "HIF-2a is human-validated in VHL disease/ccRCC; belzutifan monotherapy approved and belzutifan+lenvatinib approved Sep 2026 after LITESPARK-011 (PFS 14.6 v 10.6mo cabo, HR 0.74). Casdatifan is a sibling with higher potency claims."
+   },
+   "tailwind": {
+    "score": 3,
+    "finding": "Gilead let its option lapse (Feb 2025) so Arcus holds full rights (strategic optionality/M&A, but no partner cash). ~$1B cash after raise funds PEAK-1 (n~720) and 1L PEAK-20 start by YE2026. Headwind: Merck combo approved in 2L first."
+   },
+   "data": {
+    "score": 4,
+    "finding": "Late-line mono n=121: ORR 35-36%, mPFS 12.2-13.0mo vs belzutifan 120mg 23% / 5.6mo (LS-005, cross-trial). 1L +zimberelimab n=30: ORR 50%, 12-mo PFS 69%. 2L +cabo ORR 44%, mPFS 14.5mo ~ parity with belz+lenva, not clear superiority; n small (30-43)."
+   },
+   "priced_in": "At ~$18.4 (cap ~$2.3B per file, unverified post-raise share count) and ~$1.0B cash, EV ~$1.3B. Belzutifan franchise (Welireg) is multi-$B; if casdatifan reaches 35% PoS of ~$2B peak at 4x sales risk-adjusted that is ~$2.8B EV vs $1.3B paid. Estimate, not consensus.",
+   "counter": "2L PFS 14.5mo is only parity with the now-approved belzutifan+lenvatinib (14.6mo), so best-in-class is unproven; the raise price shows demand at $17.50 and the PEAK-1 readout is likely 2027+."
+  }
+ },
+ "RLMD": {
+  "mech": 2,
+  "tail": 2,
+  "data": 1,
+  "why": "NDV-01 gemcitabine sustained-release, pre-IND; Ph3 start Q1 2027 ambitious; illiquid",
+  "basis": "knowledge"
+ },
+ "TLX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "177Lu-rosopatamab PSMA rADC; ProstACT Global; Telix pipeline; no confirmed dates",
+  "basis": "knowledge"
+ },
+ "TYRA": {
+  "mech": 4,
+  "tail": 3,
+  "data": 2,
+  "why": "FGFR3 selectivity (sparing FGFR1) for achondroplasia/bladder; safety-sentinel data + FDA feedback pending",
+  "basis": "knowledge"
+ },
+ "URGN": {
+  "mech": 2,
+  "tail": 3,
+  "data": 3,
+  "why": "Zusduri launched; UGN-103 NDA accepted Aug 2026; stock +82% 3m already prices much",
+  "basis": "knowledge"
+ },
+ "XNCR": {
+  "mech": 4,
+  "tail": 2,
+  "data": 3,
+  "why": "ENPP3xCD3 in ccRCC: 25% ORR in heavily pretreated ph1 (Oct 2025); RP3D + pivotal start 2027; +58% 3m",
+  "basis": "searched"
+ },
+ "ANAB": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Jemperli royalty + imsidolimab PDUFA Dec 2026; royalty ride on dostarlimab; not re-checked",
+  "basis": "knowledge"
+ },
+ "CELC": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Gedatolisib PIK3CA-WT HR+ (VIKTORIA-1) approved; tested before",
+  "basis": "knowledge"
+ },
+ "CORT": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Relacorilant approved PROC (Lifyorli); Cushing PDUFA Dec 17; +108% 3m; ROSELLA ROSELLA benefit confirmed",
+  "basis": "searched"
+ },
+ "FTH": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "PIKTOR PI3Ka+mTOR endometrial Ph2 topline YE2026; small, binary",
+  "basis": "knowledge"
+ },
+ "GLSI": {
+  "mech": 2,
+  "tail": 2,
+  "data": 1,
+  "why": "GP2 vaccine FLAMINGO-01 event-driven interim; $9M cash vs $256M cap; dilution risk",
+  "basis": "knowledge"
+ },
+ "GMAB": {
+  "mech": 4,
+  "tail": 4,
+  "data": 3,
+  "why": "Rina-S FRa ADC ovarian Ph3; petosemtamab Ph3 LiGeR-HN1 H2 2026; $27B cap, diversified",
+  "basis": "knowledge"
+ },
+ "OLMA": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Palazestrant OPERA-01 Ph3 topline Q1 2027; tested before",
+  "basis": "knowledge"
+ },
+ "PBYI": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Neratinib mature; alisertib ALISCA readouts; small",
+  "basis": "knowledge"
+ },
+ "PRLD": {
+  "mech": 4,
+  "tail": 2,
+  "data": 1,
+  "why": "JAK2V617F JH2 mutant-selective; Ph1 first data pending; $82M cash vs $309M cap",
+  "basis": "knowledge"
+ },
+ "RLAY": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Zovegalisib mutant-selective PI3Ka (sparing wild-type -> less hyperglycemia); ReDiscover-2 vs capivasertib interim Oct 2027",
+  "basis": "knowledge"
+ },
+ "VSTM": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Avutometinib/defactinib LGSOC approved (KRAS-mut); RAMP 301 confirmatory; VS-7375 KRAS G12D data",
+  "basis": "knowledge"
+ },
+ "ZNTL": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Azenosertib WEE1 Cyclin E1+ PROC; tested before; DENALI Part 2 mid-2027",
+  "basis": "knowledge"
+ },
+ "ADCT": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Zynlonta LOTIS-7; -68% 3m, financing closed Oct 22; heavy dilution",
+  "basis": "knowledge"
+ },
+ "ALLO": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Cema-cel MRD+ consolidation LBCL ALPHA3 interim EFS mid-2027; novel design",
+  "basis": "knowledge"
+ },
+ "NRIX": {
+  "mech": 4,
+  "tail": 4,
+  "data": 4,
+  "why": "Bexobrutideg BTK degrader CLL ORR 83% Ph1a (mPFS 22.1mo), Ph1b 93% post-BTKi; Roche $700M upfront deal; +41% 3m prices it",
+  "basis": "searched"
+ },
+ "ADPT": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "clonoSEQ MRD volume/reimbursement; MRD FDA endpoint momentum in MM; -60% 3m reasons unverified",
+  "basis": "knowledge"
+ },
+ "CCCC": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Cemsidomide IKZF1/3 degrader MM; combo w/ elranatamab Ph1b; competition from iberdomide/mezigdomide",
+  "basis": "knowledge"
+ },
+ "COGT": {
+  "mech": 4,
+  "tail": 4,
+  "data": 4,
+  "why": "Bezuclastinib+sunitinib GIST PEAK PFS 16.5 v 9.2mo HR 0.50, priority review PDUFA Nov 30; NonAdvSM Dec 30; $865M cash; binary near-term",
+  "basis": "searched"
+ },
+ "DMRA": {
+  "mech": 4,
+  "tail": 2,
+  "data": 1,
+  "why": "Mutant-CALR is a clonal driver in ~25-30% of ET/MF; antibody targets the neoantigen, but no human data yet (Ph1).",
+  "basis": "knowledge"
+ },
+ "ELVN": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "ELVN-001 wk24 MMR 48% (80mg, median 4 prior TKI) but Terns TERN-701 reported 64% MMR by wk24; not clearly best-in-class",
+  "basis": "searched"
+ },
+ "GERN": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Imetelstat telomerase mech validated in LR-MDS; MF OS Ph3 final 2H28, Rytelo ramp is the debate; nothing new checked.",
+  "basis": "knowledge"
+ },
+ "IMMX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "BCMA CAR-T in AL amyloidosis (small, single-arm NEXICART-2); BLA path on small n; not checked.",
+  "basis": "knowledge"
+ },
+ "KURA": {
+  "mech": 4,
+  "tail": 3,
+  "data": 2,
+  "why": "Menin inhibition validated by revumenib (Revuforj Q2 rev $54.7M); Komzifti NPM1 launch behind; frontline combos are the swing.",
+  "basis": "searched"
+ },
+ "LEGN": {
+  "mech": 4,
+  "tail": 2,
+  "data": 3,
+  "why": "Carvykti validated BCMA CAR-T; LEGN gets partner economics, CARTITUDE-5/6 timing unverified; not specifically checked.",
+  "basis": "knowledge"
+ },
+ "RIGL": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "R289 IRAK1/4 in LR-MDS is Ph1 with RP2D pending; TAVALISSE funds; cash 95M vs 944M cap; nothing specific.",
+  "basis": "knowledge"
+ },
+ "SLN": {
+  "mech": 4,
+  "tail": 4,
+  "data": 4,
+  "why": "Divesiran SANRECO 88% vs 19% (hct<45%, no phleb) vs rusfertide VERIFY 77% vs 33%; but Merck KGaA buying at $20/ADS (stock 19.78)",
+  "basis": "searched"
+ },
+ "SLS": {
+  "mech": 2,
+  "tail": 2,
+  "data": 1,
+  "why": "GPS WT1 vaccine REGAL ~78/80 events; stock +189% in 3m, ~32% short float, mcap ~$2.4B on ~$100M cash; binary, weak priors.",
+  "basis": "searched"
+ },
+ "SNDX": {
+  "mech": 5,
+  "tail": 3,
+  "data": 3,
+  "why": "Menin mech validated clinically: Revuforj Q2 rev $54.7M (+91% y/y), 1,500 Rx; EVOLVE-2/REVEAL-ND frontline Ph3 untimed.",
+  "basis": "searched"
+ },
+ "AVBP": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Firmonertinib FURVENT topline overdue past 2026-09-30; 1L EGFR crowded (osimertinib+/-chemo, amivantamab); not checked.",
+  "basis": "knowledge"
+ },
+ "BBOT": {
+  "mech": 3,
+  "tail": 2,
+  "data": 1,
+  "why": "Dual-mechanism KRAS G12C Ph1; micro-liquidity (ADV $2.8M) and 216M cap; nothing checked.",
+  "basis": "knowledge"
+ },
+ "BCAX": {
+  "mech": 4,
+  "tail": 3,
+  "data": 2,
+  "why": "EGFRxTGF-b bispecific in HPV-neg HNSCC: Ph2 ORR 70%+ reported earlier (knowledge); Ph3 interim 2027; not rechecked.",
+  "basis": "knowledge"
+ },
+ "BLSM": {
+  "mech": 3,
+  "tail": 2,
+  "data": 1,
+  "why": "OMNI-EGFR macrocycle targeting C797S; Ph1/2 early; ADV $4.4M thin.",
+  "basis": "knowledge"
+ },
+ "BNTX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Pumitamig PD-L1xVEGF (BMS-partnered); cash is 88% of cap so oncology is cheap; first Ph3 reads 2027+; not checked.",
+  "basis": "knowledge"
+ },
+ "CBIO": {
+  "mech": 2,
+  "tail": 2,
+  "data": 1,
+  "why": "Third-wave PD-1xVEGF copy (CR-001); stock -33% 3m; mechanism clinically validated by ivonescimab but no differentiation shown.",
+  "basis": "knowledge"
+ },
+ "CGEM": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Zipalertinib REZILIENT1 n=176 ORR 35%, DoR 8.8 mo; post-amivantamab ORR 30%, PDUFA 2/27/27; comparable to rivals, not outlier.",
+  "basis": "searched"
+ },
+ "EIKN": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "TLR7/8 agonist with pembro; previously reviewed (tested); no new evidence.",
+  "basis": "knowledge"
+ },
+ "MGNX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "B7-H3 ADC (MGC026) Ph1 poster at ESMO; crowded B7-H3 class; ADV $2.3M, cash 173 vs cap 155 (trades below cash).",
+  "basis": "knowledge"
+ },
+ "NBTX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "NBTXR3 radioenhancer with J&J; Ph3 NANORAY-312 amended protocol with interim; physical mechanism, mixed prior data.",
+  "basis": "knowledge"
+ },
+ "NUVB": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Taletrectinib Q2 net rev $23.2M (+25% q/q), ~160 starts 85% TKI-naive; EV ~ $1B at $4.51 near 52wk low; Eisai/NKC ex-US.",
+  "basis": "searched"
+ },
+ "PYXS": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "MICVO EDB-ADC: mono ORR 46% (n=13), +pembro 71% (n=7); tiny n, no durability; cash 42M vs cap 219M.",
+  "basis": "searched"
+ },
+ "SMMT": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Ivonescimab PDUFA 11/14/26 in EGFRm post-TKI; PFS win but global OS not clearly significant (knowledge); binary, not rechecked.",
+  "basis": "knowledge"
+ },
+ "ZLAB": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "DLL3 ADC zoci Ph3 in 2L SCLC; DLL3 mechanism validated by tarlatamab; ADC dev stage, not checked.",
+  "basis": "knowledge"
+ },
+ "AURA": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Bel-sar VLP-drug conjugate in choroidal melanoma Ph3 (CoMpass); breakthrough/orphan likely; topline 2027; not checked.",
+  "basis": "knowledge"
+ },
+ "DRTS": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Alpha DaRT ReSTART n=88 enrolled, topline late 2026/early 2027, Breakthrough Device, modular PMA; stock +65% 3m.",
+  "basis": "searched"
+ },
+ "IDYA": {
+  "mech": 4,
+  "tail": 4,
+  "data": 4,
+  "why": "OptimUM-02 1L HLA-A2-neg mUM: PFS 6.9 vs 3.1 mo (HR 0.42), ORR 37% vs 5.8%; RTOR NDA 2H26; OS immature.",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "OptimUM-02 randomized 1L HLA-A*02:01-negative metastatic uveal melanoma (n=313): PFS 6.9 vs 3.1 mo (HR 0.42), ORR 37% vs 5.8% in the ~55-60% of patients tebentafusp cannot treat; FDA agreed to RTOR for an accelerated-approval NDA in 2H26.",
+   "mechanism": {
+    "score": 4,
+    "finding": "GNAQ/GNA11 mutations drive >90% of uveal melanoma via PKC/MAPK; PKC inhibition plus MET (crizotinib) blocks the compensatory escape that sank earlier single-agent PKC/MEK trials. Randomized ORR 37% vs 5.8% and DCR 73% vs 31% confirm pathway dependence."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "FDA agreed in April 2026 to RTOR; NDA completion 2H26 seeking accelerated approval; no approved therapy for HLA-A*02:01-negative disease (tebentafusp needs HLA-A*02:01). Servier holds ex-US rights. Neoadjuvant primary-UM program is further option."
+   },
+   "data": {
+    "score": 4,
+    "finding": "PFS HR 0.42 (0.30-0.59) BICR; investigator PFS 6.7 vs 2.7 (HR 0.36). Control arm was ipi/nivo, pembro or dacarbazine, a low bar (3.1 mo). DoR only 6.8 mo, follow-up 7.4 mo, OS immature (trend only), crizotinib dose intensity 77%."
+   },
+   "priced_in": "Price $32.88 (10/26), cap $3.17B, cash ~$671M (file) => EV ~$2.5B. If 1L HLA-A2-neg + later-line mUM peak US ~$700M (unverified) x 85% PoS x 3x ~= $1.8B, leaving ~$0.7B for neoadjuvant UM, IDE397, IDE034 and PRMT5 pipeline; market is paying for approval but little for neoadjuvant/OS upside.",
+   "counter": "Median DoR 6.8 mo and PFS 6.9 mo are modest; control arm (checkpoint/dacarbazine) is weak so HR flatters; OS immature and accelerated approval could require OS confirmation. Stock already off 5% on 10/26."
+  }
+ },
+ "IMCR": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Tebentafusp has OS benefit in HLA-A*02 mUM (knowledge); PRAME brenetafusp Ph3 in cutaneous melanoma pending; not rechecked.",
+  "basis": "knowledge"
+ },
+ "IMTX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Anzu-cel PRAME TCR-T; SUPRAME single analysis PFS (tested before); no new evidence.",
+  "basis": "knowledge"
+ },
+ "IOVA": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Amtagvi Q2 rev ~$99M total (~$91M US), +66% y/y; stock +59% 3m; NSCLC sBLA is option; much already priced.",
+  "basis": "searched"
+ },
+ "OBX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Armored membrane-bound IL-15 TIL; Ph1/2 only, SITC update; no checked facts.",
+  "basis": "knowledge"
+ },
+ "REPL": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Tudriqev accel. approval ORR 24.2% (n=91, single-arm), DoR 14.1 mo, AdCom 10-3; stock +355% 3m off $1.5 low.",
+  "basis": "searched"
+ },
+ "SLGL": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "Topical patidegib Ph3 in Gorlin BCC prevention, topline late Nov 2026; hedgehog validated systemically; binary, not checked.",
+  "basis": "knowledge"
+ },
+ "ANL": {
+  "mech": 3,
+  "tail": 2,
+  "data": 1,
+  "why": "Pan-RAS AN9025 Ph1 dose escalation; crowded with RMC-6236; ADV $3M.",
+  "basis": "knowledge"
+ },
+ "ERAS": {
+  "mech": 4,
+  "tail": 2,
+  "data": 2,
+  "why": "Pan-RAS(ON) glue/degrader; RAS(ON) class validated by daraxonrasib Ph3 wins (knowledge); AURORAS-1 oral 11/20; competitor leads.",
+  "basis": "knowledge"
+ },
+ "FENC": {
+  "mech": 4,
+  "tail": 3,
+  "data": 2,
+  "why": "PEDMARK is the only approved pediatric otoprotectant (STS); AYA/adult label expansion; cash 40M vs cap 372M; not checked.",
+  "basis": "knowledge"
+ },
+ "IMNM": {
+  "mech": 4,
+  "tail": 3,
+  "data": 4,
+  "why": "Varegacestat RINGSIDE PFS HR 0.16, ORR 56% vs DeFi nirogacestat HR 0.29, ORR 41%; ovarian tox 56% vs 75%; PDUFA 4/28/27",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "Varegacestat's RINGSIDE (n=156) beat the only approved desmoid GSI on every cross-trial comparator: PFS HR 0.16 vs 0.29, ORR 56% vs 41%, ovarian toxicity 56% vs 75% of premenopausal women. Market is trading it as a 'me-too' filing.",
+   "mechanism": {
+    "score": 4,
+    "finding": "Gamma-secretase inhibition is clinically validated in progressing desmoid tumors by nirogacestat (DeFi: PFS HR 0.29, ORR 41% vs 8%). Varegacestat is the same mechanism with longer half-life/QD dosing, so biology risk is low; the question is differentiation, not validity."
+   },
+   "tailwind": {
+    "score": 3,
+    "finding": "Ogsiveo proved a commercial template (US net sales $172M in 2024, first full year). NDA accepted July 2026, PDUFA 4/28/27; review type not confirmed and ~12 months from April submission suggests standard review, so no priority-review tailwind. EMA MAA planned by end-2026."
+   },
+   "data": {
+    "score": 4,
+    "finding": "RINGSIDE n=156 1.2 mg QD vs placebo: PFS HR 0.16 (0.071-0.375), ORR 56% vs 9%, week-12 worst-pain -2.24 vs +0.18, ovarian toxicity 20/36 (56%) with 55% resolved. Caveat: dose reductions for TEAEs 80% vs 9%, AE discontinuation 20%, diarrhea 82%; cross-trial only."
+   },
+   "priced_in": "Price $17.99 (10/23), mkt cap ~$2.04B, cash $520M (6/30) => EV ~$1.5B. Burn ~$240M/yr (6M loss $127M). If US desmoid peak ~$600M (3x Ogsiveo 2024; unverified) x ~85% PoS x ~3x sales ~= $1.5B, so the market already pays for the franchise; upside needs share gain from HR/ovarian-safety edge or ADC pipeline credit (free option).",
+   "counter": "80% TEAE dose reduction and 20% discontinuation suggest tolerability is no better than Ogsiveo in practice; cross-trial HR comparison (0.16 vs 0.29) has overlapping CIs, and Ogsiveo has Merck KGaA's commercial muscle and first-mover physicians."
+  }
+ },
+ "INBX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 4,
+  "why": "Ozekibart ChonDRAgon n=206 PFS HR 0.479 (5.52 vs 2.66 mo), 1st systemic in conv. chondrosarcoma; PDUFA 4/14/27; stock -32% 3m.",
+  "basis": "searched"
+ },
+ "INDP": {
+  "mech": 1,
+  "tail": 1,
+  "data": 1,
+  "why": "Discontinued program, ~$1M cash, strategic-transaction outcome only; no scientific case.",
+  "basis": "knowledge"
+ },
+ "PBLS": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Zolucatetide direct b-catenin:TCF inhibitor: wk32 ORR 72% but only n=18 scanned, mDuration 4.7 mo; Ph3 2029; cap $3.1B.",
+  "basis": "searched"
+ },
+ "AGIO": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "RISE UP: Hb response met, VOC rate missed; PDUFA Nov 1 binary (priority); Oxbryta Hb-surrogate withdrawal precedent",
+  "basis": "searched"
+ },
+ "COAG": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Sutacimig GT LTE n=34, ATBR -92%; HMB-002 VWD only Ph1/2; GT Ph3 H2'26. Rich vs stage",
+  "basis": "searched"
+ },
+ "ETRA": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "Anti-SIRP in sHLH, orphan; SURPASS timing unverified; no specific edge known",
+  "basis": "knowledge"
+ },
+ "XFOR": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "CXCR4 GoF genetics (WHIM) valid; chronic neutropenia 4WARD topline 1H28, too far out",
+  "basis": "knowledge"
+ },
+ "BLTE": {
+  "mech": 4,
+  "tail": 4,
+  "data": 3,
+  "why": "Stargardt DRAGON lesion growth -36%; PDUFA 2/12/27 priority, PRV expected; GA interim Q1'27 is the real bet",
+  "basis": "searched"
+ },
+ "FDMT": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Previously reviewed; 4FRONT-1 Ph3 vs aflibercept; no new evidence checked",
+  "basis": "knowledge"
+ },
+ "HROW": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Commercial ophtho; VEVYE dry eye; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "IRD": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "LCA5 monogenic, one-time AAV, rare-pediatric voucher eligible; tiny Ph3, unverified data",
+  "basis": "knowledge"
+ },
+ "KOD": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "+178% on DAYBREAK (+7.2 vs +7.6 letters, 54% q6m); cash $126M, BLA Q4, no partner: priced, dilution-prone",
+  "basis": "searched"
+ },
+ "MGTX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "LUMEOS (n=95) missed primary; BLA rests on secondaries; AQUAx2 pivotal Q2'27; Lilly milestones up to $135M",
+  "basis": "searched"
+ },
+ "OCGN": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Gene-agnostic RP modifier gene therapy; mechanism unproven, microcap-like cash $32M",
+  "basis": "knowledge"
+ },
+ "OCS": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Optic neuritis neuroprotection; prior OCS-01 history; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "OCUL": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Previously reviewed; AXPAXLI NDA Q4'26; no new evidence checked",
+  "basis": "knowledge"
+ },
+ "SGP": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Glaucoma drug-pad IOL, Ph3 enrolling; stock +50% 3m; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "SRZN": {
+  "mech": 3,
+  "tail": 2,
+  "data": 1,
+  "why": "Wnt/VEGF bispecific, preclinical-stage; stock +58% 3m on financing; no human data",
+  "basis": "knowledge"
+ },
+ "TARS": {
+  "mech": 4,
+  "tail": 4,
+  "data": 3,
+  "why": "Demodex-lotilaner causal; FY26 XDEMVY guide raised to $685-705M, Q2 $173.9M +69%; stock -20% off high",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 4,
+   "insight": "XDEMVY Q2 sales $173.9M (+69%), FY26 guide raised to $685-705M, ~93% gross margin, while unaided Demodex awareness went 2% to 30%; stock is -21% from its 3m high with no company-specific negative I could find.",
+   "mechanism": {
+    "score": 4,
+    "finding": "Lotilaner (GABA-Cl channel blocker) kills Demodex mites, the causal agent of collarettes; clinical effect is mechanistic and approved. Pipeline extends the same anti-parasitic platform (TP-05 Lyme prevention Ph2, TP-04 ocular rosacea Ph2)."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "Commercial flywheel: ECPs prescribing 5+ per week doubled YoY, DTC awareness 30% vs 2%; guide raised; gross-to-net improved. Headwinds: SG&A $150.7M (vs $103.0M), interim CCO, IRA/Part D exposure unchecked."
+   },
+   "data": {
+    "score": 3,
+    "finding": "Pivotal Saturn data (collarette cure ~44% vs 7%) is from memory, unverified. Real-world uptake is the data: Q2 run-rate x4 = ~$696M, i.e. the FY guide midpoint already equals Q2 annualised, which suggests conservatism."
+   },
+   "priced_in": "Mkt cap ~$3.46B (file) less cash ~$450M = EV ~$3.0B = ~4.3x 2026 guided sales for a 93%-GM product growing ~60%+. If 2027 sales reach ~$1.0B at a 30% operating margin, EV/EBIT ~10x; market implies mid-single-digit multiple on that, so little credit for Lyme/rosacea options.",
+   "counter": "Not a hidden insight: growth is visible and consensus likely already models it; opex growing as fast as sales and the 3m drop may reflect script data I did not see."
+  }
+ },
+ "ARDX": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Tenapanor dual-indication; IBSRELA payer access issue noted in file, not checked",
+  "basis": "knowledge"
+ },
+ "IRWD": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Linzess royalty erosion plus apraglutide restart risk; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "PHAT": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Previously reviewed; EoE Ph2 is speculative PPI-class extension",
+  "basis": "knowledge"
+ },
+ "CRMD": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Q2 DefenCath $66.1M vs FY guide $175-195M (excl Medicare Adv.); H1 NI $64.6M; post-TDAPA stabilised",
+  "basis": "searched"
+ },
+ "INVA": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "GSK inhaler royalties; LOE/royalty run-off; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "ABUS": {
+  "mech": 3,
+  "tail": 4,
+  "data": 3,
+  "why": "Post-tender 153M sh at $4.32; $1.3B contingent Moderna payment hinges on Fed Cir s.1498; imdusiran 3/6 cure",
+  "basis": "searched"
+ },
+ "ASMB": {
+  "mech": 4,
+  "tail": 4,
+  "data": 4,
+  "why": "EV ~ $15-20M after cash $320M + $75M Gilead fee; ABI-5366 shedding/lesion -94% vs pbo; Ph2 + HDV starts YE26",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 6,
+   "insight": "At $20.57 market cap ~ $408M vs cash $320M plus a $75M Gilead fee due Q4 = ~$395M, so EV ~ $15-20M for Gilead's GS-1179 (-94% HSV-2 shedding/lesions vs placebo) and ABI-6250 (HDV) entering Ph2 by YE26.",
+   "mechanism": {
+    "score": 4,
+    "finding": "Helicase-primase inhibition is a validated non-nucleoside HSV target (pritelivir, amenamevir; knowledge, unverified here). ABI-5366 350 mg weekly cut HSV-2 shedding 94% and lesion rate 94% vs pooled placebo (p<0.01); target was 80-85%. ABI-6250 NTCP target engagement shown by dose-dependent bile-acid rise."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "Gilead selected GS-1179 to advance, owns development and commercialization, and owes Assembly a $75M extension fee in Q4 2026. Assembly decides by YE26 whether to opt into a 40% US cost/profit share vs milestones/royalties. Runway into 2029 including the $75M. Gilead Ph2 start expected by YE26."
+   },
+   "data": {
+    "score": 4,
+    "finding": "Strong but small: 20 patients per active cohort, 5 per cohort placebo (pooled 10), 29-day evaluation, interim cut 7/29/25. Monthly oral cohort (B3) not yet reported and is the commercial differentiator. Safety: TEAEs 90% vs 90% placebo, one grade 3 hypertriglyceridemia discontinuation judged unrelated."
+   },
+   "priced_in": "Shares 19.85M (6/30) x $20.57 = ~$408M. Cash $320M + $75M = ~$395M less burn (~$15-20M/qtr R&D+G&A before Gilead revenue). EV ~ $15-20M. Market assigns near-zero to a Gilead-funded HSV asset (recurrent HSV-2 market large, PoS Ph2 ~30-35%) and to HDV/PBC-PSC.",
+   "counter": "Stock fell from ~$35 to ~$20.6 since mid-Sept and I could not find why; cash per share is ~$20, so downside is the burn and any new equity. Phase 1b is 29 days with n=5 placebo per cohort; Gilead could slow-walk or drop it."
+  }
+ },
+ "EBS": {
+  "mech": 2,
+  "tail": 1,
+  "data": 2,
+  "why": "NARCAN generic erosion; biodefense contract lumpy; nothing specific checked",
+  "basis": "knowledge"
+ },
+ "ENTA": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Oral RSV N-inhibitor; approvals in adults hard; Ph2/3 design not checked",
+  "basis": "knowledge"
+ },
+ "IVVD": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "COVID mAb PrEP; -53% 3m; regulatory path for mAbs uncertain; not checked",
+  "basis": "knowledge"
+ },
+ "NVAX": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "Matrix-M royalty/licensing ramp; no specific verified edge this session",
+  "basis": "knowledge"
+ },
+ "PCVX": {
+  "mech": 4,
+  "tail": 3,
+  "data": 4,
+  "why": "OPUS-1 (Oct 5) met all NI goals: 20/20 vs Prevnar20, 17/19 vs Capvaxive; FDA focus is Capvaxive; filing 1H28; +36% already",
+  "basis": "searched"
+ },
+ "PGEN": {
+  "mech": 3,
+  "tail": 4,
+  "data": 3,
+  "why": "Papzimeos Q2 rev $53.1M, NI $20.1M, permanent J3404 from Apr 1 2026, 7y exclusivity; cash only $38.7M; run-rate ~10x sales",
+  "basis": "searched"
+ },
+ "VIR": {
+  "mech": 4,
+  "tail": 4,
+  "data": 4,
+  "why": "ECLIPSE1 vs deferred-tx control (MYR301 ctrl 2%); SOLSTICE wk96 TND 88% ITT; BTD/PRIME; EV ~$1.0B vs $1.01B cash; imminent",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 5,
+   "insight": "ECLIPSE 1 compares tobevibart+elebsiran with a deferred-treatment arm (NRTI only); in the bulevirtide MYR301 the equivalent control hit 2% vs 48% treated. EV is ~$1.0B (cash $1.01B vs mkt cap $2.02B), not the file's $472M cash.",
+   "mechanism": {
+    "score": 4,
+    "finding": "mAb (entry/clearance, HBsAg-binding) + siRNA (HBV transcripts incl. HBsAg) hits HDV's envelope source. SOLSTICE Ph2: wk48 TND 66% (21/32) with ~90% HBsAg <10 IU/mL; wk96 ITT 88% (28/32) vs 53% (17/32) mAb alone."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "Breakthrough + PRIME. Gilead's Hepcludex got US accelerated approval May 22 2026 (boxed warning on discontinuation flare) on a combined virologic+biochemical response, validating the endpoint and the market and leaving a differentiation space (finite therapy vs chronic daily injection is unverified)."
+   },
+   "data": {
+    "score": 4,
+    "finding": "Pivotal design is easy to win: primary is TND + ALT normalization at wk48 vs deferred control (control ~2% in MYR301 analog). Treated-arm composite is capped by ALT norm (56% in SOLSTICE) so expect ~45-55% composite; clearing control is near-certain. Risk is regulatory interpretation, n unknown, and superiority-to-Hepcludex narrative."
+   },
+   "priced_in": "Mkt cap $2.02B at $11.93 less ~$1.01B cash (6/30; cash runway into 2H28) = EV ~$1.0B, which also carries Astellas-partnered PSMA TCE and other oncology assets. A HDV franchise with >=85% PoS and $1B+ peak (unverified) supports $2-3B EV, so the stock pays roughly one HDV franchise at a discount.",
+   "counter": "Binary imminent event with limited upside if success is expected; Gilead now has an approved comparator and incumbent; 2-injection+ siRNA regimen economics and pricing unproven; ECLIPSE 1 timing differs across company statements (Q4 2026 vs Q1 2027)."
+  }
+ },
+ "APMD": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "AD109 PDUFA Feb 28 2027, two positive Ph3 (SynAIRgy AHI -55.6% from baseline); first oral OSA; thin ADV ($11M), IPO-stage",
+  "basis": "searched"
+ },
+ "ARCT": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Inhaled CFTR mRNA for Class I CF; Ph3 advancement decision pending; no verified edge",
+  "basis": "knowledge"
+ },
+ "AVLN": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Inhaled pirfenidone Ph2b MIST n=375 enrolled; cash $413.5M, 44.3M sh; readout 2H27; recent IPO",
+  "basis": "searched"
+ },
+ "CTNM": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Oral LPA1 antagonist (class validated by BMS-986278 Ph2); readout 2028; no new verified edge",
+  "basis": "knowledge"
+ },
+ "INSM": {
+  "mech": 4,
+  "tail": 3,
+  "data": 3,
+  "why": "Brinsupri Q2 $309M, FY guide $1.25-1.40B; but CRSsNP and HS Ph2 failed so franchise is NCFB + TPIP; largely consensus",
+  "basis": "searched"
+ },
+ "SION": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "Dual NBD1/NBD2 CFTR corrector, Ph1 complete; strategy reassessment; cash > market cap; no verified edge",
+  "basis": "knowledge"
+ },
+ "TRVI": {
+  "mech": 3,
+  "tail": 2,
+  "data": 3,
+  "why": "Nalbuphine ER cough: Ph2 positive in IPF and RCC; OCEAN Ph3 ongoing; opioid-class scheduling risk; not verified in detail",
+  "basis": "knowledge"
+ },
+ "UTHR": {
+  "mech": 3,
+  "tail": 3,
+  "data": 4,
+  "why": "TETON-1 +130 mL, TETON-2 +95.6 mL FVC vs pbo (75% on background antifib); sNDA ends Apr 2027; Q2 rev -2%; P/E 21; Tyvaso not on IRA 2028 lis",
+  "basis": "searched"
+ },
+ "CAPR": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "AdCom voted against (Jul 2026); PDUFA extended to Nov 22; HOPE-3 PUL p=0.029 n=106; binary, CMC risk",
+  "basis": "searched"
+ },
+ "DYN": {
+  "mech": 4,
+  "tail": 4,
+  "data": 4,
+  "why": "z-rostudirsen dystrophin 5.46% (adj) q4w, priority review PDUFA Jan 21 2027, no AdCom; post-Prasad FDA; DM1 topline Q1'27",
+  "basis": "searched",
+  "nom": {
+   "side": "LONG",
+   "ic_score": 6,
+   "insight": "Z-rostudirsen (q4w) gave 5.46% adjusted dystrophin gain at 6 mo (unadjusted 2.87% vs 0.3% in a third-party eteplirsen trial) with priority review, no AdCom, PDUFA Jan 21 2027; four PMO/gene-therapy AAs already rest on dystrophin.",
+   "mechanism": {
+    "score": 4,
+    "finding": "EEV/TfR1-targeted PMO delivers muscle uptake: REC (n=32, 20 mg/kg q4w) mean absolute dystrophin +5.46% of normal vs baseline (p<0.0001), plateau ~5.5% at 24-36 mo. Unadjusted mean 2.87% vs 0.3% for eteplirsen in a third-party trial (cross-trial, caution)."
+   },
+   "tailwind": {
+    "score": 4,
+    "finding": "BLA accepted July 2026 with Priority Review, PDUFA Jan 21 2027, FDA not planning AdCom; AA on dystrophin surrogate. Prasad exit reported (successor unnamed). Sarepta's Amondys/Vyondys missed confirmatory ESSENCE, so the exon-51 PMO franchise is vulnerable to a q4w successor. Exon-51 market ~1,600 US pts, ~$1.5B."
+   },
+   "data": {
+    "score": 4,
+    "finding": "All 6 prespecified functional endpoints favored treatment vs placebo; nominal p<0.05 on time-to-rise velocity and 10-m walk/run (post hoc, not powered); FVC%p stable vs placebo decline. Weakness: n=32, functional data are not controlled-powered, external controls for long-term."
+   },
+   "priced_in": "Mkt cap $3.17B at $16.98 (186.75M sh); cash ~ $898.5M at 6/30 + ~$405M July raise = ~$1.3B => EV ~ $1.9B. At ~85% PoS and $600M exon-51 peak (~35-40% share of $1.5B, plus ~$300M DM1 risk-adjusted) at 3-4x sales, risk-adjusted value ~$2.3-2.8B EV. Modest upside; mainly PDUFA + DM1 readout.",
+   "counter": "Approval is widely expected (Oppenheimer: smooth), so it is largely consensus; n=32, functional endpoints not powered; the mkt already rose to $3.2B; FDA leadership change is unquantified; dilution (July raise)."
+  }
+ },
+ "KROS": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "Rinvatercept ActRII in DMD; Ph2 readout mid-2027; illiquid; no verified edge",
+  "basis": "knowledge"
+ },
+ "PEPG": {
+  "mech": 3,
+  "tail": 2,
+  "data": 2,
+  "why": "EDO oligo DM1, 10mg/kg cohort data Nov 2026; +38% 3m, illiquid; Dyne DM1 data Q1'27 is the benchmark",
+  "basis": "knowledge"
+ },
+ "RGNX": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Tested previously; AAV micro-dystrophin BLA; no new evidence",
+  "basis": "knowledge"
+ },
+ "SLDB": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Tested previously; SGT-003 FDA meeting on AA pathway; no new evidence",
+  "basis": "knowledge"
+ },
+ "SRPT": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "PMO rev $231M/q flat but ESSENCE missed; sNDA for full approval PDUFA Feb 28 2027; Elevidys -65% y/y; SI 21%, EV ~$1.9B",
+  "basis": "searched"
+ },
+ "SRRK": {
+  "mech": 3,
+  "tail": 4,
+  "data": 3,
+  "why": "Isembyld approved Sep 11 (WAC ~$310k/y, label >=2y on SMN tx); stock $43 vs $55 at approval; consensus $1.3B 2031; ATM dilution",
+  "basis": "searched"
+ },
+ "TRDA": {
+  "mech": 2,
+  "tail": 2,
+  "data": 2,
+  "why": "EEV exon-44 oligo; -49% 3m; data due Oct-26; unverified",
+  "basis": "knowledge"
+ },
+ "VCEL": {
+  "mech": 2,
+  "tail": 3,
+  "data": 2,
+  "why": "MACI/Epicel growth; Q3 print early Nov; no specific verified edge",
+  "basis": "knowledge"
+ },
+ "WVE": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Tested previously; WVE-006 AATD RNA editing accel. path feedback pending",
+  "basis": "knowledge"
+ },
+ "HALO": {
+  "mech": 3,
+  "tail": 3,
+  "data": 2,
+  "why": "ENHANZE royalty platform; partner SC conversions (Keytruda/Opdivo SC) known to market; no new verified edge",
+  "basis": "knowledge"
+ },
+ "ROIV": {
+  "mech": 3,
+  "tail": 3,
+  "data": 3,
+  "why": "Holding co. of Immunovant (FcRn) + Priovant; diversified; no new verified edge",
+  "basis": "knowledge"
+ }
+}

@@ -1,0 +1,452 @@
+{
+ "CLDX": {
+  "verdict": "DEMOTE",
+  "ic": 5,
+  "p": 0.8,
+  "price": 30.15,
+  "price_date": "2026-10-27 close (10/28 last 29.66, may ",
+  "ev_m": 1694,
+  "succ": [
+   38.0,
+   52.0,
+   75.0
+  ],
+  "fail": [
+   13.0,
+   19.0
+  ],
+  "event": "No single binary: sequence is (1) AD Ph2 topline (late 2026), (2) EMBARQ-CSU 52-wk safety/durability and full 24-wk safety tables at a medical meeting (date unverified), (3) BLA 2027, (4) FDA action ~2H28. I value the st",
+  "date": "AD Ph2: late 2026 (company); 52-wk data: unverified, likely ",
+  "edge": "Best cross-trial UAS7=0 in a Ph3 CSU programme (42-46% wk12, 45-54% wk24) with Q8W option and omalizumab-refractory activity, at a 22% post-data drawdown. But the edge is consensus, not variant.",
+  "counter": "Safety is genuinely unresolved and the company published no AE table; anaphylaxis (even non-differential), neutropenia, pigment change and a possible boxed warning could blunt use vs an oral drug with a $400M run-rate that is expanding to inducible urticaria first (SD approved Oct 2026). Approval is ~2H28, leaving 18-24 months of dead money with PN and EoE failures shrinking the pipeline to CSU/CIndU.",
+  "sinking": "Where are the neutropenia, infection and hair-colour rates, and why did the company withhold them if the safety is clean?",
+  "wcm": "Full 52-wk safety table showing anaphylaxis imbalance or grade 3-4 neutropenia/infections >2% above placebo, FDA signalling REMS/boxed warning, or remibrutinib CSU/CIndU scripts accelerating beyond ~$150M/qtr by Q1 2027 (turns thesis to DROP); conversely a clean table and a Q8W-only label would lift",
+  "pitch": "Two replicate Ph3s, 1,939 patients, nearly half reach complete hive and itch control at week 12 and 54% by week 24, the stock is down a third from August on two anaphylaxis cases one of which was on placebo, with $718M cash and a 14% short interest.",
+  "under": "no"
+ },
+ "ASMB": {
+  "verdict": "IDEA",
+  "ic": 6,
+  "p": 0.6,
+  "price": 20.3,
+  "price_date": "2026-10-27 close (10/28 last 20.57)",
+  "ev_m": 118,
+  "succ": [
+   26.0,
+   34.0,
+   50.0
+  ],
+  "fail": [
+   12.0,
+   15.0
+  ],
+  "event": "Gilead initiates the GS-1179 Ph2 (recurrent genital HSV) and pays the $75M continuation fee; the value-resolving binary is the Ph2 efficacy readout (design unverified; Assembly's Class A warrant terms reference a >=200-p",
+  "date": "Ph2 readout 2H27 to 2028 (unverified)",
+  "edge": "Cash-backed asymmetry: ~$17.5/share of balance-sheet cash (pro forma incl. $75M, ex-warrant cash) vs $20.30 price, with a partner-funded, Gilead-selected, 98%-shedding-reduction once-weekly HPI and a 40% profit share; Gilead bought stock at $26.50 in May.",
+  "counter": "EV is $60-120M, not $15-20M; the share of profit is paired with 40% cost share (unquantified); the HSV market is crowded by $0.10/day generics; warrants at $21.60 (and 4.46M Class B until year-end) cap upside and the stock has fallen 40% since mid-August without a catalyst I can find. Ph2 readout is 2027-28; ABI-6250 has no Gilead interest and a competing NTCP drug from Gilead.",
+  "sinking": "If Gilead's cost estimates made the 40% share attractive, why is Assembly's stock 40% below mid-August; what is the share of Ph3 cost you have committed to and what does valacyclovir-superiority need?",
+  "wcm": "Gilead Ph2 start slipping beyond Q1 2027; Ph2 design that requires superiority vs valacyclovir on recurrence in <12 weeks; 40% cost share quantified >$250M over the next 3 yrs; evidence the $75M fee is optional/at risk. A Class B cancellation plus Ph2 start by 12/31 would move to 7.",
+  "pitch": "At $20 you own $17 of cash per share, Gilead's selected weekly oral herpes drug that cut shedding 98% in Ph1b, and a 40% US profit share, with the partner's $75M cheque landing this quarter and a Gilead bought stock at $26.50 in May.",
+  "under": "partly"
+ },
+ "IMNM": {
+  "verdict": "DEMOTE",
+  "ic": 4,
+  "p": 0.85,
+  "price": 18.77,
+  "price_date": "2026-10-27 close (10/28 last 18.76)",
+  "ev_m": 1841,
+  "succ": [
+   13.0,
+   22.0,
+   34.0
+  ],
+  "fail": [
+   5.0,
+   8.0
+  ],
+  "event": "FDA action on varegacestat NDA in progressing desmoid tumors",
+  "date": "2027-04-28 (PDUFA)",
+  "edge": "Differentiated efficacy cross-trial (HR 0.16, ORR 56%) plus QD dosing and now royalty-free economics (BMS buyout) on a proven $320M-run-rate product class, with an ADC option at no incremental price.",
+  "counter": "Ogsiveo has first-mover scale and a strategic owner; varegacestat's tolerability is NOT better (80% dose reductions, 20% discontinuations, grade >=3 AEs 57%), ovarian toxicity is a class effect, and zolucatetide (72% ORR, low-grade AEs, no GSI toxicity) targets the same patients from 2029; the stock already prices ~5.7x incumbent revenue and needs a $300M+ raise.",
+  "sinking": "With 80% of patients needing dose reductions and 56% ovarian toxicity, why would a prescriber switch from Ogsiveo, and what is left for the stock to do after approval?",
+  "wcm": "Evidence of priority review or label with a tolerability-based dose schema that cuts discontinuations; IM-1021 clinical data with clear responses (would add ~$5/share); or a pullback to ~$14 (EV ~$1.3B) where franchise is priced at 2.5x peak. Zolucatetide randomised data or FDA dose-optimisation req",
+  "pitch": "We can buy a second, royalty-free gamma-secretase inhibitor with HR 0.16 in desmoid tumours for 5.7x the incumbent's run-rate, with an approval date of 4/28/27 and an ADC pipeline for free.",
+  "under": "no"
+ },
+ "OMER": {
+  "verdict": "DEMOTE",
+  "ic": 4,
+  "p": 0.45,
+  "price": 17.49,
+  "price_date": "2026-10-27 close (10/28 last 17.88)",
+  "ev_m": 1350,
+  "succ": [
+   19.0,
+   23.0,
+   29.0
+  ],
+  "fail": [
+   6.5,
+   10.5
+  ],
+  "event": "Q3-2026 YARTEMLEA print: first quarter with permanent J-code (7/1), and the trajectory into NTAP (10/1). Binary read: is Q2's $28.5M net a launch base or one-time conversion?",
+  "date": "~2026-11-12/13 (unverified; Q2 reported 8/12, Q3-25 on 11/13",
+  "edge": "Hard evidence that formulary, accounts and revenue are converting faster than consensus, plus NTAP/J-code tailwinds and un-modelled Novo milestones/royalties.",
+  "counter": "All good news is priced: $1.35B EV is ~12x annualised Q2 revenue and ~3x my base peak; Q2 had one-time EAP conversion and stocking; efficacy proof is a single-arm n=28 study (CRL in 2021, CHMP negative twice); company is not yet cash-flow positive and used $60M cash to retire converts.",
+  "sinking": "What is the number of treated patients behind $28.5M, how much of it was EAP conversion/stocking, and what exactly do you think Q3 is?",
+  "wcm": "Q3 net >= $45M with >100 accounts and a patient-level run-rate; Novo $100M milestone received; stock back near $12-13 (EV ~$0.9B) would make it a 6+.",
+  "pitch": "A hematology orphan launch that went from $10M to $28.5M net in one quarter with all prior authorisations approved, J-code and NTAP landing in H2, and a Novo MASP-3 royalty stream on the side.",
+  "under": "no"
+ },
+ "MLTX": {
+  "verdict": "IDEA",
+  "ic": 6,
+  "p": 0.741,
+  "price": 11.85,
+  "price_date": "2026-10-23 close (stockanalysis; 26 Oct ",
+  "ev_m": 555,
+  "succ": [
+   15.0,
+   30.0,
+   55.0
+  ],
+  "fail": [
+   3.5,
+   5.0
+  ],
+  "event": "FDA filing acceptance and review-classification (priority vs standard) for the sonelokimab HS BLA (adults + adolescents 12+), the first gate to an approval decision; the value-resolving event is the FDA approval decision",
+  "date": "FDA acceptance ~29 Nov 2026; approval 2027",
+  "edge": "Informational/valuation edge, not scientific: the market is pricing ~30-40% approval odds on an asset FDA has agreed (per company, in writing via Type B/pre-BLA) is approvable on MIRA + VELA-1 with VELA-2 as safety. At EV ~$0.55B, P(approval) 0.75-0.8 and even a $0.5B-peak niche (EV $1.25B at approval) yield ~$14-15 vs $11.85 with a ~$30 base. Cheap optionality on PsA (IZAR-1 positive). Heavy 14.5% short float and a ",
+  "counter": "VELA-2 missed its primary composite estimand (P=.053) and FDA states mechanistic evidence cannot stand in for a second trial: approval rests on a Ph2 plus ONE clean Ph3 - if the review team weighs VELA-2 as a failed trial, it is a CRL. Even if approved, the controlled effect size (+10 to +17 pts) looks inferior to Bimzelx, which already owns the IL-17A/F HS slot with a >2-year lead; a company with no commercial infra",
+  "sinking": "If VELA-2 is a failed trial and the effect size is half Bimzelx's, why would any HS prescriber or payer choose the fourth biologic - and what stops FDA treating MIRA (a 12-week Ph2) plus one Ph3 as insufficient substantial evidence?",
+  "wcm": "Day-60/74 letter citing an advisory committee, a request for another HS trial, or refuse-to-file; FDA language that VELA-2 undermines the package; a competitor (povorcitinib approval + oral price parity) taking early-line HS. Conversely, Priority Review would raise my score to 7.",
+  "pitch": "For $0.55B of enterprise value you get a BLA-filed, FDA-aligned IL-17A/F nanobody with an adolescent label and a PsA Phase 3 win, because the market still prices the VELA-2 placebo miss as if FDA had not already ruled on it.",
+  "under": "partly"
+ },
+ "VERA": {
+  "verdict": "DEMOTE",
+  "ic": 4,
+  "p": 0.93,
+  "price": 28.3,
+  "price_date": "2026-10-26 close (stockanalysis)",
+  "ev_m": 1718,
+  "succ": [
+   24.0,
+   40.0,
+   62.0
+  ],
+  "fail": [
+   12.0,
+   17.0
+  ],
+  "event": "Launch trajectory of Trutakna as read at Q3 results (first full quarter) plus conversion to full approval via ORIGIN 3 eGFR sBLA; competitor event: povetacicept FDA decision.",
+  "date": "2026-11-05 (Q3 results/launch metrics, company-scheduled); 2",
+  "edge": "None found beyond consensus: the clinical data are excellent and fully public (NEJM), the stock is cheap on sell-side PTs ($74) but not on bottom-up peak sales once weekly dosing, a $425K price above Voyxact and pove arrive are considered.",
+  "counter": "Trutakna is the only BAFF/APRIL in a field where both competitors dose every 4 weeks (pove with a <0.5 mL autoinjector), has a higher list price than the first-to-market Voyxact, and ORIGIN 3's 5.0/yr slope advantage is not superior to VISIONARY's 4.5 (placebo declined faster in ORIGIN). The final data de-risk full approval but leave the share-of-class problem unchanged; the cash runway is ~1 year pre-revenue, so a d",
+  "sinking": "Why would a nephrologist prescribe a weekly injection at $425K when a monthly autoinjector with equal eGFR benefit is approved or about to be (Voyxact, pove)?",
+  "wcm": "Q3 print showing >$30M quarterly net sales and >50% of new starts coming from the APRIL/BAFF class; payers favouring Trutakna; or evidence of a materially higher dose-response in head-to-head switching. Pove approval with a clean Q4W label and early strong scripts would push me to DROP.",
+  "pitch": "The only dual BAFF/APRIL on market with a 76% reduction in kidney-failure events trades at 1.7x consensus-bear peak sales because the Street thinks the market is too crowded to matter.",
+  "under": "no"
+ },
+ "IDYA": {
+  "verdict": "DEMOTE",
+  "ic": 4,
+  "p": 0.97,
+  "price": 32.88,
+  "price_date": "2026-10-26 close (stockanalysis)",
+  "ev_m": 2239,
+  "succ": [
+   33.0,
+   38.0,
+   50.0
+  ],
+  "fail": [
+   17.0,
+   21.0
+  ],
+  "event": "Completion/acceptance of the darovasertib + crizotinib NDA under RTOR and FDA accelerated approval for 1L HLA-A*02:01-negative metastatic uveal melanoma.",
+  "date": "NDA completion 2H26 (company); approval timing unverified - ",
+  "edge": "No edge on this lens. The approval is high-probability but small (~$450M peak) and widely expected. If one wants IDYA, it is a pipeline/platform idea (DLL3 ADC IDE849 with Hengrui, PRMT5/MAT2A synthetic lethality) funded by $1.24B cash, where EV ~$2.24B only partly reflects it.",
+  "counter": "Approval is mostly priced and the market is small; a PFS-based accelerated approval with 7.4-mo follow-up, immature OS and a 6.8-month DoR could be conditioned on OS, with an unfavourable OS imbalance at the mid-2027 interim a real risk. Dilution risk after the $323M raise and ESMO sell-off (-13% in October) shows investors want pipeline, not UM, and the company is already 'reconsidering' the neoadjuvant Ph3 for capi",
+  "sinking": "If the entire metastatic UM franchise is $450M of peak sales and approval is 87% likely, what in the other $1B of EV makes this an asymmetric trade rather than a fairly-priced pipeline?",
+  "wcm": "Interim OS HR <0.7 with sustained PFS tail; FDA granting full (not accelerated) approval; first IDE849 global data showing >50% ORR in DLL3 SCLC with clean tolerability; a pharma deal on IDE849 ex-China.",
+  "pitch": "You are paying ~$2.2B EV for the first targeted therapy in 55% of metastatic uveal melanoma patients plus a DLL3 ADC and PRMT5 platform, with $1.24B in cash and no debt.",
+  "under": "no"
+ },
+ "VIR": {
+  "verdict": "DEMOTE",
+  "ic": 5,
+  "p": 0.94,
+  "price": 10.57,
+  "price_date": "2026-10-23 close (stockanalysis; 26 Oct ",
+  "ev_m": 778,
+  "succ": [
+   11.5,
+   14.0,
+   19.0
+  ],
+  "fail": [
+   4.8,
+   6.0
+  ],
+  "event": "ECLIPSE 1 Phase 3 topline: tobevibart+elebsiran vs deferred treatment in chronic HDV, composite HDV RNA TND + ALT normalisation at week 48.",
+  "date": "Q4 2026 (Q2'26 company release); possible slip to Jan-Mar 20",
+  "edge": "Valuation, not insight: EV ~$0.78B (not ~$1.0B) for a Phase-3-complete HDV combination at 94% PoS and a funded oncology platform with Astellas; cash is ~$6/share of a $10.57 stock. Skew +35% / -43% at 94/6 gives ~+25-30% expected move into a Q4 catalyst.",
+  "counter": "Success is the consensus base case so a 'sell-the-news' trade is plausible; ECLIPSE 1 (vs deferred NRTI) says nothing about superiority to Hepcludex - ECLIPSE 3 (H2H) is the commercial question and a competitive Phase 3 positive from Mirum (brelovitug, 56%) arrives at the same time. Timing may slip to Q1 2027 (dated sources conflict). Peak sales in a rare, under-diagnosed disease may be only a few hundred million dol",
+  "sinking": "If success is the base case and ECLIPSE 1 only beats a deferred control, why isn't it already in a stock that is flat at $10 - and what do ECLIPSE 3's head-to-head odds against Gilead's incumbent bulevirtide look like?",
+  "wcm": "ECLIPSE 1 composite <35% or >2 grade 3 hepatic AEs; a delay of topline to Q1 2027 without explanation; evidence that Hepcludex has rapid early uptake or brelovitug's filing precedes Vir; FDA signalling a need for a comparator-active trial. A confirmed Q4 date plus cash-adjusted EV <$0.8B would raise",
+  "pitch": "At $10.57 you buy a Phase 3 HDV combination at 94% odds of a win into the print for ~$0.78B of EV, because roughly $6 of the share price is cash from the Astellas deal and the rest is a funded oncology platform.",
+  "under": "no"
+ },
+ "RCUS": {
+  "verdict": "DEMOTE",
+  "ic": 5,
+  "p": 0.65,
+  "price": 18.39,
+  "price_date": "2026-10-27 close per stocktitan (verifie",
+  "ev_m": 1874,
+  "succ": [
+   27.0,
+   42.0,
+   58.0
+  ],
+  "fail": [
+   4.0,
+   6.0
+  ],
+  "event": "PEAK-1 Phase 3 (casdatifan + cabozantinib vs cabozantinib, ccRCC post anti-PD-(L)1) primary PFS readout; PEAK-20 1L Phase 3 start is a milestone only. Nothing resolving before 2028.",
+  "date": "Unguided; analyst estimate 1H 2028 (management: 'probably re",
+  "edge": "No genuine information edge. The market knows every datum; sell-side PTs ($38-46) imply bull case is consensus. Only a valuation/skew argument: at $18.4 and EV ~$1.9B you pay for ~35-40% of success-case value.",
+  "counter": "2L PFS 14.5 mo is parity with an already-approved belz+lenva (14.6; ORR 53% v 44%), LITESPARK-012 shows HIF-2a add-on failed in 1L, the pivotal readout is ~18-20 months away, three equity raises in 12 months, EV is ~$1.9B not $1.3B, and Merck has a 5+ yr head start and an adjuvant franchise. Best-in-class potency may not translate into a clinically meaningful PFS edge against belzutifan, and no head-to-head is planne",
+  "sinking": "Belzutifan+lenvatinib just got approved on the identical comparator with the same 14.5-14.6 month PFS and a higher ORR, and belzutifan failed to improve 1L - so what, concretely, makes casdatifan better than a drug physicians already have, before PEAK-1 reads in 2028?",
+  "wcm": "Randomised PEAK-1 interim or any head-to-head/class cross-over showing PFS clearly beyond 17-18 mo vs cabo (HR <0.65); or the stock below ~$13 (EV ~$1.0B) which would pay for 2L only.",
+  "pitch": "A more potent HIF-2a inhibitor with 36% ORR and 13-month PFS in late-line RCC (n=121) is being priced at ~$1.9B EV while its only approved class-mate does ~$1.1B a year and is growing 67%.",
+  "under": "no"
+ },
+ "NTLA": {
+  "verdict": "IDEA",
+  "ic": 6,
+  "p": 0.8,
+  "price": 11.26,
+  "price_date": "2026-10-26 close (stockanalysis); 10/27 ",
+  "ev_m": 1127,
+  "succ": [
+   12.0,
+   18.0,
+   30.0
+  ],
+  "fail": [
+   3.5,
+   5.5
+  ],
+  "event": "FDA action on the lonvo-z BLA for HAE (type 1/2, age >=16), priority review",
+  "date": "PDUFA 10 Mar 2027",
+  "edge": "Not a scientific insight but a valuation/skew gap: a priority-review BLA with randomised Ph3 (87% reduction, 62% attack-free off therapy) 4.5 months from PDUFA, priced at ~$12.7 implied success value, and the HAE M&A comp (Chiesi/KalVista 40% premium, $1.9B for an oral on-demand with $49M of sales) as an anchor for what Takeda/CSL/Ionis might pay for a one-time product.",
+  "counter": "Uptake: patients well controlled on monthly SC or oral drugs must accept an irreversible edit at ~$2M+; Casgevy launch was slow (<200 pts in 18 mo); 10-15% LFT elevations plus nex-z's liver death keep a class-safety cloud; no HAE gene editor has long-term (>5 yr) data; CBER/CMC binary; stock already trades at the level where approval is mostly priced; flow-based sales deplete the pool; EV ~$1.1B isn't cheap for a com",
+  "sinking": "Why would a patient who is attack-free-ish on monthly lanadelumab or an oral, with 20 year horizon, take an irreversible LNP-CRISPR edit with 10-15% transaminase elevations - and what is your uptake assumption if Casgevy took 18 months to reach 200 patients?",
+  "wcm": "Evidence of manufacturing/inspection issues (Form 483 at the LNP site), a PDUFA extension, FDA label language requiring REMS/liver monitoring that is burdensome, or payers/price discourse indicating <$1.5M net; or price move above ~$16 pre-PDUFA, where skew disappears.",
+  "pitch": "In 4.5 months FDA decides on the first in vivo CRISPR drug: an 87% attack reduction with 62% attack-free off all therapy, priority review, no AdCom, and the stock sits 28% below post-data highs at an implied approval value of ~$12.",
+  "under": "partly"
+ },
+ "STOK": {
+  "verdict": "DEMOTE",
+  "ic": 5,
+  "p": 0.72,
+  "price": 25.46,
+  "price_date": "2026-10-26 close (stockanalysis)",
+  "ev_m": 1413,
+  "succ": [
+   34.0,
+   46.0,
+   65.0
+  ],
+  "fail": [
+   3.0,
+   5.0
+  ],
+  "event": "EMPEROR Phase 3 topline: zorevunersen vs sham, children 2-<18, n=162 (US/UK/Japan primary population), 1:1 double-blind, 8-wk baseline, 52-wk treatment",
+  "date": "Q3 2027 (company guidance; EU ~30 pts last patient Aug 2026;",
+  "edge": "Moderate: disease-causal, genetic mechanism with large open-label effect; market overstates 73.6% as 'placebo-controlled-like'. No verified edge beyond that; 11-month wait, fairly priced.",
+  "counter": "73.6% is an external-control, propensity-weighted comparison, not randomised; sham-controlled Dravet trials are noisy; CSF protein elevations in 45% (OLE) and >50 mg/dL in 86% raise label/safety questions; EMPEROR is 11 months away with ATM dilution ongoing; EV ~$1.4B already pays ~3x base-case US peak for 70% odds, so a positive trial moves stock ~+80% but a negative -80%: expected return ~+30% over 11 months (~35% ",
+  "sinking": "The 73.6% is vs a propensity-weighted natural-history control, not a placebo: what is your estimate of the sham-arm drift and the placebo-adjusted effect in EMPEROR, and why wouldn't a 25% sham response plus the CSF protein signal leave you with an ambiguous label?",
+  "wcm": "Up: pre-NDA meeting confirming a single-trial approval package with seizure primary and no CSF-protein REMS, plus pricing evidence above $300k/yr. Down: any sign of enrollment/dropout issues or blinded pooled data (sham-arm seizure reduction >30%); stock < $20 would make it a 7.",
+  "pitch": "Dravet is a one-gene loss-of-function disease and zorevunersen restores NaV1.1 from the intact allele: 81 treated patients, 53-87% convulsive seizure reduction, and a 162-patient sham-controlled Phase 3 reading in Q3 2027.",
+  "under": "partly"
+ },
+ "TSHA": {
+  "verdict": "IDEA",
+  "ic": 6,
+  "p": 0.65,
+  "price": 4.13,
+  "price_date": "2026-10-20 close (stockanalysis; Oct 27 ",
+  "ev_m": 1019,
+  "succ": [
+   5.5,
+   8.5,
+   14.0
+  ],
+  "fail": [
+   0.7,
+   1.2
+  ],
+  "event": "REVEAL pivotal 6-month interim responder analysis (all 17 patients at 6 months) plus FDA feedback on BLA path (and PPQ comparability, Q4-26)",
+  "date": "REVEAL interim 1H 2027",
+  "edge": "Market is pricing roughly a one-in-three chance for a program where the statistical bar (6/17) is trivially low against a 6.7% null and the 12-month Part A responder rate was 100% (n=12). The edge is the gap between statistical and regulatory risk, and a price 31% below the June raise.",
+  "counter": "The 33% threshold is a low bar because the endpoint (>=1 of 28 milestones, video-rated, open-label, no control) is exactly what a skeptical CBER can discount; FDA alignment is company-reported. The 6-month rate is undisclosed and lower than 12-month, Part A mixes doses, a grade 2 AAV9 sensory neuropathy SAE has appeared, BLA timing is unguided, and Neurogene will compete from 2028. Stock has already fallen from $6 de",
+  "sinking": "Will CBER accept a 6-month, open-label, natural-history-controlled milestone interim as the basis of a BLA, and what is your evidence beyond the company's statement that FDA agreed?",
+  "wcm": "FDA minutes or a company statement that the BLA requires 12-month data/more patients; PPQ lots failing comparability; a second treatment-related SAE (neuropathy, DRG toxicity, HLH); Neurogene Phase 1/2 data showing materially better CGI/RSBQ effect.",
+  "pitch": "A 17-girl pivotal that only needs six responders to beat a 6.7% natural-history null, an enterprise value of ~$1.0B for a likely $1B+ one-time Rett gene therapy, and a binary in 1H27 that costs us ~70% if wrong but pays ~100%.",
+  "under": "partly"
+ },
+ "XENE": {
+  "verdict": "DEMOTE",
+  "ic": 5,
+  "p": 0.88,
+  "price": 36.2,
+  "price_date": "2026-10-27 intraday (stockanalysis)",
+  "ev_m": 2477,
+  "succ": [
+   33.0,
+   50.0,
+   84.0
+  ],
+  "fail": [
+   9.0,
+   14.0
+  ],
+  "event": "FDA approval of azetukalner for focal-onset seizures (NDA submitted 9/17/26; filing acceptance ~11/16/26); co-driver X-NOVA2 MDD topline Q1 2027",
+  "date": "Filing decision ~2026-11-16; PDUFA ~2H 2027 if standard revi",
+  "edge": "A drug with a p~1e-11 Phase 3 and cash covering ~33% of FD market cap trades at EV ~$2.5B, about 4x current Xcopri US run-rate; the MDD option is nearly priced to zero. But this is a known, widely owned asset, not a hidden one.",
+  "counter": "No edge in the epilepsy data, public since March and priced at $72 then; the NDA is already submitted and sell-side targets average $72. Efficacy parallels cenobamate while 14.5% AE discontinuation and psychiatric AEs in psychiatry cohorts could draw a CNS-safety label. Excess return is thin after discounting, and the MDD binary (Q1 27) still hangs over the stock.",
+  "sinking": "Why does a drug that causes psychosis and ataxia at 20 mg in depression patients not get a CNS-safety warning at 25 mg in epilepsy, and where is the psychiatric-AE table from X-TOLE2/X-TOLE3?",
+  "wcm": "Filing acceptance with priority review or BTD; clean psychiatric AE rates in epilepsy pooled data; X-NOVA2 positive with a titration fix; a price below ~$28 (EV < $1.7B).",
+  "pitch": "We own a nearly-approved Kv7 opener with two clean epilepsy studies at an EV of ~$2.5B, a net-of-cash price that already assumes the psychiatry franchise is worthless.",
+  "under": "no"
+ },
+ "MAZE": {
+  "verdict": "DEMOTE",
+  "ic": 4,
+  "p": 0.5,
+  "price": 31.07,
+  "price_date": "2026-10-26 close (stockanalysis)",
+  "ev_m": 1594,
+  "succ": [
+   34.0,
+   42.0,
+   58.0
+  ],
+  "fail": [
+   11.0,
+   15.0
+  ],
+  "event": "Vertex AMPLITUDE 48-week interim (read-through) plus Maze FDA alignment on MZE829 pivotal and start (1H27) and HORIZON cohort update",
+  "date": "AMPLITUDE interim early 2027; Maze pivotal start 1H 2027",
+  "edge": "Genetics is the best in nephrology and a Vertex surrogate-path win would validate the class; MZE829 FSGS signal is numerically better than inaxaplin at n=5.",
+  "counter": "Maze is a second entrant 1-2 years behind with n=12 open-label data comparable to, not better than, inaxaplin; diabetic response weak (2/5). The key catalyst is Vertex's and benefits Vertex first. Stock is mid-52-week range, analysts at $62.5 average, and my risk-adjusted math gives $28.5 vs $31.07.",
+  "sinking": "Why would a payer, FDA or physician choose a second APOL1 inhibitor with 12 evaluable open-label patients and no eGFR data over Vertex's drug that is two years ahead?",
+  "wcm": "HORIZON expansion with >=50% uACR drop incl. diabetics at a defined dose and no hepatic signals; FDA written agreement on pivotal with proteinuria interim; Vertex interim positive plus evidence of a differentiated safety/dosing profile for MZE829; price under ~$22.",
+  "pitch": "Maze is a levered, cheap-ish call option on Vertex's early-2027 APOL1 interim: if proteinuria becomes an accelerated-approval endpoint, the second-in-class oral with $450M net cash and an FSGS signal rerates.",
+  "under": "no"
+ },
+ "DYN": {
+  "verdict": "DEMOTE",
+  "ic": 5,
+  "p": 0.8,
+  "price": 16.94,
+  "price_date": "2026-10-27 close (MarketBeat 10-28); Sto",
+  "ev_m": 1861,
+  "succ": [
+   16.5,
+   20.0,
+   26.0
+  ],
+  "fail": [
+   8.0,
+   11.0
+  ],
+  "event": "FDA action on z-rostudirsen BLA (accelerated approval, DMD exon 51)",
+  "date": "2027-01-21 (PDUFA, Priority Review)",
+  "edge": "Honest answer: not the PDUFA. The only edge is that after the Novartis DM1 failure, EV ($1.86B) is about equal to a fair risk-adjusted exon-51 asset (80% x $2.1B = $1.7B), implying near-zero value for z-basivarsen (DM1, 71-pt registrational cohort with a different, Fab-based TfR1 conjugate per RBC), FSHD and the platform. That is a cheap option, but its P(success) is a coin flip at best (~35-45%) and the setup is a b",
+  "counter": "1) Approval is consensus and ~80% likely so the PDUFA event offers little upside; 2) Novartis's n=159 Ph3 failure plus noisy vHOT endpoint makes ACHIEVE (n=71) underpowered (~55% per Oppenheimer); 3) a company that raised $431M at $20.50 in July is $4 under the offer price, with a director selling 2.16M shares at $25 in Aug; 4) exon-51 peak sales are modest vs Exondys incumbency and ESSENCE spillover to AA skepticism",
+  "sinking": "Novartis just failed a 159-patient Ph3 in DM1 with the same TfR1 delivery concept; why does a 71-patient cohort on a noisy hand-opening endpoint succeed?",
+  "wcm": "Positive ACHIEVE topline plus approval (upgrade to 7); a CRL on CMC or a PDUFA extension (downgrade); a clean FDA read on external-control acceptance via Sarepta's Feb 2027 action.",
+  "pitch": "At $17, with $1.3B of pro-forma cash, you are paying roughly the risk-adjusted value of an exon-51 drug that FDA has already prioritised, and getting DM1 and FSHD for free.",
+  "under": "no"
+ },
+ "TNGX": {
+  "verdict": "DEMOTE",
+  "ic": 4,
+  "p": 0.55,
+  "price": 22.2,
+  "price_date": "2026-10-26 close (StockAnalysis); ESMO d",
+  "ev_m": 2842,
+  "succ": [
+   18.0,
+   30.0,
+   55.0
+  ],
+  "fail": [
+   5.0,
+   8.0
+  ],
+  "event": "Registrational path for vopimetostat+daraxonrasib: FDA feedback on 2L accelerated approval, Ph3 1L initiation (1H27); pivotal readout is years away (est. 2029+)",
+  "date": "Ph3 start 1H 2027; pivotal data est. 2029 (unverified)",
+  "edge": "None identified. The stock is a consensus long that has already been re-rated. A mild positive: dual primary ORR+PFS vs chemo is a low bar if 82% ORR holds, and MTAP-del is a well-defined biomarker population.",
+  "counter": "The headline data deteriorated within 4.5 months (92% to 82%, n=12 to 22) and the DL2 combo was not tolerable; only 2 1L patients evaluable; Tango does not control the partner drug (supply, RVMD's own PRMT5 plans); daraxonrasib +/- chemo in 1L may displace chemo as the control and shrink the incremental benefit; EV $2.8B for a drug with no pivotal data.",
+  "sinking": "If daraxonrasib alone already doubles OS in 2L and may be 1L standard by the time Ph3 reads, why does the FDA accept a chemo control, and what is vopimetostat's own contribution?",
+  "wcm": "1L-evaluable data (n>=15) with ORR >=75% and DOR; FDA agreement on a 2L AA based on single-arm data; or a pullback to <$15 (EV <$1.7B).",
+  "pitch": "The first biomarker-defined PDAC combo with an 82% response rate, a debt-free $1B balance sheet, and a Ph3 vs chemo that is hard to lose.",
+  "under": "no"
+ },
+ "VOR": {
+  "verdict": "DEMOTE",
+  "ic": 4,
+  "p": 0.68,
+  "price": 18.26,
+  "price_date": "2026-10-23 close (StockAnalysis)",
+  "ev_m": 1221,
+  "succ": [
+   20.0,
+   32.0,
+   55.0
+  ],
+  "fail": [
+   4.5,
+   6.5
+  ],
+  "event": "UPSTREAM-MG global Ph3 topline (telitacicept 240 mg SC weekly vs placebo, ~180 pts, 24-week primary MG-ADL)",
+  "date": "1H 2027 (company guidance; est. mid-2027)",
+  "edge": "Only a weak one: the effect size in China is large enough that even a 50% haircut still clears the FcRn bar. But that is a public number and is in the price.",
+  "counter": "Nominator's EV ($0.6B) omits 35.5M $0.002 warrants (incl. RemeGen's 16M) and 3.5M $16.76 warrants: FD market cap ~$1.7B, EV ~$1.2B, which already values ~$1B+ of peak sales at 3x. Royalties/milestones to RemeGen (up to $330M reg + $3.775B sales) are material. Single-Chinese-trial transfer risk and low placebo response.",
+  "sinking": "The market cap is $1.7B fully diluted, not $1.1B; at that EV, why does a binary with ~30-35% fail risk and 85% approval odds have more than +15% expected return?",
+  "wcm": "Placebo arm dynamics in public blinded data; a RemeGen second China study confirming; FD EV below $0.8B.",
+  "pitch": "A 5-point MG-ADL benefit in a 114-patient Ph3 on a weekly SC BAFF/APRIL drug, with a global Ph3 reading in 8 months and a net-cash balance sheet.",
+  "under": "partly"
+ },
+ "IONS": {
+  "verdict": "DEMOTE",
+  "ic": 5,
+  "p": 0.5,
+  "price": 43.42,
+  "price_date": "2026-10-26 close (StockAnalysis)",
+  "ev_m": 6483,
+  "succ": [
+   50.0,
+   60.0,
+   78.0
+  ],
+  "fail": [
+   28.0,
+   34.0
+  ],
+  "event": "Q3 earnings disclosing first full-quarter Tryngolza sHTG launch (and plozasiran sNDA by YE26 as the competitive marker)",
+  "date": "Early Nov 2026 (unverified); plozasiran sNDA by 2026-12-31",
+  "edge": "Moderate: a diversified royalty and product base trading at 52-wk low with management guiding to breakeven. But the sell-side already holds this view, and the sHTG launch is unproven.",
+  "counter": "Tryngolza Q2 sales fell to $5M; FY guide flat; Redemplo arrives mid-2027 with PRV; two Ph3 partner failures; converts and royalty liability of ~$1.9B near-equal to cash; EV ~$6.5B (not $5.2B) is ~7x 2026 product+royalty revenue; no discrete catalyst except Q3 print.",
+  "sinking": "Tryngolza did $5M last quarter on a flat $100-110M guide: what in the scripts data says H2 hits $70M+ when plozasiran launches against you in mid-2027?",
+  "wcm": "Q3 Tryngolza >=$30M with sHTG share of scripts >50%; or a sub-$35 print with Q3 miss (downgrade to DROP).",
+  "pitch": "Ionis is down 50% from its high because partners failed on Lp(a) and TTR, while the wholly owned APOC3 franchise has the best pancreatitis data ever shown and a new sHTG label.",
+  "under": "no"
+ }
+}

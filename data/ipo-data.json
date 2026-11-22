@@ -1,0 +1,3028 @@
+{
+ "asof": "2026-11-20",
+ "upcoming": [
+  {
+   "name": "Rezera",
+   "ticker": "RZRA",
+   "exchange": "Nasdaq",
+   "status": "set terms; expected week of 2026-11-09 (pricing not confirmed as of 11/13 sources)",
+   "filed_date": "2026-10-21",
+   "expected_pricing": "2026-11-12",
+   "deal_size_usd": 200000000,
+   "price_range": "$11.00-$13.00 (16.67M shares)",
+   "lead_asset": "Ruvonoflast",
+   "stage": "Phase 3-ready (two Phase 2 trials complete)",
+   "indication": "Peripheral artery disease / cardiometabolic and neuroinflammatory disease",
+   "modality": "Small molecule (oral NLRP3 inhibitor)",
+   "key_backers": "GSK (indicated up to $25M)",
+   "underwriters": "Jefferies, TD Securities/TD Cowen, Cantor Fitzgerald, Wedbush",
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/122582/inflammatory-diseases-biotech-rezera-sets-terms-for-200-million-ipo",
+   "lead_uw": [
+    "Jefferies",
+    "TD Cowen",
+    "Cantor"
+   ],
+   "other_uw": [
+    "Wedbush PacGrow"
+   ],
+   "investors": [
+    {
+     "name": "GSK",
+     "role": "cornerstone / indicated interest",
+     "detail": "indicated up to $25M (per task list; not verified in filing text read)"
+    },
+    {
+     "name": "5AM Ventures",
+     "role": "existing holder",
+     "detail": "existing investor named in prospectus"
+    },
+    {
+     "name": "Blue Owl Capital",
+     "role": "existing holder",
+     "detail": "existing investor"
+    },
+    {
+     "name": "Novo Holdings A/S",
+     "role": "existing holder",
+     "detail": "existing investor"
+    },
+    {
+     "name": "F-Prime Capital",
+     "role": "existing holder",
+     "detail": "existing investor"
+    },
+    {
+     "name": "Sofinnova Partners",
+     "role": "existing holder",
+     "detail": "existing investor"
+    },
+    {
+     "name": "Epidarex Capital",
+     "role": "existing holder",
+     "detail": "existing investor"
+    }
+   ],
+   "part_summary": "~$200M IPO led by Jefferies, TD Cowen, Cantor; GSK reportedly indicated up to $25M; existing VC holders.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/0002141583/000110465926117853/tmq-20261021xdrsa.htm"
+   ],
+   "filing": {
+    "type": "S-1",
+    "date": "2026-10-21",
+    "cik": "2141583",
+    "url": "https://www.sec.gov/Archives/edgar/data/0002141583/000110465926117853/tmq-20261021xdrsa.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141583&type=S-1&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Initiate ruvonoflast Phase 3 PAD trial in 1H27",
+    "when": "2027-H1",
+    "cite": "Prospectus Summary",
+    "quote": "we plan to initiate our Phase 3 PAD trial in the first half of 2027",
+    "form": "S-1"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/122582/inflammatory-diseases-biotech-rezera-sets-terms-for-200-million-ipo",
+    "https://www.sec.gov/Archives/edgar/data/0002141583/000110465926117853/tmq-20261021xdrsa.htm",
+    "https://www.sec.gov/Archives/edgar/data/0002141583/000110465926117853/tmq-20261021xdrsa.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "Ruvonoflast Phase 3 PAD trial initiation",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "we plan to initiate our Phase 3 PAD trial in the first half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002141583/000110465926117853/tmq-20261021xdrsa.htm#:~:text=we%20plan%20to%20initiate%20our%20Phase%203%20PAD%20trial",
+     "page_shown": null
+    },
+    {
+     "text": "Ruvonoflast Phase 3 PAD readout",
+     "when": "2028",
+     "when_sort": "2028-06",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Strategy",
+     "quote": "designed to enable a Phase 3 readout in 2028",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002141583/000110465926117853/tmq-20261021xdrsa.htm#:~:text=designed%20to%20enable%20a%20Phase%203%20readout%20in%202028",
+     "page_shown": null
+    },
+    {
+     "text": "Ruvonoflast NDA submission",
+     "when": "early 2029",
+     "when_sort": "2029-02",
+     "type": "regulatory_filing",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Strategy",
+     "quote": "a planned new drug application, or NDA, submission in early 2029",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002141583/000110465926117853/tmq-20261021xdrsa.htm#:~:text=a%20planned%20new%20drug%20application%2C%20or%20NDA%2C%20submission%20in",
+     "page_shown": null
+    },
+    {
+     "text": "Potential NDA approval for ruvonoflast",
+     "when": "2029",
+     "when_sort": "2029-09",
+     "type": "approval_decision",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Strategy",
+     "quote": "we believe our current plan would put us on pace for NDA approval in 2029",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002141583/000110465926117853/tmq-20261021xdrsa.htm#:~:text=we%20believe%20our%20current%20plan%20would%20put%20us%20on",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "vVardis Holding",
+   "ticker": "VVVV",
+   "exchange": "NYSE",
+   "status": "set terms; expected week of 2026-11-09 (pricing not confirmed)",
+   "filed_date": "2026-10-09",
+   "expected_pricing": null,
+   "deal_size_usd": 214000000,
+   "price_range": "$21.00-$24.00 (9.52M shares)",
+   "lead_asset": "Curodont (peptide-based cavity treatment, OTC drug in US)",
+   "stage": "Commercial",
+   "indication": "Early-stage dental caries",
+   "modality": "Peptide",
+   "key_backers": null,
+   "underwriters": "Goldman Sachs, J.P. Morgan, William Blair, UBS, Deutsche Bank, Apollo Global Securities",
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/122615/cavity-treatment-provider-vvardis-sets-terms-for-214-million-us-ipo",
+   "lead_uw": [
+    "Goldman Sachs & Co. LLC",
+    "J.P. Morgan"
+   ],
+   "other_uw": [
+    "William Blair",
+    "UBS Investment Bank",
+    "Deutsche Bank Securities"
+   ],
+   "investors": [
+    {
+     "name": "Haley Abivardi and Goly Abivardi (founders)",
+     "role": "existing holder",
+     "detail": "87.6% post-offering voting power"
+    },
+    {
+     "name": "Apollo",
+     "role": "existing holder",
+     "detail": "minority investor since April 2026 (IPOScoop)"
+    }
+   ],
+   "part_summary": "Actually Form F-1/A No.2 (foreign issuer); GS and JPM lead; founders keep 87.6% voting power; no cornerstones found.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/1907709/000114036126043309/ny20076472x16_f1a.htm",
+    "https://www.iposcoop.com/?p=39713"
+   ],
+   "filing": {
+    "type": "F-1/A",
+    "date": "2026-11-12",
+    "cik": "1907709",
+    "url": "https://www.sec.gov/Archives/edgar/data/1907709/000114036126043309/ny20076472x16_f1a.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1907709&type=F-1/A&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "No dated Curodont regulatory/clinical catalyst; nearest: Henry Schein new-customer threshold by 12/31/2027",
+    "when": "2027-12",
+    "cite": "Risk Factors - Henry Schein Master Distribution Agreement",
+    "quote": "achieving an initial threshold amount of new customers by December 31, 2027",
+    "form": "F-1/A"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/122615/cavity-treatment-provider-vvardis-sets-terms-for-214-million-us-ipo",
+    "https://www.sec.gov/Archives/edgar/data/1907709/000114036126043309/ny20076472x16_f1a.htm",
+    "https://www.sec.gov/Archives/edgar/data/1907709/000114036126043309/ny20076472x16_f1a.htm",
+    "https://www.iposcoop.com/?p=39713"
+   ],
+   "catalysts": [
+    {
+     "text": "Henry Schein UK exclusivity expires",
+     "when": "12/31/2026",
+     "when_sort": "2026-12",
+     "type": "partnering",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Risk Factors: third-party distributors",
+     "quote": "Henry Schein also has exclusive distribution rights in the United Kingdom until December 31, 2026.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1907709/000114036126043309/ny20076472x16_f1a.htm#:~:text=Henry%20Schein%20also%20has%20exclusive%20distribution%20rights%20in%20the",
+     "page_shown": null
+    },
+    {
+     "text": "Curodont fixed pricing ends",
+     "when": "1/1/2027",
+     "when_sort": "2027-01",
+     "type": "other",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Risk Factors: third-party distributors",
+     "quote": "our products are currently sold at a fixed price until January 1, 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1907709/000114036126043309/ny20076472x16_f1a.htm#:~:text=our%20products%20are%20currently%20sold%20at%20a%20fixed%20price",
+     "page_shown": null
+    },
+    {
+     "text": "Henry Schein US exclusivity: new-customer threshold",
+     "when": "12/31/2027",
+     "when_sort": "2027-12",
+     "type": "partnering",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Risk Factors: third-party distributors",
+     "quote": "achieving an initial threshold amount of new customers by December 31, 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1907709/000114036126043309/ny20076472x16_f1a.htm#:~:text=achieving%20an%20initial%20threshold%20amount%20of%20new%20customers%20by",
+     "page_shown": null
+    }
+   ]
+  }
+ ],
+ "recent": [
+  {
+   "name": "Windward Bio",
+   "ticker": "WWB",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-11-12",
+   "first_trade_date": "2026-11-13",
+   "offer_price": 17,
+   "shares": 10300000,
+   "gross_proceeds_usd": 175000000,
+   "latest_price": 24.29,
+   "return_since_ipo_pct": 42.9,
+   "market_cap_usd_now": null,
+   "lead_asset": "WIN378 (TSLP, twice-yearly)",
+   "stage": "Phase 2/3",
+   "indication": "Severe asthma, COPD",
+   "modality": "Antibody (long-acting)",
+   "key_backers": "Sanofi ($50M concurrent placement)",
+   "lockup_expiry": null,
+   "source_url": "https://www.biopharmadive.com/news/windward-ipo-pricing-immune-drugs-china-deals-tezspire/874533/",
+   "lead_uw": [
+    "Jefferies",
+    "TD Cowen",
+    "Piper Sandler",
+    "UBS Investment Bank"
+   ],
+   "other_uw": [],
+   "investors": [
+    {
+     "name": "Sanofi",
+     "role": "concurrent private placement",
+     "detail": "$50.0M (Sanofi Foreign Participations B.V.), at assumed $17 midpoint; per F-1/A No. 2"
+    }
+   ],
+   "part_summary": "Swiss issuer (Form F-1/A No.2, 424B4 not located). Sanofi $50M concurrent private placement; Jefferies, TD Cowen, Piper Sandler, UBS underwrite.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/0002145089/000119312526452536/d111653df1a.htm",
+    "https://www.fiercebiotech.com/biotech/sanofi-backed-windward-breezes-toward-204m-ipo-fund-respiratory-pipeline"
+   ],
+   "filing": {
+    "type": "F-1/A",
+    "date": "2026-11-09",
+    "cik": "2145089",
+    "url": "https://www.sec.gov/Archives/edgar/data/0002145089/000119312526452536/d111653df1a.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2145089&type=F-1&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "WIN378 Phase 2 primary (week 24) results expected 1H27",
+    "when": "2027-H1",
+    "cite": "Prospectus Summary - Overview (pp. 1-17)",
+    "quote": "We expect that the next data readout for WIN378 will be the Phase 2 primary results at week 24 in the first half of 2027.",
+    "form": "F-1/A"
+   },
+   "record_sources": [
+    "https://www.biopharmadive.com/news/windward-ipo-pricing-immune-drugs-china-deals-tezspire/874533/",
+    "https://www.sec.gov/Archives/edgar/data/0002145089/000119312526452536/d111653df1a.htm",
+    "https://www.sec.gov/Archives/edgar/data/0002145089/000119312526452536/d111653df1a.htm",
+    "https://www.fiercebiotech.com/biotech/sanofi-backed-windward-breezes-toward-204m-ipo-fund-respiratory-pipeline"
+   ],
+   "catalysts": [
+    {
+     "text": "WIN378 Phase 2 primary results at week 24",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "We expect that the next data readout for WIN378 will be the Phase 2 primary results at week 24 in the first half of 2027.",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002145089/000119312526452536/d111653df1a.htm#:~:text=We%20expect%20that%20the%20next%20data%20readout%20for%20WIN378",
+     "page_shown": null
+    },
+    {
+     "text": "WIN027 Phase 1 full PK and immunogenicity data",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": false,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "with full pharmacokinetic and immunogenicity data expected in the first half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002145089/000119312526452536/d111653df1a.htm#:~:text=with%20full%20pharmacokinetic%20and%20immunogenicity%20data%20expected%20in%20the",
+     "page_shown": null
+    },
+    {
+     "text": "WIN378 POLARIS-2 Phase 3 patient recruitment begins",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "which is planned to begin patient recruitment in the first half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002145089/000119312526452536/d111653df1a.htm#:~:text=which%20is%20planned%20to%20begin%20patient%20recruitment%20in%20the",
+     "page_shown": null
+    },
+    {
+     "text": "WIN378 SIRIUS Phase 2 COPD topline results",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "we expect topline results in the second half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002145089/000119312526452536/d111653df1a.htm#:~:text=we%20expect%20topline%20results%20in%20the%20second%20half%20of",
+     "page_shown": null
+    },
+    {
+     "text": "WIN378 POLARIS-1 Phase 3 topline results",
+     "when": "1H29",
+     "when_sort": "2029-03",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "with topline results expected in the first half of 2029",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002145089/000119312526452536/d111653df1a.htm#:~:text=with%20topline%20results%20expected%20in%20the%20first%20half%20of",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Aspen Neuroscience",
+   "ticker": "ASPE",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-10-29",
+   "first_trade_date": "2026-10-30",
+   "offer_price": 15,
+   "shares": 9375000,
+   "gross_proceeds_usd": 140630000,
+   "latest_price": 12.42,
+   "return_since_ipo_pct": -17.2,
+   "market_cap_usd_now": 401870000,
+   "lead_asset": "Sasineprocel (ANPD001)",
+   "stage": "Phase 1/2a; Phase 3 dosing planned 2H27",
+   "indication": "Parkinson's disease",
+   "modality": "Autologous iPSC-derived cell therapy",
+   "key_backers": null,
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/122492/parkinson%E2%80%99s-disease-biotech-aspen-neuroscience-prices-ipo-at-15-the-low",
+   "lead_uw": [
+    "Leerink Partners",
+    "Piper Sandler",
+    "Stifel",
+    "UBS Investment Bank",
+    "Oppenheimer & Co."
+   ],
+   "other_uw": [],
+   "investors": [
+    {
+     "name": "OrbiMed",
+     "role": "existing holder",
+     "detail": "major existing shareholder"
+    },
+    {
+     "name": "ARCH Venture Fund X, L.P.",
+     "role": "existing holder",
+     "detail": "major existing shareholder"
+    }
+   ],
+   "part_summary": "Priced 2026-10-29 at $15 (low end); no anchor investors named; OrbiMed and ARCH are major pre-IPO holders.",
+   "part_sources": [
+    "https://www.iposcoop.com/?p=39657"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-10-30",
+    "cik": "2124080",
+    "url": "https://www.sec.gov/Archives/edgar/data/2124080/000119312526441782/elevation_424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2124080&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Phase 3 dosing of sasineprocel expected 2H27 (biopsy collection starts by end-2026)",
+    "when": "2027-H2",
+    "cite": "Prospectus Summary",
+    "quote": "we anticipate dosing patients in the Phase 3 trial in the second half of 2027",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/122492/parkinson%E2%80%99s-disease-biotech-aspen-neuroscience-prices-ipo-at-15-the-low",
+    "https://www.sec.gov/Archives/edgar/data/2124080/000119312526441782/elevation_424b4.htm",
+    "https://www.iposcoop.com/?p=39657"
+   ],
+   "catalysts": [
+    {
+     "text": "Begin biopsy collection for sasineprocel Phase 3",
+     "when": "by end of 2026",
+     "when_sort": "2026-12",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "We anticipate initiating biopsy collection for the Phase 3 trial by the end of 2026.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2124080/000119312526441782/elevation_424b4.htm#:~:text=We%20anticipate%20initiating%20biopsy%20collection%20for%20the%20Phase%203",
+     "page_shown": null
+    },
+    {
+     "text": "Sasineprocel Phase 3 first patient dosing (post-FDA feedback)",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "Following feedback from the FDA, we anticipate dosing patients in the Phase 3 trial in the second half of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2124080/000119312526441782/elevation_424b4.htm#:~:text=Following%20feedback%20from%20the%20FDA%2C%20we%20anticipate%20dosing%20patients",
+     "page_shown": null
+    },
+    {
+     "text": "Microglia program IND-enabling studies start",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "other",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "We expect to initiate Investigational New Drug application (IND)-enabling studies in the second half of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2124080/000119312526441782/elevation_424b4.htm#:~:text=We%20expect%20to%20initiate%20Investigational%20New%20Drug%20application%20IND%2Denabling",
+     "page_shown": null
+    },
+    {
+     "text": "Further long-term ASPIRO Phase 1/2a data",
+     "when": "1H28",
+     "when_sort": "2028-03",
+     "type": "data_readout",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "We expect to report further long-term data from the ASPIRO trial in the first half of 2028.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2124080/000119312526441782/elevation_424b4.htm#:~:text=We%20expect%20to%20report%20further%20long%2Dterm%20data%20from%20the",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Bambusa Therapeutics",
+   "ticker": "BBTX",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-10-29",
+   "first_trade_date": "2026-10-30",
+   "offer_price": 16,
+   "shares": 10555555,
+   "gross_proceeds_usd": 168888880,
+   "latest_price": 16.0,
+   "return_since_ipo_pct": 0.0,
+   "market_cap_usd_now": 862960000,
+   "lead_asset": "BBT001 (IL-4Ra/IL-31 bispecific)",
+   "stage": "Phase 1",
+   "indication": "Atopic dermatitis / inflammatory skin disease",
+   "modality": "Long-acting bispecific antibody",
+   "key_backers": "RA Capital, BVF, Redmile, Janus Henderson, Invus, Dawn Biopharma (KKR), ATHOS, others",
+   "lockup_expiry": null,
+   "source_url": "https://valueaddvc.com/pulse/bambusa-therapeutics-168m-ipo-bbtx-2026",
+   "lead_uw": [
+    "BofA Securities",
+    "Evercore ISI",
+    "UBS Investment Bank",
+    "Cantor"
+   ],
+   "other_uw": [],
+   "investors": [
+    {
+     "name": "RA Capital",
+     "role": "existing holder",
+     "detail": "named significant stockholder in S-1/A; % not extracted"
+    },
+    {
+     "name": "BVF Partners",
+     "role": "existing holder",
+     "detail": "named significant stockholder in S-1/A; % not extracted"
+    },
+    {
+     "name": "Dawn Biopharma (KKR platform)",
+     "role": "existing holder",
+     "detail": "named significant stockholder in S-1/A; % not extracted"
+    },
+    {
+     "name": "ATHOS",
+     "role": "existing holder",
+     "detail": "named significant stockholder in S-1/A; % not extracted"
+    },
+    {
+     "name": "INCE Capital",
+     "role": "existing holder",
+     "detail": "named significant stockholder in S-1/A; % not extracted"
+    },
+    {
+     "name": "Salvia",
+     "role": "existing holder",
+     "detail": "named significant stockholder in S-1/A; % not extracted"
+    }
+   ],
+   "part_summary": "Anchored by existing holders RA Capital, BVF, KKR's Dawn Biopharma, ATHOS, INCE, Salvia (per S-1/A); 424B4 unreadable, date approximated by pricing date.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/0002044950/000162828026067119/bambusa-sx1a1.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-10-29",
+    "cik": "2044950",
+    "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2044950&type=424B4&dateb=&owner=include&count=10",
+    "direct": false,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2044950&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": false
+   },
+   "catalyst": {
+    "text": "Additional BBT001 clinical data readouts (bio-naive/bio-experienced AD, CSU PoC) throughout 1H 2027",
+    "when": "2027-H1",
+    "cite": "Prospectus Summary - Overview (from S-1/A; 424B4 page not loadable)",
+    "quote": "We expect several additional upcoming clinical data readouts for BBT001 throughout the first half of 2027",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://valueaddvc.com/pulse/bambusa-therapeutics-168m-ipo-bbtx-2026",
+    "https://www.sec.gov/Archives/edgar/data/0002044950/000162828026068563/bambusa-424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/0002044950/000162828026067119/bambusa-sx1a1.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "BBT003 enters clinic",
+     "when": "end of 2026",
+     "when_sort": "2026-12",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "We plan to advance BBT003 into clinical development by the end of 2026.",
+     "next_key": false,
+     "link": null,
+     "page_shown": null
+    },
+    {
+     "text": "BBT001 SubQ Phase 2b AD study start-up",
+     "when": "by end of 2026",
+     "when_sort": "2026-12",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "plan to initiate study start-up activities for our Phase 2b dose-ranging clinical trial",
+     "next_key": false,
+     "link": null,
+     "page_shown": null
+    },
+    {
+     "text": "BBT001 PoC data: bio-naive AD, bio-experienced AD, CSU",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "We expect several additional upcoming clinical data readouts for BBT001 throughout the first half of 2027",
+     "next_key": true,
+     "link": null,
+     "page_shown": null
+    },
+    {
+     "text": "BBT002 PoC data: COPD (4-wk) and CRSwNP (12-wk)",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "4-week PoC COPD data",
+     "next_key": false,
+     "link": null,
+     "page_shown": null
+    },
+    {
+     "text": "BBT002 SubQ Phase 2b study start-up (respiratory)",
+     "when": "2027",
+     "when_sort": "2027-06",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "plan to initiate study start-up activities for a Phase 2b dose-ranging clinical trial of a SubQ formulation of BBT002",
+     "next_key": false,
+     "link": null,
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Lycia Therapeutics",
+   "ticker": "LYCA",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-10-22",
+   "first_trade_date": "2026-10-23",
+   "offer_price": 18,
+   "shares": 17600000,
+   "gross_proceeds_usd": 318000000,
+   "latest_price": 33.07,
+   "return_since_ipo_pct": 83.7,
+   "market_cap_usd_now": 1640000000,
+   "lead_asset": "LCA-0061 (IgE degrader)",
+   "stage": "Phase 1",
+   "indication": "Food allergy; Graves' disease",
+   "modality": "Protein degrader (LYTAC)",
+   "key_backers": null,
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/122368/lycia-therapeutics-prices-upsized-ipo-at-18-the-high-end-of-the-range",
+   "lead_uw": [
+    "Jefferies",
+    "TD Securities (USA)",
+    "Evercore ISI",
+    "Guggenheim Securities"
+   ],
+   "other_uw": [
+    "LifeSci Capital"
+   ],
+   "investors": [
+    {
+     "name": "Versant Ventures",
+     "role": "existing holder",
+     "detail": "18.9% pre-IPO holder"
+    },
+    {
+     "name": "Venrock Healthcare Capital Partners",
+     "role": "existing holder",
+     "detail": "12.8% pre-IPO holder"
+    },
+    {
+     "name": "Redmile Biopharma Investments III",
+     "role": "existing holder",
+     "detail": "11.1% pre-IPO holder"
+    },
+    {
+     "name": "RTW Investments",
+     "role": "existing holder",
+     "detail": "9.7% pre-IPO holder"
+    },
+    {
+     "name": "Janus Henderson Biotech Innovation Master Fund",
+     "role": "existing holder",
+     "detail": "9.3% pre-IPO holder"
+    },
+    {
+     "name": "Blue Owl",
+     "role": "existing holder",
+     "detail": "5.2% pre-IPO holder"
+    }
+   ],
+   "part_summary": "Upsized $317.5M IPO at $18 led by Jefferies, TD, Evercore, Guggenheim; backed by Versant, Venrock, Redmile, RTW, Janus Henderson. No cornerstone found.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/0001806540/000162828026067048/lyciatherapeutics-424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-10-22",
+    "cik": "1806540",
+    "url": "https://www.sec.gov/Archives/edgar/data/0001806540/000162828026067048/lyciatherapeutics-424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1806540&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "LCA-0061 additional data in healthy participants with elevated IgE and food allergy patients in 2027",
+    "when": "2027",
+    "cite": "Prospectus Summary - Overview",
+    "quote": "We expect additional data in healthy participants with elevated IgE and food allergy patients in 2027.",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/122368/lycia-therapeutics-prices-upsized-ipo-at-18-the-high-end-of-the-range",
+    "https://www.sec.gov/Archives/edgar/data/0001806540/000162828026067048/lyciatherapeutics-424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/0001806540/000162828026067048/lyciatherapeutics-424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "LCA-0061 additional data: elevated-IgE participants, food allergy patients",
+     "when": "2027",
+     "when_sort": "2027-07",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "We expect additional data in healthy participants with elevated IgE and food allergy patients in 2027.",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001806540/000162828026067048/lyciatherapeutics-424b4.htm#:~:text=We%20expect%20additional%20data%20in%20healthy%20participants%20with%20elevated",
+     "page_shown": null
+    },
+    {
+     "text": "LCA-0321 Graves' disease Phase 1 initial data",
+     "when": "2027",
+     "when_sort": "2027-07",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "we expect initial data in 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001806540/000162828026067048/lyciatherapeutics-424b4.htm#:~:text=we%20expect%20initial%20data%20in%202027",
+     "page_shown": null
+    },
+    {
+     "text": "LCA-0062 initial data (subject to regulatory clearance)",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": false,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "expect to receive initial data in the second half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001806540/000162828026067048/lyciatherapeutics-424b4.htm#:~:text=expect%20to%20receive%20initial%20data%20in%20the%20second%20half",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "City Therapeutics",
+   "ticker": "CTY",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-10-15",
+   "first_trade_date": "2026-10-16",
+   "offer_price": 18,
+   "shares": 11100000,
+   "gross_proceeds_usd": 200000000,
+   "latest_price": 19.32,
+   "return_since_ipo_pct": 7.3,
+   "market_cap_usd_now": 856150000,
+   "lead_asset": "CITY-FXI",
+   "stage": "Phase 1",
+   "indication": "Thromboembolic diseases (Factor XI)",
+   "modality": "siRNA (GalNAc-conjugated RNAi)",
+   "key_backers": null,
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/122265/city-therapeutics-prices-upsized-ipo-at-18-the-midpoint-of-the-range",
+   "lead_uw": [
+    "Goldman Sachs & Co. LLC",
+    "Jefferies",
+    "Stifel"
+   ],
+   "other_uw": [],
+   "investors": [],
+   "part_summary": "Upsized $200M IPO at $18 led by Goldman, Jefferies, Stifel; no investors named in press release.",
+   "part_sources": [
+    "https://www.rttnews.com/3699598/city-therapeutics-prices-upsized-200-mln-ipo-at-18-shr.aspx?type=bn"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-10-16",
+    "cik": "2143850",
+    "url": "https://www.sec.gov/Archives/edgar/data/2143850/000110465926116636/tm2619715-10_424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2143850&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Additional CITY-FXI Phase 1 data expected late 2026",
+    "when": "2026-H2",
+    "cite": "Prospectus Summary",
+    "quote": "We expect to report additional data from our Phase 1 study in late 2026.",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/122265/city-therapeutics-prices-upsized-ipo-at-18-the-midpoint-of-the-range",
+    "https://www.sec.gov/Archives/edgar/data/2143850/000110465926116636/tm2619715-10_424b4.htm",
+    "https://www.rttnews.com/3699598/city-therapeutics-prices-upsized-200-mln-ipo-at-18-shr.aspx?type=bn"
+   ],
+   "catalysts": [
+    {
+     "text": "CITY-FXI additional Phase 1 data",
+     "when": "late 2026",
+     "when_sort": "2026-12",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "We expect to report additional data from our Phase 1 study in late 2026.",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/2143850/000110465926116636/tm2619715-10_424b4.htm#:~:text=We%20expect%20to%20report%20additional%20data%20from%20our%20Phase",
+     "page_shown": null
+    },
+    {
+     "text": "CITY-RBP4 Phase 1 trial start",
+     "when": "late 2026",
+     "when_sort": "2026-12",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "we filed an application for CITY-RBP4 to initiate a Phase 1 clinical trial in late 2026",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2143850/000110465926116636/tm2619715-10_424b4.htm#:~:text=we%20filed%20an%20application%20for%20CITY%2DRBP4%20to%20initiate%20a",
+     "page_shown": null
+    },
+    {
+     "text": "CITY-TFR2 IND or IND-equivalent filing",
+     "when": "late 2026",
+     "when_sort": "2026-12",
+     "type": "ind_cta",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "We also plan to file an IND or IND-equivalent application in late 2026",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2143850/000110465926116636/tm2619715-10_424b4.htm#:~:text=We%20also%20plan%20to%20file%20an%20IND%20or%20IND%2Dequivalent",
+     "page_shown": null
+    },
+    {
+     "text": "CITY-FXI Phase 2 study in TKA start",
+     "when": "mid-2027",
+     "when_sort": "2027-06",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "We expect to initiate the Phase 2 study in TKA in mid-2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2143850/000110465926116636/tm2619715-10_424b4.htm#:~:text=We%20expect%20to%20initiate%20the%20Phase%202%20study%20in",
+     "page_shown": null
+    },
+    {
+     "text": "CITY-RBP4 initial Phase 1 data",
+     "when": "mid-2027",
+     "when_sort": "2027-06",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "we expect to report initial data from this trial in mid-2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2143850/000110465926116636/tm2619715-10_424b4.htm#:~:text=we%20expect%20to%20report%20initial%20data%20from%20this%20trial",
+     "page_shown": null
+    },
+    {
+     "text": "CITY-TFR2 China IIT data",
+     "when": "mid-2027",
+     "when_sort": "2027-06",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "we expect to report data from the IIT in mid-2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2143850/000110465926116636/tm2619715-10_424b4.htm#:~:text=we%20expect%20to%20report%20data%20from%20the%20IIT%20in",
+     "page_shown": null
+    },
+    {
+     "text": "CITY-RBP4 Phase 2 trial in GA start",
+     "when": "late 2027",
+     "when_sort": "2027-11",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "We expect to initiate a Phase 2 clinical trial for CITY-RBP4 in GA in late 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2143850/000110465926116636/tm2619715-10_424b4.htm#:~:text=We%20expect%20to%20initiate%20a%20Phase%202%20clinical%20trial",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Iambic Therapeutics",
+   "ticker": "IAM",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-10-14",
+   "first_trade_date": "2026-10-15",
+   "offer_price": 16,
+   "shares": 9400000,
+   "gross_proceeds_usd": 150000000,
+   "latest_price": 13.11,
+   "return_since_ipo_pct": -18.1,
+   "market_cap_usd_now": 703430000,
+   "lead_asset": "IAM1363 (brain-penetrant HER2 inhibitor)",
+   "stage": "Phase 1/1b",
+   "indication": "HER2-altered solid tumors",
+   "modality": "Small molecule (AI-enabled discovery)",
+   "key_backers": "ARK Investment Management, Duquesne Family Office, Nexus, Catalio, Abingworth, Illumina Ventures",
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/122239/small-molecule-biotech-iambic-therapeutics-prices-ipo-at-16-the-midpoint",
+   "lead_uw": [
+    "J.P. Morgan",
+    "Jefferies",
+    "BofA Securities",
+    "Citigroup"
+   ],
+   "other_uw": [],
+   "investors": [
+    {
+     "name": "ARK Investment Management LLC",
+     "role": "cornerstone / indicated interest",
+     "detail": "with Duquesne, up to $60.0M aggregate indicated interest at $16; existing investor"
+    },
+    {
+     "name": "Duquesne Family Office LLC",
+     "role": "cornerstone / indicated interest",
+     "detail": "with ARK, up to $60.0M aggregate indicated interest at $16"
+    },
+    {
+     "name": "Catalio Capital (affiliates)",
+     "role": "existing holder",
+     "detail": "11.0% pre-IPO holder"
+    },
+    {
+     "name": "Nexus Ventures V Ltd.",
+     "role": "existing holder",
+     "detail": "8.5% pre-IPO holder"
+    },
+    {
+     "name": "Ascenta Capital (affiliates)",
+     "role": "existing holder",
+     "detail": "5.1% pre-IPO holder"
+    }
+   ],
+   "part_summary": "ARK and Duquesne indicated up to $60M combined; Catalio (11.0%) and Nexus (8.5%) top holders.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/0001997038/000119312526422865/iambic_inception_424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-10-14",
+    "cik": "1997038",
+    "url": "https://www.sec.gov/Archives/edgar/data/0001997038/000119312526422865/iambic_inception_424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997038&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Initiate IAM1363 registrational trial as early as 2027, subject to regulatory feedback",
+    "when": "2027",
+    "cite": "Prospectus Summary - Overview",
+    "quote": "we anticipate initiating a registrational trial as early as 2027, subject to regulatory feedback",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/122239/small-molecule-biotech-iambic-therapeutics-prices-ipo-at-16-the-midpoint",
+    "https://www.sec.gov/Archives/edgar/data/0001997038/000119312526422865/iambic_inception_424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/0001997038/000119312526422865/iambic_inception_424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "IAM-C1 IND submission",
+     "when": "Q4 2026",
+     "when_sort": "2026-11",
+     "type": "ind_cta",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "We anticipate submitting an IND application for IAM-C1 in the fourth quarter of 2026",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001997038/000119312526422865/iambic_inception_424b4.htm#:~:text=We%20anticipate%20submitting%20an%20IND%20application%20for%20IAM%2DC1%20in",
+     "page_shown": null
+    },
+    {
+     "text": "IAM1363 registrational trial initiation",
+     "when": "as early as 2027",
+     "when_sort": "2027-06",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "we anticipate initiating a registrational trial as early as 2027, subject to regulatory feedback",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001997038/000119312526422865/iambic_inception_424b4.htm#:~:text=we%20anticipate%20initiating%20a%20registrational%20trial%20as%20early%20as",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "TRex Bio",
+   "ticker": "TRXB",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-10-08",
+   "first_trade_date": "2026-10-09",
+   "offer_price": 14,
+   "shares": 8330000,
+   "gross_proceeds_usd": 116620000,
+   "latest_price": 10.32,
+   "return_since_ipo_pct": -26.3,
+   "market_cap_usd_now": 363930000,
+   "lead_asset": "TRB-061",
+   "stage": "Phase 1a/b",
+   "indication": "Atopic dermatitis (IBD second)",
+   "modality": null,
+   "key_backers": "Eli Lilly (largest shareholder)",
+   "lockup_expiry": null,
+   "source_url": "https://www.iposcoop.com/?p=39478",
+   "lead_uw": [
+    "J.P. Morgan",
+    "Evercore ISI"
+   ],
+   "other_uw": [
+    "Cantor Fitzgerald",
+    "Stifel",
+    "Wedbush PacGrow"
+   ],
+   "investors": [
+    {
+     "name": "Eli Lilly and Company",
+     "role": "cornerstone / indicated interest",
+     "detail": "23.9% pre-IPO holder; indicated non-binding interest in buying at IPO price, post-IPO stake capped at 19.9%"
+    },
+    {
+     "name": "SV Health Investors",
+     "role": "existing holder",
+     "detail": "20.2% pre-IPO holder"
+    },
+    {
+     "name": "Pfizer Ventures (US)",
+     "role": "existing holder",
+     "detail": "6.6% pre-IPO holder"
+    },
+    {
+     "name": "Johnson & Johnson Innovation - JJDC",
+     "role": "existing holder",
+     "detail": "6.6% pre-IPO holder"
+    },
+    {
+     "name": "Janus Henderson Biotech Innovation Master Fund",
+     "role": "existing holder",
+     "detail": "6.5% pre-IPO holder"
+    },
+    {
+     "name": "Alexandria Venture Investments",
+     "role": "existing holder",
+     "detail": "6.1% pre-IPO holder"
+    },
+    {
+     "name": "Delos Capital Fund III",
+     "role": "existing holder",
+     "detail": "6.0% pre-IPO holder"
+    },
+    {
+     "name": "Polaris Partners X",
+     "role": "existing holder",
+     "detail": "5.3% pre-IPO holder"
+    }
+   ],
+   "part_summary": "JPM and Evercore led $116.7M IPO; Lilly (23.9% holder) indicated interest, capped at 19.9% post-IPO. SV Health 20.2%.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/2139097/000119312526419203/project_dino_-_424b4.htm",
+    "https://biopharmadive.com/news/trex-bio-ipo-pricing-autoimmune-tregs/832297"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-10-08",
+    "cik": "2139097",
+    "url": "https://www.sec.gov/Archives/edgar/data/2139097/000119312526419203/project_dino_-_424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2139097&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "TRB-061 Phase 1b topline data in moderate-to-severe atopic dermatitis expected mid-2027",
+    "when": "2027-06",
+    "cite": "Prospectus Summary - Overview (p. 1-2, inferred)",
+    "quote": "we expect to announce topline data in mid-2027",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.iposcoop.com/?p=39478",
+    "https://www.sec.gov/Archives/edgar/data/2139097/000119312526419203/project_dino_-_424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/2139097/000119312526419203/project_dino_-_424b4.htm",
+    "https://biopharmadive.com/news/trex-bio-ipo-pricing-autoimmune-tregs/832297"
+   ],
+   "catalysts": [
+    {
+     "text": "TRB-051 (Lilly) Phase 2a start in lupus with cutaneous involvement",
+     "when": "2H26",
+     "when_sort": "2026-10",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline",
+     "quote": "move TRB-051 into a Phase 2a clinical trial in lupus with cutaneous involvement in the second half of 2026",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2139097/000119312526419203/project_dino_-_424b4.htm#:~:text=move%20TRB%2D051%20into%20a%20Phase%202a%20clinical%20trial%20in",
+     "page_shown": null
+    },
+    {
+     "text": "TRB-071 Phase 1 trial initiation",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "expect to initiate a Phase 1 clinical trial in the first half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2139097/000119312526419203/project_dino_-_424b4.htm#:~:text=expect%20to%20initiate%20a%20Phase%201%20clinical%20trial%20in",
+     "page_shown": null
+    },
+    {
+     "text": "TRB-061 Phase 1b topline data in moderate-to-severe AD",
+     "when": "mid-2027",
+     "when_sort": "2027-06",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "expect to announce topline data in mid-2027",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/2139097/000119312526419203/project_dino_-_424b4.htm#:~:text=expect%20to%20announce%20topline%20data%20in%20mid%2D2027",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Retension Pharmaceuticals",
+   "ticker": "RTSN",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-10-08",
+   "first_trade_date": "2026-10-09",
+   "offer_price": 12,
+   "shares": 3800000,
+   "gross_proceeds_usd": 45000000,
+   "latest_price": 10.51,
+   "return_since_ipo_pct": -12.4,
+   "market_cap_usd_now": 96600000,
+   "lead_asset": "RTN-001",
+   "stage": "Phase 2b",
+   "indication": "Uncontrolled/resistant hypertension",
+   "modality": "Small molecule (oral PDE5 inhibitor)",
+   "key_backers": null,
+   "lockup_expiry": null,
+   "source_url": "https://renaissancecapital.com/IPO-Center/News/122147/Hypertension-drug-developer-Retension-Pharmaceuticals-prices-upsized-IPO-at",
+   "lead_uw": [
+    "Leerink Partners",
+    "Guggenheim Securities",
+    "Oppenheimer & Co."
+   ],
+   "other_uw": [
+    "Titan Partners"
+   ],
+   "investors": [],
+   "part_summary": "Upsized $45M IPO at $12; cover lists Leerink, Guggenheim, Oppenheimer, Titan Partners; holders table not reviewed.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/0002002988/000121390026108587/ea0276911-10.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-10-08",
+    "cik": "2002988",
+    "url": "https://www.sec.gov/Archives/edgar/data/0002002988/000121390026108587/ea0276911-10.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Initial RTN-001 Phase 2b dose-ranging data (uncontrolled hypertension) expected 1H27",
+    "when": "2027-H1",
+    "cite": "Prospectus Summary",
+    "quote": "Initial data is expected in the first half of 2027.",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://renaissancecapital.com/IPO-Center/News/122147/Hypertension-drug-developer-Retension-Pharmaceuticals-prices-upsized-IPO-at",
+    "https://www.sec.gov/Archives/edgar/data/0002002988/000121390026108587/ea0276911-10.htm",
+    "https://www.sec.gov/Archives/edgar/data/0002002988/000121390026108587/ea0276911-10.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "RTN-001 Phase 2b dose-ranging initial data",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "Initial data is expected in the first half of 2027.",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002002988/000121390026108587/ea0276911-10.htm#:~:text=Initial%20data%20is%20expected%20in%20the%20first%20half%20of",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "ADARx Pharmaceuticals",
+   "ticker": "ADRX",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-09-24",
+   "first_trade_date": "2026-09-25",
+   "offer_price": 17,
+   "shares": 26250000,
+   "gross_proceeds_usd": 446250000,
+   "latest_price": 12.79,
+   "return_since_ipo_pct": -24.8,
+   "market_cap_usd_now": 1420000000,
+   "lead_asset": "Onvuzosiran",
+   "stage": "Phase 3",
+   "indication": "Hereditary angioedema",
+   "modality": "siRNA",
+   "key_backers": "AbbVie (up to $100M placement), OrbiMed",
+   "lockup_expiry": null,
+   "source_url": "https://www.iposcoop.com/?p=39384",
+   "lead_uw": [
+    "J.P. Morgan",
+    "Morgan Stanley",
+    "TD Cowen",
+    "UBS Investment Bank"
+   ],
+   "other_uw": [
+    "LifeSci Capital"
+   ],
+   "investors": [
+    {
+     "name": "AbbVie Inc.",
+     "role": "concurrent private placement",
+     "detail": "up to $100M at $17 IPO price (~4.9% post-offering)"
+    }
+   ],
+   "part_summary": "AbbVie concurrent private placement of up to $100M at IPO price, ~4.9% stake; cover lists JPM, MS, TD Cowen, UBS, LifeSci (roles not labeled).",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/1802369/000119312526403094/d903461d424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-09-24",
+    "cik": "1802369",
+    "url": "https://www.sec.gov/Archives/edgar/data/1802369/000119312526403094/d903461d424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1802369&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Phase 3 STOP-HAE topline data for onvuzosiran expected by end of 2027",
+    "when": "2027-H2",
+    "cite": "Prospectus Summary",
+    "quote": "STOP-HAE enrollment is ongoing, with topline data expected by the end of 2027.",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.iposcoop.com/?p=39384",
+    "https://www.sec.gov/Archives/edgar/data/1802369/000119312526403094/d903461d424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/1802369/000119312526403094/d903461d424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "ADX-626 Phase 2a/b secondary stroke prevention start",
+     "when": "2027",
+     "when_sort": "2027-06",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Hepatic-targeted programs",
+     "quote": "plan to initiate a Phase 2a/b clinical trial in secondary stroke prevention in 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1802369/000119312526403094/d903461d424b4.htm#:~:text=plan%20to%20initiate%20a%20Phase%202a%2Fb%20clinical%20trial%20in",
+     "page_shown": null
+    },
+    {
+     "text": "Agazisiran initial IgAN, C3G, PNH data",
+     "when": "mid-2H27",
+     "when_sort": "2027-08",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Hepatic-targeted programs",
+     "quote": "initial data in IgAN, C3G and PNH expected in mid- to second half of 2027",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/1802369/000119312526403094/d903461d424b4.htm#:~:text=initial%20data%20in%20IgAN%2C%20C3G%20and%20PNH%20expected%20in",
+     "page_shown": null
+    },
+    {
+     "text": "Onvuzosiran Phase 3 STOP-HAE topline data",
+     "when": "by end of 2027",
+     "when_sort": "2027-12",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Hepatic-targeted programs",
+     "quote": "STOP-HAE enrollment is ongoing, with topline data expected by the end of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1802369/000119312526403094/d903461d424b4.htm#:~:text=STOP%2DHAE%20enrollment%20is%20ongoing%2C%20with%20topline%20data%20expected%20by",
+     "page_shown": null
+    },
+    {
+     "text": "ADX-626 Phase 2a 3-month PD data",
+     "when": "by end of 2027",
+     "when_sort": "2027-12",
+     "type": "data_readout",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Hepatic-targeted programs",
+     "quote": "Phase 2a 3-month PD data expected by the end of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1802369/000119312526403094/d903461d424b4.htm#:~:text=Phase%202a%203%2Dmonth%20PD%20data%20expected%20by%20the%20end",
+     "page_shown": null
+    },
+    {
+     "text": "Onvuzosiran potential NDA submission",
+     "when": "2028",
+     "when_sort": "2028-06",
+     "type": "regulatory_filing",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Hepatic-targeted programs",
+     "quote": "If STOP-HAE data are positive, we anticipate a potential New Drug Application (NDA) submission in 2028.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1802369/000119312526403094/d903461d424b4.htm#:~:text=If%20STOP%2DHAE%20data%20are%20positive%2C%20we%20anticipate%20a%20potential",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Electra Therapeutics",
+   "ticker": "ETRA",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-09-17",
+   "first_trade_date": "2026-09-18",
+   "offer_price": 15,
+   "shares": 23330000,
+   "gross_proceeds_usd": 349950000,
+   "latest_price": 8.11,
+   "return_since_ipo_pct": -45.9,
+   "market_cap_usd_now": 571810000,
+   "lead_asset": "Ipsoprubart",
+   "stage": "Phase 2/3",
+   "indication": "Secondary HLH; T/NK cell malignancies (Ph1)",
+   "modality": "Antibody",
+   "key_backers": "OrbiMed, Westlake Biopartners",
+   "lockup_expiry": null,
+   "source_url": "https://www.iposcoop.com/?p=39333",
+   "lead_uw": [
+    "Jefferies",
+    "TD Cowen",
+    "Evercore ISI",
+    "Cantor"
+   ],
+   "other_uw": [],
+   "investors": [
+    {
+     "name": "Electra Therapeutics LLC",
+     "role": "existing holder",
+     "detail": "38.2% pre-IPO holder"
+    },
+    {
+     "name": "OrbiMed",
+     "role": "existing holder",
+     "detail": "9.0% pre-IPO holder"
+    },
+    {
+     "name": "Westlake BioPartners Fund I",
+     "role": "existing holder",
+     "detail": "7.1% pre-IPO holder"
+    },
+    {
+     "name": "Redmile Biopharma Investments II",
+     "role": "existing holder",
+     "detail": "7.1% pre-IPO holder"
+    },
+    {
+     "name": "Aventis Inc.",
+     "role": "existing holder",
+     "detail": "6.2% pre-IPO holder"
+    },
+    {
+     "name": "LSP 7 Cooperatief U.A.",
+     "role": "existing holder",
+     "detail": "6.2% pre-IPO holder"
+    },
+    {
+     "name": "New Leaf Ventures",
+     "role": "existing holder",
+     "detail": "4.4% pre-IPO holder"
+    }
+   ],
+   "part_summary": "Upsized $350M IPO at $15 led by Jefferies, TD Cowen, Evercore, Cantor; OrbiMed, Westlake, Redmile, Aventis, LSP are pre-IPO holders. No cornerstone found.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/2088082/000119312526395670/d61940d424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-09-17",
+    "cik": "2088082",
+    "url": "https://www.sec.gov/Archives/edgar/data/2088082/000119312526395670/d61940d424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2088082&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Ipsoprubart registrational program enrollment completion expected 2H27",
+    "when": "2027-H2",
+    "cite": "p. 1",
+    "quote": "We expect to complete enrollment in our registrational program in the second half of 2027.",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.iposcoop.com/?p=39333",
+    "https://www.sec.gov/Archives/edgar/data/2088082/000119312526395670/d61940d424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/2088082/000119312526395670/d61940d424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "ELA822 healthy volunteer Phase 1 data",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": false,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "with data expected in the first half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2088082/000119312526395670/d61940d424b4.htm#:~:text=with%20data%20expected%20in%20the%20first%20half%20of%202027",
+     "page_shown": null
+    },
+    {
+     "text": "ELA822 Phase 1/2 patient trial start",
+     "when": "mid-2027",
+     "when_sort": "2027-06",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "expected in the middle of 2027, subject to regulatory approval",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2088082/000119312526395670/d61940d424b4.htm#:~:text=expected%20in%20the%20middle%20of%202027%2C%20subject%20to%20regulatory",
+     "page_shown": null
+    },
+    {
+     "text": "Ipsoprubart sHLH registrational program enrollment complete",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "other",
+     "value_inflecting": false,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "We expect to complete enrollment in our registrational program in the second half of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2088082/000119312526395670/d61940d424b4.htm#:~:text=We%20expect%20to%20complete%20enrollment%20in%20our%20registrational%20program",
+     "page_shown": null
+    },
+    {
+     "text": "Ipsoprubart T/NK cell malignancies initial Phase 1 data",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "initial data expected in the second half of 2027",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/2088082/000119312526395670/d61940d424b4.htm#:~:text=initial%20data%20expected%20in%20the%20second%20half%20of%202027",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Vogenx",
+   "ticker": "VOGX",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-08-11",
+   "first_trade_date": "2026-08-12",
+   "offer_price": 13,
+   "shares": 6300000,
+   "gross_proceeds_usd": 81000000,
+   "latest_price": 11.87,
+   "return_since_ipo_pct": -8.7,
+   "market_cap_usd_now": 259220000,
+   "lead_asset": "Mizagliflozin (licensed from Kissei)",
+   "stage": "Phase 2b",
+   "indication": "Post-bariatric hypoglycemia",
+   "modality": "Small molecule (oral minimally absorbed SGLT1 inhibitor)",
+   "key_backers": null,
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/121063/metabolic-disorders-biotech-vogenx-prices-ipo-at-13-the-high-end",
+   "lead_uw": [
+    "Jones (sole book-running manager, as printed)"
+   ],
+   "other_uw": [],
+   "investors": [],
+   "part_summary": "Small deal with a sole book-runner; no anchor investors found in the reviewed portion of S-1/A No. 2 (424B4 not located).",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/0001903784/000118518526003353/vogenxs1a2080126.htm"
+   ],
+   "filing": {
+    "type": "S-1/A",
+    "date": "2026-08-10",
+    "cik": "1903784",
+    "url": "https://www.sec.gov/Archives/edgar/data/0001903784/000118518526003353/vogenxs1a2080126.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1903784&type=S-1/A&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Begin screening for mizagliflozin Phase 2b in post-bariatric hypoglycemia in 2026",
+    "when": "2026",
+    "cite": "Prospectus Summary",
+    "quote": "We expect to begin screening patients for this study in 2026.",
+    "form": "S-1/A"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/121063/metabolic-disorders-biotech-vogenx-prices-ipo-at-13-the-high-end",
+    "https://www.sec.gov/Archives/edgar/data/0001903784/000118518526003353/vogenxs1a2080126.htm",
+    "https://www.sec.gov/Archives/edgar/data/0001903784/000118518526003353/vogenxs1a2080126.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "Mizagliflozin Phase 2b EMERGE (PBH) start-up/screening",
+     "when": "2026",
+     "when_sort": "2026-12",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "We have begun study startup activities for our Phase 2b EMERGE study for the PBH program",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001903784/000118518526003353/vogenxs1a2080126.htm#:~:text=We%20have%20begun%20study%20startup%20activities%20for%20our%20Phase",
+     "page_shown": null
+    },
+    {
+     "text": "Gastroparesis Phase 2 proof-of-concept trial start",
+     "when": "2027",
+     "when_sort": "2027-06",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "We expect to initiate this study in 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001903784/000118518526003353/vogenxs1a2080126.htm#:~:text=We%20expect%20to%20initiate%20this%20study%20in%202027.",
+     "page_shown": null
+    },
+    {
+     "text": "GIP-dependent Cushing's Syndrome IND submission",
+     "when": "2027",
+     "when_sort": "2027-06",
+     "type": "ind_cta",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "Subject to additional funding, we anticipate submitting an IND to the FDA in 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001903784/000118518526003353/vogenxs1a2080126.htm#:~:text=Subject%20to%20additional%20funding%2C%20we%20anticipate%20submitting%20an%20IND",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "BlossomHill Therapeutics",
+   "ticker": "BLSM",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-08-06",
+   "first_trade_date": "2026-08-07",
+   "offer_price": 16,
+   "shares": 9375000,
+   "gross_proceeds_usd": 150000000,
+   "latest_price": 14.51,
+   "return_since_ipo_pct": -9.3,
+   "market_cap_usd_now": 437040000,
+   "lead_asset": null,
+   "stage": "Phase 2-ready",
+   "indication": "Lung cancer",
+   "modality": "Small molecule (oncology)",
+   "key_backers": null,
+   "lockup_expiry": null,
+   "source_url": "https://www.iposcoop.com/the-ipo-buzz-biotechs-blossomhill-latigo-upsize-ipos-raise-495-6-million-total/",
+   "lead_uw": [
+    "J.P. Morgan",
+    "Leerink Partners",
+    "Guggenheim Securities"
+   ],
+   "other_uw": [
+    "LifeSci Capital",
+    "H.C. Wainwright & Co."
+   ],
+   "investors": [
+    {
+     "name": "Cormorant Asset Management",
+     "role": "existing holder",
+     "detail": "5%+ holder; 1,134,360 Series B shares"
+    },
+    {
+     "name": "OrbiMed",
+     "role": "existing holder",
+     "detail": "5%+ holder; 623,898 Series B shares (OrbiMed Private Investments VIII)"
+    },
+    {
+     "name": "Vivo Capital",
+     "role": "existing holder",
+     "detail": "5%+ holder"
+    },
+    {
+     "name": "Janus Henderson Investors",
+     "role": "existing holder",
+     "detail": "5%+ holder"
+    }
+   ],
+   "part_summary": "No cornerstone found; backed by 5%+ holders Cormorant, OrbiMed, Vivo, Janus Henderson. Lead/other split inferred from cover order.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/0001839970/000119312526340215/d98958d424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-08-06",
+    "cik": "1839970",
+    "url": "https://www.sec.gov/Archives/edgar/data/0001839970/000119312526340215/d98958d424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1839970&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "BH-30643 end-of-Phase 1 FDA meeting on recommended Phase 2 dose in 4Q 2026",
+    "when": "2026-Q4",
+    "cite": "Prospectus Summary",
+    "quote": "seek an end-of-Phase 1 meeting with the FDA regarding the recommended Phase 2 dose",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.iposcoop.com/the-ipo-buzz-biotechs-blossomhill-latigo-upsize-ipos-raise-495-6-million-total/",
+    "https://www.sec.gov/Archives/edgar/data/0001839970/000119312526340215/d98958d424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/0001839970/000119312526340215/d98958d424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "BH-30643 end-of-Phase 1 FDA meeting",
+     "when": "Q4 2026",
+     "when_sort": "2026-11",
+     "type": "other",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "in the fourth quarter of 2026",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001839970/000119312526340215/d98958d424b4.htm#:~:text=in%20the%20fourth%20quarter%20of%202026",
+     "page_shown": null
+    },
+    {
+     "text": "BH-501284 IND submission",
+     "when": "Q1 2027",
+     "when_sort": "2027-02",
+     "type": "ind_cta",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "plan to submit an IND in the first quarter of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001839970/000119312526340215/d98958d424b4.htm#:~:text=plan%20to%20submit%20an%20IND%20in%20the%20first%20quarter",
+     "page_shown": null
+    },
+    {
+     "text": "BH-30643 first patient dosed, pivotal Phase 2",
+     "when": "Q1 2027",
+     "when_sort": "2027-02",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Pipeline, BH-30643",
+     "quote": "We expect to dose the first patient in our anticipated pivotal Phase 2 trial in the first quarter of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001839970/000119312526340215/d98958d424b4.htm#:~:text=We%20expect%20to%20dose%20the%20first%20patient%20in%20our",
+     "page_shown": null
+    },
+    {
+     "text": "BH-30236 updated Phase 1 safety/efficacy data",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "We expect to report updated safety and efficacy data from the BH-30236 Phase 1 trial in the first half of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001839970/000119312526340215/d98958d424b4.htm#:~:text=We%20expect%20to%20report%20updated%20safety%20and%20efficacy%20data",
+     "page_shown": null
+    },
+    {
+     "text": "BH-30643 Phase 1 durability data, C797S population",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Pipeline, BH-30643",
+     "quote": "additional Phase 1 data on durability of response in the C797S population in the first half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001839970/000119312526340215/d98958d424b4.htm#:~:text=additional%20Phase%201%20data%20on%20durability%20of%20response%20in",
+     "page_shown": null
+    },
+    {
+     "text": "BH-30643 Phase 1 chemo combination cohort data",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Pipeline, BH-30643",
+     "quote": "the initial Phase 1 data on the chemotherapy combination cohort in the second half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0001839970/000119312526340215/d98958d424b4.htm#:~:text=the%20initial%20Phase%201%20data%20on%20the%20chemotherapy%20combination",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Latigo Biotherapeutics",
+   "ticker": "LTGO",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-08-06",
+   "first_trade_date": "2026-08-07",
+   "offer_price": 18,
+   "shares": 19200000,
+   "gross_proceeds_usd": 345600000,
+   "latest_price": 13.0,
+   "return_since_ipo_pct": -27.8,
+   "market_cap_usd_now": 924880000,
+   "lead_asset": null,
+   "stage": "Phase 3-ready",
+   "indication": "Non-opioid pain relief",
+   "modality": "Small molecule (ion channel)",
+   "key_backers": null,
+   "lockup_expiry": null,
+   "source_url": "https://www.iposcoop.com/the-ipo-buzz-biotechs-blossomhill-latigo-upsize-ipos-raise-495-6-million-total/",
+   "lead_uw": [
+    "Goldman Sachs",
+    "Jefferies",
+    "Leerink Partners",
+    "Guggenheim Securities"
+   ],
+   "other_uw": [],
+   "investors": [
+    {
+     "name": "Westlake BioPartners",
+     "role": "existing holder",
+     "detail": "29.9% pre-IPO holder"
+    },
+    {
+     "name": "Foresite Capital",
+     "role": "existing holder",
+     "detail": "20.5% pre-IPO holder"
+    },
+    {
+     "name": "5AM Ventures",
+     "role": "existing holder",
+     "detail": "16.6% pre-IPO holder"
+    },
+    {
+     "name": "Blue Owl Healthcare",
+     "role": "existing holder",
+     "detail": "7.1% pre-IPO holder"
+    },
+    {
+     "name": "Deep Track Biotechnology Master Fund",
+     "role": "existing holder",
+     "detail": "5.7% pre-IPO holder"
+    }
+   ],
+   "part_summary": "Goldman, Jefferies, Leerink, Guggenheim led; insiders Westlake (29.9%), Foresite, 5AM hold most. No cornerstone found.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/2056611/000119312526340329/d38775d424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-08-06",
+    "cik": "2056611",
+    "url": "https://www.sec.gov/Archives/edgar/data/2056611/000119312526340329/d38775d424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2056611&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "LTG-001 (oral Nav1.8, acute pain) Phase 3 topline results expected 2H27",
+    "when": "2027-H2",
+    "cite": "Prospectus Summary - Overview",
+    "quote": "topline results expected in the second half of 2027",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.iposcoop.com/the-ipo-buzz-biotechs-blossomhill-latigo-upsize-ipos-raise-495-6-million-total/",
+    "https://www.sec.gov/Archives/edgar/data/2056611/000119312526340329/d38775d424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/2056611/000119312526340329/d38775d424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "LTG-001 Phase 3 bunionectomy and open-label safety trials start",
+     "when": "2H26",
+     "when_sort": "2026-10",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Lead Program: LTG-001",
+     "quote": "We plan to initiate a placebo-controlled Phase 3 trial in participants undergoing bunionectomy",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2056611/000119312526340329/d38775d424b4.htm#:~:text=We%20plan%20to%20initiate%20a%20placebo%2Dcontrolled%20Phase%203%20trial",
+     "page_shown": null
+    },
+    {
+     "text": "LTG-001 Phase 3 topline results (acute pain)",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Lead Program: LTG-001",
+     "quote": "with topline results expected in the second half of 2027",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/2056611/000119312526340329/d38775d424b4.htm#:~:text=with%20topline%20results%20expected%20in%20the%20second%20half%20of",
+     "page_shown": null
+    },
+    {
+     "text": "LTG-321 Phase 2 knee OA proof-of-concept topline",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "We expect to report topline results in the second half of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2056611/000119312526340329/d38775d424b4.htm#:~:text=We%20expect%20to%20report%20topline%20results%20in%20the%20second",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Braveheart Bio",
+   "ticker": "BRVE",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-08-05",
+   "first_trade_date": "2026-08-06",
+   "offer_price": 18,
+   "shares": 21200000,
+   "gross_proceeds_usd": 382500000,
+   "latest_price": 20.39,
+   "return_since_ipo_pct": 13.3,
+   "market_cap_usd_now": 1890000000,
+   "lead_asset": "BHB-1893 (licensed from Hengrui)",
+   "stage": "Phase 3 (China, by licensor); global trials planned late 2026/early 2027",
+   "indication": "Hypertrophic cardiomyopathy",
+   "modality": "Small molecule (cardiac myosin inhibitor)",
+   "key_backers": "Forbion (per company press release)",
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/120936/cardiovascular-diseases-biotech-braveheart-bio-prices-upsized-ipo-at-18",
+   "lead_uw": [
+    "Goldman Sachs & Co. LLC",
+    "Jefferies",
+    "TD Cowen",
+    "Stifel",
+    "Cantor"
+   ],
+   "other_uw": [],
+   "investors": [
+    {
+     "name": "Forbion",
+     "role": "existing holder",
+     "detail": "backer per company press release"
+    }
+   ],
+   "part_summary": "Upsized $382.5M IPO at $18 priced 2026-08-05; all shares primary; Forbion a named backer.",
+   "part_sources": [
+    "https://forbion.com/news-insights/news/braveheart-bio-announces-pricing-of-upsized-initial-public-offering/"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-08-05",
+    "cik": "2131524",
+    "url": "https://www.sec.gov/Archives/edgar/data/2131524/000162828026054354/braveheartbioinc-sx1a2.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2131524&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Initiate global Phase 3 LIONHEART-HCM (oHCM) of BHB-1893 in 2H26",
+    "when": "2026-H2",
+    "cite": "Prospectus Summary - Overview",
+    "quote": "We expect to initiate LIONHEART-HCM, our global Phase 3 trial in oHCM, in the second half of 2026",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/120936/cardiovascular-diseases-biotech-braveheart-bio-prices-upsized-ipo-at-18",
+    "https://www.sec.gov/Archives/edgar/data/2131524/000162828026054354/braveheartbioinc-sx1a2.htm",
+    "https://forbion.com/news-insights/news/braveheart-bio-announces-pricing-of-upsized-initial-public-offering/"
+   ],
+   "catalysts": [
+    {
+     "text": "LIONHEART-HCM global Phase 3 (oHCM) initiation",
+     "when": "2H26",
+     "when_sort": "2026-10",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "We expect to initiate LIONHEART-HCM, our global Phase 3 trial in oHCM, in the second half of 2026",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2131524/000162828026054354/braveheartbioinc-sx1a2.htm#:~:text=We%20expect%20to%20initiate%20LIONHEART%2DHCM%2C%20our%20global%20Phase%203",
+     "page_shown": null
+    },
+    {
+     "text": "NOBLEHEART-HCM global Phase 3 (nHCM) initiation",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "NOBLEHEART-HCM, our global Phase 3 trial in nHCM in the first half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2131524/000162828026054354/braveheartbioinc-sx1a2.htm#:~:text=NOBLEHEART%2DHCM%2C%20our%20global%20Phase%203%20trial%20in%20nHCM%20in",
+     "page_shown": null
+    },
+    {
+     "text": "LIONHEART-HCM interim analysis topline results",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Solution",
+     "quote": "expect topline results from the interim analysis in the second half of 2027",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/2131524/000162828026054354/braveheartbioinc-sx1a2.htm#:~:text=expect%20topline%20results%20from%20the%20interim%20analysis%20in%20the",
+     "page_shown": null
+    },
+    {
+     "text": "Hengrui Phase 2 HFpEF (Greater China) data readouts",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "with expected data readouts in the second half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2131524/000162828026054354/braveheartbioinc-sx1a2.htm#:~:text=with%20expected%20data%20readouts%20in%20the%20second%20half%20of",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Attovia Therapeutics",
+   "ticker": "ATTO",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-08-04",
+   "first_trade_date": "2026-08-05",
+   "offer_price": 17,
+   "shares": 17000000,
+   "gross_proceeds_usd": 289000000,
+   "latest_price": 15.1,
+   "return_since_ipo_pct": -11.2,
+   "market_cap_usd_now": 693440000,
+   "lead_asset": "ATTO-1310 (anti-IL-31)",
+   "stage": "Phase 1",
+   "indication": "Atopic dermatitis, chronic pruritus, IBD",
+   "modality": "Biologic (ATTOBODY biparatopic nanobody)",
+   "key_backers": null,
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/120905/immune-focused-biotech-attovia-therapeutics-prices-previously-upsized-ipo",
+   "lead_uw": [
+    "Morgan Stanley",
+    "Leerink Partners",
+    "Citigroup",
+    "RBC Capital Markets"
+   ],
+   "other_uw": [
+    "LifeSci Capital"
+   ],
+   "investors": [
+    {
+     "name": "Deep Track Capital",
+     "role": "existing holder",
+     "detail": "named 5%+ holder; % not extracted"
+    },
+    {
+     "name": "Frazier Life Sciences",
+     "role": "existing holder",
+     "detail": "named 5%+ holder; % not extracted"
+    },
+    {
+     "name": "Goldman Sachs Alternatives",
+     "role": "existing holder",
+     "detail": "named 5%+ holder; % not extracted"
+    },
+    {
+     "name": "venBio",
+     "role": "existing holder",
+     "detail": "named 5%+ holder; % not extracted"
+    }
+   ],
+   "part_summary": "No cornerstone found; 5%+ holders Deep Track, Frazier, Goldman Sachs Alternatives, venBio.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/0002058707/000119312526334997/d40469d424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-08-04",
+    "cik": "2058707",
+    "url": "https://www.sec.gov/Archives/edgar/data/0002058707/000119312526334997/d40469d424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2058707&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Initiate ATTO-1310 Phase 2 trial by 1H 2027",
+    "when": "2027-H1",
+    "cite": "Business - ATTO-1310 for Chronic Pruritic Diseases",
+    "quote": "We expect to initiate a Phase 2 clinical trial by the first half of 2027.",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/120905/immune-focused-biotech-attovia-therapeutics-prices-previously-upsized-ipo",
+    "https://www.sec.gov/Archives/edgar/data/0002058707/000119312526334997/d40469d424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/0002058707/000119312526334997/d40469d424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "ATTO-1310 Phase 2 trial initiation",
+     "when": "by 1H27",
+     "when_sort": "2027-03",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: ATTO-1310",
+     "quote": "We expect to initiate a Phase 2 clinical trial by the first half of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002058707/000119312526334997/d40469d424b4.htm#:~:text=We%20expect%20to%20initiate%20a%20Phase%202%20clinical%20trial",
+     "page_shown": null
+    },
+    {
+     "text": "ATTO-2306 Phase 1 start",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: ATTO-2306",
+     "quote": "We anticipate commencing a Phase 1 clinical trial for ATTO-2306 in the first half of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002058707/000119312526334997/d40469d424b4.htm#:~:text=We%20anticipate%20commencing%20a%20Phase%201%20clinical%20trial%20for",
+     "page_shown": null
+    },
+    {
+     "text": "ATTO-1091 Phase 1 start (subject to IND clearance)",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: ATTO-1091",
+     "quote": "We plan to initiate a Phase 1 clinical trial for ATTO-1091 in the first half of 2027, subject to IND clearance.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/0002058707/000119312526334997/d40469d424b4.htm#:~:text=We%20plan%20to%20initiate%20a%20Phase%201%20clinical%20trial",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Apnimed",
+   "ticker": "APMD",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-07-30",
+   "first_trade_date": "2026-07-31",
+   "offer_price": 16,
+   "shares": 12000000,
+   "gross_proceeds_usd": 192000000,
+   "latest_price": 16.09,
+   "return_since_ipo_pct": 0.6,
+   "market_cap_usd_now": 682740000,
+   "lead_asset": "AD109 (Oxnimbi)",
+   "stage": "NDA submitted Apr 2026 (Phase 3 complete)",
+   "indication": "Obstructive sleep apnea",
+   "modality": "Small molecule (oral fixed-dose combination)",
+   "key_backers": null,
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/120807/Sleep-apnea-pill-developer-Apnimed-prices-upsized-IPO-at-$16-the-high-end-o",
+   "lead_uw": [
+    "BofA Securities",
+    "Evercore ISI",
+    "Cantor Fitzgerald"
+   ],
+   "other_uw": [
+    "LifeSci Capital"
+   ],
+   "investors": [],
+   "part_summary": "$192M IPO at $16 (12M shares) led by BofA, Evercore ISI, Cantor; LifeSci co-manager. Holders/cornerstones not retrieved from filing.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/1745648/000119312526328422/apmd_424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-07-30",
+    "cik": "1745648",
+    "url": "https://www.sec.gov/Archives/edgar/data/1745648/000119312526328422/apmd_424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1745648&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "FDA PDUFA goal date Feb 28, 2027 for Oxnimbi (AD109) NDA",
+    "when": "2027-02",
+    "cite": "Prospectus Summary - Overview / Recent Developments (pp. 1-8)",
+    "quote": "The FDA assigned a PDUFA goal action date of February 28, 2027.",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/120807/Sleep-apnea-pill-developer-Apnimed-prices-upsized-IPO-at-$16-the-high-end-o",
+    "https://www.sec.gov/Archives/edgar/data/1745648/000119312526328422/apmd_424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/1745648/000119312526328422/apmd_424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "Oxnimbi (AD109) NDA PDUFA goal date",
+     "when": "Feb 28, 2027",
+     "when_sort": "2027-02",
+     "type": "approval_decision",
+     "value_inflecting": true,
+     "page": "2",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Overview",
+     "quote": "the FDA has issued a Prescription Drug User Fee Act (PDUFA) goal date of February 28, 2027",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/1745648/000119312526328422/apmd_424b4.htm#:~:text=the%20FDA%20has%20issued%20a%20Prescription%20Drug%20User%20Fee",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Scribe Therapeutics",
+   "ticker": "SCTX",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-07-23",
+   "first_trade_date": "2026-07-24",
+   "offer_price": 15,
+   "shares": 8580000,
+   "gross_proceeds_usd": 128700000,
+   "latest_price": 12.07,
+   "return_since_ipo_pct": -19.5,
+   "market_cap_usd_now": 306690000,
+   "lead_asset": "STX-1150",
+   "stage": "Phase 1",
+   "indication": "High LDL cholesterol / ASCVD",
+   "modality": "Gene editing (CRISPR-CasX epigenetic silencing)",
+   "key_backers": "Eli Lilly (10.9% stake incl. IPO), Sanofi ($7.5M placement)",
+   "lockup_expiry": null,
+   "source_url": "https://www.iposcoop.com/?p=38947",
+   "lead_uw": [
+    "Leerink Partners",
+    "Goldman Sachs & Co. LLC",
+    "Guggenheim Securities",
+    "Wells Fargo Securities"
+   ],
+   "other_uw": [],
+   "investors": [
+    {
+     "name": "Sanofi",
+     "role": "concurrent private placement",
+     "detail": "500,000 shares at $15, ~$7.5M"
+    },
+    {
+     "name": "Eli Lilly",
+     "role": "strategic",
+     "detail": "10.9% stake incl. IPO (per task list; not verified)"
+    }
+   ],
+   "part_summary": "Upsized IPO priced 2026-07-23 at $15; Sanofi bought $7.5M in concurrent placement.",
+   "part_sources": [
+    "https://www.biospace.com/press-releases/scribe-therapeutics-announces-pricing-of-upsized-initial-public-offering"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-07-23",
+    "cik": "1853921",
+    "url": "https://www.sec.gov/Archives/edgar/data/1853921/000119312526316503/d21355d424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1853921&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Initial STX-1150 first-in-human data (Australia; safety, LDL-C) expected 1H27",
+    "when": "2027-H1",
+    "cite": "Prospectus Summary",
+    "quote": "in the first half of 2027",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.iposcoop.com/?p=38947",
+    "https://www.sec.gov/Archives/edgar/data/1853921/000119312526316503/d21355d424b4.htm",
+    "https://www.biospace.com/press-releases/scribe-therapeutics-announces-pricing-of-upsized-initial-public-offering"
+   ],
+   "catalysts": [
+    {
+     "text": "STX-1150 first-in-human data (safety, LDL-C)",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "We anticipate reporting initial data from this trial, including safety, tolerability, and LDL-C-lowering activity",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/1853921/000119312526316503/d21355d424b4.htm#:~:text=We%20anticipate%20reporting%20initial%20data%20from%20this%20trial%2C%20including",
+     "page_shown": null
+    },
+    {
+     "text": "Phase 1 start for STX-1200 (LPA) or STX-1400 (APOC3)",
+     "when": "as early as 2027",
+     "when_sort": "2027-06",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "enable the initiation of a Phase 1 clinical trial for one of these programs as early as 2027 and one in 2028",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1853921/000119312526316503/d21355d424b4.htm#:~:text=enable%20the%20initiation%20of%20a%20Phase%201%20clinical%20trial",
+     "page_shown": null
+    },
+    {
+     "text": "Phase 1 start for second of STX-1200/STX-1400",
+     "when": "2028",
+     "when_sort": "2028-06",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Overview",
+     "quote": "enable the initiation of a Phase 1 clinical trial for one of these programs as early as 2027 and one in 2028",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1853921/000119312526316503/d21355d424b4.htm#:~:text=enable%20the%20initiation%20of%20a%20Phase%201%20clinical%20trial",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Kardigan",
+   "ticker": "KARD",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-06-17",
+   "first_trade_date": "2026-06-18",
+   "offer_price": 16,
+   "shares": 25000000,
+   "gross_proceeds_usd": 400000000,
+   "latest_price": 11.54,
+   "return_since_ipo_pct": -27.9,
+   "market_cap_usd_now": 1320000000,
+   "lead_asset": "Danicamtiv",
+   "stage": "Phase 2b/3",
+   "indication": "Genetic dilated cardiomyopathy (MYH7/TTN)",
+   "modality": "Small molecule (oral cardiac myosin activator)",
+   "key_backers": null,
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/119922/cardiovascular-diseases-biotech-kardigan-prices-upsized-ipo-at-16-the-high",
+   "lead_uw": [
+    "J.P. Morgan",
+    "Jefferies",
+    "Leerink Partners",
+    "TD Cowen"
+   ],
+   "other_uw": [],
+   "investors": [],
+   "part_summary": "Underwriters JPM, Jefferies, Leerink, TD Cowen; no cornerstone or holder details extracted from readable portion.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/2123613/000119312526276096/d107928d424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-06-17",
+    "cik": "2123613",
+    "url": "https://www.sec.gov/Archives/edgar/data/2123613/000119312526276096/d107928d424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123613&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Danicamtiv KINSHIP-DCM Phase 2b topline data in 1H 2027",
+    "when": "2027-H1",
+    "cite": "Business - KINSHIP-DCM",
+    "quote": "We anticipate sharing topline data from the Phase 2b portion of KINSHIP-DCM in the first half of 2027.",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/119922/cardiovascular-diseases-biotech-kardigan-prices-upsized-ipo-at-16-the-high",
+    "https://www.sec.gov/Archives/edgar/data/2123613/000119312526276096/d107928d424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/2123613/000119312526276096/d107928d424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "Danicamtiv KINSHIP-DCM Phase 2b topline data",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Business: Clinical development plan (danicamtiv)",
+     "quote": "We anticipate sharing topline data from the Phase 2b portion of the KINSHIP-DCM in the first half of 2027.",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/2123613/000119312526276096/d107928d424b4.htm#:~:text=We%20anticipate%20sharing%20topline%20data%20from%20the%20Phase%202b",
+     "page_shown": null
+    },
+    {
+     "text": "Ataciguat KATALYST-AV 24-week data",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Business: Clinical development plan (ataciguat)",
+     "quote": "We anticipate sharing 24-week data in the first half of 2027 and 48-week data in the second half of 2027 from KATALYST-AV.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2123613/000119312526276096/d107928d424b4.htm#:~:text=We%20anticipate%20sharing%2024%2Dweek%20data%20in%20the%20first%20half",
+     "page_shown": null
+    },
+    {
+     "text": "Tonlamarsen KARDINAL-ASH Phase 2b topline data",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Business: Tonlamarsen Overview",
+     "quote": "We anticipate sharing topline data from the Phase 2b portion of KARDINAL-ASH in the first half of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2123613/000119312526276096/d107928d424b4.htm#:~:text=We%20anticipate%20sharing%20topline%20data%20from%20the%20Phase%202b",
+     "page_shown": null
+    },
+    {
+     "text": "Ataciguat KATALYST-AV 48-week data",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Business: Clinical development plan (ataciguat)",
+     "quote": "We anticipate sharing 24-week data in the first half of 2027 and 48-week data in the second half of 2027 from KATALYST-AV.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2123613/000119312526276096/d107928d424b4.htm#:~:text=We%20anticipate%20sharing%2024%2Dweek%20data%20in%20the%20first%20half",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Parabilis Medicines",
+   "ticker": "PBLS",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-06-09",
+   "first_trade_date": "2026-06-10",
+   "offer_price": 20,
+   "shares": 33500000,
+   "gross_proceeds_usd": 670000000,
+   "latest_price": 27.44,
+   "return_since_ipo_pct": 37.2,
+   "market_cap_usd_now": 3500000000,
+   "lead_asset": "Zolucatetide",
+   "stage": "Clinical; Phase 3 planned 1H27",
+   "indication": "Desmoid tumors",
+   "modality": "Stabilized helical peptide (Helicon)",
+   "key_backers": "RA Capital",
+   "lockup_expiry": null,
+   "source_url": "https://www.iposcoop.com/?p=38623",
+   "lead_uw": [
+    "Leerink Partners",
+    "BofA Securities",
+    "Evercore ISI",
+    "Guggenheim Securities"
+   ],
+   "other_uw": [
+    "LifeSci Capital"
+   ],
+   "investors": [
+    {
+     "name": "Regeneron",
+     "role": "concurrent private placement",
+     "detail": "~$75.0M (4,166,666 shares at 90% of IPO price), no underwriting fee"
+    },
+    {
+     "name": "FMR LLC (Fidelity)",
+     "role": "existing holder",
+     "detail": "11.27% pre-IPO holder"
+    },
+    {
+     "name": "RA Capital",
+     "role": "existing holder",
+     "detail": "9.97% pre-IPO holder"
+    },
+    {
+     "name": "ARCH Venture Fund XII",
+     "role": "existing holder",
+     "detail": "8.25% pre-IPO holder"
+    },
+    {
+     "name": "venBio",
+     "role": "existing holder",
+     "detail": "6.65% pre-IPO holder"
+    },
+    {
+     "name": "GV",
+     "role": "existing holder",
+     "detail": "6.22% pre-IPO holder"
+    },
+    {
+     "name": "Milky Way Investments Group",
+     "role": "existing holder",
+     "detail": "5.89% pre-IPO holder"
+    },
+    {
+     "name": "Cormorant",
+     "role": "existing holder",
+     "detail": "5.62% pre-IPO holder"
+    },
+    {
+     "name": "Nextech VII Oncology",
+     "role": "existing holder",
+     "detail": "5.36% pre-IPO holder"
+    }
+   ],
+   "part_summary": "$670M IPO at $20 led by Leerink, BofA, Evercore, Guggenheim; Regeneron $75M concurrent placement; Fidelity, RA, ARCH top holders.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/1657677/000119312526265983/pbls_424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-06-09",
+    "cik": "1657677",
+    "url": "https://www.sec.gov/Archives/edgar/data/1657677/000119312526265983/pbls_424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1657677&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Zolucatetide global registrational Phase 3 start in desmoid tumors planned 1H27",
+    "when": "2027-H1",
+    "cite": "p. 4 (inferred)",
+    "quote": "We plan to initiate a global registrational Phase 3 trial for zolucatetide in patients with desmoid tumors",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.iposcoop.com/?p=38623",
+    "https://www.sec.gov/Archives/edgar/data/1657677/000119312526265983/pbls_424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/1657677/000119312526265983/pbls_424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "Zolucatetide dedicated FAP cohort enrollment begins",
+     "when": "2H26",
+     "when_sort": "2026-10",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Familial Adenomatous Polyposis",
+     "quote": "planning to enroll a separate dedicated cohort of patients with FAP beginning in the second half of 2026",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1657677/000119312526265983/pbls_424b4.htm#:~:text=planning%20to%20enroll%20a%20separate%20dedicated%20cohort%20of%20patients",
+     "page_shown": null
+    },
+    {
+     "text": "Zolucatetide registrational Phase 3 start in desmoid tumors",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": "4",
+     "page_confidence": "estimated",
+     "section": "Prospectus Summary - Company Overview",
+     "quote": "a registrational Phase 3 trial for zolucatetide in patients with desmoid tumors in the first half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1657677/000119312526265983/pbls_424b4.htm#:~:text=a%20registrational%20Phase%203%20trial%20for%20zolucatetide%20in%20patients",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Odyssey Therapeutics",
+   "ticker": "ODTX",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-05-07",
+   "first_trade_date": "2026-05-08",
+   "offer_price": 18,
+   "shares": 15500000,
+   "gross_proceeds_usd": 279000000,
+   "latest_price": 16.96,
+   "return_since_ipo_pct": -5.8,
+   "market_cap_usd_now": 939060000,
+   "lead_asset": "RIPK2 / SLC15A4 inhibitors",
+   "stage": "Phase 2",
+   "indication": "Ulcerative colitis, IBD, lupus",
+   "modality": "Small molecule",
+   "key_backers": "TPG Life Sciences Innovations ($25M concurrent placement)",
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/118875/autoimmune-diseases-biotech-odyssey-therapeutics-prices-upsized-ipo-at-18",
+   "lead_uw": [
+    "J.P. Morgan",
+    "TD Cowen",
+    "Cantor"
+   ],
+   "other_uw": [
+    "Wedbush PacGrow",
+    "Oppenheimer & Co."
+   ],
+   "investors": [
+    {
+     "name": "TPG Life Sciences Innovations (affiliate)",
+     "role": "concurrent private placement",
+     "detail": "1,388,889 shares at $18, ~$25M"
+    }
+   ],
+   "part_summary": "Upsized IPO at $18 (May 2026) with $25M concurrent placement to a TPG affiliate.",
+   "part_sources": [
+    "https://www.cooley.com/news/coverage/2026/2026-05-07-odyssey-therapeutics-announces-$279-million-upsized-ipo-concurrent-$25-million-private-placement"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-05-07",
+    "cik": "1882782",
+    "url": "https://www.sec.gov/Archives/edgar/data/1882782/000119312526214819/odyssey__form_424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1882782&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "RIPK2 inhibitor OD-001 UC topline induction results expected 2H27",
+    "when": "2027-H2",
+    "cite": "Prospectus Summary",
+    "quote": "we expect to release topline induction results in the second half of 2027",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/118875/autoimmune-diseases-biotech-odyssey-therapeutics-prices-upsized-ipo-at-18",
+    "https://www.sec.gov/Archives/edgar/data/1882782/000119312526214819/odyssey__form_424b4.htm",
+    "https://www.cooley.com/news/coverage/2026/2026-05-07-odyssey-therapeutics-announces-$279-million-upsized-ipo-concurrent-$25-million-private-placement"
+   ],
+   "catalysts": [
+    {
+     "text": "OD-001 + vedolizumab Phase 2a combination trial start",
+     "when": "2H26",
+     "when_sort": "2026-10",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline - RIPK2",
+     "quote": "we expect to commence a randomized, double-blind phase 2a trial assessing OD-001 in combination with vedolizumab,",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1882782/000119312526214819/odyssey__form_424b4.htm#:~:text=we%20expect%20to%20commence%20a%20randomized%2C%20double%2Dblind%20phase%202a",
+     "page_shown": null
+    },
+    {
+     "text": "OD-001 Phase 2b monotherapy trial start",
+     "when": "2H26",
+     "when_sort": "2026-10",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline - RIPK2",
+     "quote": "we expect to initiate a double-blind, randomized and placebo-controlled phase 2b trial",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1882782/000119312526214819/odyssey__form_424b4.htm#:~:text=we%20expect%20to%20initiate%20a%20double%2Dblind%2C%20randomized%20and%20placebo%2Dcontrolled",
+     "page_shown": null
+    },
+    {
+     "text": "OD-002 (SLC15A4) CTA filing outside US",
+     "when": "2H26",
+     "when_sort": "2026-11",
+     "type": "ind_cta",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline - SLC15A4",
+     "quote": "we expect to file a CTA for this program outside of the United States in the second half of 2026",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1882782/000119312526214819/odyssey__form_424b4.htm#:~:text=we%20expect%20to%20file%20a%20CTA%20for%20this%20program",
+     "page_shown": null
+    },
+    {
+     "text": "OD-003 (TNFR2 agonist) IND-enabling activities complete",
+     "when": "1Q27",
+     "when_sort": "2027-02",
+     "type": "regulatory_filing",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Additional Programs",
+     "quote": "expected to complete in the first quarter of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1882782/000119312526214819/odyssey__form_424b4.htm#:~:text=expected%20to%20complete%20in%20the%20first%20quarter%20of%202027.",
+     "page_shown": null
+    },
+    {
+     "text": "OD-001 combination Phase 2a topline induction results",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline - RIPK2",
+     "quote": "we expect to release topline induction results in the second half of 2027",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/1882782/000119312526214819/odyssey__form_424b4.htm#:~:text=we%20expect%20to%20release%20topline%20induction%20results%20in%20the",
+     "page_shown": null
+    },
+    {
+     "text": "OD-001 Phase 2b monotherapy topline induction results",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline - RIPK2",
+     "quote": "with topline monotherapy induction results expected in the second half of 2027",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1882782/000119312526214819/odyssey__form_424b4.htm#:~:text=with%20topline%20monotherapy%20induction%20results%20expected%20in%20the%20second",
+     "page_shown": null
+    },
+    {
+     "text": "OD-002 phase 1/2a healthy participant results",
+     "when": "2H27",
+     "when_sort": "2027-09",
+     "type": "data_readout",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Pipeline - SLC15A4",
+     "quote": "We expect to announce results from the healthy participant portion of this trial in the second half of 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/1882782/000119312526214819/odyssey__form_424b4.htm#:~:text=We%20expect%20to%20announce%20results%20from%20the%20healthy%20participant",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Seaport Therapeutics",
+   "ticker": "SPTX",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-04-30",
+   "first_trade_date": "2026-05-01",
+   "offer_price": 18,
+   "shares": 14160000,
+   "gross_proceeds_usd": 254900000,
+   "latest_price": 18.05,
+   "return_since_ipo_pct": 0.3,
+   "market_cap_usd_now": 1120000000,
+   "lead_asset": "GlyphAllo",
+   "stage": "Phase 2b",
+   "indication": "Major depressive disorder (GAD for GlyphAgo)",
+   "modality": "Small molecule (lymphatic-targeting prodrug)",
+   "key_backers": "General Atlantic (indicated $50M interest)",
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/118718/neuropsychiatric-therapeutics-seaport-therapeutics-prices-upsized-ipo-at",
+   "lead_uw": [
+    "Goldman Sachs & Co. LLC",
+    "J.P. Morgan",
+    "Leerink Partners",
+    "Citigroup",
+    "Stifel"
+   ],
+   "other_uw": [],
+   "investors": [
+    {
+     "name": "General Atlantic",
+     "role": "cornerstone / indicated interest",
+     "detail": "up to $50M indicated interest; also 5%+ holder"
+    },
+    {
+     "name": "ARCH Venture Partners",
+     "role": "existing holder",
+     "detail": "named 5%+ holder"
+    },
+    {
+     "name": "Sofinnova Investments",
+     "role": "existing holder",
+     "detail": "named 5%+ holder"
+    },
+    {
+     "name": "Third Rock Ventures",
+     "role": "existing holder",
+     "detail": "named 5%+ holder"
+    },
+    {
+     "name": "PureTech",
+     "role": "strategic",
+     "detail": "founder; named 5%+ holder"
+    }
+   ],
+   "part_summary": "General Atlantic indicated up to $50M; ARCH, Sofinnova, Third Rock, PureTech are 5%+ holders.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/2042347/000119312526201758/d73463d424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-04-30",
+    "cik": "2042347",
+    "url": "https://www.sec.gov/Archives/edgar/data/2042347/000119312526201758/d73463d424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2042347&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "GlyphAllo Phase 2b BUOY-1 topline data expected 1H 2027",
+    "when": "2027-H1",
+    "cite": "Prospectus Summary",
+    "quote": "We expect topline data from the Phase 2b BUOY-1 trial in the first half of 2027.",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/118718/neuropsychiatric-therapeutics-seaport-therapeutics-prices-upsized-ipo-at",
+    "https://www.sec.gov/Archives/edgar/data/2042347/000119312526201758/d73463d424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/2042347/000119312526201758/d73463d424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "GlyphAllo Phase 2b BUOY-1 topline data",
+     "when": "1H27",
+     "when_sort": "2027-03",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "anticipate topline data in the first half of 2027",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/2042347/000119312526201758/d73463d424b4.htm#:~:text=anticipate%20topline%20data%20in%20the%20first%20half%20of%202027",
+     "page_shown": null
+    },
+    {
+     "text": "GlyphAgo Phase 2a proof-of-pharmacology topline data",
+     "when": "early 2028",
+     "when_sort": "2028-02",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "topline data expected in early 2028",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2042347/000119312526201758/d73463d424b4.htm#:~:text=topline%20data%20expected%20in%20early%202028",
+     "page_shown": null
+    },
+    {
+     "text": "GlyphAgo Phase 2b GAD topline data",
+     "when": "by end of 2028",
+     "when_sort": "2028-12",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary: Overview",
+     "quote": "topline data expected by the end of 2028",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2042347/000119312526201758/d73463d424b4.htm#:~:text=topline%20data%20expected%20by%20the%20end%20of%202028",
+     "page_shown": null
+    }
+   ]
+  },
+  {
+   "name": "Hemab Therapeutics",
+   "ticker": "COAG",
+   "exchange": "Nasdaq",
+   "pricing_date": "2026-04-30",
+   "first_trade_date": "2026-05-01",
+   "offer_price": 18,
+   "shares": 16800000,
+   "gross_proceeds_usd": 302000000,
+   "latest_price": 39.29,
+   "return_since_ipo_pct": 118.3,
+   "market_cap_usd_now": 1920000000,
+   "lead_asset": "Sutacimig (HMB-001)",
+   "stage": "Phase 2 complete, Phase 3-ready",
+   "indication": "Glanzmann thrombasthenia, Factor VII deficiency, VWD",
+   "modality": "Antibody",
+   "key_backers": "Sofinnova Partners (per portfolio news)",
+   "lockup_expiry": null,
+   "source_url": "https://www.renaissancecapital.com/IPO-Center/News/118707/hemab-therapeutics-prices-upsized-ipo-at-18-the-high-end-of-the-range",
+   "lead_uw": [
+    "Goldman Sachs",
+    "Jefferies",
+    "Evercore ISI"
+   ],
+   "other_uw": [
+    "Wedbush PacGrow"
+   ],
+   "investors": [
+    {
+     "name": "Deep Track Capital",
+     "role": "existing holder",
+     "detail": "5%+ holder; % not retrieved"
+    },
+    {
+     "name": "Novo Holdings A/S",
+     "role": "existing holder",
+     "detail": "5%+ holder; % not retrieved"
+    },
+    {
+     "name": "RA Capital Management",
+     "role": "existing holder",
+     "detail": "5%+ holder; % not retrieved"
+    },
+    {
+     "name": "Avoro Ventures",
+     "role": "existing holder",
+     "detail": "5%+ holder; % not retrieved"
+    },
+    {
+     "name": "HealthCap VIII",
+     "role": "existing holder",
+     "detail": "5%+ holder; % not retrieved"
+    },
+    {
+     "name": "Sofinnova Crossover II",
+     "role": "existing holder",
+     "detail": "5%+ holder; % not retrieved"
+    },
+    {
+     "name": "SMALLCAP World Fund",
+     "role": "existing holder",
+     "detail": "5%+ holder; % not retrieved"
+    }
+   ],
+   "part_summary": "16.75M-share IPO led by Goldman, Jefferies, Evercore; 5%+ holders Novo Holdings, RA, Deep Track, Avoro, Sofinnova. Cornerstone not verified.",
+   "part_sources": [
+    "https://www.sec.gov/Archives/edgar/data/2114044/000119312526201458/d50309d424b4.htm"
+   ],
+   "filing": {
+    "type": "424B4",
+    "date": "2026-04-30",
+    "cik": "2114044",
+    "url": "https://www.sec.gov/Archives/edgar/data/2114044/000119312526201458/d50309d424b4.htm",
+    "direct": true,
+    "edgar_list": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2114044&type=424B4&dateb=&owner=include&count=10",
+    "verified_loads": true
+   },
+   "catalyst": {
+    "text": "Sutacimig Phase 3 start in Glanzmann thrombasthenia expected 2H26",
+    "when": "2026-H2",
+    "cite": "Prospectus Summary - Overview",
+    "quote": "we expect to commence a Phase 3 clinical trial of sutacimig in Glanzmann thrombasthenia in the second half of 2026.",
+    "form": "424B4"
+   },
+   "record_sources": [
+    "https://www.renaissancecapital.com/IPO-Center/News/118707/hemab-therapeutics-prices-upsized-ipo-at-18-the-high-end-of-the-range",
+    "https://www.sec.gov/Archives/edgar/data/2114044/000119312526201458/d50309d424b4.htm",
+    "https://www.sec.gov/Archives/edgar/data/2114044/000119312526201458/d50309d424b4.htm"
+   ],
+   "catalysts": [
+    {
+     "text": "Sutacimig Phase 3 start in Glanzmann thrombasthenia",
+     "when": "2H26",
+     "when_sort": "2026-10",
+     "type": "trial_start",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Franchise",
+     "quote": "we expect to commence a Phase 3 clinical trial of sutacimig in Glanzmann thrombasthenia in the second half of 2026.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2114044/000119312526201458/d50309d424b4.htm#:~:text=we%20expect%20to%20commence%20a%20Phase%203%20clinical%20trial",
+     "page_shown": null
+    },
+    {
+     "text": "First preclinical asset enters clinical development",
+     "when": "2H26",
+     "when_sort": "2026-10",
+     "type": "other",
+     "value_inflecting": false,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Franchise",
+     "quote": "is expected to enter clinical development in the second half of 2026",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2114044/000119312526201458/d50309d424b4.htm#:~:text=is%20expected%20to%20enter%20clinical%20development%20in%20the%20second",
+     "page_shown": null
+    },
+    {
+     "text": "Sutacimig Phase 2 Factor VII deficiency clinical data",
+     "when": "late 2026 or early 2027",
+     "when_sort": "2027-01",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Franchise",
+     "quote": "We anticipate reporting clinical data from our Phase 2 trial in late 2026 or early 2027.",
+     "next_key": true,
+     "link": "https://www.sec.gov/Archives/edgar/data/2114044/000119312526201458/d50309d424b4.htm#:~:text=We%20anticipate%20reporting%20clinical%20data%20from%20our%20Phase%202",
+     "page_shown": null
+    },
+    {
+     "text": "HMB-002 VWD Velora Pioneer Part B initial data",
+     "when": "late 2026 or early 2027",
+     "when_sort": "2027-01",
+     "type": "data_readout",
+     "value_inflecting": true,
+     "page": null,
+     "page_confidence": null,
+     "section": "Prospectus Summary - Our Franchise",
+     "quote": "We expect to report initial data from Part B of Velora Pioneer in late 2026 or early 2027.",
+     "next_key": false,
+     "link": "https://www.sec.gov/Archives/edgar/data/2114044/000119312526201458/d50309d424b4.htm#:~:text=We%20expect%20to%20report%20initial%20data%20from%20Part%20B",
+     "page_shown": null
+    }
+   ]
+  }
+ ],
+ "notes": "As of 2026-11-13. Prices are delayed quotes from massive.com / stockanalysis.com snapshots; each latest_price carries its own as_of date, several are 1-2 weeks old, and some are intraday. Returns computed vs offer price (ex-greenshoe). Pricing dates inferred as the evening before first trade where sources gave only the trading date (APMD, VOGX, RTSN). Seaport and Hemab priced 2026-04-30 and first traded 2026-05-01; included as boundary cases. Gross proceeds are base deal sizes excluding overallotment; Odyssey had a further $25M placement, Windward a $50M placement (Fierce reported $225M total). COAG price ($41.18) and ETRA price ($9.03) came from garbled quote pages, low confidence. Lockup expiry not found in public sources (null); typical 180 days. Windward debuted 2026-11-13 so no trading data yet. Rezera and vVardis were scheduled the week of 11/9 and no pricing was found; they may have priced 11/12-11/13. vVardis is a dental/OTC-peptide company, borderline specialty pharma. Excluded: Mobia Medical (device), RegenLab USA (device, $6-8 range, RGNA), SPACs, EIR Biopharma (stale NYSE micro-cap filing, no status found), Corxel (SPAC merger). Avalyn and Eikon priced before May. Backers listed only where sources named them.",
+ "method": "See pipeline/IPO_METHODOLOGY.md. Base list, participants and catalysts were each researched by separate agent passes; filing links were fetched to confirm they load (BBTX 424B4 did not load, so BBTX links to the EDGAR list)."
+}

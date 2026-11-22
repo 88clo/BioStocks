@@ -1,0 +1,41 @@
+{
+ "snapshot": {
+  "label": "Prices & market caps",
+  "asof": "2026-11-20"
+ },
+ "picks": {
+  "label": "Top-pick diligence (longs + shorts)",
+  "asof": "2026-11-17",
+  "n": 119
+ },
+ "clinical": {
+  "label": "Other clinical data, sizing, catalysts",
+  "asof": "2026-11-22",
+  "n": 402
+ },
+ "holders": {
+  "label": "Institutional holders (13F)",
+  "asof": "2026-11-06",
+  "n": 492
+ },
+ "targets": {
+  "label": "Analyst price targets",
+  "asof": "2026-11-06",
+  "n": 466
+ },
+ "pr": {
+  "label": "Press-release feed",
+  "asof": "2026-11-22",
+  "n": 489
+ },
+ "priceq": {
+  "label": "Quarterly price history",
+  "asof": "4Q26 (partial, to Nov 20)",
+  "n": 482
+ },
+ "portfolio": {
+  "label": "Portfolio (latest add)",
+  "asof": "2026-09-12",
+  "n": 30
+ }
+}

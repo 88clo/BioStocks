@@ -1,0 +1,2447 @@
+{
+ "CRSP": {
+  "date": "11/04/26",
+  "headline": "CRISPR Therapeutics to Present Clinical Data from Zugo-cel in Large B-Cell Lymphoma at the 68th American Society of Hematology (ASH) Annual Meeting and Exposition",
+  "sentiment": "NEUTRAL"
+ },
+ "AGIO": {
+  "date": "11/05/26",
+  "headline": "Agios Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "COAG": {
+  "date": "11/04/26",
+  "headline": "Hemab Therapeutics to Present Clinical and Preclinical Data from Multiple Blood Coagulation Programs at the 68th ASH Annual Meeting and Exposition",
+  "sentiment": "NEUTRAL"
+ },
+ "MGX": {
+  "date": "11/04/26",
+  "headline": "Metagenomi Therapeutics to Present Preclinical Data Supporting MGX-001, a Potential One-Time Therapy for Hemophilia A, in Oral Presentation at 68th American Society of Hematology Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "XFOR": {
+  "date": "11/04/26",
+  "headline": "X4 Pharmaceuticals Reports Third Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "KROS": {
+  "date": "09/29/26",
+  "headline": "Keros Therapeutics to Receive Additional Development Milestone Payment from Partner Takeda",
+  "sentiment": "NEUTRAL"
+ },
+ "AUTL": {
+  "date": "11/04/26",
+  "headline": "Autolus Therapeutics to Present Clinical Data Updates at the American Society of Hematology (ASH) Annual Meeting 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "CLLS": {
+  "date": "09/14/26",
+  "headline": "Cellectis Announces Strategic Transformation To In Vivo Gene Editing Company",
+  "sentiment": "NEGATIVE"
+ },
+ "NRIX": {
+  "date": "11/05/26",
+  "headline": "Nurix Therapeutics to Present New and Updated Data from Ongoing Phase 1a/1b Trial of Bexobrutideg (NX-5948) in Relapsed/Refractory CLL/SLL at the 68th ASH Annual Meeting and Exposition",
+  "sentiment": "NEUTRAL"
+ },
+ "GMAB": {
+  "date": "07/23/26",
+  "headline": "Genmab and AbbVie Provide Clarification on Phase 3 EPCORE® DLBCL-1 Trial Evaluating Epcoritamab",
+  "sentiment": "NEGATIVE"
+ },
+ "ALLO": {
+  "date": "11/03/26",
+  "headline": "Allogene Highlights Clinical Progress and Next-Generation Innovation Across Its Off-the-Shelf CAR T Platform at SITC Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "ADCT": {
+  "date": "11/04/26",
+  "headline": "ADC Therapeutics Announces Abstracts at the 68th ASH Annual Meeting Highlighting Breadth of ZYNLONTA® Clinical Program",
+  "sentiment": "NEUTRAL"
+ },
+ "LYEL": {
+  "date": "11/04/26",
+  "headline": "Lyell Immunopharma Reports Business Highlights and Financial Results for the Third Quarter 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "CRBU": {
+  "date": "11/04/26",
+  "headline": "Caribou Biosciences Announces Presentations at the 2026 American Society of Hematology (ASH) Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "ATRA": {
+  "date": "10/14/26",
+  "headline": "Atara Biotherapeutics Reports that the Resubmitted Tabelecleucel (Tab-cel®) Biologics License Application Has Been Accepted by the U.S. Food and Drug Administration",
+  "sentiment": "NEUTRAL"
+ },
+ "ESLA": {
+  "date": "10/26/26",
+  "headline": "Estrella Immunopharma Appoints Cynthia Pussinen as Chief Executive Officer and Chairperson of the Board of Directors",
+  "sentiment": "NEUTRAL"
+ },
+ "CRVS": {
+  "date": "11/04/26",
+  "headline": "Corvus Pharmaceuticals Announces Initial Data from Soquelitinib Clinical Trial in Patients with Autoimmune Lymphoproliferative Syndrome (ALPS) will be Presented at the 68ᵗʰ American Society for Hematology Annual Meeting & Exposition",
+  "sentiment": "NEUTRAL"
+ },
+ "IPHA": {
+  "date": "09/16/26",
+  "headline": "Innate and Sobi Announce Partnership Is Now Effective Following Completion of Closing Conditions",
+  "sentiment": "POSITIVE"
+ },
+ "CTOR": {
+  "date": "09/03/26",
+  "headline": "Citius Pharmaceuticals to Participate in September 2026 Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "SNDX": {
+  "date": "11/04/26",
+  "headline": "Syndax Pharmaceuticals Reports Inducement Grants Under NASDAQ Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "SLS": {
+  "date": "11/18/26",
+  "headline": "SELLAS prices $150.0M public offering at $13.00/share after positive REGAL Phase 3",
+  "sentiment": "neutral"
+ },
+ "KURA": {
+  "date": "11/03/26",
+  "headline": "Kura Oncology to Report Third Quarter Financial Results on November 10",
+  "sentiment": "NEUTRAL"
+ },
+ "OMER": {
+  "date": "10/16/26",
+  "headline": "Omeros Corporation Receives CHMP Negative Opinion Following Re-Examination of European Marketing Authorization Application for Narsoplimab in TA-TMA",
+  "sentiment": "NEUTRAL"
+ },
+ "DMRA": {
+  "date": "11/04/26",
+  "headline": "Damora Therapeutics Reports Third Quarter 2026 Financial Results and Recent Corporate Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "SLBT": {
+  "date": "10/26/26",
+  "headline": "SL Science Holding Limited Reports First Half 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "IMMX": {
+  "date": "11/04/26",
+  "headline": "Immix Biopharma’s NXC-201 NEXICART-2 Interim Clinical Trial Results Selected for Oral Presentation at ASH 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "LEGN": {
+  "date": "11/04/26",
+  "headline": "Legend Biotech to Showcase CARVYKTI® Leadership and Next-Generation Cell Therapy Innovation at ASH 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "ADPT": {
+  "date": "11/04/26",
+  "headline": "Adaptive Biotechnologies Reports Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "SLN": {
+  "date": "09/02/26",
+  "headline": "Silence Therapeutics to Participate in Three September Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "XCUR": {
+  "date": "09/16/26",
+  "headline": "Exicure Receives Nasdaq Extension to Regain Compliance with Stockholders’ Equity Requirement",
+  "sentiment": "NEUTRAL"
+ },
+ "RIGL": {
+  "date": "11/04/26",
+  "headline": "Rigel Announces Oral Presentation of Phase 1b Data for R289 in Patients with Lower-Risk MDS at the 68th American Society of Hematology Annual Meeting and Exposition",
+  "sentiment": "NEUTRAL"
+ },
+ "PRLD": {
+  "date": "10/16/26",
+  "headline": "Prelude Therapeutics to Participate in the Chardan Healthcare Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "ANTX": {
+  "date": "11/04/26",
+  "headline": "AN2 Therapeutics to Present at Jefferies Global Healthcare Conference in London",
+  "sentiment": "NEUTRAL"
+ },
+ "CCCC": {
+  "date": "11/05/26",
+  "headline": "C4 Therapeutics Reports Third Quarter 2026 Financial Results and Recent Business Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "GERN": {
+  "date": "11/04/26",
+  "headline": "Geron Corporation to Present Data Highlighting Clinical and Biological Activity of RYTELO® (imetelstat) at ASH 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "ELVN": {
+  "date": "10/14/26",
+  "headline": "Enliven Therapeutics Appoints Kristine Ball to Board of Directors Ahead of Planned Phase 3 Trial Initiation this Year",
+  "sentiment": "NEUTRAL"
+ },
+ "AAPG": {
+  "date": "08/13/26",
+  "headline": "Ascentage Pharma to Participate in the Evercore 2nd Annual China Biotech Summit",
+  "sentiment": "NEUTRAL"
+ },
+ "KPTI": {
+  "date": "11/04/26",
+  "headline": "Karyopharm to Present Selinexor Data in Patients with Myelofibrosis and Multiple Myeloma at the 68th American Society of Hematology Annual Meeting and Exposition (ASH)",
+  "sentiment": "NEUTRAL"
+ },
+ "PTGX": {
+  "date": "10/27/26",
+  "headline": "Protagonist Therapeutics to Participate in Four Investment Bank Conferences in November 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "ATNM": {
+  "date": "11/04/26",
+  "headline": "Actinium Pharmaceuticals Announces Three ASH 2026 Abstracts Highlighting Iomab-ACT Clinical Results in CAR T-Cell Therapy and Sickle Cell Disease",
+  "sentiment": "NEUTRAL"
+ },
+ "TCRX": {
+  "date": "09/02/26",
+  "headline": "TScan Therapeutics Announces Strategic Reorganization to Focus on in vivo Cell Therapy for Solid Tumors",
+  "sentiment": "NEGATIVE"
+ },
+ "CTMX": {
+  "date": "11/02/26",
+  "headline": "CytomX Therapeutics to Present at Upcoming November Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "BCYC": {
+  "date": "10/29/26",
+  "headline": "Bicycle Therapeutics Reports Recent Business Progress and Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "ADAG": {
+  "date": "10/27/26",
+  "headline": "Adagene to Participate in the Guggenheim Securities 3rd Annual Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "XLO": {
+  "date": "10/26/26",
+  "headline": "Xilio Therapeutics Announces First Patient Dosed in Phase 1/2 Clinical Trial of XTX501 in Patients with Metastatic NSCLC",
+  "sentiment": "NEUTRAL"
+ },
+ "CMPX": {
+  "date": "10/24/26",
+  "headline": "Compass Therapeutics Announces Publication of Phase 2/3 COMPANION-002 Results for Tovecimig in the Journal of Clinical Oncology and Oral Presentation at ESMO 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "JAZZ": {
+  "date": "11/05/26",
+  "headline": "BRC Therapeutics Appoints Kimberly Spancake as Senior Director, Clinical",
+  "sentiment": "NEUTRAL"
+ },
+ "ZYME": {
+  "date": "10/24/26",
+  "headline": "Zymeworks Presents New Phase 1 Data for Folate Receptor Alpha-Targeting Antibody-Drug Conjugate ZW191 at ESMO Congress 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "NBP": {
+  "date": "10/28/26",
+  "headline": "NovaBridge Biosciences Appoints Chuck Silberstein as Chief Financial Officer",
+  "sentiment": "NEUTRAL"
+ },
+ "AGEN": {
+  "date": "11/05/26",
+  "headline": "Agenus Reports Third Quarter 2026 Results, Highlighted by First Marketing Authorizations for BOT+BAL and Global Investigator Support for Phase 3 ROBBIN Study",
+  "sentiment": "NEUTRAL"
+ },
+ "ELTX": {
+  "date": "11/04/26",
+  "headline": "Elicio Therapeutics to Host Virtual KOL Event on November 11, 2026: ELI-002 7P for Metastatic and Neoadjuvant PDAC",
+  "sentiment": "NEUTRAL"
+ },
+ "ONCY": {
+  "date": "11/04/26",
+  "headline": "Translational Data from Anal Cancer Patients Show Pelareorep Drives HPV-Specific Immune Responses, Supporting its Potential Across HPV-Driven Cancers",
+  "sentiment": "NEUTRAL"
+ },
+ "IMRX": {
+  "date": "11/04/26",
+  "headline": "Immuneering to Present at the Guggenheim 3rd Annual Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "ACTU": {
+  "date": "11/04/26",
+  "headline": "Actuate Therapeutics to Present Promising Preclinical Data Demonstrating Antitumor and Immune Activation Activity of Elraglusib Oral Tablet in Advanced Melanoma Models at ENA 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "RNXT": {
+  "date": "10/28/26",
+  "headline": "RenovoRx to Participate at the Canaccord Genuity MedTech Diagnostics and Digital Health & Services Forum",
+  "sentiment": "NEUTRAL"
+ },
+ "LNTH": {
+  "date": "11/05/26",
+  "headline": "Lantheus Welcomes CMS CY27 Final Rule Advancing Access to Diagnostic Radiopharmaceuticals",
+  "sentiment": "NEUTRAL"
+ },
+ "RXRX": {
+  "date": "11/02/26",
+  "headline": "New Phase 2 REC-4881 Data Presented at CGA-IGC Show Deep, Durable Polyp Burden Reductions in FAP, with Activity Across the GI Tract and in Larger, Higher-Risk Polyps",
+  "sentiment": "NEUTRAL"
+ },
+ "EXEL": {
+  "date": "11/03/26",
+  "headline": "Exelixis to Webcast Fireside Chats as Part of Upcoming Investor Conferences in November",
+  "sentiment": "NEUTRAL"
+ },
+ "CRDF": {
+  "date": "11/03/26",
+  "headline": "Cardiff Oncology to Participate in the UBS Global Biopharma Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "TNGX": {
+  "date": "11/03/26",
+  "headline": "Tango Therapeutics to Participate in Guggenheim’s 3rd Annual Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "RVMD": {
+  "date": "11/04/26",
+  "headline": "Revolution Medicines Reports Third Quarter 2026 Financial Results and Update on Corporate Progress",
+  "sentiment": "NEUTRAL"
+ },
+ "TVRD": {
+  "date": "10/14/26",
+  "headline": "Tvardi Therapeutics to Participate in Chardan’s 10th Annual Healthcare Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "IBRX": {
+  "date": "11/04/26",
+  "headline": "ImmunityBio Announces First Patients in Europe Treated with ANKTIVA® Plus BCG for BCG-unresponsive Non-Muscle Invasive Bladder Cancer with Carcinoma in Situ",
+  "sentiment": "NEUTRAL"
+ },
+ "CGON": {
+  "date": "10/13/26",
+  "headline": "CG Oncology Appoints Proven Biopharmaceutical Commercial Leader Isabel Kalofonos as Chief Commercial Officer",
+  "sentiment": "NEUTRAL"
+ },
+ "TYRA": {
+  "date": "09/14/26",
+  "headline": "Tyra Announces Pricing of $400 Million Underwritten Offering of Common Stock and Pre-Funded Warrants",
+  "sentiment": "NEGATIVE"
+ },
+ "URGN": {
+  "date": "11/04/26",
+  "headline": "UroGen Reports $68.0 Million of ZUSDURI Revenue and Provides Third Quarter 2026 Financial Results and Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "AKTS": {
+  "date": "10/01/26",
+  "headline": "Aktis Oncology Initiates Second Phase 1b Clinical Trial for AKY-2519, a Miniprotein Radioconjugate Targeting B7-H3",
+  "sentiment": "NEUTRAL"
+ },
+ "RLMD": {
+  "date": "11/04/26",
+  "headline": "Relmada Therapeutics to Participate at the Jefferies Global Healthcare Conference in London",
+  "sentiment": "NEUTRAL"
+ },
+ "TARA": {
+  "date": "10/15/26",
+  "headline": "Protara Therapeutics Completes Enrollment of the Phase 2b Open-Label Dose Confirmation Phase of the THRIVE-3 Registrational Trial of IV Choline Chloride in Patients on Parenteral Support",
+  "sentiment": "NEUTRAL"
+ },
+ "ENGN": {
+  "date": "10/13/26",
+  "headline": "enGene to Host KOL Webinar on October 15, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "RCUS": {
+  "date": "11/04/26",
+  "headline": "Arcus Biosciences Reports Third-Quarter 2026 Financial Results and Provides a Pipeline Update",
+  "sentiment": "NEUTRAL"
+ },
+ "XNCR": {
+  "date": "10/25/26",
+  "headline": "Xencor Presents Phase 1 Dose Selection Data for XmAb819, a Potential First-in-Class ENPP3 x CD3 Bispecific T-Cell Engager, in Development for Patients With Advanced Clear Cell Renal Cell Carcinoma and ENPP3+ Tumors",
+  "sentiment": "NEUTRAL"
+ },
+ "TLX": {
+  "date": "09/20/26",
+  "headline": "Telix and ITM Join Forces to Create a Radiopharmaceutical Powerhouse",
+  "sentiment": "POSITIVE"
+ },
+ "ORIC": {
+  "date": "11/03/26",
+  "headline": "ORIC® Pharmaceuticals to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "JANX": {
+  "date": "11/02/26",
+  "headline": "Janux Therapeutics to Host Virtual Event Presenting Initial Phase 1 Clinical Data for JANX011 in Healthy Volunteers",
+  "sentiment": "NEUTRAL"
+ },
+ "CADL": {
+  "date": "11/02/26",
+  "headline": "Candel Therapeutics Announces Inducement Grants Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "KYNB": {
+  "date": "10/01/26",
+  "headline": "Kyntra Bio Appoints Andrew E. Singer, MBA to its Board of Directors",
+  "sentiment": "NEUTRAL"
+ },
+ "RADX": {
+  "date": "09/14/26",
+  "headline": "Radiopharm Theranostics Selected for Late-Breaking Oral Presentation of Positive Data from Interim Analysis of U.S. Phase 2b Imaging Trial of RAD101 at 2026 Society of Neuro-Oncology Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "CELC": {
+  "date": "11/03/26",
+  "headline": "Celcuity To Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "RLAY": {
+  "date": "11/04/26",
+  "headline": "Relay Therapeutics Reports Third Quarter 2026 Financial Results and Corporate Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "OLMA": {
+  "date": "11/04/26",
+  "headline": "Olema Oncology to Present Combination Data from the Palazestrant and OP-3136 Programs at the 2026 San Antonio Breast Cancer Symposium",
+  "sentiment": "NEUTRAL"
+ },
+ "ARVN": {
+  "date": "11/04/26",
+  "headline": "Arvinas to Present Preliminary Clinical Data from Early Monotherapy Dose Escalation Cohorts in the Phase 1 Trial for ARV-393 (Zaloblideg), a PROTAC BCL6 Degrader, at the 2026 American Society of Hematology (ASH®) Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "GLSI": {
+  "date": "11/18/26",
+  "headline": "Shares jump in sympathy with SELLAS peptide-vaccine Phase 3 win; FLAMINGO-01 interim still pending",
+  "sentiment": "positive"
+ },
+ "ALXO": {
+  "date": "09/28/26",
+  "headline": "ALX Oncology Announces Nature Medicine Publication of ASPEN-06 Phase 2 Clinical Data Demonstrating Strong Responses and Durable Clinical Benefit with Evorpacept in HER2-Positive Gastric Cancer",
+  "sentiment": "NEUTRAL"
+ },
+ "OKUR": {
+  "date": "11/04/26",
+  "headline": "OnKure Therapeutics Reports Third Quarter 2026 Financial Results and Provides Business Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "TELO": {
+  "date": "10/06/26",
+  "headline": "Telomir Pharmaceuticals Secures $5.6 Million Financing as Billionaire Entrepreneur John Paul DeJoria Increases Investment in the Company",
+  "sentiment": "NEUTRAL"
+ },
+ "ATOS": {
+  "date": "10/19/26",
+  "headline": "Atossa Therapeutics Common Stock to Begin Trading with Stapled Contingent Value Rights After Close of Business Today",
+  "sentiment": "NEUTRAL"
+ },
+ "LONA": {
+  "date": "09/03/26",
+  "headline": "LeonaBio to Participate in Cantor Global Healthcare Conference 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "ACRV": {
+  "date": "11/04/26",
+  "headline": "Acrivon to Present Late-Breaking Oral Plenary Presentation and Posters at the 38th EORTC-NCI-AACR Symposium on Molecular Targets and Cancer Therapeutics",
+  "sentiment": "NEUTRAL"
+ },
+ "CORT": {
+  "date": "11/03/26",
+  "headline": "Corcept Therapeutics Announces Third Quarter Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "VSTM": {
+  "date": "11/02/26",
+  "headline": "Verastem Oncology to Participate in Upcoming November Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "MGNX": {
+  "date": "11/03/26",
+  "headline": "MacroGenics Announces Appointments of Emil Kuriakose, M.D., and Michael Vasconcelles, M.D., to Board of Directors",
+  "sentiment": "NEUTRAL"
+ },
+ "ZNTL": {
+  "date": "11/03/26",
+  "headline": "Zentalis Pharmaceuticals to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "CGEN": {
+  "date": "10/26/26",
+  "headline": "Compugen to Release Third Quarter 2026 Results on Monday, November 9, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "CNTX": {
+  "date": "08/05/26",
+  "headline": "Context Therapeutics Reports Second Quarter 2026 Operating and Pipeline Progress",
+  "sentiment": "NEUTRAL"
+ },
+ "GNLX": {
+  "date": "09/09/26",
+  "headline": "Genelux Announces Publication of a Deep and Durable Response in a Platinum-relapsed Small Cell Lung Cancer Patient Following Systemically Delivered Olvi-Vec-Primed Immunochemotherapy",
+  "sentiment": "POSITIVE"
+ },
+ "ANIX": {
+  "date": "11/04/26",
+  "headline": "Anixa Biosciences Announces Presentation of Ovarian Cancer CAR-T Clinical Trial at ESMO Immuno-Oncology & Advanced Therapies Congress 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "LIXT": {
+  "date": "07/06/26",
+  "headline": "LIXTE Completes Corporate Name Change to NOMAD Power Solutions, Inc.; To Begin Trading Under New Nasdaq Symbol NMAD",
+  "sentiment": "NEGATIVE"
+ },
+ "PMVP": {
+  "date": "11/04/26",
+  "headline": "Pivotal Phase 2 Rezatapopt PYNNACLE Data to Be Featured in Late-Breaking Oral Presentation at ENA 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "NXTC": {
+  "date": "08/06/26",
+  "headline": "NextCure Provides Business Update and Reports Second Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "FTH": {
+  "date": "11/03/26",
+  "headline": "Faeth Therapeutics Reports Third Quarter 2026 Financial Results and Operational Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "NBTX": {
+  "date": "10/24/26",
+  "headline": "NANOBIOTIX Announces Final Data from Phase 1 Study Evaluating JNJ-1900 (NBTXR3) With Immune Checkpoint Inhibitors as a 2L+ Therapy in Anti-PD-1-Resistant Primary Cutaneous Melanoma",
+  "sentiment": "NEUTRAL"
+ },
+ "BCAX": {
+  "date": "11/04/26",
+  "headline": "Bicara Therapeutics Announces Inducement Grants under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "CHRS": {
+  "date": "10/28/26",
+  "headline": "Coherus Oncology Announces Compelling Tagmokitug Interim Clinical Data in Esophageal Cancer and  Path to Advance Development",
+  "sentiment": "NEUTRAL"
+ },
+ "PYXS": {
+  "date": "11/05/26",
+  "headline": "Pyxis Oncology Reports Third Quarter 2026 Financial Results and Highlights Progress Toward Pivotal Development of Micvotabart Pelidotin (MICVO)",
+  "sentiment": "NEUTRAL"
+ },
+ "CRBP": {
+  "date": "11/15/26",
+  "headline": "CANYON-1 CRB-913 obesity data at ObesityWeek: 5% mean weight loss at 12 weeks (60 mg)",
+  "sentiment": "negative"
+ },
+ "PDSB": {
+  "date": "10/20/26",
+  "headline": "PDS Biotechnology Appoints Three Accomplished Pharma Industry Executives to Board of Directors",
+  "sentiment": "NEUTRAL"
+ },
+ "CVM": {
+  "date": "10/26/26",
+  "headline": "CEL-SCI Presents New Phase 3 Multikine® Data at World Congress: Pre-Surgical Biomarkers Identify Head & Neck Cancer Patients Achieving 73% 5-Year Survival",
+  "sentiment": "NEUTRAL"
+ },
+ "SMMT": {
+  "date": "10/22/26",
+  "headline": "Ivonescimab Data Sets across Multiple Tumor Types to Be Featured at ESMO 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "NUVL": {
+  "date": "05/27/26",
+  "headline": "Nuvalent Announces Key Program and Business Updates, Strengthening Foundation for Global Leadership in ROS1- and ALK-positive NSCLC",
+  "sentiment": "POSITIVE"
+ },
+ "NUVB": {
+  "date": "11/04/26",
+  "headline": "Nuvation Bio Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "AVBP": {
+  "date": "11/02/26",
+  "headline": "Aarvik Therapeutics Announces Milestone Achievement, Partnership Update, and Presentations on MUTTA™ and AQUALINK™ Platforms at the 17th Annual WADC Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "CGEM": {
+  "date": "11/04/26",
+  "headline": "Cullinan Therapeutics Announces Presentations for CLN-049, a FLT3 T Cell Engager, and Velinotamig, a BCMA T Cell Engager, at the 68th ASH Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "BBOT": {
+  "date": "10/12/26",
+  "headline": "BridgeBio Oncology Therapeutics Reports Inducement Grants under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "CBIO": {
+  "date": "11/03/26",
+  "headline": "Crescent Biopharma Announces Grants of Inducement Awards",
+  "sentiment": "NEUTRAL"
+ },
+ "NVCT": {
+  "date": "11/02/26",
+  "headline": "Nuvectis Pharma to Report Third Quarter 2026 Financial Results on November 4, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "STRO": {
+  "date": "11/04/26",
+  "headline": "Sutro Biopharma to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "FHTX": {
+  "date": "11/03/26",
+  "headline": "Foghorn Therapeutics to Participate in Three Upcoming Investor Conferences in November",
+  "sentiment": "NEUTRAL"
+ },
+ "WHWK": {
+  "date": "10/01/26",
+  "headline": "Whitehawk Therapeutics Presents Real-World Analyses Supporting MUC16 as a Durable ADC Target in Ovarian Cancer at IGCS 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "BDTX": {
+  "date": "09/02/26",
+  "headline": "Black Diamond Therapeutics to Participate in H.C. Wainwright 28th Annual Global Investment Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "BYSI": {
+  "date": "09/29/26",
+  "headline": "BeyondSpring Announces FDA Fast Track Designation for Plinabulin in Post-ICI Non-Squamous NSCLC and Strategic Transaction to Advance Global Phase 3 DUBLIN-4 Trial Toward Planned Interim Analysis",
+  "sentiment": "NEUTRAL"
+ },
+ "TIL": {
+  "date": "08/13/26",
+  "headline": "Instil Bio Reports Second Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "MAIA": {
+  "date": "10/07/26",
+  "headline": "MAIA Biotechnology Achieves Patient Enrollment Milestones in Ongoing Phase 2 and Pivotal Phase 3 Clinical Trials in Non-Small Cell Lung Cancer",
+  "sentiment": "NEUTRAL"
+ },
+ "LTRN": {
+  "date": "10/08/26",
+  "headline": "Lantern Pharma to Present at the ThinkEquity Conference in NYC on October 15th, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "EIKN": {
+  "date": "11/02/26",
+  "headline": "Eikon Therapeutics to Participate in Multiple Investor Conferences in November",
+  "sentiment": "NEUTRAL"
+ },
+ "APLM": {
+  "date": "08/11/26",
+  "headline": "Apollomics Announces $10 Million Private Placement Transaction",
+  "sentiment": "NEGATIVE"
+ },
+ "ZLAB": {
+  "date": "08/17/26",
+  "headline": "Zai Lab and argenx Announce Positive Topline Results from Phase 3 ALKIVIA Trial of Efgartigimod in Autoimmune Myositis",
+  "sentiment": "POSITIVE"
+ },
+ "PBYI": {
+  "date": "10/05/26",
+  "headline": "Puma Biotechnology Reports Inducement Award Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "MOLN": {
+  "date": "08/25/26",
+  "headline": "Molecular Partners Reports H1 2026 Financial Results and Corporate Highlights: DLL3 Radiotherapy MP0712 Successfully Advancing to Higher Dose Level in Phase 1/2a Study",
+  "sentiment": "POSITIVE"
+ },
+ "IMMP": {
+  "date": "09/21/26",
+  "headline": "Change to American Depositary Share Ratio",
+  "sentiment": "NEGATIVE"
+ },
+ "IMTX": {
+  "date": "10/24/26",
+  "headline": "Immatics Presents Clinical Activity of IMA402 PRAME Bispecific and IMA203CD8 PRAME Cell Therapy across Advanced Solid Tumors in Two Oral Presentations at 2026 ESMO Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "IMCR": {
+  "date": "10/29/26",
+  "headline": "Immunocore will present Phase 1 data for brenetafusp plus KIMMTRAK® (tebentafusp-tebn) in metastatic uveal melanoma, during a late-breaking oral session at the 2026 SITC meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "IOVA": {
+  "date": "11/05/26",
+  "headline": "Iovance Biotherapeutics Reports Record Third Quarter 2026 Revenue of ~$122M, Business Achievements, and Corporate Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "REPL": {
+  "date": "10/28/26",
+  "headline": "Replimune Reports Fiscal Second Quarter 2027 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "EVAX": {
+  "date": "11/04/26",
+  "headline": "Evaxion will present new target validation data for EVX-04, an off-the-shelf therapeutic vaccine for acute myeloid leukemia at ASH 2026 Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "SLGL": {
+  "date": "09/30/26",
+  "headline": "Sol-Gel Technologies to Host KOL Investor Day for SGT-610 on October 14, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "HURA": {
+  "date": "10/26/26",
+  "headline": "TuHURA Biosciences Provides First Look at Data from its Open-Label Study of IFx-2.0 as an Adjunctive Therapy to Keytruda® in First Line Treatment of Patients with Deep Seated Metastatic Merkel Cell Carcinoma",
+  "sentiment": "NEUTRAL"
+ },
+ "INDP": {
+  "date": "08/13/26",
+  "headline": "Indaptus Therapeutics Reports Second Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEGATIVE"
+ },
+ "DRTS": {
+  "date": "10/22/26",
+  "headline": "Alpha Tau and Samsung Medical Center Sign MOU to Explore Clinical Trial of Alpha DaRT® for Pancreatic Cancer Patients in Korea",
+  "sentiment": "NEUTRAL"
+ },
+ "NTHI": {
+  "date": "11/05/26",
+  "headline": "NeOnc Reports Third Quarter 2026 Financial Results and Highlights Recent Corporate and Clinical Progress",
+  "sentiment": "NEUTRAL"
+ },
+ "KZIA": {
+  "date": "11/05/26",
+  "headline": "Kazia Therapeutics Recognized as \"Drug Discovery Company of the Year\" in 2026 BioTech Breakthrough Awards",
+  "sentiment": "NEUTRAL"
+ },
+ "IDYA": {
+  "date": "11/04/26",
+  "headline": "IDEAYA Biosciences to Participate in Upcoming November 2026 Investor Relations Events",
+  "sentiment": "NEUTRAL"
+ },
+ "AURA": {
+  "date": "11/03/26",
+  "headline": "Aura Biosciences to Participate in Upcoming Investor Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "ERAS": {
+  "date": "11/03/26",
+  "headline": "Erasca to Present at Upcoming Conferences in November",
+  "sentiment": "NEUTRAL"
+ },
+ "ANL": {
+  "date": "10/27/26",
+  "headline": "Adlai Nortye Announces Oral Presentation for AN4035 Program Update at the Upcoming 38th EORTC-NCI-AACR Symposium",
+  "sentiment": "NEUTRAL"
+ },
+ "IMNM": {
+  "date": "11/04/26",
+  "headline": "Immunome to Present Initial First-in-Human Clinical Data for IM-1021 in Advanced B-Cell Lymphomas at ASH 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "INBX": {
+  "date": "10/13/26",
+  "headline": "Inhibrx Announces Participation in Upcoming Scientific Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "OSTX": {
+  "date": "10/08/26",
+  "headline": "Rubenstein Public Relations Named Agency of Record for OS Therapies",
+  "sentiment": "NEUTRAL"
+ },
+ "PLRX": {
+  "date": "10/29/26",
+  "headline": "Pliant Therapeutics Announces Presentations at the 2026 Annual Meeting of the Society for Immunotherapy of Cancer",
+  "sentiment": "NEUTRAL"
+ },
+ "FENC": {
+  "date": "09/17/26",
+  "headline": "Fennec Pharmaceuticals Announces Oral Presentation of Detailed Results from Investigator-Initiated Phase 2 STS-J01 Clinical Study of Pedmark® in Japan at SIOP 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "PBLS": {
+  "date": "11/03/26",
+  "headline": "Parabilis Medicines to Participate in Upcoming November Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "MIST": {
+  "date": "11/04/26",
+  "headline": "Milestone Pharmaceuticals Reports Inducement Grants Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "KARD": {
+  "date": "09/30/26",
+  "headline": "Kardigan Announces Appointment of Kristin Reinke to its Board of Directors",
+  "sentiment": "NEUTRAL"
+ },
+ "BBIO": {
+  "date": "10/22/26",
+  "headline": "BridgeBio to Report Third Quarter 2026 Financial Results and Commercial Updates on October 29, 2026 at 4:30 pm ET",
+  "sentiment": "NEUTRAL"
+ },
+ "CYTK": {
+  "date": "11/04/26",
+  "headline": "Cytokinetics Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "LXEO": {
+  "date": "11/02/26",
+  "headline": "Lexeo Therapeutics to Present Multiple Oral and Poster Presentations at Key Scientific Conferences in November",
+  "sentiment": "NEUTRAL"
+ },
+ "RCKT": {
+  "date": "10/15/26",
+  "headline": "Rocket Pharmaceuticals to Participate in Chardan’s 10th Annual Healthcare Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "LRMR": {
+  "date": "11/04/26",
+  "headline": "Larimar Therapeutics to Participate in the Guggenheim 3rd Annual Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "RNA": {
+  "date": "11/02/26",
+  "headline": "Atrium Therapeutics to Present Nonclinical Data Showing ATR 1072 Reversed and Improved Features of PRKAG2 Syndrome During HCMS at AHA Scientific Sessions 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "TNYA": {
+  "date": "11/04/26",
+  "headline": "Tenaya Therapeutics Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "LGVN": {
+  "date": "08/11/26",
+  "headline": "Longeveron Named a Finalist Team and Will Receive a $1,000,000 Milestone 2 Award for the XPRIZE Healthspan Global Competition",
+  "sentiment": "NEUTRAL"
+ },
+ "MLYS": {
+  "date": "11/04/26",
+  "headline": "Mineralys Therapeutics Reports Third Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "DMAC": {
+  "date": "11/05/26",
+  "headline": "DiaMedica Therapeutics to Report Third Quarter 2026 Financial Results and Provide a Business Update November 13, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "LQDA": {
+  "date": "11/03/26",
+  "headline": "Liquidia Corporation to Report Third Quarter 2026 Financial Results on November 10, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "TECX": {
+  "date": "09/29/26",
+  "headline": "Tectonic Therapeutic Announces Favorable Phase 1 Safety, Tolerability and PK Results for TX2100, a Novel Approach for the Treatment of Hereditary Hemorrhagic Telangiectasia (HHT)",
+  "sentiment": "NEUTRAL"
+ },
+ "TENX": {
+  "date": "07/31/26",
+  "headline": "Tenax Therapeutics Reports Second Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "IKT": {
+  "date": "10/27/26",
+  "headline": "Inhibikase Therapeutics Announces Participation in Upcoming Investor Conferences During November 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "GOSS": {
+  "date": "09/23/26",
+  "headline": "Gossamer Bio Submits New Drug Application to U.S. FDA for Seralutinib for the Treatment of Pulmonary Arterial Hypertension",
+  "sentiment": "POSITIVE"
+ },
+ "HUMA": {
+  "date": "11/03/26",
+  "headline": "Humacyte Innovative Research in Coronary Bypass and Vascular Regeneration to be Highlighted at American Heart Association Scientific Sessions 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "PVLA": {
+  "date": "11/05/26",
+  "headline": "Palvella Therapeutics Reports Third Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "SGMT": {
+  "date": "10/22/26",
+  "headline": "Sagimet Biosciences Announces First Patient Dosed in AURORA Phase 3 U.S. Clinical Trial of Denifanstat for Moderate to Severe Acne",
+  "sentiment": "NEUTRAL"
+ },
+ "MANE": {
+  "date": "11/05/26",
+  "headline": "Connecticut Innovations Generates Record Breaking $51.4 Million in Venture Proceeds in Q1 FY27",
+  "sentiment": "NEUTRAL"
+ },
+ "ABSI": {
+  "date": "10/27/26",
+  "headline": "Absci to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "CNXU": {
+  "date": "10/15/26",
+  "headline": "Conexeu Sciences Announces $5 Million Private Placement Led by Existing Shareholders, Management and Directors",
+  "sentiment": "NEUTRAL"
+ },
+ "KRYS": {
+  "date": "11/02/26",
+  "headline": "Krystal Biotech Announces Third Quarter 2026 Financial and Operating Results",
+  "sentiment": "NEUTRAL"
+ },
+ "ABEO": {
+  "date": "11/02/26",
+  "headline": "Abeona Therapeutics® Announces New Employee Inducement Grants Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "INMB": {
+  "date": "10/29/26",
+  "headline": "INmune Bio Inc. to Report Third Quarter 2026 Financial Results and Provide Corporate Update on Thursday, November 5th",
+  "sentiment": "NEUTRAL"
+ },
+ "DERM": {
+  "date": "08/19/26",
+  "headline": "Longeveron Appoints Nirav Jhaveri as Chief Financial Officer",
+  "sentiment": "NEUTRAL"
+ },
+ "FBIO": {
+  "date": "09/08/26",
+  "headline": "Fortress Biotech to Present at the H.C. Wainwright 28th Annual Global Investment Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "INCY": {
+  "date": "11/04/26",
+  "headline": "Incyte to Present New Data Highlighting Progress Across its Hematology Portfolio at ASH 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "VRCA": {
+  "date": "11/05/26",
+  "headline": "Verrica Pharmaceuticals to Report Third Quarter 2026 Financial Results and Provide a Corporate Update on November 12, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "PTHS": {
+  "date": "11/04/26",
+  "headline": "Pelthos Therapeutics to Report Third Quarter 2026 Financial Results on November 12, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "MDWD": {
+  "date": "11/03/26",
+  "headline": "MediWound Announces $15 Million Bought Deal Offering of Ordinary Shares",
+  "sentiment": "NEUTRAL"
+ },
+ "EOLS": {
+  "date": "11/04/26",
+  "headline": "Evolus Reports Third Quarter 2026 Financial Results with 13% Year-Over-Year Revenue Growth; Delivers Fourth Consecutive Quarter of Positive Adjusted EBITDA and Reaffirms Full-Year 2026 Financial Outlook",
+  "sentiment": "NEUTRAL"
+ },
+ "LCTX": {
+  "date": "11/05/26",
+  "headline": "Lineage Cell Therapeutics to Report Third Quarter 2026 Financial Results and Provide Business Update on November 12, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "OCUL": {
+  "date": "11/02/26",
+  "headline": "Ocular Therapeutix™ to Report Third Quarter 2026 Financial Results on November 9, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "EYPT": {
+  "date": "11/05/26",
+  "headline": "EyePoint to Report Third Quarter 2026 Financial Results on November 12, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "FDMT": {
+  "date": "11/03/26",
+  "headline": "4DMT to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "KLRS": {
+  "date": "08/31/26",
+  "headline": "Kalaris to Present at Morgan Stanley 24th Annual Global Healthcare Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "OTLK": {
+  "date": "08/14/26",
+  "headline": "Outlook Therapeutics Reports Third Quarter Fiscal Year 2026 Financial Results and Provides Business Update Highlighting FDA Approval of LYTENAVA™",
+  "sentiment": "NEUTRAL"
+ },
+ "KOD": {
+  "date": "10/07/26",
+  "headline": "Kodiak Sciences to Present Clinical Data Across All Three Late-Stage Programs at AAO 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "OCS": {
+  "date": "08/24/26",
+  "headline": "First Patient Treated in PIONEER-1 Registrational Trial of Privosegtor for Optic Neuritis",
+  "sentiment": "NEUTRAL"
+ },
+ "SRZN": {
+  "date": "10/20/26",
+  "headline": "Surrozen Announces Closing of Second Tranche of March 2025 Private Placement for $95.1 Million",
+  "sentiment": "NEUTRAL"
+ },
+ "BLTE": {
+  "date": "11/05/26",
+  "headline": "Belite Bio to Host Webcast on November 12, 2026, to Discuss Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "OCGN": {
+  "date": "11/04/26",
+  "headline": "Ocugen Provides Business Update with Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "IRD": {
+  "date": "11/05/26",
+  "headline": "Opus Genetics Completes Dosing in Cohort 2 of Phase 1/2 Clinical Trial of OPGx-BEST1 Gene Therapy for Inherited Retinal Diseases",
+  "sentiment": "NEUTRAL"
+ },
+ "SGP": {
+  "date": "11/05/26",
+  "headline": "SpyGlass Pharma to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "TARS": {
+  "date": "11/03/26",
+  "headline": "Tarsus Reports Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "PTN": {
+  "date": "09/28/26",
+  "headline": "Palatin Reports Fiscal Year 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "ALDX": {
+  "date": "09/29/26",
+  "headline": "Aldeyra Therapeutics Announces Intent to Submit Formal Dispute Resolution Request for Reproxalap to Treat Dry Eye Disease",
+  "sentiment": "NEUTRAL"
+ },
+ "KALA": {
+  "date": "09/03/26",
+  "headline": "Kala Bio and Virotek Finalize Definitive Agreement Establishing Exclusive U.S. Distribution Partnership for Ophthalmology Genetic Testing Program",
+  "sentiment": "POSITIVE"
+ },
+ "LENZ": {
+  "date": "10/28/26",
+  "headline": "LENZ Therapeutics Reports Third Quarter 2026 Financial Results, Announces Strategic Consumer Marketing Focused Reorganization and CEO Succession",
+  "sentiment": "NEUTRAL"
+ },
+ "PHAT": {
+  "date": "11/04/26",
+  "headline": "Phathom Pharmaceuticals to Participate in November Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "ARDX": {
+  "date": "11/03/26",
+  "headline": "Ardelyx Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "NRXS": {
+  "date": "10/27/26",
+  "headline": "NeurAxis to Host Third Quarter 2026 Results and Business Update Call on Monday, November 9, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "IRWD": {
+  "date": "11/05/26",
+  "headline": "Ironwood Pharmaceuticals Raises Full-Year 2026 Financial Guidance Driven by Continued LINZESS U.S. Net Sales Growth and Strong Third Quarter Financial Performance",
+  "sentiment": "NEUTRAL"
+ },
+ "SPRY": {
+  "date": "10/28/26",
+  "headline": "ARS Pharma to Report Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "DBVT": {
+  "date": "09/03/26",
+  "headline": "DBV Technologies to Participate in Upcoming September Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "AQST": {
+  "date": "11/05/26",
+  "headline": "Aquestive Therapeutics to Present Data at the 2026 ACAAI Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "NSRX": {
+  "date": "09/29/26",
+  "headline": "Nasus Pharma Announces Enrollment and Dosing of First Patient in Phase 1 Study of NS003 Intranasal Formulation of Ondansetron",
+  "sentiment": "NEUTRAL"
+ },
+ "PHVS": {
+  "date": "10/29/26",
+  "headline": "Pharvaris to Present Clinical and Real-World Data at the ACAAI 2026 Annual Scientific Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "BCRX": {
+  "date": "11/04/26",
+  "headline": "BioCryst to Present at Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "KALV": {
+  "date": "06/11/26",
+  "headline": "Chiesi Group Completes Acquisition of KalVista Pharmaceuticals",
+  "sentiment": "POSITIVE"
+ },
+ "NTLA": {
+  "date": "11/05/26",
+  "headline": "Intellia Therapeutics Announces Third Quarter 2026 Financial Results and Business Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "CLDX": {
+  "date": "11/04/26",
+  "headline": "Celldex to Present at Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "SEPN": {
+  "date": "11/04/26",
+  "headline": "Septerna Announces Selection of SEP-204 as Development Candidate for Graves' Disease and TED and Reports Preclinical Data at the 2026 American Thyroid Association Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "EVMN": {
+  "date": "11/04/26",
+  "headline": "Evommune Announces $30 Million Private Placement",
+  "sentiment": "NEUTRAL"
+ },
+ "JSPR": {
+  "date": "11/04/26",
+  "headline": "Jasper Therapeutics Announces 1-for-30 Reverse Stock Split",
+  "sentiment": "NEUTRAL"
+ },
+ "TRAX": {
+  "date": "11/03/26",
+  "headline": "First Tracks Biotherapeutics Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "BRNS": {
+  "date": "04/30/26",
+  "headline": "Barinthus Bio Reports First Quarter 2026 Financial Results and Updates on Corporate Developments",
+  "sentiment": "NEUTRAL"
+ },
+ "AGMB": {
+  "date": "11/04/26",
+  "headline": "Agomab to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "STTK": {
+  "date": "11/05/26",
+  "headline": "Shattuck Labs Reports Third Quarter 2026 Financial Results and Recent Business Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "EPRX": {
+  "date": "08/13/26",
+  "headline": "Eupraxia Pharmaceuticals Reports Symptom Response Data from its Ongoing Phase 1b/2a RESOLVE Trial, Including New Data on Odynophagia (Painful Swallowing) in Eosinophilic Esophagitis Patients",
+  "sentiment": "POSITIVE"
+ },
+ "ABVX": {
+  "date": "09/30/26",
+  "headline": "Abivax to Present Data on Obefazimod at United European Gastroenterology (UEG) Week 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "SYRE": {
+  "date": "11/03/26",
+  "headline": "Spyre Therapeutics Reports Third Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "ODTX": {
+  "date": "11/04/26",
+  "headline": "Odyssey Therapeutics Reports Third Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "PALI": {
+  "date": "10/28/26",
+  "headline": "Palisade Bio Announces First Patient Dosed in Global Phase 2b ASCENTRA-UC Study Evaluating Once-Daily Oral PALI-2108 for the Treatment of Ulcerative Colitis",
+  "sentiment": "NEUTRAL"
+ },
+ "EQ": {
+  "date": "10/26/26",
+  "headline": "Equillium Announces First Subject Dosed in Phase 1 Clinical Trial of EQ504",
+  "sentiment": "NEUTRAL"
+ },
+ "VRDN": {
+  "date": "11/04/26",
+  "headline": "Viridian Therapeutics Reports Third Quarter 2026 Financial Results and Highlights Recent Business Progress",
+  "sentiment": "NEUTRAL"
+ },
+ "MNKD": {
+  "date": "10/29/26",
+  "headline": "MannKind to Report Third Quarter Financial Results and Host Conference Call on November 5, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "SANA": {
+  "date": "09/01/26",
+  "headline": "Sana Biotechnology to Present at September 2026 Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "IPSC": {
+  "date": "10/14/26",
+  "headline": "Century Therapeutics to Attend 2026 Jefferies Global Healthcare Conference in London",
+  "sentiment": "NEUTRAL"
+ },
+ "VTVT": {
+  "date": "10/27/26",
+  "headline": "vTv Therapeutics Announces First Participant Randomized in Phase 2a Pilot Study Evaluating Cadisegliatin in Individuals with Type 1 Diabetes (T1D) Using Hybrid Closed-Loop (HCL) Insulin Delivery Systems",
+  "sentiment": "NEUTRAL"
+ },
+ "SABS": {
+  "date": "11/05/26",
+  "headline": "SAB BIO Reports Q3 2026 Financial Results and Provides Business Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "MGTX": {
+  "date": "10/27/26",
+  "headline": "MeiraGTx Announces Four Posters at the European Society of Gene and Cell Therapy (ESGCT) 2026 Annual Congress and the Network of Excellence for ALS (NEALS) Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "MAZE": {
+  "date": "11/03/26",
+  "headline": "Maze Therapeutics to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "TVTX": {
+  "date": "11/03/26",
+  "headline": "Travere Therapeutics to Participate at Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "VERA": {
+  "date": "11/02/26",
+  "headline": "Vera Therapeutics to Participate in the Guggenheim 3rd Annual Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "JBIO": {
+  "date": "11/03/26",
+  "headline": "Jade Biosciences to Participate in Upcoming Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "AUPH": {
+  "date": "10/30/26",
+  "headline": "Aurinia Pharmaceuticals Reports Financial Results for the Three and Nine Months Ended September 30, 2026 and Provides Update on Recent Business Progress",
+  "sentiment": "NEUTRAL"
+ },
+ "NKTX": {
+  "date": "09/10/26",
+  "headline": "Nkarta to Participate in September Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "ACET": {
+  "date": "10/30/26",
+  "headline": "Adicet Bio Reports Inducement Grant under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "ELOX": {
+  "date": "11/02/26",
+  "headline": "Eloxx Pharmaceuticals to Present at the 3rd Annual Guggenheim Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "CLYM": {
+  "date": "11/05/26",
+  "headline": "Climb Bio Reports Third Quarter 2026 Financial Results and Provides Business Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "GENB": {
+  "date": "10/22/26",
+  "headline": "Generate Biomedicines to Participate in November Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "UPB": {
+  "date": "09/08/26",
+  "headline": "Upstream Bio Presents Results from the Phase 2 VALIANT Trial of Verekitug for the Treatment of Severe Asthma in Oral Presentation at ERS Congress 2026",
+  "sentiment": "POSITIVE"
+ },
+ "CNTB": {
+  "date": "09/30/26",
+  "headline": "Connect Biopharma Announces Positive Preliminary Topline Data from its Global Phase 2 Study of Rademikibart as an Add-on Treatment for Acute Exacerbations in Adults with COPD and Type 2 Inflammation",
+  "sentiment": "NEUTRAL"
+ },
+ "TBPH": {
+  "date": "08/10/26",
+  "headline": "Theravance Biopharma, Inc. Reports Second Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "POSITIVE"
+ },
+ "ATYR": {
+  "date": "10/29/26",
+  "headline": "aTyr Pharma Announces Publication of Results from the Phase 3 EFZO-FIT™ Study of Efzofitimod in Pulmonary Sarcoidosis in The Lancet Respiratory Medicine",
+  "sentiment": "NEUTRAL"
+ },
+ "DNTH": {
+  "date": "11/04/26",
+  "headline": "Dianthus Therapeutics Highlights Recent Business Achievements  and Reports Q3 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "ANNX": {
+  "date": "10/28/26",
+  "headline": "Annexon to Host Virtual Investor Event on November 3, 2026: Vonaprument for the Treatment of Geographic Atrophy - Highlighting Key Aspects of Phase 3 ARCHER II Trial",
+  "sentiment": "NEUTRAL"
+ },
+ "CPRX": {
+  "date": "07/09/26",
+  "headline": "Solaris Energy Infrastructure Set to Join S&P SmallCap 600 (Catalyst Pharmaceuticals removed from index as Angelini Pharma acquires the company)",
+  "sentiment": "NEUTRAL"
+ },
+ "RNAC": {
+  "date": "11/05/26",
+  "headline": "Cartesian Therapeutics Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "VOR": {
+  "date": "11/04/26",
+  "headline": "Vor Bio Reports Inducement Grant Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "TGTX": {
+  "date": "11/02/26",
+  "headline": "TG Therapeutics to Host Conference Call on Third Quarter 2026 Financial Results and Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "IMUX": {
+  "date": "11/02/26",
+  "headline": "Immunic to Participate in Investor Conferences in November",
+  "sentiment": "NEUTRAL"
+ },
+ "TLSA": {
+  "date": "11/05/26",
+  "headline": "Tiziana to Host Investor Call with Key Opinion Leaders to Discuss Positive Phase 2a INFORM-MS Topline Results",
+  "sentiment": "NEUTRAL"
+ },
+ "COGT": {
+  "date": "10/27/26",
+  "headline": "Cogent Biosciences to Participate in the Guggenheim Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "HCM": {
+  "date": "09/23/26",
+  "headline": "HUTCHMED Highlights Clinical Data to be Presented at the ESMO Congress 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "LKFT": {
+  "date": "08/20/26",
+  "headline": "Keymed Biosciences Announces 2026 H1 Results and Business Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "KNSA": {
+  "date": "10/27/26",
+  "headline": "Kiniksa Pharmaceuticals Reports Third Quarter 2026 Financial Results and Recent Portfolio Execution",
+  "sentiment": "NEUTRAL"
+ },
+ "CRDL": {
+  "date": "09/23/26",
+  "headline": "Cardiol Therapeutics Achieves Phase III MAVERIC Enrollment Target Ahead of Schedule and Expands Pivotal Trial to Strengthen Assessment of CardiolRx™'s Efficacy",
+  "sentiment": "NEUTRAL"
+ },
+ "MIRM": {
+  "date": "11/03/26",
+  "headline": "Mirum Pharmaceuticals Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "PRQR": {
+  "date": "10/28/26",
+  "headline": "ProQR to Present Clinical and Preclinical Progress from AX-0810 and AX-0811 at Upcoming Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "ROIV": {
+  "date": "09/23/26",
+  "headline": "Roivant Announces Topline Results from Proof-of-Concept Study of IMVT-1402 in Cutaneous Lupus Erythematosus",
+  "sentiment": "NEGATIVE"
+ },
+ "CABA": {
+  "date": "11/05/26",
+  "headline": "Cabaletta Bio Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "ADMA": {
+  "date": "11/04/26",
+  "headline": "ADMA Biologics Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "PHAR": {
+  "date": "09/29/26",
+  "headline": "Pharming announces CEO transition",
+  "sentiment": "NEUTRAL"
+ },
+ "PRME": {
+  "date": "10/05/26",
+  "headline": "Prime Medicine Announces First Patient Dosed in Global Phase 1/2 Clinical Trial of PM577a for H1069Q-Mutated Wilson Disease",
+  "sentiment": "NEUTRAL"
+ },
+ "MESO": {
+  "date": "08/26/26",
+  "headline": "Mesoblast Reports Substantial Revenue Growth to US$120M",
+  "sentiment": "POSITIVE"
+ },
+ "ELDN": {
+  "date": "10/26/26",
+  "headline": "Eledon Pharmaceuticals Presents Phase 2 BESTOW Trial Data Showing Sustained Improvements in Quality of Life and Symptom Burden with Tegoprubart Compared to Tacrolimus at American Society of Nephrology Kidney Week 2026 Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "QTTB": {
+  "date": "11/04/26",
+  "headline": "Q32 Bio Reports Third Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "KYMR": {
+  "date": "10/29/26",
+  "headline": "Kymera Therapeutics Announces Third Quarter 2026 Financial Results and Reports Positive Results from the KT-579 Phase 1 Healthy Volunteer Trial",
+  "sentiment": "NEUTRAL"
+ },
+ "NKTR": {
+  "date": "10/27/26",
+  "headline": "Nektar Therapeutics to Announce Financial Results for the Third Quarter on Thursday, November 12, 2026, After Close of U.S.-Based Financial Markets",
+  "sentiment": "NEUTRAL"
+ },
+ "ACRS": {
+  "date": "11/05/26",
+  "headline": "Aclaris Therapeutics Reports Third Quarter 2026 Financial Results and Provides Corporate and Clinical Update",
+  "sentiment": "NEUTRAL"
+ },
+ "TTRX": {
+  "date": "11/05/26",
+  "headline": "Turn Therapeutics’ GX-03 Earns \"Developmental Immunology Solution of the Year\" in 2026 BioTech Breakthrough Awards Program",
+  "sentiment": "NEUTRAL"
+ },
+ "IMA": {
+  "date": "10/02/26",
+  "headline": "ImageneBio Reports Inducement Grants Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "MLTX": {
+  "date": "08/10/26",
+  "headline": "MoonLake Announces Positive Topline Results from the Phase 3 IZAR-1 Trial of Sonelokimab in Psoriatic Arthritis Demonstrating Significant Improvements Across all Clinical Endpoints, and Reports Second Quarter 2026 Financial Results",
+  "sentiment": "POSITIVE"
+ },
+ "ZURA": {
+  "date": "10/27/26",
+  "headline": "Zura Bio Reports Inducement Grants Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "IFRX": {
+  "date": "11/03/26",
+  "headline": "InflaRx Highlights Izicopan Development Path and Commercial Opportunity in ANCA-Associated Vasculitis at Capital Markets Day",
+  "sentiment": "NEUTRAL"
+ },
+ "AVTX": {
+  "date": "11/05/26",
+  "headline": "Avalo Therapeutics Reports Third Quarter 2026 Financial Results and Recent Business Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "ALMS": {
+  "date": "10/09/26",
+  "headline": "Alumis Announces New Phase 3 Data Demonstrating Envudeucitinib Rapidly and Durably Improved Psoriasis Burden Across Scalp, Itch, and Quality of Life Measures",
+  "sentiment": "NEUTRAL"
+ },
+ "ARQT": {
+  "date": "11/05/26",
+  "headline": "Arcutis Begins Enrolling Phase 3 Study Evaluating ZORYVE® (roflumilast) Cream 0.3% in Moderate to Severe Atopic Dermatitis",
+  "sentiment": "NEUTRAL"
+ },
+ "ORKA": {
+  "date": "11/03/26",
+  "headline": "Oruka Therapeutics to Participate in Multiple Upcoming Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "XBIT": {
+  "date": "10/23/26",
+  "headline": "XBiotech Announces Election of Sushma Shivaswamy and Jan-Paul Simard as Co-Chief Executive Officers",
+  "sentiment": "NEUTRAL"
+ },
+ "CUE": {
+  "date": "11/17/26",
+  "headline": "Shares fall ~80% after Q3; loss widened on Ascendant top-up share revaluation (share count under review)",
+  "sentiment": "negative"
+ },
+ "ZBIO": {
+  "date": "11/05/26",
+  "headline": "Zenas BioPharma Reports Third Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "FATE": {
+  "date": "11/05/26",
+  "headline": "Fate Therapeutics Reports Third Quarter 2026 Financial Results and Business Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "IMVT": {
+  "date": "09/23/26",
+  "headline": "Immunovant Announces Topline Results from Proof-of-Concept Study of IMVT-1402 in Cutaneous Lupus Erythematosus",
+  "sentiment": "NEGATIVE"
+ },
+ "PCRX": {
+  "date": "09/09/26",
+  "headline": "Pacira BioSciences Reports Inducement Grants Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "ENLV": {
+  "date": "11/02/26",
+  "headline": "Enlivex Announces Favorable 12-Month Topline Data from Phase I/IIa Allocetra Trial, Demonstrating Durable Treatment Response",
+  "sentiment": "NEUTRAL"
+ },
+ "ANAB": {
+  "date": "10/19/26",
+  "headline": "Jemperli (dostarlimab) Approved in the U.S. as First and Only Immunotherapy for Adults with MSI-H/dMMR Locally Advanced Rectal Cancer",
+  "sentiment": "NEUTRAL"
+ },
+ "ARTV": {
+  "date": "10/27/26",
+  "headline": "Artiva Biotherapeutics Announces Strategic Update and Discontinues Development of AlloNK®",
+  "sentiment": "NEUTRAL"
+ },
+ "KYTX": {
+  "date": "10/23/26",
+  "headline": "Kyverna Therapeutics Highlights Promising Updated Clinical Data with Miv-cel in Progressive Multiple Sclerosis at MS Toronto 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "SCYX": {
+  "date": "11/05/26",
+  "headline": "SCYNEXIS Reports Third Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "INVA": {
+  "date": "11/04/26",
+  "headline": "Innoviva Reports Third Quarter 2026 Financial Results; Highlights Recent Company Progress",
+  "sentiment": "NEUTRAL"
+ },
+ "ARMP": {
+  "date": "10/07/26",
+  "headline": "Armata Pharmaceuticals Strengthens Intellectual Property Portfolio with Two Recent Patent Issuances in the United States",
+  "sentiment": "NEUTRAL"
+ },
+ "SPRO": {
+  "date": "11/04/26",
+  "headline": "Spero Therapeutics Announces Inducement Grant Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "MCRB": {
+  "date": "11/04/26",
+  "headline": "Seres Therapeutics Reports Third Quarter 2026 Financial Results and Announces Plans for Advancing Development of SER-155 To Prevent Immune Checkpoint Inhibitor-Related Enterocolitis (irEC)",
+  "sentiment": "NEUTRAL"
+ },
+ "PYPD": {
+  "date": "10/29/26",
+  "headline": "PolyPid to Report Third Quarter 2026 Financial Results and Operational Highlights on November 11, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "CRMD": {
+  "date": "11/02/26",
+  "headline": "CorMedix Therapeutics Provides Business Update, Reaffirms 2026 Total Revenue Guidance, and Reports Third Quarter Cash Position",
+  "sentiment": "NEUTRAL"
+ },
+ "VALN": {
+  "date": "08/14/26",
+  "headline": "Pfizer and Valneva's Lyme Disease Vaccine Candidate Marketing Authorization Application Validated by European Medicines Agency",
+  "sentiment": "POSITIVE"
+ },
+ "SIGA": {
+  "date": "10/29/26",
+  "headline": "SIGA to Host Business Update Call on November 9, 2026, Following Release of Third-Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "VIR": {
+  "date": "11/05/26",
+  "headline": "Vir Biotechnology to Present Topline Phase 3 ECLIPSE 1 Data for Elebsiran and Tobevibart in Chronic Hepatitis Delta at AASLD’s The Liver Meeting® 2026 and Host Investor Conference Call",
+  "sentiment": "NEUTRAL"
+ },
+ "ABUS": {
+  "date": "10/22/26",
+  "headline": "Arbutus Announces FDA Clinical Hold is Lifted on IND Application for AB-101, an Oral PD-L1 Inhibitor",
+  "sentiment": "NEUTRAL"
+ },
+ "AVIR": {
+  "date": "11/02/26",
+  "headline": "Atea Pharmaceuticals to Host Third Quarter 2026 Financial Results and Business Update Conference Call on November 9, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "DTIL": {
+  "date": "11/05/26",
+  "headline": "Precision BioSciences Announces Pricing of $125 Million Underwritten Offering of Common Stock and Pre-Funded Warrants",
+  "sentiment": "NEUTRAL"
+ },
+ "ALGS": {
+  "date": "10/05/26",
+  "headline": "Aligos Therapeutics Announces Five Abstracts Accepted for Presentation at The Liver Meeting® 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "PCVX": {
+  "date": "11/04/26",
+  "headline": "Vaxcyte Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "NVAX": {
+  "date": "10/29/26",
+  "headline": "Novavax to Report Third Quarter 2026 Financial Results on November 5, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "ENTA": {
+  "date": "11/04/26",
+  "headline": "Enanta Pharmaceuticals to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "IVVD": {
+  "date": "11/03/26",
+  "headline": "Invivyd Reports Inducement Grants Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "TVGN": {
+  "date": "10/08/26",
+  "headline": "UPDATE – Tevogen Signs Letter of Intent to Evaluate Potential Acquisition of HRK Healthcare LLC",
+  "sentiment": "NEUTRAL"
+ },
+ "DCOY": {
+  "date": "11/03/26",
+  "headline": "Decoy Therapeutics Provides Third Quarter 2026 Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "PGEN": {
+  "date": "11/04/26",
+  "headline": "Precigen Reports Third Quarter 2026 Results Highlighted by Strong Sequential PAPZIMEOS Revenue Growth and Positive Cash Flow Ahead of Guidance",
+  "sentiment": "NEUTRAL"
+ },
+ "ASMB": {
+  "date": "11/02/26",
+  "headline": "Assembly Biosciences to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "INO": {
+  "date": "11/02/26",
+  "headline": "INOVIO to Report Third Quarter 2026 Financial Results on November 10, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "NNVC": {
+  "date": "10/27/26",
+  "headline": "As Ebola Spreads to Multiple Countries, the Importance of NV-387 Oral Gummies Treatment Cannot be Understated - Phase II Clinical Trial Advancing Towards the Second Part, Says NanoViricides",
+  "sentiment": "NEUTRAL"
+ },
+ "VXRT": {
+  "date": "10/29/26",
+  "headline": "Vaxart to Host Stockholder Fireside Chat on November 6 at 4:30 p.m. ET",
+  "sentiment": "NEUTRAL"
+ },
+ "PROK": {
+  "date": "10/22/26",
+  "headline": "ProKidney to Host Virtual KOL Event to Recap Mechanism of Action Data Presented at ASN Kidney Week and Provide a Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "AKBA": {
+  "date": "11/05/26",
+  "headline": "Akebia Therapeutics Reports Third Quarter 2026 Financial Results and Business Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "UNCY": {
+  "date": "11/04/26",
+  "headline": "Unicycive Therapeutics to Present at the Guggenheim 3rd Annual Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "BHC": {
+  "date": "10/28/26",
+  "headline": "Bausch Health Announces Full Redemption of 8.500% Senior Notes Due 2027",
+  "sentiment": "NEUTRAL"
+ },
+ "GYRE": {
+  "date": "09/03/26",
+  "headline": "Gyre Therapeutics to Participate in Upcoming September Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "BEAM": {
+  "date": "11/04/26",
+  "headline": "Beam Therapeutics to Present Updated Clinical Data from BEACON Phase 1/2 Trial of Risto-cel in Sickle Cell Disease in an Oral Presentation at American Society of Hematology (ASH) Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "KMDA": {
+  "date": "08/05/26",
+  "headline": "Kamada to Announce Second Quarter and First Half Ended June 30, 2026 Financial Results on August 12, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "MREO": {
+  "date": "08/11/26",
+  "headline": "Sentynl Therapeutics and Mereo BioPharma Announce Option and License Agreement for alvelestat in Alpha-1 Antitrypsin Deficiency-Associated Lung Disease (AATD-LD)",
+  "sentiment": "NEUTRAL"
+ },
+ "EDSA": {
+  "date": "11/04/26",
+  "headline": "Edesa Biotech to Present at Guggenheim Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "INKT": {
+  "date": "11/02/26",
+  "headline": "MiNK Therapeutics to Report Third Quarter 2026 Results and Outline Progress in Randomized Clinical Development and Scalable iNKT Cell Therapy",
+  "sentiment": "NEUTRAL"
+ },
+ "VCRE": {
+  "date": "09/30/26",
+  "headline": "Increase in Number of Shares and Votes in Vicore Pharma",
+  "sentiment": "NEUTRAL"
+ },
+ "SION": {
+  "date": "11/02/26",
+  "headline": "Sionna Therapeutics to Participate in Upcoming November 2026 Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "TRVI": {
+  "date": "11/02/26",
+  "headline": "Trevi Therapeutics to Report Third Quarter 2026 Financial Results and Provide a Corporate Update on November 9, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "UTHR": {
+  "date": "11/04/26",
+  "headline": "United Therapeutics Corporation Reports Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "AVLN": {
+  "date": "11/03/26",
+  "headline": "Avalyn to Present at Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "CTNM": {
+  "date": "11/03/26",
+  "headline": "Contineum Therapeutics Reports Third-Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "PRTC": {
+  "date": "05/13/26",
+  "headline": "PureTech to Showcase Deupirfenidone Program at the American Thoracic Society International Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "RNTX": {
+  "date": "11/02/26",
+  "headline": "Rein Therapeutics to Present at the Guggenheim 3rd Annual Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "SVRA": {
+  "date": "10/21/26",
+  "headline": "Savara Presented New Data Showing Molgramostim Inhalation Solution (Molgramostim) Treatment Effects in Autoimmune Pulmonary Alveolar Proteinosis (aPAP) Patients with Mild Diffusion Impairment",
+  "sentiment": "NEUTRAL"
+ },
+ "KRRO": {
+  "date": "11/05/26",
+  "headline": "Korro Reports Third Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "PLX": {
+  "date": "08/12/26",
+  "headline": "Protalix BioTherapeutics Reports Second Quarter 2026 Financial and Business Results",
+  "sentiment": "NEUTRAL"
+ },
+ "SLNO": {
+  "date": "04/06/26",
+  "headline": "Neurocrine to Acquire Soleno Therapeutics, Expanding Its Endocrinology and Rare Disease Portfolio",
+  "sentiment": "POSITIVE"
+ },
+ "AARD": {
+  "date": "10/23/26",
+  "headline": "Aardvark Therapeutics Reports Exploratory Data from the Terminated HERO and Open-Label Extension Trials",
+  "sentiment": "NEUTRAL"
+ },
+ "ENTX": {
+  "date": "10/13/26",
+  "headline": "Entera Presents Markedly Enhanced Anabolic Effects of EB613 (First-in-Class Oral PTH(1-34) Tablet) in Postmenopausal Women with Osteoporosis at High Risk of Fracture and Showcases Phase 3 Design at ASBMR 2026 Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "RDY": {
+  "date": "08/04/26",
+  "headline": "Dr. Reddy's Announces the First-to-Market Launch of Sugammadex Injection",
+  "sentiment": "POSITIVE"
+ },
+ "AMPH": {
+  "date": "10/29/26",
+  "headline": "Amphastar Pharmaceuticals to Release Third Quarter Earnings and Hold Conference Call on November 5, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "BMEA": {
+  "date": "10/13/26",
+  "headline": "Biomea Fusion Announces Phase 1 Results for BMF-650, its Investigational Next-Generation Oral Small Molecule GLP-1 Receptor Agonist",
+  "sentiment": "NEUTRAL"
+ },
+ "IONS": {
+  "date": "11/02/26",
+  "headline": "Ionis to hold third quarter 2026 financial results webcast",
+  "sentiment": "NEUTRAL"
+ },
+ "ARWR": {
+  "date": "11/04/26",
+  "headline": "Arrowhead Pharmaceuticals Refinances Existing Credit Facility, Lowering Borrowing Costs and Extending Maturity",
+  "sentiment": "NEUTRAL"
+ },
+ "EDIT": {
+  "date": "10/14/26",
+  "headline": "Editas Medicine Announces Poster Presentations at the European Society of Gene and Cell Therapy (ESGCT) 33rd Annual Congress and Participation in Upcoming Investor Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "PTCT": {
+  "date": "11/03/26",
+  "headline": "PTC Therapeutics Board of Directors Authorizes $500 Million Share Repurchase Program",
+  "sentiment": "NEUTRAL"
+ },
+ "ASND": {
+  "date": "11/02/26",
+  "headline": "Eyconis to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "BMRN": {
+  "date": "11/04/26",
+  "headline": "Neion Bio Taps John Maga as Head of Biologics and CMC to Expand Capabilities In Innovative Development",
+  "sentiment": "NEUTRAL"
+ },
+ "IRON": {
+  "date": "11/05/26",
+  "headline": "Disc Medicine Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "DNLI": {
+  "date": "11/03/26",
+  "headline": "Denali Therapeutics Reports Third Quarter 2026 Financial Results and Business Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "RARE": {
+  "date": "11/03/26",
+  "headline": "Ultragenyx Reports Third Quarter 2026 Financial Results, Announces Substantial Expense Reductions, and Reaffirms Profitability in 2027",
+  "sentiment": "NEUTRAL"
+ },
+ "ZVRA": {
+  "date": "11/03/26",
+  "headline": "Zevra Reports Third Quarter 2026 Financial Results and Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "PLYX": {
+  "date": "08/25/26",
+  "headline": "Polaryx Therapeutics Advances Operational Readiness for SOTERIA Phase 2 Basket Trial",
+  "sentiment": "NEUTRAL"
+ },
+ "SGMO": {
+  "date": "08/12/26",
+  "headline": "Sangamo Therapeutics Selects Successful Bidders Following Competitive Asset Auction for $163.55 Million in Cash Consideration at Closing and Up to $100 Million in Potential Milestones",
+  "sentiment": "NEGATIVE"
+ },
+ "SPRB": {
+  "date": "11/02/26",
+  "headline": "Spruce Biosciences to Participate in the Guggenheim 3rd Annual Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "MNPR": {
+  "date": "11/02/26",
+  "headline": "Monopar to Present at AASLD – The Liver Meeting® 2026: Phase 3 FoCus Baseline Data and ALXN1840 Molybdenum Safety Data",
+  "sentiment": "NEUTRAL"
+ },
+ "AMLX": {
+  "date": "11/05/26",
+  "headline": "Amylyx Pharmaceuticals Reports Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "RZLT": {
+  "date": "11/02/26",
+  "headline": "Rezolute to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "XERS": {
+  "date": "11/05/26",
+  "headline": "Xeris Biopharma Reports Third Quarter 2026 Financial Results and Business Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "MBX": {
+  "date": "10/13/26",
+  "headline": "MBX Biosciences to Participate in Upcoming November Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "ARCT": {
+  "date": "10/26/26",
+  "headline": "Arcturus Therapeutics to Report Third Quarter Financial Results and Provide Corporate Update on November 5, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "NAMS": {
+  "date": "11/04/26",
+  "headline": "NewAmsterdam Pharma Provides Corporate Update and Reports Third Quarter Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "GLUE": {
+  "date": "11/03/26",
+  "headline": "Monte Rosa Therapeutics Reports Inducement Grants Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "AMRN": {
+  "date": "10/28/26",
+  "headline": "Amarin Reports 2026 Third Quarter Financial Results, Achieves Positive Net Income",
+  "sentiment": "NEUTRAL"
+ },
+ "MDGL": {
+  "date": "11/05/26",
+  "headline": "Madrigal Announces New Real-World Data at AASLD 2026 Demonstrating Improvements in Liver Stiffness and Cardiometabolic Health Markers with Rezdiffra",
+  "sentiment": "NEUTRAL"
+ },
+ "IVA": {
+  "date": "10/06/26",
+  "headline": "Inventiva to Present Scientific Abstracts at AASLD The Liver Meeting® 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "ALT": {
+  "date": "11/05/26",
+  "headline": "Altimmune Announces Data from RECLAIM Phase 2 Trial of Pemvidutide in Alcohol Use Disorder Selected as Late-Breaking Oral Presentation at AASLD The Liver Meeting® 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "GALT": {
+  "date": "11/05/26",
+  "headline": "Galectin Therapeutics Presents New Analyses on Noninvasive Prediction of Variceal Development from its Belapectin Development Program at AASLD Liver Meeting 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "EXOZ": {
+  "date": "10/21/26",
+  "headline": "eXoZymes CEO to Discuss Commercialization, Key Milestones, and Potential Catalysts in Fireside Chat with Water Tower Research",
+  "sentiment": "NEUTRAL"
+ },
+ "RYTM": {
+  "date": "11/04/26",
+  "headline": "Rhythm Pharmaceuticals Announces NICE Guidance for IMCIVREE® (Setmelanotide) Updated to Include Adults Living with Bardet-Biedl Syndrome",
+  "sentiment": "NEUTRAL"
+ },
+ "VKTX": {
+  "date": "11/03/26",
+  "headline": "Viking Therapeutics to Participate at Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "KLRA": {
+  "date": "11/04/26",
+  "headline": "Kailera Reports Third Quarter 2026 Financial Results and Provides Business Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "GPCR": {
+  "date": "11/04/26",
+  "headline": "Structure Therapeutics to Participate in the Jefferies Global Healthcare Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "WVE": {
+  "date": "10/27/26",
+  "headline": "Wave Life Sciences Reports Third Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "BIOA": {
+  "date": "10/14/26",
+  "headline": "Deep Origin Announces Multi-Target AI-Driven Drug Discovery Collaboration with BioAge Labs; Validated Hits Confirmed against First Target",
+  "sentiment": "NEUTRAL"
+ },
+ "VANI": {
+  "date": "10/12/26",
+  "headline": "Vivani Medical Announces Participation in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "GUTS": {
+  "date": "10/30/26",
+  "headline": "Fractyl Health Strengthens Revita Patent Portfolio as It Advances Toward FDA Submission and Potential Commercialization",
+  "sentiment": "NEUTRAL"
+ },
+ "RANI": {
+  "date": "10/13/26",
+  "headline": "Rani Therapeutics to Participate in the Chardan Healthcare Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "VERU": {
+  "date": "09/08/26",
+  "headline": "Veru Advances Oral Sabizabulin Following Positive Preclinical Data Showing Potent Anticancer Activity in Human Daraxonrasib (Revolution Medicines’ RASONQUE™) Resistant Pancreatic Cancer into a Planned Phase 2 Clinical Trial",
+  "sentiment": "NEUTRAL"
+ },
+ "IBIO": {
+  "date": "11/02/26",
+  "headline": "iBio to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "VCEL": {
+  "date": "11/05/26",
+  "headline": "Vericel Reports Third Quarter 2026 Financial Results and Raises Full-Year Financial Guidance",
+  "sentiment": "NEUTRAL"
+ },
+ "EWTX": {
+  "date": "11/05/26",
+  "headline": "Edgewise Therapeutics Announces Productive End-of-Phase 2 Meeting with FDA for EDG-7500 in HCM; Phase 3 Protocol Features Tolerability-Based Dose Escalation Without Safety Echo Monitoring",
+  "sentiment": "NEUTRAL"
+ },
+ "DYN": {
+  "date": "11/05/26",
+  "headline": "Dyne Therapeutics Reports Third Quarter 2026 Financial Results and Recent Business Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "SRPT": {
+  "date": "10/26/26",
+  "headline": "Sarepta Therapeutics to Present at Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "SLDB": {
+  "date": "11/05/26",
+  "headline": "Solid Biosciences to Participate in the Guggenheim 3rd Annual Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "RGNX": {
+  "date": "11/05/26",
+  "headline": "REGENXBIO Reports Third Quarter 2026 Financial Results and Operational Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "TRDA": {
+  "date": "11/05/26",
+  "headline": "Entrada Therapeutics Reports Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "CAPR": {
+  "date": "11/03/26",
+  "headline": "Capricor Therapeutics to Report Third Quarter 2026 Financial Results and Provide Recent Corporate Update on November 10",
+  "sentiment": "NEUTRAL"
+ },
+ "CPIX": {
+  "date": "11/03/26",
+  "headline": "CUMBERLAND PHARMACEUTICALS TO ANNOUNCE COMPANY UPDATE & Q3 2026 FINANCIAL RESULTS",
+  "sentiment": "NEUTRAL"
+ },
+ "BNTC": {
+  "date": "10/28/26",
+  "headline": "Benitec Biopharma Announces Positive Interim Phase 1b/2a Results for High Dose BB-301 and Continued Durable Improvements for Low Dose BB-301",
+  "sentiment": "NEUTRAL"
+ },
+ "PEPG": {
+  "date": "08/06/26",
+  "headline": "PepGen Reports Second Quarter 2026 Financial Results and Recent Corporate Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "IXHL": {
+  "date": "09/09/26",
+  "headline": "Incannex Healthcare Provides Corporate Update on Clinical Progress, Intellectual Property and Capital Position",
+  "sentiment": "NEUTRAL"
+ },
+ "SRRK": {
+  "date": "11/03/26",
+  "headline": "Scholar Rock to Present at Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "MENS": {
+  "date": "10/21/26",
+  "headline": "Jyong Biotech to Host Two-Day Investor Events in Silicon Valley and Irvine, California",
+  "sentiment": "NEUTRAL"
+ },
+ "XENE": {
+  "date": "11/03/26",
+  "headline": "Xenon to Present at Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "SUPN": {
+  "date": "11/02/26",
+  "headline": "Supernus and Indivior Complete Merger Creating a Diversified CNS Biopharmaceutical Leader",
+  "sentiment": "NEUTRAL"
+ },
+ "RAPP": {
+  "date": "11/04/26",
+  "headline": "Rapport Therapeutics Reports Third Quarter 2026 Financials and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "BHVN": {
+  "date": "11/05/26",
+  "headline": "Biohaven Drives New Research in Graves' Disease: Phase 3 Pivotal Trial with BHV-1300 Underway and Three Scientific Posters at the 2026 American Thyroid Association Annual (ATA) Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "DRUG": {
+  "date": "11/02/26",
+  "headline": "Bright Minds Biosciences Provides Update About Planned Study with BMB-101 in Developmental and Epileptic Encephalopathies",
+  "sentiment": "NEUTRAL"
+ },
+ "OVID": {
+  "date": "11/05/26",
+  "headline": "Ovid Therapeutics to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "STOK": {
+  "date": "11/03/26",
+  "headline": "Stoke Therapeutics to Present at Upcoming Investor Conferences in November",
+  "sentiment": "NEUTRAL"
+ },
+ "CAMP": {
+  "date": "10/27/26",
+  "headline": "CAMP4 Therapeutics Receives Clinical Trial Application Approval for Phase 1/2 Clinical Trial of CMP-002 in Patients with SYNGAP1-Related Disorder in the European Union",
+  "sentiment": "NEUTRAL"
+ },
+ "FLNA": {
+  "date": "11/05/26",
+  "headline": "Filana Therapeutics Reports Q3 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "ABCL": {
+  "date": "10/22/26",
+  "headline": "AbCellera to Present at Upcoming Investor Conferences in November 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "PRAX": {
+  "date": "11/04/26",
+  "headline": "Praxis Precision Medicines, Inc. Announces Inducement Grants Under Nasdaq Listing Rule 5635(c)(4)",
+  "sentiment": "NEUTRAL"
+ },
+ "PRTA": {
+  "date": "10/29/26",
+  "headline": "Prothena to Report Third Quarter 2026 Financial Results on November 5",
+  "sentiment": "NEUTRAL"
+ },
+ "DSGN": {
+  "date": "11/04/26",
+  "headline": "Design Therapeutics Announces Third Quarter 2026 Financial Results and Recent Business Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "NGEN": {
+  "date": "10/12/26",
+  "headline": "NervGen Announces First Participant Dosed in RESTORE, a Phase 3 Registrational Study Evaluating NVG-291 in Chronic Spinal Cord Injury",
+  "sentiment": "NEUTRAL"
+ },
+ "ALKS": {
+  "date": "11/05/26",
+  "headline": "Alkermes Showcases Research From Psychiatry and Sleep Portfolios at the Neuroscience Education Institute Fall Congress",
+  "sentiment": "NEUTRAL"
+ },
+ "HRMY": {
+  "date": "11/04/26",
+  "headline": "Harmony Biosciences Reports Q3 Financial Results on Track to Achieve More Than $1 Billion WAKIX Net Revenue and Announces Strong Multiple-Ascending Dose Data for Its Orexin Agonist BP-205, Supporting Potential Best-in-Class Profile",
+  "sentiment": "NEUTRAL"
+ },
+ "GRCE": {
+  "date": "11/05/26",
+  "headline": "Grace Therapeutics Announces Participation in Upcoming Industry and Investor Events in November 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "AXSM": {
+  "date": "11/03/26",
+  "headline": "Axsome Therapeutics to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "AVXL": {
+  "date": "11/03/26",
+  "headline": "Anavex Life Sciences Names Terrie Kellmeyer, Ph.D., as President and Chief Executive Officer and Member of the Board of Directors",
+  "sentiment": "NEUTRAL"
+ },
+ "VYGR": {
+  "date": "10/27/26",
+  "headline": "Voyager’s Tau-Targeted Gene Therapy VY1706 and Anti-Tau Antibody VY7523 for Alzheimer’s Disease to Be Featured in Poster Presentations at CTAD 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "ABOS": {
+  "date": "10/30/26",
+  "headline": "Acumen Pharmaceuticals Announces Topline Results from Phase 2 ALTITUDE-AD Clinical Trial of Sabirnetug (ACU193) for the Treatment of Early Alzheimer’s Disease; Trial Did Not Meet Primary Endpoint",
+  "sentiment": "NEUTRAL"
+ },
+ "ACOG": {
+  "date": "11/02/26",
+  "headline": "Alpha Cognition to Report Third Quarter 2026 Financial Results and Provide Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "ANVS": {
+  "date": "11/05/26",
+  "headline": "Annovis Announces Pricing of $21.0 Million Public Offering",
+  "sentiment": "NEUTRAL"
+ },
+ "PMN": {
+  "date": "11/05/26",
+  "headline": "ProMIS Neurosciences to Participate in Upcoming Conferences in November",
+  "sentiment": "NEUTRAL"
+ },
+ "COYA": {
+  "date": "10/28/26",
+  "headline": "Coya Therapeutics to Present Neurofilament Light Chain (NfL) Biomarker Stratification Methodology in the ALSTARS Trial to Minimize the Impact of Heterogeneity in ALS Clinical Trials at the 2026 Annual NEALS Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "MNOV": {
+  "date": "09/08/26",
+  "headline": "MediciNova to Participate in Two Investor Conferences in September",
+  "sentiment": "NEUTRAL"
+ },
+ "CGTX": {
+  "date": "11/05/26",
+  "headline": "Cognition Therapeutics Reports Financial Results for the Third Quarter 2026 and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "CRVO": {
+  "date": "10/29/26",
+  "headline": "CervoMed Announces Publication of Two Peer-Reviewed Research Articles Supporting Neflamapimod as a Potential Treatment for Dementia with Lewy Bodies (DLB)",
+  "sentiment": "NEUTRAL"
+ },
+ "ALEC": {
+  "date": "10/16/26",
+  "headline": "Alector Announces Pricing of Underwritten Offering",
+  "sentiment": "NEUTRAL"
+ },
+ "QURE": {
+  "date": "11/04/26",
+  "headline": "uniQure Announces Third Quarter 2026 Financial Results and Provides Company Update",
+  "sentiment": "NEUTRAL"
+ },
+ "ATHE": {
+  "date": "09/03/26",
+  "headline": "Alterity Therapeutics to Participate in a Fireside Chat at the Cantor Global Healthcare Conference 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "ACIU": {
+  "date": "11/04/26",
+  "headline": "AC Immune Third Quarter 2026 Financial and Corporate Update",
+  "sentiment": "NEUTRAL"
+ },
+ "GANX": {
+  "date": "11/05/26",
+  "headline": "Gain Therapeutics Announces Late-Breakers and Poster Presentations at Upcoming Scientific Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "TSHA": {
+  "date": "11/05/26",
+  "headline": "Taysha Gene Therapies to Release Third Quarter 2026 Financial Results and Host Conference Call and Webcast on November 12",
+  "sentiment": "NEUTRAL"
+ },
+ "NGNE": {
+  "date": "11/03/26",
+  "headline": "Neurogene to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "ACAD": {
+  "date": "11/04/26",
+  "headline": "Acadia Pharmaceuticals Reports Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "IGC": {
+  "date": "11/05/26",
+  "headline": "IGC Pharma's Alzheimer's Agitation Drug Candidate Now Patented in the U.S., Canada, and Mexico as Phase 2 Readout Nears",
+  "sentiment": "NEUTRAL"
+ },
+ "LXRX": {
+  "date": "11/05/26",
+  "headline": "Lexicon Pharmaceuticals Reports Third Quarter 2026 Financial Results and Provides Clinical Updates",
+  "sentiment": "NEUTRAL"
+ },
+ "OKYO": {
+  "date": "10/06/26",
+  "headline": "OKYO Pharma Announces First Patients Enrolled in Phase 3 Pivotal Trial of Urcosimod for Neuropathic Corneal Pain",
+  "sentiment": "NEUTRAL"
+ },
+ "MIRA": {
+  "date": "10/29/26",
+  "headline": "Inside Deep Principle: The AI That Runs Its Own Chemistry Experiments to Discover New Materials",
+  "sentiment": "NEUTRAL"
+ },
+ "DWTX": {
+  "date": "11/05/26",
+  "headline": "Dogwood Therapeutics Announces Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "ANIK": {
+  "date": "10/22/26",
+  "headline": "Anika to Issue Third Quarter 2026 Financial Results on Friday, November 6, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "APUS": {
+  "date": "09/24/26",
+  "headline": "MindWave Innovations Signs Agreement to Build and Operate AQUAEChain, a Platform for Insured ALCI Credits",
+  "sentiment": "POSITIVE"
+ },
+ "TNXP": {
+  "date": "11/04/26",
+  "headline": "Tonix Pharmaceuticals to Present at Guggenheim’s 3rd Annual Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "SCLX": {
+  "date": "07/06/26",
+  "headline": "Scilex Holding Company Announces Dream Bowl I Meme Coin Tokens Commence Trading on the Biconomy Exchange on July 6, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "NTRB": {
+  "date": "10/13/26",
+  "headline": "Nutriband Inc. announces exercise of warrants at $6.43 for Gross Proceeds of $1,753,274",
+  "sentiment": "NEUTRAL"
+ },
+ "HRTX": {
+  "date": "10/27/26",
+  "headline": "Heron Therapeutics to Report Third Quarter 2026 Financial Results  on Monday, November 9, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "HALO": {
+  "date": "10/22/26",
+  "headline": "Halozyme to Report Third Quarter 2026 Financial and Operating Results",
+  "sentiment": "NEUTRAL"
+ },
+ "COLL": {
+  "date": "11/05/26",
+  "headline": "Collegium Reports Third Quarter 2026 Financial Results; Reaffirms 2026 Guidance",
+  "sentiment": "NEUTRAL"
+ },
+ "CING": {
+  "date": "09/17/26",
+  "headline": "Shane Schaffer, Cingulate Chairman & CEO to Present “SMART Launch” Approach at Indegene Digital Summit: Rethinking Commercialization for Emerging Pharma",
+  "sentiment": "NEUTRAL"
+ },
+ "NMRA": {
+  "date": "08/14/26",
+  "headline": "Neumora Therapeutics Reports Second Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "DFTX": {
+  "date": "11/04/26",
+  "headline": "Definium Therapeutics Presents Topline Phase 3 Data for DT120 ODT in Generalized Anxiety Disorder and Major Depressive Disorder at 2026 NEI Fall Congress",
+  "sentiment": "NEUTRAL"
+ },
+ "VTGN": {
+  "date": "10/20/26",
+  "headline": "Vistagen Selects GATC Health to Apply Predictive AI Across Lead Clinical-Stage Drug Development Programs",
+  "sentiment": "NEUTRAL"
+ },
+ "NBIX": {
+  "date": "11/05/26",
+  "headline": "Neurocrine Biosciences Presents New Tardive Dyskinesia Survey Results Showing Fewer Work and School Disruptions with INGREZZA® (valbenazine) Capsules",
+  "sentiment": "NEUTRAL"
+ },
+ "GHRS": {
+  "date": "08/06/26",
+  "headline": "GH Research Reports Second Quarter 2026 Financial Results and Provides Business Update",
+  "sentiment": "NEUTRAL"
+ },
+ "SPTX": {
+  "date": "11/02/26",
+  "headline": "Seaport Therapeutics Reports Third Quarter 2026 Financial Results and Highlights Recent Corporate and Clinical Progress",
+  "sentiment": "NEUTRAL"
+ },
+ "ANRO": {
+  "date": "11/04/26",
+  "headline": "Alto Neuroscience Announces New Employee Inducement Grants Under NYSE Rule 303A.08",
+  "sentiment": "NEUTRAL"
+ },
+ "HELP": {
+  "date": "11/03/26",
+  "headline": "Helus Pharma to Participate in the Guggenheim Healthcare Innovation Conference",
+  "sentiment": "NEUTRAL"
+ },
+ "NRXP": {
+  "date": "10/30/26",
+  "headline": "NRx Pharmaceuticals (Nasdaq:NRXP) Receives FDA Approval of Preservative-Free Ketamine Ahead of November 10 FDA Goal Date",
+  "sentiment": "NEUTRAL"
+ },
+ "AYTU": {
+  "date": "09/22/26",
+  "headline": "Aytu BioPharma Reports Fiscal 2026 Full Year and Fourth Quarter Operational and Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "LPCN": {
+  "date": "11/05/26",
+  "headline": "Lipocine Announces Financial Results for the Third Quarter of 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "LBRX": {
+  "date": "10/15/26",
+  "headline": "LB Pharmaceuticals to Participate in Upcoming Investor Events",
+  "sentiment": "NEUTRAL"
+ },
+ "VNDA": {
+  "date": "11/03/26",
+  "headline": "Vanda Pharmaceuticals Announces Participation at November 2026 Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "BTAI": {
+  "date": "08/28/26",
+  "headline": "BioXcel Therapeutics Enters Into Asset Sale Agreement with Teva Pharmaceuticals",
+  "sentiment": "NEGATIVE"
+ },
+ "NERV": {
+  "date": "10/29/26",
+  "headline": "Minerva Neurosciences to Participate in 2026 Jefferies Global Healthcare Conference in London",
+  "sentiment": "NEUTRAL"
+ },
+ "MPLT": {
+  "date": "10/06/26",
+  "headline": "MapLight Therapeutics Celebrates Co-Founder Dr. Karl Deisseroth on Receipt of 2026 Nobel Prize in Physiology or Medicine for the Development of Optogenetics",
+  "sentiment": "NEUTRAL"
+ },
+ "RVPH": {
+  "date": "08/12/26",
+  "headline": "Reviva Reports Second Quarter 2026 Financial Results and Recent Business Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "EBS": {
+  "date": "11/04/26",
+  "headline": "Emergent BioSolutions Receives $22.3 Million Delivery Order Modification to Supply BioThrax® (Anthrax Vaccine Adsorbed) to the U.S. Department of War",
+  "sentiment": "NEUTRAL"
+ },
+ "ACHV": {
+  "date": "11/02/26",
+  "headline": "Achieve Life Sciences Announces Granting of New Hire Inducement Awards",
+  "sentiment": "NEUTRAL"
+ },
+ "BRVE": {
+  "date": "10/30/26",
+  "headline": "Braveheart Bio to Host Webinar – HCM Spotlight: Advancing a Next-Generation Cardiac Myosin Inhibitor – with Key Opinion Leader Discussion on November 6, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "APMD": {
+  "date": "10/12/26",
+  "headline": "Apnimed to Present Five Abstracts, Including Two Late-Breakers at CHEST 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "LTGO": {
+  "date": "11/05/26",
+  "headline": "Latigo Biotherapeutics Reports Third Quarter 2026 Financial Results and Recent Business Highlights",
+  "sentiment": "NEUTRAL"
+ },
+ "OBX": {
+  "date": "08/05/26",
+  "headline": "Obsidian Therapeutics Announces First Patient Enrolled in the Registration-enabling Cohort of Phase 1/2 Agni-01 Study Evaluating Amsoki-cel (OBX-115) in Advanced Melanoma",
+  "sentiment": "POSITIVE"
+ },
+ "ATTO": {
+  "date": "10/27/26",
+  "headline": "Attovia Therapeutics to Participate in Upcoming Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "BLSM": {
+  "date": "11/04/26",
+  "headline": "BlossomHill Therapeutics Announces Upcoming Presentation for BH-30236, an Oral Macrocyclic CLK Inhibitor, at the 68th American Society of Hematology (ASH) Annual Meeting",
+  "sentiment": "NEUTRAL"
+ },
+ "SCTX": {
+  "date": "11/05/26",
+  "headline": "Scribe Therapeutics to Participate in Upcoming Healthcare Investor Conferences",
+  "sentiment": "NEUTRAL"
+ },
+ "VOGX": {
+  "date": "10/15/26",
+  "headline": "Vogenx Initiates Phase 2b EMERGE Study of Mizagliflozin for Post-Bariatric Hypoglycemia",
+  "sentiment": "NEUTRAL"
+ },
+ "CUVL": {
+  "date": "07/23/26",
+  "headline": "CLINUVEL implements strategic reorganisation to refocus on U.S. markets",
+  "sentiment": "NEGATIVE"
+ },
+ "VRXA": {
+  "date": "10/13/26",
+  "headline": "VERAXA Biotech Presents in vivo Proof-of-Concept Data for BiTAC®-ADC Technology at World ADC Congress",
+  "sentiment": "NEUTRAL"
+ },
+ "MSLE": {
+  "date": "10/05/26",
+  "headline": "Satellos Granted Composition of Matter Patent for Forazapadin",
+  "sentiment": "NEUTRAL"
+ },
+ "YARW": {
+  "date": "11/02/26",
+  "headline": "Yarrow Bioscience Announces Participation in November Investor Events",
+  "sentiment": "NEUTRAL"
+ },
+ "SER": {
+  "date": "10/30/26",
+  "headline": "Epigenetic Reprogramming Longevity Therapeutics Global Market Report 2026 | Capture $16.14B AI and Cell Reprogramming Growth as Retro Biosciences, Altos Labs and NewLimit Lead",
+  "sentiment": "NEUTRAL"
+ },
+ "INDV": {
+  "date": "10/29/26",
+  "headline": "Indivior Reports Third Quarter 2026 Financial Results",
+  "sentiment": "NEUTRAL"
+ },
+ "TLPH": {
+  "date": "11/04/26",
+  "headline": "Talphera to Report Third Quarter 2026 Financial Results on Thursday, November 12, 2026",
+  "sentiment": "NEUTRAL"
+ },
+ "ALNY": {
+  "date": "11/04/26",
+  "headline": "Alnylam Announces $1 Billion Share Repurchase Program and Change in Commercial Leadership",
+  "sentiment": "NEUTRAL"
+ },
+ "INSM": {
+  "date": "11/05/26",
+  "headline": "Nanoscope Therapeutics Appoints Ophthalmology and Rare Disease Regulatory Leader Damon Daulerio as Executive Director of Regulatory Affairs",
+  "sentiment": "NEUTRAL"
+ },
+ "BNTX": {
+  "date": "10/26/26",
+  "headline": "BioNTech and DualityBio Announce Topline Results of the DYNASTY-Breast02 Global Phase 3 Clinical Trial Evaluating Trastuzumab Pamirtecan in HR+/HER2-low Metastatic Breast Cancer",
+  "sentiment": "NEUTRAL"
+ },
+ "ADRX": {
+  "date": "10/01/26",
+  "headline": "ADARx Pharmaceuticals Announces the Closing of Full Exercise of Underwriters’ Option to Purchase Additional Shares Granted in Its Initial Public Offering",
+  "sentiment": "NEUTRAL"
+ },
+ "HROW": {
+  "date": "11/02/26",
+  "headline": "PHIL Partners with Harrow to Power HarrowRx, One Prescribing Destination for Harrow’s Eye Care Portfolio",
+  "sentiment": "NEUTRAL"
+ },
+ "TRXB": {
+  "date": "10/13/26",
+  "headline": "TRexBio Announces Closing of Initial Public Offering",
+  "sentiment": "NEUTRAL"
+ },
+ "KRSA": {
+  "date": "11/05/26",
+  "headline": "Korsana Biosciences Reports Third Quarter 2026 Financial Results and Provides Corporate Update",
+  "sentiment": "NEUTRAL"
+ }
+}

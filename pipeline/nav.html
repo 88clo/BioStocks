@@ -1,0 +1,98 @@
+<!-- NAV-START: one navigation bar, six views (pipeline/nav.html, injected by build.py after the Brief) -->
+<style id="nav5-css">
+:root{--nav5h:46px}
+body{padding-top:var(--nav5h)}
+#nav5{position:fixed;top:0;left:0;right:0;height:var(--nav5h);z-index:115;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 14px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:none}
+#nav5::-webkit-scrollbar{display:none}
+#nav5 .n5-logo{font-family:var(--disp);font-weight:800;font-size:13px;letter-spacing:.06em;margin-right:8px;color:var(--text)}
+#nav5 .n5-tab{background:none;border:0;border-radius:7px;padding:7px 11px;font-size:12.5px;font-weight:600;color:var(--dim);cursor:pointer}
+#nav5 .n5-tab:hover{background:var(--raised)}
+#nav5 .n5-tab.on{background:var(--text);color:var(--bg)}
+#nav5 .n5-sep{width:1px;height:22px;background:var(--line);margin:0 6px;flex:0 0 auto}
+#nav5 .n5-lens{background:var(--raised);border:1px solid var(--line);border-radius:14px;padding:4px 10px;font-size:11.5px;color:var(--dim);cursor:pointer}
+#nav5 .n5-lens.on{border-color:var(--cyan);color:var(--text);font-weight:700;background:var(--panel)}
+#nav5 .n5-sp{flex:1 0 8px}
+#nav5 .n5-about{background:none;border:1px solid var(--line);border-radius:7px;padding:5px 10px;font-size:12px;color:var(--dim);cursor:pointer}
+#n5pop{position:fixed;top:calc(var(--nav5h) - 4px);right:12px;z-index:200;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px;min-width:220px;box-shadow:0 6px 18px rgba(0,0,0,.18);display:none}
+#n5pop div{padding:8px 10px;font-size:12.5px;border-radius:5px;cursor:pointer}
+#n5pop div:hover{background:var(--raised)}
+#n5pop .n5-h{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);cursor:default;padding:6px 10px 2px}
+#n5pop .n5-h:hover{background:none}
+header.top{top:var(--nav5h)!important}
+header.top .brand h1{display:none}
+.controlswrap{top:calc(var(--nav5h) + 62px)}
+.tapage,.memopage{top:var(--nav5h)!important}
+#brf{top:var(--nav5h)!important;z-index:108!important}
+#brf .brf-bar{display:none!important}
+/* old navigation, replaced by #nav5 */
+#viewseg,#subtabs,#memobtn,#tasumbtn,.refwrap,#refbtn,#insbtn,#rfbtn,#methbtn,#brfBtn,#backbtn,#memoBack{display:none!important}
+/* model knobs live behind one toggle */
+body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(.n5-model) .controls .sfbar,body:not(.n5-model) #effVsel,body:not(.n5-model) #diffVsel{display:none!important}
+#n5model.on{border-color:var(--cyan)!important;color:var(--text)!important}
+@media(max-width:600px){#nav5 .n5-logo{display:none}}
+@media print{#nav5,#n5pop{display:none!important}body{padding-top:0}}
+</style>
+<script id="nav5-js">
+(function(){
+  var old=document.getElementById('nav5');if(old)old.remove();var oldp=document.getElementById('n5pop');if(oldp)oldp.remove();
+  // Six views. Each lens is one of the dashboard's existing renderers; nothing was dropped, duplicates were removed.
+  var TABS=[
+    {k:'brief',l:'Brief',lens:[['brief','Brief']]},
+    {k:'companies',l:'Companies',lens:[['ta','By area'],['table','All fields'],['dcf','Valuation'],['crowd','Holders & analysts'],['sh','By investor'],['sug','Insight notes'],['parked','Parked']]},
+    {k:'market',l:'Market',lens:[['board','Tiles'],['returns','Returns'],['map','Value vs momentum'],['gaps','White space']]},
+    {k:'deals',l:'Calendar & deals',lens:[['cal','Catalysts'],['radar','Equity raises'],['ipo','IPOs']]},
+    {k:'record',l:'Memo & record',lens:[['memo','Monthly memo'],['track','Track record'],['retro','Hindsight']]},
+    {k:'port',l:'Portfolio',lens:[['port','My portfolio']]}
+  ];
+  var BRF={brief:1,track:1,radar:1,gaps:1}, MAIN={table:1,dcf:1,crowd:1,sh:1,sug:1,parked:1,board:1,returns:1,map:1,cal:1,ipo:1,retro:1,port:1};
+  var last={};TABS.forEach(function(t){last[t.k]=t.lens[0][0];});
+  var cur={tab:'brief',lens:'brief'};
+  var nav=document.createElement('nav');nav.id='nav5';nav.setAttribute('aria-label','Dashboard views');
+  document.body.insertBefore(nav,document.body.firstChild);
+  var pop=document.createElement('div');pop.id='n5pop';document.body.appendChild(pop);
+  function el(id){return document.getElementById(id);}
+  function closeOverlays(){
+    try{if(window.closeBrief)window.closeBrief();}catch(e){}
+    try{var tp=el('tapage');if(tp&&tp.classList.contains('open')&&typeof closeTApage==='function')closeTApage();}catch(e){}
+    try{var mp=el('memopage');if(mp&&getComputedStyle(mp).display!=='none'){var b=el('memoBack');if(b)b.click();else mp.style.display='none';}}catch(e){}
+    try{if(typeof closeDrawer==='function')closeDrawer();}catch(e){}
+    document.body.style.overflow='';
+  }
+  function draw(){
+    var t=TABS.filter(function(x){return x.k===cur.tab;})[0];
+    nav.innerHTML='<span class="n5-logo">BIOTECH LANDSCAPE</span>'
+      +TABS.map(function(x){return '<button class="n5-tab'+(x.k===cur.tab?' on':'')+'" data-t="'+x.k+'">'+x.l+'</button>';}).join('')
+      +(t.lens.length>1?'<span class="n5-sep"></span>'+t.lens.map(function(l){return '<button class="n5-lens'+(l[0]===cur.lens?' on':'')+'" data-l="'+l[0]+'">'+l[1]+'</button>';}).join(''):'')
+      +'<span class="n5-sp"></span>'
+      +(MAIN[cur.lens]?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
+      +'<button class="n5-about" id="n5aboutBtn">ⓘ About ▾</button>';
+    nav.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){go(b.dataset.t,last[b.dataset.t]);};});
+    nav.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){go(cur.tab,b.dataset.l);};});
+    var m=el('n5model');if(m){m.classList.toggle('on',document.body.classList.contains('n5-model'));m.onclick=function(){document.body.classList.toggle('n5-model');m.classList.toggle('on');};}
+    el('n5aboutBtn').onclick=function(ev){ev.stopPropagation();pop.style.display=pop.style.display==='block'?'none':'block';};
+  }
+  pop.innerHTML='<div class="n5-h">How it works</div><div data-a="meth">◈ Methodology: call grid and thesis format</div><div data-a="rf">⏱ Refresh status: as-of date and coverage per section</div><div class="n5-h">Output</div><div data-a="print">⎙ Print or save this view as PDF</div>';
+  pop.querySelectorAll('[data-a]').forEach(function(d){d.onclick=function(){pop.style.display='none';var a=d.dataset.a;
+    if(a==='meth'){var b=el('methbtn');if(b)b.click();}else if(a==='rf'){var r=el('rfbtn');if(r)r.click();}else if(a==='print'){window.print();}};});
+  document.addEventListener('click',function(){pop.style.display='none';});
+  function go(tab,lens,noHash){
+    cur={tab:tab,lens:lens};last[tab]=lens;closeOverlays();
+    try{
+      if(BRF[lens]){if(window.openBrief)window.openBrief(lens);}
+      else if(lens==='ta'){if(typeof openTApage==='function')openTApage();}
+      else if(lens==='memo'){var b=el('memobtn');if(b)b.click();}
+      else if(MAIN[lens]){state.view=lens;render();window.scrollTo(0,0);}
+    }catch(e){console.log('nav',e);}
+    draw();
+    if(!noHash){try{history.replaceState(null,'','#'+tab+'/'+lens);}catch(e){}}
+  }
+  window.navGo=go;
+  // route from the URL hash (#companies/table, #deals/radar ...); old Brief hashes still work; default = Brief
+  var h=(location.hash||'').replace('#',''),p=h.split('/'),ok=false;
+  var alias={brief:['brief','brief'],track:['record','track'],radar:['deals','radar'],gaps:['market','gaps']};
+  if(alias[h]){go(alias[h][0],alias[h][1],true);ok=true;}
+  else if(p.length===2){TABS.forEach(function(t){if(t.k===p[0]&&t.lens.some(function(l){return l[0]===p[1];})){go(p[0],p[1],true);ok=true;}});}
+  if(!ok)go('brief','brief',true);
+})();
+</script>
+<!-- NAV-END -->

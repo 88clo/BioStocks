@@ -1,0 +1,1866 @@
+{
+ "CRSP": {
+  "target": 85.63,
+  "analysts": 23
+ },
+ "AGIO": {
+  "target": 45.88,
+  "analysts": 10
+ },
+ "COAG": {
+  "target": 61.2,
+  "analysts": 5
+ },
+ "MGX": {
+  "target": 7.0,
+  "analysts": 3
+ },
+ "XFOR": {
+  "target": 11.6,
+  "analysts": 5
+ },
+ "KROS": {
+  "target": 19.83,
+  "analysts": 7
+ },
+ "AUTL": {
+  "target": 8.73,
+  "analysts": 9
+ },
+ "CLLS": {
+  "target": 7.6,
+  "analysts": 5
+ },
+ "NRIX": {
+  "target": 33.93,
+  "analysts": 14
+ },
+ "GMAB": {
+  "target": 48.27,
+  "analysts": 12
+ },
+ "ALLO": {
+  "target": 9.0,
+  "analysts": 12
+ },
+ "ADCT": {
+  "target": 3.33,
+  "analysts": 5
+ },
+ "LYEL": {
+  "target": 37.88,
+  "analysts": 8
+ },
+ "CRBU": {
+  "target": 5.75,
+  "analysts": 6
+ },
+ "ATRA": {
+  "target": 13.67,
+  "analysts": 3
+ },
+ "ESLA": {
+  "target": 12.0,
+  "analysts": 1
+ },
+ "CRVS": {
+  "target": 33.14,
+  "analysts": 8
+ },
+ "IPHA": {
+  "target": 6.67,
+  "analysts": 3
+ },
+ "CTOR": {
+  "target": 4.5,
+  "analysts": 2
+ },
+ "SNDX": {
+  "target": 37.27,
+  "analysts": 12
+ },
+ "SLS": {
+  "target": 32.5,
+  "analysts": 2
+ },
+ "KURA": {
+  "target": 31.85,
+  "analysts": 16
+ },
+ "OMER": {
+  "target": 27.5,
+  "analysts": 3
+ },
+ "DMRA": {
+  "target": 44.67,
+  "analysts": 10
+ },
+ "IMMX": {
+  "target": 20.27,
+  "analysts": 8
+ },
+ "LEGN": {
+  "target": 45.62,
+  "analysts": 13
+ },
+ "ADPT": {
+  "target": 28.31,
+  "analysts": 9
+ },
+ "SLN": {
+  "target": 33.0,
+  "analysts": 6
+ },
+ "RIGL": {
+  "target": 63.0,
+  "analysts": 5
+ },
+ "PRLD": {
+  "target": 8.0,
+  "analysts": 3
+ },
+ "ANTX": {
+  "target": 9.0,
+  "analysts": 2
+ },
+ "CCCC": {
+  "target": 13.33,
+  "analysts": 7
+ },
+ "GERN": {
+  "target": 4.25,
+  "analysts": 5
+ },
+ "ELVN": {
+  "target": 73.9,
+  "analysts": 10
+ },
+ "AAPG": {
+  "target": 44.5,
+  "analysts": 11
+ },
+ "KPTI": {
+  "target": 7.25,
+  "analysts": 4
+ },
+ "PTGX": {
+  "target": 178.21,
+  "analysts": 14
+ },
+ "ATNM": {
+  "target": 3.5,
+  "analysts": 4
+ },
+ "TCRX": {
+  "target": 1.0,
+  "analysts": 5
+ },
+ "CTMX": {
+  "target": 12.25,
+  "analysts": 8
+ },
+ "BCYC": {
+  "target": 9.5,
+  "analysts": 9
+ },
+ "ADAG": {
+  "target": 10.09,
+  "analysts": 6
+ },
+ "XLO": {
+  "target": 20.0,
+  "analysts": 1
+ },
+ "CMPX": {
+  "target": 8.92,
+  "analysts": 15
+ },
+ "JAZZ": {
+  "target": 294.27,
+  "analysts": 22
+ },
+ "ZYME": {
+  "target": 41.23,
+  "analysts": 13
+ },
+ "NBP": {
+  "target": 9.0,
+  "analysts": 2
+ },
+ "AGEN": {
+  "target": 19.5,
+  "analysts": 2
+ },
+ "ELTX": {
+  "target": 16.5,
+  "analysts": 4
+ },
+ "ONCY": {
+  "target": 4.19,
+  "analysts": 6
+ },
+ "IMRX": {
+  "target": 17.17,
+  "analysts": 7
+ },
+ "ACTU": {
+  "target": 11.68,
+  "analysts": 3
+ },
+ "RNXT": {
+  "target": 7.12,
+  "analysts": 4
+ },
+ "LNTH": {
+  "target": 107.74,
+  "analysts": 10
+ },
+ "RXRX": {
+  "target": 7.22,
+  "analysts": 6
+ },
+ "EXEL": {
+  "target": 54.87,
+  "analysts": 18
+ },
+ "CRDF": {
+  "target": 5.81,
+  "analysts": 7
+ },
+ "TNGX": {
+  "target": 44.88,
+  "analysts": 13
+ },
+ "RVMD": {
+  "target": 258.36,
+  "analysts": 25
+ },
+ "TVRD": {
+  "target": 9.25,
+  "analysts": 8
+ },
+ "IBRX": {
+  "target": 14.25,
+  "analysts": 4
+ },
+ "CGON": {
+  "target": 91.08,
+  "analysts": 13
+ },
+ "TYRA": {
+  "target": 48.3,
+  "analysts": 14
+ },
+ "URGN": {
+  "target": 60.0,
+  "analysts": 8
+ },
+ "AKTS": {
+  "target": 35.39,
+  "analysts": 10
+ },
+ "RLMD": {
+  "target": 10.75,
+  "analysts": 4
+ },
+ "TARA": {
+  "target": 25.71,
+  "analysts": 8
+ },
+ "ENGN": {
+  "target": 3.29,
+  "analysts": 10
+ },
+ "RCUS": {
+  "target": 38.75,
+  "analysts": 12
+ },
+ "XNCR": {
+  "target": 30.75,
+  "analysts": 12
+ },
+ "TLX": {
+  "target": 19.92,
+  "analysts": 4
+ },
+ "ORIC": {
+  "target": 21.64,
+  "analysts": 16
+ },
+ "JANX": {
+  "target": 36.24,
+  "analysts": 18
+ },
+ "CADL": {
+  "target": 21.75,
+  "analysts": 9
+ },
+ "KYNB": {
+  "target": 39.67,
+  "analysts": 3
+ },
+ "RADX": {
+  "target": 17.38,
+  "analysts": 6
+ },
+ "CELC": {
+  "target": 160.75,
+  "analysts": 13
+ },
+ "RLAY": {
+  "target": 27.58,
+  "analysts": 13
+ },
+ "OLMA": {
+  "target": 36.5,
+  "analysts": 12
+ },
+ "ARVN": {
+  "target": 13.93,
+  "analysts": 16
+ },
+ "GLSI": {
+  "target": 57.0,
+  "analysts": 2
+ },
+ "ALXO": {
+  "target": 4.6,
+  "analysts": 7
+ },
+ "OKUR": {
+  "target": 15.5,
+  "analysts": 6
+ },
+ "ATOS": {
+  "target": 18.67,
+  "analysts": 3
+ },
+ "LONA": {
+  "target": 17.33,
+  "analysts": 3
+ },
+ "ACRV": {
+  "target": 11.5,
+  "analysts": 6
+ },
+ "CORT": {
+  "target": 141.0,
+  "analysts": 5
+ },
+ "VSTM": {
+  "target": 17.22,
+  "analysts": 10
+ },
+ "MGNX": {
+  "target": 8.0,
+  "analysts": 7
+ },
+ "ZNTL": {
+  "target": 7.44,
+  "analysts": 11
+ },
+ "CGEN": {
+  "target": 4.6,
+  "analysts": 5
+ },
+ "CNTX": {
+  "target": 4.25,
+  "analysts": 9
+ },
+ "GNLX": {
+  "target": 18.83,
+  "analysts": 6
+ },
+ "ANIX": {
+  "target": 10.0,
+  "analysts": 4
+ },
+ "PMVP": {
+  "target": 4.2,
+  "analysts": 6
+ },
+ "NXTC": {
+  "target": 3.5,
+  "analysts": 2
+ },
+ "FTH": {
+  "target": 56.67,
+  "analysts": 12
+ },
+ "NBTX": {
+  "target": 54.0,
+  "analysts": 5
+ },
+ "BCAX": {
+  "target": 35.5,
+  "analysts": 14
+ },
+ "CHRS": {
+  "target": 7.75,
+  "analysts": 6
+ },
+ "PYXS": {
+  "target": 8.67,
+  "analysts": 10
+ },
+ "CRBP": {
+  "target": 34.02,
+  "analysts": 10
+ },
+ "PDSB": {
+  "target": 4.75,
+  "analysts": 2
+ },
+ "CVM": {
+  "target": 12.5,
+  "analysts": 2
+ },
+ "SMMT": {
+  "target": 30.09,
+  "analysts": 17
+ },
+ "NUVL": {
+  "target": 124.0,
+  "analysts": 9
+ },
+ "NUVB": {
+  "target": 13.0,
+  "analysts": 13
+ },
+ "AVBP": {
+  "target": 44.7,
+  "analysts": 11
+ },
+ "CGEM": {
+  "target": 33.45,
+  "analysts": 12
+ },
+ "BBOT": {
+  "target": 24.55,
+  "analysts": 12
+ },
+ "CBIO": {
+  "target": 31.5,
+  "analysts": 8
+ },
+ "NVCT": {
+  "target": 35.4,
+  "analysts": 6
+ },
+ "STRO": {
+  "target": 47.23,
+  "analysts": 14
+ },
+ "FHTX": {
+  "target": 9.89,
+  "analysts": 10
+ },
+ "WHWK": {
+  "target": 7.5,
+  "analysts": 8
+ },
+ "BDTX": {
+  "target": 10.0,
+  "analysts": 8
+ },
+ "TIL": {
+  "target": 7.0,
+  "analysts": 1
+ },
+ "MAIA": {
+  "target": 12.0,
+  "analysts": 2
+ },
+ "LTRN": {
+  "target": 17.5,
+  "analysts": 2
+ },
+ "EIKN": {
+  "target": 24.6,
+  "analysts": 6
+ },
+ "ZLAB": {
+  "target": 33.14,
+  "analysts": 12
+ },
+ "MOLN": {
+  "target": 10.64,
+  "analysts": 5
+ },
+ "IMMP": {
+  "target": 1.5,
+  "analysts": 1
+ },
+ "IMTX": {
+  "target": 17.26,
+  "analysts": 9
+ },
+ "IMCR": {
+  "target": 62.73,
+  "analysts": 13
+ },
+ "IOVA": {
+  "target": 14.4,
+  "analysts": 10
+ },
+ "REPL": {
+  "target": 19.5,
+  "analysts": 6
+ },
+ "EVAX": {
+  "target": 11.25,
+  "analysts": 4
+ },
+ "SLGL": {
+  "target": 152.5,
+  "analysts": 3
+ },
+ "HURA": {
+  "target": 8.04,
+  "analysts": 5
+ },
+ "DRTS": {
+  "target": 17.0,
+  "analysts": 5
+ },
+ "NTHI": {
+  "target": 16.0,
+  "analysts": 3
+ },
+ "KZIA": {
+  "target": 28.36,
+  "analysts": 6
+ },
+ "IDYA": {
+  "target": 52.38,
+  "analysts": 13
+ },
+ "AURA": {
+  "target": 16.6,
+  "analysts": 6
+ },
+ "ERAS": {
+  "target": 24.11,
+  "analysts": 9
+ },
+ "ANL": {
+  "target": 29.5,
+  "analysts": 7
+ },
+ "IMNM": {
+  "target": 35.2,
+  "analysts": 16
+ },
+ "INBX": {
+  "target": 266.67,
+  "analysts": 4
+ },
+ "OSTX": {
+  "target": 8.5,
+  "analysts": 4
+ },
+ "PLRX": {
+  "target": 2.5,
+  "analysts": 5
+ },
+ "FENC": {
+  "target": 17.67,
+  "analysts": 6
+ },
+ "PBLS": {
+  "target": 41.75,
+  "analysts": 5
+ },
+ "MIST": {
+  "target": 5.86,
+  "analysts": 7
+ },
+ "KARD": {
+  "target": 38.67,
+  "analysts": 6
+ },
+ "BBIO": {
+  "target": 107.81,
+  "analysts": 23
+ },
+ "CYTK": {
+  "target": 109.4,
+  "analysts": 23
+ },
+ "LXEO": {
+  "target": 20.3,
+  "analysts": 10
+ },
+ "RCKT": {
+  "target": 8.58,
+  "analysts": 14
+ },
+ "LRMR": {
+  "target": 14.4,
+  "analysts": 11
+ },
+ "RNA": {
+  "target": 25.0,
+  "analysts": 4
+ },
+ "TNYA": {
+  "target": 3.2,
+  "analysts": 5
+ },
+ "LGVN": {
+  "target": 71.5,
+  "analysts": 3
+ },
+ "MLYS": {
+  "target": 46.33,
+  "analysts": 11
+ },
+ "DMAC": {
+  "target": 15.5,
+  "analysts": 5
+ },
+ "LQDA": {
+  "target": 54.38,
+  "analysts": 8
+ },
+ "TECX": {
+  "target": 77.56,
+  "analysts": 10
+ },
+ "TENX": {
+  "target": 12.56,
+  "analysts": 9
+ },
+ "IKT": {
+  "target": 6.0,
+  "analysts": 9
+ },
+ "GOSS": {
+  "target": 95.4,
+  "analysts": 8
+ },
+ "HUMA": {
+  "target": 1.63,
+  "analysts": 6
+ },
+ "PVLA": {
+  "target": 230.53,
+  "analysts": 15
+ },
+ "SGMT": {
+  "target": 27.91,
+  "analysts": 12
+ },
+ "MANE": {
+  "target": 170.5,
+  "analysts": 7
+ },
+ "ABSI": {
+  "target": 14.9,
+  "analysts": 11
+ },
+ "CNXU": {
+  "target": 20.0,
+  "analysts": 1
+ },
+ "KRYS": {
+  "target": 395.44,
+  "analysts": 12
+ },
+ "ABEO": {
+  "target": 18.88,
+  "analysts": 8
+ },
+ "INMB": {
+  "target": 7.0,
+  "analysts": 4
+ },
+ "DERM": {
+  "target": 13.75,
+  "analysts": 4
+ },
+ "FBIO": {
+  "target": 11.0,
+  "analysts": 2
+ },
+ "INCY": {
+  "target": 129.54,
+  "analysts": 28
+ },
+ "VRCA": {
+  "target": 13.83,
+  "analysts": 6
+ },
+ "PTHS": {
+  "target": 53.14,
+  "analysts": 7
+ },
+ "MDWD": {
+  "target": 29.83,
+  "analysts": 6
+ },
+ "EOLS": {
+  "target": 15.0,
+  "analysts": 7
+ },
+ "LCTX": {
+  "target": 5.5,
+  "analysts": 7
+ },
+ "OCUL": {
+  "target": 27.09,
+  "analysts": 11
+ },
+ "EYPT": {
+  "target": 25.91,
+  "analysts": 11
+ },
+ "FDMT": {
+  "target": 28.09,
+  "analysts": 12
+ },
+ "KLRS": {
+  "target": 18.71,
+  "analysts": 8
+ },
+ "OTLK": {
+  "target": 5.03,
+  "analysts": 4
+ },
+ "KOD": {
+  "target": 121.67,
+  "analysts": 7
+ },
+ "OCS": {
+  "target": 36.26,
+  "analysts": 10
+ },
+ "SRZN": {
+  "target": 48.4,
+  "analysts": 6
+ },
+ "BLTE": {
+  "target": 228.89,
+  "analysts": 9
+ },
+ "OCGN": {
+  "target": 12.08,
+  "analysts": 6
+ },
+ "IRD": {
+  "target": 13.47,
+  "analysts": 18
+ },
+ "SGP": {
+  "target": 44.0,
+  "analysts": 6
+ },
+ "TARS": {
+  "target": 99.5,
+  "analysts": 10
+ },
+ "PTN": {
+  "target": 53.5,
+  "analysts": 3
+ },
+ "ALDX": {
+  "target": 6.6,
+  "analysts": 5
+ },
+ "LENZ": {
+  "target": 23.86,
+  "analysts": 7
+ },
+ "PHAT": {
+  "target": 20.45,
+  "analysts": 12
+ },
+ "ARDX": {
+  "target": 12.9,
+  "analysts": 11
+ },
+ "NRXS": {
+  "target": 11.0,
+  "analysts": 2
+ },
+ "IRWD": {
+  "target": 6.1,
+  "analysts": 4
+ },
+ "SPRY": {
+  "target": 22.5,
+  "analysts": 4
+ },
+ "DBVT": {
+  "target": 38.61,
+  "analysts": 7
+ },
+ "AQST": {
+  "target": 9.33,
+  "analysts": 9
+ },
+ "NSRX": {
+  "target": 19.67,
+  "analysts": 3
+ },
+ "PHVS": {
+  "target": 58.35,
+  "analysts": 14
+ },
+ "BCRX": {
+  "target": 20.64,
+  "analysts": 11
+ },
+ "KALV": {
+  "target": 27.0,
+  "analysts": 3
+ },
+ "NTLA": {
+  "target": 23.11,
+  "analysts": 20
+ },
+ "CLDX": {
+  "target": 58.79,
+  "analysts": 14
+ },
+ "SEPN": {
+  "target": 54.22,
+  "analysts": 9
+ },
+ "EVMN": {
+  "target": 27.63,
+  "analysts": 11
+ },
+ "JSPR": {
+  "target": 7.38,
+  "analysts": 4
+ },
+ "TRAX": {
+  "target": 72.5,
+  "analysts": 12
+ },
+ "BRNS": {
+  "target": 6.0,
+  "analysts": 1
+ },
+ "AGMB": {
+  "target": 37.67,
+  "analysts": 7
+ },
+ "STTK": {
+  "target": 14.67,
+  "analysts": 11
+ },
+ "EPRX": {
+  "target": 16.35,
+  "analysts": 11
+ },
+ "ABVX": {
+  "target": 163.58,
+  "analysts": 12
+ },
+ "SYRE": {
+  "target": 119.93,
+  "analysts": 18
+ },
+ "ODTX": {
+  "target": 35.33,
+  "analysts": 8
+ },
+ "PALI": {
+  "target": 10.22,
+  "analysts": 9
+ },
+ "EQ": {
+  "target": 8.56,
+  "analysts": 9
+ },
+ "VRDN": {
+  "target": 36.62,
+  "analysts": 16
+ },
+ "MNKD": {
+  "target": 7.97,
+  "analysts": 8
+ },
+ "SANA": {
+  "target": 8.43,
+  "analysts": 9
+ },
+ "IPSC": {
+  "target": 4.75,
+  "analysts": 5
+ },
+ "VTVT": {
+  "target": 54.71,
+  "analysts": 7
+ },
+ "SABS": {
+  "target": 11.64,
+  "analysts": 11
+ },
+ "MGTX": {
+  "target": 27.75,
+  "analysts": 8
+ },
+ "MAZE": {
+  "target": 62.55,
+  "analysts": 11
+ },
+ "TVTX": {
+  "target": 75.21,
+  "analysts": 15
+ },
+ "VERA": {
+  "target": 77.5,
+  "analysts": 14
+ },
+ "JBIO": {
+  "target": 50.13,
+  "analysts": 10
+ },
+ "AUPH": {
+  "target": 17.86,
+  "analysts": 7
+ },
+ "NKTX": {
+  "target": 10.83,
+  "analysts": 7
+ },
+ "ACET": {
+  "target": 33.17,
+  "analysts": 6
+ },
+ "ELOX": {
+  "target": 38.25,
+  "analysts": 4
+ },
+ "CLYM": {
+  "target": 26.64,
+  "analysts": 15
+ },
+ "GENB": {
+  "target": 27.0,
+  "analysts": 6
+ },
+ "UPB": {
+  "target": 33.5,
+  "analysts": 9
+ },
+ "CNTB": {
+  "target": 5.88,
+  "analysts": 8
+ },
+ "TBPH": {
+  "target": 17.67,
+  "analysts": 3
+ },
+ "ATYR": {
+  "target": 2.86,
+  "analysts": 9
+ },
+ "DNTH": {
+  "target": 140.8,
+  "analysts": 16
+ },
+ "ANNX": {
+  "target": 17.0,
+  "analysts": 10
+ },
+ "RNAC": {
+  "target": 33.67,
+  "analysts": 7
+ },
+ "VOR": {
+  "target": 39.0,
+  "analysts": 8
+ },
+ "TGTX": {
+  "target": 69.71,
+  "analysts": 8
+ },
+ "IMUX": {
+  "target": 43.09,
+  "analysts": 12
+ },
+ "TLSA": {
+  "target": 7.95,
+  "analysts": 2
+ },
+ "COGT": {
+  "target": 55.82,
+  "analysts": 12
+ },
+ "HCM": {
+  "target": 21.86,
+  "analysts": 14
+ },
+ "LKFT": {
+  "target": 23.49,
+  "analysts": 3
+ },
+ "KNSA": {
+  "target": 98.0,
+  "analysts": 8
+ },
+ "CRDL": {
+  "target": 8.53,
+  "analysts": 6
+ },
+ "MIRM": {
+  "target": 153.07,
+  "analysts": 14
+ },
+ "PRQR": {
+  "target": 7.78,
+  "analysts": 9
+ },
+ "ROIV": {
+  "target": 48.27,
+  "analysts": 13
+ },
+ "CABA": {
+  "target": 13.25,
+  "analysts": 10
+ },
+ "ADMA": {
+  "target": 17.0,
+  "analysts": 5
+ },
+ "PHAR": {
+  "target": 34.35,
+  "analysts": 4
+ },
+ "PRME": {
+  "target": 7.11,
+  "analysts": 14
+ },
+ "MESO": {
+  "target": 37.0,
+  "analysts": 2
+ },
+ "ELDN": {
+  "target": 9.0,
+  "analysts": 6
+ },
+ "QTTB": {
+  "target": 39.67,
+  "analysts": 7
+ },
+ "KYMR": {
+  "target": 139.35,
+  "analysts": 24
+ },
+ "NKTR": {
+  "target": 133.08,
+  "analysts": 15
+ },
+ "ACRS": {
+  "target": 10.18,
+  "analysts": 12
+ },
+ "TTRX": {
+  "target": 26.0,
+  "analysts": 1
+ },
+ "IMA": {
+  "target": 18.0,
+  "analysts": 3
+ },
+ "MLTX": {
+  "target": 28.54,
+  "analysts": 15
+ },
+ "ZURA": {
+  "target": 19.0,
+  "analysts": 7
+ },
+ "IFRX": {
+  "target": 7.96,
+  "analysts": 8
+ },
+ "AVTX": {
+  "target": 44.08,
+  "analysts": 14
+ },
+ "ALMS": {
+  "target": 31.13,
+  "analysts": 10
+ },
+ "ARQT": {
+  "target": 38.38,
+  "analysts": 8
+ },
+ "ORKA": {
+  "target": 155.0,
+  "analysts": 13
+ },
+ "CUE": {
+  "target": 90.5,
+  "analysts": 2
+ },
+ "ZBIO": {
+  "target": 47.0,
+  "analysts": 8
+ },
+ "FATE": {
+  "target": 5.74,
+  "analysts": 11
+ },
+ "IMVT": {
+  "target": 48.88,
+  "analysts": 17
+ },
+ "PCRX": {
+  "target": 30.0,
+  "analysts": 7
+ },
+ "ENLV": {
+  "target": 80.0,
+  "analysts": 1
+ },
+ "ANAB": {
+  "target": 88.5,
+  "analysts": 8
+ },
+ "ARTV": {
+  "target": 35.8,
+  "analysts": 6
+ },
+ "KYTX": {
+  "target": 30.4,
+  "analysts": 6
+ },
+ "SCYX": {
+  "target": 36.33,
+  "analysts": 3
+ },
+ "INVA": {
+  "target": 35.0,
+  "analysts": 5
+ },
+ "ARMP": {
+  "target": 17.5,
+  "analysts": 2
+ },
+ "SPRO": {
+  "target": 5.0,
+  "analysts": 2
+ },
+ "MCRB": {
+  "target": 17.0,
+  "analysts": 2
+ },
+ "PYPD": {
+  "target": 11.75,
+  "analysts": 4
+ },
+ "CRMD": {
+  "target": 15.33,
+  "analysts": 6
+ },
+ "VALN": {
+  "target": 12.25,
+  "analysts": 4
+ },
+ "VIR": {
+  "target": 20.78,
+  "analysts": 9
+ },
+ "ABUS": {
+  "target": 5.0,
+  "analysts": 2
+ },
+ "AVIR": {
+  "target": 9.42,
+  "analysts": 3
+ },
+ "DTIL": {
+  "target": 29.4,
+  "analysts": 5
+ },
+ "ALGS": {
+  "target": 52.38,
+  "analysts": 8
+ },
+ "PCVX": {
+  "target": 117.3,
+  "analysts": 11
+ },
+ "NVAX": {
+  "target": 14.0,
+  "analysts": 9
+ },
+ "ENTA": {
+  "target": 21.83,
+  "analysts": 6
+ },
+ "IVVD": {
+  "target": 10.0,
+  "analysts": 3
+ },
+ "PGEN": {
+  "target": 14.5,
+  "analysts": 2
+ },
+ "ASMB": {
+  "target": 52.0,
+  "analysts": 5
+ },
+ "INO": {
+  "target": 3.17,
+  "analysts": 3
+ },
+ "NNVC": {
+  "target": 6.0,
+  "analysts": 2
+ },
+ "VXRT": {
+  "target": 3.33,
+  "analysts": 3
+ },
+ "PROK": {
+  "target": 6.25,
+  "analysts": 7
+ },
+ "AKBA": {
+  "target": 3.92,
+  "analysts": 6
+ },
+ "UNCY": {
+  "target": 29.6,
+  "analysts": 10
+ },
+ "BHC": {
+  "target": 7.5,
+  "analysts": 5
+ },
+ "GYRE": {
+  "target": 18.0,
+  "analysts": 1
+ },
+ "BEAM": {
+  "target": 52.15,
+  "analysts": 15
+ },
+ "KMDA": {
+  "target": 13.5,
+  "analysts": 4
+ },
+ "MREO": {
+  "target": 1.98,
+  "analysts": 5
+ },
+ "EDSA": {
+  "target": 16.33,
+  "analysts": 3
+ },
+ "INKT": {
+  "target": 39.0,
+  "analysts": 2
+ },
+ "VCRE": {
+  "target": 33.71,
+  "analysts": 1
+ },
+ "SION": {
+  "target": 21.0,
+  "analysts": 12
+ },
+ "TRVI": {
+  "target": 28.18,
+  "analysts": 11
+ },
+ "UTHR": {
+  "target": 661.29,
+  "analysts": 15
+ },
+ "AVLN": {
+  "target": 62.25,
+  "analysts": 4
+ },
+ "CTNM": {
+  "target": 22.0,
+  "analysts": 8
+ },
+ "RNTX": {
+  "target": 6.0,
+  "analysts": 2
+ },
+ "SVRA": {
+  "target": 11.06,
+  "analysts": 9
+ },
+ "KRRO": {
+  "target": 20.2,
+  "analysts": 11
+ },
+ "PLX": {
+  "target": 12.0,
+  "analysts": 1
+ },
+ "AARD": {
+  "target": 11.11,
+  "analysts": 9
+ },
+ "ENTX": {
+  "target": 10.0,
+  "analysts": 1
+ },
+ "RDY": {
+  "target": 13.82,
+  "analysts": 5
+ },
+ "AMPH": {
+  "target": 22.5,
+  "analysts": 7
+ },
+ "BMEA": {
+  "target": 7.0,
+  "analysts": 8
+ },
+ "IONS": {
+  "target": 84.13,
+  "analysts": 25
+ },
+ "ARWR": {
+  "target": 110.0,
+  "analysts": 12
+ },
+ "EDIT": {
+  "target": 6.0,
+  "analysts": 13
+ },
+ "PTCT": {
+  "target": 97.94,
+  "analysts": 16
+ },
+ "ASND": {
+  "target": 306.03,
+  "analysts": 21
+ },
+ "BMRN": {
+  "target": 91.59,
+  "analysts": 28
+ },
+ "IRON": {
+  "target": 103.17,
+  "analysts": 13
+ },
+ "DNLI": {
+  "target": 36.06,
+  "analysts": 20
+ },
+ "RARE": {
+  "target": 26.25,
+  "analysts": 21
+ },
+ "ZVRA": {
+  "target": 25.0,
+  "analysts": 9
+ },
+ "PLYX": {
+  "target": 7.5,
+  "analysts": 4
+ },
+ "SPRB": {
+  "target": 148.0,
+  "analysts": 9
+ },
+ "MNPR": {
+  "target": 129.92,
+  "analysts": 12
+ },
+ "AMLX": {
+  "target": 43.0,
+  "analysts": 12
+ },
+ "RZLT": {
+  "target": 9.8,
+  "analysts": 11
+ },
+ "XERS": {
+  "target": 12.29,
+  "analysts": 7
+ },
+ "MBX": {
+  "target": 88.1,
+  "analysts": 10
+ },
+ "ARCT": {
+  "target": 23.2,
+  "analysts": 13
+ },
+ "NAMS": {
+  "target": 50.9,
+  "analysts": 15
+ },
+ "GLUE": {
+  "target": 26.88,
+  "analysts": 10
+ },
+ "AMRN": {
+  "target": 12.5,
+  "analysts": 2
+ },
+ "MDGL": {
+  "target": 685.78,
+  "analysts": 19
+ },
+ "IVA": {
+  "target": 15.2,
+  "analysts": 12
+ },
+ "ALT": {
+  "target": 17.11,
+  "analysts": 10
+ },
+ "GALT": {
+  "target": 11.0,
+  "analysts": 1
+ },
+ "RYTM": {
+  "target": 143.94,
+  "analysts": 19
+ },
+ "VKTX": {
+  "target": 92.39,
+  "analysts": 19
+ },
+ "KLRA": {
+  "target": 42.4,
+  "analysts": 6
+ },
+ "GPCR": {
+  "target": 105.78,
+  "analysts": 15
+ },
+ "WVE": {
+  "target": 18.06,
+  "analysts": 19
+ },
+ "BIOA": {
+  "target": 32.56,
+  "analysts": 10
+ },
+ "VANI": {
+  "target": 3.83,
+  "analysts": 3
+ },
+ "GUTS": {
+  "target": 5.03,
+  "analysts": 6
+ },
+ "RANI": {
+  "target": 7.2,
+  "analysts": 5
+ },
+ "VERU": {
+  "target": 24.5,
+  "analysts": 2
+ },
+ "IBIO": {
+  "target": 5.53,
+  "analysts": 8
+ },
+ "VCEL": {
+  "target": 60.57,
+  "analysts": 7
+ },
+ "EWTX": {
+  "target": 52.62,
+  "analysts": 13
+ },
+ "DYN": {
+  "target": 34.33,
+  "analysts": 17
+ },
+ "SRPT": {
+  "target": 21.64,
+  "analysts": 24
+ },
+ "SLDB": {
+  "target": 18.71,
+  "analysts": 14
+ },
+ "RGNX": {
+  "target": 23.73,
+  "analysts": 11
+ },
+ "TRDA": {
+  "target": 19.0,
+  "analysts": 8
+ },
+ "CAPR": {
+  "target": 27.0,
+  "analysts": 10
+ },
+ "BNTC": {
+  "target": 24.17,
+  "analysts": 7
+ },
+ "PEPG": {
+  "target": 10.19,
+  "analysts": 8
+ },
+ "IXHL": {
+  "target": 18.14,
+  "analysts": 1
+ },
+ "SRRK": {
+  "target": 70.44,
+  "analysts": 18
+ },
+ "XENE": {
+  "target": 71.94,
+  "analysts": 19
+ },
+ "SUPN": {
+  "target": 61.75,
+  "analysts": 4
+ },
+ "RAPP": {
+  "target": 68.29,
+  "analysts": 16
+ },
+ "BHVN": {
+  "target": 21.27,
+  "analysts": 15
+ },
+ "DRUG": {
+  "target": 170.04,
+  "analysts": 7
+ },
+ "OVID": {
+  "target": 6.0,
+  "analysts": 13
+ },
+ "STOK": {
+  "target": 46.46,
+  "analysts": 13
+ },
+ "CAMP": {
+  "target": 9.92,
+  "analysts": 7
+ },
+ "FLNA": {
+  "target": 6.5,
+  "analysts": 2
+ },
+ "ABCL": {
+  "target": 16.82,
+  "analysts": 12
+ },
+ "PRAX": {
+  "target": 650.0,
+  "analysts": 21
+ },
+ "PRTA": {
+  "target": 21.4,
+  "analysts": 6
+ },
+ "DSGN": {
+  "target": 21.0,
+  "analysts": 7
+ },
+ "NGEN": {
+  "target": 11.21,
+  "analysts": 7
+ },
+ "ALKS": {
+  "target": 56.21,
+  "analysts": 20
+ },
+ "HRMY": {
+  "target": 48.25,
+  "analysts": 12
+ },
+ "GRCE": {
+  "target": 5.96,
+  "analysts": 2
+ },
+ "AXSM": {
+  "target": 280.33,
+  "analysts": 22
+ },
+ "AVXL": {
+  "target": 20.0,
+  "analysts": 1
+ },
+ "VYGR": {
+  "target": 14.89,
+  "analysts": 11
+ },
+ "ABOS": {
+  "target": 7.6,
+  "analysts": 5
+ },
+ "ACOG": {
+  "target": 18.0,
+  "analysts": 5
+ },
+ "ANVS": {
+  "target": 10.5,
+  "analysts": 4
+ },
+ "PMN": {
+  "target": 43.31,
+  "analysts": 7
+ },
+ "COYA": {
+  "target": 15.21,
+  "analysts": 7
+ },
+ "MNOV": {
+  "target": 8.25,
+  "analysts": 4
+ },
+ "CGTX": {
+  "target": 3.33,
+  "analysts": 3
+ },
+ "CRVO": {
+  "target": 15.4,
+  "analysts": 5
+ },
+ "ALEC": {
+  "target": 3.3,
+  "analysts": 7
+ },
+ "QURE": {
+  "target": 61.24,
+  "analysts": 13
+ },
+ "ATHE": {
+  "target": 13.25,
+  "analysts": 4
+ },
+ "ACIU": {
+  "target": 8.36,
+  "analysts": 4
+ },
+ "GANX": {
+  "target": 7.2,
+  "analysts": 5
+ },
+ "TSHA": {
+  "target": 13.0,
+  "analysts": 13
+ },
+ "NGNE": {
+  "target": 77.88,
+  "analysts": 10
+ },
+ "ACAD": {
+  "target": 30.53,
+  "analysts": 20
+ },
+ "IGC": {
+  "target": 6.0,
+  "analysts": 1
+ },
+ "LXRX": {
+  "target": 4.47,
+  "analysts": 6
+ },
+ "OKYO": {
+  "target": 8.33,
+  "analysts": 3
+ },
+ "MIRA": {
+  "target": 3.5,
+  "analysts": 1
+ },
+ "DWTX": {
+  "target": 14.0,
+  "analysts": 3
+ },
+ "ANIK": {
+  "target": 21.0,
+  "analysts": 2
+ },
+ "TNXP": {
+  "target": 44.5,
+  "analysts": 4
+ },
+ "NTRB": {
+  "target": 15.0,
+  "analysts": 1
+ },
+ "HRTX": {
+  "target": 2.0,
+  "analysts": 2
+ },
+ "HALO": {
+  "target": 108.78,
+  "analysts": 9
+ },
+ "COLL": {
+  "target": 49.0,
+  "analysts": 8
+ },
+ "CING": {
+  "target": 21.2,
+  "analysts": 5
+ },
+ "NMRA": {
+  "target": 6.14,
+  "analysts": 9
+ },
+ "DFTX": {
+  "target": 72.33,
+  "analysts": 19
+ },
+ "VTGN": {
+  "target": 1.0,
+  "analysts": 4
+ },
+ "NBIX": {
+  "target": 206.22,
+  "analysts": 29
+ },
+ "GHRS": {
+  "target": 42.89,
+  "analysts": 9
+ },
+ "SPTX": {
+  "target": 37.0,
+  "analysts": 9
+ },
+ "ANRO": {
+  "target": 38.38,
+  "analysts": 11
+ },
+ "HELP": {
+  "target": 41.4,
+  "analysts": 11
+ },
+ "NRXP": {
+  "target": 38.25,
+  "analysts": 4
+ },
+ "AYTU": {
+  "target": 9.5,
+  "analysts": 3
+ },
+ "LPCN": {
+  "target": 6.0,
+  "analysts": 2
+ },
+ "LBRX": {
+  "target": 58.0,
+  "analysts": 11
+ },
+ "VNDA": {
+  "target": 11.75,
+  "analysts": 5
+ },
+ "NERV": {
+  "target": 10.33,
+  "analysts": 3
+ },
+ "MPLT": {
+  "target": 26.69,
+  "analysts": 14
+ },
+ "RVPH": {
+  "target": 3.14,
+  "analysts": 7
+ },
+ "EBS": {
+  "target": 11.0,
+  "analysts": 3
+ },
+ "ACHV": {
+  "target": 13.83,
+  "analysts": 12
+ },
+ "BRVE": {
+  "target": 45.25,
+  "analysts": 4
+ },
+ "APMD": {
+  "target": 50.5,
+  "analysts": 3
+ },
+ "LTGO": {
+  "target": 52.25,
+  "analysts": 4
+ },
+ "OBX": {
+  "target": 42.5,
+  "analysts": 3
+ },
+ "ATTO": {
+  "target": 42.2,
+  "analysts": 5
+ },
+ "BLSM": {
+  "target": 34.2,
+  "analysts": 5
+ },
+ "SCTX": {
+  "target": 57.0,
+  "analysts": 4
+ },
+ "VOGX": {
+  "target": 55.0,
+  "analysts": 1
+ },
+ "MSLE": {
+  "target": 26.25,
+  "analysts": 5
+ },
+ "YARW": {
+  "target": 57.0,
+  "analysts": 3
+ },
+ "SER": {
+  "target": 9.5,
+  "analysts": 2
+ },
+ "INDV": {
+  "target": 49.0,
+  "analysts": 4
+ },
+ "TLPH": {
+  "target": 3.12,
+  "analysts": 4
+ },
+ "INSM": {
+  "target": 196.14,
+  "analysts": 24
+ },
+ "BNTX": {
+  "target": 116.25,
+  "analysts": 21
+ },
+ "ALNY": {
+  "target": 367.78,
+  "analysts": 30
+ },
+ "KRSA": {
+  "target": 44.0,
+  "analysts": 5
+ },
+ "HROW": {
+  "target": 65.0,
+  "analysts": 9
+ },
+ "CUVL": {
+  "target": 17.36,
+  "analysts": 7
+ },
+ "TVGN": {
+  "target": 10.0,
+  "analysts": 1
+ },
+ "XCUR": {
+  "target": 10.0,
+  "analysts": 1
+ },
+ "PBYI": {
+  "target": 7.0,
+  "analysts": 1
+ }
+}

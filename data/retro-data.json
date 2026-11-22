@@ -1,0 +1,2013 @@
+{
+ "asof": "2026-10-28",
+ "quarters": [
+  {
+   "q": "1Q26",
+   "start": "2025-12-31",
+   "end": "2026-03-31",
+   "n": 294,
+   "median_ret": -2.3,
+   "xbi_ret": 4.8,
+   "longs": [
+    {
+     "t": "ERAS",
+     "ta": "Cancer solid",
+     "stage": "Phase 1",
+     "p0": 3.72,
+     "p1": 16.18,
+     "ret": 334.9,
+     "mc0_m": 1310,
+     "adv_m": 71.2,
+     "V_now": 0.21,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "unverified",
+      "note": "January 2026 early Phase 1 ERAS-0015 data: confirmed partial responses at 8 mg, no dose-limiting toxicities. Upsized public offering of about $258.8M followed in January. Exact announcement date not confirmed.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "med",
+      "sources": [
+       "https://www.erasca.com/news/erasca-reports-fourth-quarter-and-full-year-2025-business-updates-and-financial-results/",
+       "https://www.zacks.com/stock/news/2818721/erasca-stock-surges-42-in-a-week-heres-what-you-should-know"
+      ]
+     }
+    },
+    {
+     "t": "FTH",
+     "ta": "Cancer GYN",
+     "stage": "Phase 2",
+     "p0": 10.67,
+     "p1": 31.52,
+     "ret": 195.4,
+     "mc0_m": 280,
+     "adv_m": 11.0,
+     "V_now": 0.31,
+     "drv": {
+      "driver_type": "partnering/M&A",
+      "event_date": "2026-02-23",
+      "note": "Sensei Biotherapeutics acquired Faeth (PIKTOR) in stock deal with $200M private placement; Phase 1b ORR 47% with paclitaxel. Ticker shown is the merged company; one source dates the jump Feb 18.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Reverse merger and financing announced without prior guidance.",
+      "conf": "med",
+      "sources": [
+       "https://pulse2.com/sensei-biotherapeutics-acquires-faeth-therapeutics-and-raises-200-million-in-private-placement/amp/",
+       "https://www.bioworld.com/articles/729069-merger-deal-renews-faeth-in-sensei-piktor-brightens-stock-jumps"
+      ]
+     }
+    },
+    {
+     "t": "ELVN",
+     "ta": "Cancer blood myeloid",
+     "stage": "Phase 1",
+     "p0": 15.4,
+     "p1": 39.2,
+     "ret": 154.5,
+     "mc0_m": 1127,
+     "adv_m": 66.7,
+     "V_now": 0.25,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-01-08",
+      "note": "Positive early Phase 1b ENABLE data for ELVN-001 in CML: cumulative major molecular response about 69%, favorable safety. Stock rose about 51% that day.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "high",
+      "sources": [
+       "https://www.rttnews.com/3608935/enliven-stock-soars-51-after-positive-cml-trial-results.aspx"
+      ]
+     }
+    },
+    {
+     "t": "TNGX",
+     "ta": "Cancer GI",
+     "stage": "Phase 1/2",
+     "p0": 8.86,
+     "p1": 20.92,
+     "ret": 136.1,
+     "mc0_m": 1584,
+     "adv_m": 78.4,
+     "V_now": 0.33,
+     "drv": {
+      "driver_type": "partnering/M&A",
+      "event_date": "2026-03-05",
+      "note": "Stock rose 36% on a clinical collaboration with Erasca combining ERAS-0015 and vopimetostat in MTAP-deleted cancers, plus 2025 results and conference presentations that week.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Collaboration announcement was not pre-guided.",
+      "conf": "med",
+      "sources": [
+       "https://www.tikr.com/blog/tango-therapeutics-stock-jumps-36-to-a-new-high-heres-whats-driving-the-move"
+      ]
+     }
+    },
+    {
+     "t": "IRD",
+     "ta": "Eye",
+     "stage": "Phase 3",
+     "p0": 2.01,
+     "p1": 4.55,
+     "ret": 126.4,
+     "mc0_m": 157,
+     "adv_m": 13.1,
+     "V_now": -0.4,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "No in-window catalyst confirmed. A financing with Oberland (up to $155M) was announced on an unconfirmed Monday before its April 20 close; FDA alignment news came May and July, outside window.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "low",
+      "sources": [
+       "https://www.precisionmedicineonline.com/node/47626"
+      ]
+     }
+    },
+    {
+     "t": "ALMS",
+     "ta": "Immuno skin",
+     "stage": "Phase 3",
+     "p0": 9.76,
+     "p1": 22.03,
+     "ret": 125.7,
+     "mc0_m": 1177,
+     "adv_m": 27.5,
+     "V_now": 1.7,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-01-06",
+      "note": "Positive Phase 3 ONWARD1 and ONWARD2 topline for envudeucitinib in plaque psoriasis; met all primary and secondary endpoints. Shares closed about 95% higher.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "med",
+      "sources": [
+       "https://www.thepharmaletter.com/biotech-news/alumis-up-95-on-envudeucitinib-results-in-psoriasis"
+      ]
+     }
+    },
+    {
+     "t": "STRO",
+     "ta": "Cancer lung",
+     "stage": "Phase 1",
+     "p0": 11.57,
+     "p1": 24.91,
+     "ret": 115.3,
+     "mc0_m": 183,
+     "adv_m": 5.3,
+     "V_now": -1.12,
+     "drv": {
+      "driver_type": "financing/dilution",
+      "event_date": "2026-02-10",
+      "note": "Priced $110M offering at $13.98 on Feb 10; stock rose 12-18% that day. Remainder of the 115% quarterly gain not explained by sources found.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Offering timing was not pre-announced.",
+      "conf": "low",
+      "sources": [
+       "https://www.rttnews.com/3619806/sutro-biopharma-prices-110-mln-underwritten-offering-stock-jumps-18.aspx",
+       "https://finviz.com/news/307194/sutro-biopharma-stro-surges-119-is-this-an-indication-of-further-gains"
+      ]
+     }
+    },
+    {
+     "t": "IMUX",
+     "ta": "Immuno neuro",
+     "stage": "Phase 3",
+     "p0": 5.34,
+     "p1": 11.1,
+     "ret": 107.9,
+     "mc0_m": 186,
+     "adv_m": 3.6,
+     "V_now": 2.12,
+     "drv": {
+      "driver_type": "financing/dilution",
+      "event_date": "2026-02-13",
+      "note": "Announced private placement of up to $400M led by BVF ($200M upfront via pre-funded warrants); shares rose about 24-26% that day. Funds Phase 3 ENSURE program.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Placement announced without prior guidance.",
+      "conf": "med",
+      "sources": [
+       "https://finviz.com/news/310755/immunic-stock-jumps-after-pricing-400-million-private-placement",
+       "https://finviz.com/news/310948/why-is-immunic-stock-soaring-friday"
+      ]
+     }
+    },
+    {
+     "t": "DNTH",
+     "ta": "Immuno neuro",
+     "stage": "Phase 3",
+     "p0": 41.21,
+     "p1": 83.92,
+     "ret": 103.6,
+     "mc0_m": 2280,
+     "adv_m": 78.0,
+     "V_now": 0.69,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-03-09",
+      "note": "Early GO decision in Phase 3 CAPTIVATE (CIDP): 20 responders reached before 40 completed Part A, ahead of guided Q2 2026 timing. Announced with Q4 results.",
+      "foreseeable": "guided window",
+      "foreseeable_note": "Decision was guided for Q2 2026; arrived early.",
+      "conf": "med",
+      "sources": [
+       "https://www.chartmill.com/news/DNTH/gnwcq-2026-3-9-dianthus-therapeutics-highlights-recent-business-achievements-including-go-decision-for-phase-3-captivate-cidp-trial-and-reports-q4-and-fy-2025-financial-results"
+      ]
+     }
+    },
+    {
+     "t": "QTTB",
+     "ta": "Immuno skin",
+     "stage": "Phase 2",
+     "p0": 3.32,
+     "p1": 6.42,
+     "ret": 93.4,
+     "mc0_m": 115,
+     "adv_m": 7.7,
+     "V_now": 0.78,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "No in-window catalyst found. Asset sale to Akebia (Dec 2025) and $55M placement (May 27, 2026) fall outside the window.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "low",
+      "sources": [
+       "https://stocktwits.com/news-articles/markets/equity/q32-bio-stock-soars-on-selling-experimental-drug-to-akeba-for-to-592-million/cLI7lHgRE0c",
+       "https://rallies.ai/news/q32-bio-secures-55m-financing-pro-forma-cash-hits-106m-as-shares-rally-80"
+      ]
+     }
+    }
+   ],
+   "shorts": [
+    {
+     "t": "GOSS",
+     "ta": "Cardio",
+     "stage": "Phase 3 / NDA Submitted",
+     "p0": 248.0,
+     "p1": 26.32,
+     "ret": -89.4,
+     "mc0_m": 1386,
+     "adv_m": 3.1,
+     "V_now": 1.35,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-02-23",
+      "note": "Phase 3 PROSERA of seralutinib in PAH narrowly missed: placebo-adjusted 6MWD +13.3 m, p=0.032, short of required threshold. Shares fell about 82%.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "high",
+      "sources": [
+       "https://www.rttnews.com/3624092/gossamer-bio-shares-plunge-82-after-phase-3-prosera-study-misses-primary-endpoint.aspx"
+      ]
+     }
+    },
+    {
+     "t": "GUTS",
+     "ta": "Metabolic",
+     "stage": "Phase 3",
+     "p0": 26.4,
+     "p1": 5.5,
+     "ret": -79.2,
+     "mc0_m": 346,
+     "adv_m": 1.3,
+     "V_now": 50.95,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-01-29",
+      "note": "REMAIN-1 midpoint cohort: weight regain 4.5% with Revita vs 7.5% sham, a modest difference; shares fell sharply despite positive framing.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "med",
+      "sources": [
+       "https://www.rttnews.com/3615015/fractyl-health-s-revita-demonstrates-durable-weight-maintenance-shares-fall-despite-positive-data.aspx"
+      ]
+     }
+    },
+    {
+     "t": "PEPG",
+     "ta": "Muscle",
+     "stage": "Phase 2",
+     "p0": 6.51,
+     "p1": 1.77,
+     "ret": -72.8,
+     "mc0_m": 464,
+     "adv_m": 2.6,
+     "V_now": -0.05,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-03-31",
+      "note": "FREEDOM2 5 mg/kg: splicing correction 7.3% vs 6.8% placebo, one patient worsened sharply; minimal separation per analyst. Shares fell about 59%.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "high",
+      "sources": [
+       "https://www.biospace.com/drug-development/pepgen-loses-half-of-share-price-on-mixed-data-in-rare-muscle-wasting-disease"
+      ]
+     }
+    },
+    {
+     "t": "AARD",
+     "ta": "Metabolic",
+     "stage": "Phase 3",
+     "p0": 13.12,
+     "p1": 3.77,
+     "ret": -71.3,
+     "mc0_m": 247,
+     "adv_m": 1.3,
+     "V_now": -4.16,
+     "drv": {
+      "driver_type": "regulatory setback",
+      "event_date": "2026-03-02",
+      "note": "Paused Phase 3 HERO trial of ARD-101 in Prader-Willi syndrome citing reversible cardiac observations; withdrew Q3 2026 topline timing. Shares fell 56%.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Safety pause was unexpected.",
+      "conf": "high",
+      "sources": [
+       "https://www.hbsslaw.com/press/aardvark-therapeutics-inc-aard-investigation/aardvark-therapeutics-aard-faces-investor-scrutiny-amid-56-drop-on-clinical-pause-for-lead-drug-candidate-hagens-berman"
+      ]
+     }
+    },
+    {
+     "t": "ALDX",
+     "ta": "Eye",
+     "stage": "Filed / Under Appeal",
+     "p0": 5.18,
+     "p1": 1.69,
+     "ret": -67.4,
+     "mc0_m": 292,
+     "adv_m": 1.4,
+     "V_now": 24.18,
+     "drv": {
+      "driver_type": "regulatory setback",
+      "event_date": "2026-03-18",
+      "note": "FDA issued a third complete response letter for reproxalap in dry eye, questioning meaningful symptom benefit. Shares fell about 70%.",
+      "foreseeable": "scheduled",
+      "foreseeable_note": "PDUFA date extended into March 2026 after field-trial submission.",
+      "conf": "high",
+      "sources": [
+       "https://hoodline.com/2026/03/lexington-biotech-craters-as-fda-swats-down-eye-drop-stock-sheds-70-percent/"
+      ]
+     }
+    },
+    {
+     "t": "UPB",
+     "ta": "Immuno lung",
+     "stage": "Phase 2",
+     "p0": 27.15,
+     "p1": 9.0,
+     "ret": -66.9,
+     "mc0_m": 1401,
+     "adv_m": 4.2,
+     "V_now": 3.13,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-02-11",
+      "note": "Phase 2 VALIANT of verekitug in severe asthma met primary endpoint, but stock fell about 52%; sources found give no efficacy figures or reason for the reaction.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "med",
+      "sources": [
+       "https://www.rttnews.com/3620369/upstream-bio-shares-plunge-52-despite-positive-phase-2-asthma-data.aspx"
+      ]
+     }
+    },
+    {
+     "t": "WVE",
+     "ta": "Muscle",
+     "stage": "Phase 2/3",
+     "p0": 17.0,
+     "p1": 7.25,
+     "ret": -57.4,
+     "mc0_m": 3223,
+     "adv_m": 14.5,
+     "V_now": 1.61,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-03-26",
+      "note": "Interim Phase 1 INLIGHT data for WVE-007 in obesity: 14% placebo-adjusted visceral fat reduction, body weight down 1%. Shares fell nearly 50%.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "high",
+      "sources": [
+       "https://247wallst.com/investing/2026/03/27/wave-life-sciences-slips-as-obesity-data-fails-to-convince/",
+       "https://mirror.wavelifesciences.com/wp-content/uploads/2026/03/Positive-Update-from-INLIGHT-Clinical-Trial-for-WVE-007-in-Obesity.pdf"
+      ]
+     }
+    },
+    {
+     "t": "MNKD",
+     "ta": "Immuno gland",
+     "stage": "Approved",
+     "p0": 5.67,
+     "p1": 2.45,
+     "ret": -56.8,
+     "mc0_m": 1749,
+     "adv_m": 15.7,
+     "V_now": 0.38,
+     "drv": {
+      "driver_type": "guidance/earnings",
+      "event_date": "2026-02-26",
+      "note": "Q4 2025 results: revenue beat but unexpected loss on higher Furoscix cost of goods and R&D; shares fell 7-9% that day. Larger quarterly decline not explained by sources found.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "low",
+      "sources": [
+       "https://www.fool.com/investing/2026/02/26/why-mannkind-stock-tumbled-on-thursday",
+       "https://www.sec.gov/Archives/edgar/data/899460/000119312526073509/mnkd-ex99_1.htm"
+      ]
+     }
+    },
+    {
+     "t": "NUVB",
+     "ta": "Cancer lung",
+     "stage": "Approved",
+     "p0": 8.96,
+     "p1": 4.29,
+     "ret": -52.1,
+     "mc0_m": 3119,
+     "adv_m": 31.2,
+     "V_now": 0.64,
+     "drv": {
+      "driver_type": "guidance/earnings",
+      "event_date": "2026-01-12",
+      "note": "Preliminary Q4 Ibtrozi sales of $15.7M missed $17.1M consensus; shares fell about 16%. Further 12% premarket drop on Mar 3 with FY results.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Prelim sales release timing not confirmed as guided.",
+      "conf": "med",
+      "sources": [
+       "https://www.itiger.com/hans/news/2603542831",
+       "https://www.rttnews.com/3627236/nuvation-bio-posts-narrower-fy25-loss-highlights-ibtrozi-launch-and-pipeline-progress-stock-down.aspx"
+      ]
+     }
+    },
+    {
+     "t": "ADMA",
+     "ta": "Immuno other",
+     "stage": "Approved",
+     "p0": 18.24,
+     "p1": 9.01,
+     "ret": -50.6,
+     "mc0_m": 4070,
+     "adv_m": 26.5,
+     "V_now": 0.49,
+     "drv": {
+      "driver_type": "short report/other",
+      "event_date": "2026-03-24",
+      "note": "Culper Research short report alleged channel stuffing and overstated growth; shares fell over 16% that day. Company 2026 guidance cut came May 6, outside window.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Short report was unannounced.",
+      "conf": "med",
+      "sources": [
+       "https://www.hbsslaw.com/press/adma-biologics-inc-adma-investigation/adma-biologics-inc-adma-crashes-16-amid-scrutiny-over-skyrocketing-days-sales-outstanding-that-short-seller-claims-points-to-improper-channel-stuffing-hagens-berman-investigating"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "q": "2Q26",
+   "start": "2026-03-31",
+   "end": "2026-06-30",
+   "n": 303,
+   "median_ret": 14.7,
+   "xbi_ret": 23.9,
+   "longs": [
+    {
+     "t": "ABSI",
+     "ta": "Derm",
+     "stage": "Phase 1/2",
+     "p0": 3.0,
+     "p1": 11.59,
+     "ret": 286.3,
+     "mc0_m": 458,
+     "adv_m": 33.4,
+     "V_now": 0.11,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-06-24",
+      "note": "Interim safety/PK from ABS-201 single-dose healthy-volunteer study (well tolerated, half-life at least 65 days) plus $100M offering at $7.41 incl. Lilly; shares rose about 36% that day. Earlier legs of the quarter's gain unverified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Timing of this interim update not found as guided.",
+      "conf": "med",
+      "sources": [
+       "https://stocktwits.com/news-articles/markets/equity/absi-stock-eyes-best-day-ever-after-positive-hair-loss-drug-data-100-million-lilly-backed-raise/cZKylC1R7QR",
+       "https://www.nasdaq.com/articles/absi-soars-36-positive-interim-update-phase-i-hair-loss-study"
+      ]
+     }
+    },
+    {
+     "t": "SLS",
+     "ta": "Cancer blood myeloid",
+     "stage": "Phase 3",
+     "p0": 4.23,
+     "p1": 14.76,
+     "ret": 248.9,
+     "mc0_m": 1002,
+     "adv_m": 79.0,
+     "V_now": -0.11,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "2026-06-29",
+      "note": "No REGAL result in window. Shares rose into the final AML analysis (78 of 80 events by mid-May), slow event accrual framed positively by CEO, plus takeover chatter; +25% on Jun 29 to $15.45.",
+      "foreseeable": "guided window",
+      "foreseeable_note": "Final analysis triggered at 80 events; company guided event-driven timing.",
+      "conf": "low",
+      "sources": [
+       "https://stocktwits.com/news-articles/markets/equity/sls-retail-bet-breaking-25-aml-readout-looms/cZ1fzMGR7LY",
+       "https://stocktwits.com/news-articles/markets/equity/why-sls-stock-is-surging-ahead-of-aml-trial-readout/cZgObd1RepM"
+      ]
+     }
+    },
+    {
+     "t": "QURE",
+     "ta": "Neurodegeneration",
+     "stage": "BLA Submitted",
+     "p0": 16.35,
+     "p1": 46.06,
+     "ret": 181.7,
+     "mc0_m": 1111,
+     "adv_m": 65.4,
+     "V_now": 0.61,
+     "drv": {
+      "driver_type": "short report/other",
+      "event_date": "2026-06-17",
+      "note": "After a Type B meeting, FDA said three-year AMT-130 phase I/II data could be the primary basis for an accelerated-approval BLA; BLA planned Q3 2026. Shares rose 78% on Jun 17.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Meeting outcome was not a dated public catalyst.",
+      "conf": "high",
+      "sources": [
+       "https://www.nasdaq.com/articles/qure-soars-fda-backs-amt-130-data-accelerated-approval"
+      ]
+     }
+    },
+    {
+     "t": "DFTX",
+     "ta": "Psych",
+     "stage": "Phase 3 (complete; pre-NDA)",
+     "p0": 18.9,
+     "p1": 47.04,
+     "ret": 148.9,
+     "mc0_m": 2514,
+     "adv_m": 86.3,
+     "V_now": 0.69,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-06-22",
+      "note": "Phase 3 Emerge study of DT120 ODT in MDD met its primary endpoint with benefit through 12 weeks; shares rose about 50% to $36.65, alongside a large follow-on offering.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Guided readout timing not confirmed from sources found.",
+      "conf": "high",
+      "sources": [
+       "https://www.rttnews.com/3661758/definium-therapeutics-stock-soars-50-on-positive-phase-3-depression-trial-results.aspx",
+       "https://ir.definiumtx.com/news-events/press-releases/detail/242"
+      ]
+     }
+    },
+    {
+     "t": "NVCT",
+     "ta": "Immuno organ",
+     "stage": "Filed",
+     "p0": 7.73,
+     "p1": 18.39,
+     "ret": 137.9,
+     "mc0_m": 253,
+     "adv_m": 4.3,
+     "V_now": 1.83,
+     "drv": {
+      "driver_type": "partnering/M&A",
+      "event_date": "2026-06-22",
+      "note": "Nuvectis in-licensed ex-China rights to Haisco's NXP100 (ciprocopan, factor B inhibitor) and NXP200: up to $40M near-term, up to $1.421B milestones, subject to financing. Price reaction not independently confirmed.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Licensing deal not pre-announced.",
+      "conf": "med",
+      "sources": [
+       "https://www.biospace.com/press-releases/nuvectis-announces-strategic-portfolio-expansion-via-license-agreement-for-ex-china-rights-with-haisco-pharmaceutical-group-for-two-potentially-best-in-class-clinical-stage-compounds",
+       "https://www.biospace.com/press-releases/nuvectis-pharma-reports-second-quarter-2026-financial-results-and-business-highlights"
+      ]
+     }
+    },
+    {
+     "t": "TTRX",
+     "ta": "Immuno skin",
+     "stage": "Phase 2",
+     "p0": 3.2,
+     "p1": 7.3,
+     "ret": 128.1,
+     "mc0_m": 91,
+     "adv_m": 1.3,
+     "V_now": -0.24,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-06-02",
+      "note": "Interim phase 2 GX-03 atopic dermatitis data: week-4 EASI-50 92.6% vs 65.2% vehicle, no treatment-related serious AEs; shares rose about 20%. Remainder of the quarter's gain unverified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Interim timing not found as guided.",
+      "conf": "low",
+      "sources": [
+       "https://www.rttnews.com/3657272/turn-therapeutics-reports-interim-phase-2-gx-03-data-in-atopic-dermatitis-stock-up.aspx"
+      ]
+     }
+    },
+    {
+     "t": "ABCL",
+     "ta": "Neuro",
+     "stage": "Phase 2 (data reported)",
+     "p0": 3.49,
+     "p1": 7.85,
+     "ret": 124.9,
+     "mc0_m": 1073,
+     "adv_m": 74.8,
+     "V_now": 0.24,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-05-11",
+      "note": "Q1 results with positive interim phase 1 ABCL635 (menopausal hot flashes) data; stock also helped by Baker Bros stake rise and Cantor initiation. The phase 2 result came Aug 10, outside window.",
+      "foreseeable": "guided window",
+      "foreseeable_note": "Data highlight pre-announced Apr 20 (inside quarter); earlier guidance unverified.",
+      "conf": "low",
+      "sources": [
+       "https://investors.abcellera.com/news/news-releases/2026/AbCellera-Reports-Q1-2026-Business-Results--Announces-Positive-Interim-Phase-1-Clinical-Data-for-ABCL635/default.aspx",
+       "https://stocktwits.com/news-articles/markets/equity/abcl-stock-clocks-best-week-since-february-on-clinical-data-anticipation-baker-bros-stake-boost/cZX37RpRegA"
+      ]
+     }
+    },
+    {
+     "t": "ACHV",
+     "ta": "Psych",
+     "stage": "Filed (CRL; resubmission Q4 2026)",
+     "p0": 2.94,
+     "p1": 6.53,
+     "ret": 122.1,
+     "mc0_m": 411,
+     "adv_m": 11.0,
+     "V_now": 1.23,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "FDA issued CRL on Jun 20 (manufacturing site cGMP, labeling; no efficacy/safety issues), expected since April. Company closed a private placement of up to $354M ($180M upfront), date not found. Cause of the rise unverified.",
+      "foreseeable": "scheduled",
+      "foreseeable_note": "PDUFA date June 20, 2026 was public.",
+      "conf": "low",
+      "sources": [
+       "https://achievelifesciences.com/achieve-reports-2q26-financial-results-and-provides-business-updates/",
+       "https://rallies.ai/news/achieve-secures-adare-pharma-partnership-and-fda-sets-june-20-pdufa-date"
+      ]
+     }
+    },
+    {
+     "t": "KRSA",
+     "ta": "Neurodegeneration",
+     "stage": "Preclinical",
+     "p0": 10.85,
+     "p1": 23.73,
+     "ret": 118.7,
+     "mc0_m": 597,
+     "adv_m": 2.3,
+     "V_now": 0.28,
+     "drv": {
+      "driver_type": "partnering/M&A",
+      "event_date": "2026-04-01",
+      "note": "Cyclerion (CYCN, predecessor ticker) announced all-stock merger with Korsana Biosciences and a $380M private placement; shares rose over 160% premarket. Merger closed Sept 8, 2026.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Reverse merger announced without prior notice.",
+      "conf": "med",
+      "sources": [
+       "https://www.rttnews.com/3636310/cyclerion-soars-over-160-after-announcing-merger-with-korsana-biosciences.aspx",
+       "https://www.sec.gov/Archives/edgar/data/0001755237/000119312526389318/d178159dex991.htm"
+      ]
+     }
+    },
+    {
+     "t": "CORT",
+     "ta": "Cancer GYN",
+     "stage": "Approved",
+     "p0": 40.31,
+     "p1": 86.95,
+     "ret": 115.7,
+     "mc0_m": 4956,
+     "adv_m": 129.1,
+     "V_now": 0.46,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "2026-06-17",
+      "note": "No single driver confirmed. Documented items: Apr 30 guidance raise, May 27 and Jun 17 Cushing's NDA resubmission (PDUFA Dec 17), Lifyorli launch. Lifyorli approval (Mar 25) predates window.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Resubmission followed Dec 2025 CRL; timing not pre-dated.",
+      "conf": "low",
+      "sources": [
+       "https://tickeron.com/blogs/corcept-therapeutics-cort-shares-advance-28-3-in-30-days-on-nda-resubmission-and-expanding-clinical-data-14523/",
+       "https://stocktwits.com/news-articles/markets/equity/cort-stock-rally-highest-2026-levels-nda-resubmission/cZggOaPRer7",
+       "https://www.biospace.com/press-releases/corcept-therapeutics-announces-second-quarter-2026-financial-results-and-provides-corporate-update"
+      ]
+     }
+    }
+   ],
+   "shorts": [
+    {
+     "t": "ENGN",
+     "ta": "Cancer GU",
+     "stage": "Phase 2",
+     "p0": 6.81,
+     "p1": 1.73,
+     "ret": -74.6,
+     "mc0_m": 466,
+     "adv_m": 1.4,
+     "V_now": 1.34,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-05-07",
+      "note": "Updated phase 2 LEGEND data for detalimogene in BCG-unresponsive NMIBC CIS: six-month CR fell to 43% from 62%; shares fell 81% in a day, Jefferies cut target to $5.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Update timing not found as guided.",
+      "conf": "high",
+      "sources": [
+       "https://www.genengnews.com/topics/cancer/stockwatch-engene-shares-crater-on-declines-in-complete-response-rates-to-bladder-cancer-therapy/"
+      ]
+     }
+    },
+    {
+     "t": "ADCT",
+     "ta": "Cancer blood lymphoid",
+     "stage": "Approved",
+     "p0": 3.75,
+     "p1": 1.07,
+     "ret": -71.5,
+     "mc0_m": 571,
+     "adv_m": 2.0,
+     "V_now": -0.55,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-06-04",
+      "note": "Phase 3 LOTIS-5 met PFS endpoint but showed 27 deaths vs 9 in control, no OS benefit; shares fell over 50% to $1.44. Full-approval filing planned Q4 2026.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not verified.",
+      "conf": "high",
+      "sources": [
+       "https://www.biospace.com/drug-development/adc-therapeutics-nosedives-on-27-deaths-in-confirmatory-trial-for-lymphoma-drug"
+      ]
+     }
+    },
+    {
+     "t": "CMPX",
+     "ta": "Cancer GI",
+     "stage": "Phase 2/3",
+     "p0": 5.29,
+     "p1": 2.19,
+     "ret": -58.6,
+     "mc0_m": 971,
+     "adv_m": 6.5,
+     "V_now": -0.56,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-04-27",
+      "note": "COMPANION-002 tovecimig plus paclitaxel improved PFS (4.7 vs 2.6 months) but missed overall survival (8.9 vs 9.4 months); shares opened 64.8% lower at $1.77. FDA meeting planned before BLA.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not verified.",
+      "conf": "high",
+      "sources": [
+       "https://www.clinicaltrialsarena.com/news/compass-therapeuticss-stock-crashes-after-os-miss-in-btc-trial/"
+      ]
+     }
+    },
+    {
+     "t": "GOSS",
+     "ta": "Cardio",
+     "stage": "Phase 3 / NDA Submitted",
+     "p0": 26.32,
+     "p1": 13.2,
+     "ret": -49.8,
+     "mc0_m": 147,
+     "adv_m": 3.1,
+     "V_now": 1.35,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "Cause of the quarter's decline not verified. Documented in window: May 18 exchange of 2027 convertibles into new secured notes, stock and warrants, plus proposed reverse split; mid-June pre-NDA FDA meeting.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "No dated catalyst tied to the decline found.",
+      "conf": "low",
+      "sources": [
+       "https://www.sec.gov/Archives/edgar/data/0001728117/000172811726000037/a20260518-gossxdefa14a.htm"
+      ]
+     }
+    },
+    {
+     "t": "OCS",
+     "ta": "Eye",
+     "stage": "Phase 3",
+     "p0": 26.59,
+     "p1": 13.87,
+     "ret": -47.8,
+     "mc0_m": 1611,
+     "adv_m": 2.6,
+     "V_now": 0.61,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-05-29",
+      "note": "Phase 3 DIAMOND-1/2 of OCS-01 in diabetic macular edema missed the BCVA primary endpoint; FDA filing shelved. Shares fell about 23% that day; rest of decline unverified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not verified.",
+      "conf": "med",
+      "sources": [
+       "https://stocktwits.com/news-articles/markets/equity/ocs-eye-drop-trial-diabetic-vision-loss-misses-target-fda-filing-plans-dropped-stock-falls/cZgSCseReMU"
+      ]
+     }
+    },
+    {
+     "t": "EVMN",
+     "ta": "Immuno skin",
+     "stage": "Phase 2",
+     "p0": 22.99,
+     "p1": 13.29,
+     "ret": -42.2,
+     "mc0_m": 682,
+     "adv_m": 6.5,
+     "V_now": 2.33,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-06-29",
+      "note": "Phase 2b trial of oral EVO756 in atopic dermatitis missed its primary endpoint; shares fell about 32% to $17.20. Company halted EVO756 in eczema.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not verified.",
+      "conf": "high",
+      "sources": [
+       "https://www.rttnews.com/3663309/evommune-s-phase-2b-trial-of-evo756-fails-to-meet-primary-endpoint-stock-falls.aspx"
+      ]
+     }
+    },
+    {
+     "t": "TRDA",
+     "ta": "Muscle",
+     "stage": "Phase 1/2",
+     "p0": 12.62,
+     "p1": 7.36,
+     "ret": -41.7,
+     "mc0_m": 486,
+     "adv_m": 2.1,
+     "V_now": 0.6,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-05-07",
+      "note": "Cohort 1 data for ENTR-601-44 in Duchenne: dystrophin rose only 2.36% vs expected double digits; shares fell 59% at open from $16.02 to $6.57. Higher-dose data due Q4.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not verified.",
+      "conf": "high",
+      "sources": [
+       "https://www.fiercebiotech.com/biotech/entradas-stock-craters-dmd-data-underperform-expectations-handing-advantage-novartis",
+       "https://www.parentprojectmd.org/entrada-reports-positive-topline-results-from-phase-1-2-elevate-44-201-study-in-duchenne/"
+      ]
+     }
+    },
+    {
+     "t": "LENZ",
+     "ta": "Eye",
+     "stage": "Approved",
+     "p0": 9.15,
+     "p1": 5.68,
+     "ret": -37.9,
+     "mc0_m": 282,
+     "adv_m": 3.2,
+     "V_now": 15.32,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "No in-window driver confirmed. Q1 results came May 11; a Mar 24 earnings-miss selloff predates the window. Price reaction to Q1 not found.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "No dated catalyst found.",
+      "conf": "low",
+      "sources": [
+       "https://www.fool.com/investing/2026/03/24/why-lenz-therapeutics-stock-crashed-today",
+       "https://ir.lenz-tx.com/sec-filings/content/0001815776-26-000035/a991q126pressrelease.htm"
+      ]
+     }
+    },
+    {
+     "t": "INSM",
+     "ta": "Lung",
+     "stage": "Approved",
+     "p0": 163.52,
+     "p1": 106.62,
+     "ret": -34.8,
+     "mc0_m": 34966,
+     "adv_m": 309.5,
+     "V_now": 0.53,
+     "drv": {
+      "driver_type": "guidance/earnings",
+      "event_date": "2026-05-07",
+      "note": "Q1 Brinsupri launch sales of $208M beat sell-side but missed buy-side hopes; new patients about 7,800 vs 9,000 prior quarter; shares fell about 17%. Apr 7 hidradenitis phase 2 failure added pressure.",
+      "foreseeable": "scheduled",
+      "foreseeable_note": "Earnings date was public; HS update guided for 1H26.",
+      "conf": "med",
+      "sources": [
+       "https://www.pulse.bot/biotech/news/insmed-tanks-on-its-most-important-launch-why-analysts-remain-bullish-e0eecad3-9794-4928-95a9-fe42b3485520/",
+       "https://stocktwits.com/news-articles/markets/equity/insmed-experimental-skin-disease-drug-fails-in-study/cZJB2RfRIqP"
+      ]
+     }
+    },
+    {
+     "t": "LRMR",
+     "ta": "Neurodegeneration",
+     "stage": "BLA (rolling, incomplete)",
+     "p0": 4.5,
+     "p1": 3.05,
+     "ret": -32.2,
+     "mc0_m": 461,
+     "adv_m": 4.4,
+     "V_now": 1.65,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "2026-06-29",
+      "note": "Larimar submitted first rolling BLA module for nomlabofusp and reported positive long-term data, yet shares fell 17% to $3.03 that day; reason not stated in coverage. Earlier decline unverified.",
+      "foreseeable": "guided window",
+      "foreseeable_note": "BLA submission guided for Q2 2026.",
+      "conf": "low",
+      "sources": [
+       "https://www.rttnews.com/story.aspx?Id=3663354"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "q": "3Q26",
+   "start": "2026-06-30",
+   "end": "2026-09-30",
+   "n": 321,
+   "median_ret": -13.1,
+   "xbi_ret": -0.4,
+   "longs": [
+    {
+     "t": "IOVA",
+     "ta": "Cancer skin",
+     "stage": "Approved",
+     "p0": 4.16,
+     "p1": 14.82,
+     "ret": 256.3,
+     "mc0_m": 1855,
+     "adv_m": 168.0,
+     "V_now": 0.45,
+     "drv": {
+      "driver_type": "guidance/earnings",
+      "event_date": "2026-09-29",
+      "note": "Raised 2026 revenue guidance to $410-420M from $350-370M; stock rose ~20% that day. Earlier, Aug 6 Q2 beat (revenue $99.3M, Amtagvi ~$91M) lifted shares 43%.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Guidance raise was not pre-announced; Q2 date not verified as scheduled",
+      "conf": "high",
+      "sources": [
+       "https://www.ibtimes.com.au/iovance-shares-surge-amtagvi-revenue-forecast-1876056",
+       "https://ts2.tech/en/iovance-shares-surge-43-as-amtagvi-revenue-highlights-manufacturing-turning-point/"
+      ]
+     },
+     "V4sep": {
+      "V": 0.75,
+      "side": null
+     }
+    },
+    {
+     "t": "AGEN",
+     "ta": "Cancer GI",
+     "stage": "Phase 3",
+     "p0": 3.06,
+     "p1": 9.93,
+     "ret": 224.5,
+     "mc0_m": 176,
+     "adv_m": 8.5,
+     "V_now": 0.07,
+     "drv": {
+      "driver_type": "financing/dilution",
+      "event_date": "2026-07-13",
+      "note": "Announced oversubscribed private placement of up to $340M funding registrational Phase 3 ROBBIN trial of botensilimab/balstilimab in MSS colon cancer; shares rose ~144% intraday from $3.35.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Financing timing not pre-announced",
+      "conf": "high",
+      "sources": [
+       "https://www.rttnews.com/3666432/agenus-stock-soars-144-after-securing-up-to-340-mln-private-placement-for-phase-3-cancer-trial.aspx"
+      ]
+     },
+     "V4sep": {
+      "V": 1.25,
+      "side": null
+     }
+    },
+    {
+     "t": "KOD",
+     "ta": "Eye",
+     "stage": "Phase 3",
+     "p0": 38.96,
+     "p1": 94.8,
+     "ret": 143.3,
+     "mc0_m": 2304,
+     "adv_m": 136.8,
+     "V_now": 0.67,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-09-28",
+      "note": "Positive Phase 3 wet AMD results: Zenkuda and tabirafusp-ted non-inferior to aflibercept; 54% of Zenkuda patients went six months between injections. BLA planned Q4. Stock more than doubled.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Pre-quarter readout guidance not checked",
+      "conf": "high",
+      "sources": [
+       "https://stocktwits.com/news-articles/markets/equity/this-biotech-company-added-nearly-3-b-to-its-market-cap-today-here-s-why-kod-stock-is-ripping-today/cZMSD46RBQY"
+      ]
+     },
+     "V4sep": {
+      "V": 1.63,
+      "side": null
+     }
+    },
+    {
+     "t": "VSTM",
+     "ta": "Cancer GYN",
+     "stage": "Approved",
+     "p0": 3.82,
+     "p1": 8.05,
+     "ret": 110.7,
+     "mc0_m": 355,
+     "adv_m": 27.2,
+     "V_now": 0.48,
+     "drv": {
+      "driver_type": "guidance/earnings",
+      "event_date": "2026-08-06",
+      "note": "Q2 report beat: revenue $40.1M vs $22.9M expected, smaller loss, on AVMAPKI FAKZYNJA launch. Later gains (Aug 17, Sep 22) had no identified catalyst; analyst initiations Sep 11-17.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Earnings date not checked against prior announcement",
+      "conf": "low",
+      "sources": [
+       "https://www.marketbeat.com/instant-alerts/price-verastem-nasdaq-vstm-shares-up-71-still-a-buy-2026-09-22/",
+       "https://www.marketbeat.com/instant-alerts/verastem-nasdaqvstm-shares-up-64-whats-next-2026-08-17/"
+      ]
+     },
+     "V4sep": {
+      "V": 0.75,
+      "side": null
+     }
+    },
+    {
+     "t": "ARCT",
+     "ta": "Lung",
+     "stage": "Phase 2",
+     "p0": 6.72,
+     "p1": 13.69,
+     "ret": 103.7,
+     "mc0_m": 178,
+     "adv_m": 12.9,
+     "V_now": 0.13,
+     "drv": {
+      "driver_type": "no specific news",
+      "event_date": "2026-08-19",
+      "note": "Rally with mRNA sector after Merck/Moderna reported positive Phase 3 personalized mRNA melanoma vaccine data; ARCT up over 60% that week. Jul 2 Thermo Fisher ARCT-032 collaboration added ~8%.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Sector read-through, not an ARCT event",
+      "conf": "med",
+      "sources": [
+       "https://stocktwits.com/news-articles/markets/equity/arct-surges-over-60-toward-best-week-in-year-as-moderna-cancer-win-lifts-sector-retail-say-6a03ki/cZYfk0XRJVh",
+       "https://www.rttnews.com/3664389/arcturus-therapeutics-stock-rises-8-on-thermo-fisher-collaboration.aspx"
+      ]
+     },
+     "V4sep": {
+      "V": 0.14,
+      "side": "SHORT"
+     }
+    },
+    {
+     "t": "OMER",
+     "ta": "Immuno other",
+     "stage": "Approved",
+     "p0": 9.51,
+     "p1": 19.04,
+     "ret": 100.2,
+     "mc0_m": 673,
+     "adv_m": 29.6,
+     "V_now": 0.35,
+     "drv": {
+      "driver_type": "guidance/earnings",
+      "event_date": "2026-08-12",
+      "note": "Q2 results: first profit (net income $13.2M), YARTEMLEA revenue $32.2M, up 190% from Q1; shares rose ~16% overnight from $13.71. Approval itself preceded window.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Earnings release date not checked as pre-announced",
+      "conf": "med",
+      "sources": [
+       "https://www.rttnews.com/3679840/omeros-corp-swings-to-q2-profit-on-yartemlea-momentum-plans-ards-ta-tma-studies-shares-rise.aspx",
+       "https://stocktwits.com/news-articles/markets/equity/omer-stock-soars-24-after-hours-on-yartemlea-sales-momentum-debt-reduction-and-share-buybacks/cZo80QaRJWs"
+      ]
+     },
+     "V4sep": {
+      "V": 0.49,
+      "side": null
+     }
+    },
+    {
+     "t": "TTRX",
+     "ta": "Immuno skin",
+     "stage": "Phase 2",
+     "p0": 7.3,
+     "p1": 14.39,
+     "ret": 97.1,
+     "mc0_m": 209,
+     "adv_m": 1.3,
+     "V_now": -0.24,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "No in-window driver found. Interim Phase 2 GX-03 atopic dermatitis data (EASI-50 92.6% vs 65.2%) came June 2, before the window; later catalyst not identified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "low",
+      "sources": [
+       "https://www.rttnews.com/3657272/turn-therapeutics-reports-interim-phase-2-gx-03-data-in-atopic-dermatitis-stock-up.aspx"
+      ]
+     },
+     "V4sep": {
+      "V": -0.26,
+      "side": "SHORT"
+     }
+    },
+    {
+     "t": "HELP",
+     "ta": "Psych",
+     "stage": "Phase 3",
+     "p0": 6.61,
+     "p1": 12.29,
+     "ret": 85.9,
+     "mc0_m": 490,
+     "adv_m": 20.8,
+     "V_now": 1.75,
+     "drv": {
+      "driver_type": "guidance/earnings",
+      "event_date": "2026-07-21",
+      "note": "Completed enrollment (223 patients) ahead of schedule in Phase 3 HLP003 MDD trial; topline on track for Q4 2026. Shares rose over 16%; a $50M offering was also launched.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Early enrollment completion was not a dated catalyst",
+      "conf": "low",
+      "sources": [
+       "https://stocktwits.com/news-articles/markets/equity/help-stock-surges-to-over-6-month-highs-led-by-crucial-phase-3-milestone-retail-expects-it-to-hit-fresh-52-week-highs/cZZSLMfR7vV",
+       "https://www.rttnews.com/3662345/helus-pharma-surpasses-86-enrollment-in-phase-3-approach-trial-launches-us-50-million-offering.aspx"
+      ]
+     },
+     "V4sep": {
+      "V": 1.58,
+      "side": null
+     }
+    },
+    {
+     "t": "ABCL",
+     "ta": "Neuro",
+     "stage": "Phase 2 (data reported)",
+     "p0": 7.85,
+     "p1": 14.59,
+     "ret": 85.9,
+     "mc0_m": 2414,
+     "adv_m": 74.8,
+     "V_now": 0.24,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-08-10",
+      "note": "Phase 2 ABCL635 in menopausal hot flashes met primary endpoints: 83% vs 33% placebo reduction in moderate-severe frequency at week 4; no serious adverse events. Shares up ~33% premarket.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Topline release was pre-flagged by notice; earlier guidance not checked",
+      "conf": "high",
+      "sources": [
+       "https://www.rttnews.com/3678456/abcellera-s-abcl635-delivers-strong-phase-2-data-stock-jumps-33.aspx"
+      ]
+     },
+     "V4sep": {
+      "V": 0.26,
+      "side": null
+     }
+    },
+    {
+     "t": "TRAX",
+     "ta": "Immuno GI",
+     "stage": "Phase 1/2",
+     "p0": 20.12,
+     "p1": 35.44,
+     "ret": 76.1,
+     "mc0_m": 714,
+     "adv_m": 33.0,
+     "V_now": 0.18,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "No in-window driver found. Aug 12 Q2 update reiterated celiac ANB033 data in Q4 2026, Fast Track designation, and runway into Q2 2028; no clear price catalyst identified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "low",
+      "sources": [
+       "https://firsttracksbio.gcs-web.com/news-releases/news-release-details/first-tracks-biotherapeutics-announces-second-quarter-2026"
+      ]
+     },
+     "V4sep": {
+      "V": 0.25,
+      "side": null
+     }
+    }
+   ],
+   "shorts": [
+    {
+     "t": "SION",
+     "ta": "Lung",
+     "stage": "Phase 1 complete / Preparing Phase 2a",
+     "p0": 43.99,
+     "p1": 5.26,
+     "ret": -88.0,
+     "mc0_m": 1905,
+     "adv_m": 15.3,
+     "V_now": -2.5,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-08-10",
+      "note": "Phase 2a PreciSION CF add-on trial of SION-719 with Trikafta missed primary endpoint (1.0 mmol/L sweat chloride change, not significant); no advancement as add-on. Shares fell about 90%.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not checked",
+      "conf": "high",
+      "sources": [
+       "https://www.rttnews.com/story.aspx?Id=3678437",
+       "https://stocktwits.com/news-articles/markets/equity/sion-stock-on-track-for-worst-day-ever-after-90-drop-what-s-driving-the-selloff/cZojDxtRJfP"
+      ]
+     },
+     "V4sep": {
+      "V": -1.51,
+      "side": null
+     }
+    },
+    {
+     "t": "KPTI",
+     "ta": "Cancer blood myeloid",
+     "stage": "Phase 3 topline reported; sNDA filed",
+     "p0": 9.77,
+     "p1": 1.22,
+     "ret": -87.5,
+     "mc0_m": 126,
+     "adv_m": 2.1,
+     "V_now": 82.41,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-07-30",
+      "note": "Selinexor maintenance trial in endometrial cancer missed significance on progression-free survival (~13 vs 7.5 months in key group); spending on program to be cut. Shares fell 69% after hours.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not checked",
+      "conf": "high",
+      "sources": [
+       "https://stocktwits.com/news-articles/markets/equity/why-is-kpti-stock-down-69-after-hours-today/cZN5i1DRJ29",
+       "https://www.rttnews.com/3674067/karyopharm-therapeutics-stock-tanks-68.aspx"
+      ]
+     },
+     "V4sep": {
+      "V": 21.79,
+      "side": null
+     }
+    },
+    {
+     "t": "TENX",
+     "ta": "Cardio",
+     "stage": "Phase 3",
+     "p0": 14.55,
+     "p1": 1.89,
+     "ret": -87.0,
+     "mc0_m": 498,
+     "adv_m": 11.9,
+     "V_now": -3.99,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-08-10",
+      "note": "Phase 3 LEVEL trial of oral levosimendan in PH-HFpEF missed primary endpoint: 6-minute walk +14 m vs +10.4 m placebo, not significant. Shares fell about 84%.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not checked",
+      "conf": "high",
+      "sources": [
+       "https://statnews.com/2026/08/10/tenax-heart-failure-drug-trail-failure-levosimendan-ph-hfpef",
+       "https://pharmaphorum.com/news/tenax-trounced-phase-3-heart-failure-readout"
+      ]
+     },
+     "V4sep": {
+      "V": -3.53,
+      "side": null
+     }
+    },
+    {
+     "t": "EYPT",
+     "ta": "Eye",
+     "stage": "Phase 3",
+     "p0": 14.3,
+     "p1": 3.27,
+     "ret": -77.1,
+     "mc0_m": 1186,
+     "adv_m": 23.1,
+     "V_now": 35.59,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-08-17",
+      "note": "Phase 3 LUGANO of DURAVYU in wet AMD missed non-inferiority primary endpoint vs aflibercept; company cited 9 patients with unrelated vision loss. Shares fell about 70% premarket.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not checked",
+      "conf": "high",
+      "sources": [
+       "https://www.rttnews.com/3681147/eyepoint-s-duravyu-phase-3-lugano-trial-misses-primary-endpoint-stock-plunges.aspx"
+      ]
+     },
+     "V4sep": {
+      "V": 2.9,
+      "side": null
+     }
+    },
+    {
+     "t": "ALMS",
+     "ta": "Immuno skin",
+     "stage": "Phase 3",
+     "p0": 28.14,
+     "p1": 7.39,
+     "ret": -73.7,
+     "mc0_m": 3392,
+     "adv_m": 27.5,
+     "V_now": 1.7,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-09-01",
+      "note": "Phase 2b LUMUS trial of envudeucitinib in lupus missed primary and key secondary endpoints in full population; subgroup looked better. Shares fell 57% in worst day since IPO.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not checked",
+      "conf": "high",
+      "sources": [
+       "https://stocktwits.com/news-articles/markets/equity/alms-stock-clocks-worst-day-after-57-drop-what-drove-the-selloff/cZso6qARJMD"
+      ]
+     },
+     "V4sep": {
+      "V": 1.03,
+      "side": null
+     }
+    },
+    {
+     "t": "MPLT",
+     "ta": "Psych",
+     "stage": "Phase 2",
+     "p0": 35.84,
+     "p1": 10.19,
+     "ret": -71.6,
+     "mc0_m": 2185,
+     "adv_m": 5.8,
+     "V_now": 1.33,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-07-27",
+      "note": "Phase 2 ZEPHYR in schizophrenia: twice-daily dose met primary endpoint but once-daily dose did not reach significance. Shares fell about 62-73%.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not checked",
+      "conf": "high",
+      "sources": [
+       "https://www.rttnews.com/3670829/maplight-reports-results-from-phase-2-zephyr-trial-of-ml-007c-ma-stock-down-more-than-60.aspx",
+       "https://www.fiercebiotech.com/biotech/maplight-shares-sink-mixed-ph-2-schizophrenia-readout"
+      ]
+     },
+     "V4sep": {
+      "V": 0.95,
+      "side": null
+     }
+    },
+    {
+     "t": "BIOA",
+     "ta": "Metabolic lipid",
+     "stage": "Phase 2",
+     "p0": 24.51,
+     "p1": 7.09,
+     "ret": -71.1,
+     "mc0_m": 1036,
+     "adv_m": 6.2,
+     "V_now": 1.32,
+     "drv": {
+      "driver_type": "short report/other",
+      "event_date": "2026-07-31",
+      "note": "Sector read-through: Novo Nordisk's IL-6 inhibitor ziltivekimab failed Phase 3 ZEUS cardiovascular trial, challenging hsCRP-lowering thesis; BioAge fell 63.6% that day. No BioAge-specific data.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Competitor result; not a BioAge event",
+      "conf": "med",
+      "sources": [
+       "https://www.biospace.com/drug-development/novos-late-stage-il-6-stumble-shakes-inflammation-space"
+      ]
+     },
+     "V4sep": {
+      "V": 1.04,
+      "side": null
+     }
+    },
+    {
+     "t": "CNXU",
+     "ta": "Derm",
+     "stage": "Preclinical",
+     "p0": 10.92,
+     "p1": 3.57,
+     "ret": -67.3,
+     "mc0_m": 315,
+     "adv_m": 1.5,
+     "V_now": -0.75,
+     "drv": {
+      "driver_type": "no specific news",
+      "event_date": "unverified",
+      "note": "No company-specific news found explaining the decline; July-September releases were promotional or conference notices and a Sep 14 quarterly report. Likely post-listing trading, but unverified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "",
+      "conf": "low",
+      "sources": [
+       "https://stockanalysis.com/stocks/cnxu/"
+      ]
+     },
+     "V4sep": {
+      "V": -0.47,
+      "side": null
+     }
+    },
+    {
+     "t": "LQDA",
+     "ta": "Cardio",
+     "stage": "Approved",
+     "p0": 79.73,
+     "p1": 30.26,
+     "ret": -62.0,
+     "mc0_m": 7093,
+     "adv_m": 147.6,
+     "V_now": 0.53,
+     "drv": {
+      "driver_type": "regulatory setback",
+      "event_date": "2026-09-30",
+      "note": "Delaware court ruled Yutrepia infringes two valid claims of United Therapeutics' '327 PH-ILD patent; Liquidia plans appeal and label change. Shares fell 57% that day, after earlier declines.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Ruling timing not verified as guided",
+      "conf": "med",
+      "sources": [
+       "https://www.tikr.com/zh/blog/liquidia-stock-crashed-57-in-a-day-after-a-delaware-court-ruling-an-appeal-could-decide-whether-shares-rebound"
+      ]
+     },
+     "V4sep": {
+      "V": 0.22,
+      "side": null
+     }
+    },
+    {
+     "t": "LONA",
+     "ta": "Cancer GYN",
+     "stage": "Phase 3",
+     "p0": 9.19,
+     "p1": 3.57,
+     "ret": -61.2,
+     "mc0_m": 85,
+     "adv_m": 1.0,
+     "V_now": -4.96,
+     "drv": {
+      "driver_type": "financing/dilution",
+      "event_date": "2026-09-25",
+      "note": "Opened exercise window for Series A warrants (~23M shares at $6.35); going-concern doubt noted, cash $51.1M. Fell ~35% Sep 25 and ~21% Sep 28. Earlier decline unexplained.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Warrant window announcement was not a pre-dated catalyst",
+      "conf": "med",
+      "sources": [
+       "https://tickeron.com/blogs/why-is-leonabio-lona-stock-down-21-23-today-17281/"
+      ]
+     },
+     "V4sep": {
+      "V": -2.98,
+      "side": null
+     }
+    }
+   ]
+  },
+  {
+   "q": "4Q26 to date",
+   "start": "2026-09-30",
+   "end": "2026-10-28",
+   "n": 316,
+   "median_ret": -6.0,
+   "xbi_ret": -0.1,
+   "longs": [
+    {
+     "t": "PRME",
+     "ta": "Metabolic protein",
+     "stage": "Phase 1/2",
+     "p0": 3.06,
+     "p1": 5.36,
+     "ret": 75.5,
+     "mc0_m": 450,
+     "adv_m": 12.8,
+     "V_now": 0.43,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-10-05",
+      "note": "Dosed first patient in Phase 1/2 PM577a Wilson disease trial (Oct 5); Rare Pediatric Disease designation; FDA IND clearance for PM647 (AATD) reported around Oct 6. Specific cause of the 75% rise not confirmed.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Dosing timing not confirmed as guided; data guided for 2027",
+      "conf": "low",
+      "sources": [
+       "https://www.globenewswire.com/news-release/2026/10/05/3374466/0/en/prime-medicine-announces-first-patient-dosed-in-global-phase-1-2-clinical-trial-of-pm577a-for-h1069q-mutated-wilson-disease.html",
+       "https://timothysykes.com/news/prime-medicine-inc-prme-news-2026_10_06/"
+      ]
+     },
+     "V4sep": {
+      "V": 0.59,
+      "side": null
+     }
+    },
+    {
+     "t": "GMAB",
+     "ta": "Cancer GYN",
+     "stage": "Phase 3",
+     "p0": 35.67,
+     "p1": 57.29,
+     "ret": 60.6,
+     "mc0_m": 17344,
+     "adv_m": 124.5,
+     "V_now": -0.08,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-10-23",
+      "note": "Phase 3 RAINFOL-02 of Rina-S in platinum-resistant ovarian cancer met PFS (HR 0.29) and OS (HR 0.43); shares rose about 10%. Earlier Oct 5 rise of about 11% on epcoritamab Phase 3 DLBCL win.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Phase 3 readout timing before quarter not verified",
+      "conf": "med",
+      "sources": [
+       "https://www.panabee.com/news/genmab-s-rina-s-meets-primary-and-secondary-endpoints-showing-71-risk-reduction-in-ovari",
+       "https://wealthawesome.com/why-genmab-as-stock-surged-yesterday-10062026"
+      ]
+     },
+     "V4sep": {
+      "V": 0.15,
+      "side": null
+     }
+    },
+    {
+     "t": "LQDA",
+     "ta": "Cardio",
+     "stage": "Approved",
+     "p0": 30.26,
+     "p1": 45.72,
+     "ret": 51.1,
+     "mc0_m": 2692,
+     "adv_m": 147.6,
+     "V_now": 0.53,
+     "drv": {
+      "driver_type": "partnering/M&A",
+      "event_date": "2026-10-14",
+      "note": "Settled patent litigation with United Therapeutics (reported around $381 million); shares rose 25-42% on Oct 14, removing the legal overhang on YUTREPIA.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Settlement timing not publicly guided",
+      "conf": "med",
+      "sources": [
+       "https://247wallst.com/investing/2026/10/14/united-therapeutics-and-liquidia-just-ended-their-patent-war-liquidia-stock-popped-42/",
+       "https://finance.yahoo.com/healthcare/articles/liquidia-surges-381-million-settlement-115236594.html"
+      ]
+     },
+     "V4sep": {
+      "V": 0.22,
+      "side": null
+     }
+    },
+    {
+     "t": "KRRO",
+     "ta": "Metabolic protein",
+     "stage": "Preclinical",
+     "p0": 9.91,
+     "p1": 13.86,
+     "ret": 39.9,
+     "mc0_m": 170,
+     "adv_m": 1.8,
+     "V_now": 0.38,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "2026-10-05",
+      "note": "Announced first cohort dosed in Phase 1/2 ANCHOR trial of KRRO-121 (Oct 5); preclinical KRRO-111 results Oct 22. No source ties the 40% rise to either event.",
+      "foreseeable": "guided window",
+      "foreseeable_note": "KRRO-121 trial start was guided for 2H 2026",
+      "conf": "low",
+      "sources": [
+       "https://www.marketscreener.com/quote/stock/KORRO-BIO-INC-66660730/news/",
+       "https://marketchameleon.com/PressReleases/i/2204820/KRRO/korro-reports-third-quarter-financial-results-provides"
+      ]
+     },
+     "V4sep": {
+      "V": 0.37,
+      "side": null
+     }
+    },
+    {
+     "t": "TRAX",
+     "ta": "Immuno GI",
+     "stage": "Phase 1/2",
+     "p0": 35.44,
+     "p1": 45.72,
+     "ret": 29.0,
+     "mc0_m": 1257,
+     "adv_m": 33.0,
+     "V_now": 0.18,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-10-12",
+      "note": "Phase 1b Cohort 1 of ANB033 in celiac disease met all key histology endpoints at Week 6 versus placebo, with symptom improvement and no serious adverse events. Shares rose sharply Oct 12.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Readout timing guidance not checked",
+      "conf": "med",
+      "sources": [
+       "https://www.benzinga.com/news/health-care/26/10/62296425/why-is-first-tracks-biotherapeutics-stock-soaring-monday",
+       "https://www.biopharmadive.com/news/first-tracks-celiac-study-results-cd122/832726/"
+      ]
+     },
+     "V4sep": {
+      "V": 0.25,
+      "side": null
+     }
+    },
+    {
+     "t": "KNSA",
+     "ta": "Immuno organ",
+     "stage": "Approved",
+     "p0": 74.61,
+     "p1": 95.18,
+     "ret": 27.6,
+     "mc0_m": 5494,
+     "adv_m": 45.6,
+     "V_now": 0.27,
+     "drv": {
+      "driver_type": "guidance/earnings",
+      "event_date": "2026-10-27",
+      "note": "Q3 results: ARCALYST sales $286M (+58% y/y); full-year ARCALYST guidance raised to $1.045-1.050B from $980-995M. Shares rose about 15-22% that day.",
+      "foreseeable": "scheduled",
+      "foreseeable_note": "Earnings date announced Oct 22; guidance raise unscheduled",
+      "conf": "high",
+      "sources": [
+       "https://stockstotrade.com/news/kiniksa-pharmaceuticals-international-plc-knsa-news-2026-10-27/",
+       "https://www.gurufocus.com/news/9144360/kiniksa-pharmaceuticals-q3-2026-earnings-revenue-soars-to-286-million-eps-impacting-future-growth-outlook"
+      ]
+     },
+     "V4sep": {
+      "V": 0.29,
+      "side": null
+     }
+    },
+    {
+     "t": "IRON",
+     "ta": "Metabolic protein",
+     "stage": "Phase 3",
+     "p0": 65.46,
+     "p1": 83.2,
+     "ret": 27.1,
+     "mc0_m": 2819,
+     "adv_m": 60.4,
+     "V_now": 0.41,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-10-19",
+      "note": "Phase 3 APOLLO of bitopertin in EPP met all primary and secondary endpoints (PPIX down 41%, more sunlight time); shares up about 35%. Resubmission planned by end-2026 after February FDA rejection.",
+      "foreseeable": "guided window",
+      "foreseeable_note": "Phase 3 readout timing guided; exact date not verified",
+      "conf": "med",
+      "sources": [
+       "https://www.tikr.com/blog/disc-medicine-soars-35-as-rare-disease-drug-hits-every-phase-3-endpoint-a-potential-breakthrough",
+       "https://www.sec.gov/Archives/edgar/data/0001816736/000119312526424649/d156263d8k.htm"
+      ]
+     },
+     "V4sep": {
+      "V": 0.38,
+      "side": "SHORT"
+     }
+    },
+    {
+     "t": "SGP",
+     "ta": "Eye",
+     "stage": "Phase 3",
+     "p0": 26.0,
+     "p1": 32.86,
+     "ret": 26.4,
+     "mc0_m": 818,
+     "adv_m": 2.7,
+     "V_now": 0.36,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "2026-10-19",
+      "note": "Reported 4-year BIM-IOL first-in-human data (37% IOP reduction, Oct 19) and acquired Advanced Vision Science for IOL supply (Oct 1). No source ties the 26% rise to either.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Not verified",
+      "conf": "low",
+      "sources": [
+       "https://optometrytimes.com/view/bim-iol-system-37-iop-reduction-4-years-spyglass-pharma-first-in-human-trial",
+       "https://finviz.com/news/397626/spyglass-pharma-acquires-advanced-vision-science-inc-avs-securing-scalable-commercial-iol-supply-and-accelerating-lens-portfolio-expansion-capability"
+      ]
+     },
+     "V4sep": {
+      "V": 0.4,
+      "side": "SHORT"
+     }
+    },
+    {
+     "t": "COAG",
+     "ta": "Blood",
+     "stage": "Phase 1/2",
+     "p0": 30.84,
+     "p1": 38.5,
+     "ret": 24.8,
+     "mc0_m": 1551,
+     "adv_m": 17.5,
+     "V_now": 0.32,
+     "drv": {
+      "driver_type": "no specific news",
+      "event_date": "unverified",
+      "note": "No company-specific news found in window; IPO lock-up expires Oct 28. Prior data release was July 12 (outside window). Cause of 25% rise unverified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "No event identified",
+      "conf": "low",
+      "sources": [
+       "https://www.marketbeat.com/instant-alerts/lockup-hemab-therapeutics-holdings-incs-nasdaq-coag-lock-up-period-will-expire-on-october-28th-2026-10-21/"
+      ]
+     },
+     "V4sep": {
+      "V": 0.15,
+      "side": null
+     }
+    },
+    {
+     "t": "VSTM",
+     "ta": "Cancer GYN",
+     "stage": "Approved",
+     "p0": 8.05,
+     "p1": 9.84,
+     "ret": 22.2,
+     "mc0_m": 749,
+     "adv_m": 27.2,
+     "V_now": 0.48,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-10-14",
+      "note": "Presented initial VS-7375 (oral KRAS G12D inhibitor) efficacy data on Oct 14; shares rose about 10% that day. Priced roughly $250M offering at $8.00 the same day.",
+      "foreseeable": "scheduled",
+      "foreseeable_note": "Event date announced Sept 8, before the window",
+      "conf": "med",
+      "sources": [
+       "https://investor.verastem.com/news-releases/news-release-details/verastem-oncology-unveil-new-clinical-data-highlighting-best",
+       "https://www.tipranks.com/news/company-announcements/verastem-announces-234-million-oncology-financing-transaction"
+      ]
+     },
+     "V4sep": {
+      "V": 0.75,
+      "side": null
+     }
+    }
+   ],
+   "shorts": [
+    {
+     "t": "EYPT",
+     "ta": "Eye",
+     "stage": "Phase 3",
+     "p0": 3.27,
+     "p1": 0.38,
+     "ret": -88.5,
+     "mc0_m": 271,
+     "adv_m": 23.1,
+     "V_now": 35.59,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-10-19",
+      "note": "Second Phase 3 (LUCIA) of DURAVYU in wet AMD missed non-inferiority versus aflibercept, after LUGANO missed in August. Shares fell about 85%; 53% workforce cut followed.",
+      "foreseeable": "guided window",
+      "foreseeable_note": "LUCIA topline was guided for Q4 2026",
+      "conf": "high",
+      "sources": [
+       "https://finviz.com/news/403813/eyepoint-announces-topline-results-from-lucia-the-second-pivotal-phase-3-clinical-trial-of-duravyu-in-wet-amd",
+       "https://www.rttnews.com/3681147/eyepoint-s-duravyu-phase-3-lugano-trial-misses-primary-endpoint-stock-plunges.aspx"
+      ]
+     },
+     "V4sep": {
+      "V": 2.9,
+      "side": null
+     }
+    },
+    {
+     "t": "GUTS",
+     "ta": "Metabolic",
+     "stage": "Phase 3",
+     "p0": 6.53,
+     "p1": 0.89,
+     "ret": -86.4,
+     "mc0_m": 86,
+     "adv_m": 1.3,
+     "V_now": 50.95,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-10-16",
+      "note": "REMAIN-1 six-month data: Revita met co-primary endpoint (5.1% vs 8.2% regain) but shares fell 47.6% Oct 16 amid skepticism and a securities class action. Later October decline unexplained.",
+      "foreseeable": "guided window",
+      "foreseeable_note": "Readout timing guided; exact date not verified",
+      "conf": "med",
+      "sources": [
+       "https://www.kucoin.com/news/flash/fractyl-health-shares-drop-47-6-amid-clinical-results-and-legal-action"
+      ]
+     },
+     "V4sep": {
+      "V": 5.36,
+      "side": null
+     }
+    },
+    {
+     "t": "AARD",
+     "ta": "Metabolic",
+     "stage": "Phase 3",
+     "p0": 5.27,
+     "p1": 1.51,
+     "ret": -71.3,
+     "mc0_m": 99,
+     "adv_m": 1.3,
+     "V_now": -4.16,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-10-23",
+      "note": "Released exploratory results from terminated Phase 3 HERO trial of ARD-101 in Prader-Willi syndrome: small effect that faded off drug; one cardiac serious adverse event. Shares fell 57% Oct 23.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Trial terminated early; release timing unguided",
+      "conf": "med",
+      "sources": [
+       "https://www.kucoin.com/news/flash/aardvark-therapeutics-shares-drop-56-71-after-phase-3-trial-results"
+      ]
+     },
+     "V4sep": {
+      "V": -1.01,
+      "side": null
+     }
+    },
+    {
+     "t": "AVTX",
+     "ta": "Immuno skin",
+     "stage": "Phase 2 completed / Phase 3 planned",
+     "p0": 15.33,
+     "p1": 7.12,
+     "ret": -53.6,
+     "mc0_m": 828,
+     "adv_m": 19.4,
+     "V_now": 2.42,
+     "drv": {
+      "driver_type": "short report/other",
+      "event_date": "2026-10-22",
+      "note": "Shares fell over 36% on Oct 22 after AbbVie's IL-1 inhibitor lutikizumab showed a modest Phase 3 placebo-adjusted effect in hidradenitis suppurativa, a read-through to abdakibart.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "AbbVie readout timing not verified",
+      "conf": "med",
+      "sources": [
+       "https://www.biospace.com/drug-development/abbvies-skin-disease-drug-lessens-abscess-burden-in-phase-3-but-falls-below-expectations"
+      ]
+     },
+     "V4sep": {
+      "V": 0.53,
+      "side": null
+     }
+    },
+    {
+     "t": "AVBP",
+     "ta": "Cancer lung",
+     "stage": "Phase 3",
+     "p0": 30.28,
+     "p1": 15.73,
+     "ret": -48.1,
+     "mc0_m": 1497,
+     "adv_m": 25.1,
+     "V_now": 0.06,
+     "drv": {
+      "driver_type": "data readout",
+      "event_date": "2026-10-06",
+      "note": "Phase 3 FURVENT of firmonertinib in 1L EGFR exon 20 NSCLC missed its primary endpoint (PFS 11 vs 9.5 months by BICR, not significant). Shares fell about 50% on Oct 6.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "Topline timing guidance not verified",
+      "conf": "high",
+      "sources": [
+       "https://www.biospace.com/drug-development/arrivent-sheds-nearly-half-of-value-on-late-stage-lung-cancer-miss"
+      ]
+     },
+     "V4sep": {
+      "V": 0.03,
+      "side": "SHORT"
+     }
+    },
+    {
+     "t": "BCAX",
+     "ta": "Cancer lung",
+     "stage": "Phase 3",
+     "p0": 18.61,
+     "p1": 9.76,
+     "ret": -47.6,
+     "mc0_m": 2279,
+     "adv_m": 14.9,
+     "V_now": 0.58,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "No company-specific event in the window found; only Oct 5 inducement grants. Cause of the 48% decline unverified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "No event identified",
+      "conf": "low",
+      "sources": [
+       "https://www.globenewswire.com/news-release/2026/10/05/3374533/0/en/bicara-therapeutics-announces-inducement-grants-under-nasdaq-listing-rule-5635-c-4.html"
+      ]
+     },
+     "V4sep": {
+      "V": 0.48,
+      "side": "SHORT"
+     }
+    },
+    {
+     "t": "TNXP",
+     "ta": "Pain",
+     "stage": "Approved",
+     "p0": 9.74,
+     "p1": 5.37,
+     "ret": -44.9,
+     "mc0_m": 168,
+     "adv_m": 6.1,
+     "V_now": 14.77,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "Only routine news found in window (IASP Tonmya analysis Oct 27, vaccine congress, earnings date). Cause of the 45% decline unverified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "No event identified",
+      "conf": "low",
+      "sources": [
+       "https://www.globenewswire.com/news-release/2026/10/27/3388831/0/en/tonix-pharmaceuticals-presented-an-analysis-of-phase-3-data-demonstrating-tonmya-improved-physical-symptoms-and-functional-ability-of-patients-with-fibromyalgia-at-the-iasp-2026-wo.html"
+      ]
+     },
+     "V4sep": {
+      "V": 6.1,
+      "side": "LONG"
+     }
+    },
+    {
+     "t": "UPB",
+     "ta": "Immuno lung",
+     "stage": "Phase 2",
+     "p0": 5.27,
+     "p1": 2.98,
+     "ret": -43.5,
+     "mc0_m": 272,
+     "adv_m": 4.2,
+     "V_now": 3.13,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "No company-specific news found in window (Q2 results and Phase 3 plans were earlier). Cause of the 43% decline unverified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "No event identified",
+      "conf": "low",
+      "sources": [
+       "https://www.marketbeat.com/instant-alerts/upcoming-upstream-bio-upb-expected-to-release-earnings-on-wednesday-2026-10-28/"
+      ]
+     },
+     "V4sep": {
+      "V": 1.34,
+      "side": null
+     }
+    },
+    {
+     "t": "STRO",
+     "ta": "Cancer lung",
+     "stage": "Phase 1",
+     "p0": 16.11,
+     "p1": 9.29,
+     "ret": -42.3,
+     "mc0_m": 255,
+     "adv_m": 5.3,
+     "V_now": -1.12,
+     "drv": {
+      "driver_type": "unverified",
+      "event_date": "unverified",
+      "note": "Only minor news found (STRO-006 first patient dosed Oct 21; ADC conference). Earlier 15% drop on Aug 12 is outside window. Cause of the 42% decline unverified.",
+      "foreseeable": "unverified",
+      "foreseeable_note": "No event identified",
+      "conf": "low",
+      "sources": [
+       "https://www.globenewswire.com/news-release/2026/10/21/3385452/0/en/sutro-biopharma-announces-first-patient-dosed-in-phase-1-trial-of-stro-006-a-next-generation-itgb6-targeting-adc-in-advanced-solid-tumors.html"
+      ]
+     },
+     "V4sep": {
+      "V": 0.34,
+      "side": null
+     }
+    },
+    {
+     "t": "FHTX",
+     "ta": "Cancer lung",
+     "stage": "Phase 1",
+     "p0": 3.57,
+     "p1": 2.13,
+     "ret": -40.3,
+     "mc0_m": 245,
+     "adv_m": 2.6,
+     "V_now": 0.89,
+     "drv": {
+      "driver_type": "partnering/M&A",
+      "event_date": "2026-10-01",
+      "note": "Foghorn and Lilly decided not to advance FHD-909 (SMARCA2) after Phase 1 dose-escalation data, ending the collaboration; 40% workforce cut. Shares fell 18% Oct 1 and about 31% Oct 2.",
+      "foreseeable": "unscheduled",
+      "foreseeable_note": "Termination was not publicly guided",
+      "conf": "high",
+      "sources": [
+       "https://finviz.com/news/397564/foghorn-therapeutics-provides-update-on-fhd-909-and-strategic-priorities"
+      ]
+     },
+     "V4sep": {
+      "V": 0.5,
+      "side": null
+     }
+    }
+   ]
+  }
+ ],
+ "method": "Hindsight, price-only. Close on the last trading day before the quarter to close on its last trading day (current quarter: to the latest close). Filters: start price >= $2; start market cap >= $75M (current market cap scaled by price); current average daily volume >= $1M. Only companies still in the dashboard are included, so acquired names (takeover winners) are missing. Returns are split-adjusted closes. Driver notes were researched from company and news sources; unverified where noted."
+}

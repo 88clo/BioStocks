@@ -1,0 +1,588 @@
+{
+ "asof": "2026-11-20",
+ "cohorts": [
+  {
+   "label": "Sep 12 snapshot",
+   "date": "2026-09-11",
+   "days": 70,
+   "kind": "snapshot",
+   "note": "Earliest full call set still on file (repo upload, 482 names). Calls were formula-driven off the then-current sheet; first five weeks overlap the rebuild of the baseline.",
+   "xbi": -10.3,
+   "ibb": -1.7,
+   "universe": {
+    "n": 468,
+    "median": -29.3,
+    "mean": -26.9,
+    "pct_pos": 13
+   },
+   "groups": [
+    {
+     "n": 32,
+     "median": -37.4,
+     "mean": -39.1,
+     "pct_pos": 3,
+     "label": "Best ideas (primary)",
+     "side": "long",
+     "vs_universe": -8.1,
+     "beat_xbi_pct": 3
+    },
+    {
+     "n": 54,
+     "median": -31.8,
+     "mean": -28.7,
+     "pct_pos": 11,
+     "label": "Strong Buy",
+     "side": "long",
+     "vs_universe": -2.5,
+     "beat_xbi_pct": 17
+    },
+    {
+     "n": 124,
+     "median": -34.9,
+     "mean": -30.9,
+     "pct_pos": 10,
+     "label": "Long",
+     "side": "long",
+     "vs_universe": -5.6,
+     "beat_xbi_pct": 15
+    },
+    {
+     "n": 116,
+     "median": -19.4,
+     "mean": -19.1,
+     "pct_pos": 20,
+     "label": "Watch",
+     "side": "neutral",
+     "vs_universe": 9.9,
+     "beat_xbi_pct": 32
+    },
+    {
+     "n": 57,
+     "median": -31.1,
+     "mean": -22.4,
+     "pct_pos": 12,
+     "label": "Hold",
+     "side": "neutral",
+     "vs_universe": -1.8,
+     "beat_xbi_pct": 19
+    },
+    {
+     "n": 56,
+     "median": -40.0,
+     "mean": -38.6,
+     "pct_pos": 7,
+     "label": "Avoid",
+     "side": "short",
+     "vs_universe": -10.7,
+     "beat_xbi_pct": 12
+    },
+    {
+     "n": 35,
+     "median": -25.3,
+     "mean": -21.2,
+     "pct_pos": 14,
+     "label": "Short",
+     "side": "short",
+     "vs_universe": 4.0,
+     "beat_xbi_pct": 29
+    },
+    {
+     "n": 26,
+     "median": -35.4,
+     "mean": -31.9,
+     "pct_pos": 12,
+     "label": "Strong Short",
+     "side": "short",
+     "vs_universe": -6.1,
+     "beat_xbi_pct": 15
+    }
+   ],
+   "best": [
+    {
+     "t": "KOD",
+     "call": "STRONG BUY",
+     "r": 195.4
+    },
+    {
+     "t": "PDSB",
+     "call": "LONG",
+     "r": 163.4
+    },
+    {
+     "t": "XERS",
+     "call": "LONG",
+     "r": 127.8
+    },
+    {
+     "t": "REPL",
+     "call": "LONG",
+     "r": 47.6
+    },
+    {
+     "t": "VRDN",
+     "call": "LONG",
+     "r": 41.1
+    }
+   ],
+   "worst": [
+    {
+     "t": "ABOS",
+     "call": "LONG",
+     "r": -93.6
+    },
+    {
+     "t": "GUTS",
+     "call": "STRONG BUY",
+     "r": -89.3
+    },
+    {
+     "t": "CUE",
+     "call": "HOLD",
+     "r": -85.6
+    },
+    {
+     "t": "ZURA",
+     "call": "LONG",
+     "r": -82.1
+    },
+    {
+     "t": "KYNB",
+     "call": "LONG",
+     "r": -80.4
+    }
+   ]
+  },
+  {
+   "label": "Oct 13 memo",
+   "date": "2026-10-13",
+   "days": 38,
+   "kind": "memo",
+   "note": "Only the names printed in the memo are on file; the full Oct ledger (ledger/2026-10.json) was not recovered, so the universe here is just these names.",
+   "xbi": -4.5,
+   "ibb": -0.2,
+   "universe": {
+    "n": 63,
+    "median": -14.7,
+    "mean": -11.3,
+    "pct_pos": 29
+   },
+   "groups": [
+    {
+     "n": 10,
+     "median": -13.5,
+     "mean": -9.2,
+     "pct_pos": 20,
+     "label": "Highest-conviction longs (memo \u00a72)",
+     "side": "long",
+     "vs_universe": 1.2,
+     "beat_xbi_pct": 30
+    },
+    {
+     "n": 34,
+     "median": -15.8,
+     "mean": -14.5,
+     "pct_pos": 24,
+     "label": "Best long per TA (memo \u00a73)",
+     "side": "long",
+     "vs_universe": -1.1,
+     "beat_xbi_pct": 29
+    },
+    {
+     "n": 19,
+     "median": -14.4,
+     "mean": -6.7,
+     "pct_pos": 42,
+     "label": "Best short per TA (memo \u00a73)",
+     "side": "short",
+     "vs_universe": 0.3,
+     "beat_xbi_pct": 42
+    }
+   ],
+   "best": [
+    {
+     "t": "LYEL",
+     "call": "STRONG BUY",
+     "r": 83.8
+    },
+    {
+     "t": "INO",
+     "call": "STRONG BUY",
+     "r": 76.0
+    },
+    {
+     "t": "LRMR",
+     "call": "LONG",
+     "r": 45.4
+    },
+    {
+     "t": "LRMR",
+     "call": "LONG",
+     "r": 45.4
+    },
+    {
+     "t": "XNCR",
+     "call": "SHORT",
+     "r": 41.4
+    }
+   ],
+   "worst": [
+    {
+     "t": "GUTS",
+     "call": "STRONG BUY",
+     "r": -79.6
+    },
+    {
+     "t": "SLBT",
+     "call": "STRONG SHORT",
+     "r": -64.1
+    },
+    {
+     "t": "UPB",
+     "call": "STRONG BUY",
+     "r": -55.2
+    },
+    {
+     "t": "MIST",
+     "call": "STRONG BUY",
+     "r": -51.6
+    },
+    {
+     "t": "AKBA",
+     "call": "LONG",
+     "r": -49.9
+    }
+   ]
+  },
+  {
+   "label": "Nov 17 ledger",
+   "date": "2026-11-16",
+   "days": 4,
+   "kind": "ledger",
+   "note": "Full 402-name ledger frozen before this refresh (sha256 in the file). Four trading days old: a baseline, not evidence.",
+   "xbi": -3.9,
+   "ibb": -4.1,
+   "universe": {
+    "n": 402,
+    "median": -6.2,
+    "mean": -6.2,
+    "pct_pos": 19
+   },
+   "groups": [
+    {
+     "n": 36,
+     "median": -6.7,
+     "mean": -7.3,
+     "pct_pos": 8,
+     "label": "Rule-based top picks",
+     "side": "long",
+     "vs_universe": -0.5,
+     "beat_xbi_pct": 22
+    },
+    {
+     "n": 63,
+     "median": -7.3,
+     "mean": -7.5,
+     "pct_pos": 16,
+     "label": "Strong Buy",
+     "side": "long",
+     "vs_universe": -1.1,
+     "beat_xbi_pct": 32
+    },
+    {
+     "n": 121,
+     "median": -6.5,
+     "mean": -6.9,
+     "pct_pos": 19,
+     "label": "Long",
+     "side": "long",
+     "vs_universe": -0.3,
+     "beat_xbi_pct": 30
+    },
+    {
+     "n": 43,
+     "median": -4.7,
+     "mean": -5.5,
+     "pct_pos": 19,
+     "label": "Short + Strong Short",
+     "side": "short",
+     "vs_universe": 1.5,
+     "beat_xbi_pct": 40
+    },
+    {
+     "n": 34,
+     "median": -6.3,
+     "mean": -5.6,
+     "pct_pos": 18,
+     "label": "Avoid",
+     "side": "short",
+     "vs_universe": -0.1,
+     "beat_xbi_pct": 41
+    }
+   ],
+   "best": [
+    {
+     "t": "PYXS",
+     "call": "LONG",
+     "r": 28.4
+    },
+    {
+     "t": "INO",
+     "call": "LONG",
+     "r": 25.7
+    },
+    {
+     "t": "CING",
+     "call": "STRONG BUY",
+     "r": 20.3
+    },
+    {
+     "t": "ACOG",
+     "call": "STRONG BUY",
+     "r": 14.9
+    },
+    {
+     "t": "CPIX",
+     "call": "LONG",
+     "r": 12.1
+    }
+   ],
+   "worst": [
+    {
+     "t": "CUE",
+     "call": "LONG",
+     "r": -70.6
+    },
+    {
+     "t": "CRBP",
+     "call": "LONG",
+     "r": -39.0
+    },
+    {
+     "t": "ENTA",
+     "call": "LONG",
+     "r": -28.6
+    },
+    {
+     "t": "CHRS",
+     "call": "LONG",
+     "r": -26.9
+    },
+    {
+     "t": "PMVP",
+     "call": "STRONG BUY",
+     "r": -26.4
+    }
+   ]
+  }
+ ],
+ "method": "Price-only returns from the close on the call date to the latest close; split-adjusted; equal-weighted; no dividends, costs or borrow. Universe = every covered name priced on both dates. Shorts are reported as stock returns (a falling stock is a winning short).",
+ "bench": {
+  "xbi_1m": -8.247156829551594,
+  "xbi_3m": -15.416643764211601,
+  "ibb_1m": -5.677149417334981
+ },
+ "signal": {
+  "cohort": "Sep 12 snapshot",
+  "by_model_upside": [
+   {
+    "n": 93,
+    "median": -22.5,
+    "mean": -21.1,
+    "pct_pos": 18,
+    "label": "Richest 20%",
+    "up_range": [
+     -99,
+     -35
+    ]
+   },
+   {
+    "n": 93,
+    "median": -29.7,
+    "mean": -25.6,
+    "pct_pos": 13,
+    "label": "2",
+    "up_range": [
+     -35,
+     4
+    ]
+   },
+   {
+    "n": 93,
+    "median": -26.7,
+    "mean": -29.3,
+    "pct_pos": 14,
+    "label": "3",
+    "up_range": [
+     4,
+     82
+    ]
+   },
+   {
+    "n": 93,
+    "median": -32.8,
+    "mean": -29.8,
+    "pct_pos": 9,
+    "label": "4",
+    "up_range": [
+     82,
+     270
+    ]
+   },
+   {
+    "n": 93,
+    "median": -36.7,
+    "mean": -32.9,
+    "pct_pos": 11,
+    "label": "Cheapest 20%",
+    "up_range": [
+     270,
+     9900
+    ]
+   }
+  ]
+ },
+ "factors": [
+  {
+   "factor": "Market cap at call",
+   "note": "",
+   "buckets": [
+    {
+     "n": 121,
+     "median": -37.3,
+     "mean": -34.9,
+     "pct_pos": 6,
+     "label": "1 <$150M"
+    },
+    {
+     "n": 110,
+     "median": -36.1,
+     "mean": -34.1,
+     "pct_pos": 12,
+     "label": "2 $150-500M"
+    },
+    {
+     "n": 129,
+     "median": -27.6,
+     "mean": -23.9,
+     "pct_pos": 14,
+     "label": "3 $0.5-2B"
+    },
+    {
+     "n": 108,
+     "median": -14.9,
+     "mean": -14.3,
+     "pct_pos": 21,
+     "label": "4 >$2B"
+    }
+   ]
+  },
+  {
+   "factor": "Stage at call",
+   "note": "",
+   "buckets": [
+    {
+     "n": 81,
+     "median": -20.8,
+     "mean": -17.1,
+     "pct_pos": 25,
+     "label": "1 Approved"
+    },
+    {
+     "n": 171,
+     "median": -25.0,
+     "mean": -24.1,
+     "pct_pos": 12,
+     "label": "2 Ph3/Filed"
+    },
+    {
+     "n": 216,
+     "median": -35.7,
+     "mean": -32.8,
+     "pct_pos": 9,
+     "label": "3 Earlier"
+    }
+   ]
+  },
+  {
+   "factor": "Model cheapness x size",
+   "note": "",
+   "buckets": [
+    {
+     "n": 93,
+     "median": -37.3,
+     "mean": -37.4,
+     "pct_pos": 9,
+     "label": "1 cheap <$500M"
+    },
+    {
+     "n": 23,
+     "median": -23.5,
+     "mean": -17.7,
+     "pct_pos": 13,
+     "label": "1 cheap >$500M"
+    },
+    {
+     "n": 138,
+     "median": -36.1,
+     "mean": -32.6,
+     "pct_pos": 9,
+     "label": "2 not cheap <$500M"
+    },
+    {
+     "n": 214,
+     "median": -21.0,
+     "mean": -19.7,
+     "pct_pos": 18,
+     "label": "2 not cheap >$500M"
+    }
+   ]
+  },
+  {
+   "factor": "Runway (current data)",
+   "note": "uses today's runway, small look-ahead",
+   "buckets": [
+    {
+     "n": 89,
+     "median": -29.3,
+     "mean": -23.8,
+     "pct_pos": 15,
+     "label": "1 <6Q"
+    },
+    {
+     "n": 118,
+     "median": -31.1,
+     "mean": -29.6,
+     "pct_pos": 8,
+     "label": "2 6-12Q"
+    },
+    {
+     "n": 174,
+     "median": -21.9,
+     "mean": -21.2,
+     "pct_pos": 18,
+     "label": "3 12Q+"
+    }
+   ]
+  },
+  {
+   "factor": "Quality screen (current scores)",
+   "note": "science >=3.5, cap >=$500M, runway >=8Q; science scores are today's, so some look-ahead",
+   "buckets": [
+    {
+     "n": 124,
+     "median": -19.2,
+     "mean": -19.3,
+     "pct_pos": 18,
+     "label": "1 pass"
+    },
+    {
+     "n": 344,
+     "median": -33.3,
+     "mean": -29.7,
+     "pct_pos": 11,
+     "label": "2 fail"
+    }
+   ]
+  }
+ ]
+}
