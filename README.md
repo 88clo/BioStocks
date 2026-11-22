@@ -2,20 +2,33 @@
 
 A single-file dashboard (`index.html`) covering ~400 US-listed small and mid-cap biotechs (market cap $50M–$30B): the lead program for each company, a quantitative efficacy benchmark, risk-adjusted value vs market cap, a rule-based call, catalysts, cash runway, holders, a monthly memo, and a track record that scores every frozen call set against later prices.
 
-Open `index.html` in a browser. One bar at the top holds six views; each has a few lenses (same data, different cut):
+Open `index.html` in a browser. One bar at the top holds six views and twelve lenses; lenses with two cuts of the same data carry a small switch:
 
-| View | Lenses | Replaces |
+| View | Lenses (switch) | Replaces |
 | --- | --- | --- |
-| Brief | — | home page (also replaces the old Insights pop-up, an abridged memo) |
-| Companies | By area · All fields · Valuation · Holders & analysts · By investor · Insight notes · Parked | TA summary, Full table, DCF, Specialists + analysts, Investors, Suggestions, Parked |
-| Market | Tiles · Returns · Value vs momentum · White space | Board, Historical returns, Map, White space |
-| Calendar & deals | Catalysts · Equity raises · IPOs | Catalysts, Raise radar, IPO pipeline |
-| Memo & record | Monthly memo · Track record · Hindsight | Monthly memo, Track record, Retrospect |
+| Brief | — | home page; also the old Insights pop-up (abridged memo) |
+| Companies | By area · All fields (Covered / Parked) · Valuation · Ownership (By company / By fund) | TA summary, Full table, Parked, DCF + Map, Specialists + analysts, Investors |
+| Market | Performance (Tiles / Table) · Value gaps | Board, Historical returns, White space, Insight notes |
+| Calendar & deals | Catalysts · Deal flow (Pipeline / IPO detail) | Catalysts, Raise radar, IPO pipeline |
+| Memo & record | Monthly memo · Track record | Monthly memo, Track record, Retrospect |
 | Portfolio | — | My portfolio |
 
-Methodology, Refresh status and Print sit under **ⓘ About**. The valuation knobs (acquirer P/S, discount rate, stage rates, score filters) sit behind **⚙ Model**. Views can be linked directly, e.g. `index.html#deals/radar` or `index.html#companies/dcf`.
+- **Valuation** puts the value-vs-momentum scatter on top and the DCF table that explains each dot underneath.
+- **Value gaps** shows value left on the table at two levels: fields (under-served, crowded, cash shells) and companies (one suggestion per company).
+- **Deal flow** lists IPOs on file, likely follow-ons with size, timing and our view, and recent IPOs with lock-up expiries. **Catalysts** marks names likely to raise after their event ($ badge).
+- **Track record** scores our frozen calls, then shows the biggest moves we missed and whether they were knowable.
 
-`index_backup_2026-11-16.html` is the dashboard as it was before the Nov 22 rebuild (Nov 16 data, old navigation).
+Methodology, Refresh status and Print sit under **ⓘ About**; valuation knobs behind **⚙ Model**. Views link directly, e.g. `index.html#deals/flow`, `index.html#companies/own/sh`; older links (`#deals/radar`, `#companies/dcf`, …) still resolve.
+
+## Backups
+
+`backups/backup-mmddyy-vX.html`, one file per published version:
+
+| File | What it is |
+| --- | --- |
+| backup-111626-v1.html | Live dashboard before the Nov 22 rebuild (Nov 16 data, original navigation) |
+| backup-112226-v1.html | Nov 22 refresh (Nov 20 prices) with the Brief overlay, original navigation |
+| backup-112226-v2.html | Nov 22 six-view navigation with 19 lenses, before the merge to twelve |
 
 ## Layout
 

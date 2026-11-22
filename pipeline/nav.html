@@ -28,6 +28,13 @@ header.top .brand h1{display:none}
 #viewseg,#subtabs,#memobtn,#tasumbtn,.refwrap,#refbtn,#insbtn,#rfbtn,#methbtn,#brfBtn,#backbtn,#memoBack{display:none!important}
 /* model knobs live behind one toggle */
 body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(.n5-model) .controls .sfbar,body:not(.n5-model) #effVsel,body:not(.n5-model) #diffVsel{display:none!important}
+#nav5 .n5-modes{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+#nav5 .n5-mode{background:none;border:0;padding:4px 10px;font-size:11.5px;color:var(--dim);cursor:pointer}
+#nav5 .n5-mode.on{background:var(--cyan);color:#04202a;font-weight:700}
+.n5-valnote{margin:10px 16px 4px;font-size:12px;color:var(--dim)}
+.n5-raise{box-shadow:inset 0 -2px 0 var(--amber)!important;position:relative}
+.n5-raise::after{content:'$';position:absolute;top:-6px;right:-5px;font-size:9px;font-weight:800;color:#fff;background:var(--amber);border-radius:6px;padding:0 3px;line-height:12px}
+body.n5-val #dcfwrap{max-height:none!important}
 #n5model.on{border-color:var(--cyan)!important;color:var(--text)!important}
 @media(max-width:600px){#nav5 .n5-logo{display:none}}
 @media print{#nav5,#n5pop{display:none!important}body{padding-top:0}}
@@ -36,16 +43,18 @@ body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(
 (function(){
   var old=document.getElementById('nav5');if(old)old.remove();var oldp=document.getElementById('n5pop');if(oldp)oldp.remove();
   // Six views. Each lens is one of the dashboard's existing renderers; nothing was dropped, duplicates were removed.
+  // Six views, twelve lenses. Merged lenses carry a mode switch; every former view is still reachable.
   var TABS=[
-    {k:'brief',l:'Brief',lens:[['brief','Brief']]},
-    {k:'companies',l:'Companies',lens:[['ta','By area'],['table','All fields'],['dcf','Valuation'],['crowd','Holders & analysts'],['sh','By investor'],['sug','Insight notes'],['parked','Parked']]},
-    {k:'market',l:'Market',lens:[['board','Tiles'],['returns','Returns'],['map','Value vs momentum'],['gaps','White space']]},
-    {k:'deals',l:'Calendar & deals',lens:[['cal','Catalysts'],['radar','Equity raises'],['ipo','IPOs']]},
-    {k:'record',l:'Memo & record',lens:[['memo','Monthly memo'],['track','Track record'],['retro','Hindsight']]},
-    {k:'port',l:'Portfolio',lens:[['port','My portfolio']]}
+    {k:'brief',l:'Brief',lens:[{k:'brief',l:'Brief'}]},
+    {k:'companies',l:'Companies',lens:[{k:'ta',l:'By area'},{k:'all',l:'All fields',modes:[['table','Covered'],['parked','Parked']]},{k:'val',l:'Valuation'},{k:'own',l:'Ownership',modes:[['crowd','By company'],['sh','By fund']]}]},
+    {k:'market',l:'Market',lens:[{k:'perf',l:'Performance',modes:[['board','Tiles'],['returns','Table']]},{k:'gaps',l:'Value gaps'}]},
+    {k:'deals',l:'Calendar & deals',lens:[{k:'cal',l:'Catalysts'},{k:'flow',l:'Deal flow',modes:[['flow','Pipeline'],['ipo','IPO detail']]}]},
+    {k:'record',l:'Memo & record',lens:[{k:'memo',l:'Monthly memo'},{k:'track',l:'Track record'}]},
+    {k:'port',l:'Portfolio',lens:[{k:'port',l:'My portfolio'}]}
   ];
-  var BRF={brief:1,track:1,radar:1,gaps:1}, MAIN={table:1,dcf:1,crowd:1,sh:1,sug:1,parked:1,board:1,returns:1,map:1,cal:1,ipo:1,retro:1,port:1};
-  var last={};TABS.forEach(function(t){last[t.k]=t.lens[0][0];});
+  var BRF={brief:1,track:1,flow:1,gaps:1}, MAIN={table:1,parked:1,crowd:1,sh:1,board:1,returns:1,cal:1,ipo:1,port:1};
+  var mode={all:'table',own:'crowd',perf:'board',flow:'flow'};
+  var last={};TABS.forEach(function(t){last[t.k]=t.lens[0].k;});
   var cur={tab:'brief',lens:'brief'};
   var nav=document.createElement('nav');nav.id='nav5';nav.setAttribute('aria-label','Dashboard views');
   document.body.insertBefore(nav,document.body.firstChild);
@@ -62,12 +71,14 @@ body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(
     var t=TABS.filter(function(x){return x.k===cur.tab;})[0];
     nav.innerHTML='<span class="n5-logo">BIOTECH LANDSCAPE</span>'
       +TABS.map(function(x){return '<button class="n5-tab'+(x.k===cur.tab?' on':'')+'" data-t="'+x.k+'">'+x.l+'</button>';}).join('')
-      +(t.lens.length>1?'<span class="n5-sep"></span>'+t.lens.map(function(l){return '<button class="n5-lens'+(l[0]===cur.lens?' on':'')+'" data-l="'+l[0]+'">'+l[1]+'</button>';}).join(''):'')
+      +(t.lens.length>1?'<span class="n5-sep"></span>'+t.lens.map(function(l){return '<button class="n5-lens'+(l.k===cur.lens?' on':'')+'" data-l="'+l.k+'">'+l.l+'</button>';}).join(''):'')
+      +(function(){var L=t.lens.filter(function(l){return l.k===cur.lens;})[0];return L&&L.modes?'<span class="n5-sep"></span><span class="n5-modes">'+L.modes.map(function(m){return '<button class="n5-mode'+(mode[L.k]===m[0]?' on':'')+'" data-m="'+m[0]+'">'+m[1]+'</button>';}).join('')+'</span>':'';})()
       +'<span class="n5-sp"></span>'
-      +(MAIN[cur.lens]?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
+      +(MAIN[act(cur.lens)]||cur.lens==='val'?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
       +'<button class="n5-about" id="n5aboutBtn">ⓘ About ▾</button>';
     nav.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){go(b.dataset.t,last[b.dataset.t]);};});
     nav.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){go(cur.tab,b.dataset.l);};});
+    nav.querySelectorAll('[data-m]').forEach(function(b){b.onclick=function(){mode[cur.lens]=b.dataset.m;go(cur.tab,cur.lens);};});
     var m=el('n5model');if(m){m.classList.toggle('on',document.body.classList.contains('n5-model'));m.onclick=function(){document.body.classList.toggle('n5-model');m.classList.toggle('on');};}
     el('n5aboutBtn').onclick=function(ev){ev.stopPropagation();pop.style.display=pop.style.display==='block'?'none':'block';};
   }
@@ -75,23 +86,35 @@ body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(
   pop.querySelectorAll('[data-a]').forEach(function(d){d.onclick=function(){pop.style.display='none';var a=d.dataset.a;
     if(a==='meth'){var b=el('methbtn');if(b)b.click();}else if(a==='rf'){var r=el('rfbtn');if(r)r.click();}else if(a==='print'){window.print();}};});
   document.addEventListener('click',function(){pop.style.display='none';});
+  function act(lens){return mode[lens]||lens;}
   function go(tab,lens,noHash){
     cur={tab:tab,lens:lens};last[tab]=lens;closeOverlays();
+    var a=act(lens);document.body.classList.toggle('n5-val',lens==='val');
     try{
-      if(BRF[lens]){if(window.openBrief)window.openBrief(lens);}
-      else if(lens==='ta'){if(typeof openTApage==='function')openTApage();}
-      else if(lens==='memo'){var b=el('memobtn');if(b)b.click();}
-      else if(MAIN[lens]){state.view=lens;render();window.scrollTo(0,0);}
+      if(BRF[a]){if(window.openBrief)window.openBrief(a);}
+      else if(a==='ta'){if(typeof openTApage==='function')openTApage();}
+      else if(a==='memo'){var b=el('memobtn');if(b)b.click();}
+      else if(a==='val'){state.view='map';render();valuationExtra();window.scrollTo(0,0);}
+      else if(MAIN[a]){state.view=a;render();window.scrollTo(0,0);}
     }catch(e){console.log('nav',e);}
     draw();
-    if(!noHash){try{history.replaceState(null,'','#'+tab+'/'+lens);}catch(e){}}
+    if(!noHash){try{history.replaceState(null,'','#'+tab+'/'+lens+(mode[lens]&&mode[lens]!==(TABS.filter(function(t){return t.k===tab;})[0].lens.filter(function(l){return l.k===lens;})[0].modes||[[null]])[0][0]?'/'+mode[lens]:''));}catch(e){}}
   }
+  // Valuation = value-vs-momentum scatter on top, DCF table underneath (same filters)
+  function valuationExtra(){try{var w=el('dcfwrap');if(!w)return;w.style.display='block';renderDCF(getRows());
+    if(!el('n5valnote')){var n=document.createElement('div');n.id='n5valnote';n.className='n5-valnote';n.innerHTML='<b>Why each dot sits where it does.</b> The table below is the valuation behind the chart: launch year, peak sales, PoS, rNPV, cash, equity value and the DCF share price. Click a dot or a row for the full card.';w.parentNode.insertBefore(n,w);} el('n5valnote').style.display='block';}catch(e){console.log('val',e);}}
+  // Catalysts: mark names the Raise radar expects to sell stock after the event
+  var RAISE={};try{(JSON.parse(el('radar-data').textContent).rows||[]).forEach(function(x){if(x.score>=6||/catalyst/.test(x.timing))RAISE[x.ticker]=x;});}catch(e){}
+  function markRaises(){var w=el('calwrap');if(!w||w.style.display==='none')return;
+    w.querySelectorAll('*').forEach(function(c){if(c.children.length)return;var t=(c.textContent||'').trim();var x=RAISE[t];if(!x||c.classList.contains('n5-raise'))return;c.classList.add('n5-raise');c.title=(c.title?c.title+' · ':'')+'Likely equity raise: ~'+Math.round(x.size/1e6)+'M, '+x.timing+' (see Deal flow)';});
+    if(!el('n5calnote')){var n=document.createElement('div');n.id='n5calnote';n.className='n5-valnote';n.innerHTML='<span class="n5-raise" style="font-family:var(--mono);font-weight:700;padding:0 4px">TKR</span> = likely to sell stock after its event (hover for size and timing; full list under Deal flow).';w.insertBefore(n,w.firstChild);}}
+  try{var _r=render;render=function(){var o=_r.apply(this,arguments);try{if(state.view==='cal')markRaises();if(state.view!=='map'||!document.body.classList.contains('n5-val')){var nv=el('n5valnote');if(nv)nv.style.display='none';}else{valuationExtra();}}catch(e){}return o;};}catch(e){}
   window.navGo=go;
   // route from the URL hash (#companies/table, #deals/radar ...); old Brief hashes still work; default = Brief
   var h=(location.hash||'').replace('#',''),p=h.split('/'),ok=false;
-  var alias={brief:['brief','brief'],track:['record','track'],radar:['deals','radar'],gaps:['market','gaps']};
-  if(alias[h]){go(alias[h][0],alias[h][1],true);ok=true;}
-  else if(p.length===2){TABS.forEach(function(t){if(t.k===p[0]&&t.lens.some(function(l){return l[0]===p[1];})){go(p[0],p[1],true);ok=true;}});}
+  var alias={brief:'brief/brief',track:'record/track',radar:'deals/flow',gaps:'market/gaps','companies/table':'companies/all','companies/parked':'companies/all/parked','companies/dcf':'companies/val','companies/crowd':'companies/own','companies/sh':'companies/own/sh','companies/sug':'market/gaps','market/board':'market/perf','market/returns':'market/perf/returns','market/map':'companies/val','deals/radar':'deals/flow','deals/ipo':'deals/flow/ipo','record/retro':'record/track'};
+  if(alias[h]){h=alias[h];p=h.split('/');}
+  if(p.length>=2){TABS.forEach(function(t){if(t.k!==p[0])return;var L=t.lens.filter(function(l){return l.k===p[1];})[0];if(!L)return;if(p[2]&&L.modes&&L.modes.some(function(m){return m[0]===p[2];}))mode[L.k]=p[2];go(p[0],p[1],true);ok=true;});}
   if(!ok)go('brief','brief',true);
 })();
 </script>

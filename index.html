@@ -7280,6 +7280,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
 .brf-filt{display:flex;gap:6px;margin:6px 0 10px;flex-wrap:wrap}
 .brf-filt button{background:var(--raised);border:1px solid var(--line);border-radius:6px;font-size:11.5px;padding:4px 10px;cursor:pointer;color:var(--dim)}
 .brf-filt button.on{color:var(--text);border-color:var(--cyan);font-weight:700}
+#brf #retrowrap,#brf #sugwrap{display:block!important;max-height:none!important}
 @media print{#brf{position:static;overflow:visible}.brf-bar{display:none}.brf-t{font-size:9.5px}}
 </style>
 <div id="brf" aria-label="Brief">
@@ -7399,6 +7400,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
         +Q.map(function(x){var w=Math.abs(x.median||0)/mx*100;return '<span>'+E(x.label)+' <span class="sm">('+x.up_range[0]+'–'+x.up_range[1]+'%)</span></span><div class="brf-bar0"><i class="'+((x.median||0)>=0?'p':'')+'" style="width:'+w.toFixed(0)+'%"></i></div><span class="r '+PC(x.median)+'">'+P(x.median,1)+'</span>';}).join('')+'</div>';}
     if(TR.factors){h+='<div class="brf-h"><b>What actually explained the move</b><span>Same Sep 12 cohort, median return by bucket.</span></div><div class="brf-cols">'
       +TR.factors.map(function(f){return '<div><table class="brf-t"><tr><th>'+E(f.factor)+'</th><th class="r">n</th><th class="r">Median</th></tr>'+f.buckets.map(function(b){return '<tr><td>'+E(String(b.label).replace(/^\d\s/,''))+'</td><td class="r">'+b.n+'</td><td class="r '+PC(b.median)+'">'+P(b.median,1)+'</td></tr>';}).join('')+'</table>'+(f.note?'<div class="sm" style="margin:3px 0 8px">'+E(f.note)+'</div>':'')+'</div>';}).join('')+'</div>';}
+    h+='<div class="brf-h"><b>What we missed: the biggest moves each quarter, in hindsight</b><span>What drove each move, whether it was knowable beforehand, and what the model said at the time (formerly the Hindsight view)</span></div><div id="brfRetroHost"></div>';
     h+='<div class="brf-note g"><b>Rules this changes.</b> (1) Judge calls against the covered universe, not XBI: the universe is a small-cap book. (2) Model upside on a sub-$500M name is mostly a size bet and has not paid; such names now carry a "small" flag and rank below quality names. (3) Strong science that is not cheap (Watch) held up best: watch-list names are where entries come from. (4) Keep freezing a full ledger every refresh (ledger/), so every claim here can be checked.</div>';
     return h;
   }
@@ -7413,22 +7415,48 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
   }
   function gaps(){
     var h='<div class="brf-sub">'+E(GP.method||'')+'</div>';
-    h+='<div class="brf-note"><b>Use.</b> Three places where value is being left on the table: big patient groups where no public company has a strong asset (room for a new entrant or a pivot), fields so crowded that the weaker players are consolidation candidates, and companies worth less than their cash (natural reverse-merger vehicles for private companies, or activist targets).</div>';
+    h+='<div class="brf-note"><b>Use.</b> Value left on the table, at two levels. Fields: big patient groups where no public company has a strong asset, crowded fields, and companies worth less than their cash. Companies: one concrete suggestion per company, either data it should make more of or an action that would raise its value (bottom of this page, formerly Insight notes). Field level: big patient groups where no public company has a strong asset (room for a new entrant or a pivot), fields so crowded that the weaker players are consolidation candidates, and companies worth less than their cash (natural reverse-merger vehicles for private companies, or activist targets).</div>';
     h+='<div class="brf-h"><b>Under-served: many patients, weak or few public assets</b><span>'+GP.under.length+' groups</span></div><table class="brf-t"><tr><th>Indication group</th><th class="r">US prevalence</th><th class="r"># public</th><th>Best public asset</th><th class="r">Science</th><th>Tickers</th></tr>'
       +GP.under.map(function(g){return '<tr><td><b>'+E(g.group)+'</b><div class="sm">'+E(g.ta)+'</div></td><td class="r">'+(g.prevalence>=1e6?(g.prevalence/1e6).toFixed(1)+'M':Math.round(g.prevalence/1e3)+'K')+'</td><td class="r">'+g.n+'</td><td class="sm">'+E(g.best.t)+': '+E(trunc(g.best.drug,50))+' ('+E(g.best.stage)+')</td><td class="r">'+(g.best.sci==null?'—':g.best.sci.toFixed(1))+'</td><td>'+g.tickers.map(tk).join(' ')+'</td></tr>';}).join('')+'</table>';
     h+='<div class="brf-h"><b>Crowded: same lead indication, many public players</b><span>Weakest names are merger or exit candidates</span></div><table class="brf-t"><tr><th>Indication group</th><th class="r"># public</th><th class="r"># strong science</th><th class="r"># late stage</th><th class="r">Combined cap</th><th>Tickers (largest first)</th></tr>'
       +GP.crowded.map(function(g){return '<tr><td><b>'+E(g.group)+'</b></td><td class="r">'+g.n+'</td><td class="r">'+g.n_strong+'</td><td class="r">'+g.n_late+'</td><td class="r">'+M(g.cap)+'</td><td>'+g.tickers.map(tk).join(' ')+'</td></tr>';}).join('')+'</table>';
     h+='<div class="brf-h"><b>Cash shells: market cap below net cash</b><span>'+GP.shells.length+' companies with negative enterprise value</span></div><table class="brf-t"><tr><th>Name</th><th class="r">Cap</th><th class="r">Net cash</th><th class="r">EV</th><th>Lead</th><th>Stage</th><th class="r">Science</th><th class="r">Runway</th></tr>'
       +GP.shells.map(function(s){return '<tr><td>'+tk(s.ticker)+' <span class="sm">'+E(trunc(s.name,18))+'</span>'+(s.status?'<span class="brf-w">'+E(s.status)+'</span>':'')+'</td><td class="r">'+M(s.mc)+'</td><td class="r">'+M(s.net_cash)+'</td><td class="r brf-neg">'+M(s.ev)+'</td><td class="sm">'+E(trunc(s.drug,50))+'</td><td class="sm">'+E(trunc(s.stage,16))+'</td><td class="r">'+(s.sci==null?'—':s.sci.toFixed(1))+'</td><td class="r">'+(s.runway_q==null?'—':s.runway_q.toFixed(0)+'Q')+'</td></tr>';}).join('')+'</table>';
+    h+='<div class="brf-h"><b>Company level: one suggestion per company</b><span>Data to highlight better, or an action (new indication, partner, trial change) that would raise value. Click a row for the full card.</span></div><div id="brfSugHost"></div>';
     return h;
   }
+
+  function flow(){
+    var IP=J('ipo-data')||{recent:[],upcoming:[]};
+    var add=function(d,n){var x=new Date(d+'T00:00:00');x.setDate(x.getDate()+n);return x;};
+    var fd=function(x){return x.toISOString().slice(0,10);};
+    var h='<div class="brf-sub">Every equity deal we can see coming, in one place: IPOs on file, likely follow-ons from covered companies, recent IPOs and their lock-up expiries. Each line carries our view where the company is covered. Full IPO detail (investors, underwriters, filings) is under IPO detail.</div>';
+    var up=IP.upcoming||[];
+    h+='<div class="brf-h"><b><span class="brf-n">1</span> IPOs on file</b><span>'+up.length+' set terms or filed · source: '+E(IP.asof||'')+'</span></div>';
+    h+=up.length?'<table class="brf-t"><tr><th>Company</th><th>Status</th><th class="r">Size</th><th>Range</th><th>Lead asset</th><th>Stage</th><th>Backers</th><th>Banks</th></tr>'+up.map(function(u){return '<tr><td><b>'+E(u.name)+'</b> <span class="sm">'+E(u.ticker||'')+'</span></td><td class="sm">'+E(trunc(u.status,70))+'</td><td class="r">'+M(u.deal_size_usd)+'</td><td class="sm">'+E(u.price_range||'')+'</td><td class="sm">'+E(trunc(u.lead_asset+' · '+(u.indication||''),70))+'</td><td class="sm">'+E(trunc(u.stage,28))+'</td><td class="sm">'+E(trunc(u.key_backers,40))+'</td><td class="sm">'+E(trunc(u.underwriters,50))+'</td></tr>';}).join('')+'</table>':'<div class="brf-note">No IPOs on file in the latest pull.</div>';
+    h+='<div class="brf-h"><b><span class="brf-n">2</span> Likely follow-ons from covered companies</b><span>Raise radar: who needs or can get money, how much, when, and whether we want an allocation</span></div>';
+    h+=radar();
+    var rc=(IP.recent||[]).slice().sort(function(a,b){return (b.pricing_date||'')<(a.pricing_date||'')?-1:1;});
+    h+='<div class="brf-h"><b><span class="brf-n">3</span> Recent IPOs and lock-up expiries</b><span>'+rc.length+' priced in the last 12 months · lock-up = 180 days after first trade unless stated</span></div>';
+    h+='<table class="brf-t"><tr><th>Company</th><th class="r">Priced</th><th class="r">Raised</th><th class="r">Offer</th><th class="r">Now</th><th class="r">vs offer</th><th>Lead asset</th><th class="r">Lock-up ends</th><th>Our call</th></tr>'
+      +rc.map(function(r){var lu=r.lockup_expiry?r.lockup_expiry:(r.first_trade_date?fd(add(r.first_trade_date,180))+' est.':'');var cov=IDX[r.ticker]!=null?DA[IDX[r.ticker]]:null;var soon=r.first_trade_date&&!r.lockup_expiry?(add(r.first_trade_date,180)-today)/864e5:null;
+        return '<tr><td>'+(cov?tk(r.ticker):'<b>'+E(r.ticker||'')+'</b>')+' <span class="sm">'+E(trunc(r.name,22))+'</span></td><td class="r">'+E((r.pricing_date||'').slice(2))+'</td><td class="r">'+M(r.gross_proceeds_usd)+'</td><td class="r">'+(r.offer_price!=null?'$'+r.offer_price:'—')+'</td><td class="r">'+(r.latest_price!=null?'$'+r.latest_price:'—')+'</td><td class="r '+PC(r.return_since_ipo_pct)+'">'+P(r.return_since_ipo_pct)+'</td><td class="sm">'+E(trunc((r.lead_asset||'')+' · '+(r.indication||''),60))+'</td><td class="r'+(soon!=null&&soon>=0&&soon<=90?' brf-neg':'')+'">'+E(lu)+'</td><td>'+(cov?cb(cov.call):'<span class="sm">not covered</span>')+'</td></tr>';}).join('')+'</table>';
+    return h;
+  }
+  // move an existing dashboard renderer's container into this page (and back out before the next render)
+  var EMB=[];
+  function embed(wrapId,hostId,fn){var host=document.getElementById(hostId),w=document.getElementById(wrapId);if(!host||!w)return;EMB.push({w:w,p:w.parentNode,n:w.nextSibling});host.appendChild(w);w.style.display='block';try{fn();}catch(e){host.insertAdjacentHTML('beforeend','<div class="brf-note">Could not draw this section: '+E(e.message)+'</div>');}}
+  function unembed(){while(EMB.length){var x=EMB.pop();try{x.p.insertBefore(x.w,x.n);x.w.style.display='none';}catch(e){}}}
   function render(){
+    unembed();
     var doc=document.getElementById('brfDoc');
-    doc.innerHTML=page==='brief'?brief():page==='track'?track():page==='radar'?radar():gaps();
+    doc.innerHTML=page==='brief'?brief():page==='track'?track():page==='radar'?radar():page==='flow'?flow():gaps();
+    if(page==='track')embed('retrowrap','brfRetroHost',function(){renderRetro(DA);});
+    if(page==='gaps')embed('sugwrap','brfSugHost',function(){renderSug(DA);});
     document.querySelectorAll('#brf .brf-tab[data-p]').forEach(function(b){b.classList.toggle('on',b.dataset.p===page);});
     doc.querySelectorAll('.tk[data-tk]').forEach(function(e){e.onclick=function(){var i=IDX[e.dataset.tk];if(i==null||typeof openDrawer!=='function')return;try{openDrawer(i);}catch(err){}};});
     doc.querySelectorAll('[data-rf]').forEach(function(b){b.onclick=function(){rf=b.dataset.rf;render();};});
-    doc.scrollTop=0;document.getElementById('brf').scrollTop=0;
+    if(render._last!==page){doc.scrollTop=0;document.getElementById('brf').scrollTop=0;}render._last=page;
   }
   function open(p){if(p)page=p;render();document.getElementById('brf').classList.add('open');}
   function close(){document.getElementById('brf').classList.remove('open');}
@@ -7467,6 +7495,13 @@ header.top .brand h1{display:none}
 #viewseg,#subtabs,#memobtn,#tasumbtn,.refwrap,#refbtn,#insbtn,#rfbtn,#methbtn,#brfBtn,#backbtn,#memoBack{display:none!important}
 /* model knobs live behind one toggle */
 body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(.n5-model) .controls .sfbar,body:not(.n5-model) #effVsel,body:not(.n5-model) #diffVsel{display:none!important}
+#nav5 .n5-modes{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+#nav5 .n5-mode{background:none;border:0;padding:4px 10px;font-size:11.5px;color:var(--dim);cursor:pointer}
+#nav5 .n5-mode.on{background:var(--cyan);color:#04202a;font-weight:700}
+.n5-valnote{margin:10px 16px 4px;font-size:12px;color:var(--dim)}
+.n5-raise{box-shadow:inset 0 -2px 0 var(--amber)!important;position:relative}
+.n5-raise::after{content:'$';position:absolute;top:-6px;right:-5px;font-size:9px;font-weight:800;color:#fff;background:var(--amber);border-radius:6px;padding:0 3px;line-height:12px}
+body.n5-val #dcfwrap{max-height:none!important}
 #n5model.on{border-color:var(--cyan)!important;color:var(--text)!important}
 @media(max-width:600px){#nav5 .n5-logo{display:none}}
 @media print{#nav5,#n5pop{display:none!important}body{padding-top:0}}
@@ -7475,16 +7510,18 @@ body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(
 (function(){
   var old=document.getElementById('nav5');if(old)old.remove();var oldp=document.getElementById('n5pop');if(oldp)oldp.remove();
   // Six views. Each lens is one of the dashboard's existing renderers; nothing was dropped, duplicates were removed.
+  // Six views, twelve lenses. Merged lenses carry a mode switch; every former view is still reachable.
   var TABS=[
-    {k:'brief',l:'Brief',lens:[['brief','Brief']]},
-    {k:'companies',l:'Companies',lens:[['ta','By area'],['table','All fields'],['dcf','Valuation'],['crowd','Holders & analysts'],['sh','By investor'],['sug','Insight notes'],['parked','Parked']]},
-    {k:'market',l:'Market',lens:[['board','Tiles'],['returns','Returns'],['map','Value vs momentum'],['gaps','White space']]},
-    {k:'deals',l:'Calendar & deals',lens:[['cal','Catalysts'],['radar','Equity raises'],['ipo','IPOs']]},
-    {k:'record',l:'Memo & record',lens:[['memo','Monthly memo'],['track','Track record'],['retro','Hindsight']]},
-    {k:'port',l:'Portfolio',lens:[['port','My portfolio']]}
+    {k:'brief',l:'Brief',lens:[{k:'brief',l:'Brief'}]},
+    {k:'companies',l:'Companies',lens:[{k:'ta',l:'By area'},{k:'all',l:'All fields',modes:[['table','Covered'],['parked','Parked']]},{k:'val',l:'Valuation'},{k:'own',l:'Ownership',modes:[['crowd','By company'],['sh','By fund']]}]},
+    {k:'market',l:'Market',lens:[{k:'perf',l:'Performance',modes:[['board','Tiles'],['returns','Table']]},{k:'gaps',l:'Value gaps'}]},
+    {k:'deals',l:'Calendar & deals',lens:[{k:'cal',l:'Catalysts'},{k:'flow',l:'Deal flow',modes:[['flow','Pipeline'],['ipo','IPO detail']]}]},
+    {k:'record',l:'Memo & record',lens:[{k:'memo',l:'Monthly memo'},{k:'track',l:'Track record'}]},
+    {k:'port',l:'Portfolio',lens:[{k:'port',l:'My portfolio'}]}
   ];
-  var BRF={brief:1,track:1,radar:1,gaps:1}, MAIN={table:1,dcf:1,crowd:1,sh:1,sug:1,parked:1,board:1,returns:1,map:1,cal:1,ipo:1,retro:1,port:1};
-  var last={};TABS.forEach(function(t){last[t.k]=t.lens[0][0];});
+  var BRF={brief:1,track:1,flow:1,gaps:1}, MAIN={table:1,parked:1,crowd:1,sh:1,board:1,returns:1,cal:1,ipo:1,port:1};
+  var mode={all:'table',own:'crowd',perf:'board',flow:'flow'};
+  var last={};TABS.forEach(function(t){last[t.k]=t.lens[0].k;});
   var cur={tab:'brief',lens:'brief'};
   var nav=document.createElement('nav');nav.id='nav5';nav.setAttribute('aria-label','Dashboard views');
   document.body.insertBefore(nav,document.body.firstChild);
@@ -7501,12 +7538,14 @@ body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(
     var t=TABS.filter(function(x){return x.k===cur.tab;})[0];
     nav.innerHTML='<span class="n5-logo">BIOTECH LANDSCAPE</span>'
       +TABS.map(function(x){return '<button class="n5-tab'+(x.k===cur.tab?' on':'')+'" data-t="'+x.k+'">'+x.l+'</button>';}).join('')
-      +(t.lens.length>1?'<span class="n5-sep"></span>'+t.lens.map(function(l){return '<button class="n5-lens'+(l[0]===cur.lens?' on':'')+'" data-l="'+l[0]+'">'+l[1]+'</button>';}).join(''):'')
+      +(t.lens.length>1?'<span class="n5-sep"></span>'+t.lens.map(function(l){return '<button class="n5-lens'+(l.k===cur.lens?' on':'')+'" data-l="'+l.k+'">'+l.l+'</button>';}).join(''):'')
+      +(function(){var L=t.lens.filter(function(l){return l.k===cur.lens;})[0];return L&&L.modes?'<span class="n5-sep"></span><span class="n5-modes">'+L.modes.map(function(m){return '<button class="n5-mode'+(mode[L.k]===m[0]?' on':'')+'" data-m="'+m[0]+'">'+m[1]+'</button>';}).join('')+'</span>':'';})()
       +'<span class="n5-sp"></span>'
-      +(MAIN[cur.lens]?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
+      +(MAIN[act(cur.lens)]||cur.lens==='val'?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
       +'<button class="n5-about" id="n5aboutBtn">ⓘ About ▾</button>';
     nav.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){go(b.dataset.t,last[b.dataset.t]);};});
     nav.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){go(cur.tab,b.dataset.l);};});
+    nav.querySelectorAll('[data-m]').forEach(function(b){b.onclick=function(){mode[cur.lens]=b.dataset.m;go(cur.tab,cur.lens);};});
     var m=el('n5model');if(m){m.classList.toggle('on',document.body.classList.contains('n5-model'));m.onclick=function(){document.body.classList.toggle('n5-model');m.classList.toggle('on');};}
     el('n5aboutBtn').onclick=function(ev){ev.stopPropagation();pop.style.display=pop.style.display==='block'?'none':'block';};
   }
@@ -7514,23 +7553,35 @@ body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(
   pop.querySelectorAll('[data-a]').forEach(function(d){d.onclick=function(){pop.style.display='none';var a=d.dataset.a;
     if(a==='meth'){var b=el('methbtn');if(b)b.click();}else if(a==='rf'){var r=el('rfbtn');if(r)r.click();}else if(a==='print'){window.print();}};});
   document.addEventListener('click',function(){pop.style.display='none';});
+  function act(lens){return mode[lens]||lens;}
   function go(tab,lens,noHash){
     cur={tab:tab,lens:lens};last[tab]=lens;closeOverlays();
+    var a=act(lens);document.body.classList.toggle('n5-val',lens==='val');
     try{
-      if(BRF[lens]){if(window.openBrief)window.openBrief(lens);}
-      else if(lens==='ta'){if(typeof openTApage==='function')openTApage();}
-      else if(lens==='memo'){var b=el('memobtn');if(b)b.click();}
-      else if(MAIN[lens]){state.view=lens;render();window.scrollTo(0,0);}
+      if(BRF[a]){if(window.openBrief)window.openBrief(a);}
+      else if(a==='ta'){if(typeof openTApage==='function')openTApage();}
+      else if(a==='memo'){var b=el('memobtn');if(b)b.click();}
+      else if(a==='val'){state.view='map';render();valuationExtra();window.scrollTo(0,0);}
+      else if(MAIN[a]){state.view=a;render();window.scrollTo(0,0);}
     }catch(e){console.log('nav',e);}
     draw();
-    if(!noHash){try{history.replaceState(null,'','#'+tab+'/'+lens);}catch(e){}}
+    if(!noHash){try{history.replaceState(null,'','#'+tab+'/'+lens+(mode[lens]&&mode[lens]!==(TABS.filter(function(t){return t.k===tab;})[0].lens.filter(function(l){return l.k===lens;})[0].modes||[[null]])[0][0]?'/'+mode[lens]:''));}catch(e){}}
   }
+  // Valuation = value-vs-momentum scatter on top, DCF table underneath (same filters)
+  function valuationExtra(){try{var w=el('dcfwrap');if(!w)return;w.style.display='block';renderDCF(getRows());
+    if(!el('n5valnote')){var n=document.createElement('div');n.id='n5valnote';n.className='n5-valnote';n.innerHTML='<b>Why each dot sits where it does.</b> The table below is the valuation behind the chart: launch year, peak sales, PoS, rNPV, cash, equity value and the DCF share price. Click a dot or a row for the full card.';w.parentNode.insertBefore(n,w);} el('n5valnote').style.display='block';}catch(e){console.log('val',e);}}
+  // Catalysts: mark names the Raise radar expects to sell stock after the event
+  var RAISE={};try{(JSON.parse(el('radar-data').textContent).rows||[]).forEach(function(x){if(x.score>=6||/catalyst/.test(x.timing))RAISE[x.ticker]=x;});}catch(e){}
+  function markRaises(){var w=el('calwrap');if(!w||w.style.display==='none')return;
+    w.querySelectorAll('*').forEach(function(c){if(c.children.length)return;var t=(c.textContent||'').trim();var x=RAISE[t];if(!x||c.classList.contains('n5-raise'))return;c.classList.add('n5-raise');c.title=(c.title?c.title+' · ':'')+'Likely equity raise: ~'+Math.round(x.size/1e6)+'M, '+x.timing+' (see Deal flow)';});
+    if(!el('n5calnote')){var n=document.createElement('div');n.id='n5calnote';n.className='n5-valnote';n.innerHTML='<span class="n5-raise" style="font-family:var(--mono);font-weight:700;padding:0 4px">TKR</span> = likely to sell stock after its event (hover for size and timing; full list under Deal flow).';w.insertBefore(n,w.firstChild);}}
+  try{var _r=render;render=function(){var o=_r.apply(this,arguments);try{if(state.view==='cal')markRaises();if(state.view!=='map'||!document.body.classList.contains('n5-val')){var nv=el('n5valnote');if(nv)nv.style.display='none';}else{valuationExtra();}}catch(e){}return o;};}catch(e){}
   window.navGo=go;
   // route from the URL hash (#companies/table, #deals/radar ...); old Brief hashes still work; default = Brief
   var h=(location.hash||'').replace('#',''),p=h.split('/'),ok=false;
-  var alias={brief:['brief','brief'],track:['record','track'],radar:['deals','radar'],gaps:['market','gaps']};
-  if(alias[h]){go(alias[h][0],alias[h][1],true);ok=true;}
-  else if(p.length===2){TABS.forEach(function(t){if(t.k===p[0]&&t.lens.some(function(l){return l[0]===p[1];})){go(p[0],p[1],true);ok=true;}});}
+  var alias={brief:'brief/brief',track:'record/track',radar:'deals/flow',gaps:'market/gaps','companies/table':'companies/all','companies/parked':'companies/all/parked','companies/dcf':'companies/val','companies/crowd':'companies/own','companies/sh':'companies/own/sh','companies/sug':'market/gaps','market/board':'market/perf','market/returns':'market/perf/returns','market/map':'companies/val','deals/radar':'deals/flow','deals/ipo':'deals/flow/ipo','record/retro':'record/track'};
+  if(alias[h]){h=alias[h];p=h.split('/');}
+  if(p.length>=2){TABS.forEach(function(t){if(t.k!==p[0])return;var L=t.lens.filter(function(l){return l.k===p[1];})[0];if(!L)return;if(p[2]&&L.modes&&L.modes.some(function(m){return m[0]===p[2];}))mode[L.k]=p[2];go(p[0],p[1],true);ok=true;});}
   if(!ok)go('brief','brief',true);
 })();
 </script>
