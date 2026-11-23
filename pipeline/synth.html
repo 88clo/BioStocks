@@ -41,6 +41,7 @@ table.cg-t{font-size:11.5px}.cg-t td,.cg-t th{padding:5px 7px}
 .cg-t tr.ta-row:hover td{background:var(--raised)}
 .cg-t tr.ig-row td{padding:3px 10px 3px 26px;font-size:11px;font-weight:700;color:var(--dim);background:transparent}
 .cg-t .gcomp{white-space:nowrap}
+.cg-t td .sm{display:block;min-width:190px}.cg-t td .syn-thesis{display:block;min-width:340px}.cg-t td .brf-cb+.sm,.cg-t td.gcomp .sm,.cg-t td.r .sm{display:inline;min-width:0}
 #drawer .syn-top{border:1px solid var(--cyan);border-radius:10px;padding:10px 12px;background:var(--panel)}
 #drawer .syn-sumrow{font-size:13px}
 .syn-kvs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}.syn-kv{background:var(--raised);border-radius:6px;padding:5px 8px}.syn-kv span{display:block;font-size:10px;color:var(--faint);text-transform:uppercase}.syn-kv b{font-family:var(--mono);font-size:12.5px}
@@ -98,49 +99,49 @@ table.cg-t{font-size:11.5px}.cg-t td,.cg-t th{padding:5px 7px}
   var TODAYMS=Date.now();
   // ----- column groups: each shows its key stats; click the group header to expand -----
   // column = [header, cell(x)->html, sortKey|null, tintClass(x)|null, alwaysShown]
+  // column = [header, cell(x)->html, sortKey|null, tintClass(x)|null, shownByDefault, headerTooltip]
   var CG=[
-    {k:'core',l:'Valuation',fixed:true,cols:[
-      ['Call',function(x){return B.cb(x.r.call)+(!x.parked&&B.quality(x.r)&&x.side==='l'?'<span class="brf-q">Q</span>':'');},null,null,1],
-      ['Ours',function(x){return (x.out?'<span title="Model upside above +1,000%: usually a tiny cap against large modelled sales; check inputs" style="cursor:help">⚠ </span>':'')+B.P(x.u);},'u',function(x){return x.out?'':tint(x.u,100,0);},1],
-      ['Street',function(x){return B.P(x.su)+(x.an?'<span class="sm"> ('+x.an+')</span>':'');},'su',function(x){return tint(x.su,100,0);},1],
-      ['Gap',function(x){return x.gap==null?'—':(x.gap>0?'+':'')+Math.round(x.gap);},'gap',function(x){return x.out?'':tint(x.gap,150,-150);},1],
-      ['Next',function(x){return x.cd?fdate(x.cd):'—';},'cd',function(x){if(!x.cd)return '';var d=(new Date(x.cd+'T00:00:00')-TODAYMS)/864e5;return d>=0&&d<=30?'ca':'';},1]]},
+    {k:'core',l:'Valuation',cols:[
+      ['Call',function(x){return B.cb(x.r.call)+(!x.parked&&B.quality(x.r)&&x.side==='l'?'<span class="brf-q">Q</span>':'');},null,null,1,'Rule-based call from valuation (market cap vs our value) and science (efficacy + differentiation). Q = passes the quality screen.'],
+      ['Ours',function(x){return (x.out?'<span title="Model upside above +1,000%: usually a tiny cap against large modelled sales; check inputs" style="cursor:help">⚠ </span>':'')+B.P(x.u);},'u',function(x){return x.out?'':tint(x.u,100,0);},0,'Our upside: risk-adjusted value (takeout multiple x probability-adjusted peak sales, discounted, plus cash) vs market cap.'],
+      ['Street',function(x){return B.P(x.su)+(x.an?'<span class="sm"> ('+x.an+')</span>':'');},'su',function(x){return tint(x.su,100,0);},1,'Mean analyst price target vs current price (number of analysts in brackets).'],
+      ['Gap',function(x){return x.gap==null?'—':(x.gap>0?'+':'')+Math.round(x.gap);},'gap',function(x){return x.out?'':tint(x.gap,150,-150);},1,'Our upside minus Street upside, in percentage points. Positive = we are more bullish than analysts.'],
+      ['Next',function(x){return x.cd?fdate(x.cd):'—';},'cd',function(x){if(!x.cd)return '';var d=(new Date(x.cd+'T00:00:00')-TODAYMS)/864e5;return d>=0&&d<=30?'ca':'';},0,'Date of the next stock-moving catalyst (amber = within 30 days). Dec 31 usually means "by year-end" guidance.']]},
     {k:'sci',l:'Science',cols:[
-      ['Efficacy',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.efficacy,CO.x.sci?140:70))+'</span>';},null,null,1],
-      ['PoS',function(x){return x.r.pos!=null?Math.round(x.r.pos*100)+'%':'—';},'pos',function(x){return tint(x.r.pos,0.5,0.15);},1],
-      ['Benchmark',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.benchmark,110))+'</span>';},null,null],
-      ['Eff',function(x){return num(x.r.effsig);},'effsig',function(x){return tint(x.r.effsig,4,2);}],
-      ['Diff',function(x){return num(x.r.diffscore);},'diffscore',function(x){return tint(x.r.diffscore,4,2);}],
-      ['Sci',function(x){return x.s==null?'—':x.s.toFixed(1);},'s',function(x){return tint(x.s,3.5,2.4);}],
-      ['Mechanism',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.moa,70))+'</span>';},null,null]]},
+      ['Mechanism',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.moa,70))+'</span>';},null,null,0,'Mechanism of action of the lead program.'],
+      ['Efficacy',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.efficacy,CO.x.sci?160:80))+'</span>';},null,null,1,'Latest efficacy readout: trial, n, endpoint, effect vs comparator.'],
+      ['Benchmark',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.benchmark,120))+'</span>';},null,null,0,'The clinical bar: what standard of care delivers and what regulators and prescribers will demand at launch.'],
+      ['PoS',function(x){return x.r.pos!=null?Math.round(x.r.pos*100)+'%':'—';},'pos',function(x){return tint(x.r.pos,0.5,0.15);},1,'Probability of success: chance the lead program is approved. Stage base rate, adjusted for the strength of the data and the regulatory path. Green >=50%, red <15%.'],
+      ['Eff',function(x){return num(x.r.effsig);},'effsig',function(x){return tint(x.r.effsig,4,2);},0,'Efficacy significance, 1-5, relative to the bar it must clear. 5 transformational (hard endpoint vs active comparator, pivotal/replicated); 4 clears the bar cleanly; 3 at the bar or mixed (modest effect, single-arm, unproven surrogate); 2 below the bar (missed primary, subgroup only); 1 failed or no human efficacy.'],
+      ['Diff',function(x){return num(x.r.diffscore);},'diffscore',function(x){return tint(x.r.diffscore,4,2);},0,'Differentiation, 1-5, vs today\'s treatment and the nearest competitor: 5 breakthrough, 4 high, 3 moderate, 2 low, 1 none.'],
+      ['Sci',function(x){return x.s==null?'—':x.s.toFixed(1);},'s',function(x){return tint(x.s,3.5,2.4);},0,'Science score = average of efficacy and differentiation (1-5). It sets the call\'s science band; >=3.5 is part of the quality screen.']]},
     {k:'mkt',l:'Market model',cols:[
-      ['Prevalence',function(x){return big(x.r.prevalence);},'prevalence',null,1],
-      ['Peak',function(x){return B.M(x.r.peak_sales);},'peak_sales',function(x){return tint(x.r.peak_sales,1e9,2e8);},1],
-      ['Indication',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.indication,50))+'</span>';},null,null],
-      ['Treated',function(x){return big(x.r.treated);},'treated',null],
-      ['Net price',function(x){return x.r.net_price?'$'+big(x.r.net_price):'—';},'net_price',null],
-      ['Prob-adj',function(x){return B.M(x.r.probadj_sales);},'probadj_sales',function(x){return tint(x.r.probadj_sales,5e8,5e7);}]]},
+      ['Indication',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.indication,50))+'</span>';},null,null,1,'Lead indication.'],
+      ['Prevalence',function(x){return big(x.r.prevalence);},'prevalence',null,1,'US patients with the condition.'],
+      ['Treated',function(x){return big(x.r.treated);},'treated',null,0,'Patients realistically treated with this drug at peak.'],
+      ['Net price',function(x){return x.r.net_price?'$'+big(x.r.net_price):'—';},'net_price',null,1,'Annual net price per patient (after rebates).'],
+      ['Peak',function(x){return B.M(x.r.peak_sales);},'peak_sales',function(x){return tint(x.r.peak_sales,1e9,2e8);},1,'Unadjusted peak annual sales = treated x net price. Green >= $1B, red < $200M.'],
+      ['Prob-adj',function(x){return B.M(x.r.probadj_sales);},'probadj_sales',function(x){return tint(x.r.probadj_sales,5e8,5e7);},0,'Probability-adjusted peak sales = peak x PoS. Drives our valuation.']]},
     {k:'fin',l:'Financials',cols:[
-      ['Cash',function(x){return B.M(x.r.cash)+(x.rw!=null?'<span class="sm"> · '+Math.round(x.rw)+'Q</span>':'');},'cash',function(x){return x.rw!=null?tint(x.rw,8,3.9):((x.r.net_income||0)>=0&&x.r.cash?'cg':'');},1],
-      ['Runway',function(x){return x.rw==null?((x.r.net_income||0)>=0?'self-funding':'—'):Math.round(x.rw)+'Q';},'rw',function(x){return tint(x.rw,8,3.9);}],
-      ['Raise',function(x){return x.rad?'~'+B.M(x.rad.size)+'<div class="sm">'+B.E(/^Now/.test(x.rad.timing)?'now':/catalyst/.test(x.rad.timing)?'after catalyst':/runway/.test(x.rad.timing)?'within 2Q':'opportunistic')+'</div>':'—';},'_raise',function(x){return x.rad?'ca':'';}],
-      ['Debt',function(x){return B.M(x.r.debt);},'debt',function(x){return (x.r.debt||0)>(x.r.cash||0)&&x.r.debt?'cr':'';}],
-      ['Net inc/Q',function(x){return B.M(x.r.net_income);},'net_income',function(x){return x.r.net_income==null?'':x.r.net_income>=0?'cg':'';}],
-      ['Cash/cap',function(x){return x.r.cash&&x.r.mc?Math.round(x.r.cash/x.r.mc*100)+'%':'—';},'cash_pct_mc',function(x){return x.r.cash&&x.r.mc?tint(x.r.cash/x.r.mc,0.5,0.1):'';}],
-      ['ADV',function(x){return B.M(x.r.adv);},'adv',function(x){return x.r.adv!=null&&x.r.adv<1e6?'cr':'';}]]},
+      ['Cash',function(x){return B.M(x.r.cash);},'cash',function(x){return x.rw!=null?tint(x.rw,8,3.9):((x.r.net_income||0)>=0&&x.r.cash?'cg':'');},1,'Cash and investments at the last quarter. Colour = runway: green >= 8 quarters, red < 4.'],
+      ['Cash/cap',function(x){return x.r.cash&&x.r.mc?Math.round(x.r.cash/x.r.mc*100)+'%':'—';},'cash_pct_mc',function(x){return x.r.cash&&x.r.mc?tint(x.r.cash/x.r.mc,0.5,0.1):'';},0,'Cash as a share of market cap: how much of the price is cash (a floor on drawdown).'],
+      ['Debt',function(x){return B.M(x.r.debt);},'debt',function(x){return (x.r.debt||0)>(x.r.cash||0)&&x.r.debt?'cr':'';},0,'Total debt. Red = more debt than cash.'],
+      ['Net inc/Q',function(x){return B.M(x.r.net_income);},'net_income',function(x){return x.r.net_income==null?'':x.r.net_income>=0?'cg':'';},0,'Net income in the last quarter (negative = loss).'],
+      ['Runway',function(x){return x.rw==null?((x.r.net_income||0)>=0?'self-funding':'—'):Math.round(x.rw)+'Q';},'rw',function(x){return tint(x.rw,8,3.9);},0,'Quarters of cash left at the current burn.'],
+      ['Raise',function(x){return x.rad?'~'+B.M(x.rad.size)+'<div class="sm">'+B.E(/^Now/.test(x.rad.timing)?'now':/catalyst/.test(x.rad.timing)?'after catalyst':/runway/.test(x.rad.timing)?'within 2Q':'opportunistic')+'</div>':'—';},'_raise',function(x){return x.rad?'ca':'';},0,'Likely equity raise from the raise model: estimated size and timing.'],
+      ['ADV',function(x){return B.M(x.r.adv);},'adv',function(x){return x.r.adv!=null&&x.r.adv<1e6?'cr':'';},0,'Average daily dollar trading volume (last ~3 months): how big a position you can build or exit. Red < $1M/day.']]},
     {k:'ret',l:'Returns',cols:[
-      ['1M',function(x){return R1(x.r.r1m);},'r1m',function(x){return tint(x.r.r1m,0.1,-0.1);},1],
-      ['12M',function(x){return R1(x.r.r12m);},'r12m',function(x){return tint(x.r.r12m,0.25,-0.25);},1],
-      ['3M',function(x){return R1(x.r.r3m);},'r3m',function(x){return tint(x.r.r3m,0.15,-0.15);}],
-      ['24M',function(x){return R1(x.r.r24m);},'r24m',function(x){return tint(x.r.r24m,0.3,-0.3);}],
-      ['36M',function(x){return R1(x.r.r36m);},'r36m',function(x){return tint(x.r.r36m,0.3,-0.3);}]]},
+      ['1M',function(x){return R1(x.r.r1m);},'r1m',function(x){return tint(x.r.r1m,0.1,-0.1);},1,'1-month share price return.'],
+      ['12M',function(x){return R1(x.r.r12m);},'r12m',function(x){return tint(x.r.r12m,0.25,-0.25);},1,'12-month share price return.'],
+      ['3M',function(x){return R1(x.r.r3m);},'r3m',function(x){return tint(x.r.r3m,0.15,-0.15);},0,'3-month return.'],
+      ['24M',function(x){return R1(x.r.r24m);},'r24m',function(x){return tint(x.r.r24m,0.3,-0.3);},0,'24-month return.'],
+      ['36M',function(x){return R1(x.r.r36m);},'r36m',function(x){return tint(x.r.r36m,0.3,-0.3);},0,'36-month return.']]},
     {k:'own',l:'Ownership',cols:[
-      ['Specialists',function(x){return x.sp?Math.round(x.sp)+'%':'—';},'_sp',function(x){return x.sp>=10?'cg':'';},1],
-      ['Who',function(x){return '<span class="sm">'+B.E(x.sn.slice(0,4).join(', ')||'—')+'</span>';},null,null],
-      ['Inst. own',function(x){return x.r.inst_own!=null?Math.round(x.r.inst_own*(x.r.inst_own<=1?100:1))+'%':'—';},'inst_own',null],
-      ['Analysts',function(x){return x.an||'—';},'_an',null]]},
+      ['Specialists',function(x){return x.sp?Math.round(x.sp)+'%':'—';},'_sp',function(x){return x.sp>=10?'cg':'';},1,'Share of the company held by specialist biotech funds among its top-7 holders (13F filings, mostly Sep). Green >= 10%.'],
+      ['Who',function(x){return '<span class="sm">'+B.E(x.sn.slice(0,4).join(', ')||'—')+'</span>';},null,null,0,'Which specialist funds.'],
+      ['Analysts',function(x){return x.an||'—';},'_an',null,0,'Number of analysts with a price target.']]},
     {k:'thesis',l:'Thesis',cols:[
-      ['One line',function(x){return '<span class="syn-thesis">'+(x.parked?'<b>Parked ('+B.E(x.r.reason||'')+')</b>':(CO.x.thesis?thesis(x,true):B.E(B.trunc(x.r.pitch_concise||x.r.pitch||'',110))))+'</span>';},null,null,1]]}
+      ['Thesis',function(x){var r=x.r;if(x.parked)return '<span class="syn-thesis"><b>Parked ('+B.E(r.reason||'')+')</b></span>';var t=r.pitch||r.pitch_concise||'';return '<span class="syn-thesis">'+(CO.x.thesis?B.E(t)+(r.value_driver?'<br><b>Beyond the lead:</b> '+B.E(r.value_driver):''):B.E(B.trunc(t,150)))+'</span>';},null,null,1,'The thesis from the company card. Expand for the full text and the value driver beyond the lead program.']]}
   ];
   if(!CO.x)CO.x={};if(!CO.grp)CO.grp='area';if(!CO.cl)CO.cl='cap';if(!CO.closed)CO.closed={};
   function colsOf(g){return g.fixed||CO.x[g.k]?g.cols:g.cols.filter(function(c){return c[4];});}
@@ -170,7 +171,7 @@ table.cg-t{font-size:11.5px}.cg-t td,.cg-t th{padding:5px 7px}
       if(CO.qual&&!B.quality(r))return false;if(CO.dis&&!(x.gap!=null&&Math.abs(x.gap)>=150&&x.an>=3))return false;if(CO.below&&!((r.cash||0)-(r.debt||0)>(r.mc||0)))return false;if(CO.raise&&!x.rad)return false;if(CO.sug&&!sugOf(x.t))return false;if(CO.port&&!inPort(x.t))return false;
       if(q){if(fundMode)return FH[x.t]!=null;if(!hit(r))return false;}return true;});
     var gk=function(k){return function(x){return k==='_sp'?x.sp:k==='_an'?x.an:k==='_raise'?(x.rad?x.rad.size:null):k==='s'?x.s:k==='rw'?x.rw:x.r[k];};};
-    var key={gap:function(x){return x.gap;},u:function(x){return x.u;},su:function(x){return x.su;},cd:function(x){return x.cd||null;},mc:function(x){return x.r.mc;},fund:function(x){return FH[x.t];},since:function(x){var p=inPort(x.t)?portfolio[x.t]:null;return p&&p.price&&x.r.price?x.r.price/p.price-1:null;}}[CO.sort]||gk(CO.sort);
+    var key={s:function(x){return x.s;},rw:function(x){return x.rw;},gap:function(x){return x.gap;},u:function(x){return x.u;},su:function(x){return x.su;},cd:function(x){return x.cd||null;},mc:function(x){return x.r.mc;},fund:function(x){return FH[x.t];},since:function(x){var p=inPort(x.t)?portfolio[x.t]:null;return p&&p.price&&x.r.price?x.r.price/p.price-1:null;}}[CO.sort]||gk(CO.sort);
     var olast=(CO.sort==='gap'||CO.sort==='u')&&CO.dir<0;
     var cmp=function(a,b){if(olast&&!!a.out!==!!b.out)return a.out?1:-1;var va=key(a),vb=key(b);if(va==null&&vb==null)return 0;if(va==null)return 1;if(vb==null)return -1;return (va>vb?1:va<vb?-1:0)*CO.dir;};
     var tas=Array.from(new Set(A.map(function(x){return x.r.ta;}))).filter(Boolean).sort();
@@ -194,7 +195,7 @@ table.cg-t{font-size:11.5px}.cg-t td,.cg-t th{padding:5px 7px}
     var groups=CG.map(function(g){return {g:g,cols:colsOf(g)};});
     var extraCols=(fundMode?1:0)+(CO.port?2:0);
     var h1='<tr class="cg-head"><th class="gcomp" rowspan="2" data-sort="mc_name">Company</th>'+th('mc','Cap','gcomp')+groups.map(function(o,gi){var g=o.g;return '<th colspan="'+o.cols.length+'" class="g g'+gi+'">'+(g.fixed?g.l:'<button class="cg-tog" data-cgx="'+g.k+'">'+(CO.x[g.k]?'▾ ':'▸ ')+g.l+(CO.x[g.k]?'':' <span>'+(g.cols.length>o.cols.length?'+'+(g.cols.length-o.cols.length):'full')+'</span>')+'</button>')+'</th>';}).join('')+(extraCols?'<th colspan="'+extraCols+'" class="g">'+(fundMode?'Fund':'Portfolio')+'</th>':'')+'</tr>';
-    var h2='<tr class="cg-head2">'.replace('<tr class="cg-head2">','<tr class="cg-head2"><th class="gcomp"></th>')+groups.map(function(o,gi){return o.cols.map(function(c,ci){return c[2]?th(c[2],c[0],'g'+gi+(ci===0?' gl':'')):'<th class="g'+gi+(ci===0?' gl':'')+'">'+c[0]+'</th>';}).join('');}).join('')+(fundMode?th('fund','Fund %',''):'')+(CO.port?th('since','Since added','')+'<th>Notes</th>':'')+'</tr>';
+    var h2='<tr class="cg-head2">'.replace('<tr class="cg-head2">','<tr class="cg-head2"><th class="gcomp"></th>')+groups.map(function(o,gi){return o.cols.map(function(c,ci){var tip=c[5]?' title="'+B.E(c[5])+'"':'';return c[2]?th(c[2],c[0],'g'+gi+(ci===0?' gl':'')).replace('<th ','<th'+tip+' '):'<th class="g'+gi+(ci===0?' gl':'')+'"'+tip+'>'+c[0]+'</th>';}).join('');}).join('')+(fundMode?th('fund','Fund %',''):'')+(CO.port?th('since','Since added','')+'<th>Notes</th>':'')+'</tr>';
     // fix: company header spans two rows, cap header sits on row 1 only
     h1=h1.replace(th('mc','Cap','gcomp'),'<th class="syn-th r gcomp'+(CO.sort==='mc'?' on':'')+'" rowspan="2" data-sort="mc">Cap'+(CO.sort==='mc'?(CO.dir<0?' ▼':' ▲'):'')+'</th>');
     h2=h2.replace('<tr class="cg-head2"><th class="gcomp"></th>','<tr class="cg-head2">');
