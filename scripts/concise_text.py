@@ -30,12 +30,12 @@ IND = [
     (r"metastatic castration[- ]resistant prostate cancer", "mCRPC"), (r"castration[- ]resistant prostate cancer", "CRPC"),
     (r"metastatic hormone[- ]sensitive prostate cancer", "mHSPC"), (r"prostate cancer", "PCa"),
     (r"non-muscle[- ]invasive bladder cancer", "NMIBC"), (r"muscle[- ]invasive bladder cancer", "MIBC"),
-    (r"metastatic urothelial (?:cancer|carcinoma)", "mUC"), (r"urothelial (?:cancer|carcinoma)", "urothelial ca"),
+    (r"metastatic urothelial (?:cancer|carcinoma)", "mUC"), (r"urothelial carcinoma", "urothelial cancer"),
     (r"clear[- ]cell renal cell carcinoma", "ccRCC"), (r"renal cell carcinoma", "RCC"),
     (r"triple[- ]negative breast cancer", "TNBC"), (r"metastatic breast cancer", "mBC"), (r"breast cancer", "BC"),
     (r"head and neck squamous cell carcinoma", "HNSCC"), (r"squamous cell carcinoma", "SCC"), (r"glioblastoma", "GBM"),
     (r"gastroesophageal junction", "GEJ"), (r"gastro-?esophageal", "GE"), (r"biliary tract cancer", "BTC"),
-    (r"ovarian cancer", "ovarian ca"), (r"endometrial cancer", "endometrial ca"), (r"advanced solid tumou?rs", "adv. solid tumors"),
+    (r"advanced solid tumou?rs", "adv. solid tumors"),
     (r"amyotrophic lateral sclerosis", "ALS"), (r"alzheimer'?s disease", "Alzheimer's"), (r"parkinson'?s disease", "Parkinson's"),
     (r"huntington'?s disease", "HD"), (r"spinal muscular atrophy", "SMA"), (r"duchenne muscular dystrophy", "DMD"),
     (r"myotonic dystrophy type 1", "DM1"), (r"facioscapulohumeral muscular dystrophy", "FSHD"), (r"myasthenia gravis", "MG"),
@@ -56,7 +56,7 @@ IND = [
     (r"age-related macular degeneration", "AMD"), (r"diabetic macular edema", "DME"), (r"diabetic retinopathy", "DR"),
     (r"thyroid eye disease", "TED"), (r"retinitis pigmentosa", "RP"), (r"relapsed/refractory|relapsed or refractory|relapsed-refractory", "r/r"),
     (r"first[- ]line", "1L"), (r"second[- ]line", "2L"), (r"third[- ]line", "3L"), (r"\bmetastatic NSCLC", "mNSCLC"),
-    (r"\bmetastatic\b", "met."), (r"\badvanced\b", "adv."), (r"\bcancer\b", "ca"), (r"\bdisease\b", "dz"),
+    (r"\bmetastatic\b", "met."), (r"\badvanced\b", "adv."), (r"\bdisease\b", "dz"),
 ]
 
 
