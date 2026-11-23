@@ -123,12 +123,15 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
   }
   function cats(){
     var end=new Date(today.getTime()+45*864e5);
-    var C=DA.filter(function(r){if(!r.cat_date)return false;var d=new Date(r.cat_date+'T00:00:00');return d>=today&&d<=end&&(LONG[(r.call||'').toUpperCase()]||SHORT[(r.call||'').toUpperCase()]||(r.mc||0)>=1e9);});
-    C.sort(function(a,b){return a.cat_date<b.cat_date?-1:1;});
+    var TD=today.toISOString().slice(0,10),ED=end.toISOString().slice(0,10),C=[];
+    DA.forEach(function(r){if(!(LONG[(r.call||'').toUpperCase()]||SHORT[(r.call||'').toUpperCase()]||(r.mc||0)>=1e9))return;
+      if(!r.cat_sched){if(r.cat_date&&r.cat_date>=TD&&r.cat_date<=ED)C.push({r:r,c:{d:r.cat_date,lab:r.cat_timing||r.cat_date,e:r.nc||r.catalyst||'',p:3}});return;}
+      (r.cat_sched||[]).forEach(function(c){if(c.d&&c.st!=='done'&&c.d>=TD&&c.d<=ED&&(c.p||0)>=3)C.push({r:r,c:c});});});
+    C.sort(function(a,b){return (b.c.p>=4)-(a.c.p>=4)||(a.c.d<b.c.d?-1:a.c.d>b.c.d?1:0);});
     if(!C.length)return '';
-    return '<div class="brf-h"><b><span class="brf-n">2</span> What is coming in the next 45 days</b><span>Dated catalysts on names with a Long/Short call or a $1B+ cap. Year-end dates are often "by year-end" guidance.</span></div>'
-      +'<table class="brf-t"><tr><th>Date</th><th>Name</th><th>Call</th><th class="r">Cap</th><th>Event</th></tr>'
-      +C.slice(0,14).map(function(r){return '<tr><td class="r">'+E(r.cat_date.slice(5))+'</td><td>'+tk(r.ticker)+'</td><td>'+cb(r.call)+'</td><td class="r">'+M(r.mc)+'</td><td>'+E(trunc(r.nc||r.catalyst,140))+'</td></tr>';}).join('')+'</table>';
+    return '<div class="brf-h"><b><span class="brf-n">2</span> What is coming in the next 45 days</b><span>Catalysts due within 45 days on names with a Long/Short call or a $1B+ cap: exact and month dates first, then quarter-end windows (4Q26) that close in the period.</span></div>'
+      +'<table class="brf-t"><tr><th>When</th><th>Name</th><th>Call</th><th class="r">Cap</th><th>Event</th></tr>'
+      +C.slice(0,16).map(function(o){var r=o.r,c=o.c;return '<tr><td class="r">'+(c.k?'★ ':'')+E(c.lab)+'</td><td>'+tk(r.ticker)+'</td><td>'+cb(r.call)+'</td><td class="r">'+M(r.mc)+'</td><td>'+E(trunc(c.e,140))+'</td></tr>';}).join('')+'</table>';
   }
   function radarMini(){
     var R=RD.rows.slice(0,8);

@@ -32,6 +32,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112226-v3.html | Nov 22 twelve lenses (merged pages), before the synthesized pages |
 | backup-112226-v4.html | Nov 22 synthesized pages with detail switches, before the five-page version |
 | backup-112326-v2.html | Nov 23 morning version, before the column reorder and card thesis in the table |
+| backup-112326-v3.html | Nov 23 afternoon version, before the catalyst-schedule cleanup, Areas historical/future toggle and best shorts |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 

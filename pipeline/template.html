@@ -1563,6 +1563,8 @@ table.tam tr.tcrow .tc-tk:hover{text-decoration:underline;text-decoration-color:
 }
 
 .catsched{list-style:none;margin:0;padding:0}
+.calk.calvague{outline:1.5px dashed currentColor;outline-offset:-2px}.calk.calkey{font-weight:800}
+.calcl{grid-column:1/-1;font-family:var(--disp);font-weight:800;font-size:12.5px;padding:8px 10px 4px;margin-top:6px;background:var(--raised)}.calcl span{font-weight:500;font-size:11px;color:var(--dim)}
 .catsched li{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--line-soft,rgba(255,255,255,.06));align-items:baseline}
 .catsched li:first-child{border-top:none}
 .catsched .cs-t{font-family:var(--mono);font-size:11.5px;color:var(--dim);white-space:nowrap}
@@ -1570,6 +1572,7 @@ table.tam tr.tcrow .tc-tk:hover{text-decoration:underline;text-decoration-color:
 .catsched li.key{background:var(--amber-bg,rgba(245,180,80,.12));border-radius:7px;border-top:none;margin:2px -9px;padding:8px 9px}
 .catsched li.key .cs-e{color:var(--amber);font-weight:600}
 .catsched li.key .cs-t{color:var(--amber)}
+.catsched .cs-t em{display:block;font-style:normal;font-size:10px;color:var(--short)}.catsched li.st-done{opacity:.55}.catsched li.st-done .cs-t em{color:var(--dim)}.catsched li.st-und .cs-t{color:var(--faint)}
 .pr-box{font-size:12.5px}
 .pr-row{display:flex;align-items:center;gap:8px;margin-bottom:4px}
 .pr-date{font-family:var(--mono);font-size:11px;color:var(--dim)}
@@ -3793,7 +3796,12 @@ function renderCalendar(rows){
   const win=state.calWin;                                   // months, 0 = all
   const byQ=win===0||win>12;                                // quarterly columns for long windows
   const start=new Date(CAL_BASE);
-  const withDate=rows.map(r=>({r,d:catDate(r)})).filter(o=>o.d);
+  // one chip per scheduled event (cleaned schedule: scripts/normalize_catalysts.py); rows without one fall back to the key date
+  const TD=new Date().toISOString().slice(0,10);
+  const withDate=[];
+  rows.forEach(r=>{const ev=(r.cat_sched||[]).filter(c=>c.d&&c.st!=='done');
+    if(!ev.length){const d=catDate(r);if(d)withDate.push({r,d,e:null});return;}
+    ev.forEach(c=>{if(c.d<TD&&c.st!=='late'&&c.st!=='up')return;withDate.push({r,d:new Date(c.d+'T00:00:00'),e:c});});});
   let end=new Date(start);
   if(win){ end.setMonth(end.getMonth()+win); }
   else { end=withDate.reduce((m,o)=>o.d>m?o.d:m,new Date(start)); end.setMonth(end.getMonth()+1); }
@@ -3811,27 +3819,31 @@ function renderCalendar(rows){
 
   // bucket rows: overdue | in-window column | beyond window
   const lanes={}; let nOver=0,nIn=0,nBeyond=0;
-  withDate.forEach(({r,d})=>{
+  withDate.forEach((o)=>{const {r,d}=o; const rr=o;
     const ta=r.ta||'—';
     (lanes[ta]=lanes[ta]||{ta,over:[],cells:{},beyond:[],n:0});
-    if(d<start){ lanes[ta].over.push(r); lanes[ta].n++; nOver++; return; }
+    if(d<start){ const same=lanes[ta].over.find(x=>x.r===r); if(same){(same.more=same.more||[]).push(rr.e); nOver++; return;} lanes[ta].over.push(rr); lanes[ta].n++; nOver++; return; }
     const i=colIdx(d);
-    if(i<0){ lanes[ta].beyond.push(r); nBeyond++; return; }
-    (lanes[ta].cells[i]=lanes[ta].cells[i]||[]).push(r); lanes[ta].n++; nIn++;
+    if(i<0){ lanes[ta].beyond.push(rr); nBeyond++; return; }
+    const cell=(lanes[ta].cells[i]=lanes[ta].cells[i]||[]); const same=cell.find(x=>x.r===r);
+    if(same){(same.more=same.more||[]).push(rr.e); nIn++; return;}   // one chip per company per column
+    cell.push(rr); lanes[ta].n++; nIn++;
   });
-  const arr=Object.values(lanes).filter(l=>l.n>0).sort((a,b)=>a.ta.localeCompare(b.ta));
-
-  const chip=r=>`<span class="calk ${callBadgeCls(r.call)}" data-i="${r._i}">${esc(r.ticker)}</span>`;
+  let arr=Object.values(lanes).filter(l=>l.n>0).sort((a,b)=>a.ta.localeCompare(b.ta));
+  let clHead=null; if(window.CAL_GROUP){try{const g=window.CAL_GROUP(arr); if(g){arr=g.arr; clHead=g.head;}}catch(e){}}
+  const CALEV=[];
+  const chip=o=>{const r=o.r,e=o.e;CALEV.push(o);const vague=e&&(e.p||0)<4;
+    return `<span class="calk ${callBadgeCls(r.call)}${vague?' calvague':''}${e&&e.k?' calkey':''}" data-i="${r._i}" data-ev="${CALEV.length-1}" title="${e?esc([e].concat(o.more||[]).filter(Boolean).map(x=>(x.k?'★ ':'')+x.lab+': '+x.e+(x.st==='late'?' (past due, verify)':'')).join(' | ')):''}">${esc(r.ticker)}${o.more&&o.more.length?'<sup>+'+o.more.length+'</sup>':''}</span>`;};
   const yearSpans=[]; cols.forEach((c,i)=>{const last=yearSpans[yearSpans.length-1];
     if(last&&last.y===c.year)last.n++; else yearSpans.push({y:c.year,n:1});});
 
   const grid=arr.map(l=>{
     const col=state.calCollapsed.has(l.ta);
     const cells=cols.map((c,i)=>{
-      const list=(l.cells[i]||[]).sort((a,b)=>(b.mc||0)-(a.mc||0));
+      const list=(l.cells[i]||[]).sort((a,b)=>(b.r.mc||0)-(a.r.mc||0));
       return `<div class="calcell${list.length?' has':''}">${list.map(chip).join('')}</div>`;
     }).join('');
-    return `<div class="calrow${col?' col':''}" data-ta="${esc(l.ta)}">
+    return `${clHead&&clHead[l.ta]||''}<div class="calrow${col?' col':''}" data-ta="${esc(l.ta)}">
       <div class="callane"><span class="calchev">${col?'▸':'▾'}</span>
         <span class="ta-dot" style="background:${taColor(l.ta)};width:8px;height:8px"></span>
         <span class="calta">${esc(l.ta)}</span><span class="caln">${l.n}</span></div>
@@ -3877,7 +3889,9 @@ function renderCalendar(rows){
   });
   wrap.querySelectorAll('.calk[data-i]').forEach(el=>{
     const r=DATA[+el.dataset.i];
-    el.onmouseenter=()=>tbShow(r,el,{cat:true}); el.onmouseleave=tbHide;
+    const o=CALEV[+el.dataset.ev]; const rv=(o&&o.e)?Object.assign({},r,{catalyst:[o.e].concat(o.more||[]).filter(Boolean).map(x=>x.e).join(' · '),cat_timing:[o.e].concat(o.more||[]).filter(Boolean).map(x=>x.lab).filter((v,i,a)=>a.indexOf(v)===i).join(' / ')}):r;
+    el.removeAttribute('title');
+    el.onmouseenter=()=>tbShow(rv,el,{cat:true}); el.onmouseleave=tbHide;
     el.onclick=ev=>{ev.stopPropagation();tbHide();openDrawer(r._i);liveOnOpen(r);};
   });
 }
@@ -4635,8 +4649,8 @@ function openDrawer(i){
     <div class="fcell"><div class="fl">Prob-adj</div><div class="fv" style="color:var(--cyan)">${fmtSales(r.probadj_sales)}</div><div class="ff">Risk-adjusted</div></div>
   </div>${r.upside_ratio!=null?`<p class="dim" style="margin-top:10px;font-size:11.5px">Prob-adj sales ÷ market cap = <b style="color:${r.upside_ratio>=1?'var(--long)':'var(--short)'};font-family:var(--mono)">${r.upside_ratio>=100?Math.round(r.upside_ratio):r.upside_ratio.toFixed(2)}×</b> ${r.upside_ratio>=1?'— lead asset alone may exceed the current cap':'— current cap already embeds more than the lead asset'}</p>`:''}${r.smart_money?`<p class="dim" style="margin-top:8px;font-size:11.5px"><b style="color:var(--text)">Smart money:</b> ${esc(r.smart_money)}</p>`:''}`;
 
-  const catHtml=(r.catalyst||r.cat_timing)?`${r.catalyst?`<p>${esc(r.catalyst)}</p>`:''}<dl class="kv" style="margin-top:10px">${r.cat_timing?`<dt>Timing</dt><dd style="font-family:var(--mono)">${esc(r.cat_timing)}</dd>`:''}${r.cat_date?`<dt>Est. date</dt><dd style="font-family:var(--mono)">${esc(r.cat_date)}</dd>`:''}${r.cat_mos!=null?`<dt>Months out</dt><dd style="font-family:var(--mono);color:${r.cat_mos<=3&&r.cat_mos>=0?'var(--amber)':'var(--text)'}">${r.cat_mos<0?'passed':r.cat_mos.toFixed(1)+' mo'}</dd>`:''}</dl>`:'';
-  const schedHtml=(Array.isArray(r.cat_sched)&&r.cat_sched.length)?`<ul class="catsched">${r.cat_sched.map(c=>`<li class="${c.k?'key':''}"><span class="cs-t">${esc(c.t||'')}</span><span class="cs-e">${c.k?'\u2605 ':''}${esc(c.e||'')}</span></li>`).join('')}</ul>`:'';
+  const catHtml=(r.catalyst||r.cat_timing)?`${r.catalyst?`<p>${esc(r.catalyst)}</p>`:''}<dl class="kv" style="margin-top:10px">${r.cat_timing?`<dt>Timing</dt><dd style="font-family:var(--mono)">${esc(r.cat_lab||r.cat_timing)}</dd>`:''}${r.cat_mos!=null?`<dt>Months out</dt><dd style="font-family:var(--mono);color:${r.cat_mos<=3&&r.cat_mos>=0?'var(--amber)':'var(--text)'}">${r.cat_mos<0?'passed':r.cat_mos.toFixed(1)+' mo'}</dd>`:''}</dl>`:'';
+  const schedHtml=(Array.isArray(r.cat_sched)&&r.cat_sched.length)?`<ul class="catsched">${r.cat_sched.map(c=>`<li class="${c.k?'key':''} st-${c.st||''}"><span class="cs-t">${esc(c.lab||(c.st==='und'?'undated':c.t)||'')}${c.st==='late'?'<em>past due, verify</em>':c.st==='done'?'<em>done</em>':''}</span><span class="cs-e">${c.k?'\u2605 ':''}${esc(c.e||'')}</span></li>`).join('')}</ul>`:'';
   const prd=PR_BAKED[r.ticker];
   const prStLink=`https://www.stocktitan.net/news/${encodeURIComponent(r.ticker)}/`;
   const prHtml=(prd&&prd.date)?`<div class="pr-box">

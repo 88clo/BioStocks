@@ -24,7 +24,7 @@ For each printed mover and each flag carried from the last run: search the compa
 Re-verify the shortlist (top picks, shorts, highest-conviction longs) against filings, ClinicalTrials.gov and FDA; red-team each one. This is the expensive step (≈40–60k tokens per name). Edit rows via a dated patch file.
 
 ## 4. Status, build, freeze, score
-`update_status.py` (edit the `ASOF`/`RUN` dates at the top), `build.py`, `snapshot_calls.py ledger/<date>_refresh.json`, `track_record.py`, `radar_gaps.py`, `call_history.py`, `changes.py` (diff of the two latest ledgers for the Brief), `build.py`.
+`normalize_catalysts.py data/data.json` (after the event check: merges the key catalyst, the next-catalyst line and the schedule into one ordered list, splits compound entries, labels each at the precision given, e.g. 4Q26 not Dec 31, flags past-due dates to verify), `update_status.py` (edit the `ASOF`/`RUN` dates at the top), `build.py`, `snapshot_calls.py ledger/<date>_refresh.json`, `track_record.py`, `radar_gaps.py`, `call_history.py`, `changes.py` (diff of the two latest ledgers for the Brief), `build.py`.
 
 Also record each catalyst's date as it stands at the refresh (the ledger keeps `cat_date`), so the track record can later tell whether a big move was on the calendar beforehand.
 
