@@ -10,6 +10,7 @@ The full texts stay in `efficacy` and `indication` and are shown on the company 
 Derived fields only: re-running gives the same result.  Usage: python3 scripts/concise_text.py [data/data.json]
 """
 import json, re, sys
+CUR = {}   # data/eff-curated.json: hand-written entries where rules cannot judge (pivotal results of approved drugs, wrong program, related asset, no data)
 
 # ---------------------------------------------------------------- indication abbreviations
 IND = [
@@ -114,7 +115,8 @@ def ind_short(s):
 
 # ---------------------------------------------------------------- efficacy condenser
 STAT = re.compile(r'(\d+(?:\.\d+)?\s*%|\bvs\.?\b|\bHR\s*[=:]?\s*0?\.\d|\bp\s*[<=]\s*0?\.\d|\bORR\b|\bPFS\b|\bOS\b|\bCR\b|\bmet (?:the|its|all|both)\b|\bmissed\b|\bfailed\b|reduction|response|remission|improv|endpoint|placebo|knockdown|\bLDL|\bTG\b|\bHbA1c|weight loss|seizure)', re.I)
-NOTEFF = re.compile(r'(PDUFA|\bs?NDA\b|\bs?BLA\b|\bMAA\b|filing|filed|submission|priority review|STAR pilot|\bPRV\b|voucher|licen[cs]e|upfront|milestone|royalt|\$\d|cash|runway|financ|partner|dosing (?:started|began)|enrol+|\bIND\b|launch|sales|revenue|CEO|CFO|guidance|not previously|real (?:second|severity|corporate|technical)|also:|stock|analyst|shareholder|commercial|is the edge|reimburs|label expansion|accept)', re.I)
+NOTEFF = re.compile(r'(PDUFA|\bs?NDA\b|\bs?BLA\b|\bMAA\b|filing|filed|submission|priority review|STAR pilot|\bPRV\b|voucher|licen[cs]e|upfront|milestone|royalt|\$\d|cash|runway|financ|partner|dosing (?:started|began)|enrol+|\bIND\b|launch|sales|revenue|CEO|CFO|guidance|not previously|real (?:second|severity|corporate|technical)|also:|stock|analyst|shareholder|commercial|is the edge|real, major|correction|reimburs|label expansion|accept)', re.I)
+CAVEAT = re.compile(r'not comparable|cross-trial|not disclosed|caution|caveat|hypothesis-generating|small n\b|not yet peer', re.I)
 CATALYST_ONLY = re.compile(r'^(?:topline|data|readout|results?)\b.*\b(?:expected|due|by|in)\b.*(?:20\d\d|[12]H|Q[1-4])', re.I)
 CAPS_KEEP = set('ORR PFS OS CR PR DCR HR ITT NDA BLA FDA EMA FCS SHTG TG LDL ASCO ESMO ASH ESC AHA AAN ACR EASI PASI IGA MRD BCG CAR CRISPR ADC PET MRI CT KRAS EGFR HER2 PD-1 PD-L1 CTLA-4 RNA DNA LNP APOC3 ANGPTL3 GLP-1 FXI TTR VEGF MASH NASH DMD ALS SMA AML CLL MM NSCLC SCLC CRC HCC PDAC RCC NMIBC CIS QOL KCCQ HFPEF CKD EGFR UACR IGAN FSGS'.split())
 DOSE = [(r'once[- ]quarterly|every (?:three|3) months|quarterly dosing', 'Q3M'), (r'once[- ]monthly|every month', 'QM'),
@@ -123,6 +125,29 @@ DOSE = [(r'once[- ]quarterly|every (?:three|3) months|quarterly dosing', 'Q3M'),
         (r'\bweeks?\b', 'wk'), (r'\bpatients\b', 'pts'),
         (r'\bstatistically significant\b', 'significant'), (r'\bapproximately\b', '~'), (r'\bcompared (?:with|to)\b', 'vs'),
         (r'\bversus\b', 'vs'), (r'\bplacebo\b', 'placebo'), (r'\s+—\s+', ' — ')]
+
+
+DROP_ITEM = re.compile(r'cut-?off|data cut|\bcut\b|f/u|follow-?up|\bas of\b|\d+\s?mg(?:/kg)?\b|\b(?:QD|BID|QW|Q\dW|Q\dM)\b|topline|full data|presented|\b(?:ASCO|ESMO|ASH|ESC|AHA|AAN|SITC|EASL|AASLD|ADA|ACR|EULAR|ATS|ERS|SABCS)\b|^(?:%s)\s*\d{0,2},?\s*20\d\d$|^20\d\d$|company|investigator' % '|'.join(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Sept','Oct','Nov','Dec']), re.I)
+
+
+def tidy(s):
+    # inside brackets keep only items that carry data (n=, HR, p, comparator); drop dates, cut-offs, doses, follow-up, venues
+    def br(m):
+        items = [x.strip() for x in re.split(r'[;,]\s*', m[1])]
+        keep = [x for x in items if x and not DROP_ITEM.search(x)]
+        return ' (' + ', '.join(keep) + ')' if keep else ''
+    s = re.sub(r'\s*\(([^()]*)\)', br, s)
+    s = re.sub(r'\b([A-Z][A-Za-z0-9]*(?:[-/][A-Za-z0-9]+)*)\s+(Ph\d(?:/\d)?[ab]?)\b', r'\2 \1', s)      # "LEVEL Ph3" -> "Ph3 LEVEL"
+    s = re.sub(r'\b(?:at\s+)?wk\s?(\d+)\b', r'W\1', s)
+    s = re.sub(r'\bat mo (\d+)\b', r'at M\1', s)
+    s = re.sub(r'(vs\s+[~−-]?[\d.]+\s?(?:mo|%|m|wk)?)\s+vs\.?\s+', r'\1 ', s)                  # "10.9 vs 9.4 mo vs rego" -> "... 9.4 mo rego"
+    s = re.sub(r'\bmet (?:the|its) primary(?: endpoint)?', 'met primary', s, flags=re.I)
+    s = re.sub(r'\bmissed (?:the|its) primary(?: endpoint)?', 'missed primary', s, flags=re.I)
+    s = re.sub(r'\band the (key secondary)', r'and \1', s)
+    s = re.sub(r'\bheart failure\b', 'HF', s)
+    s = re.sub(r'\bCV[- ]outcomes?(?: trial| benefit)?\b', 'CVOT', s)
+    s = re.sub(r'\s+([,;.)])', r'\1', s)
+    return re.sub(r'\s{2,}', ' ', s).strip()
 
 
 def caps_fix(s):
@@ -156,12 +181,16 @@ def sentences(t):
     return out
 
 
-def score(s, kw=()):
+def score(s, kw=(), failed=False):
     st = len(STAT.findall(s))
     ne = len(NOTEFF.findall(s))
     sc = min(st, 4) * 2 - ne * 2.5
     if re.search(r'\bapproved\b|\bFDA[- ]approved\b', s, re.I) and len(s) < 160:
         sc += 2           # approval status of the lead
+    if re.search(r'subgroup|post[- ]hoc|exploratory|prespecified|pre-specified', s, re.I):
+        sc += 4 if failed else -5   # a subgroup matters only when the primary missed
+    if CAVEAT.search(s) and not (failed and re.search(r'subgroup|prespecified|pre-specified', s, re.I)):
+        sc -= 6                     # comparability caveats belong in the thesis
     if kw and any(re.search(r'\b' + re.escape(k) + r'\b', s, re.I) for k in kw):
         sc += 2           # about the lead indication
     if CATALYST_ONLY.search(s):
@@ -176,19 +205,31 @@ def clean_sentence(s):
     s = re.split(r'\s+—\s+(?=(?:the|a|an|this|real|not|which|and|but|already|so|now)\b)', s)[0]   # trailing commentary after a dash
     for rx, rep in DOSE:
         s = re.sub(rx, rep, s, flags=re.I)
+    s = tidy(s)
     s = caps_fix(s)
     s = re.sub(r'\s+', ' ', s).strip()
     return s
 
 
-def eff_short(t, ind='', limit=250):
+def eff_short(t, ind='', limit=250, stage='', nxt=None):
     t = (t or '').strip()
     if not t:
         return ''
     S = sentences(t)
     lead = (ind or '').split(';')[0]
     kw = [w for w in re.findall(r"[A-Za-z][\w'/+-]{2,}", lead) if w.lower() not in ('with', 'and', 'the', 'adv.', 'met.', 'acute', 'chronic', 'refractory')]
-    scored = [(i, s, score(s, kw)) for i, s in enumerate(S)]
+    failed = bool(re.search(r'\b(missed|failed|did not meet|not met|no significant)\b', t, re.I))
+    if failed:
+        limit += 90                                   # room for the subgroup that matters when the primary missed
+    nodata = re.search(r'no (?:human |clinical )?(?:efficacy )?data|no human efficacy|no clinical efficacy|preclinical only|no efficacy (?:data|readout)|no topline|still enrolling|not yet reported|proof-of-concept data expected|first (?:patient|pts?) dos|preclinical only', t, re.I)
+    if nodata and not re.search(r'\b(?:ORR|HR|vs)\b|\d+(?:\.\d+)?\s*%', t.split('.')[0]):
+        ctx = [x for x in sentences(t) if re.search(r'preclinical|NHP|mouse|mice|animal|in vivo|validated|healthy volunteer|target engagement', x, re.I) and not NOTEFF.search(x) and len(x) > 45 and re.search(r'\d|validated|benchmark', x) and 'no human' not in x.lower()]
+        out = 'No efficacy data yet' + ('; ' + nxt['lab'] + ' ' + re.sub(r'\s*\(.*?\)', '', nxt['e'])[:70].rstrip(' ,;') if nxt else '') + '.'
+        if ctx:
+            c = clean_sentence(ctx[0])
+            out += ' ' + (c if len(c) <= 150 else c[:150].rsplit(' ', 1)[0] + '…')
+        return out[:limit + 40] + ('…' if len(out) > limit + 40 else '')
+    scored = [(i, s, score(s, kw, failed) + (6 if failed and re.search(r'\b(missed|failed|did not meet)\b', s, re.I) else 0)) for i, s in enumerate(S)]
     keep = [x for x in scored if x[2] > 0]
     if not keep:                                   # no efficacy statement: first sentence, trimmed
         keep = scored[:1]
@@ -204,6 +245,11 @@ def eff_short(t, ind='', limit=250):
             chosen.add(i)
             total += L + 1
     out = ' '.join(clean_sentence(S[i]) for i in sorted(chosen))
+    if re.search(r'\b(?:NHP|mouse|mice|murine|animal|preclinical)\b', out, re.I) and not re.search(r'\bPh\d|\bpatients?\b|\bpts\b|\bhealthy\b', out, re.I) and not out.lower().startswith('preclinical'):
+        sp = re.match(r'^(NHP|mouse|mice)\s+data\s*:\s*', out, re.I)
+        out = 'Preclinical only' + (' (' + sp[1] + ')' if sp else '') + ': ' + re.sub(r'^(?:NHP data|mouse data|mice data|Preclinical)\s*:\s*', '', out, flags=re.I)
+    if not re.search(r'\bPh\d', out) and re.match(r'^[A-Z][A-Z0-9]+(?:-[A-Z0-9]+)+\b', out) and re.search(r'phase 3|ph3|nda|bla|filed|pdufa|approved', stage or '', re.I):
+        out = 'Ph3 ' + out                            # registrational trial named without its phase
     out = re.sub(r'\s*[;,]\s*$', '.', out)
     if len(out) > limit:                            # drop wordy asides without numbers
         out = re.sub(r'\s*\((?=[^()]*\s[^()]*\s[^()]*\s)[^()\d]*\)', '', out)
@@ -217,9 +263,18 @@ def eff_short(t, ind='', limit=250):
 def main():
     path = sys.argv[1] if len(sys.argv) > 1 else 'data/data.json'
     D = json.load(open(path))
+    global CUR
+    try:
+        CUR = {k: v for k, v in json.load(open('data/eff-curated.json')).items() if not k.startswith('_')}
+    except FileNotFoundError:
+        CUR = {}
     for r in D:
         r['ind_short'] = ind_short(r.get('indication'))
-        r['eff_short'] = eff_short(r.get('efficacy'), r['ind_short'])
+        cur = CUR.get(r['ticker'])
+        r['eff_short'] = cur['eff'] if cur else eff_short(r.get('efficacy'), r['ind_short'], stage=(r.get('stage') or '') + ' ' + (r.get('stage_full') or ''), nxt=r.get('next_cat'))
+        r['eff_src'] = 'curated' if cur else 'rule'
+        cav = [x for x in sentences(r.get('efficacy') or '') if CAVEAT.search(x) and clean_sentence(x) not in r['eff_short']]
+        r['eff_caveat'] = (cur.get('caveat') if cur and cur.get('caveat') is not None else ' '.join(clean_sentence(x) for x in cav[:2]))
     json.dump(D, open(path, 'w'), ensure_ascii=False, separators=(',', ':'))
     import statistics
     print('eff_short median', statistics.median(len(r['eff_short']) for r in D), 'chars (full text median',
