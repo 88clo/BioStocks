@@ -13,7 +13,7 @@ body{padding-top:var(--nav5h)}
 #nav5 .n5-lens.on{border-color:var(--cyan);color:var(--text);font-weight:700;background:var(--panel)}
 #nav5 .n5-sp{flex:1 0 8px}
 #nav5 .n5-about{background:none;border:1px solid var(--line);border-radius:7px;padding:5px 10px;font-size:12px;color:var(--dim);cursor:pointer}
-#n5pop{position:fixed;top:calc(var(--nav5h) - 4px);right:12px;z-index:200;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px;min-width:220px;box-shadow:0 6px 18px rgba(0,0,0,.18);display:none}
+#n5pop{max-height:calc(100vh - 60px);overflow:auto;position:fixed;top:calc(var(--nav5h) - 4px);right:12px;z-index:200;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px;min-width:220px;box-shadow:0 6px 18px rgba(0,0,0,.18);display:none}
 #n5pop div{padding:8px 10px;font-size:12.5px;border-radius:5px;cursor:pointer}
 #n5pop div:hover{background:var(--raised)}
 #n5pop .n5-h{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);cursor:default;padding:6px 10px 2px}
@@ -46,16 +46,20 @@ body.n5-val #dcfwrap{max-height:none!important}
   // Six views. Each lens is one of the dashboard's existing renderers; nothing was dropped, duplicates were removed.
   // Six views, twelve lenses. Merged lenses carry a mode switch; every former view is still reachable.
   // Six pages. Each opens on a synthesized view; the original detailed tables sit behind its switch.
+  // Five pages, no sub-views. The company card (any ticker) is the dive. Old tables stay under About -> Full data tables.
+  var MEMO_ORDER=[];try{MEMO_ORDER=(JSON.parse(el0('memo-baked').textContent).order||[]).slice(0,4);}catch(e){}
+  function el0(id){return document.getElementById(id);}
+  var MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var TABS=[
-    {k:'brief',l:'Brief',lens:[{k:'brief',l:'Brief'}]},
-    {k:'companies',l:'Companies',lens:[{k:'co',l:'Companies',modes:[['co','One-line view'],['table','Detail: all fields'],['dcf','Detail: DCF model'],['map','Detail: value vs momentum'],['crowd','Detail: holders by company'],['sh','Detail: holders by fund'],['ta','Detail: area notes'],['parked','Detail: parked names']]}]},
-    {k:'areas',l:'Areas',lens:[{k:'areas',l:'Scorecard',modes:[['areas','Scorecard'],['returns','Company returns']]},{k:'gaps',l:'Value gaps'}]},
-    {k:'next',l:"What's next",lens:[{k:'next',l:"What's next",modes:[['next','Timeline'],['cal','Calendar grid'],['flow','Raise & IPO lists'],['ipo','IPO detail']]}]},
-    {k:'record',l:'Memo & record',lens:[{k:'memo',l:'Monthly memo'},{k:'track',l:'Track record'}]},
-    {k:'port',l:'Portfolio',lens:[{k:'port',l:'My portfolio'}]}
+    {k:'brief',l:'Brief',lens:[{k:'brief',l:'Brief',modes:[['brief','Live']].concat(MEMO_ORDER.map(function(m){return ['memo:'+m,MN[+m.slice(5)-1]+' '+m.slice(0,4)+' memo'];}))}]},
+    {k:'companies',l:'Companies',lens:[{k:'co',l:'Companies'}]},
+    {k:'areas',l:'Areas',lens:[{k:'areas',l:'Areas'}]},
+    {k:'next',l:"What's next",lens:[{k:'next',l:"What's next"}]},
+    {k:'record',l:'Record',lens:[{k:'track',l:'Track record'}]}
   ];
+  var LEGACY=[['table','All fields table'],['dcf','DCF model and assumptions'],['map','Value vs momentum (per company)'],['crowd','Holders and analysts by company'],['sh','Holders by fund'],['returns','Company returns 1M–36M'],['cal','Catalyst calendar grid'],['flow','Raise and IPO lists'],['ipo','IPO detail'],['gaps','Value gaps lists'],['ta','Area notes (TA summary)'],['parked','Parked names'],['port','Portfolio editor'],['board','Return tiles']];
   var BRF={brief:1,track:1,flow:1,gaps:1,co:1,areas:1,next:1}, MAIN={table:1,parked:1,crowd:1,sh:1,board:1,returns:1,cal:1,ipo:1,port:1,map:1,dcf:1};
-  var mode={co:'co',areas:'areas',next:'next'};
+  var mode={brief:'brief'};
   var last={};TABS.forEach(function(t){last[t.k]=t.lens[0].k;});
   var cur={tab:'brief',lens:'brief'};
   var nav=document.createElement('nav');nav.id='nav5';nav.setAttribute('aria-label','Dashboard views');
@@ -70,13 +74,14 @@ body.n5-val #dcfwrap{max-height:none!important}
     document.body.style.overflow='';
   }
   function draw(){
-    var t=TABS.filter(function(x){return x.k===cur.tab;})[0];
+    var t=legacy?{lens:[]}:TABS.filter(function(x){return x.k===cur.tab;})[0];
     nav.innerHTML='<span class="n5-logo">BIOTECH LANDSCAPE</span>'
-      +TABS.map(function(x){return '<button class="n5-tab'+(x.k===cur.tab?' on':'')+'" data-t="'+x.k+'">'+x.l+'</button>';}).join('')
+      +TABS.map(function(x){return '<button class="n5-tab'+(!legacy&&x.k===cur.tab?' on':'')+'" data-t="'+x.k+'">'+x.l+'</button>';}).join('')
+      +(legacy?'<span class="n5-sep"></span><span class="n5-lens on">Full data: '+(LEGACY.filter(function(l){return l[0]===legacy;})[0]||[0,legacy])[1]+'</span>':'')
       +(t.lens.length>1?'<span class="n5-sep"></span>'+t.lens.map(function(l){return '<button class="n5-lens'+(l.k===cur.lens?' on':'')+'" data-l="'+l.k+'">'+l.l+'</button>';}).join(''):'')
       +(function(){var L=t.lens.filter(function(l){return l.k===cur.lens;})[0];if(!L||!L.modes)return '';if(L.modes.length>3)return '<span class="n5-sep"></span><select class="n5-msel" id="n5msel" title="Switch between the synthesized view and the detailed tables">'+L.modes.map(function(m){return '<option value="'+m[0]+'"'+(mode[L.k]===m[0]?' selected':'')+'>'+m[1]+'</option>';}).join('')+'</select>';return '<span class="n5-sep"></span><span class="n5-modes">'+L.modes.map(function(m){return '<button class="n5-mode'+(mode[L.k]===m[0]?' on':'')+'" data-m="'+m[0]+'">'+m[1]+'</button>';}).join('')+'</span>';})()
       +'<span class="n5-sp"></span>'
-      +(MAIN[act(cur.lens)]?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
+      +(legacy&&MAIN[legacy]?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
       +'<button class="n5-about" id="n5aboutBtn">ⓘ About ▾</button>';
     nav.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){go(b.dataset.t,last[b.dataset.t]);};});
     nav.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){go(cur.tab,b.dataset.l);};});
@@ -85,18 +90,24 @@ body.n5-val #dcfwrap{max-height:none!important}
     var m=el('n5model');if(m){m.classList.toggle('on',document.body.classList.contains('n5-model'));m.onclick=function(){document.body.classList.toggle('n5-model');m.classList.toggle('on');};}
     el('n5aboutBtn').onclick=function(ev){ev.stopPropagation();pop.style.display=pop.style.display==='block'?'none':'block';};
   }
-  pop.innerHTML='<div class="n5-h">How it works</div><div data-a="meth">◈ Methodology: call grid and thesis format</div><div data-a="rf">⏱ Refresh status: as-of date and coverage per section</div><div class="n5-h">Output</div><div data-a="print">⎙ Print or save this view as PDF</div>';
+  pop.innerHTML='<div class="n5-h">How it works</div><div data-a="meth">◈ Methodology: call grid and thesis format</div><div data-a="rf">⏱ Refresh status: as-of date and coverage per section</div><div class="n5-h">Full data tables (everything the pages summarize)</div>'+LEGACY.map(function(l){return '<div data-a="legacy:'+l[0]+'">'+l[1]+'</div>';}).join('')+'<div class="n5-h">Output</div><div data-a="print">⎙ Print or save this view as PDF</div>';
   pop.querySelectorAll('[data-a]').forEach(function(d){d.onclick=function(){pop.style.display='none';var a=d.dataset.a;
-    if(a==='meth'){var b=el('methbtn');if(b)b.click();}else if(a==='rf'){var r=el('rfbtn');if(r)r.click();}else if(a==='print'){window.print();}};});
+    if(/^legacy:/.test(a)){goLegacy(a.split(':')[1]);}
+    else if(a==='meth'){var b=el('methbtn');if(b)b.click();}else if(a==='rf'){var r=el('rfbtn');if(r)r.click();}else if(a==='print'){window.print();}};});
   document.addEventListener('click',function(){pop.style.display='none';});
   function act(lens){return mode[lens]||lens;}
+  var legacy=null;
+  function goLegacy(v,noHash){legacy=v;closeOverlays();document.body.classList.remove('n5-val');
+    try{if(BRF[v]){if(window.openBrief)window.openBrief(v);}else if(v==='ta'){if(typeof openTApage==='function')openTApage();}else{state.view=v;render();window.scrollTo(0,0);}}catch(e){console.log('legacy',e);}
+    draw();if(!noHash){try{history.replaceState(null,'','#legacy/'+v);}catch(e){}}}
+  window.navLegacy=goLegacy;
   function go(tab,lens,noHash){
-    cur={tab:tab,lens:lens};last[tab]=lens;closeOverlays();
+    legacy=null;cur={tab:tab,lens:lens};last[tab]=lens;closeOverlays();
     var a=act(lens);document.body.classList.remove('n5-val');
     try{
       if(BRF[a]){if(window.openBrief)window.openBrief(a);}
       else if(a==='ta'){if(typeof openTApage==='function')openTApage();}
-      else if(a==='memo'){var b=el('memobtn');if(b)b.click();}
+      else if(a==='memo'||/^memo:/.test(a)){var b=el('memobtn');if(b)b.click();var mm=a.split(':')[1];if(mm){var sel=el('memoMonth');if(sel){sel.value=mm;sel.dispatchEvent(new Event('change'));}}}
       else if(a==='val'){state.view='map';render();valuationExtra();window.scrollTo(0,0);}
       else if(MAIN[a]){state.view=a;render();window.scrollTo(0,0);}
     }catch(e){console.log('nav',e);}
@@ -115,9 +126,11 @@ body.n5-val #dcfwrap{max-height:none!important}
   window.navGo=go;
   // route from the URL hash (#companies/table, #deals/radar ...); old Brief hashes still work; default = Brief
   var h=(location.hash||'').replace('#',''),p=h.split('/'),ok=false;
-  var alias={brief:'brief/brief',track:'record/track',radar:'next/next/flow',gaps:'areas/gaps','companies/ta':'companies/co/ta','companies/table':'companies/co/table','companies/all':'companies/co/table','companies/all/parked':'companies/co/parked','companies/parked':'companies/co/parked','companies/dcf':'companies/co/dcf','companies/val':'companies/co/dcf','companies/crowd':'companies/co/crowd','companies/own':'companies/co/crowd','companies/own/sh':'companies/co/sh','companies/sh':'companies/co/sh','companies/sug':'areas/gaps','market/board':'areas/areas/returns','market/perf':'areas/areas','market/returns':'areas/areas/returns','market/perf/returns':'areas/areas/returns','market/perf/board':'areas/areas/returns','market/map':'companies/co/map','market/gaps':'areas/gaps','deals/cal':'next/next/cal','deals/radar':'next/next/flow','deals/flow':'next/next/flow','deals/flow/flow':'next/next/flow','deals/ipo':'next/next/ipo','deals/flow/ipo':'next/next/ipo','record/retro':'record/track'};
+  var alias={brief:'brief/brief',track:'record/track',radar:'legacy/flow',gaps:'legacy/gaps','companies/co':'companies/co','areas/areas':'areas/areas','areas/areas/returns':'legacy/returns','areas/gaps':'areas/areas','next/next':'next/next','next/next/cal':'legacy/cal','next/next/flow':'legacy/flow','next/next/ipo':'next/next','record/memo':'brief/brief','record/retro':'record/track','port/port':'legacy/port','companies/ta':'legacy/ta','companies/table':'legacy/table','companies/all':'companies/co','companies/all/parked':'legacy/parked','companies/parked':'legacy/parked','companies/dcf':'legacy/dcf','companies/val':'legacy/dcf','companies/crowd':'legacy/crowd','companies/own':'legacy/crowd','companies/own/sh':'legacy/sh','companies/sh':'legacy/sh','companies/sug':'areas/areas','market/board':'legacy/board','market/perf':'areas/areas','market/returns':'legacy/returns','market/perf/returns':'legacy/returns','market/map':'legacy/map','market/gaps':'areas/areas','deals/cal':'legacy/cal','deals/radar':'legacy/flow','deals/flow':'next/next','deals/ipo':'legacy/ipo','deals/flow/ipo':'legacy/ipo'};
+  ['table','dcf','map','crowd','sh','ta','parked'].forEach(function(v){alias['companies/co/'+v]='legacy/'+v;});
   if(alias[h]){h=alias[h];p=h.split('/');}
-  if(p.length>=2){TABS.forEach(function(t){if(t.k!==p[0])return;var L=t.lens.filter(function(l){return l.k===p[1];})[0];if(!L)return;if(p[2]&&L.modes&&L.modes.some(function(m){return m[0]===p[2];}))mode[L.k]=p[2];go(p[0],p[1],true);ok=true;});}
+  if(p[0]==='legacy'&&p[1]&&LEGACY.some(function(l){return l[0]===p[1];})){goLegacy(p[1],true);ok=true;}
+  else if(p.length>=2){TABS.forEach(function(t){if(t.k!==p[0])return;var L=t.lens.filter(function(l){return l.k===p[1];})[0];if(!L)return;if(p[2]&&L.modes&&L.modes.some(function(m){return m[0]===p[2];}))mode[L.k]=p[2];go(p[0],p[1],true);ok=true;});}
   if(!ok)go('brief','brief',true);
 })();
 </script>

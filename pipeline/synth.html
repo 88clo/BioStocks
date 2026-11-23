@@ -1,4 +1,5 @@
 <!-- SYNTH-START: synthesized pages (Companies, Areas, What's next, record join) — pipeline/synth.html, injected by build.py -->
+<script type="application/json" id="callhist-data">{{DATA:callhist-data}}</script>
 <style id="syn-css">
 .syn-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0 10px}
 .syn-ctl input,.syn-ctl select{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:12px;color:var(--text)}
@@ -19,6 +20,10 @@
 .syn-ty{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.03em;padding:1px 6px;border-radius:4px;background:var(--raised);color:var(--dim);white-space:nowrap}
 .syn-ty.cat{color:var(--cyan)}.syn-ty.raise{color:var(--amber)}.syn-ty.ipo{color:var(--long)}.syn-ty.lock{color:var(--short)}
 .syn-dot{cursor:pointer}
+#drawer .syn-top{border:1px solid var(--cyan);border-radius:10px;padding:10px 12px;background:var(--panel)}
+#drawer .syn-sumrow{font-size:13px}
+.syn-kvs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}.syn-kv{background:var(--raised);border-radius:6px;padding:5px 8px}.syn-kv span{display:block;font-size:10px;color:var(--faint);text-transform:uppercase}.syn-kv b{font-family:var(--mono);font-size:12.5px}
+.syn-dcf svg{width:100%!important;height:auto!important;max-height:150px}
 </style>
 <script id="syn-js">
 (function(){
@@ -41,9 +46,9 @@
     });
     return CACHE;
   }
-  function thesis(x){
+  function thesis(x,noVal){
     var r=x.r,p=[];
-    p.push('<b>'+(x.u==null?'no value':'Ours '+B.P(x.u))+'</b>'+(x.su!=null?' vs Street '+B.P(x.su)+' ('+x.an+')':''));
+    if(!noVal)p.push('<b>'+(x.u==null?'no value':'Ours '+B.P(x.u))+'</b>'+(x.su!=null?' vs Street '+B.P(x.su)+' ('+x.an+')':''));
     if(x.s!=null)p.push('science '+x.s.toFixed(1)+(r.pos?' · PoS '+Math.round(r.pos*100)+'%':''));
     if(x.rw!=null)p.push(Math.round(x.rw)+'Q cash');else if((r.net_income||0)>=0)p.push('self-funding');
     if(x.rad)p.push('<b>likely raise ~'+B.M(x.rad.size)+'</b> '+(/^Now/.test(x.rad.timing)?'now':/catalyst/.test(x.rad.timing)?'after the catalyst':/runway/.test(x.rad.timing)?'within 2Q':'opportunistic'));
@@ -51,62 +56,98 @@
     if(r.nc||r.catalyst)p.push('next'+(x.cd?' '+fdate(x.cd):'')+': '+B.E(B.trunc(r.nc||r.catalyst,60)));
     return p.join(' · ');
   }
-  var CO={q:'',side:'all',ta:'',qual:false,dis:false,sort:'gap',dir:-1};
+  var CO={q:'',side:'all',ta:'',ig:'',qual:false,dis:false,parked:false,below:false,raise:false,sug:false,port:false,sort:'gap',dir:-1,g:{},y:'su'};
+  window.synCO=CO;
+  var PK=(J('parked-data')||{rows:[]}).rows||[];
+  var FUNDS=null;function funds(){if(FUNDS)return FUNDS;FUNDS={};Object.keys(HO).forEach(function(t){(HO[t].rows||[]).forEach(function(x){(FUNDS[x.name]=FUNDS[x.name]||[]).push({t:t,pct:x.pct||0});});});return FUNDS;}
+  function sugOf(t){try{var o=typeof sugFor==='function'?sugFor(t):null;return o&&o.suggestion&&o.type==='action'?o:null;}catch(e){return null;}}
+  function inPort(t){try{return typeof portfolio!=='undefined'&&!!portfolio[t];}catch(e){return false;}}
+  function parkedRows(){return PK.map(function(r){var pt=PT[r.ticker];return {r:r,t:r.ticker,u:null,su:(pt&&pt.target&&r.price)?(pt.target/r.price-1)*100:null,an:pt?pt.analysts:0,gap:null,s:null,rw:null,sp:0,sn:[],rad:null,cd:'',side:'n',parked:true};});}
+  var GROUPS=[['sci','+ Science'],['mkt','+ Market model'],['fin','+ Financials'],['ret','+ Returns'],['own','+ Ownership']];
+  var num=function(v,d){return v==null||isNaN(v)?'—':(+v).toFixed(d||0);};
+  var big=function(v){if(v==null||isNaN(v))return '—';v=+v;return v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?Math.round(v/1e3)+'K':String(Math.round(v));};
+  var PC1=function(v){return v==null?'':(v>=0?'brf-pos':'brf-neg');};
+  var R1=function(v){return v==null?'—':(v>=0?'+':'')+Math.round(v*100)+'%';};
+  var COLS={
+    sci:[['Efficacy',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.efficacy,110))+'</span>';},null],['Benchmark',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.benchmark,90))+'</span>';},null],['Eff',function(x){return num(x.r.effsig);},'effsig'],['Diff',function(x){return num(x.r.diffscore);},'diffscore'],['PoS',function(x){return x.r.pos!=null?Math.round(x.r.pos*100)+'%':'—';},'pos'],['Mechanism',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.moa,60))+'</span>';},null]],
+    mkt:[['Indication',function(x){return '<span class="sm">'+B.E(B.trunc(x.r.indication,50))+'</span>';},null],['Prevalence',function(x){return big(x.r.prevalence);},'prevalence'],['Treated',function(x){return big(x.r.treated);},'treated'],['Net price',function(x){return x.r.net_price?'$'+big(x.r.net_price):'—';},'net_price'],['Peak',function(x){return B.M(x.r.peak_sales);},'peak_sales'],['Prob-adj',function(x){return B.M(x.r.probadj_sales);},'probadj_sales']],
+    fin:[['Cash',function(x){return B.M(x.r.cash);},'cash'],['Debt',function(x){return B.M(x.r.debt);},'debt'],['Net inc/Q',function(x){return B.M(x.r.net_income);},'net_income'],['Cash/cap',function(x){return x.r.cash&&x.r.mc?Math.round(x.r.cash/x.r.mc*100)+'%':'—';},'cash_pct_mc'],['ADV',function(x){return B.M(x.r.adv);},'adv']],
+    ret:[['1M',function(x){return '<span class="'+PC1(x.r.r1m)+'">'+R1(x.r.r1m)+'</span>';},'r1m'],['3M',function(x){return '<span class="'+PC1(x.r.r3m)+'">'+R1(x.r.r3m)+'</span>';},'r3m'],['12M',function(x){return '<span class="'+PC1(x.r.r12m)+'">'+R1(x.r.r12m)+'</span>';},'r12m'],['24M',function(x){return '<span class="'+PC1(x.r.r24m)+'">'+R1(x.r.r24m)+'</span>';},'r24m'],['36M',function(x){return '<span class="'+PC1(x.r.r36m)+'">'+R1(x.r.r36m)+'</span>';},'r36m']],
+    own:[['Specialists',function(x){return x.sp?Math.round(x.sp)+'% <span class="sm">'+B.E(x.sn.slice(0,3).join(', '))+'</span>':'—';},'_sp'],['Inst. own',function(x){return x.r.inst_own!=null?Math.round(x.r.inst_own*(x.r.inst_own<=1?100:1))+'%':'—';},'inst_own'],['Analysts',function(x){return x.an||'—';},'_an']]
+  };
+  function yval(x){return CO.y==='su'?x.su:CO.y==='r12'?(x.r.r12m==null?null:x.r.r12m*100):(x.r.r3m==null?null:x.r.r3m*100);}
   function scatter(L){
-    var W=980,Hh=460,ml=56,mr=16,mt=14,mb=40,x0=lt(-95),x1=lt(3000),y0=lt(-95),y1=lt(2000);
+    var yl={su:['Street upside (mean price target vs price)',2000,'Street sees more upside than we do','We see more upside than the Street'],r12:['Last 12 months return',1000,'Ran up although we see little value','Cheap on our numbers and beaten down'],r3:['Last 3 months return',300,'Ran up although we see little value','Cheap on our numbers and beaten down']}[CO.y];
+    var W=980,Hh=440,ml=56,mr=16,mt=14,mb=40,x0=lt(-95),x1=lt(3000),y0=lt(-95),y1=lt(yl[1]);
     var X=function(v){return ml+(lt(v)-x0)/(x1-x0)*(W-ml-mr);},Y=function(v){return Hh-mb-(Math.min(lt(v),y1)-y0)/(y1-y0)*(Hh-mt-mb);};
     var col={l:'var(--long)',s:'var(--short)',a:'var(--amber)',n:'var(--faint)'};
-    var g='<svg viewBox="0 0 '+W+' '+Hh+'" role="img" aria-label="Our upside versus Street upside">';
+    var g='<svg viewBox="0 0 '+W+' '+Hh+'" role="img" aria-label="Our upside versus '+yl[0]+'">';
     [-80,-50,0,100,300,1000,3000].forEach(function(v){g+='<line x1="'+X(v)+'" x2="'+X(v)+'" y1="'+mt+'" y2="'+(Hh-mb)+'" stroke="var(--line)" stroke-width="'+(v===0?1.4:.6)+'"/><text x="'+X(v)+'" y="'+(Hh-mb+14)+'" font-size="10.5" text-anchor="middle">'+(v>0?'+':'')+v+'%</text>';});
-    [-80,-50,0,100,300,1000].forEach(function(v){g+='<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--line)" stroke-width="'+(v===0?1.4:.6)+'"/><text x="'+(ml-6)+'" y="'+(Y(v)+3)+'" font-size="10.5" text-anchor="end">'+(v>0?'+':'')+v+'%</text>';});
-    g+='<line x1="'+X(-95)+'" y1="'+Y(-95)+'" x2="'+X(2000)+'" y2="'+Y(2000)+'" stroke="var(--dim)" stroke-dasharray="4 4"/>';
-    g+='<text x="'+X(1400)+'" y="'+(Y(-75))+'" font-size="11.5" font-weight="700" text-anchor="middle" style="fill:var(--long)">We see more upside than the Street →</text>';
-    g+='<text x="'+(ml+10)+'" y="'+(mt+14)+'" font-size="11.5" font-weight="700" text-anchor="start" style="fill:var(--short)">↖ Street sees more upside than we do</text>';
-    g+='<text x="'+((W+ml)/2)+'" y="'+(Hh-6)+'" font-size="11" text-anchor="middle">Our upside (risk-adjusted value vs market cap, log scale)</text>';
-    g+='<text transform="translate(13,'+((Hh-mb+mt)/2)+') rotate(-90)" font-size="11" text-anchor="middle">Street upside (mean price target vs price)</text>';
-    var P=L.filter(function(x){return x.u!=null&&x.su!=null;});
-    P.sort(function(a,b){return b.sp-a.sp;}).forEach(function(x){var rr=3+Math.sqrt(Math.max(0,x.sp))*1.3;g+='<circle class="syn-dot" data-tk="'+x.t+'" cx="'+X(Math.min(x.u,3000)).toFixed(1)+'" cy="'+Y(x.su).toFixed(1)+'" r="'+rr.toFixed(1)+'" fill="'+col[x.side]+'" fill-opacity="'+(x.side==='n'?.35:.6)+'" stroke="var(--bg)" stroke-width=".8"><title>'+x.t+' · ours '+B.P(x.u)+' · Street '+B.P(x.su)+' ('+x.an+' analysts) · specialists '+Math.round(x.sp)+'%</title></circle>';});
-    var lab=P.filter(function(x){return (x.r.mc||0)>=3e8&&x.an>=3;}).sort(function(a,b){return Math.abs(b.gap)-Math.abs(a.gap);}).slice(0,10);
-    lab.forEach(function(x){g+='<text x="'+(X(Math.min(x.u,3000))+7)+'" y="'+(Y(x.su)+3)+'" font-size="10" font-weight="700" style="fill:var(--text)">'+x.t+'</text>';});
+    [-80,-50,0,100,300,1000].filter(function(v){return v<=yl[1];}).forEach(function(v){g+='<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--line)" stroke-width="'+(v===0?1.4:.6)+'"/><text x="'+(ml-6)+'" y="'+(Y(v)+3)+'" font-size="10.5" text-anchor="end">'+(v>0?'+':'')+v+'%</text>';});
+    if(CO.y==='su')g+='<line x1="'+X(-95)+'" y1="'+Y(-95)+'" x2="'+X(yl[1])+'" y2="'+Y(yl[1])+'" stroke="var(--dim)" stroke-dasharray="4 4"/>';
+    g+='<text x="'+(ml+10)+'" y="'+(mt+14)+'" font-size="11.5" font-weight="700" style="fill:var(--short)">↖ '+yl[2]+'</text><text x="'+(W-mr-8)+'" y="'+(Hh-mb-10)+'" font-size="11.5" font-weight="700" text-anchor="end" style="fill:var(--long)">'+yl[3]+' ↘</text>';
+    g+='<text x="'+((W+ml)/2)+'" y="'+(Hh-6)+'" font-size="11" text-anchor="middle">Our upside (risk-adjusted value vs market cap, log scale)</text><text transform="translate(13,'+((Hh-mb+mt)/2)+') rotate(-90)" font-size="11" text-anchor="middle">'+yl[0]+'</text>';
+    var P=L.filter(function(x){return x.u!=null&&yval(x)!=null;});
+    P.sort(function(a,b){return b.sp-a.sp;}).forEach(function(x){var yv=yval(x),rr=3+Math.sqrt(Math.max(0,x.sp))*1.3;g+='<circle class="syn-dot" data-tk="'+x.t+'" cx="'+X(Math.min(x.u,3000)).toFixed(1)+'" cy="'+Y(yv).toFixed(1)+'" r="'+rr.toFixed(1)+'" fill="'+col[x.side]+'" fill-opacity="'+(x.side==='n'?.35:.6)+'" stroke="var(--bg)" stroke-width=".8"><title>'+x.t+' · ours '+B.P(x.u)+' · '+(CO.y==='su'?'Street '+B.P(x.su)+' ('+x.an+')':(CO.y==='r12'?'12M ':'3M ')+B.P(yv))+' · specialists '+Math.round(x.sp)+'%</title></circle>';});
+    var lab=P.filter(function(x){return (x.r.mc||0)>=3e8;}).sort(function(a,b){return Math.abs(lt(b.u)-lt(yval(b)))-Math.abs(lt(a.u)-lt(yval(a)));}).slice(0,10);
+    lab.forEach(function(x){g+='<text x="'+(X(Math.min(x.u,3000))+7)+'" y="'+(Y(yval(x))+3)+'" font-size="10" font-weight="700" style="fill:var(--text)">'+x.t+'</text>';});
     return g+'</svg>';
   }
   function coHtml(){
-    H();var A=rows(),q=CO.q.toLowerCase();
-    var L=A.filter(function(x){var r=x.r;if(CO.side==='l'&&x.side!=='l')return false;if(CO.side==='s'&&!(x.side==='s'||x.side==='a'))return false;if(CO.ta&&r.ta!==CO.ta)return false;if(CO.qual&&!B.quality(r))return false;if(CO.dis&&!(x.gap!=null&&Math.abs(x.gap)>=150&&x.an>=3))return false;
-      if(q&&(r.ticker+' '+(r.nick||r.name||'')+' '+(r.drug||'')+' '+(r.indication||'')).toLowerCase().indexOf(q)<0)return false;return true;});
-    var key={gap:function(x){return x.gap;},u:function(x){return x.u;},su:function(x){return x.su;},s:function(x){return x.s;},rw:function(x){return x.rw;},sp:function(x){return x.sp;},cd:function(x){return x.cd||null;},mc:function(x){return x.r.mc;}}[CO.sort];
+    H();var A=rows().concat(CO.parked?parkedRows():[]),q=CO.q.trim().toLowerCase();
+    var FM=[],FH={};if(q.length>=3){var F=funds();var rx=new RegExp('(^|[^a-z])'+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');Object.keys(F).forEach(function(n){if(rx.test(n))FM.push(n);});FM.forEach(function(n){F[n].forEach(function(p){FH[p.t]=(FH[p.t]||0)+p.pct;});});}
+    var tickerHit=A.some(function(x){var r=x.r;return (r.ticker+' '+(r.nick||r.name||'')+' '+(r.drug||'')+' '+(r.indication||'')).toLowerCase().indexOf(q)>=0;});
+    var fundMode=FM.length>0&&!tickerHit;
+    var L=A.filter(function(x){var r=x.r;if(CO.side==='l'&&x.side!=='l')return false;if(CO.side==='s'&&!(x.side==='s'||x.side==='a'))return false;if(CO.ta&&r.ta!==CO.ta)return false;if(CO.ig&&r.indgroup!==CO.ig)return false;
+      if(CO.qual&&!B.quality(r))return false;if(CO.dis&&!(x.gap!=null&&Math.abs(x.gap)>=150&&x.an>=3))return false;if(CO.below&&!((r.cash||0)-(r.debt||0)>(r.mc||0)))return false;if(CO.raise&&!x.rad)return false;if(CO.sug&&!sugOf(x.t))return false;if(CO.port&&!inPort(x.t))return false;
+      if(q){if(fundMode)return FH[x.t]!=null;if((r.ticker+' '+(r.nick||r.name||'')+' '+(r.drug||'')+' '+(r.indication||'')).toLowerCase().indexOf(q)<0)return false;}return true;});
+    var gk=function(k){return function(x){return k==='_sp'?x.sp:k==='_an'?x.an:x.r[k];};};
+    var key={gap:function(x){return x.gap;},u:function(x){return x.u;},su:function(x){return x.su;},s:function(x){return x.s;},rw:function(x){return x.rw;},sp:function(x){return x.sp;},cd:function(x){return x.cd||null;},mc:function(x){return x.r.mc;},fund:function(x){return FH[x.t];},since:function(x){var p=inPort(x.t)?portfolio[x.t]:null;return p&&p.price&&x.r.price?x.r.price/p.price-1:null;}}[CO.sort]||gk(CO.sort);
     L.sort(function(a,b){var va=key(a),vb=key(b);if(va==null&&vb==null)return 0;if(va==null)return 1;if(vb==null)return -1;return (va>vb?1:va<vb?-1:0)*CO.dir;});
-    var tas=Array.from(new Set(A.map(function(x){return x.r.ta;}))).sort();
-    var big=A.filter(function(x){return x.gap!=null&&x.an>=3&&(x.r.mc||0)>=1.5e8;});
-    var weMore=big.slice().sort(function(a,b){return b.gap-a.gap;}).slice(0,6), stMore=big.slice().sort(function(a,b){return a.gap-b.gap;}).slice(0,6);
-    var mini=function(T,arr){return '<div><table class="brf-t"><tr><th>'+T+'</th><th class="r">Ours</th><th class="r">Street</th><th>Why we differ (our thesis)</th></tr>'+arr.map(function(x){return '<tr><td>'+B.tk(x.t)+' '+B.cb(x.r.call)+'</td><td class="r">'+B.P(x.u)+'</td><td class="r">'+B.P(x.su)+'</td><td class="sm">'+B.E(B.trunc(x.r.pitch_concise||x.r.pitch,140))+'</td></tr>';}).join('')+'</table></div>';};
+    var tas=Array.from(new Set(A.map(function(x){return x.r.ta;}))).filter(Boolean).sort();
     var th=function(k,l,r){return '<th class="syn-th'+(r?' r':'')+(CO.sort===k?' on':'')+'" data-sort="'+k+'">'+l+(CO.sort===k?(CO.dir<0?' ▼':' ▲'):'')+'</th>';};
-    var nL=A.filter(function(x){return x.u!=null&&x.su!=null;}).length;
-    return '<div class="brf-sub"><b>One row per company, one sentence per thesis.</b> Every row joins our valuation, the Street\'s price target, science, cash, likely raises, specialist ownership and the next catalyst. The chart shows where our view differs from consensus, which is where any edge has to be.</div>'
-      +'<div class="brf-h"><b>Where we disagree with the Street</b><span>'+nL+' names with both views · dot size = specialist ownership in top holders · analyst targets as of '+B.E(((J('asof-baked')||{}).pt||{}).asof||'Nov 6')+'</span></div>'
-      +'<div class="syn-chart">'+scatter(L)+'</div><div class="syn-cap">On the dashed line we agree with consensus, so there is little edge. Far below it, we are much more bullish than analysts: each of those needs a reason the Street is missing. Far above it, analysts are more bullish than we are: candidates for avoid or short.</div>'
-      +'<div class="syn-two">'+mini('We are far more bullish',weMore)+mini('Street is far more bullish',stMore)+'</div>'
-      +'<div class="brf-h"><b>All companies</b><span>Click a column to sort; click a ticker for the full card. Detail tables (all fields, DCF model, holders, area notes, parked) are under the switch in the top bar.</span></div>'
-      +'<div class="syn-ctl"><input id="coQ" placeholder="Search ticker, drug, indication" value="'+B.E(CO.q)+'" style="min-width:220px">'
+    var on=Object.keys(CO.g).filter(function(k){return CO.g[k];});
+    var chip=function(id,l,v,t){return '<span class="chip'+(v?' on':'')+'" data-chip="'+id+'"'+(t?' title="'+t+'"':'')+'>'+l+'</span>';};
+    var bigd=rows().filter(function(x){return x.gap!=null&&x.an>=3&&(x.r.mc||0)>=1.5e8;});
+    var h='<div class="brf-sub"><b>Every covered company in one table.</b> The default columns and the one-line thesis join valuation, the Street, science, cash, likely raises, specialists and the next catalyst. Add column groups for more detail, use the chips to narrow down, type a fund name in the search box to see its holdings, and click any ticker for the full company card.</div>';
+    h+='<div class="brf-h"><b>'+(CO.y==='su'?'Where we disagree with the Street':'Our value vs recent price moves')+'</b><span>Vertical axis: '+['su','r12','r3'].map(function(k){return '<span class="chip'+(CO.y===k?' on':'')+'" data-y="'+k+'" style="margin-left:4px">'+({su:'Street upside',r12:'12M return',r3:'3M return'})[k]+'</span>';}).join('')+' · dot size = specialist ownership · follows the filters below</span></div>';
+    h+='<div class="syn-chart">'+scatter(L)+'</div>';
+    h+='<div class="syn-cap">'+(CO.y==='su'?'Dashed line = we agree with analysts. Note the Street is more bullish than us on most small caps, so read the distance from the cloud, not from the line. Biggest gaps (3+ analysts, cap ≥$150M): we are more bullish on '+bigd.slice().sort(function(a,b){return b.gap-a.gap;}).slice(0,5).map(function(x){return x.t;}).join(', ')+'; the Street is more bullish on '+bigd.slice().sort(function(a,b){return a.gap-b.gap;}).slice(0,5).map(function(x){return x.t;}).join(', ')+'.':'Top-left: the stock ran although our value is below the price (short candidates). Bottom-right: cheap on our numbers and beaten down (either opportunity or a broken thesis; check the card).')+'</div>';
+    h+='<div class="syn-ctl"><input id="coQ" placeholder="Search ticker, drug, indication or fund" value="'+B.E(CO.q)+'" style="min-width:250px">'
       +'<select id="coTa"><option value="">All areas</option>'+tas.map(function(t){return '<option'+(t===CO.ta?' selected':'')+'>'+B.E(t)+'</option>';}).join('')+'</select>'
       +[['all','All calls'],['l','Long side'],['s','Short / Avoid']].map(function(c){return '<span class="chip'+(CO.side===c[0]?' on':'')+'" data-side="'+c[0]+'">'+c[1]+'</span>';}).join('')
-      +'<span class="chip'+(CO.qual?' on':'')+'" id="coQual" title="Science >=3.5, cap >=$500M, runway >=8Q">Quality only</span><span class="chip'+(CO.dis?' on':'')+'" id="coDis" title="Ours vs Street differ by 150+ pts, 3+ analysts">Big disagreements</span><span class="cnt">'+L.length+' of '+A.length+'</span></div>'
-      +'<table class="brf-t"><tr><th>Company</th><th>Call</th>'+th('u','Ours',1)+th('su','Street',1)+th('gap','Gap',1)+th('s','Sci',1)+th('rw','Cash',1)+th('sp','Spec.',1)+th('cd','Next',1)+th('mc','Cap',1)+'<th>Thesis in one line</th></tr>'
-      +L.map(function(x){var r=x.r;return '<tr><td>'+B.tk(x.t)+'<div class="sm">'+B.E(B.trunc(r.nick||r.name,20))+' · '+B.E(B.trunc(r.ta,16))+'</div></td><td>'+B.cb(r.call)+(B.quality(r)&&x.side==='l'?'<span class="brf-q">Q</span>':'')+'</td><td class="r '+B.PC(x.u)+'">'+B.P(x.u)+'</td><td class="r">'+B.P(x.su)+'</td><td class="r '+B.PC(x.gap)+'">'+(x.gap==null?'—':(x.gap>0?'+':'')+Math.round(x.gap))+'</td><td class="r">'+(x.s==null?'—':x.s.toFixed(1))+'</td><td class="r">'+(x.rw==null?'—':Math.round(x.rw)+'Q')+(x.rad?' <span class="brf-w" title="'+B.E(x.rad.timing)+'">raise</span>':'')+'</td><td class="r">'+(x.sp?Math.round(x.sp)+'%':'—')+'</td><td class="r">'+(x.cd?fdate(x.cd):'—')+'</td><td class="r">'+B.M(r.mc)+'</td><td class="syn-thesis">'+thesis(x)+'</td></tr>';}).join('')+'</table>';
+      +chip('qual','Quality',CO.qual,'Science >=3.5, cap >=$500M, runway >=8Q')+chip('dis','Big disagreements',CO.dis,'Ours vs Street differ by 150+ pts, 3+ analysts')+chip('raise','Likely raise',CO.raise,'Flagged by the raise model')+chip('below','Below cash',CO.below,'Net cash above market cap')+chip('sug','Value-raising action',CO.sug,'Companies where our suggestion is an action (new indication, partner, trial change) rather than better disclosure')+chip('port','My portfolio',CO.port)+chip('parked','Include parked',CO.parked,'Add the '+PK.length+' names outside the $50M-$30B band')
+      +(CO.ig?'<span class="chip on" data-chip="ig">Group: '+B.E(CO.ig)+' ✕</span>':'')+'<span class="cnt">'+L.length+' of '+A.length+'</span></div>';
+    h+='<div class="syn-ctl"><span class="sm" style="color:var(--faint)">Columns:</span>'+GROUPS.map(function(g){return '<span class="chip'+(CO.g[g[0]]?' on':'')+'" data-g="'+g[0]+'">'+g[1]+'</span>';}).join('')+(CO.port?'<span class="sm" style="margin-left:8px"><a href="#" id="coPortEd">Edit portfolio notes →</a></span>':'')+'</div>';
+    if(fundMode){var tot=L.reduce(function(a,x){return a+(FH[x.t]||0)/100*(x.r.mc||0);},0);h+='<div class="brf-note"><b>Fund holdings: '+B.E(FM.slice(0,3).join(', '))+(FM.length>3?' +'+(FM.length-3)+' more':'')+'</b> · '+L.length+' positions where the fund is a top-7 holder · about '+B.M(tot)+' at today\'s prices. Holder lists are mostly from Sep 13F filings.</div>';}
+    var extra=[];on.forEach(function(g){extra=extra.concat(COLS[g]);});
+    h+='<div style="overflow-x:auto"><table class="brf-t"><tr><th>Company</th><th>Call</th>'+th('u','Ours',1)+th('su','Street',1)+th('gap','Gap',1)+th('s','Sci',1)+th('rw','Cash',1)+th('cd','Next',1)+th('mc','Cap',1)
+      +(fundMode?th('fund','Fund %',1):'')+(CO.port?th('since','Since added',1)+'<th>Notes</th>':'')
+      +extra.map(function(c){return c[2]?th(c[2],c[0],1):'<th>'+c[0]+'</th>';}).join('')+'<th style="min-width:340px">Thesis in one line</th></tr>'
+      +L.map(function(x){var r=x.r,pe=CO.port&&inPort(x.t)?portfolio[x.t]:null;var since=pe&&pe.price&&r.price?r.price/pe.price-1:null;
+        return '<tr'+(x.parked?' style="opacity:.75"':'')+'><td>'+(x.parked?'<b>'+B.E(x.t)+'</b>':B.tk(x.t))+'<div class="sm">'+B.E(B.trunc(r.nick||r.name,20))+' · '+B.E(B.trunc(r.ta,16))+'</div></td><td>'+B.cb(r.call)+(!x.parked&&B.quality(r)&&x.side==='l'?'<span class="brf-q">Q</span>':'')+(sugOf(x.t)?' <span class="brf-w" title="'+B.E(B.trunc(sugOf(x.t).suggestion,200))+'">action</span>':'')+'</td>'
+        +'<td class="r '+B.PC(x.u)+'">'+B.P(x.u)+'</td><td class="r">'+B.P(x.su)+'</td><td class="r '+B.PC(x.gap)+'">'+(x.gap==null?'—':(x.gap>0?'+':'')+Math.round(x.gap))+'</td><td class="r">'+(x.s==null?'—':x.s.toFixed(1))+'</td><td class="r">'+(x.rw==null?'—':Math.round(x.rw)+'Q')+(x.rad?' <span class="brf-w" title="'+B.E(x.rad.timing)+'">raise</span>':'')+'</td><td class="r">'+(x.cd?fdate(x.cd):'—')+'</td><td class="r">'+B.M(r.mc)+'</td>'
+        +(fundMode?'<td class="r">'+(FH[x.t]!=null?FH[x.t].toFixed(1)+'%':'—')+'</td>':'')
+        +(CO.port?'<td class="r '+PC1(since)+'">'+R1(since)+(pe&&pe.added?'<div class="sm">since '+B.E(pe.added)+'</div>':'')+'</td><td class="sm">'+B.E(B.trunc(pe&&(pe.notes||pe.note)||'',80))+'</td>':'')
+        +extra.map(function(c){return '<td class="'+(c[2]?'r':'')+'">'+c[1](x)+'</td>';}).join('')
+        +'<td class="syn-thesis">'+(x.parked?'<b>Parked ('+B.E(r.reason||'')+')</b> · '+B.E(B.trunc(r.pitch_concise||'',140)):thesis(x))+'</td></tr>';}).join('')+'</table></div>';
+    return h;
   }
   function coAfter(doc){
     var rr=function(){B.rerender();};
-    var q=doc.querySelector('#coQ');if(q){var tmo;q.oninput=function(){CO.q=q.value;clearTimeout(tmo);tmo=setTimeout(function(){rr();var n=document.getElementById('coQ');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length);}},250);};}
+    var q=doc.querySelector('#coQ');if(q){var tmo;q.oninput=function(){CO.q=q.value;clearTimeout(tmo);tmo=setTimeout(function(){rr();var n=document.getElementById('coQ');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length);}},300);};}
     var ta=doc.querySelector('#coTa');if(ta)ta.onchange=function(){CO.ta=ta.value;rr();};
     doc.querySelectorAll('[data-side]').forEach(function(c){c.onclick=function(){CO.side=c.dataset.side;rr();};});
-    var qu=doc.querySelector('#coQual');if(qu)qu.onclick=function(){CO.qual=!CO.qual;rr();};
-    var di=doc.querySelector('#coDis');if(di)di.onclick=function(){CO.dis=!CO.dis;rr();};
+    doc.querySelectorAll('[data-chip]').forEach(function(c){c.onclick=function(){var k=c.dataset.chip;if(k==='ig')CO.ig='';else CO[k]=!CO[k];rr();};});
+    doc.querySelectorAll('[data-g]').forEach(function(c){c.onclick=function(){CO.g[c.dataset.g]=!CO.g[c.dataset.g];rr();};});
+    doc.querySelectorAll('[data-y]').forEach(function(c){c.onclick=function(){CO.y=c.dataset.y;rr();};});
     doc.querySelectorAll('[data-sort]').forEach(function(h){h.onclick=function(){var k=h.dataset.sort;if(CO.sort===k)CO.dir=-CO.dir;else{CO.sort=k;CO.dir=(k==='cd'||k==='rw')?1:-1;}rr();};});
+    var pe=doc.querySelector('#coPortEd');if(pe)pe.onclick=function(e){e.preventDefault();if(window.navLegacy)window.navLegacy('port');};
     dots(doc);
   }
   function dots(doc){doc.querySelectorAll('.syn-dot[data-tk]').forEach(function(d){d.onclick=function(){var i=B.IDX[d.dataset.tk];if(i!=null&&typeof openDrawer==='function')openDrawer(i);};});}
   // ---------- area scorecard ----------
-  var AR={sort:'n90',dir:-1};
+  var AR={sort:'n90',dir:-1,open:{}};
   function areaRows(){
     H();var A=rows(),G={},in90=new Date(B.today.getTime()+90*864e5);
     A.forEach(function(x){var t=x.r.ta;(G[t]=G[t]||[]).push(x);});
@@ -139,13 +180,25 @@
   function areasHtml(){
     var R=areaRows();var k=AR.sort;R.sort(function(a,b){var va=a[k],vb=b[k];if(va==null)return 1;if(vb==null)return -1;return (va>vb?1:va<vb?-1:0)*AR.dir;});
     var th=function(kk,l){return '<th class="syn-th r'+(AR.sort===kk?' on':'')+'" data-asort="'+kk+'">'+l+(AR.sort===kk?(AR.dir<0?' ▼':' ▲'):'')+'</th>';};
-    return '<div class="brf-sub"><b>Which areas deserve time this month, and why.</b> Each therapeutic area on one row: how it has traded, how cheap it is on our numbers, how good its science is, how many calls and catalysts it has, how much stock is likely to come, and where the white space is. Bubble size = combined market cap; colour = median science (green strong, amber middling, red weak).</div>'
+    return '<div class="brf-sub"><b>Which areas deserve time this month, and why.</b> Click an area to open its indication groups (players, best asset, patients, white space), then a group to see its companies. Each therapeutic area on one row: how it has traded, how cheap it is on our numbers, how good its science is, how many calls and catalysts it has, how much stock is likely to come, and where the white space is. Bubble size = combined market cap; colour = median science (green strong, amber middling, red weak).</div>'
       +'<div class="syn-chart">'+areaChart(R)+'</div>'
       +'<table class="brf-t"><tr><th>Area</th>'+th('n','Names')+th('cap','Cap')+th('r1','1M')+th('r3','3M')+th('r12','12M')+th('u','Our up.')+th('su','Street up.')+th('s','Sci')+th('nl','Long')+th('ns','Short')+th('n90','Cats 90d')+th('supPct','Supply')+'<th>Read</th><th>Best longs</th></tr>'
-      +R.map(function(o){return '<tr><td><b>'+B.E(o.ta)+'</b></td><td class="r">'+o.n+'</td><td class="r">'+B.M(o.cap)+'</td><td class="r '+B.PC(o.r1)+'">'+B.P(o.r1)+'</td><td class="r '+B.PC(o.r3)+'">'+B.P(o.r3)+'</td><td class="r '+B.PC(o.r12)+'">'+B.P(o.r12)+'</td><td class="r">'+B.P(o.u)+'</td><td class="r">'+B.P(o.su)+'</td><td class="r">'+(o.s==null?'—':o.s.toFixed(1))+'</td><td class="r">'+o.nl+(o.nq?' <span class="brf-q">'+o.nq+'Q</span>':'')+'</td><td class="r">'+o.ns+'</td><td class="r">'+o.n90+'</td><td class="r" title="'+B.M(o.sup)+' expected">'+(o.sup?Math.round(o.supPct)+'%':'—')+'</td><td class="sm">'+B.E(o.read)+'</td><td>'+o.top.map(B.tk).join(' ')+'</td></tr>';}).join('')+'</table>'
+      +R.map(function(o){return '<tr class="syn-arow" data-ta="'+B.E(o.ta)+'" style="cursor:pointer"><td><b>'+(AR.open[o.ta]?'▾ ':'▸ ')+B.E(o.ta)+'</b></td><td class="r">'+o.n+'</td><td class="r">'+B.M(o.cap)+'</td><td class="r '+B.PC(o.r1)+'">'+B.P(o.r1)+'</td><td class="r '+B.PC(o.r3)+'">'+B.P(o.r3)+'</td><td class="r '+B.PC(o.r12)+'">'+B.P(o.r12)+'</td><td class="r">'+B.P(o.u)+'</td><td class="r">'+B.P(o.su)+'</td><td class="r">'+(o.s==null?'—':o.s.toFixed(1))+'</td><td class="r">'+o.nl+(o.nq?' <span class="brf-q">'+o.nq+'Q</span>':'')+'</td><td class="r">'+o.ns+'</td><td class="r">'+o.n90+'</td><td class="r" title="'+B.M(o.sup)+' expected">'+(o.sup?Math.round(o.supPct)+'%':'—')+'</td><td class="sm">'+B.E(o.read)+'</td><td>'+o.top.map(B.tk).join(' ')+'</td></tr>'+(AR.open[o.ta]?'<tr><td colspan="15" style="background:var(--raised);padding:8px 10px 12px">'+groupTable(o.ta)+'</td></tr>':'');}).join('')+'</table>'
       +'<div class="syn-cap">Medians across the area\'s covered names. Supply = sum of likely raise sizes from the raise model as a share of the area\'s market cap. Company-level returns over 1M–36M are under the switch in the top bar.</div>';
   }
-  function areasAfter(doc){doc.querySelectorAll('[data-asort]').forEach(function(h){h.onclick=function(){var k=h.dataset.asort;if(AR.sort===k)AR.dir=-AR.dir;else{AR.sort=k;AR.dir=-1;}B.rerender();};});}
+  function groupTable(ta){
+    var A=rows().filter(function(x){return x.r.ta===ta;}),G={};A.forEach(function(x){var g=x.r.indgroup||'Other';(G[g]=G[g]||[]).push(x);});
+    var U={},C={};(B.GP.under||[]).forEach(function(g){U[g.group]=1;});(B.GP.crowded||[]).forEach(function(g){C[g.group]=1;});
+    var shells=(B.GP.shells||[]).filter(function(s){return s.ta===ta;});var sugs=A.filter(function(x){return sugOf(x.t);});
+    var rowsG=Object.keys(G).map(function(g){var L=G[g],best=L.slice().sort(function(a,b){return (b.s||0)-(a.s||0)||((b.r.pos||0)-(a.r.pos||0));})[0];
+      return {g:g,L:L,best:best,prev:Math.max.apply(null,L.map(function(x){return x.r.prevalence||0;})),nl:L.filter(function(x){return x.side==='l';}).length,cap:L.reduce(function(a,x){return a+(x.r.mc||0);},0)};}).sort(function(a,b){return b.cap-a.cap;});
+    return '<table class="brf-t"><tr><th>Indication group</th><th class="r">Players</th><th class="r">Long</th><th class="r">US prevalence</th><th>Best public asset</th><th class="r">Sci</th><th>Flag</th><th>Companies</th><th></th></tr>'
+      +rowsG.map(function(o){var b=o.best;return '<tr><td><b>'+B.E(o.g)+'</b></td><td class="r">'+o.L.length+'</td><td class="r">'+o.nl+'</td><td class="r">'+(o.prev?big(o.prev):'—')+'</td><td class="sm">'+B.tk(b.t)+' '+B.E(B.trunc(b.r.drug,46))+' · '+B.E(B.trunc(b.r.stage,18))+'</td><td class="r">'+(b.s==null?'—':b.s.toFixed(1))+'</td><td>'+(U[o.g]?'<span class="brf-q">under-served</span>':'')+(C[o.g]?'<span class="brf-w">crowded</span>':'')+'</td><td>'+o.L.sort(function(a,c){return (c.r.mc||0)-(a.r.mc||0);}).map(function(x){return B.tk(x.t);}).join(' ')+'</td><td><a href="#" data-ig="'+B.E(o.g)+'">Open in Companies →</a></td></tr>';}).join('')+'</table>'
+      +'<div class="syn-cap" style="margin:6px 0 0">'+(shells.length?'<b>Below cash:</b> '+shells.map(function(x){return B.tk(x.ticker);}).join(' ')+' · ':'')+(sugs.length?'<b>Value-raising actions suggested:</b> '+sugs.map(function(x){return B.tk(x.t);}).join(' '):'')+'</div>';
+  }
+  function areasAfter(doc){
+    doc.querySelectorAll('.syn-arow').forEach(function(tr){tr.onclick=function(e){if(e.target.closest('.tk'))return;var t=tr.dataset.ta;AR.open[t]=!AR.open[t];B.rerender();};});
+    doc.querySelectorAll('[data-ig]').forEach(function(a){a.onclick=function(e){e.preventDefault();CO.ig=a.dataset.ig;CO.ta='';CO.q='';if(window.navGo)window.navGo('companies','co');};});doc.querySelectorAll('[data-asort]').forEach(function(h){h.onclick=function(){var k=h.dataset.asort;if(AR.sort===k)AR.dir=-AR.dir;else{AR.sort=k;AR.dir=-1;}B.rerender();};});}
   // ---------- what's next: one forward timeline ----------
   var NX={f:'all'};
   function monthKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');}
@@ -192,7 +245,16 @@
       h+='<div class="syn-mo"><b>'+MON[+k.slice(5)-1]+' '+k.slice(0,4)+'</b><span>'+L.filter(function(e){return e.ty==='cat';}).length+' catalysts'+(tot?' · expected supply '+B.M(tot)+(s.p?' ('+B.M(s.p)+' we would join)':''):'')+'</span></div>'
         +'<table class="brf-t"><tr><th>Date</th><th>Type</th><th>Name</th><th>Call</th><th>Event</th><th>What we expect</th><th>Financing</th></tr>'
         +L.map(function(e){return '<tr><td class="r">'+fdate(e.d)+'</td><td><span class="syn-ty '+e.ty+'">'+lab[e.ty]+'</span></td><td>'+(B.IDX[e.t]!=null?B.tk(e.t):'<b>'+B.E(e.t)+'</b>')+(e.mc?'<div class="sm">'+B.M(e.mc)+'</div>':'')+'</td><td>'+(e.call?B.cb(e.call):'')+'</td><td class="sm">'+B.E(B.trunc(e.txt,120))+'</td><td class="sm">'+B.E(e.dir)+'</td><td class="sm">'+B.E(e.fin)+'</td></tr>';}).join('')+'</table>';});
+    h+=ipoMarket();
     return h;
+  }
+  function ipoMarket(){
+    var rc=(IP.recent||[]).slice().sort(function(a,b){return (b.pricing_date||'')<(a.pricing_date||'')?-1:1;});if(!rc.length)return '';
+    var ret=rc.map(function(r){return r.return_since_ipo_pct;}).filter(function(v){return v!=null;});
+    return '<div class="syn-mo" style="margin-top:26px"><b>IPO market</b><span>'+rc.length+' biotech IPOs in the last 12 months · median '+B.P(B.med(ret))+' vs offer · '+ret.filter(function(v){return v>0;}).length+' trading above offer</span></div>'
+      +'<div style="overflow-x:auto"><table class="brf-t"><tr><th>Company</th><th class="r">Priced</th><th class="r">Raised</th><th class="r">Offer → now</th><th class="r">vs offer</th><th>Lead asset · indication</th><th>Stage · modality</th><th>Key backers</th><th>Lead banks</th><th class="r">Lock-up ends</th><th>Our call</th></tr>'
+      +rc.map(function(r){var cov=B.IDX[r.ticker]!=null?B.DA[B.IDX[r.ticker]]:null;var lu=r.lockup_expiry||(r.first_trade_date?(function(){var d=new Date(r.first_trade_date+'T00:00:00');d.setDate(d.getDate()+180);return d.toISOString().slice(0,10)+' est.';})():'');
+        return '<tr><td>'+(cov?B.tk(r.ticker):'<b>'+B.E(r.ticker||'')+'</b>')+'<div class="sm">'+B.E(B.trunc(r.name,24))+'</div></td><td class="r">'+B.E((r.pricing_date||'').slice(2))+'</td><td class="r">'+B.M(r.gross_proceeds_usd)+'</td><td class="r">$'+B.E(r.offer_price)+' → $'+B.E(r.latest_price)+'</td><td class="r '+B.PC(r.return_since_ipo_pct)+'">'+B.P(r.return_since_ipo_pct)+'</td><td class="sm">'+B.E(B.trunc((r.lead_asset||'')+' · '+(r.indication||''),70))+'</td><td class="sm">'+B.E(B.trunc((r.stage||'')+' · '+(r.modality||''),50))+'</td><td class="sm">'+B.E(B.trunc(r.key_backers,60))+'</td><td class="sm">'+B.E(B.trunc((r.lead_uw||[]).join(', '),50))+'</td><td class="r">'+B.E(lu)+'</td><td>'+(cov?B.cb(cov.call):'<span class="sm">not covered</span>')+'</td></tr>';}).join('')+'</table></div>';
   }
   function nextAfter(doc){doc.querySelectorAll('[data-nx]').forEach(function(c){c.onclick=function(){NX.f=c.dataset.nx;B.rerender();};});}
   // ---------- record: did we have the big moves? ----------
@@ -207,6 +269,34 @@
     h+='<div class="brf-note g"><b>What this says.</b> Data readouts drive almost half of the biggest moves in both directions, so the calendar is where the edge has to come from. M&A, financing and short reports are never on a calendar, so position sizing, not prediction, handles them. The Watch bucket produced most of the big winners: strong science that was not yet cheap.</div>';
     return h;
   };
+  // ---------- company card: the dive (adds Summary, Valuation, Financing, Call history to the existing card) ----------
+  var CH=J('callhist-data')||{};
+  function cardAugment(i){
+    H();var r=B.DA[i];var d=document.querySelector('#drawer .dbody');if(!r||!d||d.querySelector('.syn-card'))return;
+    var x=rows().filter(function(y){return y.t===r.ticker;})[0];if(!x)return;
+    var secs=[].slice.call(d.querySelectorAll(':scope > .sec'));
+    var mk=function(title,body,cls){var e=document.createElement('div');e.className='sec syn-card '+(cls||'');e.innerHTML='<h3>'+title+'</h3>'+body;return e;};
+    var k=B.kill(r);
+    var sum='<div class="syn-sumrow">'+B.cb(r.call)+(B.quality(r)&&x.side==='l'?'<span class="brf-q">Q</span>':'')+' <b>Ours '+B.P(x.u)+'</b> · Street '+B.P(x.su)+(x.an?' ('+x.an+' analysts)':'')+(x.gap!=null?' · gap '+(x.gap>0?'+':'')+Math.round(x.gap)+' pts':'')+'</div><div class="syn-thesis" style="margin:6px 0">'+thesis(x,true)+'</div>'
+      +(k?'<div class="sm"><b>Wrong if:</b> '+B.E(k)+'</div>':'')
+      +(x.rad?'<div class="sm" style="margin-top:4px"><b>Likely equity raise:</b> ~'+B.M(x.rad.size)+' ('+Math.round((x.rad.size_pct||0)*100)+'% of cap), '+B.E(x.rad.timing.toLowerCase())+' · our view: <b>'+B.E(x.rad.view)+'</b></div>':'');
+    d.insertBefore(mk('Summary',sum,'syn-top'),d.firstChild);
+    var m=null;try{m=typeof dcfModel==='function'?dcfModel(r):null;}catch(e){}
+    if(m){var kv=function(l,v){return '<div class="syn-kv"><span>'+l+'</span><b>'+v+'</b></div>';};
+      var val='<div class="syn-kvs">'+kv('Launch',m.launch||'—')+kv('Peak sales',B.M(m.peak))+kv('PoS',m.pos!=null?Math.round(m.pos*100)+'%':'—')+kv('rNPV',B.M(m.rnpv))+kv('+ cash',B.M(m.cash))+kv('= equity value',B.M(m.equity))+kv('Market cap',B.M(r.mc))+kv('Upside',B.P(x.u))+'</div>'
+        +'<div class="syn-dcf">'+(typeof dcfMiniSVG==='function'?dcfMiniSVG(r):'')+'</div><div class="sm">Probability-adjusted sales (green) vs costs (red) by year. Assumptions under ⓘ About → DCF assumptions.</div>';
+      var anchor=secs[1]||null;d.insertBefore(mk('Valuation',val),anchor);}
+    var ev=events().filter(function(e){return e.t===r.ticker;});
+    if(ev.length||x.rad){var fin='<table class="brf-t">'+ev.map(function(e){return '<tr><td class="r">'+fdate(e.d)+'</td><td><span class="syn-ty '+e.ty+'">'+e.ty.toUpperCase()+'</span></td><td class="sm">'+B.E(B.trunc(e.txt,110))+'</td><td class="sm">'+B.E(e.fin||e.dir||'')+'</td></tr>';}).join('')+'</table>'
+        +(x.rad?'<div class="sm" style="margin-top:6px">Raise model: score '+x.rad.score+' · cash '+B.M(x.rad.cash)+' · burn '+B.M(x.rad.burn_q)+'/Q · '+B.E((x.rad.why||[]).join('; '))+'</div>':'');
+      var after=secs.filter(function(e){var h=e.querySelector('h3');return h&&/catalyst/i.test(h.textContent);}).pop();
+      var node=mk('Catalysts & financing, next 6 months',fin);if(after&&after.nextSibling)d.insertBefore(node,after.nextSibling);else d.appendChild(node);}
+    var hist=CH[r.ticker]||[];
+    if(hist.length){var tb='<table class="brf-t"><tr><th>Date</th><th>Call</th><th class="r">Price then</th><th class="r">Since</th><th>Source</th></tr>'+hist.slice().reverse().map(function(hh){var since=hh.p&&r.price?(r.price/hh.p-1)*100:null;return '<tr><td class="r">'+B.E(hh.d)+'</td><td>'+B.cb(hh.c)+'</td><td class="r">'+(hh.p!=null?'$'+hh.p:'—')+'</td><td class="r '+B.PC(since)+'">'+B.P(since)+'</td><td class="sm">'+B.E(hh.src)+'</td></tr>';}).join('')+'</table>';
+      var pp=secs.filter(function(e){var h=e.querySelector('h3');return h&&/Price performance/i.test(h.textContent);})[0];
+      var hn=mk('Our call history',tb);if(pp)d.insertBefore(hn,pp);else d.appendChild(hn);}
+  }
+  try{var _od=openDrawer;openDrawer=function(i){var o=_od.apply(this,arguments);try{cardAugment(i);}catch(e){console.log('card',e);}return o;};}catch(e){}
   window.BRF_PAGES=window.BRF_PAGES||{};
   window.BRF_PAGES.co={html:coHtml,after:coAfter};
   window.BRF_PAGES.areas={html:areasHtml,after:function(d){areasAfter(d);}};
