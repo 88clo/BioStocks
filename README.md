@@ -6,13 +6,17 @@ Open `index.html` in a browser. Five pages, no sub-views; any ticker anywhere op
 
 | Page | What it answers | How |
 | --- | --- | --- |
-| Brief | What matters now | Best ideas, next 45 days, likely raises, whether calls worked. Switch to past monthly memos (Nov, Oct) in the top bar |
+| Brief | What matters now | What changed since the last refresh (call changes, biggest moves, catalyst dates), best ideas, next 45 days, likely raises, whether calls worked. Switch to past monthly memos in the top bar |
 | Companies | Every company, every field, one table | Default columns + one-line thesis (valuation, Street, science, cash, raise, specialists, catalyst). Column groups: +Science, +Market model, +Financials, +Returns, +Ownership. Chips: Long/Short, Quality, Big disagreements, Likely raise, Below cash, Value-raising action, My portfolio, Include parked. Search a fund name to see its holdings. Chart: our upside vs Street upside, 12M or 3M return |
-| Areas | Where to spend time | One row per therapeutic area (returns, valuation, science, calls, catalysts, supply, white space); click an area for its indication groups (players, best asset, prevalence, under-served/crowded, below-cash names, suggested actions); click a group to open those companies |
-| What's next | What happens when, and what it costs | Monthly equity-supply chart, one timeline of catalysts (call, expected direction, follow-on raise), raise windows, IPOs and lock-ups, then the IPO market table |
+| Areas | Where to spend time | Returns over time (median stock vs XBI, compare up to four areas, 3 years quarterly); one row per therapeutic area (returns, valuation, science, calls, catalysts, supply, white space); click an area for its indication groups (players, best asset, prevalence, under-served/crowded, below-cash names, suggested actions); click a group to open those companies |
+| What's next | What to act on, and when | Priority list (top 12 longs, top 5 shorts, each with an action: build before the date, add in the follow-on, pair, size small), monthly equity-supply chart, one timeline of catalysts (call, expected direction, follow-on raise), raise windows, IPOs and lock-ups, then the IPO market table |
 | Record | Does it work | Scored frozen calls, factor attribution, the biggest moves joined with drivers and our calls |
 
-**Company card:** Summary (call, our vs Street upside, one-line thesis, wrong-if, likely raise) · asset pipeline and commercial model · Valuation (DCF numbers and sales/cost curve) · efficacy vs benchmark · thesis, value driver, suggestion · catalysts and schedule · Catalysts & financing next 6 months · press releases · risks · ownership (top holders) · financials · regulatory · Our call history (every frozen call with price then and since) · price performance.
+**Company card** (section links at the top; also opened from the ticker search in the top bar): Summary (call, our vs Street upside, one-line thesis, wrong-if, likely raise, management one-pager) · asset pipeline and commercial model · Valuation (DCF numbers and curve; takeout-multiple fNPV vs full DCF side by side; your own peak sales, PoS and years to launch; PoS × peak-sales sensitivity) · Peers (same indication group) · efficacy vs benchmark · thesis, value driver, suggestion · catalysts and schedule · Catalysts & financing next 6 months · press releases · risks · ownership (top holders) · financials · regulatory · Our call history (every frozen call with price then and since) · price performance.
+
+**Management one-pager:** printable discussion note from any card: our suggestion, the data behind it, how the market values the company (our two methods vs the Street), peers, next six months, specialist shareholders and suggested asks.
+
+Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled sales) and sorts after the others.
 
 **ⓘ About** holds Methodology, Refresh status, Print, and **Full data tables**: every original table (all fields, DCF model and assumptions, value vs momentum, holders by company and by fund, company returns, calendar grid, raise and IPO lists, IPO detail, value-gaps lists, area notes, parked, portfolio editor, return tiles), so nothing the pages summarize is out of reach. Old links (`#companies/dcf`, `#deals/radar`, …) still resolve; `#legacy/<table>` opens a full table directly.
 
@@ -27,6 +31,7 @@ Open `index.html` in a browser. Five pages, no sub-views; any ticker anywhere op
 | backup-112226-v2.html | Nov 22 six-view navigation with 19 lenses, before the merge to twelve |
 | backup-112226-v3.html | Nov 22 twelve lenses (merged pages), before the synthesized pages |
 | backup-112226-v4.html | Nov 22 synthesized pages with detail switches, before the five-page version |
+| backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 
 ## Layout
 
@@ -35,7 +40,8 @@ index.html                 built dashboard (do not edit by hand; run scripts/bui
 pipeline/template.html     page markup, CSS and JS with {{DATA:x}} placeholders
 pipeline/brief.html        Brief / Track record / Raise radar / White space pages (injected at build)
 pipeline/synth.html        Companies table, Areas drill-down, What's next, record join, company-card additions (injected after brief.html)
-pipeline/nav.html          the navigation bar (injected last)
+pipeline/synth2.html       priority list, card peers/valuation/one-pager, returns over time, what-changed strip
+pipeline/nav.html          the navigation bar and ticker search (injected last)
 pipeline/patches/          hand-verified edits, one dated file per run (reproducible)
 pipeline/logs/             refresh change logs and event-check notes with sources
 data/*.json                every data block in the page (one file per <script type="application/json">)

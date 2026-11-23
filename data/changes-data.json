@@ -1,0 +1,215 @@
+{
+ "from": "2026-11-17_before-refresh",
+ "to": "2026-11-22_refresh",
+ "calls": [
+  {
+   "t": "CLLS",
+   "from": "WATCH",
+   "to": "LONG",
+   "up": 63.934426229508205
+  },
+  {
+   "t": "ALLO",
+   "from": "LONG",
+   "to": "STRONG BUY",
+   "up": 212.5
+  },
+  {
+   "t": "IPHA",
+   "from": "HOLD",
+   "to": "STRONG SHORT",
+   "up": -73.2620320855615
+  },
+  {
+   "t": "IMMX",
+   "from": "WATCH",
+   "to": "LONG",
+   "up": 61.29032258064515
+  },
+  {
+   "t": "EXEL",
+   "from": "SHORT",
+   "to": "HOLD",
+   "up": -31.506849315068497
+  },
+  {
+   "t": "RLMD",
+   "from": "WATCH",
+   "to": "LONG",
+   "up": 104.08163265306123
+  },
+  {
+   "t": "CELC",
+   "from": "LONG",
+   "to": "STRONG BUY",
+   "up": 222.5806451612903
+  },
+  {
+   "t": "PYXS",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": 42.85714285714286
+  },
+  {
+   "t": "PBYI",
+   "from": "SHORT",
+   "to": "AVOID",
+   "up": -33.333333333333336
+  },
+  {
+   "t": "LGVN",
+   "from": "SHORT",
+   "to": "AVOID",
+   "up": -32.88590604026845
+  },
+  {
+   "t": "BLTE",
+   "from": "WATCH",
+   "to": "LONG",
+   "up": 85.18518518518519
+  },
+  {
+   "t": "ODTX",
+   "from": "HOLD",
+   "to": "LONG",
+   "up": 56.25
+  },
+  {
+   "t": "MNKD",
+   "from": "WATCH",
+   "to": "LONG",
+   "up": 53.846153846153854
+  },
+  {
+   "t": "SANA",
+   "from": "SHORT",
+   "to": "AVOID",
+   "up": -32.88590604026845
+  },
+  {
+   "t": "ANNX",
+   "from": "LONG",
+   "to": "STRONG BUY",
+   "up": 203.03030303030303
+  },
+  {
+   "t": "VOR",
+   "from": "LONG",
+   "to": "WATCH",
+   "up": 51.515151515151516
+  },
+  {
+   "t": "PRME",
+   "from": "WATCH",
+   "to": "LONG",
+   "up": 69.4915254237288
+  },
+  {
+   "t": "BIOA",
+   "from": "LONG",
+   "to": "STRONG BUY",
+   "up": 233.33333333333334
+  },
+  {
+   "t": "TRDA",
+   "from": "HOLD",
+   "to": "LONG",
+   "up": 63.934426229508205
+  },
+  {
+   "t": "MENS",
+   "from": "SHORT",
+   "to": "AVOID",
+   "up": -28.57142857142857
+  },
+  {
+   "t": "ATHE",
+   "from": "WATCH",
+   "to": "LONG",
+   "up": 53.846153846153854
+  },
+  {
+   "t": "NTRB",
+   "from": "STRONG SHORT",
+   "to": "SHORT",
+   "up": -65.8703071672355
+  },
+  {
+   "t": "VRXA",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -89.82706002034588
+  },
+  {
+   "t": "LYCA",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -70.58823529411764
+  }
+ ],
+ "moves": [
+  {
+   "t": "CUE",
+   "r": -70.6,
+   "call": "LONG"
+  },
+  {
+   "t": "WWB",
+   "r": 42.9,
+   "call": "HOLD"
+  },
+  {
+   "t": "GLSI",
+   "r": 39.9,
+   "call": "WATCH"
+  },
+  {
+   "t": "CRBP",
+   "r": -39.1,
+   "call": "LONG"
+  },
+  {
+   "t": "IPHA",
+   "r": -38.8,
+   "call": "STRONG SHORT"
+  },
+  {
+   "t": "NTHI",
+   "r": -30.6,
+   "call": "STRONG SHORT"
+  },
+  {
+   "t": "CNXU",
+   "r": -29.9,
+   "call": "SHORT"
+  },
+  {
+   "t": "IPSC",
+   "r": -29.0,
+   "call": "AVOID"
+  },
+  {
+   "t": "ENTA",
+   "r": -28.6,
+   "call": "LONG"
+  },
+  {
+   "t": "SLS",
+   "r": -28.5,
+   "call": "STRONG SHORT"
+  },
+  {
+   "t": "PYXS",
+   "r": 28.4,
+   "call": "HOLD"
+  },
+  {
+   "t": "AVXL",
+   "r": -27.8,
+   "call": "AVOID"
+  }
+ ],
+ "catalysts": [],
+ "new": [],
+ "dropped": []
+}

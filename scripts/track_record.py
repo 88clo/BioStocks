@@ -79,6 +79,15 @@ for k in range(5):
     part = q[k*n//5:(k+1)*n//5]; ss = summ([r["ret"] for r in part]); ss["label"] = ["Richest 20%", "2", "3", "4", "Cheapest 20%"][k]
     ss["up_range"] = [round(part[0]["up"]), round(part[-1]["up"])]; quint.append(ss)
 out["bench"] = {"xbi_1m": ret("XBI", END - dt.timedelta(days=30), END), "xbi_3m": ret("XBI", END - dt.timedelta(days=91), END), "ibb_1m": ret("IBB", END - dt.timedelta(days=30), END)}
+PQ = json.load(open(root/"data/priceq-baked.json"))
+def qend(q):
+    n, y = int(q[0]), 2000 + int(q[2:]); m = 3*n
+    return dt.date(y + (m == 12), (m % 12) + 1, 1) - dt.timedelta(days=1)
+out["bench_q"] = {"quarters": PQ["quarters"], "XBI": [], "IBB": []}
+for b in ("XBI", "IBB"):
+    p_ = pts(b)
+    for q in PQ["quarters"]:
+        e = qend(q); out["bench_q"][b].append(round(close_on(p_, min(e, END)), 2) if close_on(p_, min(e, END)) else None)
 out["signal"] = {"cohort": "Sep 12 snapshot", "by_model_upside": quint}
 
 # --- what actually explained the Sep->Nov move (size, stage, funding, science) ---

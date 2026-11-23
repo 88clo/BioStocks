@@ -1,0 +1,153 @@
+<!-- SYNTH2-START: priority list, card peers/valuation/one-pager, returns over time, what changed (pipeline/synth2.html) -->
+<script type="application/json" id="changes-data">{{DATA:changes-data}}</script>
+<style id="syn2-css">
+.pr-why{display:flex;flex-wrap:wrap;gap:3px}.pr-why span{font-size:9.5px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--raised);color:var(--dim);white-space:nowrap}
+.pr-act{font-weight:700;font-size:12px}
+#drawer .syn-nav{position:sticky;top:0;z-index:3;background:var(--bg);display:flex;flex-wrap:wrap;gap:4px;padding:6px 0 8px;border-bottom:1px solid var(--line);margin-bottom:8px}
+#drawer .syn-nav button{background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:3px 9px;font-size:11px;color:var(--dim);cursor:pointer}
+#drawer .syn-nav button.op{border-color:var(--cyan);color:var(--cyan);font-weight:700}
+.val-two{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.val-two>div{background:var(--raised);border-radius:8px;padding:8px 10px}
+.val-two b{font-family:var(--mono);font-size:15px}.val-two .l{font-size:10.5px;text-transform:uppercase;color:var(--faint)}
+.val-in{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0;font-size:12px}
+.val-in input{width:86px;background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:3px 6px;font-family:var(--mono);color:var(--text)}
+.sens td,.sens th{text-align:center!important;font-family:var(--mono);font-size:11px}.sens td.base{outline:2px solid var(--cyan)}
+#onepager{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.45);display:none;overflow:auto}
+#onepager.open{display:block}
+#onepager .op-doc{background:#fff;color:#111;max-width:820px;margin:30px auto;padding:34px 40px;border-radius:8px;font:13px/1.5 Georgia,serif}
+#onepager .op-doc h1{font:700 22px/1.2 var(--disp,Arial);margin:0 0 2px}#onepager .op-doc h2{font:700 13px/1.2 Arial;text-transform:uppercase;letter-spacing:.06em;color:#555;margin:18px 0 6px;border-bottom:1px solid #ddd;padding-bottom:3px}
+#onepager table{width:100%;border-collapse:collapse;font:11.5px/1.35 Arial}#onepager td,#onepager th{border-bottom:1px solid #eee;padding:4px 5px;text-align:left;vertical-align:top}
+#onepager .op-bar{max-width:820px;margin:16px auto -18px;display:flex;gap:8px;justify-content:flex-end}
+#onepager .op-bar button{background:#fff;border:1px solid #bbb;border-radius:6px;padding:6px 12px;cursor:pointer;font-weight:700}
+@media print{body.op-print>*:not(#onepager){display:none!important}body.op-print #onepager{position:static;background:none;display:block}body.op-print .op-bar{display:none}body.op-print .op-doc{margin:0;max-width:none;box-shadow:none}}
+.rot-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}
+</style>
+<div id="onepager" aria-label="Management one-pager"></div>
+<script id="syn2-js">
+(function(){
+  var B=function(){return window.BRF;},S=function(){return window.SYN;};
+  var CHG=(function(){try{var e=document.getElementById('changes-data');return e&&e.textContent.trim()?JSON.parse(e.textContent):null;}catch(err){return null;}})();
+  var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  // ================= 1. Priority list (top of What's next) =================
+  function partner(x){var b=B(),A=S().rows();var same=A.filter(function(y){return y.t!==x.t&&y.side==='l'&&y.r.indgroup&&y.r.indgroup===x.r.indgroup;});
+    if(!same.length)same=A.filter(function(y){return y.t!==x.t&&y.side==='l'&&y.r.ta===x.r.ta;});
+    same.sort(function(a,c){return (b.quality(c.r)?1:0)-(b.quality(a.r)?1:0)||(c.u||0)-(a.u||0);});return same[0]?same[0].t:null;}
+  function priority(){
+    var b=B(),A=S().rows(),now=b.today,out=[];
+    A.forEach(function(x){var r=x.r,c=(r.call||'').toUpperCase();if(x.side!=='l'&&x.side!=='s')return;
+      var d=null;if(x.cd){d=Math.round((new Date(x.cd+'T00:00:00')-now)/864e5);if(d<0||d>183)d=null;}
+      var openRaise=x.rad&&/^Now/.test(x.rad.timing)&&x.rad.view==='Participate';
+      if(d==null&&!openRaise)return;
+      var why=[],sc=0,adv=r.adv||0;
+      var strong=(c==='STRONG BUY'||c==='STRONG SHORT');sc+=strong?3:2;why.push(strong?'strong call':'call');
+      if(x.side==='l'&&b.quality(r)){sc+=2;why.push('quality');}
+      if(x.s!=null&&((x.side==='l'&&x.s>=3.5)||(x.side==='s'&&x.s<2.5))){sc+=1;why.push(x.side==='l'?'strong science':'weak science');}
+      var u=x.out?1000:x.u;if(u!=null){var v=x.side==='l'?Math.min(3,Math.log10(1+Math.max(0,u)/100)*2):Math.min(3,Math.max(0,-u)/30);sc+=v;if(v>=1.5)why.push(x.side==='l'?'deep value':'rich');}
+      if(x.side==='l'&&x.gap!=null&&x.gap>100&&x.an>=3){sc+=1;why.push('more bullish than Street');}
+      if(x.side==='s'&&x.su!=null&&x.su>100){sc+=.5;why.push('contrarian to Street');}
+      if(d!=null){if(d>=7&&d<=90){sc+=2;why.push(d+'d to event');}else if(d<7){sc+=1;why.push('event in '+d+'d');}else{sc+=1;why.push(d+'d to event');}}
+      if(openRaise){sc+=1.5;why.push('raise window open');}
+      if(adv>=5e6){sc+=1;why.push('liquid');}else if(adv<1e6){sc-=2;why.push('illiquid');}
+      if(x.out){sc-=1;why.push('⚠ check upside');}
+      var act,pt=null;
+      if(x.side==='l'){act=openRaise&&d==null?'Ask for an allocation in the raise':(d!=null&&d<7?'Decide now: event in '+d+' days':'Build before '+S().fdate(x.cd));
+        if(x.rad&&/catalyst/.test(x.rad.timing)&&d!=null)act+=', add in the follow-on if data is good';}
+      else{pt=partner(x);act='Short or avoid into '+(d!=null?S().fdate(x.cd):'the raise')+(pt?' · pair vs '+pt:'')+(x.rad?' · raise likely, adds pressure':'');}
+      if(adv<1e6)act+=' · size small (ADV '+b.M(adv)+')';
+      out.push({x:x,sc:sc,why:why,act:act,d:d});});
+    out.sort(function(a,c){return c.sc-a.sc;});
+    var L=out.filter(function(o){return o.x.side==='l';}).slice(0,12).concat(out.filter(function(o){return o.x.side==='s';}).slice(0,5));
+    return '<div class="brf-h"><b>Priority list: what to act on in the next six months</b><span>'+out.length+' candidates ranked · top 12 longs, then top 5 shorts</span></div>'
+      +'<table class="brf-t"><tr><th>#</th><th>Name</th><th>Call</th><th>What to do</th><th>Event</th><th>Why it ranks</th><th class="r">Ours / Street</th><th class="r">Score</th></tr>'
+      +L.map(function(o,i){var x=o.x,r=x.r;return (i>0&&x.side==='s'&&L[i-1].x.side==='l'?'<tr><td colspan="8" style="background:var(--raised);font-weight:700;font-size:11px">Shorts and avoids</td></tr>':'')+'<tr><td class="r">'+(i+1)+'</td><td>'+b.tk(x.t)+'<div class="sm">'+b.E(b.trunc(r.nick||r.name,18))+' · '+b.M(r.mc)+'</div></td><td>'+b.cb(r.call)+'</td><td class="pr-act">'+b.E(o.act)+'</td><td class="sm">'+(x.cd&&o.d!=null?'<b>'+S().fdate(x.cd)+'</b> ':'')+b.E(b.trunc(r.nc||r.catalyst,80))+'</td><td><div class="pr-why">'+o.why.map(function(w){return '<span>'+b.E(w)+'</span>';}).join('')+'</div></td><td class="r">'+(x.out?'⚠ ':'')+b.P(x.u)+' / '+b.P(x.su)+'</td><td class="r">'+o.sc.toFixed(1)+'</td></tr>';}).join('')+'</table>'
+      +'<div class="syn-cap">Score = call strength (Strong 3, else 2) + quality long 2 + science fit 1 + value (up to 3, upside capped at +1,000%) + more bullish than Street 1 (3+ analysts) + timing (event in 7–90 days 2, sooner or later 1) + open raise window 1.5 + liquidity (ADV ≥$5M +1, <$1M −2), minus 1 for implausible upside. A rules-based queue to start the week with, not a portfolio.</div>';
+  }
+  // ================= 6b. What changed since the last refresh (Brief) =================
+  window.BRF_CHANGES=function(){var b=B();if(!CHG||!b)return '';
+    var up=function(c){return (c||'').replace('STRONG ','S.');};
+    var calls=CHG.calls.slice().sort(function(a,c){var o={'STRONG BUY':0,'LONG':1,'STRONG SHORT':2,'SHORT':3};return (o[a.to]==null?9:o[a.to])-(o[c.to]==null?9:o[c.to]);});
+    return '<div class="brf-h"><b>Changed since the last refresh</b><span>'+b.E(CHG.from.slice(0,10))+' → '+b.E(CHG.to.slice(0,10))+'</span></div><div class="brf-note">'
+      +'<b>'+CHG.calls.length+' call changes:</b> '+calls.slice(0,12).map(function(c){return b.tk(c.t)+' '+up(c.from)+'→<b>'+up(c.to)+'</b>';}).join(', ')+(calls.length>12?' +'+(calls.length-12)+' more':'')
+      +'<br><b>Biggest moves:</b> '+CHG.moves.slice(0,8).map(function(m){return b.tk(m.t)+' <span class="'+b.PC(m.r)+'">'+b.P(m.r)+'</span>';}).join(', ')
+      +(CHG.catalysts.length?'<br><b>Catalyst dates moved:</b> '+CHG.catalysts.slice(0,8).map(function(c){return b.tk(c.t)+' '+b.E(c.from||'—')+'→'+b.E(c.to||'—');}).join(', '):'<br><b>Catalyst dates moved:</b> none')
+      +(CHG.new.length?'<br><b>Added:</b> '+CHG.new.map(b.tk).join(' '):'')+(CHG.dropped.length?'<br><b>Dropped:</b> '+CHG.dropped.map(function(t){return b.E(t);}).join(' '):'')+'</div>';};
+  // ================= 5. Returns over time (top of Areas) =================
+  var ROT={ta:[]};
+  function series(filter){var P=(S().J('priceq-baked')||{}),Q=P.quarters||[],PR=P.prices||{};var n=Q.length,start=Math.max(1,n-12);var idx=[100],labs=[Q[start-1]];
+    var tks=B().DA.filter(filter).map(function(r){return r.ticker;});
+    for(var i=start;i<n;i++){var rs=[];tks.forEach(function(t){var a=(PR[t]||[])[i-1],c=(PR[t]||[])[i];if(a>0&&c>0)rs.push(c/a);});var m=B().med(rs)||1;idx.push(idx[idx.length-1]*m);labs.push(Q[i]);}
+    return {idx:idx,labs:labs};}
+  function benchSeries(k){var T=B().TR||{},bq=T.bench_q;if(!bq)return null;var Q=bq.quarters,n=Q.length,start=Math.max(1,n-12),base=bq[k][start-1];if(!base)return null;var o=[100];for(var i=start;i<n;i++)o.push(bq[k][i]?bq[k][i]/base*100:null);return o;}
+  function rotChart(){var b=B(),U=series(function(r){return r.ta!=='Acquired / Inactive';}),X=benchSeries('XBI');
+    var lines=[{l:'Universe median',v:U.idx,c:'var(--cyan)',w:2.4}];if(X)lines.push({l:'XBI',v:X,c:'var(--dim)',w:1.6,dash:'5 4'});
+    var cols=['var(--long)','var(--amber)','var(--short)','#8b5cf6'];ROT.ta.forEach(function(t,i){lines.push({l:t,v:series(function(r){return r.ta===t;}).idx,c:cols[i%4],w:1.8});});
+    var all=[].concat.apply([],lines.map(function(l){return l.v.filter(function(v){return v!=null;});}));var lo=Math.min.apply(null,all),hi=Math.max.apply(null,all);lo=Math.floor(lo/10)*10-5;hi=Math.ceil(hi/10)*10+5;
+    var W=980,Hh=280,ml=48,mr=150,mt=12,mb=30,n=U.labs.length;var Xp=function(i){return ml+i/(n-1)*(W-ml-mr);},Yp=function(v){return Hh-mb-(v-lo)/(hi-lo)*(Hh-mt-mb);};
+    var g='<svg viewBox="0 0 '+W+' '+Hh+'" role="img" aria-label="Returns over time">';
+    for(var v=Math.ceil(lo/20)*20;v<=hi;v+=20)g+='<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+Yp(v)+'" y2="'+Yp(v)+'" stroke="var(--line)" stroke-width="'+(v===100?1.4:.6)+'"/><text x="'+(ml-6)+'" y="'+(Yp(v)+3)+'" font-size="10.5" text-anchor="end">'+v+'</text>';
+    U.labs.forEach(function(q,i){if(i%2===0||i===n-1)g+='<text x="'+Xp(i)+'" y="'+(Hh-mb+14)+'" font-size="10.5" text-anchor="middle">'+q+'</text>';});
+    var ends=[];lines.forEach(function(l){var d='';l.v.forEach(function(v,i){if(v==null)return;d+=(d?'L':'M')+Xp(i).toFixed(1)+' '+Yp(v).toFixed(1);});g+='<path d="'+d+'" fill="none" stroke="'+l.c+'" stroke-width="'+l.w+'"'+(l.dash?' stroke-dasharray="'+l.dash+'"':'')+'/>';var lv=l.v[l.v.length-1];if(lv!=null)ends.push({y:Yp(lv),t:b.E(l.l.length>22?l.l.slice(0,21)+'…':l.l)+' '+Math.round(lv),c:l.c});});
+    ends.sort(function(a,c){return a.y-c.y;});for(var i=1;i<ends.length;i++)if(ends[i].y-ends[i-1].y<12)ends[i].y=ends[i-1].y+12;
+    ends.forEach(function(e){g+='<text x="'+(W-mr+6)+'" y="'+(e.y+3)+'" font-size="10.5" font-weight="700" style="fill:'+e.c+'">'+e.t+'</text>';});
+    return g+'</svg>';}
+  function rotHtml(){var b=B(),tas=Array.from(new Set(b.DA.map(function(r){return r.ta;}))).filter(function(t){return t&&t!=='Acquired / Inactive';}).sort();
+    return '<div class="brf-h"><b>Returns over time</b><span>Index = 100 three years ago · quarter-end closes · each line chains the median stock\'s quarterly return (equal-weight, not cap-weighted), current quarter to latest close</span></div>'
+      +'<div class="rot-ctl"><select id="rotAdd"><option value="">+ Compare an area…</option>'+tas.filter(function(t){return ROT.ta.indexOf(t)<0;}).map(function(t){return '<option>'+b.E(t)+'</option>';}).join('')+'</select>'+ROT.ta.map(function(t){return '<span class="chip on" data-rotx="'+b.E(t)+'">'+b.E(t)+' ✕</span>';}).join('')+'</div>'
+      +'<div class="syn-chart">'+rotChart()+'</div>';}
+  function rotAfter(doc){var s=doc.querySelector('#rotAdd');if(s)s.onchange=function(){if(s.value&&ROT.ta.length<4)ROT.ta.push(s.value);B().rerender();};doc.querySelectorAll('[data-rotx]').forEach(function(c){c.onclick=function(){ROT.ta=ROT.ta.filter(function(t){return t!==c.dataset.rotx;});B().rerender();};});}
+  // ================= 2-4. Company card: section links, peers, valuation, one-pager =================
+  function withLaunch(copy,L,fn){if(L==null)return fn();var _y=yrsToApproval;try{yrsToApproval=function(rr){return rr===copy?L:_y(rr);};return fn();}finally{yrsToApproval=_y;}}
+  function values(r,peak,pos,L){var c=Object.assign({},r,{peak_sales:peak,pos:pos,probadj_sales:peak*pos});return withLaunch(c,L,function(){var npv=null,m=null;try{npv=npvVal(c);}catch(e){}try{m=dcfModel(c);}catch(e){}
+    var cash=(r.cash>0?r.cash:0);return {f:npv!=null?npv+cash:null,fu:npv!=null&&r.mc?((npv+cash)/r.mc-1)*100:null,d:m?m.equity:null,du:m&&r.mc?(m.equity/r.mc-1)*100:null};});}
+  function peers(r){var A=S().rows(),self=A.filter(function(y){return y.t===r.ticker;})[0];var L=A.filter(function(y){return y.t!==r.ticker&&r.indgroup&&y.r.indgroup===r.indgroup;}),basis='same indication group ('+(r.indgroup||'')+')';
+    if(L.length<2){L=A.filter(function(y){return y.t!==r.ticker&&y.r.ta===r.ta;}).sort(function(a,c){return (c.r.mc||0)-(a.r.mc||0);}).slice(0,6);basis='largest names in '+r.ta;}
+    return {basis:basis,rows:[self].concat(L.slice(0,8)).filter(Boolean)};}
+  function peerTable(P,self){var b=B();return '<table class="brf-t"><tr><th>Company</th><th>Drug · stage</th><th>Latest efficacy</th><th class="r">Sci</th><th class="r">PoS</th><th class="r">Peak</th><th class="r">Ours</th><th class="r">Cap</th><th>Call</th></tr>'
+    +P.rows.map(function(y){var r=y.r,me=y.t===self;return '<tr'+(me?' style="background:var(--raised)"':'')+'><td>'+(me?'<b>'+b.E(y.t)+'</b>':b.tk(y.t))+'</td><td class="sm">'+b.E(b.trunc(r.drug,40))+' · '+b.E(b.trunc(r.stage,14))+'</td><td class="sm">'+b.E(b.trunc(r.efficacy,90))+'</td><td class="r">'+(y.s==null?'—':y.s.toFixed(1))+'</td><td class="r">'+(r.pos!=null?Math.round(r.pos*100)+'%':'—')+'</td><td class="r">'+b.M(r.peak_sales)+'</td><td class="r '+b.PC(y.u)+'">'+(y.out?'⚠ ':'')+b.P(y.u)+'</td><td class="r">'+b.M(r.mc)+'</td><td>'+b.cb(r.call)+'</td></tr>';}).join('')+'</table>';}
+  function valBlock(r){var b=B(),L0=null;try{L0=yrsToApproval(r);}catch(e){}var base=values(r,r.peak_sales,r.pos,null);if(base.f==null&&base.d==null)return '';
+    var diff=(base.fu!=null&&base.du!=null)?Math.round(base.fu-base.du):null;
+    var h='<div class="val-two"><div><div class="l">Takeout multiple (fNPV) · drives the call</div><b>'+b.M(base.f)+'</b> · <span class="'+b.PC(base.fu)+'">'+b.P(base.fu)+'</span><div class="sm">'+(typeof state!=='undefined'?state.psMult:'3')+'× probability-adjusted peak sales, discounted '+(L0!=null?L0:'?')+' years to approval, plus cash</div></div>'
+      +'<div><div class="l">Full DCF (rNPV)</div><b>'+b.M(base.d)+'</b> · <span class="'+b.PC(base.du)+'">'+b.P(base.du)+'</span><div class="sm">Every year\'s sales, costs and tax, weighted by PoS and discounted; shows whether the takeout multiple is reasonable</div></div></div>'
+      +(diff!=null&&Math.abs(diff)>=50?'<div class="sm">The two methods differ by '+(diff>0?'+':'')+diff+' pts: '+(diff>0?'the takeout multiple is more generous than the cash flows support':'the cash flows support more than the takeout multiple implies')+'.</div>':'');
+    h+='<div class="val-in"><b>Your inputs:</b> Peak sales $M <input id="vPeak" type="number" value="'+Math.round((r.peak_sales||0)/1e6)+'"> PoS % <input id="vPos" type="number" value="'+Math.round((r.pos||0)*100)+'"> Years to launch <input id="vL" type="number" step="0.5" value="'+(L0!=null?L0:'')+'"> <span id="vOut" class="sm"></span></div>';
+    var pm=[0.5,0.75,1,1.25,1.5],km=[0.5,0.75,1,1.25,1.5];
+    h+='<div class="sm" style="margin:6px 0 3px"><b>Sensitivity, DCF upside vs market cap:</b> PoS (rows) × peak sales (columns), around the current inputs</div><table class="brf-t sens"><tr><th>PoS \\ Peak</th>'+km.map(function(k){return '<th>'+b.M((r.peak_sales||0)*k)+'</th>';}).join('')+'</tr>'
+      +pm.map(function(p){var ps=Math.min(.95,(r.pos||0)*p);return '<tr><th>'+Math.round(ps*100)+'%</th>'+km.map(function(k){var v=values(r,(r.peak_sales||0)*k,ps,null);return '<td class="'+(p===1&&k===1?'base ':'')+b.PC(v.du)+'">'+b.P(v.du)+'</td>';}).join('')+'</tr>';}).join('')+'</table>';
+    return h;}
+  function bindVal(r){var o=document.getElementById('vOut');if(!o)return;var b=B();var f=function(){var pk=(+document.getElementById('vPeak').value||0)*1e6,ps=Math.max(0,Math.min(100,+document.getElementById('vPos').value||0))/100,Lv=document.getElementById('vL').value;var v=values(r,pk,ps,Lv===''?null:+Lv);
+    o.innerHTML='→ fNPV <b>'+b.M(v.f)+'</b> ('+b.P(v.fu)+') · DCF <b>'+b.M(v.d)+'</b> ('+b.P(v.du)+')';};['vPeak','vPos','vL'].forEach(function(id){document.getElementById(id).oninput=f;});f();}
+  function onePager(r){var b=B(),s=S(),x=s.rows().filter(function(y){return y.t===r.ticker;})[0];if(!x)return;var sg=(typeof sugFor==='function'?sugFor(r.ticker):null)||{};var P=peers(r);var ev=s.events().filter(function(e){return e.t===r.ticker;});
+    var h=s.HO[r.ticker],spec=(h&&h.rows||[]).filter(function(y){return s.SPEC.has(y.name);});var v=values(r,r.peak_sales,r.pos,null);var d=new Date();
+    var key=sg.key||{};
+    var html='<div class="op-bar"><button id="opPrint">Print / save PDF</button><button id="opClose">Close</button></div><div class="op-doc">'
+      +'<h1>'+b.E(r.name||r.ticker)+' ('+b.E(r.ticker)+')</h1><div style="color:#666;font:12px Arial">Discussion note for management · '+MON[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()+' · market cap '+b.M(r.mc)+' · '+b.E(r.stage||'')+'</div>'
+      +'<h2>Our suggestion</h2><p><b>'+b.E(sg.type==='action'?'An action that would raise value':'Data to make more of')+':</b> '+b.E(sg.suggestion||'—')+'</p>'+(sg.why?'<p><b>Why it matters:</b> '+b.E(sg.why)+'</p>':'')+(key.datum?'<p><b>The data point investors underweight:</b> '+b.E(key.datum)+'</p>':'')
+      +'<h2>What the data shows</h2><p><b>'+b.E(r.drug||'')+'</b> in '+b.E(r.indication||'')+'. '+b.E(r.efficacy||'')+'</p>'+(r.benchmark?'<p><b>Benchmark:</b> '+b.E(r.benchmark)+'</p>':'')+(r.diff_detail||r.diff?'<p><b>Differentiation:</b> '+b.E(r.diff_detail||r.diff)+'</p>':'')
+      +'<h2>How the market values it</h2><table><tr><th>Market cap</th><th>Our takeout value</th><th>Our DCF</th><th>Street target (mean)</th><th>Peak sales / PoS</th></tr><tr><td>'+b.M(r.mc)+'</td><td>'+b.M(v.f)+' ('+b.P(v.fu)+')</td><td>'+b.M(v.d)+' ('+b.P(v.du)+')</td><td>'+(x.su!=null?b.P(x.su)+' ('+x.an+' analysts)':'—')+'</td><td>'+b.M(r.peak_sales)+' / '+(r.pos!=null?Math.round(r.pos*100)+'%':'—')+'</td></tr></table>'+(r.value_driver?'<p><b>Bigger value driver:</b> '+b.E(r.value_driver)+'</p>':'')
+      +'<h2>Peers ('+b.E(P.basis)+')</h2><table><tr><th>Company</th><th>Drug · stage</th><th>Latest efficacy</th><th>Cap</th></tr>'+P.rows.map(function(y){return '<tr><td><b>'+b.E(y.t)+'</b></td><td>'+b.E(b.trunc(y.r.drug,40))+' · '+b.E(b.trunc(y.r.stage,16))+'</td><td>'+b.E(b.trunc(y.r.efficacy,110))+'</td><td>'+b.M(y.r.mc)+'</td></tr>';}).join('')+'</table>'
+      +'<h2>Next six months</h2>'+(ev.length?'<table>'+ev.map(function(e){return '<tr><td>'+s.fdate(e.d)+'</td><td>'+b.E(e.txt)+'</td></tr>';}).join('')+'</table>':'<p>No dated events on file.</p>')+(x.rad?'<p><b>Financing:</b> runway about '+Math.round(x.rad.runway_q||0)+' quarters; a raise of roughly '+b.M(x.rad.size)+' looks likely ('+b.E(x.rad.timing.toLowerCase())+').</p>':'')
+      +'<h2>Specialist shareholders</h2><p>'+(spec.length?spec.map(function(y){return b.E((s.NICK[y.name]||y.name))+' '+(y.pct||0).toFixed(1)+'%';}).join(' · '):'None among top holders on file.')+' <span style="color:#888">(top-7 holder lists, '+b.E((h&&h.asof)||'')+')</span></p>'
+      +'<h2>Suggested asks</h2><ol><li>'+b.E(sg.suggestion||'')+'</li>'+(r.value_driver?'<li>Make the case for: '+b.E(b.trunc(r.value_driver,200))+'</li>':'')+(x.rad?'<li>Fund through the next catalyst on terms that do not undercut the data: timing and structure of any raise.</li>':'')+'</ol>'
+      +'<p style="color:#888;font:10.5px Arial;margin-top:16px">Prepared from the Biotech Landscape dashboard (data as of '+b.E(((S().J('asof-baked')||{}).snapshot||{}).asof||'')+'). Model estimates, not investment advice.</p></div>';
+    var w=document.getElementById('onepager');w.innerHTML=html;w.classList.add('open');
+    document.getElementById('opClose').onclick=function(){w.classList.remove('open');};
+    document.getElementById('opPrint').onclick=function(){document.body.classList.add('op-print');window.print();setTimeout(function(){document.body.classList.remove('op-print');},500);};}
+  function card(i){var b=B(),r=b.DA[i],d=document.querySelector('#drawer .dbody');if(!r||!d||d.querySelector('.syn-nav'))return;
+    var secs=[].slice.call(d.querySelectorAll(':scope > .sec'));var find=function(rx){return secs.filter(function(e){var h=e.querySelector('h3');return h&&rx.test(h.textContent);})[0];};
+    var vs=find(/^Valuation/);if(vs){var vb=document.createElement('div');vb.innerHTML=valBlock(r);vs.appendChild(vb);}
+    var P=peers(r);if(P.rows.length>1){var pe=document.createElement('div');pe.className='sec syn-card';pe.innerHTML='<h3>Peers · '+b.E(P.basis)+'</h3>'+peerTable(P,r.ticker);var after=vs||secs[0];d.insertBefore(pe,after?after.nextSibling:null);}
+    var top=find(/^Summary/);if(top){var bt=document.createElement('div');bt.style.marginTop='8px';bt.innerHTML='<button class="gbtn" id="opBtn" style="font-size:11.5px">⎙ Management one-pager</button>';top.appendChild(bt);document.getElementById('opBtn').onclick=function(){onePager(r);};}
+    secs=[].slice.call(d.querySelectorAll(':scope > .sec'));
+    var nav=document.createElement('div');nav.className='syn-nav';var want=[['Summary',/^Summary/],['Valuation',/^Valuation/],['Peers',/^Peers/],['Data',/efficacy|Asset pipeline/i],['Thesis',/^Thesis/],['Catalysts',/^Catalysts &|Next catalyst/],['Risks',/risks/i],['Ownership',/^Ownership/],['Financials',/Financials/],['History',/call history/i],['Price',/Price performance/]];
+    nav.innerHTML=want.map(function(w,k){return secs.some(function(e){var h=e.querySelector('h3');return h&&w[1].test(h.textContent);})?'<button data-k="'+k+'">'+w[0]+'</button>':'';}).join('')+'<button class="op" id="opBtn2">⎙ One-pager</button>';
+    d.insertBefore(nav,d.firstChild);
+    nav.querySelectorAll('[data-k]').forEach(function(bn){bn.onclick=function(){var w=want[+bn.dataset.k];var t=[].slice.call(d.querySelectorAll(':scope > .sec')).filter(function(e){var h=e.querySelector('h3');return h&&w[1].test(h.textContent);})[0];if(t)t.scrollIntoView({behavior:'smooth',block:'start'});};});
+    document.getElementById('opBtn2').onclick=function(){onePager(r);};
+    bindVal(r);}
+  try{var _od2=openDrawer;openDrawer=function(i){var o=_od2.apply(this,arguments);try{card(i);}catch(e){console.log('card2',e);}return o;};}catch(e){}
+  // ================= wire into pages =================
+  function wrap(name,pre,after){var P=window.BRF_PAGES[name];if(!P)return;var oh=P.html,oa=P.after;P.html=function(){return pre()+oh();};P.after=function(doc){if(oa)oa(doc);if(after)after(doc);};}
+  wrap('next',priority,null);
+  wrap('areas',rotHtml,rotAfter);
+})();
+</script>
+<!-- SYNTH2-END -->

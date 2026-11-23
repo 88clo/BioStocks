@@ -12,6 +12,7 @@ body{padding-top:var(--nav5h)}
 #nav5 .n5-lens{background:var(--raised);border:1px solid var(--line);border-radius:14px;padding:4px 10px;font-size:11.5px;color:var(--dim);cursor:pointer}
 #nav5 .n5-lens.on{border-color:var(--cyan);color:var(--text);font-weight:700;background:var(--panel)}
 #nav5 .n5-sp{flex:1 0 8px}
+#nav5 #n5q{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-size:12px;color:var(--text);width:200px;margin-right:6px}
 #nav5 .n5-about{background:none;border:1px solid var(--line);border-radius:7px;padding:5px 10px;font-size:12px;color:var(--dim);cursor:pointer}
 #n5pop{max-height:calc(100vh - 60px);overflow:auto;position:fixed;top:calc(var(--nav5h) - 4px);right:12px;z-index:200;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px;min-width:220px;box-shadow:0 6px 18px rgba(0,0,0,.18);display:none}
 #n5pop div{padding:8px 10px;font-size:12.5px;border-radius:5px;cursor:pointer}
@@ -65,6 +66,7 @@ body.n5-val #dcfwrap{max-height:none!important}
   var nav=document.createElement('nav');nav.id='nav5';nav.setAttribute('aria-label','Dashboard views');
   document.body.insertBefore(nav,document.body.firstChild);
   var pop=document.createElement('div');pop.id='n5pop';document.body.appendChild(pop);
+  if(!document.getElementById('n5ql')){var dl=document.createElement('datalist');dl.id='n5ql';dl.innerHTML=(typeof DATA!=='undefined'?DATA:[]).map(function(r){return '<option value="'+r.ticker+' — '+String(r.nick||r.name||'').replace(/"/g,'')+'">';}).join('');document.body.appendChild(dl);}
   function el(id){return document.getElementById(id);}
   function closeOverlays(){
     try{if(window.closeBrief)window.closeBrief();}catch(e){}
@@ -82,12 +84,14 @@ body.n5-val #dcfwrap{max-height:none!important}
       +(function(){var L=t.lens.filter(function(l){return l.k===cur.lens;})[0];if(!L||!L.modes)return '';if(L.modes.length>3)return '<span class="n5-sep"></span><select class="n5-msel" id="n5msel" title="Switch between the synthesized view and the detailed tables">'+L.modes.map(function(m){return '<option value="'+m[0]+'"'+(mode[L.k]===m[0]?' selected':'')+'>'+m[1]+'</option>';}).join('')+'</select>';return '<span class="n5-sep"></span><span class="n5-modes">'+L.modes.map(function(m){return '<button class="n5-mode'+(mode[L.k]===m[0]?' on':'')+'" data-m="'+m[0]+'">'+m[1]+'</button>';}).join('')+'</span>';})()
       +'<span class="n5-sp"></span>'
       +(legacy&&MAIN[legacy]?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
+      +'<input id="n5q" list="n5ql" placeholder="Jump to ticker or company…" autocomplete="off">'
       +'<button class="n5-about" id="n5aboutBtn">ⓘ About ▾</button>';
     nav.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){go(b.dataset.t,last[b.dataset.t]);};});
     nav.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){go(cur.tab,b.dataset.l);};});
     nav.querySelectorAll('[data-m]').forEach(function(b){b.onclick=function(){mode[cur.lens]=b.dataset.m;go(cur.tab,cur.lens);};});
     var ms=el('n5msel');if(ms)ms.onchange=function(){mode[cur.lens]=ms.value;go(cur.tab,cur.lens);};
     var m=el('n5model');if(m){m.classList.toggle('on',document.body.classList.contains('n5-model'));m.onclick=function(){document.body.classList.toggle('n5-model');m.classList.toggle('on');};}
+    var q=el('n5q');if(q){var go1=function(){var v=(q.value||'').trim();if(!v)return;var t=v.split(' — ')[0].toUpperCase();var i=DATA.findIndex(function(r){return r.ticker===t;});if(i<0){var lv=v.toLowerCase();i=DATA.findIndex(function(r){return ((r.nick||'')+' '+(r.name||'')).toLowerCase().indexOf(lv)>=0;});}if(i>=0&&typeof openDrawer==='function'){openDrawer(i);q.value='';q.blur();}};q.onchange=go1;q.onkeydown=function(e){if(e.key==='Enter')go1();};}
     el('n5aboutBtn').onclick=function(ev){ev.stopPropagation();pop.style.display=pop.style.display==='block'?'none':'block';};
   }
   pop.innerHTML='<div class="n5-h">How it works</div><div data-a="meth">◈ Methodology: call grid and thesis format</div><div data-a="rf">⏱ Refresh status: as-of date and coverage per section</div><div class="n5-h">Full data tables (everything the pages summarize)</div>'+LEGACY.map(function(l){return '<div data-a="legacy:'+l[0]+'">'+l[1]+'</div>';}).join('')+'<div class="n5-h">Output</div><div data-a="print">⎙ Print or save this view as PDF</div>';

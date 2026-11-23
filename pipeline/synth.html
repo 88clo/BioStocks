@@ -23,7 +23,7 @@
 #drawer .syn-top{border:1px solid var(--cyan);border-radius:10px;padding:10px 12px;background:var(--panel)}
 #drawer .syn-sumrow{font-size:13px}
 .syn-kvs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}.syn-kv{background:var(--raised);border-radius:6px;padding:5px 8px}.syn-kv span{display:block;font-size:10px;color:var(--faint);text-transform:uppercase}.syn-kv b{font-family:var(--mono);font-size:12.5px}
-.syn-dcf svg{width:100%!important;height:auto!important;max-height:150px}
+.syn-dcf svg{width:100%!important;max-width:340px;height:auto!important;max-height:130px}
 </style>
 <script id="syn-js">
 (function(){
@@ -42,7 +42,7 @@
       var u=B.up(r), pt=PT[r.ticker], su=(pt&&pt.target&&r.price)?(pt.target/r.price-1)*100:null;
       var h=HO[r.ticker], sp=0, sn=[];if(h&&h.rows)h.rows.forEach(function(x){if(SPEC.has(x.name)){sp+=x.pct||0;sn.push(NICK[x.name]||x.name.split(' ')[0]);}});
       var s=B.sci(r), rad=RAD[r.ticker];
-      return {r:r,t:r.ticker,u:u,su:su,an:pt?pt.analysts:0,gap:(u!=null&&su!=null)?u-su:null,s:s,rw:r.runway_q,sp:sp,sn:sn,rad:rad,cd:r.cat_date||'',side:B.LONG[(r.call||'').toUpperCase()]?'l':B.SHORT[(r.call||'').toUpperCase()]?'s':(r.call||'').toUpperCase()==='AVOID'?'a':'n'};
+      return {r:r,t:r.ticker,u:u,su:su,an:pt?pt.analysts:0,gap:(u!=null&&su!=null)?u-su:null,s:s,rw:r.runway_q,sp:sp,sn:sn,rad:rad,cd:r.cat_date||'',out:(u!=null&&u>1000),side:B.LONG[(r.call||'').toUpperCase()]?'l':B.SHORT[(r.call||'').toUpperCase()]?'s':(r.call||'').toUpperCase()==='AVOID'?'a':'n'};
     });
     return CACHE;
   }
@@ -103,7 +103,8 @@
       if(q){if(fundMode)return FH[x.t]!=null;if((r.ticker+' '+(r.nick||r.name||'')+' '+(r.drug||'')+' '+(r.indication||'')).toLowerCase().indexOf(q)<0)return false;}return true;});
     var gk=function(k){return function(x){return k==='_sp'?x.sp:k==='_an'?x.an:x.r[k];};};
     var key={gap:function(x){return x.gap;},u:function(x){return x.u;},su:function(x){return x.su;},s:function(x){return x.s;},rw:function(x){return x.rw;},sp:function(x){return x.sp;},cd:function(x){return x.cd||null;},mc:function(x){return x.r.mc;},fund:function(x){return FH[x.t];},since:function(x){var p=inPort(x.t)?portfolio[x.t]:null;return p&&p.price&&x.r.price?x.r.price/p.price-1:null;}}[CO.sort]||gk(CO.sort);
-    L.sort(function(a,b){var va=key(a),vb=key(b);if(va==null&&vb==null)return 0;if(va==null)return 1;if(vb==null)return -1;return (va>vb?1:va<vb?-1:0)*CO.dir;});
+    var olast=(CO.sort==='gap'||CO.sort==='u')&&CO.dir<0;
+    L.sort(function(a,b){if(olast&&!!a.out!==!!b.out)return a.out?1:-1;var va=key(a),vb=key(b);if(va==null&&vb==null)return 0;if(va==null)return 1;if(vb==null)return -1;return (va>vb?1:va<vb?-1:0)*CO.dir;});
     var tas=Array.from(new Set(A.map(function(x){return x.r.ta;}))).filter(Boolean).sort();
     var th=function(k,l,r){return '<th class="syn-th'+(r?' r':'')+(CO.sort===k?' on':'')+'" data-sort="'+k+'">'+l+(CO.sort===k?(CO.dir<0?' ▼':' ▲'):'')+'</th>';};
     var on=Object.keys(CO.g).filter(function(k){return CO.g[k];});
@@ -117,7 +118,7 @@
       +'<select id="coTa"><option value="">All areas</option>'+tas.map(function(t){return '<option'+(t===CO.ta?' selected':'')+'>'+B.E(t)+'</option>';}).join('')+'</select>'
       +[['all','All calls'],['l','Long side'],['s','Short / Avoid']].map(function(c){return '<span class="chip'+(CO.side===c[0]?' on':'')+'" data-side="'+c[0]+'">'+c[1]+'</span>';}).join('')
       +chip('qual','Quality',CO.qual,'Science >=3.5, cap >=$500M, runway >=8Q')+chip('dis','Big disagreements',CO.dis,'Ours vs Street differ by 150+ pts, 3+ analysts')+chip('raise','Likely raise',CO.raise,'Flagged by the raise model')+chip('below','Below cash',CO.below,'Net cash above market cap')+chip('sug','Value-raising action',CO.sug,'Companies where our suggestion is an action (new indication, partner, trial change) rather than better disclosure')+chip('port','My portfolio',CO.port)+chip('parked','Include parked',CO.parked,'Add the '+PK.length+' names outside the $50M-$30B band')
-      +(CO.ig?'<span class="chip on" data-chip="ig">Group: '+B.E(CO.ig)+' ✕</span>':'')+'<span class="cnt">'+L.length+' of '+A.length+'</span></div>';
+      +(CO.ig?'<span class="chip on" data-chip="ig">Group: '+B.E(CO.ig)+' ✕</span>':'')+'<span class="cnt">'+L.length+' of '+A.length+(L.filter(function(x){return x.out;}).length?' · ⚠ '+L.filter(function(x){return x.out;}).length+' implausible upside':'')+'</span></div>';
     h+='<div class="syn-ctl"><span class="sm" style="color:var(--faint)">Columns:</span>'+GROUPS.map(function(g){return '<span class="chip'+(CO.g[g[0]]?' on':'')+'" data-g="'+g[0]+'">'+g[1]+'</span>';}).join('')+(CO.port?'<span class="sm" style="margin-left:8px"><a href="#" id="coPortEd">Edit portfolio notes →</a></span>':'')+'</div>';
     if(fundMode){var tot=L.reduce(function(a,x){return a+(FH[x.t]||0)/100*(x.r.mc||0);},0);h+='<div class="brf-note"><b>Fund holdings: '+B.E(FM.slice(0,3).join(', '))+(FM.length>3?' +'+(FM.length-3)+' more':'')+'</b> · '+L.length+' positions where the fund is a top-7 holder · about '+B.M(tot)+' at today\'s prices. Holder lists are mostly from Sep 13F filings.</div>';}
     var extra=[];on.forEach(function(g){extra=extra.concat(COLS[g]);});
@@ -126,7 +127,7 @@
       +extra.map(function(c){return c[2]?th(c[2],c[0],1):'<th>'+c[0]+'</th>';}).join('')+'<th style="min-width:340px">Thesis in one line</th></tr>'
       +L.map(function(x){var r=x.r,pe=CO.port&&inPort(x.t)?portfolio[x.t]:null;var since=pe&&pe.price&&r.price?r.price/pe.price-1:null;
         return '<tr'+(x.parked?' style="opacity:.75"':'')+'><td>'+(x.parked?'<b>'+B.E(x.t)+'</b>':B.tk(x.t))+'<div class="sm">'+B.E(B.trunc(r.nick||r.name,20))+' · '+B.E(B.trunc(r.ta,16))+'</div></td><td>'+B.cb(r.call)+(!x.parked&&B.quality(r)&&x.side==='l'?'<span class="brf-q">Q</span>':'')+(sugOf(x.t)?' <span class="brf-w" title="'+B.E(B.trunc(sugOf(x.t).suggestion,200))+'">action</span>':'')+'</td>'
-        +'<td class="r '+B.PC(x.u)+'">'+B.P(x.u)+'</td><td class="r">'+B.P(x.su)+'</td><td class="r '+B.PC(x.gap)+'">'+(x.gap==null?'—':(x.gap>0?'+':'')+Math.round(x.gap))+'</td><td class="r">'+(x.s==null?'—':x.s.toFixed(1))+'</td><td class="r">'+(x.rw==null?'—':Math.round(x.rw)+'Q')+(x.rad?' <span class="brf-w" title="'+B.E(x.rad.timing)+'">raise</span>':'')+'</td><td class="r">'+(x.cd?fdate(x.cd):'—')+'</td><td class="r">'+B.M(r.mc)+'</td>'
+        +'<td class="r '+B.PC(x.u)+'">'+(x.out?'<span title="Model upside above +1,000%: usually a tiny cap against large modelled peak sales. Check the inputs before relying on it; listed after the others when sorting by upside." style="cursor:help">⚠ </span>':'')+B.P(x.u)+'</td><td class="r">'+B.P(x.su)+'</td><td class="r '+B.PC(x.gap)+'">'+(x.gap==null?'—':(x.gap>0?'+':'')+Math.round(x.gap))+'</td><td class="r">'+(x.s==null?'—':x.s.toFixed(1))+'</td><td class="r">'+(x.rw==null?'—':Math.round(x.rw)+'Q')+(x.rad?' <span class="brf-w" title="'+B.E(x.rad.timing)+'">raise</span>':'')+'</td><td class="r">'+(x.cd?fdate(x.cd):'—')+'</td><td class="r">'+B.M(r.mc)+'</td>'
         +(fundMode?'<td class="r">'+(FH[x.t]!=null?FH[x.t].toFixed(1)+'%':'—')+'</td>':'')
         +(CO.port?'<td class="r '+PC1(since)+'">'+R1(since)+(pe&&pe.added?'<div class="sm">since '+B.E(pe.added)+'</div>':'')+'</td><td class="sm">'+B.E(B.trunc(pe&&(pe.notes||pe.note)||'',80))+'</td>':'')
         +extra.map(function(c){return '<td class="'+(c[2]?'r':'')+'">'+c[1](x)+'</td>';}).join('')
@@ -297,6 +298,7 @@
       var hn=mk('Our call history',tb);if(pp)d.insertBefore(hn,pp);else d.appendChild(hn);}
   }
   try{var _od=openDrawer;openDrawer=function(i){var o=_od.apply(this,arguments);try{cardAugment(i);}catch(e){console.log('card',e);}return o;};}catch(e){}
+  window.SYN={rows:rows,events:events,thesis:thesis,fdate:fdate,sugOf:sugOf,inPort:inPort,CO:CO,big:big,lt:lt,PT:PT,HO:HO,SPEC:SPEC,NICK:NICK,J:J};
   window.BRF_PAGES=window.BRF_PAGES||{};
   window.BRF_PAGES.co={html:coHtml,after:coAfter};
   window.BRF_PAGES.areas={html:areasHtml,after:function(d){areasAfter(d);}};
