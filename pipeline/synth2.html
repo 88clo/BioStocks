@@ -20,6 +20,8 @@
 #onepager .op-bar button{background:#fff;border:1px solid #bbb;border-radius:6px;padding:6px 12px;cursor:pointer;font-weight:700}
 @media print{body.op-print>*:not(#onepager){display:none!important}body.op-print #onepager{position:static;background:none;display:block}body.op-print .op-bar{display:none}body.op-print .op-doc{margin:0;max-width:none;box-shadow:none}}
 .rot-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}
+.rot-l{transition:stroke-opacity .1s}.rot-l:hover{stroke-opacity:1!important;stroke-width:3px!important}
+.rot-ctl select{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px;color:var(--text)}
 </style>
 <div id="onepager" aria-label="Management one-pager"></div>
 <script id="syn2-js">
@@ -71,29 +73,39 @@
       +(CHG.catalysts.length?'<br><b>Catalyst dates moved:</b> '+CHG.catalysts.slice(0,8).map(function(c){return b.tk(c.t)+' '+b.E(c.from||'—')+'→'+b.E(c.to||'—');}).join(', '):'<br><b>Catalyst dates moved:</b> none')
       +(CHG.new.length?'<br><b>Added:</b> '+CHG.new.map(b.tk).join(' '):'')+(CHG.dropped.length?'<br><b>Dropped:</b> '+CHG.dropped.map(function(t){return b.E(t);}).join(' '):'')+'</div>';};
   // ================= 5. Returns over time (top of Areas) =================
-  var ROT={ta:[]};
+  var ROT={hide:{},hl:''};
   function series(filter){var P=(S().J('priceq-baked')||{}),Q=P.quarters||[],PR=P.prices||{};var n=Q.length,start=Math.max(1,n-12);var idx=[100],labs=[Q[start-1]];
     var tks=B().DA.filter(filter).map(function(r){return r.ticker;});
     for(var i=start;i<n;i++){var rs=[];tks.forEach(function(t){var a=(PR[t]||[])[i-1],c=(PR[t]||[])[i];if(a>0&&c>0)rs.push(c/a);});var m=B().med(rs)||1;idx.push(idx[idx.length-1]*m);labs.push(Q[i]);}
     return {idx:idx,labs:labs};}
   function benchSeries(k){var T=B().TR||{},bq=T.bench_q;if(!bq)return null;var Q=bq.quarters,n=Q.length,start=Math.max(1,n-12),base=bq[k][start-1];if(!base)return null;var o=[100];for(var i=start;i<n;i++)o.push(bq[k][i]?bq[k][i]/base*100:null);return o;}
-  function rotChart(){var b=B(),U=series(function(r){return r.ta!=='Acquired / Inactive';}),X=benchSeries('XBI');
-    var lines=[{l:'Universe median',v:U.idx,c:'var(--cyan)',w:2.4}];if(X)lines.push({l:'XBI',v:X,c:'var(--dim)',w:1.6,dash:'5 4'});
-    var cols=['var(--long)','var(--amber)','var(--short)','#8b5cf6'];ROT.ta.forEach(function(t,i){lines.push({l:t,v:series(function(r){return r.ta===t;}).idx,c:cols[i%4],w:1.8});});
-    var all=[].concat.apply([],lines.map(function(l){return l.v.filter(function(v){return v!=null;});}));var lo=Math.min.apply(null,all),hi=Math.max.apply(null,all);lo=Math.floor(lo/10)*10-5;hi=Math.ceil(hi/10)*10+5;
-    var W=980,Hh=280,ml=48,mr=150,mt=12,mb=30,n=U.labs.length;var Xp=function(i){return ml+i/(n-1)*(W-ml-mr);},Yp=function(v){return Hh-mb-(v-lo)/(hi-lo)*(Hh-mt-mb);};
-    var g='<svg viewBox="0 0 '+W+' '+Hh+'" role="img" aria-label="Returns over time">';
-    for(var v=Math.ceil(lo/20)*20;v<=hi;v+=20)g+='<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+Yp(v)+'" y2="'+Yp(v)+'" stroke="var(--line)" stroke-width="'+(v===100?1.4:.6)+'"/><text x="'+(ml-6)+'" y="'+(Yp(v)+3)+'" font-size="10.5" text-anchor="end">'+v+'</text>';
+  function rotChart(){var b=B(),s=S(),U=series(function(r){return r.ta!=='Acquired / Inactive';}),X=benchSeries('XBI');
+    var tas=Array.from(new Set(b.DA.map(function(r){return r.ta;}))).filter(function(t){return t&&t!=='Acquired / Inactive';});
+    var lines=tas.filter(function(t){return !ROT.hide[s.clusterOf(t)];}).map(function(t){return {l:t,v:series(function(r){return r.ta===t;}).idx,c:s.CLCOL[s.clusterOf(t)],w:ROT.hl===t?3:1.1,o:ROT.hl&&ROT.hl!==t?.18:.5,area:1};});
+    lines.push({l:'Universe median',v:U.idx,c:'var(--text)',w:3,o:1});if(X)lines.push({l:'XBI',v:X,c:'var(--cyan)',w:3,o:1,dash:'6 4'});
+    var pct=function(v){return Math.round(v-100);};
+    var all=[].concat.apply([],lines.map(function(l){return l.v.filter(function(v){return v!=null;});}));var lo=Math.max(10,Math.min.apply(null,all)),hi=Math.min(400,Math.max.apply(null,all));
+    var lo2=Math.floor((lo-100)/20)*20+100,hi2=Math.ceil((hi-100)/20)*20+100;
+    var W=1180,Hh=380,ml=52,mr=190,mt=12,mb=30,n=U.labs.length;var Xp=function(i){return ml+i/(n-1)*(W-ml-mr);},Yp=function(v){return Hh-mb-(Math.max(lo2,Math.min(hi2,v))-lo2)/(hi2-lo2)*(Hh-mt-mb);};
+    var g='<svg viewBox="0 0 '+W+' '+Hh+'" role="img" aria-label="Returns over time by area">';
+    var step=(hi2-lo2)>200?50:20;for(var v=lo2;v<=hi2;v+=step)g+='<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+Yp(v)+'" y2="'+Yp(v)+'" stroke="var(--line)" stroke-width="'+(v===100?1.6:.6)+'"/><text x="'+(ml-6)+'" y="'+(Yp(v)+3)+'" font-size="10.5" text-anchor="end">'+(pct(v)>0?'+':'')+pct(v)+'%</text>';
     U.labs.forEach(function(q,i){if(i%2===0||i===n-1)g+='<text x="'+Xp(i)+'" y="'+(Hh-mb+14)+'" font-size="10.5" text-anchor="middle">'+q+'</text>';});
-    var ends=[];lines.forEach(function(l){var d='';l.v.forEach(function(v,i){if(v==null)return;d+=(d?'L':'M')+Xp(i).toFixed(1)+' '+Yp(v).toFixed(1);});g+='<path d="'+d+'" fill="none" stroke="'+l.c+'" stroke-width="'+l.w+'"'+(l.dash?' stroke-dasharray="'+l.dash+'"':'')+'/>';var lv=l.v[l.v.length-1];if(lv!=null)ends.push({y:Yp(lv),t:b.E(l.l.length>22?l.l.slice(0,21)+'…':l.l)+' '+Math.round(lv),c:l.c});});
-    ends.sort(function(a,c){return a.y-c.y;});for(var i=1;i<ends.length;i++)if(ends[i].y-ends[i-1].y<12)ends[i].y=ends[i-1].y+12;
-    ends.forEach(function(e){g+='<text x="'+(W-mr+6)+'" y="'+(e.y+3)+'" font-size="10.5" font-weight="700" style="fill:'+e.c+'">'+e.t+'</text>';});
+    var ends=[];lines.forEach(function(l){var d='';l.v.forEach(function(v,i){if(v==null)return;d+=(d?'L':'M')+Xp(i).toFixed(1)+' '+Yp(v).toFixed(1);});var lv=l.v[l.v.length-1];
+      g+='<path class="rot-l" data-hl="'+(l.area?b.E(l.l):'')+'" d="'+d+'" fill="none" stroke="'+l.c+'" stroke-opacity="'+l.o+'" stroke-width="'+l.w+'"'+(l.dash?' stroke-dasharray="'+l.dash+'"':'')+'><title>'+b.E(l.l)+': '+(lv!=null?(pct(lv)>0?'+':'')+pct(lv)+'%':'')+' over three years</title></path>';
+      if(lv!=null)ends.push({y:Yp(lv),v:lv,t:l.l,c:l.c,main:!l.area});});
+    var areas=ends.filter(function(e){return !e.main;}).sort(function(a,c){return c.v-a.v;});var lab=ends.filter(function(e){return e.main;}).concat(areas.slice(0,4),areas.slice(-4));if(ROT.hl)lab=lab.concat(areas.filter(function(e){return e.t===ROT.hl;}));
+    lab=lab.filter(function(e,i,a){return a.indexOf(e)===i;}).sort(function(a,c){return a.y-c.y;});for(var i=1;i<lab.length;i++)if(lab[i].y-lab[i-1].y<12)lab[i].y=lab[i-1].y+12;var over=lab.length?lab[lab.length-1].y-(Hh-mb-16):0;if(over>0)for(var j=lab.length-1;j>=0;j--){lab[j].y-=over;if(j>0&&lab[j].y-lab[j-1].y>=12)break;}
+    lab.forEach(function(e){g+='<text x="'+(W-mr+6)+'" y="'+(e.y+3)+'" font-size="10.5" font-weight="'+(e.main?800:600)+'" style="fill:'+(e.main?(e.t==='XBI'?'var(--cyan)':'var(--text)'):e.c)+'">'+b.E(e.t.length>20?e.t.slice(0,19)+'…':e.t)+' '+(pct(e.v)>0?'+':'')+pct(e.v)+'%</text>';});
     return g+'</svg>';}
-  function rotHtml(){var b=B(),tas=Array.from(new Set(b.DA.map(function(r){return r.ta;}))).filter(function(t){return t&&t!=='Acquired / Inactive';}).sort();
-    return '<div class="brf-h"><b>Returns over time</b><span>Index = 100 three years ago · quarter-end closes · each line chains the median stock\'s quarterly return (equal-weight, not cap-weighted), current quarter to latest close</span></div>'
-      +'<div class="rot-ctl"><select id="rotAdd"><option value="">+ Compare an area…</option>'+tas.filter(function(t){return ROT.ta.indexOf(t)<0;}).map(function(t){return '<option>'+b.E(t)+'</option>';}).join('')+'</select>'+ROT.ta.map(function(t){return '<span class="chip on" data-rotx="'+b.E(t)+'">'+b.E(t)+' ✕</span>';}).join('')+'</div>'
+  function rotHtml(){var b=B(),s=S();var cls=s.CLUSTERS.map(function(c){return c[0];});
+    var tas=Array.from(new Set(b.DA.map(function(r){return r.ta;}))).filter(function(t){return t&&t!=='Acquired / Inactive';}).sort();
+    return '<div class="brf-h"><b>Returns over time: every area vs XBI and the median covered stock</b><span>Cumulative % return over three years · quarter-end closes · each area line chains its median stock\'s quarterly return (equal-weight) · labels show the four best and four worst areas; hover any line</span></div>'
+      +'<div class="rot-ctl">'+cls.map(function(c){return '<span class="chip'+(ROT.hide[c]?'':' on')+'" data-rotc="'+b.E(c)+'" style="border-left:4px solid '+s.CLCOL[c]+'">'+b.E(c)+'</span>';}).join('')
+      +'<select id="rotHl"><option value="">Highlight an area…</option>'+tas.map(function(t){return '<option'+(ROT.hl===t?' selected':'')+'>'+b.E(t)+'</option>';}).join('')+'</select></div>'
       +'<div class="syn-chart">'+rotChart()+'</div>';}
-  function rotAfter(doc){var s=doc.querySelector('#rotAdd');if(s)s.onchange=function(){if(s.value&&ROT.ta.length<4)ROT.ta.push(s.value);B().rerender();};doc.querySelectorAll('[data-rotx]').forEach(function(c){c.onclick=function(){ROT.ta=ROT.ta.filter(function(t){return t!==c.dataset.rotx;});B().rerender();};});}
+  function rotAfter(doc){doc.querySelectorAll('[data-rotc]').forEach(function(c){c.onclick=function(){ROT.hide[c.dataset.rotc]=!ROT.hide[c.dataset.rotc];B().rerender();};});
+    var s=doc.querySelector('#rotHl');if(s)s.onchange=function(){ROT.hl=s.value;B().rerender();};
+    doc.querySelectorAll('.rot-l[data-hl]').forEach(function(p){if(!p.dataset.hl)return;p.style.cursor='pointer';p.onclick=function(){ROT.hl=ROT.hl===p.dataset.hl?'':p.dataset.hl;B().rerender();};});}
   // ================= 2-4. Company card: section links, peers, valuation, one-pager =================
   function withLaunch(copy,L,fn){if(L==null)return fn();var _y=yrsToApproval;try{yrsToApproval=function(rr){return rr===copy?L:_y(rr);};return fn();}finally{yrsToApproval=_y;}}
   function values(r,peak,pos,L){var c=Object.assign({},r,{peak_sales:peak,pos:pos,probadj_sales:peak*pos});return withLaunch(c,L,function(){var npv=null,m=null;try{npv=npvVal(c);}catch(e){}try{m=dcfModel(c);}catch(e){}
@@ -146,7 +158,11 @@
   try{var _od2=openDrawer;openDrawer=function(i){var o=_od2.apply(this,arguments);try{card(i);}catch(e){console.log('card2',e);}return o;};}catch(e){}
   // ================= wire into pages =================
   function wrap(name,pre,after){var P=window.BRF_PAGES[name];if(!P)return;var oh=P.html,oa=P.after;P.html=function(){return pre()+oh();};P.after=function(doc){if(oa)oa(doc);if(after)after(doc);};}
-  wrap('next',priority,null);
+  var RAISE={};try{(B().RD.rows||[]).forEach(function(x){if(x.score>=6||/catalyst/.test(x.timing))RAISE[x.ticker]=x;});}catch(e){}
+  function calHtml(){return '<div class="brf-h"><b>Catalyst calendar</b><span>Every dated catalyst by area and month · <span class="n5-raise" style="font-family:var(--mono);font-weight:700;padding:0 4px">TKR</span> = likely to raise after its event (hover for size and timing) · click a ticker for its card</span></div><div id="synCalHost"></div>';}
+  function calAfter(){var b=B();b.embed('calwrap','synCalHost',function(){renderCalendar(b.DA.filter(function(r){return r.ta!=='Acquired / Inactive';}));
+    var w=document.getElementById('calwrap');w.querySelectorAll('*').forEach(function(c){if(c.children.length)return;var t=(c.textContent||'').trim(),x=RAISE[t];if(!x||c.classList.contains('n5-raise'))return;c.classList.add('n5-raise');c.title=(c.title?c.title+' · ':'')+'Likely equity raise ~'+b.M(x.size)+', '+x.timing;});});}
+  wrap('next',function(){return priority()+calHtml();},calAfter);
   wrap('areas',rotHtml,rotAfter);
 })();
 </script>

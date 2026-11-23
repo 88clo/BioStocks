@@ -49,7 +49,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
 .brf-filt button{background:var(--raised);border:1px solid var(--line);border-radius:6px;font-size:11.5px;padding:4px 10px;cursor:pointer;color:var(--dim)}
 .brf-filt button.on{color:var(--text);border-color:var(--cyan);font-weight:700}
 #brf details.brf-ev{margin:10px 0}#brf details.brf-ev>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--cyan);padding:6px 0}
-#brf #retrowrap,#brf #sugwrap{display:block!important;max-height:none!important}
+#brf #retrowrap,#brf #sugwrap,#brf #calwrap{display:block!important;max-height:none!important}
 @media print{#brf{position:static;overflow:visible}.brf-bar{display:none}.brf-t{font-size:9.5px}}
 </style>
 <div id="brf" aria-label="Brief">
@@ -217,7 +217,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
   function embed(wrapId,hostId,fn){var host=document.getElementById(hostId),w=document.getElementById(wrapId);if(!host||!w)return;EMB.push({w:w,p:w.parentNode,n:w.nextSibling});host.appendChild(w);w.style.display='block';try{fn();}catch(e){host.insertAdjacentHTML('beforeend','<div class="brf-note">Could not draw this section: '+E(e.message)+'</div>');}}
   function unembed(){while(EMB.length){var x=EMB.pop();try{x.p.insertBefore(x.w,x.n);x.w.style.display='none';}catch(e){}}}
   function render(){
-    unembed();
+    unembed();document.body.classList.toggle('syn-wide',page==='co');
     var doc=document.getElementById('brfDoc');
     var XP=(window.BRF_PAGES||{})[page];
     doc.innerHTML=XP?XP.html():page==='brief'?brief():page==='track'?track():page==='radar'?radar():page==='flow'?flow():gaps();
@@ -230,9 +230,9 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
     if(render._last!==page){doc.scrollTop=0;document.getElementById('brf').scrollTop=0;}render._last=page;
   }
   function open(p){if(p)page=p;render();document.getElementById('brf').classList.add('open');}
-  function close(){document.getElementById('brf').classList.remove('open');}
+  function close(){document.getElementById('brf').classList.remove('open');document.body.classList.remove('syn-wide');}
   window.openBrief=open;
-  window.BRF={E:E,M:M,P:P,PC:PC,med:med,tk:tk,cb:cb,trunc:trunc,sci:sci,up:up,quality:quality,isTop:isTop,DA:DA,IDX:IDX,RD:RD,TR:TR,GP:GP,J:J,LONG:LONG,SHORT:SHORT,kill:kill,radar:radar,today:today,rerender:function(){render();}};
+  window.BRF={embed:embed,E:E,M:M,P:P,PC:PC,med:med,tk:tk,cb:cb,trunc:trunc,sci:sci,up:up,quality:quality,isTop:isTop,DA:DA,IDX:IDX,RD:RD,TR:TR,GP:GP,J:J,LONG:LONG,SHORT:SHORT,kill:kill,radar:radar,today:today,rerender:function(){render();}};
   window.BRF_PAGES=window.BRF_PAGES||{};
   window.closeBrief=close;
 })();
