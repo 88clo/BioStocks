@@ -204,6 +204,8 @@ def similar(a, b):
         return True
     CR = r'\b[A-Za-z]{2,}[-‐]?\d{2,}[A-Za-z0-9-]*\b'
     sa, sb = {x.lower() for x in re.findall(CR, a['e'])}, {x.lower() for x in re.findall(CR, b['e'])}
+    if a.get('p', 0) >= 5 and b.get('p', 0) >= 5 and a['d'] == b['d'] and (sa & sb or re.search(r'PDUFA|FDA|approval|decision', a['e'] + b['e'], re.I)):
+        return True                                   # two regulatory items on the same exact day are one event
     if sa & sb and a.get('p', 0) >= 4 and b.get('p', 0) >= 4 and a['d'] == b['d']:
         return True                                   # same drug code, same exact date
 

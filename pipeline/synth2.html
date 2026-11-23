@@ -81,7 +81,13 @@
   function benchSeries(k){var T=B().TR||{},bq=T.bench_q;if(!bq)return null;var Q=bq.quarters,n=Q.length,start=Math.max(1,n-12),base=bq[k][start-1];if(!base)return null;var o=[100];for(var i=start;i<n;i++)o.push(bq[k][i]?bq[k][i]/base*100:null);return o;}
   function rotChart(){var b=B(),s=S(),U=series(function(r){return r.ta!=='Acquired / Inactive';}),X=benchSeries('XBI');
     var tas=Array.from(new Set(b.DA.map(function(r){return r.ta;}))).filter(function(t){return t&&t!=='Acquired / Inactive';});
-    var lines=tas.filter(function(t){return !ROT.hide[s.clusterOf(t)];}).map(function(t){return {l:t,v:series(function(r){return r.ta===t;}).idx,c:s.CLCOL[s.clusterOf(t)],w:ROT.hl===t?3:1.1,o:ROT.hl&&ROT.hl!==t?.18:.5,area:1};});
+    var lines;
+    if(ROT.hl){   // one area: every company's line, the area median highlighted
+      var P=(s.J('priceq-baked')||{}),Q=P.quarters||[],PR=P.prices||{},n0=Q.length,st=Math.max(1,n0-12);
+      var col={l:'var(--long)',s:'var(--short)',a:'var(--amber)',n:'var(--faint)'},X0={};s.rows().forEach(function(x){X0[x.t]=x;});
+      lines=b.DA.filter(function(r){return r.ta===ROT.hl;}).map(function(r){var pr=PR[r.ticker]||[],base=null,v=[];for(var i=st-1;i<n0;i++){var p=pr[i];if(base==null&&p>0)base=p;v.push(base&&p>0?p/base*100:null);}var x=X0[r.ticker];return {l:r.ticker,v:v,c:col[x?x.side:'n'],w:1.3,o:.7,co:1};}).filter(function(l){return l.v.some(function(v){return v!=null;});});
+      lines.push({l:ROT.hl+' median',v:series(function(r){return r.ta===ROT.hl;}).idx,c:s.CLCOL[s.clusterOf(ROT.hl)],w:4,o:1});
+    }else lines=tas.map(function(t){return {l:t,v:series(function(r){return r.ta===t;}).idx,c:s.CLCOL[s.clusterOf(t)],w:1.2,o:.55,area:1};});
     lines.push({l:'Universe median',v:U.idx,c:'var(--text)',w:3,o:1});if(X)lines.push({l:'XBI',v:X,c:'var(--cyan)',w:3,o:1,dash:'6 4'});
     var pct=function(v){return Math.round(v-100);};
     var all=[].concat.apply([],lines.map(function(l){return l.v.filter(function(v){return v!=null;});}));var lo=Math.max(10,Math.min.apply(null,all)),hi=Math.min(400,Math.max.apply(null,all));
@@ -91,21 +97,22 @@
     var step=(hi2-lo2)>200?50:20;for(var v=lo2;v<=hi2;v+=step)g+='<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+Yp(v)+'" y2="'+Yp(v)+'" stroke="var(--line)" stroke-width="'+(v===100?1.6:.6)+'"/><text x="'+(ml-6)+'" y="'+(Yp(v)+3)+'" font-size="10.5" text-anchor="end">'+(pct(v)>0?'+':'')+pct(v)+'%</text>';
     U.labs.forEach(function(q,i){if(i%2===0||i===n-1)g+='<text x="'+Xp(i)+'" y="'+(Hh-mb+14)+'" font-size="10.5" text-anchor="middle">'+q+'</text>';});
     var ends=[];lines.forEach(function(l){var d='';l.v.forEach(function(v,i){if(v==null)return;d+=(d?'L':'M')+Xp(i).toFixed(1)+' '+Yp(v).toFixed(1);});var lv=l.v[l.v.length-1];
-      g+='<path class="rot-l" data-hl="'+(l.area?b.E(l.l):'')+'" d="'+d+'" fill="none" stroke="'+l.c+'" stroke-opacity="'+l.o+'" stroke-width="'+l.w+'"'+(l.dash?' stroke-dasharray="'+l.dash+'"':'')+'><title>'+b.E(l.l)+': '+(lv!=null?(pct(lv)>0?'+':'')+pct(lv)+'%':'')+' over three years</title></path>';
-      if(lv!=null)ends.push({y:Yp(lv),v:lv,t:l.l,c:l.c,main:!l.area});});
-    var areas=ends.filter(function(e){return !e.main;}).sort(function(a,c){return c.v-a.v;});var lab=ends.filter(function(e){return e.main;}).concat(areas.slice(0,4),areas.slice(-4));if(ROT.hl)lab=lab.concat(areas.filter(function(e){return e.t===ROT.hl;}));
+      g+='<path class="rot-l" data-hl="'+(l.area?b.E(l.l):'')+'"'+(l.co?' data-tk="'+b.E(l.l)+'"':'')+' d="'+d+'" fill="none" stroke="'+l.c+'" stroke-opacity="'+l.o+'" stroke-width="'+l.w+'"'+(l.dash?' stroke-dasharray="'+l.dash+'"':'')+'><title>'+b.E(l.l)+': '+(lv!=null?(pct(lv)>0?'+':'')+pct(lv)+'%':'')+' over three years</title></path>';
+      if(lv!=null)ends.push({y:Yp(lv),v:lv,t:l.l,c:l.c,main:!l.area&&!l.co});});
+    var areas=ends.filter(function(e){return !e.main;}).sort(function(a,c){return c.v-a.v;});var lab=ends.filter(function(e){return e.main;}).concat(areas.slice(0,ROT.hl?5:4),areas.slice(ROT.hl?-5:-4));
     lab=lab.filter(function(e,i,a){return a.indexOf(e)===i;}).sort(function(a,c){return a.y-c.y;});for(var i=1;i<lab.length;i++)if(lab[i].y-lab[i-1].y<12)lab[i].y=lab[i-1].y+12;var over=lab.length?lab[lab.length-1].y-(Hh-mb-16):0;if(over>0)for(var j=lab.length-1;j>=0;j--){lab[j].y-=over;if(j>0&&lab[j].y-lab[j-1].y>=12)break;}
     lab.forEach(function(e){g+='<text x="'+(W-mr+6)+'" y="'+(e.y+3)+'" font-size="10.5" font-weight="'+(e.main?800:600)+'" style="fill:'+(e.main?(e.t==='XBI'?'var(--cyan)':'var(--text)'):e.c)+'">'+b.E(e.t.length>20?e.t.slice(0,19)+'…':e.t)+' '+(pct(e.v)>0?'+':'')+pct(e.v)+'%</text>';});
     return g+'</svg>';}
-  function rotHtml(){var b=B(),s=S();var cls=s.CLUSTERS.map(function(c){return c[0];});var AR=s.AR;
+  function rotHtml(){var b=B(),s=S();var AR=s.AR;
     var tog='<div class="syn-ctl" style="margin-bottom:10px"><span class="syn-seg">'+[['hist','Historical: returns over time'],['fut','Future: value vs momentum']].map(function(o){return '<button data-aview="'+o[0]+'" class="'+(AR.view===o[0]?'on':'')+'">'+o[1]+'</button>';}).join('')+'</span></div>';
     if(AR.view==='fut')return tog;
     var tas=Array.from(new Set(b.DA.map(function(r){return r.ta;}))).filter(function(t){return t&&t!=='Acquired / Inactive';}).sort();
-    return tog+'<div class="brf-h"><b>Returns over time: every area vs XBI and the median covered stock</b><span>Cumulative % return over three years · quarter-end closes · each area line chains its median stock\'s quarterly return (equal-weight) · labels show the four best and four worst areas; hover any line</span></div>'
-      +'<div class="rot-ctl">'+cls.map(function(c){return '<span class="chip'+(ROT.hide[c]?'':' on')+'" data-rotc="'+b.E(c)+'" style="border-left:4px solid '+s.CLCOL[c]+'">'+b.E(c)+'</span>';}).join('')
-      +'<select id="rotHl"><option value="">Highlight an area…</option>'+tas.map(function(t){return '<option'+(ROT.hl===t?' selected':'')+'>'+b.E(t)+'</option>';}).join('')+'</select></div>'
+    return tog+'<div class="brf-h"><b>'+(ROT.hl?'Returns over time: every company in '+b.E(ROT.hl)+' vs the area median and XBI':'Returns over time: every area vs XBI and the median covered stock')+'</b><span>Cumulative % return over three years · quarter-end closes · '+(ROT.hl?'company lines coloured by our call (green long, red short, amber avoid, grey other); a company listed later starts at 0% when it first trades · click a line for its card':'each area line chains its median stock\'s quarterly return (equal-weight) · labels show the four best and four worst areas; click a line or pick an area to see its companies')+'</span></div>'
+      +'<div class="rot-ctl"><select id="rotHl"><option value="">All areas</option>'+tas.map(function(t){return '<option'+(ROT.hl===t?' selected':'')+'>'+b.E(t)+'</option>';}).join('')+'</select>'+(ROT.hl?' <span class="chip" id="rotAll">← all areas</span>':'')+'</div>'
       +'<div class="syn-chart">'+rotChart()+'</div>';}
-  function rotAfter(doc){doc.querySelectorAll('[data-aview]').forEach(function(bt){bt.onclick=function(){S().AR.view=bt.dataset.aview;B().rerender();};});doc.querySelectorAll('[data-rotc]').forEach(function(c){c.onclick=function(){ROT.hide[c.dataset.rotc]=!ROT.hide[c.dataset.rotc];B().rerender();};});
+  function rotAfter(doc){doc.querySelectorAll('[data-aview]').forEach(function(bt){bt.onclick=function(){S().AR.view=bt.dataset.aview;B().rerender();};});
+    var ra=doc.querySelector('#rotAll');if(ra)ra.onclick=function(){ROT.hl='';B().rerender();};
+    doc.querySelectorAll('.rot-l[data-tk]').forEach(function(p){p.style.cursor='pointer';p.onclick=function(){var i=B().IDX[p.dataset.tk];if(i!=null)openDrawer(i);};});
     var s=doc.querySelector('#rotHl');if(s)s.onchange=function(){ROT.hl=s.value;B().rerender();};
     doc.querySelectorAll('.rot-l[data-hl]').forEach(function(p){if(!p.dataset.hl)return;p.style.cursor='pointer';p.onclick=function(){ROT.hl=ROT.hl===p.dataset.hl?'':p.dataset.hl;B().rerender();};});}
   // ================= 2-4. Company card: section links, peers, valuation, one-pager =================
@@ -167,9 +174,12 @@
     var cl=Object.keys(C).map(function(k){return C[k];}).sort(function(a,b){return CALO.cl==='az'?(a.c<b.c?-1:1):b.cap-a.cap;});
     var out=[],head={};cl.forEach(function(c){c.L.sort(function(a,b){return CALO.cl==='az'?a.ta.localeCompare(b.ta):(cap[b.ta]||0)-(cap[a.ta]||0);});head[c.L[0].ta]='<div class="calcl" style="border-left:4px solid '+s.CLCOL[c.c]+'">'+c.c+' <span>'+c.L.reduce(function(a,l){return a+l.n;},0)+' events · '+B().M(c.cap)+'</span></div>';out=out.concat(c.L);});
     return {arr:out,head:head};};
-  function calHtml(){return '<div class="brf-h"><b>Catalyst calendar</b><span>Every upcoming catalyst by area and month. Exact and month-level dates sit in their month; quarter, half and year-end dates sit in the month the window closes, with a dashed outline. Overdue = the date passed without an update (verify) · <span class="n5-raise" style="font-family:var(--mono);font-weight:700;padding:0 4px">TKR</span> = likely to raise after its event (hover for size and timing) · click a ticker for its card</span></div><div class="syn-ctl">Order clusters <span class="syn-seg">'+[['cap','Market cap'],['az','A–Z']].map(function(o){return '<button data-calo="'+o[0]+'" class="'+(CALO.cl===o[0]?'on':'')+'">'+o[1]+'</button>';}).join('')+'</span></div><div id="synCalHost"></div>';}
-  function calAfter(doc){if(doc)doc.querySelectorAll('[data-calo]').forEach(function(bt){bt.onclick=function(){CALO.cl=bt.dataset.calo;B().rerender();};});var b=B();b.embed('calwrap','synCalHost',function(){renderCalendar(b.DA.filter(function(r){return r.ta!=='Acquired / Inactive';}));
-    var w=document.getElementById('calwrap');w.querySelectorAll('*').forEach(function(c){if(c.children.length)return;var t=(c.textContent||'').trim(),x=RAISE[t];if(!x||c.classList.contains('n5-raise'))return;c.classList.add('n5-raise');c.title=(c.title?c.title+' · ':'')+'Likely equity raise ~'+b.M(x.size)+', '+x.timing;});});}
+  function calHtml(){return '<div class="brf-h"><b>Catalyst calendar</b><span>Every upcoming catalyst by area and month. Busy months get wider columns; within a month, tickers are sorted by our upside (highest first). Exact and month-level dates sit in their month; quarter, half and year-end dates sit in the month the window closes, with a dashed outline. Overdue = the date passed without an update (verify) · <span class="n5-raise" style="font-family:var(--mono);font-weight:700;padding:0 4px">TKR</span> = likely to raise after its event (hover for size and timing) · click a ticker for its card</span></div><div class="syn-ctl">Order clusters <span class="syn-seg">'+[['cap','Market cap'],['az','A–Z']].map(function(o){return '<button data-calo="'+o[0]+'" class="'+(CALO.cl===o[0]?'on':'')+'">'+o[1]+'</button>';}).join('')+'</span></div><div id="synCalHost"></div>';}
+  function calAfter(doc){if(doc)doc.querySelectorAll('[data-calo]').forEach(function(bt){bt.onclick=function(){CALO.cl=bt.dataset.calo;B().rerender();};});var b=B();
+    window.CAL_RERENDER=function(){renderCalendar(b.DA.filter(function(r){return r.ta!=='Acquired / Inactive';}));calMarks();};   // re-draw only the calendar, not the whole app
+    b.embed('calwrap','synCalHost',function(){renderCalendar(b.DA.filter(function(r){return r.ta!=='Acquired / Inactive';}));calMarks();});}
+  function calMarks(){var b=B();{
+    var w=document.getElementById('calwrap');w.querySelectorAll('*').forEach(function(c){if(c.children.length)return;var t=(c.textContent||'').trim(),x=RAISE[t];if(!x||c.classList.contains('n5-raise'))return;c.classList.add('n5-raise');c.title=(c.title?c.title+' · ':'')+'Likely equity raise ~'+b.M(x.size)+', '+x.timing;});}}
   wrap('next',function(){return priority()+calHtml();},calAfter);
   wrap('areas',rotHtml,rotAfter);
 })();

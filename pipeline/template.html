@@ -422,7 +422,7 @@ tr.pt-added td.pt-tk,tr.pt-added>td[rowspan]{border-bottom:1px solid var(--line)
 .calhead2{border-bottom:1px solid var(--line)}
 .calhl,.caloverh{font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);padding:6px 10px;display:flex;align-items:center}
 .caloverh{justify-content:center;border-left:1px solid var(--line);border-right:1px solid var(--line)}
-.calyears,.calhead2 .calcells{display:grid;grid-template-columns:repeat(var(--ncols),1fr)}
+.calyears,.calhead2 .calcells{display:grid;grid-template-columns:var(--cgt,repeat(var(--ncols),1fr))}
 .calyr{font-size:10px;font-family:var(--mono);color:var(--dim);text-align:center;padding:5px 0;border-left:1px solid var(--line)}
 .calmo{font-size:9.5px;font-family:var(--mono);color:var(--faint);text-align:center;padding:4px 0;border-left:1px solid var(--line-soft)}
 .calrow{border-top:1px solid var(--line-soft)}
@@ -439,7 +439,7 @@ tr.pt-added td.pt-tk,tr.pt-added>td[rowspan]{border-bottom:1px solid var(--line)
 .calover.has-overdue .calk{box-shadow:0 0 0 1px var(--amber,#E0B23C);animation:calOverduePulse 2.2s ease-in-out infinite}
 @keyframes calOverduePulse{0%,100%{opacity:1}50%{opacity:.55}}
 .caloverh{color:var(--amber,#E0B23C)!important;font-weight:700}
-.calcells{display:grid;grid-template-columns:repeat(var(--ncols),1fr)}
+.calcells{display:grid;grid-template-columns:var(--cgt,repeat(var(--ncols),1fr))}
 .calcell{border-left:1px solid var(--line-soft);padding:5px 3px;display:flex;flex-wrap:wrap;gap:2px;align-content:flex-start;min-height:30px}
 .calcell.has{background:rgba(86,180,211,.045)}
 .calrow.col .calcells,.calrow.col .calover{opacity:.28;filter:grayscale(.6)}
@@ -3840,7 +3840,8 @@ function renderCalendar(rows){
   const grid=arr.map(l=>{
     const col=state.calCollapsed.has(l.ta);
     const cells=cols.map((c,i)=>{
-      const list=(l.cells[i]||[]).sort((a,b)=>(b.r.mc||0)-(a.r.mc||0));
+      const up=o=>{try{const u=callUpPct(o.r);return typeof u==='number'&&isFinite(u)?u:-1e9;}catch(e){return -1e9;}};
+      const list=(l.cells[i]||[]).sort((a,b)=>up(b)-up(a));   // highest upside to our value first
       return `<div class="calcell${list.length?' has':''}">${list.map(chip).join('')}</div>`;
     }).join('');
     return `${clHead&&clHead[l.ta]||''}<div class="calrow${col?' col':''}" data-ta="${esc(l.ta)}">
@@ -3852,6 +3853,10 @@ function renderCalendar(rows){
     </div>`;
   }).join('');
 
+  // busy months get wider columns (weight grows with the number of chips, never below 1)
+  const colN=cols.map((c,i)=>arr.reduce((a,l)=>a+((l.cells[i]||[]).length),0));const avgN=colN.reduce((a,b)=>a+b,0)/Math.max(1,colN.length)||1;
+  const cgt=colN.map(n=>Math.max(1,Math.pow(n/avgN,0.75)).toFixed(2)+'fr').join(' ');
+  const rer=wrap.closest('#synCalHost')&&window.CAL_RERENDER?window.CAL_RERENDER:render;
   wrap.innerHTML=`
     <div class="calbar">
       <div class="calseg" id="calseg">
@@ -3865,7 +3870,7 @@ function renderCalendar(rows){
         <span class="li"><i class="calk none"></i>Hold</span>
       </span>
     </div>
-    <div class="calgrid" style="--ncols:${cols.length}">
+    <div class="calgrid" style="--ncols:${cols.length};--cgt:${cgt}">
       <div class="calheadwrap">
         <div class="calhead">
           <div class="callane calhl">Therapeutic area</div>
@@ -3880,12 +3885,12 @@ function renderCalendar(rows){
       ${grid||'<div class="calempty">No catalysts match these filters.</div>'}
     </div>`;
 
-  wrap.querySelectorAll('#calseg button').forEach(b=>b.onclick=()=>{state.calWin=+b.dataset.win;render();});
+  wrap.querySelectorAll('#calseg button').forEach(b=>b.onclick=()=>{state.calWin=+b.dataset.win;rer();});
   wrap.querySelectorAll('.callane').forEach(el=>{
     const row=el.closest('.calrow'); if(!row)return;
     el.onclick=()=>{const ta=row.dataset.ta;
       if(state.calCollapsed.has(ta))state.calCollapsed.delete(ta); else state.calCollapsed.add(ta);
-      render();};
+      rer();};
   });
   wrap.querySelectorAll('.calk[data-i]').forEach(el=>{
     const r=DATA[+el.dataset.i];
