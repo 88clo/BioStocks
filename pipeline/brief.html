@@ -48,6 +48,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
 .brf-filt{display:flex;gap:6px;margin:6px 0 10px;flex-wrap:wrap}
 .brf-filt button{background:var(--raised);border:1px solid var(--line);border-radius:6px;font-size:11.5px;padding:4px 10px;cursor:pointer;color:var(--dim)}
 .brf-filt button.on{color:var(--text);border-color:var(--cyan);font-weight:700}
+#brf details.brf-ev{margin:10px 0}#brf details.brf-ev>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--cyan);padding:6px 0}
 #brf #retrowrap,#brf #sugwrap{display:block!important;max-height:none!important}
 @media print{#brf{position:static;overflow:visible}.brf-bar{display:none}.brf-t{font-size:9.5px}}
 </style>
@@ -101,8 +102,8 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
     return '<div class="brf-kpis">'
       +'<div class="brf-kpi"><div class="l">Covered names, 1-month median</div><div class="v '+PC(u1)+'">'+P(u1,1)+'</div><div class="s">XBI '+P(b.xbi_1m,1)+' over the same month. '+DA.length+' names, small and mid caps.</div></div>'
       +'<div class="brf-kpi"><div class="l">Model calls</div><div class="v">'+nL+' L / '+nS+' S</div><div class="s">'+nTop+' rule-based top picks; '+nQ+' also pass the quality screen.</div></div>'
-      +'<div class="brf-kpi"><div class="l">Likely equity raises</div><div class="v">'+RD.rows.length+'</div><div class="s">'+open+' with a window open now (run-up). See Raise radar.</div></div>'
-      +'<div class="brf-kpi"><div class="l">Track record, '+E(c0.label||'')+'</div><div class="v '+PC(bi.vs_universe)+'">'+P(bi.vs_universe,1)+'</div><div class="s">Best ideas vs covered universe over '+(c0.days||'?')+' days ('+P(bi.median,1)+' vs '+P((c0.universe||{}).median,1)+'). Read the Track record tab.</div></div>'
+      +'<div class="brf-kpi"><div class="l">Likely equity raises</div><div class="v">'+RD.rows.length+'</div><div class="s">'+open+' with a window open now (run-up). See What\'s next.</div></div>'
+      +'<div class="brf-kpi"><div class="l">Track record, '+E(c0.label||'')+'</div><div class="v '+PC(bi.vs_universe)+'">'+P(bi.vs_universe,1)+'</div><div class="s">Best ideas vs covered universe over '+(c0.days||'?')+' days ('+P(bi.median,1)+' vs '+P((c0.universe||{}).median,1)+'). See Memo &amp; record.</div></div>'
       +'</div>';
   }
   function ideas(){
@@ -131,7 +132,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
   }
   function radarMini(){
     var R=RD.rows.slice(0,8);
-    return '<div class="brf-h"><b><span class="brf-n">3</span> Who is likely to sell stock next</b><span>For ECM: flag the deal before the bankers call. Full list in Raise radar.</span></div>'
+    return '<div class="brf-h"><b><span class="brf-n">3</span> Who is likely to sell stock next</b><span>For ECM: flag the deal before the bankers call. Timeline and supply chart under What\'s next.</span></div>'
       +'<table class="brf-t"><tr><th>Name</th><th class="r">Cap</th><th class="r">Runway</th><th class="r">Likely size</th><th>When</th><th>Our view</th></tr>'
       +R.map(function(x){return '<tr><td>'+tk(x.ticker)+' <span class="sm">'+E(trunc(x.name,18))+'</span></td><td class="r">'+M(x.mc)+'</td><td class="r">'+(x.runway_q==null?'—':x.runway_q.toFixed(0)+'Q')+'</td><td class="r">'+M(x.size)+'</td><td class="sm">'+E(x.timing)+'</td><td>'+E(x.view)+'</td></tr>';}).join('')+'</table>';
   }
@@ -168,7 +169,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
         +Q.map(function(x){var w=Math.abs(x.median||0)/mx*100;return '<span>'+E(x.label)+' <span class="sm">('+x.up_range[0]+'–'+x.up_range[1]+'%)</span></span><div class="brf-bar0"><i class="'+((x.median||0)>=0?'p':'')+'" style="width:'+w.toFixed(0)+'%"></i></div><span class="r '+PC(x.median)+'">'+P(x.median,1)+'</span>';}).join('')+'</div>';}
     if(TR.factors){h+='<div class="brf-h"><b>What actually explained the move</b><span>Same Sep 12 cohort, median return by bucket.</span></div><div class="brf-cols">'
       +TR.factors.map(function(f){return '<div><table class="brf-t"><tr><th>'+E(f.factor)+'</th><th class="r">n</th><th class="r">Median</th></tr>'+f.buckets.map(function(b){return '<tr><td>'+E(String(b.label).replace(/^\d\s/,''))+'</td><td class="r">'+b.n+'</td><td class="r '+PC(b.median)+'">'+P(b.median,1)+'</td></tr>';}).join('')+'</table>'+(f.note?'<div class="sm" style="margin:3px 0 8px">'+E(f.note)+'</div>':'')+'</div>';}).join('')+'</div>';}
-    h+='<div class="brf-h"><b>What we missed: the biggest moves each quarter, in hindsight</b><span>What drove each move, whether it was knowable beforehand, and what the model said at the time (formerly the Hindsight view)</span></div><div id="brfRetroHost"></div>';
+    h+=(window.BRF_MISSES?window.BRF_MISSES():'')+'<details class="brf-ev"><summary>Evidence: the 80 biggest moves by quarter, with researched drivers and sources</summary><div id="brfRetroHost"></div></details>';
     h+='<div class="brf-note g"><b>Rules this changes.</b> (1) Judge calls against the covered universe, not XBI: the universe is a small-cap book. (2) Model upside on a sub-$500M name is mostly a size bet and has not paid; such names now carry a "small" flag and rank below quality names. (3) Strong science that is not cheap (Watch) held up best: watch-list names are where entries come from. (4) Keep freezing a full ledger every refresh (ledger/), so every claim here can be checked.</div>';
     return h;
   }
@@ -218,7 +219,9 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
   function render(){
     unembed();
     var doc=document.getElementById('brfDoc');
-    doc.innerHTML=page==='brief'?brief():page==='track'?track():page==='radar'?radar():page==='flow'?flow():gaps();
+    var XP=(window.BRF_PAGES||{})[page];
+    doc.innerHTML=XP?XP.html():page==='brief'?brief():page==='track'?track():page==='radar'?radar():page==='flow'?flow():gaps();
+    if(XP&&XP.after)try{XP.after(doc);}catch(e){console.log(e);}
     if(page==='track')embed('retrowrap','brfRetroHost',function(){renderRetro(DA);});
     if(page==='gaps')embed('sugwrap','brfSugHost',function(){renderSug(DA);});
     document.querySelectorAll('#brf .brf-tab[data-p]').forEach(function(b){b.classList.toggle('on',b.dataset.p===page);});
@@ -229,6 +232,8 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
   function open(p){if(p)page=p;render();document.getElementById('brf').classList.add('open');}
   function close(){document.getElementById('brf').classList.remove('open');}
   window.openBrief=open;
+  window.BRF={E:E,M:M,P:P,PC:PC,med:med,tk:tk,cb:cb,trunc:trunc,sci:sci,up:up,quality:quality,isTop:isTop,DA:DA,IDX:IDX,RD:RD,TR:TR,GP:GP,J:J,LONG:LONG,SHORT:SHORT,kill:kill,radar:radar,today:today,rerender:function(){render();}};
+  window.BRF_PAGES=window.BRF_PAGES||{};
   window.closeBrief=close;
 })();
 </script>

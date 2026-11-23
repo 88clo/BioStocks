@@ -2,23 +2,18 @@
 
 A single-file dashboard (`index.html`) covering ~400 US-listed small and mid-cap biotechs (market cap $50M–$30B): the lead program for each company, a quantitative efficacy benchmark, risk-adjusted value vs market cap, a rule-based call, catalysts, cash runway, holders, a monthly memo, and a track record that scores every frozen call set against later prices.
 
-Open `index.html` in a browser. One bar at the top holds six views and twelve lenses; lenses with two cuts of the same data carry a small switch:
+Open `index.html` in a browser. Six pages, each opening on a synthesized view; the original detailed tables sit behind the switch in the top bar.
 
-| View | Lenses (switch) | Replaces |
+| Page | Synthesized view (what it answers) | Detail behind the switch |
 | --- | --- | --- |
-| Brief | — | home page; also the old Insights pop-up (abridged memo) |
-| Companies | By area · All fields (Covered / Parked) · Valuation · Ownership (By company / By fund) | TA summary, Full table, Parked, DCF + Map, Specialists + analysts, Investors |
-| Market | Performance (Tiles / Table) · Value gaps | Board, Historical returns, White space, Insight notes |
-| Calendar & deals | Catalysts · Deal flow (Pipeline / IPO detail) | Catalysts, Raise radar, IPO pipeline |
-| Memo & record | Monthly memo · Track record | Monthly memo, Track record, Retrospect |
-| Portfolio | — | My portfolio |
+| Brief | What matters this week: best ideas, next 45 days, likely raises, whether calls worked | — |
+| Companies | One row per company with a one-line thesis joining valuation, Street target, science, cash, likely raise, specialist ownership and next catalyst; chart of our upside vs the Street's, i.e. where we disagree with consensus | All fields, DCF model, value vs momentum, holders by company, holders by fund, area notes, parked names |
+| Areas | Scorecard: one row per therapeutic area joining returns, valuation, science, calls, catalysts in 90 days, expected stock supply and white space; area momentum vs valuation chart. Value gaps: under-served and crowded fields, cash shells, one suggestion per company | Company returns 1M–36M |
+| What's next | One timeline of catalysts (with our call, expected direction and the raise likely to follow), open raise windows, IPOs and lock-up expiries; monthly expected equity supply split by whether we would join | Calendar grid, raise and IPO lists, IPO detail |
+| Memo & record | Monthly memo; track record of frozen calls, plus the biggest moves joined with what drove them and what we said | Evidence list of the 80 biggest moves with sources |
+| Portfolio | My portfolio | — |
 
-- **Valuation** puts the value-vs-momentum scatter on top and the DCF table that explains each dot underneath.
-- **Value gaps** shows value left on the table at two levels: fields (under-served, crowded, cash shells) and companies (one suggestion per company).
-- **Deal flow** lists IPOs on file, likely follow-ons with size, timing and our view, and recent IPOs with lock-up expiries. **Catalysts** marks names likely to raise after their event ($ badge).
-- **Track record** scores our frozen calls, then shows the biggest moves we missed and whether they were knowable.
-
-Methodology, Refresh status and Print sit under **ⓘ About**; valuation knobs behind **⚙ Model**. Views link directly, e.g. `index.html#deals/flow`, `index.html#companies/own/sh`; older links (`#deals/radar`, `#companies/dcf`, …) still resolve.
+Methodology, Refresh status and Print sit under **ⓘ About**; valuation knobs behind **⚙ Model** on the detail tables. Links: `#companies/co`, `#areas/areas`, `#next/next`, `#record/track`, and `#page/lens/detail` for a detail table (e.g. `#companies/co/dcf`). Older links still resolve.
 
 ## Backups
 
@@ -29,6 +24,7 @@ Methodology, Refresh status and Print sit under **ⓘ About**; valuation knobs b
 | backup-111626-v1.html | Live dashboard before the Nov 22 rebuild (Nov 16 data, original navigation) |
 | backup-112226-v1.html | Nov 22 refresh (Nov 20 prices) with the Brief overlay, original navigation |
 | backup-112226-v2.html | Nov 22 six-view navigation with 19 lenses, before the merge to twelve |
+| backup-112226-v3.html | Nov 22 twelve lenses (merged pages), before the synthesized pages |
 
 ## Layout
 
@@ -36,7 +32,8 @@ Methodology, Refresh status and Print sit under **ⓘ About**; valuation knobs b
 index.html                 built dashboard (do not edit by hand; run scripts/build.py)
 pipeline/template.html     page markup, CSS and JS with {{DATA:x}} placeholders
 pipeline/brief.html        Brief / Track record / Raise radar / White space pages (injected at build)
-pipeline/nav.html          the six-view navigation bar (injected at build, after brief.html)
+pipeline/synth.html        synthesized pages: Companies, Areas, What's next, record join (injected after brief.html)
+pipeline/nav.html          the navigation bar (injected last)
 pipeline/patches/          hand-verified edits, one dated file per run (reproducible)
 pipeline/logs/             refresh change logs and event-check notes with sources
 data/*.json                every data block in the page (one file per <script type="application/json">)

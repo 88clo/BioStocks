@@ -99,6 +99,35 @@ out["factors"] = [
     fac("Quality screen (current scores)", lambda r, x: "1 pass" if (sci(x) or 0) >= 3.5 and r["mc"] >= 500e6 and (x.get("runway_q") or 0) >= 8 else "2 fail", "science >=3.5, cap >=$500M, runway >=8Q; science scores are today's, so some look-ahead"),
 ]
 json.dump(out, open(root/"data/track-data.json", "w"), indent=1)
+
+# --- join the hindsight list (biggest moves per quarter, researched drivers) with our calls ---
+RT = json.load(open(root/"data/retro-data.json"))
+sepcall = {r["ticker"]: r["call"] for r in sep}
+def fore(d):
+    f = (d.get("foreseeable") or "").lower()
+    return "scheduled" if f.startswith("scheduled") else "guided" if "guided" in f else "unscheduled" if f.startswith("unscheduled") else "unverified"
+by = {}
+rows4 = []
+for q in RT["quarters"]:
+    for side in ("longs", "shorts"):
+        for x in q.get(side, []):
+            d = x.get("drv") or {}; ty = d.get("driver_type") or "unverified"; fo = fore(d)
+            b = by.setdefault(ty, {"type": ty, "up": 0, "down": 0, "scheduled": 0, "guided": 0, "unscheduled": 0, "unverified": 0})
+            b["up" if side == "longs" else "down"] += 1; b[fo] += 1
+            if q["q"].startswith("4Q26"):
+                c = sepcall.get(x["t"]); right = None
+                if c: right = (c in LONG) if side == "longs" else (c in SHORT or c == "AVOID")
+                rows4.append({"t": x["t"], "side": "up" if side == "longs" else "down", "ret": x["ret"], "type": ty, "fore": fo, "sep_call": c, "right": right, "note": (d.get("note") or "")[:160]})
+tot = sum(b["up"] + b["down"] for b in by.values())
+for b in by.values():
+    n = b["up"] + b["down"]; b["n"] = n; b["share"] = round(100*n/tot); b["knowable_pct"] = round(100*(b["scheduled"] + b["guided"])/n) if n else None
+had = [r for r in rows4 if r["sep_call"]]
+out["misses"] = {"quarters": [q["q"] for q in RT["quarters"]], "n": tot, "by_type": sorted(by.values(), key=lambda b: -b["n"]),
+    "knowable_pct": round(100*sum(b["scheduled"] + b["guided"] for b in by.values())/tot),
+    "q4": {"window": RT["quarters"][-1]["start"] + " to " + RT["quarters"][-1]["end"], "rows": rows4, "covered": len(had),
+           "right": sum(1 for r in had if r["right"]), "up_right": sum(1 for r in had if r["right"] and r["side"] == "up"), "up_n": sum(1 for r in had if r["side"] == "up"),
+           "down_right": sum(1 for r in had if r["right"] and r["side"] == "down"), "down_n": sum(1 for r in had if r["side"] == "down")}}
+json.dump(out, open(root/"data/track-data.json", "w"), indent=1)
 for c in out["cohorts"]:
     print(f"\n{c['label']} ({c['days']}d) XBI {c['xbi']} IBB {c['ibb']} universe {c['universe']}")
     for g in c["groups"]: print("  ", g)

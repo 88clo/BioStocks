@@ -584,5 +584,324 @@
     }
    ]
   }
- ]
+ ],
+ "misses": {
+  "quarters": [
+   "1Q26",
+   "2Q26",
+   "3Q26",
+   "4Q26 to date"
+  ],
+  "n": 80,
+  "by_type": [
+   {
+    "type": "data readout",
+    "up": 15,
+    "down": 21,
+    "scheduled": 1,
+    "guided": 5,
+    "unscheduled": 1,
+    "unverified": 29,
+    "n": 36,
+    "share": 45,
+    "knowable_pct": 17
+   },
+   {
+    "type": "unverified",
+    "up": 9,
+    "down": 7,
+    "scheduled": 1,
+    "guided": 3,
+    "unscheduled": 1,
+    "unverified": 11,
+    "n": 16,
+    "share": 20,
+    "knowable_pct": 25
+   },
+   {
+    "type": "guidance/earnings",
+    "up": 5,
+    "down": 3,
+    "scheduled": 2,
+    "guided": 0,
+    "unscheduled": 3,
+    "unverified": 3,
+    "n": 8,
+    "share": 10,
+    "knowable_pct": 25
+   },
+   {
+    "type": "partnering/M&A",
+    "up": 5,
+    "down": 1,
+    "scheduled": 0,
+    "guided": 0,
+    "unscheduled": 6,
+    "unverified": 0,
+    "n": 6,
+    "share": 8,
+    "knowable_pct": 0
+   },
+   {
+    "type": "financing/dilution",
+    "up": 3,
+    "down": 1,
+    "scheduled": 0,
+    "guided": 0,
+    "unscheduled": 4,
+    "unverified": 0,
+    "n": 4,
+    "share": 5,
+    "knowable_pct": 0
+   },
+   {
+    "type": "short report/other",
+    "up": 1,
+    "down": 3,
+    "scheduled": 0,
+    "guided": 0,
+    "unscheduled": 3,
+    "unverified": 1,
+    "n": 4,
+    "share": 5,
+    "knowable_pct": 0
+   },
+   {
+    "type": "regulatory setback",
+    "up": 0,
+    "down": 3,
+    "scheduled": 1,
+    "guided": 0,
+    "unscheduled": 1,
+    "unverified": 1,
+    "n": 3,
+    "share": 4,
+    "knowable_pct": 33
+   },
+   {
+    "type": "no specific news",
+    "up": 2,
+    "down": 1,
+    "scheduled": 0,
+    "guided": 0,
+    "unscheduled": 1,
+    "unverified": 2,
+    "n": 3,
+    "share": 4,
+    "knowable_pct": 0
+   }
+  ],
+  "knowable_pct": 16,
+  "q4": {
+   "window": "2026-09-30 to 2026-10-28",
+   "rows": [
+    {
+     "t": "PRME",
+     "side": "up",
+     "ret": 75.5,
+     "type": "data readout",
+     "fore": "unverified",
+     "sep_call": "LONG",
+     "right": true,
+     "note": "Dosed first patient in Phase 1/2 PM577a Wilson disease trial (Oct 5); Rare Pediatric Disease designation; FDA IND clearance for PM647 (AATD) reported around Oct"
+    },
+    {
+     "t": "GMAB",
+     "side": "up",
+     "ret": 60.6,
+     "type": "data readout",
+     "fore": "unverified",
+     "sep_call": "WATCH",
+     "right": false,
+     "note": "Phase 3 RAINFOL-02 of Rina-S in platinum-resistant ovarian cancer met PFS (HR 0.29) and OS (HR 0.43); shares rose about 10%. Earlier Oct 5 rise of about 11% on "
+    },
+    {
+     "t": "LQDA",
+     "side": "up",
+     "ret": 51.1,
+     "type": "partnering/M&A",
+     "fore": "unscheduled",
+     "sep_call": "WATCH",
+     "right": false,
+     "note": "Settled patent litigation with United Therapeutics (reported around $381 million); shares rose 25-42% on Oct 14, removing the legal overhang on YUTREPIA."
+    },
+    {
+     "t": "KRRO",
+     "side": "up",
+     "ret": 39.9,
+     "type": "unverified",
+     "fore": "guided",
+     "sep_call": "WATCH",
+     "right": false,
+     "note": "Announced first cohort dosed in Phase 1/2 ANCHOR trial of KRRO-121 (Oct 5); preclinical KRRO-111 results Oct 22. No source ties the 40% rise to either event."
+    },
+    {
+     "t": "TRAX",
+     "side": "up",
+     "ret": 29.0,
+     "type": "data readout",
+     "fore": "unverified",
+     "sep_call": "SHORT",
+     "right": false,
+     "note": "Phase 1b Cohort 1 of ANB033 in celiac disease met all key histology endpoints at Week 6 versus placebo, with symptom improvement and no serious adverse events. "
+    },
+    {
+     "t": "KNSA",
+     "side": "up",
+     "ret": 27.6,
+     "type": "guidance/earnings",
+     "fore": "scheduled",
+     "sep_call": "WATCH",
+     "right": false,
+     "note": "Q3 results: ARCALYST sales $286M (+58% y/y); full-year ARCALYST guidance raised to $1.045-1.050B from $980-995M. Shares rose about 15-22% that day."
+    },
+    {
+     "t": "IRON",
+     "side": "up",
+     "ret": 27.1,
+     "type": "data readout",
+     "fore": "guided",
+     "sep_call": "WATCH",
+     "right": false,
+     "note": "Phase 3 APOLLO of bitopertin in EPP met all primary and secondary endpoints (PPIX down 41%, more sunlight time); shares up about 35%. Resubmission planned by en"
+    },
+    {
+     "t": "SGP",
+     "side": "up",
+     "ret": 26.4,
+     "type": "unverified",
+     "fore": "unverified",
+     "sep_call": "WATCH",
+     "right": false,
+     "note": "Reported 4-year BIM-IOL first-in-human data (37% IOP reduction, Oct 19) and acquired Advanced Vision Science for IOL supply (Oct 1). No source ties the 26% rise"
+    },
+    {
+     "t": "COAG",
+     "side": "up",
+     "ret": 24.8,
+     "type": "no specific news",
+     "fore": "unverified",
+     "sep_call": "SHORT",
+     "right": false,
+     "note": "No company-specific news found in window; IPO lock-up expires Oct 28. Prior data release was July 12 (outside window). Cause of 25% rise unverified."
+    },
+    {
+     "t": "VSTM",
+     "side": "up",
+     "ret": 22.2,
+     "type": "data readout",
+     "fore": "scheduled",
+     "sep_call": "WATCH",
+     "right": false,
+     "note": "Presented initial VS-7375 (oral KRAS G12D inhibitor) efficacy data on Oct 14; shares rose about 10% that day. Priced roughly $250M offering at $8.00 the same da"
+    },
+    {
+     "t": "EYPT",
+     "side": "down",
+     "ret": -88.5,
+     "type": "data readout",
+     "fore": "guided",
+     "sep_call": "AVOID",
+     "right": true,
+     "note": "Second Phase 3 (LUCIA) of DURAVYU in wet AMD missed non-inferiority versus aflibercept, after LUGANO missed in August. Shares fell about 85%; 53% workforce cut "
+    },
+    {
+     "t": "GUTS",
+     "side": "down",
+     "ret": -86.4,
+     "type": "data readout",
+     "fore": "guided",
+     "sep_call": "STRONG BUY",
+     "right": false,
+     "note": "REMAIN-1 six-month data: Revita met co-primary endpoint (5.1% vs 8.2% regain) but shares fell 47.6% Oct 16 amid skepticism and a securities class action. Later "
+    },
+    {
+     "t": "AARD",
+     "side": "down",
+     "ret": -71.3,
+     "type": "data readout",
+     "fore": "unscheduled",
+     "sep_call": "AVOID",
+     "right": true,
+     "note": "Released exploratory results from terminated Phase 3 HERO trial of ARD-101 in Prader-Willi syndrome: small effect that faded off drug; one cardiac serious adver"
+    },
+    {
+     "t": "AVTX",
+     "side": "down",
+     "ret": -53.6,
+     "type": "short report/other",
+     "fore": "unverified",
+     "sep_call": "WATCH",
+     "right": false,
+     "note": "Shares fell over 36% on Oct 22 after AbbVie's IL-1 inhibitor lutikizumab showed a modest Phase 3 placebo-adjusted effect in hidradenitis suppurativa, a read-thr"
+    },
+    {
+     "t": "AVBP",
+     "side": "down",
+     "ret": -48.1,
+     "type": "data readout",
+     "fore": "unverified",
+     "sep_call": "SHORT",
+     "right": true,
+     "note": "Phase 3 FURVENT of firmonertinib in 1L EGFR exon 20 NSCLC missed its primary endpoint (PFS 11 vs 9.5 months by BICR, not significant). Shares fell about 50% on "
+    },
+    {
+     "t": "BCAX",
+     "side": "down",
+     "ret": -47.6,
+     "type": "unverified",
+     "fore": "unverified",
+     "sep_call": "WATCH",
+     "right": false,
+     "note": "No company-specific event in the window found; only Oct 5 inducement grants. Cause of the 48% decline unverified."
+    },
+    {
+     "t": "TNXP",
+     "side": "down",
+     "ret": -44.9,
+     "type": "unverified",
+     "fore": "unverified",
+     "sep_call": "STRONG BUY",
+     "right": false,
+     "note": "Only routine news found in window (IASP Tonmya analysis Oct 27, vaccine congress, earnings date). Cause of the 45% decline unverified."
+    },
+    {
+     "t": "UPB",
+     "side": "down",
+     "ret": -43.5,
+     "type": "unverified",
+     "fore": "unverified",
+     "sep_call": "STRONG BUY",
+     "right": false,
+     "note": "No company-specific news found in window (Q2 results and Phase 3 plans were earlier). Cause of the 43% decline unverified."
+    },
+    {
+     "t": "STRO",
+     "side": "down",
+     "ret": -42.3,
+     "type": "unverified",
+     "fore": "unverified",
+     "sep_call": "AVOID",
+     "right": true,
+     "note": "Only minor news found (STRO-006 first patient dosed Oct 21; ADC conference). Earlier 15% drop on Aug 12 is outside window. Cause of the 42% decline unverified."
+    },
+    {
+     "t": "FHTX",
+     "side": "down",
+     "ret": -40.3,
+     "type": "partnering/M&A",
+     "fore": "unscheduled",
+     "sep_call": "AVOID",
+     "right": true,
+     "note": "Foghorn and Lilly decided not to advance FHD-909 (SMARCA2) after Phase 1 dose-escalation data, ending the collaboration; 40% workforce cut. Shares fell 18% Oct "
+    }
+   ],
+   "covered": 20,
+   "right": 6,
+   "up_right": 1,
+   "up_n": 10,
+   "down_right": 5,
+   "down_n": 10
+  }
+ }
 }

@@ -30,6 +30,7 @@ header.top .brand h1{display:none}
 body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(.n5-model) .controls .sfbar,body:not(.n5-model) #effVsel,body:not(.n5-model) #diffVsel{display:none!important}
 #nav5 .n5-modes{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
 #nav5 .n5-mode{background:none;border:0;padding:4px 10px;font-size:11.5px;color:var(--dim);cursor:pointer}
+#nav5 .n5-msel{background:var(--panel);border:1px solid var(--cyan);border-radius:7px;padding:4px 8px;font-size:12px;color:var(--text);font-weight:600}
 #nav5 .n5-mode.on{background:var(--cyan);color:#04202a;font-weight:700}
 .n5-valnote{margin:10px 16px 4px;font-size:12px;color:var(--dim)}
 .n5-raise{box-shadow:inset 0 -2px 0 var(--amber)!important;position:relative}
@@ -44,16 +45,17 @@ body.n5-val #dcfwrap{max-height:none!important}
   var old=document.getElementById('nav5');if(old)old.remove();var oldp=document.getElementById('n5pop');if(oldp)oldp.remove();
   // Six views. Each lens is one of the dashboard's existing renderers; nothing was dropped, duplicates were removed.
   // Six views, twelve lenses. Merged lenses carry a mode switch; every former view is still reachable.
+  // Six pages. Each opens on a synthesized view; the original detailed tables sit behind its switch.
   var TABS=[
     {k:'brief',l:'Brief',lens:[{k:'brief',l:'Brief'}]},
-    {k:'companies',l:'Companies',lens:[{k:'ta',l:'By area'},{k:'all',l:'All fields',modes:[['table','Covered'],['parked','Parked']]},{k:'val',l:'Valuation'},{k:'own',l:'Ownership',modes:[['crowd','By company'],['sh','By fund']]}]},
-    {k:'market',l:'Market',lens:[{k:'perf',l:'Performance',modes:[['board','Tiles'],['returns','Table']]},{k:'gaps',l:'Value gaps'}]},
-    {k:'deals',l:'Calendar & deals',lens:[{k:'cal',l:'Catalysts'},{k:'flow',l:'Deal flow',modes:[['flow','Pipeline'],['ipo','IPO detail']]}]},
+    {k:'companies',l:'Companies',lens:[{k:'co',l:'Companies',modes:[['co','One-line view'],['table','Detail: all fields'],['dcf','Detail: DCF model'],['map','Detail: value vs momentum'],['crowd','Detail: holders by company'],['sh','Detail: holders by fund'],['ta','Detail: area notes'],['parked','Detail: parked names']]}]},
+    {k:'areas',l:'Areas',lens:[{k:'areas',l:'Scorecard',modes:[['areas','Scorecard'],['returns','Company returns']]},{k:'gaps',l:'Value gaps'}]},
+    {k:'next',l:"What's next",lens:[{k:'next',l:"What's next",modes:[['next','Timeline'],['cal','Calendar grid'],['flow','Raise & IPO lists'],['ipo','IPO detail']]}]},
     {k:'record',l:'Memo & record',lens:[{k:'memo',l:'Monthly memo'},{k:'track',l:'Track record'}]},
     {k:'port',l:'Portfolio',lens:[{k:'port',l:'My portfolio'}]}
   ];
-  var BRF={brief:1,track:1,flow:1,gaps:1}, MAIN={table:1,parked:1,crowd:1,sh:1,board:1,returns:1,cal:1,ipo:1,port:1};
-  var mode={all:'table',own:'crowd',perf:'board',flow:'flow'};
+  var BRF={brief:1,track:1,flow:1,gaps:1,co:1,areas:1,next:1}, MAIN={table:1,parked:1,crowd:1,sh:1,board:1,returns:1,cal:1,ipo:1,port:1,map:1,dcf:1};
+  var mode={co:'co',areas:'areas',next:'next'};
   var last={};TABS.forEach(function(t){last[t.k]=t.lens[0].k;});
   var cur={tab:'brief',lens:'brief'};
   var nav=document.createElement('nav');nav.id='nav5';nav.setAttribute('aria-label','Dashboard views');
@@ -72,13 +74,14 @@ body.n5-val #dcfwrap{max-height:none!important}
     nav.innerHTML='<span class="n5-logo">BIOTECH LANDSCAPE</span>'
       +TABS.map(function(x){return '<button class="n5-tab'+(x.k===cur.tab?' on':'')+'" data-t="'+x.k+'">'+x.l+'</button>';}).join('')
       +(t.lens.length>1?'<span class="n5-sep"></span>'+t.lens.map(function(l){return '<button class="n5-lens'+(l.k===cur.lens?' on':'')+'" data-l="'+l.k+'">'+l.l+'</button>';}).join(''):'')
-      +(function(){var L=t.lens.filter(function(l){return l.k===cur.lens;})[0];return L&&L.modes?'<span class="n5-sep"></span><span class="n5-modes">'+L.modes.map(function(m){return '<button class="n5-mode'+(mode[L.k]===m[0]?' on':'')+'" data-m="'+m[0]+'">'+m[1]+'</button>';}).join('')+'</span>':'';})()
+      +(function(){var L=t.lens.filter(function(l){return l.k===cur.lens;})[0];if(!L||!L.modes)return '';if(L.modes.length>3)return '<span class="n5-sep"></span><select class="n5-msel" id="n5msel" title="Switch between the synthesized view and the detailed tables">'+L.modes.map(function(m){return '<option value="'+m[0]+'"'+(mode[L.k]===m[0]?' selected':'')+'>'+m[1]+'</option>';}).join('')+'</select>';return '<span class="n5-sep"></span><span class="n5-modes">'+L.modes.map(function(m){return '<button class="n5-mode'+(mode[L.k]===m[0]?' on':'')+'" data-m="'+m[0]+'">'+m[1]+'</button>';}).join('')+'</span>';})()
       +'<span class="n5-sp"></span>'
-      +(MAIN[act(cur.lens)]||cur.lens==='val'?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
+      +(MAIN[act(cur.lens)]?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
       +'<button class="n5-about" id="n5aboutBtn">ⓘ About ▾</button>';
     nav.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){go(b.dataset.t,last[b.dataset.t]);};});
     nav.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){go(cur.tab,b.dataset.l);};});
     nav.querySelectorAll('[data-m]').forEach(function(b){b.onclick=function(){mode[cur.lens]=b.dataset.m;go(cur.tab,cur.lens);};});
+    var ms=el('n5msel');if(ms)ms.onchange=function(){mode[cur.lens]=ms.value;go(cur.tab,cur.lens);};
     var m=el('n5model');if(m){m.classList.toggle('on',document.body.classList.contains('n5-model'));m.onclick=function(){document.body.classList.toggle('n5-model');m.classList.toggle('on');};}
     el('n5aboutBtn').onclick=function(ev){ev.stopPropagation();pop.style.display=pop.style.display==='block'?'none':'block';};
   }
@@ -89,7 +92,7 @@ body.n5-val #dcfwrap{max-height:none!important}
   function act(lens){return mode[lens]||lens;}
   function go(tab,lens,noHash){
     cur={tab:tab,lens:lens};last[tab]=lens;closeOverlays();
-    var a=act(lens);document.body.classList.toggle('n5-val',lens==='val');
+    var a=act(lens);document.body.classList.remove('n5-val');
     try{
       if(BRF[a]){if(window.openBrief)window.openBrief(a);}
       else if(a==='ta'){if(typeof openTApage==='function')openTApage();}
@@ -112,7 +115,7 @@ body.n5-val #dcfwrap{max-height:none!important}
   window.navGo=go;
   // route from the URL hash (#companies/table, #deals/radar ...); old Brief hashes still work; default = Brief
   var h=(location.hash||'').replace('#',''),p=h.split('/'),ok=false;
-  var alias={brief:'brief/brief',track:'record/track',radar:'deals/flow',gaps:'market/gaps','companies/table':'companies/all','companies/parked':'companies/all/parked','companies/dcf':'companies/val','companies/crowd':'companies/own','companies/sh':'companies/own/sh','companies/sug':'market/gaps','market/board':'market/perf','market/returns':'market/perf/returns','market/map':'companies/val','deals/radar':'deals/flow','deals/ipo':'deals/flow/ipo','record/retro':'record/track'};
+  var alias={brief:'brief/brief',track:'record/track',radar:'next/next/flow',gaps:'areas/gaps','companies/ta':'companies/co/ta','companies/table':'companies/co/table','companies/all':'companies/co/table','companies/all/parked':'companies/co/parked','companies/parked':'companies/co/parked','companies/dcf':'companies/co/dcf','companies/val':'companies/co/dcf','companies/crowd':'companies/co/crowd','companies/own':'companies/co/crowd','companies/own/sh':'companies/co/sh','companies/sh':'companies/co/sh','companies/sug':'areas/gaps','market/board':'areas/areas/returns','market/perf':'areas/areas','market/returns':'areas/areas/returns','market/perf/returns':'areas/areas/returns','market/perf/board':'areas/areas/returns','market/map':'companies/co/map','market/gaps':'areas/gaps','deals/cal':'next/next/cal','deals/radar':'next/next/flow','deals/flow':'next/next/flow','deals/flow/flow':'next/next/flow','deals/ipo':'next/next/ipo','deals/flow/ipo':'next/next/ipo','record/retro':'record/track'};
   if(alias[h]){h=alias[h];p=h.split('/');}
   if(p.length>=2){TABS.forEach(function(t){if(t.k!==p[0])return;var L=t.lens.filter(function(l){return l.k===p[1];})[0];if(!L)return;if(p[2]&&L.modes&&L.modes.some(function(m){return m[0]===p[2];}))mode[L.k]=p[2];go(p[0],p[1],true);ok=true;});}
   if(!ok)go('brief','brief',true);
