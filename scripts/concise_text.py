@@ -127,7 +127,7 @@ DOSE = [(r'once[- ]quarterly|every (?:three|3) months|quarterly dosing', 'Q3M'),
         (r'\bversus\b', 'vs'), (r'\bplacebo\b', 'placebo'), (r'\s+—\s+', ' — ')]
 
 
-DROP_ITEM = re.compile(r'published|\b(?:NEJM|Lancet|JAMA|AJRCCM|CHEST|JCO|Nature|Blood)\b|cut-?off|data cut|\bcut\b|f/u|follow-?up|\bas of\b|\d+\s?mg(?:/kg)?\b|\b(?:QD|BID|QW|Q\dW|Q\dM)\b|topline|full data|presented|\b(?:ASCO|ESMO|ASH|ESC|AHA|AAN|SITC|EASL|AASLD|ADA|ACR|EULAR|ATS|ERS|SABCS)\b|^(?:%s)\s*\d{0,2},?\s*20\d\d$|^20\d\d$|company|investigator' % '|'.join(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Sept','Oct','Nov','Dec']), re.I)
+DROP_ITEM = re.compile(r'published|(?-i:\b(?:NEJM|Lancet|JAMA|AJRCCM|CHEST|JCO|Nature|Blood)\b)|cut-?off|data cut|\bcut\b|f/u|follow-?up|\bas of\b|\d+\s?mg(?:/kg)?\b|topline|full data|presented|\b(?:ASCO|ESMO|ASH|ESC|AHA|AAN|SITC|EASL|AASLD|ADA|ACR|EULAR|ATS|ERS|SABCS)\b|^(?:%s)\s*\d{0,2},?\s*20\d\d$|^20\d\d$|company|investigator' % '|'.join(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Sept','Oct','Nov','Dec']), re.I)
 
 
 def tidy(s):
