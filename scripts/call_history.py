@@ -19,7 +19,7 @@ M = json.load(open(root/"data/memo-baked.json"))["months"]
 for mk, m in M.items():
     fr = m.get("frozen") or m; d = (m.get("asof") or mk + "-15")[:10]
     for l in fr.get("longs") or []: add(l["ticker"], d, l.get("call") or "LONG", mk + " memo: highest-conviction long")
-for f in sorted((root/"ledger").glob("*.json")):
+for f in sorted((root/"ledger").glob("2*.json")):
     L = json.load(open(f)); d = f.name[:10]
     for r in L["rows"]: add(r["ticker"], d, r["call"], "ledger " + f.stem, r.get("price"))
 for tk in H: H[tk].sort(key=lambda x: x["d"])

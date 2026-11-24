@@ -1,212 +1,566 @@
 {
- "from": "2026-11-17_before-refresh",
- "to": "2026-11-22_refresh",
+ "from": "2026-11-22_refresh",
+ "to": "2026-11-23_valuation-v2",
  "calls": [
   {
-   "t": "CLLS",
-   "from": "WATCH",
-   "to": "LONG",
-   "up": 63.934426229508205
+   "t": "AUTL",
+   "from": "LONG",
+   "to": "STRONG BUY",
+   "up": 1150
   },
   {
    "t": "ALLO",
-   "from": "LONG",
-   "to": "STRONG BUY",
-   "up": 212.5
-  },
-  {
-   "t": "IPHA",
-   "from": "HOLD",
-   "to": "STRONG SHORT",
-   "up": -73.2620320855615
-  },
-  {
-   "t": "IMMX",
-   "from": "WATCH",
+   "from": "STRONG BUY",
    "to": "LONG",
-   "up": 61.29032258064515
+   "up": 156.41025641025644
   },
   {
-   "t": "EXEL",
+   "t": "DMRA",
+   "from": "WATCH",
+   "to": "SHORT",
+   "up": -69.6048632218845
+  },
+  {
+   "t": "RIGL",
    "from": "SHORT",
    "to": "HOLD",
-   "up": -31.506849315068497
+   "up": 28.205128205128215
   },
   {
-   "t": "RLMD",
-   "from": "WATCH",
+   "t": "ANTX",
+   "from": "HOLD",
+   "to": "SHORT",
+   "up": -44.75138121546961
+  },
+  {
+   "t": "GERN",
+   "from": "STRONG BUY",
    "to": "LONG",
-   "up": 104.08163265306123
+   "up": 185.71428571428572
   },
   {
-   "t": "CELC",
+   "t": "ELVN",
+   "from": "SHORT",
+   "to": "WATCH",
+   "up": -44.44444444444444
+  },
+  {
+   "t": "ADAG",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": 49.25373134328359
+  },
+  {
+   "t": "XLO",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": -3.8461538461538436
+  },
+  {
+   "t": "CMPX",
    "from": "LONG",
    "to": "STRONG BUY",
-   "up": 222.5806451612903
+   "up": 426.3157894736843
+  },
+  {
+   "t": "ZYME",
+   "from": "WATCH",
+   "to": "LONG",
+   "up": 88.67924528301887
+  },
+  {
+   "t": "CRDF",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": 36.98630136986301
+  },
+  {
+   "t": "AKTS",
+   "from": "AVOID",
+   "to": "SHORT",
+   "up": -45.05494505494505
+  },
+  {
+   "t": "GLSI",
+   "from": "WATCH",
+   "to": "SHORT",
+   "up": -75.42997542997543
+  },
+  {
+   "t": "ALXO",
+   "from": "LONG",
+   "to": "WATCH",
+   "up": 20.481927710843383
+  },
+  {
+   "t": "GNLX",
+   "from": "AVOID",
+   "to": "SHORT",
+   "up": -52.15311004784689
   },
   {
    "t": "PYXS",
-   "from": "LONG",
-   "to": "HOLD",
-   "up": 42.85714285714286
-  },
-  {
-   "t": "PBYI",
-   "from": "SHORT",
-   "to": "AVOID",
-   "up": -33.333333333333336
-  },
-  {
-   "t": "LGVN",
-   "from": "SHORT",
-   "to": "AVOID",
-   "up": -32.88590604026845
-  },
-  {
-   "t": "BLTE",
-   "from": "WATCH",
-   "to": "LONG",
-   "up": 85.18518518518519
-  },
-  {
-   "t": "ODTX",
    "from": "HOLD",
+   "to": "STRONG SHORT",
+   "up": -73.6842105263158
+  },
+  {
+   "t": "CGEM",
+   "from": "HOLD",
+   "to": "SHORT",
+   "up": -35.483870967741936
+  },
+  {
+   "t": "WHWK",
+   "from": "AVOID",
+   "to": "SHORT",
+   "up": -41.17647058823529
+  },
+  {
+   "t": "BDTX",
+   "from": "STRONG BUY",
+   "to": "LONG",
+   "up": 163.15789473684214
+  },
+  {
+   "t": "MAIA",
+   "from": "STRONG BUY",
+   "to": "LONG",
+   "up": 177.77777777777777
+  },
+  {
+   "t": "IMCR",
+   "from": "WATCH",
    "to": "LONG",
    "up": 56.25
   },
   {
-   "t": "MNKD",
+   "t": "HURA",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -97.68999768999768
+  },
+  {
+   "t": "DRTS",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -70.23809523809523
+  },
+  {
+   "t": "KZIA",
+   "from": "HOLD",
+   "to": "SHORT",
+   "up": -47.089947089947096
+  },
+  {
+   "t": "RCKT",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": 31.578947368421062
+  },
+  {
+   "t": "LGVN",
+   "from": "AVOID",
+   "to": "STRONG SHORT",
+   "up": -86.64886515353804
+  },
+  {
+   "t": "DMAC",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -82.174688057041
+  },
+  {
+   "t": "TECX",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": 38.888888888888886
+  },
+  {
+   "t": "ABSI",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -86.54104979811575
+  },
+  {
+   "t": "CNXU",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -96.37155297532655
+  },
+  {
+   "t": "INCY",
+   "from": "SHORT",
+   "to": "WATCH",
+   "up": 8.695652173913038
+  },
+  {
+   "t": "LCTX",
+   "from": "HOLD",
+   "to": "STRONG SHORT",
+   "up": -76.79814385150812
+  },
+  {
+   "t": "SRZN",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -81.4814814814815
+  },
+  {
+   "t": "BLTE",
+   "from": "LONG",
+   "to": "WATCH",
+   "up": -23.664122137404576
+  },
+  {
+   "t": "IRWD",
    "from": "WATCH",
    "to": "LONG",
-   "up": 53.846153846153854
+   "up": 177.77777777777777
+  },
+  {
+   "t": "SEPN",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -68.75
+  },
+  {
+   "t": "TRAX",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -71.59090909090908
+  },
+  {
+   "t": "STTK",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -75.60975609756098
+  },
+  {
+   "t": "EPRX",
+   "from": "HOLD",
+   "to": "SHORT",
+   "up": -46.23655913978495
+  },
+  {
+   "t": "ODTX",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": 4.166666666666674
+  },
+  {
+   "t": "EQ",
+   "from": "AVOID",
+   "to": "SHORT",
+   "up": -55.15695067264574
   },
   {
    "t": "SANA",
-   "from": "SHORT",
-   "to": "AVOID",
-   "up": -32.88590604026845
+   "from": "AVOID",
+   "to": "STRONG SHORT",
+   "up": -75.06234413965088
+  },
+  {
+   "t": "SABS",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": 14.942528735632177
+  },
+  {
+   "t": "ELOX",
+   "from": "HOLD",
+   "to": "SHORT",
+   "up": -49.23857868020305
   },
   {
    "t": "ANNX",
-   "from": "LONG",
-   "to": "STRONG BUY",
-   "up": 203.03030303030303
+   "from": "STRONG BUY",
+   "to": "LONG",
+   "up": 194.11764705882354
   },
   {
-   "t": "VOR",
+   "t": "TLSA",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": -13.793103448275868
+  },
+  {
+   "t": "QTTB",
+   "from": "LONG",
+   "to": "STRONG BUY",
+   "up": 316.6666666666667
+  },
+  {
+   "t": "ACRS",
+   "from": "HOLD",
+   "to": "SHORT",
+   "up": -64.02877697841727
+  },
+  {
+   "t": "TTRX",
+   "from": "HOLD",
+   "to": "STRONG SHORT",
+   "up": -75.72815533980582
+  },
+  {
+   "t": "ARTV",
+   "from": "HOLD",
+   "to": "STRONG BUY",
+   "up": 488.2352941176471
+  },
+  {
+   "t": "ARMP",
+   "from": "HOLD",
+   "to": "STRONG SHORT",
+   "up": -83.76623376623377
+  },
+  {
+   "t": "AVIR",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": 28.205128205128215
+  },
+  {
+   "t": "ENTA",
    "from": "LONG",
    "to": "WATCH",
-   "up": 51.515151515151516
+   "up": 49.25373134328359
   },
   {
-   "t": "PRME",
-   "from": "WATCH",
-   "to": "LONG",
-   "up": 69.4915254237288
+   "t": "PLX",
+   "from": "HOLD",
+   "to": "SHORT",
+   "up": -47.36842105263158
   },
   {
-   "t": "BIOA",
+   "t": "AMPH",
+   "from": "STRONG SHORT",
+   "to": "AVOID",
+   "up": 127.2727272727273
+  },
+  {
+   "t": "PLYX",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -87.26114649681529
+  },
+  {
+   "t": "VANI",
    "from": "LONG",
-   "to": "STRONG BUY",
-   "up": 233.33333333333334
+   "to": "STRONG SHORT",
+   "up": -85.81560283687944
+  },
+  {
+   "t": "RANI",
+   "from": "LONG",
+   "to": "SHORT",
+   "up": -36.30573248407644
   },
   {
    "t": "TRDA",
-   "from": "HOLD",
-   "to": "LONG",
-   "up": 63.934426229508205
+   "from": "LONG",
+   "to": "HOLD",
+   "up": 20.481927710843383
   },
   {
    "t": "MENS",
-   "from": "SHORT",
-   "to": "AVOID",
-   "up": -28.57142857142857
+   "from": "AVOID",
+   "to": "STRONG SHORT",
+   "up": -98.90841611177818
   },
   {
-   "t": "ATHE",
-   "from": "WATCH",
+   "t": "OVID",
+   "from": "HOLD",
+   "to": "SHORT",
+   "up": -42.19653179190751
+  },
+  {
+   "t": "STOK",
+   "from": "LONG",
+   "to": "WATCH",
+   "up": 49.25373134328359
+  },
+  {
+   "t": "CAMP",
+   "from": "AVOID",
+   "to": "SHORT",
+   "up": -63.76811594202898
+  },
+  {
+   "t": "NGEN",
+   "from": "STRONG BUY",
    "to": "LONG",
-   "up": 53.846153846153854
+   "up": 194.11764705882354
+  },
+  {
+   "t": "MNOV",
+   "from": "AVOID",
+   "to": "SHORT",
+   "up": -54.54545454545454
+  },
+  {
+   "t": "CGTX",
+   "from": "AVOID",
+   "to": "SHORT",
+   "up": -43.18181818181818
+  },
+  {
+   "t": "ALEC",
+   "from": "AVOID",
+   "to": "SHORT",
+   "up": -60.1593625498008
+  },
+  {
+   "t": "ACAD",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": -19.999999999999996
+  },
+  {
+   "t": "OKYO",
+   "from": "LONG",
+   "to": "HOLD",
+   "up": 6.382978723404253
   },
   {
    "t": "NTRB",
-   "from": "STRONG SHORT",
+   "from": "SHORT",
+   "to": "STRONG SHORT",
+   "up": -94.2824471126358
+  },
+  {
+   "t": "NBIX",
+   "from": "SHORT",
+   "to": "HOLD",
+   "up": -6.542056074766355
+  },
+  {
+   "t": "EBS",
+   "from": "WATCH",
+   "to": "STRONG BUY",
+   "up": 488.2352941176471
+  },
+  {
+   "t": "ATTO",
+   "from": "HOLD",
    "to": "SHORT",
-   "up": -65.8703071672355
+   "up": -42.52873563218391
   },
   {
-   "t": "VRXA",
-   "from": "SHORT",
-   "to": "STRONG SHORT",
-   "up": -89.82706002034588
+   "t": "BLSM",
+   "from": "LONG",
+   "to": "WATCH",
+   "up": 36.98630136986301
   },
   {
-   "t": "LYCA",
+   "t": "ALNY",
+   "from": "HOLD",
+   "to": "LONG",
+   "up": 96.078431372549
+  },
+  {
+   "t": "INSM",
+   "from": "HOLD",
+   "to": "WATCH",
+   "up": -25.92592592592593
+  },
+  {
+   "t": "ADRX",
+   "from": "HOLD",
+   "to": "WATCH",
+   "up": 42.85714285714286
+  },
+  {
+   "t": "KRSA",
+   "from": "HOLD",
+   "to": "STRONG SHORT",
+   "up": -77.92494481236203
+  },
+  {
+   "t": "ETRA",
+   "from": "HOLD",
+   "to": "WATCH",
+   "up": 36.98630136986301
+  },
+  {
+   "t": "TRXB",
+   "from": "HOLD",
+   "to": "SHORT",
+   "up": -39.02439024390244
+  },
+  {
+   "t": "BBTX",
    "from": "SHORT",
    "to": "STRONG SHORT",
-   "up": -70.58823529411764
+   "up": -71.26436781609196
+  },
+  {
+   "t": "RTSN",
+   "from": "AVOID",
+   "to": "STRONG SHORT",
+   "up": -84.59167950693374
   }
  ],
  "moves": [
   {
-   "t": "CUE",
-   "r": -70.6,
-   "call": "LONG"
-  },
-  {
-   "t": "WWB",
-   "r": 42.9,
-   "call": "HOLD"
-  },
-  {
-   "t": "GLSI",
-   "r": 39.9,
+   "t": "CRSP",
+   "r": 0.0,
    "call": "WATCH"
   },
   {
-   "t": "CRBP",
-   "r": -39.1,
+   "t": "AGIO",
+   "r": 0.0,
    "call": "LONG"
   },
   {
-   "t": "IPHA",
-   "r": -38.8,
-   "call": "STRONG SHORT"
-  },
-  {
-   "t": "NTHI",
-   "r": -30.6,
-   "call": "STRONG SHORT"
-  },
-  {
-   "t": "CNXU",
-   "r": -29.9,
+   "t": "COAG",
+   "r": 0.0,
    "call": "SHORT"
   },
   {
-   "t": "IPSC",
-   "r": -29.0,
-   "call": "AVOID"
-  },
-  {
-   "t": "ENTA",
-   "r": -28.6,
+   "t": "XFOR",
+   "r": 0.0,
    "call": "LONG"
   },
   {
-   "t": "SLS",
-   "r": -28.5,
-   "call": "STRONG SHORT"
-  },
-  {
-   "t": "PYXS",
-   "r": 28.4,
-   "call": "HOLD"
-  },
-  {
-   "t": "AVXL",
-   "r": -27.8,
+   "t": "KROS",
+   "r": 0.0,
    "call": "AVOID"
+  },
+  {
+   "t": "AUTL",
+   "r": 0.0,
+   "call": "STRONG BUY"
+  },
+  {
+   "t": "CLLS",
+   "r": 0.0,
+   "call": "LONG"
+  },
+  {
+   "t": "NRIX",
+   "r": 0.0,
+   "call": "LONG"
+  },
+  {
+   "t": "ALLO",
+   "r": 0.0,
+   "call": "LONG"
+  },
+  {
+   "t": "ADCT",
+   "r": 0.0,
+   "call": "AVOID"
+  },
+  {
+   "t": "LYEL",
+   "r": 0.0,
+   "call": "STRONG BUY"
+  },
+  {
+   "t": "ATRA",
+   "r": 0.0,
+   "call": "HOLD"
   }
  ],
  "catalysts": [],

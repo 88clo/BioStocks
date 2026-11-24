@@ -2,7 +2,7 @@
 Writes data/changes-data.json for the Brief's 'Changed since last refresh' strip."""
 import json, pathlib
 root = pathlib.Path(__file__).resolve().parents[1]
-L = sorted((root/"ledger").glob("*.json"))
+L = sorted((root/"ledger").glob("2*.json"))
 if len(L) < 2: raise SystemExit("need two ledgers")
 a, b = (json.load(open(f))["rows"] for f in L[-2:])
 A = {r["ticker"]: r for r in a}; out = {"from": L[-2].stem, "to": L[-1].stem, "calls": [], "moves": [], "catalysts": [], "new": [], "dropped": []}

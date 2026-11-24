@@ -41,3 +41,9 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - Fix source text where efficacy describes a non-lead program or has no numbers (concise_text.py prints the count; hand-written overrides live in data/eff-curated.json, remove an override once the source text is right).
 - CGEM: benchmark text describes EGFR NSCLC but the lead is a CD19 engager in autoimmunity; rewrite.
 - Run log_catalysts.py so the Dec ledger has a point-in-time calendar.
+
+## Valuation v2 (Nov 23 2026)
+- Model rules live in `valParts()` in pipeline/template.html (cost to approval, existing business, evidence-matched PoS, differentiation haircut, timing for strong data). The Record page lists them as principles.
+- Input fixes go in a dated patch (`pipeline/patches/2026-11-23_valuation_review.py` sets peak_sales, pos, probadj_sales, val_note; `book_add` marks companies whose product revenue is separate from the lead).
+- Each refresh: list names where the upside disagrees with the drug (strong science with downside, weak science with >50% upside, failed primary with upside) and fix the inputs, not the call.
+- Ledger globs read `ledger/2*.json` only; catalyst snapshots (`catalysts_*.json`) are not call ledgers.
