@@ -49,3 +49,8 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - Input fixes go in a dated patch (`pipeline/patches/2026-11-23_valuation_review.py` sets peak_sales, pos, probadj_sales, val_note; `book_add` marks companies whose product revenue is separate from the lead).
 - Each refresh: list names where the upside disagrees with the drug (strong science with downside, weak science with >50% upside, failed primary with upside) and fix the inputs, not the call.
 - Ledger globs read `ledger/2*.json` only; catalyst snapshots (`catalysts_*.json`) are not call ledgers.
+
+## Theses, variant views and CEO notes (Nov 24 2026)
+- Every thesis shows a computed *Variant view* (template `variantView()`): the odds or sales today's price implies vs ours, and why. When rewriting a written thesis, state the variant in words too: what the market believes, what we believe and the evidence, what proves us wrong and when.
+- *What I'd tell the CEO* notes are rule-based (`ceoNotes()` in pipeline/synth.html, eight categories listed in NORTH_STAR.md). Review the priority names' notes each refresh and refresh stale researched suggestions in data/sug-data.json.
+- *What worked* (Record) needs nothing: it reads the quarterly prices. Size is approximate; treat it as flagged.

@@ -158,7 +158,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
       +kpis()+(window.BRF_CHANGES?window.BRF_CHANGES():'')+ideas()+cats()+radarMini()+trackMini()+fresh();
   }
   function track(){
-    var h='<div class="brf-sub">'+E(TR.method||'')+' Latest close: '+E(TR.asof||'')+'.</div>';
+    var h='<div class="brf-sub">'+E(TR.method||'')+' Latest close: '+E(TR.asof||'')+'.</div>'+(window.WW_HTML?window.WW_HTML():'');
     h+='<div class="brf-note"><b>How to read this.</b> Every row is a set of calls that was written down before the returns happened. "vs universe" is the median of the group minus the median of every covered name, which strips out the market. The universe is mostly small caps, so it can fall much more than XBI.</div>';
     TR.cohorts.forEach(function(c){
       h+='<div class="brf-h"><b>'+E(c.label)+' · '+E(c.date)+' → '+E(TR.asof)+' ('+c.days+' days)</b><span>XBI '+P(c.xbi,1)+' · IBB '+P(c.ibb,1)+' · covered universe median '+P(c.universe.median,1)+' (n='+c.universe.n+')</span></div>';
@@ -235,7 +235,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
     var XP=(window.BRF_PAGES||{})[page];
     doc.innerHTML=XP?XP.html():page==='brief'?brief():page==='track'?track():page==='radar'?radar():page==='flow'?flow():gaps();
     if(XP&&XP.after)try{XP.after(doc);}catch(e){console.log(e);}
-    if(page==='track')embed('retrowrap','brfRetroHost',function(){renderRetro(DA);});
+    if(page==='track'){if(window.WW_AFTER)try{WW_AFTER(doc);}catch(e){console.log(e);}embed('retrowrap','brfRetroHost',function(){renderRetro(DA);});}
     if(page==='gaps')embed('sugwrap','brfSugHost',function(){renderSug(DA);});
     document.querySelectorAll('#brf .brf-tab[data-p]').forEach(function(b){b.classList.toggle('on',b.dataset.p===page);});
     doc.querySelectorAll('.tk[data-tk]').forEach(function(e){e.onclick=function(){var i=IDX[e.dataset.tk];if(i==null||typeof openDrawer!=='function')return;try{openDrawer(i);}catch(err){}};});

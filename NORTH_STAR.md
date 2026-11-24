@@ -10,14 +10,35 @@ Read this before any refresh or new feature. A change that doesn't help answer o
 
 One line: *a disciplined, scored biotech process that makes better long/short calls and sees supply coming before the Street does.*
 
+## The three questions we must answer best
+
+1. **What kind of stocks did best and worst, in which periods, and what did we learn?** → Record › *What worked, quarter by quarter* (any window, any factor), plus the frozen-call scoring and valuation principles.
+2. **What are our top longs and shorts, and what do we see that the market doesn't?** → What's next priority rows, and the *Variant view* line in every thesis: the odds (or sales) today's price implies vs ours, and why we differ.
+3. **What are the key catalysts and likely raises over 6 months, how do we take part, and what would we tell the CEO?** → What's next (catalysts, raise model, our view per deal) and the *What I'd tell the CEO* notes on every company card.
+
+## What I'd tell the CEO: the eight categories
+
+CEOs are running the company; investors see the whole field, the tape and how holders price the stock. The useful notes are the ones a CEO can't easily see from inside:
+
+| Category | What investors see that the CEO may not |
+|---|---|
+| Funding and timing | When the window is open (run-up, runway, catalyst ahead), how big a raise, who should anchor it |
+| How investors see you | The odds or sales the price implies vs the evidence, analyst coverage, specialist ownership |
+| Where you stand in your field | Who sets the bar in the indication, where the program wins, how crowded the field is |
+| Strategic options | Partnering to fund the pivotal, strategic review when the stock trades below cash, outside price anchors |
+| Spend where the value is | Narrowing spend to the program investors actually value when cash is short |
+| Help investors underwrite you | Disclose the numbers and the target bar, show full-population results, date the catalysts |
+| Shorten or de-risk the path | Breakthrough designation, early end-of-Phase 2 meetings, an agreed path for a signal that worked |
+| Launch signals investors watch | The metrics that show the ramp, guidance that bridges the market's expectation |
+
 ## The questions a fund will ask (and where the answer lives)
 
 | # | Question | Where the dashboard answers it today | What's still missing |
 |---|---|---|---|
 | 1 | What's your edge? | Fixed rubric across ~400 names: efficacy vs a numeric bar, one valuation formula, honest catalyst dates, frozen ledgers (Companies) | — |
-| 2 | Show me your track record. | Record page: frozen calls scored vs universe and XBI, including what failed and what changed | **A portfolio, not just calls:** sizing, daily P&L, Sharpe, hit rate, drawdown |
+| 2 | Show me your track record. | Record page: frozen calls scored vs universe and XBI, what worked by quarter for any window, what failed and what changed | **A portfolio, not just calls:** sizing, daily P&L, Sharpe, hit rate, drawdown |
 | 3 | How do you size and manage risk? | Inputs only: catalysts, PoS, runway, ours vs Street | **Paper portfolio** with sizing rules, XBI beta hedge, kill criteria |
-| 4 | Your top longs and shorts, and what's priced in? | What's next priority rows; ours vs Street | **Options-implied moves** and expected value per catalyst |
+| 4 | Your top longs and shorts, and what's priced in? | What's next priority rows; ours vs Street; variant view (market-implied odds vs ours) in every thesis | **Options-implied moves** and expected value per catalyst |
 | 5 | How do you underwrite a binary event? | PoS, efficacy bar, Street gap, runway past the event | **Event trees** (up/down move × probability) scored after each readout |
 | 6 | Who raises in the next 90 days, and do we take part? | Raise model on What's next: size, month, our view | **Past follow-on database** (discount, warrants, size vs volume, 1/30/90-day returns, lead banks); shelf and ATM capacity |
 | 7 | How do you handle inside information from deals? | Process answer only | **Restricted-list / wall-cross flags** per company |
@@ -25,6 +46,7 @@ One line: *a disciplined, scored biotech process that makes better long/short ca
 | 9 | What did you get wrong, and what did you change? | Record page: valuation principles, Sep 12 backtest, separately frozen model change | — |
 | 10 | What's your sector view? | Areas: cluster › area › indication › company drill-down, cheap/lagging map, crowded vs under-served | **Takeover likelihood** and deal comparables |
 | 11 | Can I trust the data? | Frozen ledgers, logged input fixes with sources, scheduled refresh, rerunnable repo | — |
+| 12 | What would you tell management? | What I'd tell the CEO notes on every card (eight categories) plus our researched suggestion | Notes written by hand for the priority names |
 
 ## Build priority (in order)
 

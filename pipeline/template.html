@@ -3022,8 +3022,39 @@ function valParts(r){
   const prev=r.prevalence, sf=(typeof prev==='number'&&prev>0&&prev<50000)?.6:(typeof prev==='number'&&prev>2e6)?1.5:1;
   const cost=0.6*(DEV_COST[y]||0)*sf; if(cost)N.push('− '+fmtB(cost)+' expected spend to approval');
   if(r.val_note)N.unshift(r.val_note);
-  return {lead:lead,book:book,cost:cost,npv:lead+book-cost,notes:N};
+  return {lead:lead,book:book,cost:cost,npv:lead+book-cost,notes:N,pk:pk,pos:pos,df:df,y:y,y0:y0,run:run};
 }
+
+function impliedOdds(r){const v=valParts(r);if(!v||typeof r.mc!=='number')return null;const cash=(typeof r.cash==='number'&&r.cash>0)?r.cash:0,mkt=r.mc-cash-v.book+v.cost,M=state.psMult;
+  if(v.y0===0)return {approved:true,mktSales:mkt/M,ourSales:Math.max(v.pk*v.pos,v.run||0),run:v.run,y:0};
+  const den=M*v.pk*v.df;return den>0?{approved:false,imp:mkt/den,ours:v.pos,pk:v.pk,y:v.y,y0:v.y0,cost:v.cost}:null;}
+window.impliedOdds=impliedOdds;
+// Variant view: what the current price implies about the lead program vs what we assume, in one sentence.
+function variantView(r){
+  const v=valParts(r); if(!v||typeof r.mc!=='number')return '';
+  const cash=(typeof r.cash==='number'&&r.cash>0)?r.cash:0, mkt=r.mc-cash-v.book+v.cost, M=state.psMult;
+  const drug=String(r.drug||'the lead').split(/ \(| — | - |;|,/)[0].trim().slice(0,40)||'the lead';
+  const e=r.effsig,d=r.diffscore, sciTxt=(typeof e==='number'&&typeof d==='number')?('efficacy '+e+'/5, differentiation '+d+'/5'):'';
+  const neg=v.notes.filter(n=>/undifferentiated|weak data|capped/i.test(n)&&n!==r.val_note).slice(0,1).join('');
+  const stg=String(r.stage||'').split(/[ (]/).slice(0,2).join(' ');
+  const why=(up)=>{let k=r._keystat;if(k==null&&window._keySpan){const ef=r.eff_short||'',sp=window._keySpan(ef,r.efkey);k=r._keystat=sp?ef.slice(sp[0],sp[1]):'';}k=k||'';if(up){if(typeof e==='number'&&e<=2)return 'the price assumes near-certain failure, and even thin evidence ('+sciTxt+') is worth more than that';return k?'the data clears the bar ('+k+')':sciTxt?'the evidence scores well ('+sciTxt+')':'our evidence read is stronger';}
+    if(neg)return 'we haircut it: '+neg;
+    if(v.y>=4)return 'it is still '+(stg||'early')+', with approval ~'+v.y+' yrs away and most of the risk ahead';
+    if(typeof d==='number'&&d<=3)return 'differentiation is only '+d+'/5 in a competitive field';
+    return sciTxt?'the evidence is thinner ('+sciTxt+')':'our evidence read is weaker';};
+  const pre='At '+fmtB(r.mc)+(cash?' ('+fmtB(cash)+' cash'+(v.book>0?', '+fmtB(v.book)+' existing business':'')+')':'');
+  if(v.y0===0){ const impS=mkt/M, ours=Math.max(v.pk*v.pos,v.run||0);
+    if(impS<=0)return pre+' the market pays nothing for '+esc(drug)+'’s sales beyond cash; we model '+fmtB(ours)+'/yr.';
+    const g=ours/impS; return pre+' the market pays for about '+fmtB(impS)+'/yr of '+esc(drug)+' sales; we model '+fmtB(ours)+(v.run?' (company sales now '+fmtB(v.run)+'/yr)':'')+(g>1.25?', so we see more demand than priced in.':g<0.8?', so the price assumes a bigger launch than we do.':', close to what’s priced in.'); }
+  const denom=M*v.pk*v.df; if(!(denom>0))return '';
+  const imp=mkt/denom, ours=v.pos, pc=x=>Math.round(x*100)+'%';
+  if(mkt<=0)return pre+' the market gives '+esc(drug)+' no value after the '+fmtB(v.cost)+' still to spend; we use '+pc(ours)+' odds, so success is nearly free upside'+(r.runway_q!=null&&r.runway_q<6?', but the runway ('+Math.round(r.runway_q)+' quarters) means dilution first.':'.');
+  if(imp>1)return pre+' even certain success on a '+fmtB(v.pk)+' peak doesn’t cover the price: the market is paying for more than '+esc(drug)+' (a bigger peak, the pipeline or a takeout). We use '+pc(ours)+' odds.';
+  const g=ours/Math.max(imp,.005);
+  if(g>=0.8&&g<=1.25)return pre+' the market implies ~'+pc(imp)+' odds that '+esc(drug)+' reaches a '+fmtB(v.pk)+' peak'+(v.y?' in ~'+v.y+(v.y===1?' yr':' yrs'):'')+'; we use '+pc(ours)+', roughly what\u2019s priced in, so the stock needs new information (the next readout) to move.';
+  return pre+' the market implies ~'+pc(imp)+' odds that '+esc(drug)+' reaches a '+fmtB(v.pk)+' peak'+(v.y?' in ~'+v.y+(v.y===1?' yr':' yrs'):'')+'; we use '+pc(ours)+' because '+(g>=1?why(true):why(false))+(g>=1.5?' — about '+(g>=10?'10+':g.toFixed(1))+'× the market’s odds.':g<=0.67?' — the market is about '+(1/g).toFixed(1)+'× more optimistic than we are.':'.');
+}
+window.variantView=variantView;
 function npvVal(r){ const v=valParts(r); return v?v.npv:null; }
 function valNotes(r){ const v=valParts(r); return v?v.notes.join('; '):''; }
 window.valNotes=valNotes;
@@ -3545,7 +3576,7 @@ function thesisNote(r){
   const npv=npvVal(r), up=callUpPct(r);
   const upcls=up==null?'':(up>=0?'pos':'neg'), upS=up!=null?((up>=0?'+':'')+Math.round(up)+'%'):'—';
   const dir=(r.call==='STRONG BUY'||r.call==='LONG')?'long':(r.call==='SHORT'||r.call==='STRONG SHORT')?'short':'';
-  const thesis=`${esc(r.pitch||'—')}${r.value_driver?' <span class="thes-dim">Beyond lead:</span> '+esc(r.value_driver):''}`;
+  const _vv=variantView(r);const thesis=`${esc(r.pitch||'—')}${_vv?' <span class="thes-dim">Variant view:</span> '+_vv:''}${r.value_driver?' <span class="thes-dim">Beyond lead:</span> '+esc(r.value_driver):''}`;
   const drug=`${r.stage?'['+esc(r.stage)+'] ':''}<b>${esc(r.drug||'—')}</b>${r.moa?' ('+esc(r.moa)+')':''} for ${esc(r.indication||'—')}`;
   const indShort=(r.indication||"").split(/[(;]/)[0].trim();
   const mkt=`${indShort?"<b>"+esc(indShort)+"</b>: ":""}${kmt(r.prevalence)} → ${kmt(r.treated)} treated × ${price(r.net_price)} = <b>${bn(r.peak_sales)}</b> peak × ${pos} PoS = <b>${bn(r.probadj_sales)}</b> prob-adj → <b>${bn(npv)}</b> NPV vs ${bn(r.mc)} mkt cap = <b class="${upcls}">${upS}</b> upside`;
@@ -4758,7 +4789,7 @@ function openDrawer(i){
       ${tradeCard(r)?sec('Trade card',ICON.asset,tradeCard(r)):''}
       ${sec('Thesis','<path d="M12 2L2 7l10 5 10-5-10-5z"/>',thesisHtml)}
       ${vdHtml?sec('Bigger value driver',ICON.asset,vdHtml):''}
-      ${sugHtml(r)?sec('Suggestion',ICON.asset,sugHtml(r)):''}
+      ${(()=>{const c=window.ceoHtml?window.ceoHtml(r,4):'',sg=sugHtml(r);return (c||sg)?sec("What I'd tell the CEO",ICON.asset,(c?'<div class="ceo-card">'+c+'<div class="dim" style="font-size:11px;margin-top:4px">Generated from the dashboard: funding, how investors price the stock, the field, strategic options, disclosure, spend, the regulatory path and the launch. One note per category, most pressing first.</div></div>':'')+(sg?'<div style="margin-top:10px"><div class="dim" style="font-size:11px;margin-bottom:4px">From our company research (check the date; some of these predate recent events):</div>'+sg+'</div>':'')):'';})()}
       ${lensHtml(r)?sec('Lens: mechanism, tailwind, data',ICON.asset,lensHtml(r)):''}
       ${sec('Next catalyst',ICON.cat,catHtml)}
       ${schedHtml?sec('Catalyst schedule',ICON.cat,schedHtml):''}

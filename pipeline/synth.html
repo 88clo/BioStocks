@@ -12,6 +12,8 @@
 tr.nx-pri td{background:rgba(14,156,107,.07)}tr.nx-pri.s td{background:rgba(214,69,69,.07)}tr.nx-pri td:first-child{box-shadow:inset 4px 0 0 var(--long)}tr.nx-pri.s td:first-child{box-shadow:inset 4px 0 0 var(--short)}.nx-act{margin-bottom:3px;color:var(--text)}.nx-act span{color:var(--dim);font-size:10.5px}
 .ig-t td{vertical-align:top;font-size:12px}.ig-t .ig-c{display:inline-block;white-space:nowrap;border-radius:5px;padding:1px 5px;margin:0 3px 3px 0;font-size:11.5px}.ig-t .ig-c.l{background:rgba(14,156,107,.12)}.ig-t .ig-c.l b{color:var(--long)}.ig-t .ig-c.s{background:rgba(214,69,69,.11)}.ig-t .ig-c.s b{color:var(--short)}
 .dr-crumbs{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;margin:4px 0 8px;font-size:13px}.dr-crumbs a{color:var(--cyan);text-decoration:none}.dr-crumbs a:hover{text-decoration:underline}.dr-sep{color:var(--faint)}.dr-hint{margin-left:10px;font-size:11.5px;color:var(--faint)}.dr-dot{transition:fill-opacity .1s}g[data-dk]:hover .dr-dot{fill-opacity:.9;stroke:var(--text)}
+.ceo-l{margin:0;padding-left:18px;font-size:11.5px;line-height:1.45}.ceo-l li{margin:0 0 4px}.ceo-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--cyan);margin-right:3px}
+.th-var{display:block;margin-top:5px;padding:4px 7px;border-left:3px solid var(--cyan);background:var(--raised);border-radius:0 5px 5px 0;font-size:11.5px;line-height:1.45}
 .val-adj{border-bottom:1px dotted currentColor;cursor:help}
 .igc-wrap{display:flex;flex-direction:column;gap:8px}
 .igc-hd,.igc{display:grid;grid-template-columns:minmax(160px,.8fr) minmax(260px,2fr) minmax(260px,2fr);gap:22px}
@@ -169,7 +171,8 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
   // column = [header, cell(x)->html, sortKey|null, tintClass(x)|null, shownByDefault, headerTooltip]
   var CG=[
     {k:'thesis',l:'Thesis',cols:[
-      ['Thesis',function(x){var r=x.r;if(x.parked)return '<span class="syn-thesis"><b>Parked ('+B.E(r.reason||'')+')</b></span>';var t=r.pitch||r.pitch_concise||'';return '<span class="syn-thesis">'+B.E(t)+(r.eff_caveat?'<br><b>Data caveat:</b> '+B.E(r.eff_caveat):'')+(CO.x.thesis&&r.value_driver?'<br><b>Beyond the lead:</b> '+B.E(r.value_driver):'')+'</span>';},null,null,1,'The thesis from the company card. Expand for the full text and the value driver beyond the lead program.']]},
+      ['Thesis',function(x){var r=x.r;if(x.parked)return '<span class="syn-thesis"><b>Parked ('+B.E(r.reason||'')+')</b></span>';var t=r.pitch||r.pitch_concise||'';if(r._keystat==null){var _ef=r.eff_short||'',_sp=keySpan(_ef,r.efkey);r._keystat=_sp?_ef.slice(_sp[0],_sp[1]):'';}var vv=window.variantView?window.variantView(r):'';return '<span class="syn-thesis">'+B.E(t)+(vv?'<span class="th-var"><b>Variant view.</b> '+vv+'</span>':'')+(r.eff_caveat?'<br><b>Data caveat:</b> '+B.E(r.eff_caveat):'')+(CO.x.thesis&&r.value_driver?'<br><b>Beyond the lead:</b> '+B.E(r.value_driver):'')+'</span>';},null,null,1,'The thesis from the company card. Expand for the full text and the value driver beyond the lead program.'],
+      ['To the CEO',function(x){return x.parked?'':'<span class="syn-thesis">'+(window.ceoHtml?ceoHtml(x.r,3):'')+'</span>';},null,null,0,'What I\'d tell the CEO: up to three notes, one per category, from what an investor sees across the universe (funding, how investors see you, the field, strategic options, disclosure, spend, the path, the launch).']]},
     {k:'core',l:'Valuation',cols:[
       ['Call',function(x){return B.cb(x.r.call)+(!x.parked&&B.quality(x.r)&&x.side==='l'?'<span class="brf-q">Q</span>':'');},null,null,1,'Rule-based call from valuation (market cap vs our value) and science (efficacy + differentiation). Q = passes the quality screen.'],
       ['Ours',function(x){var vn=window.valNotes?window.valNotes(x.r):'';return (x.out?'<span title="Model upside above +1,000%: usually a tiny cap against large modelled sales; check inputs" style="cursor:help">⚠ </span>':'')+(vn?'<span class="val-adj" title="Model adjustments: '+B.E(vn)+'">'+B.P(x.u)+'</span>':B.P(x.u));},'u',function(x){return x.out?'':tint(x.u,100,0);},1,'Our upside: risk-adjusted value (takeout multiple x PoS x peak sales, discounted, net of the cost still to spend, plus existing business and cash) vs market cap. Hover a value for the adjustments applied.'],
@@ -612,6 +615,54 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
       var hn=mk('Our call history',tb);if(pp)d.insertBefore(hn,pp);else d.appendChild(hn);}
   }
   try{var _od=openDrawer;openDrawer=function(i){var o=_od.apply(this,arguments);try{cardAugment(i);}catch(e){console.log('card',e);}return o;};}catch(e){}
+
+  // ---- "What I'd tell the CEO": rule-based notes from what an investor sees across the universe.
+  // CEOs run the company; investors see the whole field, the tape and how holders price the stock. Eight categories:
+  var CEO_CATS={fund:'Funding and timing',perc:'How investors see you',field:'Where you stand in your field',strat:'Strategic options',alloc:'Spend where the value is',disc:'Help investors underwrite you',path:'Shorten or de-risk the path',launch:'Launch signals investors watch'};
+  function ceoNotes(r){H();var X0=null;rows().some(function(x){if(x.t===r.ticker){X0=x;return true;}return false;});var x=X0;if(!x)return [];
+    var N=[],add=function(cat,pri,txt){N.push({cat:cat,l:CEO_CATS[cat],pri:pri,t:txt});};
+    var drug=String(r.drug||'the lead').split(/ \(| — | - |;|,/)[0].trim()||'the lead',rw=r.runway_q,cash=r.cash||0,mc=r.mc||0,debt=r.debt||0;
+    var e=r.effsig,d=r.diffscore,io=window.impliedOdds?window.impliedOdds(r):null,nx=x.nx,rad=x.rad;
+    var ks=function(rr){var ef=rr.eff_short||'',sp=keySpan(ef,rr.efkey);return sp?ef.slice(sp[0],sp[1]):'';};
+    var wt=function(t,n){t=String(t||'').replace(/\s*\([^)]*\)?/g,'').trim();if(t.length<=n)return t;t=t.slice(0,n);return t.slice(0,Math.max(t.lastIndexOf(' '),n-15))+'…';};var catTxt=nx?(nx.lab+' '+wt(nx.e,55)):'';
+    // Funding and timing
+    if(rad&&/^Now/.test(rad.timing||''))add('fund',95,'The stock is up '+Math.round((rad.r3m||0)*100)+'% in 3 months'+(nx?' and the next readout ('+catTxt+') is still ahead':'')+'. With ~'+(rw!=null?rw.toFixed(1):'?')+' quarters of cash, raising now (~'+B.M(rad.size)+', about '+Math.round((rad.size_pct||0)*100)+'% of the cap) is cheaper than raising into a binary event; specialists are most receptive right after a run-up.');
+    else if(rw!=null&&rw<5)add('fund',85,'With ~'+rw.toFixed(1)+' quarters of cash, investors are already pricing a raise'+(nx?' before '+catTxt:'')+'. Setting out the funding plan (partner, non-dilutive money, or a raise sized to the data) removes the overhang that caps the stock.');
+    else if(rad&&rad.view&&/^(Participate)/.test(rad.view)&&rad.timing)add('fund',55,'Our model expects a raise '+String(rad.timing).toLowerCase()+' (~'+B.M(rad.size)+'). If you do raise, doing it alongside data (rather than before) and bringing in two or three healthcare specialists as anchors tends to price best.');
+    // Strategic options
+    if(cash-debt>mc&&mc>0)add('strat',92,'The market values the company below its net cash ('+B.M(cash-debt)+' vs a '+B.M(mc)+' cap): it expects the cash to be spent without a return. Without a near-term catalyst, a strategic review (returning capital, a reverse merger, or selling assets) is what holders will push for.');
+    else if(typeof e==='number'&&e>=4&&io&&!io.approved&&io.y0>=4&&mc<2e9)add('strat',60,'Data this strong in a validated area draws partner interest. An ex-US or co-development deal could fund the pivotal without dilution and puts an outside price on '+drug+' that the market can anchor to.');
+    // How investors see you
+    if(io&&!io.approved&&io.imp>0&&io.imp<1){var g=io.ours/Math.max(io.imp,.005);
+      if(g>=2)add('perc',80,'Today’s price implies ~'+Math.round(io.imp*100)+'% odds that '+drug+' succeeds; our read is ~'+Math.round(io.ours*100)+'%. That gap usually means the data isn’t landing: frame updates against the bar investors use'+(r.bench_short?' ('+wt(String(r.bench_short).split(/;/)[0],80)+')':'')+(ks(r)?' and lead with '+ks(r):'')+'.');
+      else if(g<=0.6)add('perc',65,'The market prices '+drug+' more richly than we do (implied ~'+Math.round(io.imp*100)+'% odds vs our ~'+Math.round(io.ours*100)+'%). That premium is currency: use it for a raise or a deal while it lasts, because a stumble at '+(nx?nx.lab:'the next readout')+' would remove it fast.');}
+    else if(io&&!io.approved&&io.imp>=1)add('perc',70,'The price is above what full success of '+drug+' alone is worth by our model, so investors are paying for the pipeline or a takeout. Spell out what else they are buying (next indications, platform data), or the premium is fragile.');
+    else if(io&&io.approved&&io.mktSales>0){var gs=io.ourSales/io.mktSales;if(gs>=1.5)add('perc',70,'The market pays for only ~'+B.M(io.mktSales)+'/yr of sales against our ~'+B.M(io.ourSales)+' estimate: it doesn’t believe the ramp. Quarterly launch metrics and clear peak guidance close that gap faster than anything else.');else if(gs<=0.7)add('perc',60,'The market already pays for ~'+B.M(io.mktSales)+'/yr of sales vs today’s ~'+B.M(io.run||0)+'. Guidance that bridges that gap protects the multiple; a soft quarter would hit hard.');}
+    if(x.an!=null&&x.an<=2&&mc>3e8)add('perc',40,'Only '+(x.an||'no')+' analyst'+(x.an===1?'':'s')+' publish'+(x.an===1?'es':'')+' on the stock. Wider coverage (often added through the next deal’s syndicate) widens the buyer base.');
+    if(x.sp!=null&&x.sp<3&&mc>5e8&&HO[r.ticker])add('perc',38,'Healthcare specialists own only ~'+x.sp.toFixed(1)+'% of the shares. A targeted specialist roadshow would deepen the holder base before the next raise; specialists also anchor deals.');
+    // Where you stand in your field
+    var peers=/^(other|multi)/i.test(r.indgroup||'')?[]:rows().filter(function(y){return y.r.indgroup&&y.r.indgroup===r.indgroup&&y.t!==r.ticker&&y.s!=null;}).sort(function(a,b){return b.s-a.s;});
+    if(peers.length>=2&&x.s!=null){var best=peers[0];
+      if(x.s>=best.s)add('field',58,'Your data scores '+(x.s===best.s?'joint best':'best')+' among '+(peers.length+1)+' public '+r.indgroup+' programs (next: '+best.t+' at '+best.s.toFixed(1)+' vs your '+x.s.toFixed(1)+'). Investors compare across the field, so make the head-to-head case explicitly'+(ks(r)?', starting with '+ks(r):'')+'.');
+      else if(best.s-x.s>=0.75)add('field',62,best.t+'’s '+String(best.r.drug||'').split(/ \(| — |;|,/)[0]+' sets the bar in '+r.indgroup+(ks(best.r)?' ('+ks(best.r)+')':'')+'. Investors will judge '+drug+' against it, so show where it wins: dosing, safety, route or a population '+best.t+' doesn’t serve.');
+      if(peers.length+1>=6)add('field',45,r.indgroup+' has '+(peers.length+1)+' public companies. Consolidation is likely; being clear whether you are a buyer, a seller or a partner helps investors value the optionality.');}
+    // Help investors underwrite you
+    var ef=r.eff_short||'';
+    if(/no efficacy numbers disclosed|^No efficacy data yet/i.test(ef))add('disc',75,'Investors can’t underwrite '+drug+' without numbers. Disclose the efficacy measures (even interim) and the bar you are aiming for before the readout, so the result is judged against your target rather than the market’s guess.');
+    if(/Subgroup result/i.test(ef))add('disc',70,'The headline number is a subgroup. Show the full-population result next to it, or explain why the subgroup is the intended label; otherwise investors assume the worst.');
+    if(nx&&typeof nx.p==='number'&&nx.p<=2&&/data|topline|readout|results|PDUFA|approval|decision|interim/i.test(nx.e||''))add('disc',50,'The next catalyst ('+wt(nx.e,60)+') is guided only to '+nx.lab+'. Narrowing it to a quarter reduces the uncertainty discount; funds size positions to dated events.');
+    // Spend where the value is
+    if(rw!=null&&rw<6&&x.s!=null&&x.s<3)add('alloc',55,'With under 6 quarters of cash and mid-to-weak data, investors discount everything except '+drug+'. Narrowing spend to it and its next readout extends the runway and makes the story easier to fund.');
+    // Shorten or de-risk the path
+    if(typeof e==='number'&&typeof d==='number'&&e>=4&&d>=4&&io&&!io.approved&&io.y0>=4)add('path',57,'The data clears the bar. Breakthrough designation and an early end-of-Phase 2 meeting could start the pivotal sooner: we still model ~'+io.y+' years to approval, and each year saved is worth roughly 15% on the value.');
+    if(/missed|did not meet|not met/i.test(ef)&&/despite/i.test(ef))add('path',52,'The primary missed but a secondary or subgroup worked. A clear regulatory path (agreed with FDA) for the signal that worked is what investors need before they will pay for it again.');
+    // Launch signals
+    if(io&&io.approved&&io.run&&r.peak_sales&&io.run<.3*r.peak_sales)add('launch',58,'Investors model a '+B.M(r.peak_sales)+' peak against '+B.M(io.run)+'/yr today. Reporting the metrics they use (new patient starts, refills, payer coverage) every quarter lets them see the ramp instead of guessing.');
+    // one per category, highest priority first
+    var seen={},out=[];N.sort(function(a,b){return b.pri-a.pri;}).forEach(function(n){if(!seen[n.cat]){seen[n.cat]=1;out.push(n);}});
+    return out;}
+  function ceoHtml(r,max){var N=ceoNotes(r).slice(0,max||3);if(!N.length)return '';return '<ol class="ceo-l">'+N.map(function(n){return '<li><span class="ceo-cat">'+B.E(n.l)+'</span> '+n.t+'</li>';}).join('')+'</ol>';}
+  window.ceoNotes=ceoNotes;window.ceoHtml=ceoHtml;window.CEO_CATS=CEO_CATS;
   window.SYN={AR:AR,drillGroups:drillGroups,drillCrumbs:drillCrumbs,upcoming:upcoming,nextCat:nextCat,clusterOf:clusterOf,clusterOrder:clusterOrder,CLCOL:CLCOL,CLUSTERS:CLUSTERS,rows:rows,events:events,thesis:thesis,fdate:fdate,sugOf:sugOf,inPort:inPort,CO:CO,big:big,lt:lt,PT:PT,HO:HO,SPEC:SPEC,NICK:NICK,J:J};
   window.BRF_PAGES=window.BRF_PAGES||{};
   window.BRF_PAGES.co={html:coHtml,after:coAfter};
