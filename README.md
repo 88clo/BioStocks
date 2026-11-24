@@ -39,6 +39,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112326-v7.html | Nov 23 night version, before the second round of efficacy feedback |
 | backup-112326-v8.html | Nov 23 night version, before the third round of efficacy feedback |
 | backup-112326-v9.html | Nov 23 night version, before royalty-partner labels and editorial context in efficacy |
+| backup-112326-v10.html | Nov 23 night version, before the chart extent fix, priority list folded into What's next, short Benchmark/Mechanism and verified efficacy lines |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 

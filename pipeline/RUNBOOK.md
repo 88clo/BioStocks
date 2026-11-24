@@ -24,7 +24,7 @@ For each printed mover and each flag carried from the last run: search the compa
 Re-verify the shortlist (top picks, shorts, highest-conviction longs) against filings, ClinicalTrials.gov and FDA; red-team each one. This is the expensive step (≈40–60k tokens per name). Edit rows via a dated patch file.
 
 ## 4. Status, build, freeze, score
-`normalize_catalysts.py data/data.json` (after the event check: merges the key catalyst, the next-catalyst line and the schedule into one ordered list, splits compound entries, labels each at the precision given, e.g. 4Q26 not Dec 31, flags past-due dates to verify), `concise_text.py data/data.json` (short efficacy and indication for the Companies table; full text stays on the card), `update_status.py` (edit the `ASOF`/`RUN` dates at the top), `build.py`, `snapshot_calls.py ledger/<date>_refresh.json`, `track_record.py`, `radar_gaps.py`, `call_history.py`, `changes.py` (diff of the two latest ledgers for the Brief), `build.py`.
+`normalize_catalysts.py data/data.json` (after the event check: merges the key catalyst, the next-catalyst line and the schedule into one ordered list, splits compound entries, labels each at the precision given, e.g. 4Q26 not Dec 31, flags past-due dates to verify), `log_catalysts.py <date>` (freezes the catalyst schedule point-in-time into ledger/ so the track record can test what was knowable), `concise_text.py data/data.json` (short efficacy and indication for the Companies table; full text stays on the card), `update_status.py` (edit the `ASOF`/`RUN` dates at the top), `build.py`, `snapshot_calls.py ledger/<date>_refresh.json`, `track_record.py`, `radar_gaps.py`, `call_history.py`, `changes.py` (diff of the two latest ledgers for the Brief), `build.py`.
 
 Also record each catalyst's date as it stands at the refresh (the ledger keeps `cat_date`), so the track record can later tell whether a big move was on the calendar beforehand.
 
@@ -35,3 +35,9 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - 13F holders: no reachable source from the workspace shell; lists date from Sep 13.
 - Oct 2026 frozen ledger (`ledger/2026-10.json`) was not recovered; the Oct memo's printed names stand in for it.
 - Insight suggestions and lens scores cover ~65 names.
+
+## December 2026 refresh checklist (from the Nov 23 review)
+- Re-check SVRA and CAPR Nov 22 PDUFA outcomes; resolve the other ~60 "past due, verify" catalysts (list: run normalize_catalysts.py and grep st=late).
+- Fix source text where efficacy describes a non-lead program or has no numbers (concise_text.py prints the count; hand-written overrides live in data/eff-curated.json, remove an override once the source text is right).
+- CGEM: benchmark text describes EGFR NSCLC but the lead is a CD19 engager in autoimmunity; rewrite.
+- Run log_catalysts.py so the Dec ledger has a point-in-time calendar.

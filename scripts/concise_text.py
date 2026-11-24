@@ -290,6 +290,42 @@ def eff_short(t, ind='', limit=250, stage='', nxt=None):
     return out
 
 
+def bench_short(t, limit=170):
+    """The bar to beat in one line: what standard of care or the leading rival delivers, then this drug's number and a verdict."""
+    t = re.sub(r'\s+', ' ', (t or '')).strip()
+    if not t:
+        return ''
+    t = re.sub(r'\s*\((?:vs|see)\s[^)]*weaker[^)]*\)\.?', '', t)          # side remarks about third parties
+    out = style(caps_fix(tidy(t)))
+    if len(out) > limit:
+        out = re.sub(r'\s*\((?=[^()]*\s[^()]*\s)[^()\d]*\)', '', out)       # wordy asides without numbers
+    if len(out) > limit:
+        parts = re.split(r'(?<=[.;])\s+', out)
+        acc = ''
+        for p_ in parts:
+            if len(acc) + len(p_) + 1 > limit and acc:
+                break
+            acc = (acc + ' ' + p_).strip()
+        last = parts[-1] if parts else ''
+        if last not in acc and re.search(r'\d', last) and len(last) < 70:
+            acc = acc.rstrip('.;') + '. ' + last       # keep this drug's own number, usually stated last
+        out = acc if len(acc) <= limit + 80 else acc[:limit].rsplit(' ', 1)[0] + '…'
+    return out
+
+
+def moa_short(t, limit=90):
+    """Target and modality only: the first clause, without commentary."""
+    t = re.sub(r'\s+', ' ', (t or '')).strip()
+    if not t:
+        return ''
+    t = re.split(r';|\s+—\s+|\s+--\s+', t)[0]
+    if len(t) > limit:
+        t = re.sub(r'\s*\((?=[^()]*\s[^()]*\s)(?![^()]*[+/])[^()]*\)', '', t)
+    t = re.sub(r',\s*(?:producing|leading to|designed to|which|aiming|intended)\b.*$', '', t)
+    t = style(caps_fix(t)).strip(' ,.')
+    return t if len(t) <= limit else t[:limit].rsplit(' ', 1)[0] + '…'
+
+
 def main():
     path = sys.argv[1] if len(sys.argv) > 1 else 'data/data.json'
     D = json.load(open(path))
@@ -303,6 +339,8 @@ def main():
         cur = CUR.get(r['ticker'])
         r['eff_short'] = style(cur['eff']) if cur else eff_short(r.get('efficacy'), r['ind_short'], stage=(r.get('stage') or ''), nxt=r.get('next_cat'))
         r['eff_src'] = 'curated' if cur else 'rule'
+        r['bench_short'] = bench_short(r.get('benchmark'))
+        r['moa_short'] = moa_short(r.get('moa'))
         cav = [x for x in sentences(r.get('efficacy') or '') if CAVEAT.search(x) and clean_sentence(x) not in r['eff_short']]
         r['eff_caveat'] = (cur.get('caveat') if cur and cur.get('caveat') is not None else ' '.join(clean_sentence(x) for x in cav[:2]))
     json.dump(D, open(path, 'w'), ensure_ascii=False, separators=(',', ':'))

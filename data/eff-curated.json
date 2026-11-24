@@ -1,6 +1,7 @@
 {
  "_about": {
-  "eff": "Hand-written efficacy lines where rules cannot judge: approved drugs whose text only has sales (pivotal result shown instead), text about the wrong program, related-asset data, failed trials whose subgroup matters. Pivotal figures are from the published registrational trials. caveat = text moved to the Thesis column."
+  "eff": "Hand-written efficacy lines where rules cannot judge: approved drugs whose text only has sales (pivotal result shown instead), text about the wrong program, related-asset data, failed trials whose subgroup matters. Pivotal figures are from the published registrational trials. caveat = text moved to the Thesis column.",
+  "verified": "Pivotal figures checked against publications/FDA documents on 2026-11-23, except RYTM, NVAX and HALO/LQDA (generic statements), and lines copied from our own source text."
  },
  "TENX": {
   "eff": "Ph3 LEVEL (PH-HFpEF, n=241) missed primary (6MWD +3.5m vs placebo, p=0.63) and KCCQ-TSS key secondary. Prespecified subgroup with baseline 6MWD <333m (n=119): +26.3m at W12 (nominal p=0.011).",
@@ -13,7 +14,7 @@
   "eff": "INPEFA (sotagliflozin) approved for HF: Ph3 SOLOIST-WHF cut CV death + HF events 33% (HR 0.67); Ph3 SCORED (T2D + CKD) HR 0.74. Zynquista approved in T1D."
  },
  "PBYI": {
-  "eff": "NERLYNX approved in early and metastatic HER2+ BC: Ph3 ExteNET 5-yr iDFS 90.2% vs 87.7% placebo (HR 0.73); Ph3 NALA (mBC) PFS HR 0.76 vs lapatinib."
+  "eff": "NERLYNX approved in early and metastatic HER2+ BC: Ph3 ExteNET 5-yr iDFS 90.2% vs 87.7% pbo (HR 0.73); Ph3 NALA (mBC) PFS HR 0.76 vs lapatinib."
  },
  "BDTX": {
   "eff": "Ph2 1L EGFR non-classical NSCLC (n=43): ORR 60%, mPFS 15.0 mo; untreated brain mets CNS-ORR 86% (n=7)."
@@ -41,7 +42,7 @@
   "eff": "No efficacy data yet for lead SION-451 + SION-2222. Earlier SION-719 added to Trikafta failed Ph2a (sweat chloride −1.0 mmol/L vs placebo, p=0.7)."
  },
  "PTCT": {
-  "eff": "Ph3 MOVE-FA (vatiquinone, FA) missed primary (mFARS); FDA CRL. Votoplam (HD) Ph2 PIVOT-HD: 52% cUHDRS slowing vs natural history."
+  "eff": "Ph3 MOVE-FA (vatiquinone, FA) missed primary (mFARS pbo-corrected 1.6, p=0.14); FDA CRL. Votoplam (HD) Ph2 PIVOT-HD: 52% cUHDRS slowing vs natural history."
  },
  "IMVT": {
   "eff": "Lead Graves' data pending. IMVT-1402 in difficult-to-treat RA: 600 mg met primary (ACR20 W28 92.5% vs 75.6% placebo); 300 mg no difference."
@@ -53,7 +54,7 @@
   "eff": "No efficacy data yet for Kailera's own KAI-7535. Partner Hengrui's HRS-7535 Ph3s in China (HARBOR-1/OUTSTAND-2): 10.9-11.1% weight loss at W44/50, no liver signal."
  },
  "KURA": {
-  "eff": "KOMZIFTI (ziftomenib) approved in r/r NPM1m AML: Ph2 KOMET-001 CR/CRh 23%."
+  "eff": "KOMZIFTI (ziftomenib) approved in r/r NPM1m AML: Ph2 KOMET-001 CR/CRh 22% (n=92; met vs 12% historical), 61% MRD-negative."
  },
  "OMER": {
   "eff": "YARTEMLEA (narsoplimab) approved for HSCT-TA-TMA: pivotal single-arm study TMA response 61% (n=28)."
@@ -65,7 +66,7 @@
   "eff": "CARDAMYST (etripamil) approved for PSVT: Ph3 RAPID conversion to sinus rhythm within 30 min 64% vs 31% placebo."
  },
  "BBIO": {
-  "eff": "Attruby (acoramidis) approved for ATTR-CM: Ph3 ATTRibute-CM win ratio 1.8; all-cause death + recurrent CV hospitalization cut 42%."
+  "eff": "Attruby (acoramidis) approved for ATTR-CM: Ph3 ATTRibute-CM win ratio 1.8; all-cause death + first CV hospitalization HR 0.65; CV hospitalizations halved."
  },
  "KRYS": {
   "eff": "VYJUVEK approved for DEB wounds: Ph3 GEM-3 complete wound healing at 6 mo 67% vs 22% placebo."
@@ -131,7 +132,7 @@
   "eff": "XOLREMDI approved in WHIM: Ph3 4WHIM time above ANC threshold 15.0 vs 2.8 h placebo. Lead chronic neutropenia Ph3 4WARD ongoing."
  },
  "ZVRA": {
-  "eff": "MIPLYFFA approved in NPC: Ph2/3 disease progression (5-domain NPCCSS) +0.76 vs +2.15 placebo at 12 mo."
+  "eff": "MIPLYFFA approved in NPC: Ph2/3 5-domain NPCCSS −1.40 vs pbo at 12 mo (65% slower annual progression)."
  },
  "SRRK": {
   "eff": "Ph3 SAPPHIRE (apitegromab, SMA): HFMSE +1.8 pts vs placebo (p=0.019)."
@@ -143,13 +144,13 @@
   "eff": "TPOXX approved for smallpox under the animal rule; human STOMP trial (mpox) missed primary (lesion resolution)."
  },
  "VCEL": {
-  "eff": "MACI approved for knee cartilage defects: Ph3 SUMMIT KOOS pain and function superior to microfracture at 2 yrs."
+  "eff": "MACI approved for knee cartilage defects: Ph3 SUMMIT KOOS pain 37→83 vs 36→71 and function 15→61 vs 13→49 for microfracture at Y2 (p=0.001)."
  },
  "HALO": {
   "eff": "Delivery platform: ENHANZE subcutaneous versions approved on PK non-inferiority vs IV partner drugs."
  },
  "PHAR": {
-  "eff": "Joenja approved in APDS: Ph3 met both co-primaries (lymph-node size reduction and naive B-cell increase vs placebo)."
+  "eff": "Joenja approved in APDS: Ph3 met both co-primaries vs pbo: index lymph-node size −0.25 log10 SPD and naive B cells +37 pts at W12."
  },
  "NTRB": {
   "eff": "Abuse-deterrent fentanyl patch; efficacy relies on approved fentanyl. Pivotal human abuse potential study planned."
@@ -227,7 +228,7 @@
   "eff": "Royalty on partner Jazz's Ziihera (approved 1L GEA Aug 2026, + 2L BTC): Ph3 HERIZON-GEA-01 final OS HR 0.65 for Ziihera + tislelizumab + chemo (0.72 at interim)."
  },
  "INVA": {
-  "eff": "Royalties on partner GSK's BREO/ANORO inhalers. Own XACDURO approved for Acinetobacter: Ph3 ATTACK 28-day mortality 19% vs 32% colistin."
+  "eff": "Royalties on partner GSK's BREO/ANORO inhalers. Own XACDURO approved for Acinetobacter: Ph3 ATTACK 28-day mortality 19% vs 32% colistin (non-inferior)."
  },
  "TGTX": {
   "eff": "BRIUMVI approved in relapsing MS: Ph3 ULTIMATE I/II annualized relapse rate 0.08 vs 0.19 and 0.09 vs 0.18 teriflunomide. Ph1 SubQ: bioavailability >60% vs IV, supporting Q3M."

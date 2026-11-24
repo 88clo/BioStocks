@@ -33,7 +33,7 @@
   function partner(x){var b=B(),A=S().rows();var same=A.filter(function(y){return y.t!==x.t&&y.side==='l'&&y.r.indgroup&&y.r.indgroup===x.r.indgroup;});
     if(!same.length)same=A.filter(function(y){return y.t!==x.t&&y.side==='l'&&y.r.ta===x.r.ta;});
     same.sort(function(a,c){return (b.quality(c.r)?1:0)-(b.quality(a.r)?1:0)||(c.u||0)-(a.u||0);});return same[0]?same[0].t:null;}
-  function priority(){
+  function priority(asMap){
     var b=B(),A=S().rows(),now=b.today,out=[];
     A.forEach(function(x){var r=x.r,c=(r.call||'').toUpperCase();if(x.side!=='l'&&x.side!=='s')return;
       var d=null,ex=x.nx&&(x.nx.p||0)>=5;if(x.nx){d=Math.round((new Date(x.nx.d+'T00:00:00')-now)/864e5);if(d>183)d=null;else d=Math.max(0,d);}var dl=function(){return ex?d+'d to event':'due within '+d+'d';};
@@ -58,6 +58,7 @@
       out.push({x:x,sc:sc,why:why,act:act,d:d});});
     out.sort(function(a,c){return c.sc-a.sc;});
     var L=out.filter(function(o){return o.x.side==='l';}).slice(0,12).concat(out.filter(function(o){return o.x.side==='s';}).slice(0,5));
+    if(asMap){var M={};L.forEach(function(o,i){M[o.x.t]={rank:i+1,act:o.act,why:o.why,sc:o.sc,side:o.x.side};});return M;}
     return '<div class="brf-h"><b>Priority list: what to act on in the next six months</b><span>'+out.length+' candidates ranked · top 12 longs, then top 5 shorts</span></div>'
       +'<table class="brf-t"><tr><th>#</th><th>Name</th><th>Call</th><th>What to do</th><th>Event</th><th>Why it ranks</th><th class="r">Ours / Street</th><th class="r">Score</th></tr>'
       +L.map(function(o,i){var x=o.x,r=x.r;return (i>0&&x.side==='s'&&L[i-1].x.side==='l'?'<tr><td colspan="8" style="background:var(--raised);font-weight:700;font-size:11px">Shorts and avoids</td></tr>':'')+'<tr><td class="r">'+(i+1)+'</td><td>'+b.tk(x.t)+'<div class="sm">'+b.E(b.trunc(r.nick||r.name,18))+' · '+b.M(r.mc)+'</div></td><td>'+b.cb(r.call)+'</td><td class="pr-act">'+b.E(o.act)+'</td><td class="sm">'+(x.nx&&o.d!=null?'<b>'+(x.nx.k?'★ ':'')+b.E(x.nx.lab)+'</b> '+b.E(b.trunc(x.nx.e,80)):b.E(b.trunc(r.nc||r.catalyst,80)))+'</td><td><div class="pr-why">'+o.why.map(function(w){return '<span>'+b.E(w)+'</span>';}).join('')+'</div></td><td class="r">'+(x.out?'⚠ ':'')+'<span class="'+b.PC(x.u)+'">'+b.P(x.u)+'</span> / <span class="'+b.PC(x.su)+'">'+b.P(x.su)+'</span></td><td class="r">'+o.sc.toFixed(1)+'</td></tr>';}).join('')+'</table>'
@@ -181,7 +182,9 @@
     b.embed('calwrap','synCalHost',function(){renderCalendar(b.DA.filter(function(r){return r.ta!=='Acquired / Inactive';}));calMarks();});}
   function calMarks(){var b=B();{
     var w=document.getElementById('calwrap');w.querySelectorAll('*').forEach(function(c){if(c.children.length)return;var t=(c.textContent||'').trim(),x=RAISE[t];if(!x||c.classList.contains('n5-raise'))return;c.classList.add('n5-raise');c.title=(c.title?c.title+' · ':'')+'Likely equity raise ~'+b.M(x.size)+', '+x.timing;});}}
-  wrap('next',function(){return priority()+calHtml();},calAfter);
+  // the priority list is folded into the timeline: its top 12 longs and 5 shorts are highlighted on their next catalyst
+  window.SYN_PRIORITY=function(){try{return priority(true);}catch(e){return {};}};
+  wrap('next',function(){return calHtml();},calAfter);
   wrap('areas',rotHtml,rotAfter);
 })();
 </script>
