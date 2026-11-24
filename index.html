@@ -7605,11 +7605,12 @@ table.cg-t{font-size:11.5px}.cg-t td,.cg-t th{padding:5px 7px}
 td .sx.cur{border-bottom:1px dashed var(--faint);padding-bottom:2px}
 mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;border-radius:3px;padding:0 2px}
 .cg-t .nx-k{color:var(--amber)}.cg-t .nx-v{border-bottom:1px dotted var(--faint)}
-.cg-t tr.cl-row td{background:var(--raised);font-family:var(--disp);font-weight:800;font-size:12.5px;padding:7px 10px}
-.cg-t tr.cl-row span,.cg-t tr.ta-row span,.cg-t tr.ig-row span{font-family:var(--body);font-weight:500;color:var(--faint);font-size:11px;margin-left:6px}
-.cg-t tr.ta-row td{background:var(--panel);cursor:pointer;padding:6px 10px;font-size:12px}
-.cg-t tr.ta-row:hover td{background:var(--raised)}
-.cg-t tr.ig-row td{padding:3px 10px 3px 26px;font-size:11px;font-weight:700;color:var(--dim);background:transparent}
+.cg-t tr.cl-row td{background:color-mix(in srgb,var(--cc,var(--faint)) 22%,var(--panel));font-family:var(--disp);font-weight:800;font-size:13.5px;padding:9px 12px;border-top:2px solid var(--cc,var(--line));color:var(--text)}
+.cg-t tr.cl-row span,.cg-t tr.ta-row span,.cg-t tr.ig-row span{font-family:var(--body);font-weight:500;color:var(--dim);font-size:11px;margin-left:8px}
+.cg-t tr.ta-row td{background:color-mix(in srgb,var(--cc,var(--faint)) 11%,var(--panel));cursor:pointer;padding:7px 12px;font-size:12.5px;border-top:1px solid color-mix(in srgb,var(--cc,var(--faint)) 35%,transparent)}
+.cg-t tr.ta-row:hover td{background:color-mix(in srgb,var(--cc,var(--faint)) 18%,var(--panel))}
+.cg-t tr.ig-row td{padding:4px 12px 4px 30px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);background:var(--raised);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cg-t tr.ig-row td span{text-transform:none;letter-spacing:0}
 .cg-t .gcomp{white-space:nowrap}
 .cg-t td .sm{display:block;min-width:190px}.cg-t td .syn-thesis{display:block;min-width:340px}.cg-t td .brf-cb+.sm,.cg-t td.gcomp .sm,.cg-t td.r .sm{display:inline;min-width:0}
 #drawer .syn-top{border:1px solid var(--cyan);border-radius:10px;padding:10px 12px;background:var(--panel)}
@@ -7738,7 +7739,7 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
       ['Who',function(x){return '<span class="sm">'+B.E(x.sn.slice(0,4).join(', ')||'—')+'</span>';},null,null,0,'Which specialist funds.'],
       ['Analysts',function(x){return x.an||'—';},'_an',null,0,'Number of analysts with a price target.']]}
   ];
-  if(!CO.x)CO.x={};if(!CO.grp)CO.grp='area';if(!CO.cl)CO.cl='cap';if(!CO.closed)CO.closed={};
+  if(!CO.x)CO.x={};if(!CO.grp)CO.grp='ind';if(!CO.cl)CO.cl='cap';if(!CO.closed)CO.closed={};
   function colsOf(g){return g.fixed||CO.x[g.k]?g.cols:g.cols.filter(function(c){return c[4];});}
   function yval(x){return CO.y==='su'?x.su:CO.y==='r12'?(x.r.r12m==null?null:x.r.r12m*100):(x.r.r3m==null?null:x.r.r3m*100);}
   // ----- Companies chart: zoom (wheel / buttons), drag to pan, hover to highlight; vertical axis = Street, returns, or area -----
@@ -7877,11 +7878,11 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
       order.forEach(function(cl){var tl=Object.keys(byTa).filter(function(t){return clusterOf(t)===cl;});tl.sort(function(a,b){return CO.cl==='az'?(a<b?-1:1):taStat(b).cap-taStat(a).cap;});
         var CG2=[].concat.apply([],tl.map(function(t){return byTa[t];}));
         var cst={n:CG2.length,cap:CG2.reduce(function(a,x){return a+(x.r.mc||0);},0),med:B.med(CG2.map(function(x){return x.out?null:x.u;})),r12:B.med(CG2.map(function(x){return x.r.r12m==null?null:x.r.r12m*100;})),nl:CG2.filter(function(x){return x.side==='l';}).length,ns:CG2.filter(function(x){return x.side==='s'||x.side==='a';}).length};
-        body+='<tr class="cl-row"><td colspan="'+ncol+'" style="border-left:4px solid '+CLCOL[cl]+'">'+B.E(cl)+' <span>'+statLine(cst)+'</span></td></tr>';
+        body+='<tr class="cl-row" style="--cc:'+CLCOL[cl]+'"><td colspan="'+ncol+'" style="border-left:5px solid '+CLCOL[cl]+'">'+B.E(cl)+' <span>'+statLine(cst)+'</span></td></tr>';
         tl.forEach(function(t){var s=taStat(t),closed=CO.closed[t]&&!filtering;
-          body+='<tr class="ta-row" data-fold="'+B.E(t)+'"><td colspan="'+ncol+'" style="border-left:4px solid '+CLCOL[cl]+'">'+(closed?'▸ ':'▾ ')+'<b>'+B.E(t)+'</b> <span>'+statLine(s)+'</span></td></tr>';
+          body+='<tr class="ta-row" data-fold="'+B.E(t)+'" style="--cc:'+CLCOL[cl]+'"><td colspan="'+ncol+'" style="border-left:5px solid '+CLCOL[cl]+'">'+(closed?'▸ ':'▾ ')+'<b>'+B.E(t)+'</b> <span>'+statLine(s)+'</span></td></tr>';
           if(closed)return;var G=byTa[t].slice().sort(cmp);
-          if(CO.grp==='ind'){var bi={};G.forEach(function(x){(bi[x.r.indgroup||'Other']=bi[x.r.indgroup||'Other']||[]).push(x);});Object.keys(bi).sort(function(a,b){return bi[b].reduce(function(s,x){return s+(x.r.mc||0);},0)-bi[a].reduce(function(s,x){return s+(x.r.mc||0);},0);}).forEach(function(ig){body+='<tr class="ig-row"><td colspan="'+ncol+'">'+B.E(ig)+' <span>'+bi[ig].length+'</span></td></tr>'+bi[ig].map(rowH).join('');});}
+          if(CO.grp==='ind'){var bi={};G.forEach(function(x){(bi[x.r.indgroup||'Other']=bi[x.r.indgroup||'Other']||[]).push(x);});Object.keys(bi).sort(function(a,b){return bi[b].reduce(function(s,x){return s+(x.r.mc||0);},0)-bi[a].reduce(function(s,x){return s+(x.r.mc||0);},0);}).forEach(function(ig){body+='<tr class="ig-row"><td colspan="'+ncol+'" style="border-left:5px solid color-mix(in srgb,'+CLCOL[cl]+' 45%,transparent)">'+B.E(ig)+' <span>'+bi[ig].length+(bi[ig].length===1?' name':' names')+' · '+B.M(bi[ig].reduce(function(a,x){return a+(x.r.mc||0);},0))+'</span></td></tr>'+bi[ig].map(rowH).join('');});}
           else body+=G.map(rowH).join('');});});}
     h+='<div class="cg-wrap"><table class="brf-t cg-t">'+h1+h2+body+'</table></div>';
     return h;
