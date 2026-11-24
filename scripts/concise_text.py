@@ -127,7 +127,7 @@ DOSE = [(r'once[- ]quarterly|every (?:three|3) months|quarterly dosing', 'Q3M'),
         (r'\bversus\b', 'vs'), (r'\bplacebo\b', 'placebo'), (r'\s+—\s+', ' — ')]
 
 
-DROP_ITEM = re.compile(r'cut-?off|data cut|\bcut\b|f/u|follow-?up|\bas of\b|\d+\s?mg(?:/kg)?\b|\b(?:QD|BID|QW|Q\dW|Q\dM)\b|topline|full data|presented|\b(?:ASCO|ESMO|ASH|ESC|AHA|AAN|SITC|EASL|AASLD|ADA|ACR|EULAR|ATS|ERS|SABCS)\b|^(?:%s)\s*\d{0,2},?\s*20\d\d$|^20\d\d$|company|investigator' % '|'.join(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Sept','Oct','Nov','Dec']), re.I)
+DROP_ITEM = re.compile(r'published|\b(?:NEJM|Lancet|JAMA|AJRCCM|CHEST|JCO|Nature|Blood)\b|cut-?off|data cut|\bcut\b|f/u|follow-?up|\bas of\b|\d+\s?mg(?:/kg)?\b|\b(?:QD|BID|QW|Q\dW|Q\dM)\b|topline|full data|presented|\b(?:ASCO|ESMO|ASH|ESC|AHA|AAN|SITC|EASL|AASLD|ADA|ACR|EULAR|ATS|ERS|SABCS)\b|^(?:%s)\s*\d{0,2},?\s*20\d\d$|^20\d\d$|company|investigator' % '|'.join(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Sept','Oct','Nov','Dec']), re.I)
 
 
 def tidy(s):
@@ -157,6 +157,21 @@ def tidy(s):
     s = re.sub(r'\bCV[- ]outcomes?(?: trial| benefit)?\b', 'CVOT', s)
     s = re.sub(r'\s+([,;.)])', r'\1', s)
     return re.sub(r'\s{2,}', ' ', s).strip()
+
+
+def style(s):
+    s = re.sub(r'\bplacebo[- ]adjusted\b', 'pbo-adj', s, flags=re.I)
+    s = re.sub(r'\bplacebo\b', 'pbo', s, flags=re.I)
+    s = re.sub(r'\bwith\b', 'w', s)
+    s = re.sub(r'\b[Dd]ay (\d+)\b', r'D\1', s)
+    s = re.sub(r'\b(?:wks?|weeks?)\s(\d+(?:-\d+)?)\b', r'W\1', s)            # timepoint: "wks 9-12" -> W9-12
+    s = re.sub(r'\b[Ww]k\s?(\d+)\b', r'W\1', s)
+    s = re.sub(r'\b(\d+)\s?(?:wk|wks|weeks)\b(?!-)', r'\1 wks', s)              # duration: "12 weeks" -> 12 wks
+    s = re.sub(r'\b(?:[Mm]onth|mo) (\d+)\b', r'M\1', s)
+    s = re.sub(r'\b[Yy]ear (\d+)\b', r'Y\1', s)
+    s = re.sub(r'\((\d[\d,]*) (?:pts|patients|participants)\b', r'(n=\1', s)
+    s = re.sub(r'^Human data only,\s*healthy volunteers,?[^:]*:', 'Ph1 HV:', s)
+    return s
 
 
 def caps_fix(s):
@@ -216,6 +231,7 @@ def clean_sentence(s):
         s = re.sub(rx, rep, s, flags=re.I)
     s = tidy(s)
     s = caps_fix(s)
+    s = style(s)
     s = re.sub(r'\s+', ' ', s).strip()
     return s
 
@@ -254,6 +270,10 @@ def eff_short(t, ind='', limit=250, stage='', nxt=None):
             chosen.add(i)
             total += L + 1
     out = ' '.join(clean_sentence(S[i]) for i in sorted(chosen))
+    if re.search(r'\bcompany says\b', out, re.I) and not re.search(r'\d+(?:\.\d+)?\s*%|\bvs\b|\bHR\b', out):
+        out = re.sub(r'(:\s*)(company says)', r'\1no efficacy numbers disclosed; \2', out, count=1, flags=re.I)
+    if re.search(r'\bin (?:high|low)[- ][^,;.]{0,40}\bpts\b|\bsubgroup\b', out) and not failed and not re.search(r'\b(?:overall|ITT|all pts|mITT)\b', out):
+        out = out.rstrip('.') + '. ⚠ Subgroup result; overall not reported.'
     if re.search(r'\b(?:NHP|mouse|mice|murine|animal|preclinical)\b', out, re.I) and not re.search(r'\bPh\d|\bpatients?\b|\bpts\b|\bhealthy\b', out, re.I) and not out.lower().startswith('preclinical'):
         sp = re.match(r'^(NHP|mouse|mice)\s+data\s*:\s*', out, re.I)
         out = 'Preclinical only' + (' (' + sp[1] + ')' if sp else '') + ': ' + re.sub(r'^(?:NHP data|mouse data|mice data|Preclinical)\s*:\s*', '', out, flags=re.I)
@@ -280,7 +300,7 @@ def main():
     for r in D:
         r['ind_short'] = ind_short(r.get('indication'))
         cur = CUR.get(r['ticker'])
-        r['eff_short'] = cur['eff'] if cur else eff_short(r.get('efficacy'), r['ind_short'], stage=(r.get('stage') or '') + ' ' + (r.get('stage_full') or ''), nxt=r.get('next_cat'))
+        r['eff_short'] = style(cur['eff']) if cur else eff_short(r.get('efficacy'), r['ind_short'], stage=(r.get('stage') or '') + ' ' + (r.get('stage_full') or ''), nxt=r.get('next_cat'))
         r['eff_src'] = 'curated' if cur else 'rule'
         cav = [x for x in sentences(r.get('efficacy') or '') if CAVEAT.search(x) and clean_sentence(x) not in r['eff_short']]
         r['eff_caveat'] = (cur.get('caveat') if cur and cur.get('caveat') is not None else ' '.join(clean_sentence(x) for x in cav[:2]))
