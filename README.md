@@ -1,5 +1,7 @@
 # Biotech Landscape
 
+> **Priorities:** read [NORTH_STAR.md](NORTH_STAR.md) first: the goals, the questions a fund will ask, and what to build next.
+
 A single-file dashboard (`index.html`) covering ~400 US-listed small and mid-cap biotechs (market cap $50M–$30B): the lead program for each company, a quantitative efficacy benchmark, risk-adjusted value vs market cap, a rule-based call, catalysts, cash runway, holders, a monthly memo, and a track record that scores every frozen call set against later prices.
 
 Open `index.html` in a browser. Five pages, no sub-views; any ticker anywhere opens the **company card**, which is where you dive in.

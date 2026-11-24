@@ -1,5 +1,7 @@
 # Monthly refresh runbook
 
+> Before starting, read `NORTH_STAR.md` (repo root). At the end of each refresh, update its table: move anything newly built out of "What's still missing" and keep the track-record answer current.
+
 Target cadence: one full refresh mid-month (memo edition), plus a short close-out when quarterly filings land.
 
 ## 0. Freeze first
