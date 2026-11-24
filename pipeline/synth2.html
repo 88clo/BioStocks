@@ -20,7 +20,7 @@
 #onepager .op-bar button{background:#fff;border:1px solid #bbb;border-radius:6px;padding:6px 12px;cursor:pointer;font-weight:700}
 @media print{body.op-print>*:not(#onepager){display:none!important}body.op-print #onepager{position:static;background:none;display:block}body.op-print .op-bar{display:none}body.op-print .op-doc{margin:0;max-width:none;box-shadow:none}}
 .rot-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}
-.rot-l{transition:stroke-opacity .1s}.rot-l:hover{stroke-opacity:1!important;stroke-width:3px!important}
+.rot-l{transition:stroke-opacity .1s}.rot-leg{display:flex;flex-wrap:wrap;gap:4px 6px;padding:8px 2px 6px;border-top:1px solid var(--line-soft);margin-top:4px}.rot-li{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;cursor:pointer;user-select:none;color:var(--text)}.rot-li i{width:14px;height:3px;border-radius:2px;flex:none}.rot-li b{font-weight:600;color:var(--dim)}.rot-li:hover,.rot-li.on{border-color:var(--text);background:var(--raised)}.rot-l:hover{stroke-opacity:1!important;stroke-width:3px!important}
 .rot-ctl select{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px;color:var(--text)}
 </style>
 <div id="onepager" aria-label="Management one-pager"></div>
@@ -74,7 +74,7 @@
       +(CHG.catalysts.length?'<br><b>Catalyst dates moved:</b> '+CHG.catalysts.slice(0,8).map(function(c){return b.tk(c.t)+' '+b.E(c.from||'—')+'→'+b.E(c.to||'—');}).join(', '):'<br><b>Catalyst dates moved:</b> none')
       +(CHG.new.length?'<br><b>Added:</b> '+CHG.new.map(b.tk).join(' '):'')+(CHG.dropped.length?'<br><b>Dropped:</b> '+CHG.dropped.map(function(t){return b.E(t);}).join(' '):'')+'</div>';};
   // ================= 5. Returns over time (top of Areas) =================
-  var ROT={hide:{},hl:'',per:12};   // per = quarters shown (2 = 6 months ... 12 = 3 years)
+  var ROT={hide:{},hl:'',per:12,sel:null};   // per = quarters shown (2 = 6 months ... 12 = 3 years)
   function series(filter){var P=(S().J('priceq-baked')||{}),Q=P.quarters||[],PR=P.prices||{};var n=Q.length,start=Math.max(1,n-ROT.per);var idx=[100],labs=[Q[start-1]];
     var tks=B().DA.filter(filter).map(function(r){return r.ticker;});
     for(var i=start;i<n;i++){var rs=[];tks.forEach(function(t){var a=(PR[t]||[])[i-1],c=(PR[t]||[])[i];if(a>0&&c>0)rs.push(c/a);});var m=B().med(rs)||1;idx.push(idx[idx.length-1]*m);labs.push(Q[i]);}
@@ -97,12 +97,13 @@
     var g='<svg viewBox="0 0 '+W+' '+Hh+'" role="img" aria-label="Returns over time by area">';
     var step=(hi2-lo2)>200?50:20;for(var v=lo2;v<=hi2;v+=step)g+='<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+Yp(v)+'" y2="'+Yp(v)+'" stroke="var(--line)" stroke-width="'+(v===100?1.6:.6)+'"/><text x="'+(ml-6)+'" y="'+(Yp(v)+3)+'" font-size="10.5" text-anchor="end">'+(pct(v)>0?'+':'')+pct(v)+'%</text>';
     U.labs.forEach(function(q,i){if(n<=6||i%2===0||i===n-1)g+='<text x="'+Xp(i)+'" y="'+(Hh-mb+14)+'" font-size="10.5" text-anchor="middle">'+q+'</text>';});
-    var ends=[];lines.forEach(function(l){var d='';l.v.forEach(function(v,i){if(v==null)return;d+=(d?'L':'M')+Xp(i).toFixed(1)+' '+Yp(v).toFixed(1);});var lv=l.v[l.v.length-1];
-      g+='<path class="rot-l" data-hl="'+(l.area?b.E(l.l):'')+'"'+(l.co?' data-tk="'+b.E(l.l)+'"':'')+' d="'+d+'" fill="none" stroke="'+l.c+'" stroke-opacity="'+l.o+'" stroke-width="'+l.w+'"'+(l.dash?' stroke-dasharray="'+l.dash+'"':'')+'><title>'+b.E(l.l)+': '+(lv!=null?(pct(lv)>0?'+':'')+pct(lv)+'%':'')+' over the period</title></path>';
+    var ends=[];ROT._leg=[];lines.forEach(function(l,li){var d='';l.v.forEach(function(v,i){if(v==null)return;d+=(d?'L':'M')+Xp(i).toFixed(1)+' '+Yp(v).toFixed(1);});var lv=l.v[l.v.length-1];
+      ROT._leg.push({i:li,l:l.l,c:l.c,v:l.v[l.v.length-1],area:l.area,co:l.co,dash:l.dash});
+      g+='<path class="rot-l" data-li="'+li+'" data-hl="'+(l.area?b.E(l.l):'')+'"'+(l.co?' data-tk="'+b.E(l.l)+'"':'')+' d="'+d+'" fill="none" stroke="'+l.c+'" stroke-opacity="'+l.o+'" stroke-width="'+l.w+'"'+(l.dash?' stroke-dasharray="'+l.dash+'"':'')+'><title>'+b.E(l.l)+': '+(lv!=null?(pct(lv)>0?'+':'')+pct(lv)+'%':'')+' over the period</title></path>';
       if(lv!=null)ends.push({y:Yp(lv),v:lv,t:l.l,c:l.c,main:!l.area&&!l.co});});
     var areas=ends.filter(function(e){return !e.main;}).sort(function(a,c){return c.v-a.v;});var lab=ends.filter(function(e){return e.main;}).concat(areas.slice(0,ROT.hl?5:4),areas.slice(ROT.hl?-5:-4));
     lab=lab.filter(function(e,i,a){return a.indexOf(e)===i;}).sort(function(a,c){return a.y-c.y;});for(var i=1;i<lab.length;i++)if(lab[i].y-lab[i-1].y<12)lab[i].y=lab[i-1].y+12;var over=lab.length?lab[lab.length-1].y-(Hh-mb-16):0;if(over>0)for(var j=lab.length-1;j>=0;j--){lab[j].y-=over;if(j>0&&lab[j].y-lab[j-1].y>=12)break;}
-    lab.forEach(function(e){g+='<text x="'+(W-mr+6)+'" y="'+(e.y+3)+'" font-size="10.5" font-weight="'+(e.main?800:600)+'" style="fill:'+(e.main?(e.t==='XBI'?'var(--cyan)':'var(--text)'):e.c)+'">'+b.E(e.t.length>20?e.t.slice(0,19)+'…':e.t)+' '+(pct(e.v)>0?'+':'')+pct(e.v)+'%</text>';});
+    lab.forEach(function(e){g+='<text class="rot-et" data-lt="'+b.E(e.t)+'" x="'+(W-mr+6)+'" y="'+(e.y+3)+'" font-size="10.5" font-weight="'+(e.main?800:600)+'" style="fill:'+(e.main?(e.t==='XBI'?'var(--cyan)':'var(--text)'):e.c)+'">'+b.E(e.t.length>20?e.t.slice(0,19)+'…':e.t)+' '+(pct(e.v)>0?'+':'')+pct(e.v)+'%</text>';});
     return g+'</svg>';}
   function rotHtml(){var b=B(),s=S();var AR=s.AR;
     var tog='<div class="syn-ctl" style="margin-bottom:10px"><span class="syn-seg">'+[['hist','Historical: returns over time'],['fut','Future: value vs momentum']].map(function(o){return '<button data-aview="'+o[0]+'" class="'+(AR.view===o[0]?'on':'')+'">'+o[1]+'</button>';}).join('')+'</span></div>';
@@ -110,13 +111,21 @@
     var tas=Array.from(new Set(b.DA.map(function(r){return r.ta;}))).filter(function(t){return t&&t!=='Acquired / Inactive';}).sort();
     return tog+'<div class="brf-h"><b>'+(ROT.hl?'Returns over time: every company in '+b.E(ROT.hl)+' vs the area median and XBI':'Returns over time: every area vs XBI and the median covered stock')+'</b><span>Cumulative % return over '+({2:'six months',4:'one year',8:'two years',12:'three years'})[ROT.per]+' · quarter-end closes · '+(ROT.hl?'company lines coloured by our call (green long, red short, amber avoid, grey other); a company listed later starts at 0% when it first trades · click a line for its card':'each area line chains its median stock\'s quarterly return (equal-weight) · labels show the four best and four worst areas; click a line or pick an area to see its companies')+'</span></div>'
       +'<div class="rot-ctl"><select id="rotHl"><option value="">All areas</option>'+tas.map(function(t){return '<option'+(ROT.hl===t?' selected':'')+'>'+b.E(t)+'</option>';}).join('')+'</select>'+' <span class="syn-seg">'+[[2,'6M'],[4,'1Y'],[8,'2Y'],[12,'3Y']].map(function(o){return '<button data-rper="'+o[0]+'" class="'+(ROT.per===o[0]?'on':'')+'">'+o[1]+'</button>';}).join('')+'</span>'+(ROT.hl?' <span class="chip" id="rotAll">← all areas</span>':'')+'</div>'
-      +'<div class="syn-chart">'+rotChart()+'</div>';}
+      +'<div class="syn-chart">'+rotChart()+rotLegend()+'</div>';}
+  function rotLegend(){var b=B(),L=(ROT._leg||[]).slice().sort(function(a,c){var m=function(x){return x.area||x.co?0:1;};return m(c)-m(a)||(c.v==null?-1e9:c.v)-(a.v==null?-1e9:a.v);});
+    return '<div class="rot-leg">'+L.map(function(x){var pv=x.v==null?'':' '+((x.v-100)>0?'+':'')+Math.round(x.v-100)+'%';return '<span class="rot-li'+(ROT.sel===x.i?' on':'')+'" data-li="'+x.i+'"'+(x.area?' data-hl="'+b.E(x.l)+'"':'')+(x.co?' data-tk="'+b.E(x.l)+'"':'')+' title="'+(x.area?'Click to see this area\'s companies':x.co?'Click to highlight; double-click for the card':'Click to highlight')+'"><i style="background:'+x.c+(x.dash?';background:repeating-linear-gradient(90deg,'+x.c+' 0 5px,transparent 5px 8px)':'')+'"></i>'+b.E(x.l)+'<b>'+pv+'</b></span>';}).join('')+'</div>';}
+  function rotFocus(doc,li,on){doc.querySelectorAll('.rot-l').forEach(function(p){var me=p.dataset.li===String(li);if(on){p.style.strokeOpacity=me?1:.12;if(me){p.style.strokeWidth='3.5px';p.parentNode.appendChild(p);}}else{p.style.strokeOpacity='';p.style.strokeWidth='';}});}
   function rotAfter(doc){doc.querySelectorAll('[data-aview]').forEach(function(bt){bt.onclick=function(){S().AR.view=bt.dataset.aview;B().rerender();};});
     doc.querySelectorAll('[data-rper]').forEach(function(bt){bt.onclick=function(){ROT.per=+bt.dataset.rper;B().rerender();};});
-    var ra=doc.querySelector('#rotAll');if(ra)ra.onclick=function(){ROT.hl='';B().rerender();};
+    var ra=doc.querySelector('#rotAll');if(ra)ra.onclick=function(){ROT.hl='';ROT.sel=null;B().rerender();};
     doc.querySelectorAll('.rot-l[data-tk]').forEach(function(p){p.style.cursor='pointer';p.onclick=function(){var i=B().IDX[p.dataset.tk];if(i!=null)openDrawer(i);};});
-    var s=doc.querySelector('#rotHl');if(s)s.onchange=function(){ROT.hl=s.value;B().rerender();};
-    doc.querySelectorAll('.rot-l[data-hl]').forEach(function(p){if(!p.dataset.hl)return;p.style.cursor='pointer';p.onclick=function(){ROT.hl=ROT.hl===p.dataset.hl?'':p.dataset.hl;B().rerender();};});}
+    var s=doc.querySelector('#rotHl');if(s)s.onchange=function(){ROT.hl=s.value;ROT.sel=null;B().rerender();};
+    doc.querySelectorAll('.rot-li').forEach(function(sp){var li=sp.dataset.li;
+      sp.onmouseenter=function(){rotFocus(doc,li,true);};sp.onmouseleave=function(){if(ROT.sel!=null)rotFocus(doc,ROT.sel,true);else rotFocus(doc,li,false);};
+      sp.onclick=function(){if(sp.dataset.hl){ROT.hl=sp.dataset.hl;ROT.sel=null;B().rerender();return;}ROT.sel=ROT.sel===+li?null:+li;doc.querySelectorAll('.rot-li').forEach(function(o){o.classList.toggle('on',ROT.sel!=null&&o.dataset.li===String(ROT.sel));});if(ROT.sel!=null)rotFocus(doc,ROT.sel,true);else rotFocus(doc,li,false);};
+      if(sp.dataset.tk)sp.ondblclick=function(){var i=B().IDX[sp.dataset.tk];if(i!=null)openDrawer(i);};});
+    if(ROT.sel!=null)rotFocus(doc,ROT.sel,true);
+    doc.querySelectorAll('.rot-l[data-hl]').forEach(function(p){if(!p.dataset.hl)return;p.style.cursor='pointer';p.onclick=function(){ROT.hl=ROT.hl===p.dataset.hl?'':p.dataset.hl;ROT.sel=null;B().rerender();};});}
   // ================= 2-4. Company card: section links, peers, valuation, one-pager =================
   function withLaunch(copy,L,fn){if(L==null)return fn();var _y=yrsToApproval;try{yrsToApproval=function(rr){return rr===copy?L:_y(rr);};return fn();}finally{yrsToApproval=_y;}}
   function values(r,peak,pos,L){var c=Object.assign({},r,{peak_sales:peak,pos:pos,probadj_sales:peak*pos});return withLaunch(c,L,function(){var npv=null,m=null;try{npv=npvVal(c);}catch(e){}try{m=dcfModel(c);}catch(e){}

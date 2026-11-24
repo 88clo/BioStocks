@@ -13,7 +13,8 @@ tr.nx-pri td{background:rgba(14,156,107,.07)}tr.nx-pri.s td{background:rgba(214,
 .ig-t td{vertical-align:top;font-size:12px}.ig-t .ig-c{display:inline-block;white-space:nowrap;border-radius:5px;padding:1px 5px;margin:0 3px 3px 0;font-size:11.5px}.ig-t .ig-c.l{background:rgba(14,156,107,.12)}.ig-t .ig-c.l b{color:var(--long)}.ig-t .ig-c.s{background:rgba(214,69,69,.11)}.ig-t .ig-c.s b{color:var(--short)}
 .val-adj{border-bottom:1px dotted currentColor;cursor:help}
 .igc-wrap{display:flex;flex-direction:column;gap:8px}
-.igc-hd,.igc{display:grid;grid-template-columns:minmax(150px,1.05fr) minmax(190px,1.25fr) minmax(210px,1.4fr) minmax(230px,1.6fr) minmax(170px,1.1fr);gap:18px}
+.igc-hd,.igc{display:grid;grid-template-columns:minmax(160px,.8fr) minmax(260px,2fr) minmax(260px,2fr);gap:22px}
+.igc-th{margin-top:6px;padding:7px 10px;border-radius:7px;background:var(--raised);font-size:12px;line-height:1.5;border-left:3px solid var(--line)}.igc-th.l{border-left-color:var(--long)}.igc-th.s{border-left-color:var(--short)}.igc-thh{font-size:11.5px;margin-bottom:2px;color:var(--dim)}.igc-thh b{margin-left:2px}
 .igc-hd{padding:0 16px;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:600}
 .igc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 16px;font-size:12px;line-height:1.45;align-items:start;transition:border-color .15s}
 .igc:hover{border-color:var(--faint)}
@@ -71,7 +72,7 @@ table.cg-t{font-size:11.5px}.cg-t td,.cg-t th{padding:5px 7px}
 .cg-t td.fg{color:var(--long);font-weight:600}.cg-t td.fr{color:var(--short);font-weight:600}
 .cg-t td .sx{display:block;white-space:normal;font-size:11.5px;line-height:1.4;color:var(--dim)}.cg-t td .sx.w1{min-width:200px}.cg-t td .sx.w2{min-width:320px}.cg-t td .sx.w3{min-width:260px}
 td .sx.cur{border-bottom:1px dashed var(--faint);padding-bottom:2px}
-mark.syn-key{background:rgba(224,138,0,.22);color:var(--text);font-weight:700;border-radius:3px;padding:0 2px}
+mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;border-radius:3px;padding:0 2px}
 .cg-t .nx-k{color:var(--amber)}.cg-t .nx-v{border-bottom:1px dotted var(--faint)}
 .cg-t tr.cl-row td{background:var(--raised);font-family:var(--disp);font-weight:800;font-size:12.5px;padding:7px 10px}
 .cg-t tr.cl-row span,.cg-t tr.ta-row span,.cg-t tr.ig-row span{font-family:var(--body);font-weight:500;color:var(--faint);font-size:11px;margin-left:6px}
@@ -102,12 +103,23 @@ mark.syn-key{background:rgba(224,138,0,.22);color:var(--text);font-weight:700;bo
   function clab(c){return c?c.lab:'';}
   // key statistic in an efficacy line, by rule: (1) "A vs B" with numbers, (2) a number vs placebo/control,
   // (3) the curated key stat if it is short, numeric and quoted verbatim, (4) a hazard ratio, (5) a % with its endpoint.
-  var NUMR='[~≈<>≥≤+\\-−]?\\d+(?:\\.\\d+)?',UNITR='(?:%|\\s?(?:mo\\b|months?|wks?|weeks?|pts?|points?|days?|m\\b|x\\b))?',PRE='(?:[A-Za-z][\\w\\-/]{1,12}\\s+)?';
+  var NUMR='[~≈<>≥≤+\\-−]?\\d+(?:\\.\\d+)?',UNITR='(?:%|\\s?(?:mo\\b|months?|wks?|weeks?|pts?|points?|days?|m\\b|x\\b))?',PRE='(?:\\b[A-Za-z][\\w\\-/]{1,20}\\s+)?';
   var KRX=[new RegExp(PRE+NUMR+UNITR+'\\s+vs\\.?\\s+'+NUMR+UNITR,'i'),new RegExp(PRE+NUMR+UNITR+'\\s+vs\\.?\\s+(?:placebo|pbo|control|comparator|SoC|standard of care)','i'),new RegExp(PRE+NUMR+'%(?:\\s*/\\s*'+NUMR+'%)+','i'),'K',/\bHR\s*[=:]?\s*0?\.\d+/i,
-    new RegExp(NUMR+'%\\s+(?:c?ORR\\b|CRR?|cCR|response|responders|reduction|knockdown|remission|clearance|improvement|DCR|ACR\\d+|EASI-?\\d+|PASI\\s?\\d+|seizure)','i'),new RegExp('\\bc?(?:ORR|CR rate|response rate|DCR|remission rate)\\s*(?:of\\s*)?'+NUMR+'%','i')];
+    new RegExp(NUMR+'%\\s+(?:c?ORR\\b|CRR?|cCR|response|responders|reduction|knockdown|remission|clearance|improvement|DCR|ACR\\d+|EASI-?\\d+|PASI\\s?\\d+|seizure)','i'),new RegExp('\\bc?(?:ORR|CR rate|response rate|DCR|remission rate)\\s*(?:of\\s*)?'+NUMR+'%','i'),
+    // broader fallbacks (Nov 23): metric then %, % then its words, signed change with a unit, deltas, fractions, sales, met/missed primary
+    new RegExp('\\b[A-Z][A-Za-z0-9/\\-]{1,14}(?:\\s[A-Za-z][\\w\\-]*){0,2}\\s'+NUMR+'(?:\\s?[-–]\\s?\\d+(?:\\.\\d+)?)?%'),
+    new RegExp(NUMR+'(?:[-–]\\d+(?:\\.\\d+)?)?%(?:\\s+(?!and\\b|of\\b|in\\b|at\\b|vs\\b)[A-Za-z0-9][\\w\\-/]*){1,3}'),
+    new RegExp('[+\\-−]\\d+(?:\\.\\d+)?\\s?(?:[A-Z]{2,8}\\s)?(?:mmHg|m\\b|letters|points?|pts?|dB|mg/dL|mL)(?:\\s+(?:pbo-adj|vs pbo|placebo-adjusted))?(?:\\s+[A-Za-z0-9][\\w\\-]*)?','i'),
+    /Δ\s?\d+(?:\.\d+)?%?/, new RegExp('\\b(?:mean\\s)?'+NUMR+'-pts?\\s+[A-Z][\\w\\-]*(?:\\s\\w+)?'),
+    'F',
+    /\$\d+(?:\.\d+)?\s?[MB]\b(?:\s*\([^)]{1,24}\))?/,
+    /\b(?:met|missed)\s(?:all\s|both\s|its\s)?(?:co-)?primary(?:\s(?:endpoint|and\s(?:all\s)?(?:key\s)?secondary(?:\sendpoints)?))?/i,
+    new RegExp(NUMR+'%'),/\b(?:positive topline|failed (?:the |its )?[\w\- ]{0,30}|CRL\b[^;.,]{0,30}|no efficacy numbers disclosed|met (?:all )?objectives|missed [\w\- ]{0,30})/i];
   function keySpan(t,k){if(!t)return null;for(var i=0;i<KRX.length;i++){var rx=KRX[i];
+      if(rx==='F'){var fr=/\b(\d+)(?:\/| of )(\d+)\b(?:\s(?:pts?\s)?[a-z][\w\-]*(?:\s[\w\-]+){0,2})?/g,fm;while((fm=fr.exec(t))){if(!/[A-Za-z\-]/.test(t.charAt(fm.index-1)||' ')&&+fm[1]<=+fm[2]&&+fm[2]>1&&!/\/\d{2,4}\b/.test(t.slice(fm.index,fm.index+fm[0].length+3).replace(fm[0],'')))return [fm.index,fm.index+fm[0].length];}continue;}
       if(rx==='K'){k=(k||'').trim();if(k&&/\d/.test(k)&&k.length<=70&&(k.split('(').length===k.split(')').length)){var j=t.indexOf(k);if(j>=0)return [j,j+k.length];}continue;}
       var m=rx.exec(t);if(m)return [m.index,m.index+m[0].length];}return null;}
+  window._keySpan=function(t,k){return keySpan(t,k);};
   function markKey(t,k){t=t||'';var sp=keySpan(t,k);if(!sp)return B.E(t);return B.E(t.slice(0,sp[0]))+'<mark class="syn-key">'+B.E(t.slice(sp[0],sp[1]).trim())+'</mark>'+B.E(t.slice(sp[1]));}
   // ---------- per-company synthesis ----------
   var CACHE=null;
@@ -154,6 +166,8 @@ mark.syn-key{background:rgba(224,138,0,.22);color:var(--text);font-weight:700;bo
   // column = [header, cell(x)->html, sortKey|null, tintClass(x)|null, alwaysShown]
   // column = [header, cell(x)->html, sortKey|null, tintClass(x)|null, shownByDefault, headerTooltip]
   var CG=[
+    {k:'thesis',l:'Thesis',cols:[
+      ['Thesis',function(x){var r=x.r;if(x.parked)return '<span class="syn-thesis"><b>Parked ('+B.E(r.reason||'')+')</b></span>';var t=r.pitch||r.pitch_concise||'';return '<span class="syn-thesis">'+B.E(t)+(r.eff_caveat?'<br><b>Data caveat:</b> '+B.E(r.eff_caveat):'')+(CO.x.thesis&&r.value_driver?'<br><b>Beyond the lead:</b> '+B.E(r.value_driver):'')+'</span>';},null,null,1,'The thesis from the company card. Expand for the full text and the value driver beyond the lead program.']]},
     {k:'core',l:'Valuation',cols:[
       ['Call',function(x){return B.cb(x.r.call)+(!x.parked&&B.quality(x.r)&&x.side==='l'?'<span class="brf-q">Q</span>':'');},null,null,1,'Rule-based call from valuation (market cap vs our value) and science (efficacy + differentiation). Q = passes the quality screen.'],
       ['Ours',function(x){var vn=window.valNotes?window.valNotes(x.r):'';return (x.out?'<span title="Model upside above +1,000%: usually a tiny cap against large modelled sales; check inputs" style="cursor:help">⚠ </span>':'')+(vn?'<span class="val-adj" title="Model adjustments: '+B.E(vn)+'">'+B.P(x.u)+'</span>':B.P(x.u));},'u',function(x){return x.out?'':tint(x.u,100,0);},1,'Our upside: risk-adjusted value (takeout multiple x PoS x peak sales, discounted, net of the cost still to spend, plus existing business and cash) vs market cap. Hover a value for the adjustments applied.'],
@@ -167,7 +181,7 @@ mark.syn-key{background:rgba(224,138,0,.22);color:var(--text);font-weight:700;bo
       ['PoS',function(x){return x.r.pos!=null?Math.round(x.r.pos*100)+'%':'—';},'pos',function(x){return tint(x.r.pos,0.5,0.15);},1,'Probability of success: chance the lead program is approved. Stage base rate, adjusted for the strength of the data and the regulatory path. Green >=50%, red <15%.'],
       ['Eff',function(x){return num(x.r.effsig);},'effsig',function(x){return tint(x.r.effsig,4,2);},0,'Efficacy significance, 1-5, relative to the bar it must clear. 5 transformational (hard endpoint vs active comparator, pivotal/replicated); 4 clears the bar cleanly; 3 at the bar or mixed (modest effect, single-arm, unproven surrogate); 2 below the bar (missed primary, subgroup only); 1 failed or no human efficacy.'],
       ['Diff',function(x){return num(x.r.diffscore);},'diffscore',function(x){return tint(x.r.diffscore,4,2);},0,'Differentiation, 1-5, vs today\'s treatment and the nearest competitor: 5 breakthrough, 4 high, 3 moderate, 2 low, 1 none.'],
-      ['Sci',function(x){return x.s==null?'—':x.s.toFixed(1);},'s',function(x){return tint(x.s,3.5,2.4);},0,'Science score = average of efficacy and differentiation (1-5). It sets the call\'s science band; >=3.5 is part of the quality screen.']]},
+      ['Sci',function(x){return x.s==null?'—':x.s.toFixed(1);},'s',function(x){return tint(x.s,3.5,2.4);},1,'Science score = average of efficacy and differentiation (1-5). It sets the call\'s science band; >=3.5 is part of the quality screen.']]},
     {k:'mkt',l:'Market model',cols:[
       ['Indication',function(x){return '<span class="sx" style="min-width:110px;color:var(--text)" title="'+B.E(x.r.indication||'')+'">'+B.E(x.r.ind_short||x.r.indication||'—')+'</span>';},null,null,1,'Lead indication, abbreviated (hover for the full text).'],
       ['Prevalence',function(x){return big(x.r.prevalence);},'prevalence',null,1,'US patients with the condition.'],
@@ -191,9 +205,7 @@ mark.syn-key{background:rgba(224,138,0,.22);color:var(--text);font-weight:700;bo
     {k:'own',l:'Ownership',cols:[
       ['Specialists',function(x){return x.sp?Math.round(x.sp)+'%':'—';},'_sp',function(x){return x.sp>=10?'cg':'';},1,'Share of the company held by specialist biotech funds among its top-7 holders (13F filings, mostly Sep). Green >= 10%.'],
       ['Who',function(x){return '<span class="sm">'+B.E(x.sn.slice(0,4).join(', ')||'—')+'</span>';},null,null,0,'Which specialist funds.'],
-      ['Analysts',function(x){return x.an||'—';},'_an',null,0,'Number of analysts with a price target.']]},
-    {k:'thesis',l:'Thesis',cols:[
-      ['Thesis',function(x){var r=x.r;if(x.parked)return '<span class="syn-thesis"><b>Parked ('+B.E(r.reason||'')+')</b></span>';var t=r.pitch||r.pitch_concise||'';return '<span class="syn-thesis">'+B.E(t)+(r.eff_caveat?'<br><b>Data caveat:</b> '+B.E(r.eff_caveat):'')+(CO.x.thesis&&r.value_driver?'<br><b>Beyond the lead:</b> '+B.E(r.value_driver):'')+'</span>';},null,null,1,'The thesis from the company card. Expand for the full text and the value driver beyond the lead program.']]}
+      ['Analysts',function(x){return x.an||'—';},'_an',null,0,'Number of analysts with a price target.']]}
   ];
   if(!CO.x)CO.x={};if(!CO.grp)CO.grp='area';if(!CO.cl)CO.cl='cap';if(!CO.closed)CO.closed={};
   function colsOf(g){return g.fixed||CO.x[g.k]?g.cols:g.cols.filter(function(c){return c[4];});}
@@ -327,8 +339,7 @@ mark.syn-key{background:rgba(224,138,0,.22);color:var(--text);font-weight:700;bo
     var body='';
     if(!CO._folded){rows().forEach(function(x){CO.closed[x.r.ta]=true;});CO._folded=1;}   // fold all areas on first view
     var filtering=!!(q||CO.ta||CO.ig||CO.qual||CO.dis||CO.below||CO.sug||CO.port);           // filters open the groups they hit
-    var statLine=function(s){var c=function(v,g,r){return v==null?'':v>=g?'brf-pos':v<=r?'brf-neg':'';};
-      return s.n+' names · '+B.M(s.cap)+' · median ours <b class="'+c(s.med,100,0)+'">'+B.P(s.med)+'</b> · 12M <b class="'+c(s.r12,0.001,-0.001)+'">'+B.P(s.r12)+'</b> · <b class="brf-pos">'+s.nl+' long</b> / <b class="brf-neg">'+s.ns+' short-avoid</b>';};
+    var statLine=function(s){return s.n+' names · '+B.M(s.cap)+' · median ours '+B.P(s.med)+' · 12M '+B.P(s.r12)+' · '+s.nl+' long / '+s.ns+' short-avoid';};
     if(CO.grp==='none'){body=L.slice().sort(cmp).map(rowH).join('');}
     else{var order=clusterOrder(L,CO.cl);var byTa={};L.forEach(function(x){(byTa[x.r.ta||'—']=byTa[x.r.ta||'—']||[]).push(x);});
       var taStat=function(t){var G=byTa[t];return {n:G.length,cap:G.reduce(function(a,x){return a+(x.r.mc||0);},0),med:B.med(G.map(function(x){return x.out?null:x.u;})),nl:G.filter(function(x){return x.side==='l';}).length,ns:G.filter(function(x){return x.side==='s'||x.side==='a';}).length,r12:B.med(G.map(function(x){return x.r.r12m==null?null:x.r.r12m*100;}))};};
@@ -445,20 +456,17 @@ mark.syn-key{background:rgba(224,138,0,.22);color:var(--text);font-weight:700;bo
     var drugN=function(d){d=String(d||'').split(/ — | - |;/)[0];return d.replace(/\s*\((?:[^()]*\([^()]*\))*[^()]*\)\s*$/,'').trim()||d;};
     var stg=function(st){st=String(st||'');return /approv|market/i.test(st)?'Approved':/ph(?:ase)?\s*3|pivotal|bla|nda|pdufa/i.test(st)?'Ph3':/ph(?:ase)?\s*2/i.test(st)?'Ph2':/ph(?:ase)?\s*1/i.test(st)?'Ph1':/precl/i.test(st)?'Preclin':B.trunc(st,10);};
     var ico={l:'▲',s:'▼',c:'?',w:'○',n:'·'};
-    return '<div class="igc-wrap"><div class="igc-hd"><span>Indication group</span><span>Positioning</span><span>Best asset</span><span>Next catalysts</span><span>Next step</span></div>'
-      +G2.map(function(o){var b=o.best,ks=keyStat(b.r),oth=o.L.length-o.lo.length-o.sh.length;
+    var thesisBox=function(x,lbl){if(!x)return '';var r=x.r,t=r.pitch_concise||r.pitch||'';return '<div class="igc-th '+(lbl==='long'?'l':'s')+'"><div class="igc-thh">Best '+lbl+': '+B.tk(x.t)+' '+B.cb(r.call)+' <b class="'+(x.u==null?'':x.u>=0?'brf-pos':'brf-neg')+'">'+(x.out?'>1,000%':B.P(x.u))+'</b></div>'+B.E(t)+'</div>';};
+    return '<div class="igc-wrap"><div class="igc-hd"><span>Indication group</span><span>Best longs</span><span>Best shorts / avoids</span></div>'
+      +G2.map(function(o){var oth=o.L.length-o.lo.length-o.sh.length;
+        var sh=o.sh.slice().sort(function(a,b){return (a.side==='s'?0:1)-(b.side==='s'?0:1)||((a.u==null?1e9:a.u)-(b.u==null?1e9:b.u));});
         var chips=function(L,sign){return L.map(function(x){return chipT(x,sign);}).join('');};
         return '<div class="igc">'
-          +'<div class="igc-name"><div class="igc-t">'+B.E(o.g)+'</div><div class="igc-tags">'+(U[o.g]?'<span class="igc-pill q">under-served</span>':'')+(C[o.g]?'<span class="igc-pill w">crowded</span>':'')+'</div><div class="igc-meta">'+o.L.length+(o.L.length===1?' player':' players')+' · '+B.M(o.cap)+(o.prev?'<br>'+big(o.prev)+' US patients':'')+'</div><a href="#" class="igc-link" data-ig="'+B.E(o.g)+'">Open in Companies →</a></div>'
-          +'<div class="igc-pos"><div class="igc-vs"><div><span class="igc-lbl">Ours</span><b class="'+(o.mo==null?'':o.mo>=0?'brf-pos':'brf-neg')+'">'+B.P(o.mo)+'</b></div><div><span class="igc-lbl">Street</span><b class="'+B.PC(o.ms)+'">'+B.P(o.ms)+'</b></div>'+agree(o)+'</div>'
-            +'<div class="igc-row"><span class="igc-lbl">Long</span><div>'+(chips(o.lo,1)||'<span class="igc-none">none</span>')+'</div></div>'
-            +(o.sh.length?'<div class="igc-row"><span class="igc-lbl">Short</span><div>'+chips(o.sh,-1)+'</div></div>':'')
-            +(oth>0?'<div class="igc-none">+'+oth+' watch / hold</div>':'')+'</div>'
-          +'<div class="igc-best"><div>'+B.tk(b.t)+' <span class="igc-drug" title="'+B.E(b.r.drug)+'">'+B.E(B.trunc(drugN(b.r.drug),34))+'</span> <span class="igc-stage">'+B.E(stg(b.r.stage))+'</span></div>'+(ks?'<mark class="syn-key igc-key">'+B.E(ks)+'</mark>':'')+'<div class="igc-meta">PoS '+(b.r.pos!=null?Math.round(b.r.pos*100)+'%':'—')+' · Science '+(b.s==null?'—':b.s.toFixed(1))+' · '+B.cb(b.r.call)+'</div></div>'
-          +'<div class="igc-cat">'+(o.ev.slice(0,3).map(function(v){return '<div class="igc-ev" title="'+B.E(v.x.t+': '+v.e.e)+'"><span class="igc-d'+(v.e.d<=D90?' soon':'')+'">'+(v.e.k?'★ ':'')+B.E(v.e.lab)+'</span>'+B.tk(v.x.t)+'<span class="igc-et">'+B.E(v.e.e)+'</span></div>';}).join('')||'<span class="igc-none">No dated catalysts</span>')+(o.ev.length>3?'<div class="igc-none">+'+(o.ev.length-3)+' more</div>':'')+'</div>'
-          +'<div class="igc-step">'+o.steps.slice(0,3).map(function(st){return '<div class="'+st[0]+'"><i>'+ico[st[0]]+'</i>'+B.E(st[1])+'</div>';}).join('')+'</div>'
+          +'<div class="igc-name"><div class="igc-t">'+B.E(o.g)+'</div><div class="igc-tags">'+(U[o.g]?'<span class="igc-pill q">under-served</span>':'')+(C[o.g]?'<span class="igc-pill w">crowded</span>':'')+'</div><div class="igc-meta">'+o.L.length+(o.L.length===1?' player':' players')+' · '+B.M(o.cap)+(o.prev?'<br>'+big(o.prev)+' US patients':'')+(oth>0?'<br>'+oth+' watch / hold':'')+'</div><a href="#" class="igc-link" data-ig="'+B.E(o.g)+'">Open in Companies →</a></div>'
+          +'<div class="igc-side"><div>'+(chips(o.lo,1)||'<span class="igc-none">No long</span>')+'</div>'+thesisBox(o.lo[0],'long')+'</div>'
+          +'<div class="igc-side"><div>'+(chips(sh,-1)||'<span class="igc-none">No short or avoid</span>')+'</div>'+thesisBox(sh[0],'short')+'</div>'
           +'</div>';}).join('')+'</div>'
-      +'<div class="syn-cap" style="margin:6px 0 0">Chips show our upside (green longs) or downside (red shorts/avoids). Ours / Street = group medians. Best asset = highest science score, then PoS. Next step is rule-based: a long or short with a catalyst inside 90 days first, then where the Street disagrees, white space and crowding. '+(shells.length?'<b>Below cash:</b> '+shells.map(function(x){return B.tk(x.ticker);}).join(' ')+' · ':'')+(sugs.length?'<b>Value-raising actions suggested:</b> '+sugs.map(function(x){return B.tk(x.t);}).join(' '):'')+'</div>';
+      +'<div class="syn-cap" style="margin:6px 0 0">Chips show our upside (green longs) or downside (red shorts/avoids). Longs rank quality names first, then upside; shorts rank Short calls before Avoids, most downside first. The thesis is shown for the single best long and best short. '+(shells.length?'<b>Below cash:</b> '+shells.map(function(x){return B.tk(x.ticker);}).join(' ')+' · ':'')+(sugs.length?'<b>Value-raising actions suggested:</b> '+sugs.map(function(x){return B.tk(x.t);}).join(' '):'')+'</div>';
   }
   function areasAfter(doc){
     doc.querySelectorAll('[data-acl]').forEach(function(b){b.onclick=function(){AR.cl=b.dataset.acl;B.rerender();};});

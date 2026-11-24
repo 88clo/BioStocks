@@ -41,6 +41,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112326-v9.html | Nov 23 night version, before royalty-partner labels and editorial context in efficacy |
 | backup-112326-v10.html | Nov 23 night version, before the chart extent fix, priority list folded into What's next, short Benchmark/Mechanism and verified efficacy lines |
 | backup-112326-v11.html | Nov 23 late version, before the Areas card layout and valuation v2 (cost to approval, existing business, evidence-matched PoS) |
+| backup-112326-v12.html | Nov 23 night version, before plain header stats, yellow key-stat highlight, Thesis first, Areas legend and longs/shorts-only cards |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 
