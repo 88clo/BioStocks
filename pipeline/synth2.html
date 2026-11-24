@@ -21,6 +21,7 @@
 #onepager .op-bar button{background:#fff;border:1px solid #bbb;border-radius:6px;padding:6px 12px;cursor:pointer;font-weight:700}
 @media print{body.op-print>*:not(#onepager){display:none!important}body.op-print #onepager{position:static;background:none;display:block}body.op-print .op-bar{display:none}body.op-print .op-doc{margin:0;max-width:none;box-shadow:none}}
 .rot-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}
+.ww-board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:6px 0 14px}.ww-q{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}.ww-qh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}.ww-qh b{font-size:14px}.ww-qh span{font-size:11px;color:var(--dim)}.ww-lab{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:6px 0 2px}.ww-lab.g{color:var(--long)}.ww-lab.r{color:var(--short)}.ww-it{margin:3px 0 5px;cursor:pointer}.ww-itl{font-size:11.5px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ww-dim{color:var(--dim);font-size:10.5px}.ww-bar{position:relative;height:14px;background:var(--raised);border-radius:3px;margin-top:2px}.ww-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:3px}.ww-bar.g i{background:rgba(34,160,90,.55)}.ww-bar.r i{background:rgba(214,69,69,.5)}.ww-bar b{position:absolute;right:4px;top:0;font-size:10.5px;line-height:14px;font-variant-numeric:tabular-nums}.ww-sub{font-size:12.5px;margin:12px 0 6px;color:var(--dim)}.ww-strip td{font-size:11.5px;white-space:normal;min-width:92px;cursor:pointer}.ww-strip tr.on td{outline:1px solid var(--text);outline-offset:-1px}.ww-sp{display:block;font-size:10px;color:var(--dim)}.ww-chk{font-size:12px;color:var(--dim);display:inline-flex;gap:5px;align-items:center}@media (max-width:1100px){.ww-board{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .ww-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:6px 0 8px}.ww-ctl select{font:inherit;font-size:12px;padding:3px 6px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--text)}.ww-lbl{font-size:11.5px;color:var(--dim)}.ww-scroll{overflow-x:auto}.ww-t td,.ww-t th{white-space:nowrap;font-variant-numeric:tabular-nums;font-size:12px;padding:5px 8px}.ww-t .ww-per{border-left:2px solid var(--line);font-weight:700}.ww-t tr.ww-u td{color:var(--dim);border-top:1px solid var(--line)}.ww-flag{font-size:10px;font-weight:600;color:var(--amber);background:var(--amber-bg);border-radius:999px;padding:0 6px;margin-left:4px;text-transform:none;letter-spacing:0}
 .ns-doc{max-width:1100px;font-size:13.5px;line-height:1.55}.ns-doc h2.ns-h1{font-size:22px;margin:4px 0 10px}.ns-doc h3.ns-h2{font-size:15px;margin:22px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}.ns-doc ol,.ns-doc ul{padding-left:22px;margin:6px 0}.ns-doc li{margin:4px 0}.ns-doc .ns-t td,.ns-doc .ns-t th{vertical-align:top;font-size:12.5px;padding:6px 9px}.ns-doc .ns-t td:last-child b{color:var(--amber)}.ns-doc p{margin:6px 0}
 .rot-l{transition:stroke-opacity .1s}.rot-leg{display:flex;flex-wrap:wrap;gap:4px 6px;padding:8px 2px 6px;border-top:1px solid var(--line-soft);margin-top:4px}.rot-li{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;cursor:pointer;user-select:none;color:var(--text)}.rot-li i{width:14px;height:3px;border-radius:2px;flex:none}.rot-li b{font-weight:600;color:var(--dim)}.rot-li:hover,.rot-li.on{border-color:var(--text);background:var(--raised)}.rot-l:hover{stroke-opacity:1!important;stroke-width:3px!important}
@@ -198,61 +199,65 @@
   window.BRF_PAGES.north={html:function(){return '<div class="ns-doc">'+(H||'<div class="brf-note">NORTH_STAR.md was not found at build time.</div>')+'<div class="syn-cap" style="margin-top:14px">Source: NORTH_STAR.md in the repo. Edit that file; the next build updates this page.</div></div>';}};
 })();
 
-// ---- What worked: factor buckets x quarters (Record page). Buckets are set at the START of each quarter where the
-// data allows (size, momentum, price level); area is fixed; science, stage, funding and call are today's labels (look-ahead, flagged).
+// ---- What worked, 2025-2026: every stock is placed in its group as of the START of each quarter where the data allows
+// (size from quarter-start price, stage rewound before a first approval, prior 6-month return, share price, cluster).
+// Science, funding and our call are today's labels (look-ahead, flagged, off by default in the scoreboard).
 (function(){
-  var WW={f:'mom',rel:1,a:null,b:null};
+  var WW={dim:'stage',today:0,rel:1};
   function H(){return window.BRF;}
   function med(L){L=L.filter(function(v){return v!=null&&isFinite(v);}).sort(function(a,b){return a-b;});var n=L.length;return n?(n%2?L[(n-1)/2]:(L[n/2-1]+L[n/2])/2):null;}
-  var FACT={
-    size:{l:'Market cap at start (approx.)',bias:'Approximate: today\'s cap scaled back by the price change. Companies that diluted heavily look bigger in the past than they were, and the list is today\'s $50M–$30B universe, so small names that grew are in and large names are in only if they shrank. Both push the result toward "small did best". Use the Sep 12 snapshot on this page for a clean size test.',order:['< $300M','$300M–1B','$1–5B','> $5B'],f:function(r,pr,i,now){var p=pr[i],pn=now;if(!(p>0)||!(pn>0)||!r.mc)return null;var m=r.mc*p/pn;return m<3e8?'< $300M':m<1e9?'$300M–1B':m<5e9?'$1–5B':'> $5B';},note:'today\'s cap scaled by the price change (share count held constant)'},
-    mom:{l:'Prior 6-month return',pit:1,order:['Fell > 40%','Fell 0–40%','Rose 0–50%','Rose > 50%'],f:function(r,pr,i){var a=pr[i-2],b=pr[i];if(!(a>0)||!(b>0))return null;var x=b/a-1;return x<-.4?'Fell > 40%':x<0?'Fell 0–40%':x<.5?'Rose 0–50%':'Rose > 50%';}},
-    px:{l:'Share price at start',pit:1,order:['< $2','$2–5','$5–20','> $20'],f:function(r,pr,i){var p=pr[i];if(!(p>0))return null;return p<2?'< $2':p<5?'$2–5':p<20?'$5–20':'> $20';}},
-    cl:{l:'Cluster',pit:1,f:function(r){var c=window.SYN&&window.SYN.clusterOf?window.SYN.clusterOf(r.ta):null;return r.ta==='Acquired / Inactive'?'Since acquired / inactive':c;}},
-    sci:{l:'Science score (today)',order:['Weak < 2.5','Mid 2.5–3.5','Strong ≥ 3.5'],f:function(r){var e=r.effsig,d=r.diffscore;if(typeof e!=='number'||typeof d!=='number')return null;var s=(e+d)/2;return s<2.5?'Weak < 2.5':s<3.5?'Mid 2.5–3.5':'Strong ≥ 3.5';}},
-    stage:{l:'Lead stage (today)',order:['Preclinical / Ph1','Ph2','Ph3 / filed','Approved'],f:function(r){var t=String(r.stage||'').toLowerCase();if(!t)return null;return /approv|commerc|market|royalt/.test(t)?'Approved':/phase 3|ph3|pivotal|filed|nda|bla|rolling/.test(t)?'Ph3 / filed':/phase 2|ph2/.test(t)?'Ph2':/phase 1|ph1|preclin|pre-phase/.test(t)?'Preclinical / Ph1':null;}},
-    fund:{l:'Cash vs market cap (today)',order:['Below cash','Cash ≥ 50% of cap','Cash < 50% of cap'],f:function(r){if(typeof r.cash!=='number'||!(r.mc>0))return null;return r.cash>=r.mc?'Below cash':r.cash>=.5*r.mc?'Cash ≥ 50% of cap':'Cash < 50% of cap';}},
-    call:{l:'Our call (today)',order:['STRONG BUY','LONG','WATCH','HOLD','AVOID','SHORT','STRONG SHORT'],f:function(r){return r.call||null;}}
+  function qStart(lbl){var q=+lbl[0],y=2000+(+lbl.slice(2));return y+'-'+('0'+(3*q-2)).slice(-2)+'-01';}
+  var STG=function(r){var t=String(r.stage||'').toLowerCase();return /approv|commerc|market|royalt/.test(t)?'Approved':/phase 3|ph3|pivotal|filed|nda|bla|rolling/.test(t)?'Ph3 / filed':/phase 2|ph2/.test(t)?'Ph2':/phase 1|ph1|preclin|pre-phase/.test(t)?'Preclinical / Ph1':null;};
+  var DIMS={
+    stage:{l:'Stage',order:['Preclinical / Ph1','Ph2','Ph3 / filed','Approved'],f:function(r,pr,i,qs){var s=STG(r);if(s==='Approved'&&r.approved_on&&r.approved_on>=qs)return 'Ph3 / filed';return s;}},
+    size:{l:'Market cap',order:['< $300M','$300M–1B','$1–5B','> $5B'],f:function(r,pr,i,qs,pn){var p=pr[i];if(!(p>0)||!(pn>0)||!r.mc)return null;var m=r.mc*p/pn;return m<3e8?'< $300M':m<1e9?'$300M–1B':m<5e9?'$1–5B':'> $5B';}},
+    mom:{l:'Prior 6M return',order:['Fell > 40%','Fell 0–40%','Rose 0–50%','Rose > 50%'],f:function(r,pr,i){var a=pr[i-2],b=pr[i];if(!(a>0)||!(b>0))return null;var x=b/a-1;return x<-.4?'Fell > 40%':x<0?'Fell 0–40%':x<.5?'Rose 0–50%':'Rose > 50%';}},
+    px:{l:'Share price',order:['< $2','$2–5','$5–20','> $20'],f:function(r,pr,i){var p=pr[i];if(!(p>0))return null;return p<2?'< $2':p<5?'$2–5':p<20?'$5–20':'> $20';}},
+    cl:{l:'Cluster',f:function(r){return r.ta==='Acquired / Inactive'?null:(window.SYN&&window.SYN.clusterOf?window.SYN.clusterOf(r.ta):null);}},
+    sci:{l:'Science (today)',today:1,order:['Weak < 2.5','Mid 2.5–3.5','Strong ≥ 3.5'],f:function(r){var e=r.effsig,d=r.diffscore;if(typeof e!=='number'||typeof d!=='number')return null;var s=(e+d)/2;return s<2.5?'Weak < 2.5':s<3.5?'Mid 2.5–3.5':'Strong ≥ 3.5';}},
+    fund:{l:'Cash vs cap (today)',today:1,order:['Below cash','Cash ≥ 50% of cap','Cash < 50% of cap'],f:function(r){if(typeof r.cash!=='number'||!(r.mc>0))return null;return r.cash>=r.mc?'Below cash':r.cash>=.5*r.mc?'Cash ≥ 50% of cap':'Cash < 50% of cap';}}
   };
-  function data(){var P=(window.SYN&&window.SYN.J?window.SYN.J('priceq-baked'):null)||{},Q=P.quarters||[],PR=P.prices||{},DA=H().DA;return {Q:Q,PR:PR,DA:DA};}
-  function compute(){var D=data(),Q=D.Q,F=FACT[WW.f],n=Q.length;if(!n)return null;
-    if(WW.a==null){WW.b=n-1;WW.a=Math.max(1,n-12);}
-    var cols=[];for(var q=WW.a;q<=WW.b;q++)cols.push(q);
-    var cells={},keys={},uni={};
-    cols.forEach(function(q){var all=[];D.DA.forEach(function(r){var pr=D.PR[r.ticker];if(!pr)return;var p0=pr[q-1],p1=pr[q];if(!(p0>0)||!(p1>0))return;var k=F.f(r,pr,q-1,pr[n-1]||r.price);var ret=p1/p0-1;all.push(ret);if(k==null)return;keys[k]=1;(cells[k+'|'+q]=cells[k+'|'+q]||[]).push(ret);});uni[q]=med(all);});
-    // whole period: bucket at the period start, return start->end
-    var per={},perAll=[];D.DA.forEach(function(r){var pr=D.PR[r.ticker];if(!pr)return;var p0=pr[WW.a-1],p1=pr[WW.b];if(!(p0>0)||!(p1>0))return;var ret=p1/p0-1;perAll.push(ret);var k=F.f(r,pr,WW.a-1,pr[n-1]||r.price);if(k==null)return;keys[k]=1;(per[k]=per[k]||[]).push(ret);});
-    var K=Object.keys(keys);if(F.order)K.sort(function(a,b){var i=F.order.indexOf(a),j=F.order.indexOf(b);return (i<0?99:i)-(j<0?99:j);});else K.sort(function(a,b){return (med(per[b]||[])||-9)-(med(per[a]||[])||-9);});
-    return {Q:Q,cols:cols,K:K,cells:cells,uni:uni,per:per,perU:med(perAll),F:F};}
-  function pct(v){return v==null?'—':(v>0?'+':'')+Math.round(v*100)+'%';}
-  function bg(v,sc){if(v==null)return '';var a=Math.min(1,Math.abs(v)/sc)*.55;return 'background:'+(v>0?'rgba(34,160,90,'+a+')':'rgba(214,69,69,'+a+')');}
-  function html(){var c=compute();if(!c)return '';var b=H(),E=b.E;
-    var opt=function(sel,i){return c.Q.map(function(q,j){return j<1?'':'<option value="'+j+'"'+(j===sel?' selected':'')+'>'+q+'</option>';}).join('');};
-    var h='<div class="brf-h"><b>What worked, quarter by quarter</b><span>Median return of each group in each quarter'+(WW.rel?', minus the median of every covered stock that quarter':'')+'. Pick any window: an idea that worked in 2Q24 can fail in 3Q25.</span></div>';
-    h+='<div class="ww-ctl"><select id="wwF">'+Object.keys(FACT).map(function(k){return '<option value="'+k+'"'+(k===WW.f?' selected':'')+'>'+E(FACT[k].l)+'</option>';}).join('')+'</select>'
-      +' <span class="syn-seg"><button data-wwrel="1" class="'+(WW.rel?'on':'')+'">vs universe</button><button data-wwrel="0" class="'+(WW.rel?'':'on')+'">absolute</button></span>'
-      +' <span class="ww-lbl">From</span><select id="wwA">'+opt(WW.a)+'</select><span class="ww-lbl">to</span><select id="wwB">'+opt(WW.b)+'</select>'
-      +' <span class="syn-seg">'+[[4,'1Y'],[8,'2Y'],[12,'3Y'],[24,'6Y']].map(function(p){return '<button data-wwp="'+p[0]+'"'+(WW.b-WW.a+1===p[0]&&WW.b===c.Q.length-1?' class="on"':'')+'>'+p[1]+'</button>';}).join('')+'</span></div>';
-    var sc=WW.rel?.25:.4;
-    h+='<div class="ww-scroll"><table class="brf-t ww-t"><tr><th>'+E(c.F.l)+(c.F.bias?' <span class="ww-flag" title="'+E(c.F.bias)+'">biased, hover</span>':c.F.pit?'':' <span class="ww-flag" title="Grouped by today\'s label, which uses information that was not known at the time. Read as description, not as a tradable signal.">today\'s label</span>')+'</th>'+c.cols.map(function(q){return '<th class="r">'+c.Q[q]+'</th>';}).join('')+'<th class="r ww-per">Whole window</th><th class="r">Beat universe</th></tr>';
-    c.K.forEach(function(k){var wins=0,nq=0;
-      h+='<tr><td><b>'+E(k)+'</b></td>'+c.cols.map(function(q){var L=c.cells[k+'|'+q]||[],m=med(L),v=m==null?null:(WW.rel?m-c.uni[q]:m);if(m!=null&&c.uni[q]!=null){nq++;if(m>c.uni[q])wins++;}return '<td class="r" style="'+bg(v,sc)+'" title="'+E(k)+' · '+c.Q[q]+' · n='+L.length+' · group '+pct(m)+' · universe '+pct(c.uni[q])+'">'+pct(v)+'</td>';}).join('');
-      var pm=med(c.per[k]||[]),pv=pm==null?null:(WW.rel?pm-c.perU:pm);
-      h+='<td class="r ww-per" style="'+bg(pv,WW.rel?.5:.8)+'" title="n='+((c.per[k]||[]).length)+' · bucket set at the start of the window">'+pct(pv)+'</td><td class="r">'+(nq?wins+'/'+nq:'—')+'</td></tr>';});
-    h+='<tr class="ww-u"><td>Universe median</td>'+c.cols.map(function(q){return '<td class="r">'+pct(c.uni[q])+'</td>';}).join('')+'<td class="r ww-per">'+pct(c.perU)+'</td><td></td></tr></table></div>';
-    // lesson
-    var rk=c.K.map(function(k){var m=med(c.per[k]||[]);var w=0,nq=0;c.cols.forEach(function(q){var mm=med(c.cells[k+'|'+q]||[]);if(mm!=null&&c.uni[q]!=null){nq++;if(mm>c.uni[q])w++;}});return {k:k,m:m==null?null:(WW.rel?m-c.perU:m),w:w,nq:nq,n:(c.per[k]||[]).length};}).filter(function(o){return o.m!=null&&o.n>=5;}).sort(function(a,b){return b.m-a.m;});
-    if(rk.length>1){var best=rk[0],worst=rk[rk.length-1];
-      h+='<div class="brf-note"><b>Lesson for '+c.Q[WW.a]+'–'+c.Q[WW.b]+':</b> '+E(best.k)+' did best ('+pct(best.m)+(WW.rel?' vs the universe':'')+' over the window, beat the universe in '+best.w+' of '+best.nq+' quarters); '+E(worst.k)+' did worst ('+pct(worst.m)+', beat it in '+worst.w+' of '+worst.nq+'). Spread '+Math.round((best.m-worst.m)*100)+' points. '+(best.w/Math.max(1,best.nq)>=.7?'Consistent: it held in most quarters, so treat it as a regime, not luck.':best.w/Math.max(1,best.nq)<=.5?'Inconsistent: most of the gap came from a few quarters, so check what happened in those before acting on it.':'Fairly consistent, with some quarters going the other way.')+(c.F.bias?' Caution: '+E(c.F.bias):c.F.pit?'':' Grouped by today\'s labels, so this describes the past rather than proving a signal.')+'</div>';}
-    h+='<div class="syn-cap">Includes names since acquired or delisted while they traded, which reduces survivorship bias. Quarter-end closes; the latest quarter runs to the last close. '+'Every group comes from today\'s covered list (plus acquired names), so names that were too small to cover then but grew are included. '+'Hover a cell for the group size and the raw returns.</div>';
+  var CACHE=null;
+  function compute(){if(CACHE)return CACHE;var P=(window.SYN&&window.SYN.J?window.SYN.J('priceq-baked'):null)||{},Q=P.quarters||[],PR=P.prices||{},DA=H().DA,n=Q.length;
+    var i0=Q.indexOf('1Q25');if(i0<1)i0=Math.max(1,n-8);var cols=[];for(var q=i0;q<n;q++)cols.push(q);
+    var bq=(H().TR||{}).bench_q,xbi={};if(bq&&bq.XBI)cols.forEach(function(q){var j=bq.quarters.indexOf(Q[q]);if(j>0&&bq.XBI[j]&&bq.XBI[j-1])xbi[q]=bq.XBI[j]/bq.XBI[j-1]-1;});
+    var cell={},uni={},cnt={};
+    cols.forEach(function(q){var qs=qStart(Q[q]),all=[];DA.forEach(function(r){var pr=PR[r.ticker];if(!pr)return;var p0=pr[q-1],p1=pr[q];if(!(p0>0)||!(p1>0))return;var ret=p1/p0-1;all.push(ret);
+      Object.keys(DIMS).forEach(function(k){var b=DIMS[k].f(r,pr,q-1,qs,pr[n-1]||r.price);if(b==null)return;var key=k+'|'+b+'|'+q;(cell[key]=cell[key]||[]).push(ret);});});uni[q]=med(all);cnt[q]=all.length;});
+    var buckets={};Object.keys(cell).forEach(function(key){var p=key.split('|');(buckets[p[0]]=buckets[p[0]]||{})[p[1]]=1;});
+    CACHE={Q:Q,cols:cols,cell:cell,uni:uni,xbi:xbi,cnt:cnt,buckets:buckets};return CACHE;}
+  function stat(c,k,b,q){var L=c.cell[k+'|'+b+'|'+q]||[],m=med(L);return {n:L.length,m:m,x:m==null||c.uni[q]==null?null:m-c.uni[q]};}
+  function pct(v,s){return v==null?'—':(v>0?'+':v<0?'−':'')+Math.abs(Math.round(v*100))+'%'+(s||'');}
+  function ranked(c,q){var L=[];Object.keys(DIMS).forEach(function(k){if(DIMS[k].today&&!WW.today)return;Object.keys(c.buckets[k]||{}).forEach(function(b){var st=stat(c,k,b,q);if(st.n>=8&&st.x!=null)L.push({k:k,b:b,n:st.n,x:st.x,m:st.m});});});return L.sort(function(a,b){return b.x-a.x;});}
+  function bucketsOf(c,k){var K=Object.keys(c.buckets[k]||{}),o=DIMS[k].order;if(o)K.sort(function(a,b){return o.indexOf(a)-o.indexOf(b);});return K;}
+  function html(){var c=compute(),E=H().E;if(!c.cols.length)return '';
+    var h='<div class="brf-h"><b>What worked, 2025–2026</b><span>Each quarter, every stock is grouped as it stood at the start of that quarter, and each group’s median return is compared with the median covered stock. Green = beat the universe, red = lagged.</span></div>';
+    h+='<div class="ww-ctl"><label class="ww-chk"><input type="checkbox" id="wwToday"'+(WW.today?' checked':'')+'> include today’s labels (science, cash vs cap)</label></div>';
+    // 0. lessons: groups that beat (or lagged) the universe in most quarters
+    var cons=[];Object.keys(DIMS).forEach(function(k){if(DIMS[k].today&&!WW.today)return;bucketsOf(c,k).forEach(function(b){var w=0,nq=0;c.cols.forEach(function(q){var st=stat(c,k,b,q);if(st.n>=8&&st.x!=null){nq++;if(st.x>0)w++;}});if(nq>=6)cons.push({k:k,b:b,w:w,nq:nq,r:w/nq});});});
+    var win=cons.filter(function(o){return o.r>=.75;}).sort(function(a,b){return b.r-a.r;}).slice(0,4),lose=cons.filter(function(o){return o.r<=.25;}).sort(function(a,b){return a.r-b.r;}).slice(0,4);
+    var lst=function(L){return L.map(function(o){return '<b>'+E(DIMS[o.k].l.replace(' (today)','')+': '+o.b)+'</b> ('+o.w+'/'+o.nq+')'+(o.k==='size'?'*':'');}).join(', ');};
+    if(win.length||lose.length)h+='<div class="brf-note"><b>Lessons from 2025–26.</b> '+(win.length?'Beat the universe in most quarters: '+lst(win)+'. ':'')+(lose.length?'Lagged in most quarters: '+lst(lose)+'. ':'')+'Everything else rotated: what led one quarter often lagged the next, so treat single-quarter winners as noise unless the catalyst explains them.'+(win.concat(lose).some(function(o){return o.k==='size';})?' *Market cap is approximate (today\u2019s share count), which flatters small caps; read it with care.':'')+'</div>';
+    // 1. scoreboard
+    var mx=0;c.cols.forEach(function(q){ranked(c,q).forEach(function(o){mx=Math.max(mx,Math.abs(o.x));});});mx=Math.min(mx,.6)||.2;
+    h+='<div class="ww-board">'+c.cols.map(function(q){var R=ranked(c,q),top=R.slice(0,3),bot=R.slice(-3).reverse();
+      var bar=function(o,cls){var w=Math.min(100,Math.abs(o.x)/mx*100);return '<div class="ww-it" title="'+E(DIMS[o.k].l+': '+o.b)+' · n='+o.n+' · group '+pct(o.m)+' vs universe '+pct(c.uni[q])+'" data-wwdim="'+o.k+'"><div class="ww-itl"><span class="ww-dim">'+E(DIMS[o.k].l)+'</span> '+E(o.b)+'</div><div class="ww-bar '+cls+'"><i style="width:'+w.toFixed(0)+'%"></i><b>'+pct(o.x)+'</b></div></div>';};
+      return '<div class="ww-q"><div class="ww-qh"><b>'+c.Q[q]+'</b><span>Universe '+pct(c.uni[q])+(c.xbi[q]!=null?' · XBI '+pct(c.xbi[q]):'')+'</span></div><div class="ww-lab g">Worked</div>'+top.map(function(o){return bar(o,'g');}).join('')+'<div class="ww-lab r">Didn’t</div>'+bot.map(function(o){return bar(o,'r');}).join('')+'</div>';}).join('')+'</div>';
+    // 2. regime strip
+    h+='<div class="ww-sub">Which group won each quarter, by dimension. Darker = bigger gap between the best and worst group. Click a row for the detail.</div><div class="ww-scroll"><table class="brf-t ww-t ww-strip"><tr><th>Dimension</th>'+c.cols.map(function(q){return '<th>'+c.Q[q]+'</th>';}).join('')+'</tr>';
+    Object.keys(DIMS).forEach(function(k){if(DIMS[k].today&&!WW.today)return;var K=bucketsOf(c,k);
+      h+='<tr data-wwdim="'+k+'" class="'+(WW.dim===k?'on':'')+'"><td><b>'+E(DIMS[k].l)+'</b>'+(DIMS[k].today?' <span class="ww-flag">today</span>':'')+'</td>'+c.cols.map(function(q){var S=K.map(function(b){var st=stat(c,k,b,q);return {b:b,x:st.x,n:st.n};}).filter(function(o){return o.n>=8&&o.x!=null;}).sort(function(a,b){return b.x-a.x;});if(S.length<2)return '<td>—</td>';var sp=S[0].x-S[S.length-1].x,a=Math.min(1,sp/.5)*.55;return '<td style="background:rgba(34,160,90,'+a.toFixed(2)+')" title="best '+E(S[0].b)+' '+pct(S[0].x)+' · worst '+E(S[S.length-1].b)+' '+pct(S[S.length-1].x)+'">'+E(S[0].b)+'<span class="ww-sp">'+Math.round(sp*100)+' pt spread</span></td>';}).join('')+'</tr>';});
+    h+='</table></div>';
+    // 3. detail for the chosen dimension
+    var k=WW.dim,K=bucketsOf(c,k);
+    h+='<div class="ww-sub"><b>'+E(DIMS[k].l)+'</b>, return vs the universe each quarter</div><div class="ww-scroll"><table class="brf-t ww-t"><tr><th>Group at quarter start</th>'+c.cols.map(function(q){return '<th class="r">'+c.Q[q]+'</th>';}).join('')+'<th class="r">Beat universe</th></tr>';
+    K.forEach(function(b){var w=0,nq=0;h+='<tr><td><b>'+E(b)+'</b></td>'+c.cols.map(function(q){var st=stat(c,k,b,q);if(st.x!=null&&st.n>=3){nq++;if(st.x>0)w++;}var a=st.x==null?0:Math.min(1,Math.abs(st.x)/.25)*.55;return '<td class="r" style="'+(st.x==null?'':'background:'+(st.x>0?'rgba(34,160,90,':'rgba(214,69,69,')+a.toFixed(2)+')')+'" title="n='+st.n+' · group '+pct(st.m)+' · universe '+pct(c.uni[q])+'">'+(st.n<3?'<span class="dim">'+pct(st.x)+'</span>':pct(st.x))+'</td>';}).join('')+'<td class="r">'+(nq?w+'/'+nq:'—')+'</td></tr>';});
+    h+='</table></div>';
+    h+='<div class="syn-cap"><b>How groups are set.</b> Stage: today’s stage, moved back to Ph3 / filed for quarters before a first approval (16 approvals since mid-2024 dated); clinical-stage phase changes before today are not yet dated. Market cap: quarter-start price × today’s fully diluted shares, so heavy diluters look a little bigger in the past than they were. Prior 6M return, share price and cluster are exact. Names since acquired are included while they traded. Groups with fewer than 8 names are left out of the scoreboard.</div>';
     return '<div class="ww-wrap">'+h+'</div>';}
   function after(doc){var host=doc.querySelector('.ww-wrap');if(!host)return;var re=function(){host.outerHTML=html();after(doc);};
-    var f=doc.querySelector('#wwF');if(f)f.onchange=function(){WW.f=f.value;re();};
-    doc.querySelectorAll('[data-wwrel]').forEach(function(bt){bt.onclick=function(){WW.rel=+bt.dataset.wwrel;re();};});
-    var A=doc.querySelector('#wwA'),Bq=doc.querySelector('#wwB');
-    if(A)A.onchange=function(){WW.a=+A.value;if(WW.a>WW.b)WW.b=WW.a;re();};
-    if(Bq)Bq.onchange=function(){WW.b=+Bq.value;if(WW.b<WW.a)WW.a=WW.b;re();};
-    doc.querySelectorAll('[data-wwp]').forEach(function(bt){bt.onclick=function(){var n=data().Q.length;WW.b=n-1;WW.a=Math.max(1,n-+bt.dataset.wwp);re();};});}
+    var t=doc.querySelector('#wwToday');if(t)t.onchange=function(){WW.today=t.checked?1:0;re();};
+    doc.querySelectorAll('.ww-wrap [data-wwdim]').forEach(function(el){el.onclick=function(){WW.dim=el.dataset.wwdim;re();var d=doc.querySelector('.ww-wrap .ww-strip');};});}
   window.WW_HTML=html;window.WW_AFTER=after;
 })();
 </script>

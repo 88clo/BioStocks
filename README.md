@@ -48,6 +48,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112426-v2.html | Nov 24 morning version, before name-under-ticker and the cluster › area › indication › company drill-down in both Areas charts |
 | backup-112426-v3.html | Nov 24 evening version, before the Record › North star page |
 | backup-112426-v4.html | Nov 24 evening version, before What worked by quarter, variant views and CEO notes |
+| backup-112426-v5.html | Nov 24 night version, before the 2025–26 What worked scoreboard and the 4 Ms CEO notes |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 

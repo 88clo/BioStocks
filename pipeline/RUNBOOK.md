@@ -52,5 +52,5 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 
 ## Theses, variant views and CEO notes (Nov 24 2026)
 - Every thesis shows a computed *Variant view* (template `variantView()`): the odds or sales today's price implies vs ours, and why. When rewriting a written thesis, state the variant in words too: what the market believes, what we believe and the evidence, what proves us wrong and when.
-- *What I'd tell the CEO* notes are rule-based (`ceoNotes()` in pipeline/synth.html, eight categories listed in NORTH_STAR.md). Review the priority names' notes each refresh and refresh stale researched suggestions in data/sug-data.json.
-- *What worked* (Record) needs nothing: it reads the quarterly prices. Size is approximate; treat it as flagged.
+- *What I'd tell the CEO* notes are rule-based (`ceoNotes()` in pipeline/synth.html, the 4 Ms: Money, Message, Moves, Milestones). Review the priority names' notes each refresh and refresh stale researched suggestions in data/sug-data.json.
+- *What worked* (Record, 2025–26) reads quarterly prices plus `approved_on` (pipeline/patches/2026-11-24_approval_dates.py; add new first approvals there). Point-in-time market cap needs quarterly share counts (`scripts/fetch_fundamentals.py` → cache/fund) and point-in-time phase needs trial history; both still to wire in.
