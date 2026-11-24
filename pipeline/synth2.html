@@ -1,4 +1,5 @@
 <!-- SYNTH2-START: priority list, card peers/valuation/one-pager, returns over time, what changed (pipeline/synth2.html) -->
+<script type="application/json" id="north-data">{{DATA:north-star}}</script>
 <script type="application/json" id="changes-data">{{DATA:changes-data}}</script>
 <style id="syn2-css">
 .pr-why{display:flex;flex-wrap:wrap;gap:3px}.pr-why span{font-size:9.5px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--raised);color:var(--dim);white-space:nowrap}
@@ -20,6 +21,7 @@
 #onepager .op-bar button{background:#fff;border:1px solid #bbb;border-radius:6px;padding:6px 12px;cursor:pointer;font-weight:700}
 @media print{body.op-print>*:not(#onepager){display:none!important}body.op-print #onepager{position:static;background:none;display:block}body.op-print .op-bar{display:none}body.op-print .op-doc{margin:0;max-width:none;box-shadow:none}}
 .rot-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}
+.ns-doc{max-width:1100px;font-size:13.5px;line-height:1.55}.ns-doc h2.ns-h1{font-size:22px;margin:4px 0 10px}.ns-doc h3.ns-h2{font-size:15px;margin:22px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}.ns-doc ol,.ns-doc ul{padding-left:22px;margin:6px 0}.ns-doc li{margin:4px 0}.ns-doc .ns-t td,.ns-doc .ns-t th{vertical-align:top;font-size:12.5px;padding:6px 9px}.ns-doc .ns-t td:last-child b{color:var(--amber)}.ns-doc p{margin:6px 0}
 .rot-l{transition:stroke-opacity .1s}.rot-leg{display:flex;flex-wrap:wrap;gap:4px 6px;padding:8px 2px 6px;border-top:1px solid var(--line-soft);margin-top:4px}.rot-li{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;cursor:pointer;user-select:none;color:var(--text)}.rot-li i{width:14px;height:3px;border-radius:2px;flex:none}.rot-li b{font-weight:600;color:var(--dim)}.rot-li:hover,.rot-li.on{border-color:var(--text);background:var(--raised)}.rot-l:hover{stroke-opacity:1!important;stroke-width:3px!important}
 .rot-ctl select{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px;color:var(--text)}
 </style>
@@ -187,6 +189,12 @@
   window.SYN_PRIORITY=function(){try{return priority(true);}catch(e){return {};}};
   wrap('next',function(){return calHtml();},calAfter);
   wrap('areas',rotHtml,rotAfter);
+})();
+
+// North star page (Record > North star): rendered from NORTH_STAR.md at build time
+(function(){var el=document.getElementById('north-data'),H='';try{H=JSON.parse(el.textContent).html;}catch(e){}
+  window.BRF_PAGES=window.BRF_PAGES||{};
+  window.BRF_PAGES.north={html:function(){return '<div class="ns-doc">'+(H||'<div class="brf-note">NORTH_STAR.md was not found at build time.</div>')+'<div class="syn-cap" style="margin-top:14px">Source: NORTH_STAR.md in the repo. Edit that file; the next build updates this page.</div></div>';}};
 })();
 </script>
 <!-- SYNTH2-END -->

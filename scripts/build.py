@@ -1,6 +1,7 @@
 """Rebuild index.html from pipeline/template.html + data/*.json (compact JSON)."""
 import re, json, pathlib
 root = pathlib.Path(__file__).resolve().parents[1]
+import sys; sys.path.insert(0, str(root / "scripts")); import north_star; north_star.build()  # NORTH_STAR.md -> data/north-star.json
 t = (root / "pipeline" / "template.html").read_text(encoding="utf-8")
 # strip any previously saved copy of the Brief overlay (a "save notes" copy re-imported via extract.py), then inject the current one
 t = re.sub(r"<!-- (BRIEF|NAV|SYNTH2?)-START.*?<!-- (BRIEF|NAV|SYNTH2?)-END -->\n?", "", t, flags=re.S)
