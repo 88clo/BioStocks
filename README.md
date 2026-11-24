@@ -36,6 +36,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112326-v4.html | Nov 23 evening version, before folded Companies, chart zoom/area axis, concise efficacy, indication-group next steps and the calendar speed-up |
 | backup-112326-v5.html | Nov 23 late version, before zoom limits, ticker labels, returns period filter and "Cancer" spelled out |
 | backup-112326-v6.html | Nov 23 night version, before the panning fix and the efficacy rules from your feedback |
+| backup-112326-v7.html | Nov 23 night version, before the second round of efficacy feedback |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 

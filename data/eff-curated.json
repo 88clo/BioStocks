@@ -1,57 +1,193 @@
 {
-  "_about": {"eff": "Hand-written efficacy lines where rules cannot judge: approved drugs whose text only has sales (pivotal result shown instead), text about the wrong program, related-asset data, failed trials whose subgroup matters. Pivotal figures are from the published registrational trials. caveat = text moved to the Thesis column."},
-  "TENX": {"eff": "Ph3 LEVEL (PH-HFpEF, n=241) missed primary (6MWD +3.5m vs placebo, p=0.63) and KCCQ-TSS key secondary. Prespecified subgroup with baseline 6MWD <333m (n=119): +26.3m at W12 (nominal p=0.011).", "caveat": "Subgroup is hypothesis-generating; FDA has not endorsed an enriched LEVEL-2."},
-  "EXEL": {"eff": "Ph3 STELLAR-303 (refractory mCRC): ITT mOS 10.9 vs 9.4 mo regorafenib (HR 0.80, met)."},
-  "LXRX": {"eff": "INPEFA (sotagliflozin) approved for HF: Ph3 SOLOIST-WHF cut CV death + HF events 33% (HR 0.67); Ph3 SCORED (T2D + CKD) HR 0.74. Zynquista approved in T1D."},
-  "PBYI": {"eff": "NERLYNX approved in early and metastatic HER2+ BC: Ph3 ExteNET 5-yr iDFS 90.2% vs 87.7% placebo (HR 0.73); Ph3 NALA (mBC) PFS HR 0.76 vs lapatinib."},
-  "BDTX": {"eff": "Ph2 1L EGFR non-classical NSCLC (n=43): ORR 60%, mPFS 15.0 mo; untreated brain mets CNS-ORR 86% (n=7)."},
-  "CTNM": {"eff": "No efficacy data yet; Ph2 PROPEL-IPF ongoing (FVC vs placebo at W26). LPA1 is validated in IPF (BMS admilparant), but PIPE-791 is behind; its pain crossover showed no clear significance."},
-  "SANA": {"eff": "Related asset, not the lead (SC451 is preclinical): investigator-sponsored UP421 (HIP-modified donor islets, no immunosuppression) kept surviving and producing insulin through 14 mo."},
-  "ERAS": {"eff": "Ph1 AURORAS-1, unconfirmed ORR: 2L+ NSCLC 62% (n=37); 2L+ KRAS G12X PDAC 57% (4/7).", "caveat": "All responses unconfirmed; confirmed ORR, PFS and grade 3+ rash/GI rates not disclosed. Not comparable to RASolute-302 (randomized Ph3, OS HR 0.40)."},
-  "ANAB": {"eff": "Royalties on Jemperli (GSK) in endometrial cancer: Ph3 RUBY Part 1 dMMR PFS HR 0.28; overall population OS HR 0.69 vs chemo alone."},
-  "CRVS": {"eff": "Lead (r/r PTCL): registrational Ph3 ongoing; no new PTCL efficacy in our file. Secondary AD program: Ph1 (n=72) mean EASI −72% vs −40% placebo."},
-  "ALEC": {"eff": "No efficacy data yet for lead AL137 (Alzheimer's). Prior progranulin programs failed: latozinemab missed Ph3 INFRONT-3 in FTD-GRN."},
-  "SION": {"eff": "No efficacy data yet for lead SION-451 + SION-2222. Earlier SION-719 added to Trikafta failed Ph2a (sweat chloride −1.0 mmol/L vs placebo, p=0.7)."},
-  "PTCT": {"eff": "Ph3 MOVE-FA (vatiquinone, FA) missed primary (mFARS); FDA CRL. Votoplam (HD) Ph2 PIVOT-HD: 52% cUHDRS slowing vs natural history."},
-  "IMVT": {"eff": "Lead Graves' data pending. IMVT-1402 in difficult-to-treat RA: 600 mg met primary (ACR20 W28 92.5% vs 75.6% placebo); 300 mg no difference."},
-  "MPLT": {"eff": "Ph2 ZEPHYR (SCZ, n=307): 210/3 mg BID met primary (PANSS total vs placebo); effect size in the card."},
-  "KLRA": {"eff": "No efficacy data yet for Kailera's own KAI-7535. Partner Hengrui's HRS-7535 Ph3s in China (HARBOR-1/OUTSTAND-2): 10.9-11.1% weight loss at W44/50, no liver signal."},
-  "KURA": {"eff": "KOMZIFTI (ziftomenib) approved in r/r NPM1m AML: Ph2 KOMET-001 CR/CRh 23%."},
-  "OMER": {"eff": "YARTEMLEA (narsoplimab) approved for HSCT-TA-TMA: pivotal single-arm study TMA response 61% (n=28)."},
-  "FENC": {"eff": "PEDMARK approved to prevent cisplatin hearing loss in children: Ph3 SIOPEL-6 hearing loss 33% vs 63% cisplatin alone."},
-  "MIST": {"eff": "CARDAMYST (etripamil) approved for PSVT: Ph3 RAPID conversion to sinus rhythm within 30 min 64% vs 31% placebo."},
-  "BBIO": {"eff": "Attruby (acoramidis) approved for ATTR-CM: Ph3 ATTRibute-CM win ratio 1.8; all-cause death + recurrent CV hospitalization cut 42%."},
-  "KRYS": {"eff": "VYJUVEK approved for DEB wounds: Ph3 GEM-3 complete wound healing at 6 mo 67% vs 22% placebo."},
-  "ABEO": {"eff": "ZEVASKYN approved for RDEB wounds: Ph3 VIITAL ≥50% wound healing at W24 81% vs 16% control."},
-  "TARS": {"eff": "XDEMVY approved for Demodex blepharitis: Ph3 Saturn-2 collarette cure 56% vs 13% vehicle."},
-  "PHAT": {"eff": "VOQUEZNA approved in erosive GERD: Ph3 PHALCON-EE healing by W8 92.9% vs 84.6% lansoprazole."},
-  "KNSA": {"eff": "ARCALYST approved in recurrent pericarditis: Ph3 RHAPSODY recurrence risk cut 96% vs placebo (HR 0.04)."},
-  "ASND": {"eff": "YORVIPATH approved in hypoparathyroidism: Ph3 PaTHway responders 79% vs 5% placebo."},
-  "CRMD": {"eff": "DefenCath approved to prevent catheter infections in hemodialysis: Ph3 LOCK-IT-100 cut CRBSI 71% vs heparin."},
-  "AGIO": {"eff": "Ph3 RISE UP (mitapivat, SCD): Hb response 40.6% vs 2.9% placebo (met); annualized pain-crisis reduction not significant."},
-  "IBRX": {"eff": "ANKTIVA + BCG approved in BCG-unresponsive NMIBC CIS: Ph2/3 QUILT-3.032 CR 62%. Ph3 QUILT-2.005 (BCG-naive, n=366) met primary Nov 2026."},
-  "IMCR": {"eff": "KIMMTRAK approved in HLA-A*02:01+ met. uveal melanoma: Ph3 1-yr OS 73% vs 59% investigator's choice (HR 0.51)."},
-  "BCRX": {"eff": "ORLADEYO approved for HAE prophylaxis: Ph3 APeX-2 cut attack rate 44% vs placebo (150 mg)."},
-  "VRDN": {"eff": "Ph3 THRIVE (veligrotug, TED): proptosis responders 70% vs 5% placebo."},
-  "TVTX": {"eff": "FILSPARI approved in IgAN: Ph3 PROTECT proteinuria −49.8% vs −15.1% irbesartan at W36; eGFR slope favoured sparsentan."},
-  "BMRN": {"eff": "VOXZOGO approved in achondroplasia: Ph3 annualized growth velocity +1.57 cm/yr vs placebo."},
-  "MDGL": {"eff": "Rezdiffra approved in MASH F2-F3: Ph3 MAESTRO-NASH resolution 26-30% vs 10% placebo; fibrosis improvement 24-26% vs 14%."},
-  "SRPT": {"eff": "ELEVIDYS: Ph3 EMBARK missed primary (NSAA +0.65 pts vs placebo, p=0.24); key secondaries favoured treatment. Label now limited to ambulatory pts."},
-  "NVAX": {"eff": "Nuvaxovid: Ph3 PREVENT-19 efficacy 90.4% against symptomatic COVID-19."},
-  "SPRY": {"eff": "neffy approved for anaphylaxis on PK/PD comparable to injected epinephrine (no efficacy trial needed)."},
-  "ARQT": {"eff": "ZORYVE cream approved in PsO: Ph3 DERMIS-1/2 IGA success 42%/38% vs 6%/7% vehicle at W8."},
-  "ARDX": {"eff": "IBSRELA approved in IBS-C: Ph3 T3MPO-1 combined responders 27.0% vs 18.7% placebo."},
-  "XFOR": {"eff": "XOLREMDI approved in WHIM: Ph3 4WHIM time above ANC threshold 15.0 vs 2.8 h placebo. Lead chronic neutropenia Ph3 4WARD ongoing."},
-  "ZVRA": {"eff": "MIPLYFFA approved in NPC: Ph2/3 disease progression (5-domain NPCCSS) +0.76 vs +2.15 placebo at 12 mo."},
-  "SRRK": {"eff": "Ph3 SAPPHIRE (apitegromab, SMA): HFMSE +1.8 pts vs placebo (p=0.019)."},
-  "RYTM": {"eff": "IMCIVREE approved in genetic obesity: Ph3 ≥10% weight loss in 80% (POMC) and 46% (LEPR) of pts at ~1 yr."},
-  "SIGA": {"eff": "TPOXX approved for smallpox under the animal rule; human STOMP trial (mpox) missed primary (lesion resolution)."},
-  "VCEL": {"eff": "MACI approved for knee cartilage defects: Ph3 SUMMIT KOOS pain and function superior to microfracture at 2 yrs."},
-  "HALO": {"eff": "Delivery platform: ENHANZE subcutaneous versions approved on PK non-inferiority vs IV partner drugs."},
-  "PHAR": {"eff": "Joenja approved in APDS: Ph3 met both co-primaries (lymph-node size reduction and naive B-cell increase vs placebo)."},
-  "NTRB": {"eff": "Abuse-deterrent fentanyl patch; efficacy relies on approved fentanyl. Pivotal human abuse potential study planned."},
-  "YARW": {"eff": "No efficacy data yet for YB-101 in Graves'. Context: no new Graves' drug approved in the US since 1950."},
-  "TLX": {"eff": "Illuccix/Gozellix approved for PSMA-PET imaging. Lead therapy TLX591 Ph3 ProstACT Global: Part 1 met objectives; no efficacy readout yet."},
-  "LQDA": {"eff": "YUTREPIA approved in PAH and PH-ILD via 505(b)(2) on treprostinil's established efficacy; Ph3 INSPIRE showed tolerability on switch."},
-  "HUMA": {"eff": "Symvess approved for vascular trauma. Ph3 V012 (dialysis access, women): ATEV 220 vs 129 catheter-free days vs AV fistula."}
+ "_about": {
+  "eff": "Hand-written efficacy lines where rules cannot judge: approved drugs whose text only has sales (pivotal result shown instead), text about the wrong program, related-asset data, failed trials whose subgroup matters. Pivotal figures are from the published registrational trials. caveat = text moved to the Thesis column."
+ },
+ "TENX": {
+  "eff": "Ph3 LEVEL (PH-HFpEF, n=241) missed primary (6MWD +3.5m vs placebo, p=0.63) and KCCQ-TSS key secondary. Prespecified subgroup with baseline 6MWD <333m (n=119): +26.3m at W12 (nominal p=0.011).",
+  "caveat": "Subgroup is hypothesis-generating; FDA has not endorsed an enriched LEVEL-2."
+ },
+ "EXEL": {
+  "eff": "Ph3 STELLAR-303 (refractory mCRC): ITT mOS 10.9 vs 9.4 mo regorafenib (HR 0.80, met)."
+ },
+ "LXRX": {
+  "eff": "INPEFA (sotagliflozin) approved for HF: Ph3 SOLOIST-WHF cut CV death + HF events 33% (HR 0.67); Ph3 SCORED (T2D + CKD) HR 0.74. Zynquista approved in T1D."
+ },
+ "PBYI": {
+  "eff": "NERLYNX approved in early and metastatic HER2+ BC: Ph3 ExteNET 5-yr iDFS 90.2% vs 87.7% placebo (HR 0.73); Ph3 NALA (mBC) PFS HR 0.76 vs lapatinib."
+ },
+ "BDTX": {
+  "eff": "Ph2 1L EGFR non-classical NSCLC (n=43): ORR 60%, mPFS 15.0 mo; untreated brain mets CNS-ORR 86% (n=7)."
+ },
+ "CTNM": {
+  "eff": "No efficacy data yet; Ph2 PROPEL-IPF ongoing (FVC vs placebo at W26). LPA1 is validated in IPF (BMS admilparant), but PIPE-791 is behind; its pain crossover showed no clear significance."
+ },
+ "SANA": {
+  "eff": "Related asset, not the lead (SC451 is preclinical): investigator-sponsored UP421 (HIP-modified donor islets, no immunosuppression) kept surviving and producing insulin through 14 mo."
+ },
+ "ERAS": {
+  "eff": "Ph1 AURORAS-1, unconfirmed ORR: 2L+ NSCLC 62% (n=37); 2L+ KRAS G12X PDAC 57% (4/7).",
+  "caveat": "All responses unconfirmed; confirmed ORR, PFS and grade 3+ rash/GI rates not disclosed. Not comparable to RASolute-302 (randomized Ph3, OS HR 0.40)."
+ },
+ "ANAB": {
+  "eff": "Royalties on Jemperli (GSK) in endometrial cancer: Ph3 RUBY Part 1 dMMR PFS HR 0.28; overall population OS HR 0.69 vs chemo alone."
+ },
+ "CRVS": {
+  "eff": "Lead (r/r PTCL): registrational Ph3 ongoing; no new PTCL efficacy in our file. Secondary AD program: Ph1 (n=72) mean EASI −72% vs −40% placebo."
+ },
+ "ALEC": {
+  "eff": "No efficacy data yet for lead AL137 (Alzheimer's). Prior progranulin programs failed: latozinemab missed Ph3 INFRONT-3 in FTD-GRN."
+ },
+ "SION": {
+  "eff": "No efficacy data yet for lead SION-451 + SION-2222. Earlier SION-719 added to Trikafta failed Ph2a (sweat chloride −1.0 mmol/L vs placebo, p=0.7)."
+ },
+ "PTCT": {
+  "eff": "Ph3 MOVE-FA (vatiquinone, FA) missed primary (mFARS); FDA CRL. Votoplam (HD) Ph2 PIVOT-HD: 52% cUHDRS slowing vs natural history."
+ },
+ "IMVT": {
+  "eff": "Lead Graves' data pending. IMVT-1402 in difficult-to-treat RA: 600 mg met primary (ACR20 W28 92.5% vs 75.6% placebo); 300 mg no difference."
+ },
+ "MPLT": {
+  "eff": "Ph2 ZEPHYR (SCZ, n=307): 210/3 mg BID met primary (PANSS total vs placebo); effect size in the card."
+ },
+ "KLRA": {
+  "eff": "No efficacy data yet for Kailera's own KAI-7535. Partner Hengrui's HRS-7535 Ph3s in China (HARBOR-1/OUTSTAND-2): 10.9-11.1% weight loss at W44/50, no liver signal."
+ },
+ "KURA": {
+  "eff": "KOMZIFTI (ziftomenib) approved in r/r NPM1m AML: Ph2 KOMET-001 CR/CRh 23%."
+ },
+ "OMER": {
+  "eff": "YARTEMLEA (narsoplimab) approved for HSCT-TA-TMA: pivotal single-arm study TMA response 61% (n=28)."
+ },
+ "FENC": {
+  "eff": "PEDMARK approved to prevent cisplatin hearing loss in children: Ph3 SIOPEL-6 hearing loss 33% vs 63% cisplatin alone."
+ },
+ "MIST": {
+  "eff": "CARDAMYST (etripamil) approved for PSVT: Ph3 RAPID conversion to sinus rhythm within 30 min 64% vs 31% placebo."
+ },
+ "BBIO": {
+  "eff": "Attruby (acoramidis) approved for ATTR-CM: Ph3 ATTRibute-CM win ratio 1.8; all-cause death + recurrent CV hospitalization cut 42%."
+ },
+ "KRYS": {
+  "eff": "VYJUVEK approved for DEB wounds: Ph3 GEM-3 complete wound healing at 6 mo 67% vs 22% placebo."
+ },
+ "ABEO": {
+  "eff": "ZEVASKYN approved for RDEB wounds: Ph3 VIITAL ≥50% wound healing at W24 81% vs 16% control."
+ },
+ "TARS": {
+  "eff": "XDEMVY approved for Demodex blepharitis: Ph3 Saturn-2 collarette cure 56% vs 13% vehicle."
+ },
+ "PHAT": {
+  "eff": "VOQUEZNA approved in erosive GERD: Ph3 PHALCON-EE healing by W8 92.9% vs 84.6% lansoprazole."
+ },
+ "KNSA": {
+  "eff": "ARCALYST approved in recurrent pericarditis: Ph3 RHAPSODY recurrence risk cut 96% vs placebo (HR 0.04)."
+ },
+ "ASND": {
+  "eff": "YORVIPATH approved in hypoparathyroidism: Ph3 PaTHway responders 79% vs 5% placebo."
+ },
+ "CRMD": {
+  "eff": "DefenCath approved to prevent catheter infections in hemodialysis: Ph3 LOCK-IT-100 cut CRBSI 71% vs heparin."
+ },
+ "AGIO": {
+  "eff": "Ph3 RISE UP (mitapivat, SCD): Hb response 40.6% vs 2.9% placebo (met); annualized pain-crisis reduction not significant."
+ },
+ "IBRX": {
+  "eff": "ANKTIVA + BCG approved in BCG-unresponsive NMIBC CIS: Ph2/3 QUILT-3.032 CR 62%. Ph3 QUILT-2.005 (BCG-naive, n=366) met primary Nov 2026."
+ },
+ "IMCR": {
+  "eff": "KIMMTRAK approved in HLA-A*02:01+ met. uveal melanoma: Ph3 1-yr OS 73% vs 59% investigator's choice (HR 0.51)."
+ },
+ "BCRX": {
+  "eff": "ORLADEYO approved for HAE prophylaxis: Ph3 APeX-2 cut attack rate 44% vs placebo (150 mg)."
+ },
+ "VRDN": {
+  "eff": "Ph3 THRIVE (veligrotug, TED): proptosis responders 70% vs 5% placebo."
+ },
+ "TVTX": {
+  "eff": "FILSPARI approved in IgAN: Ph3 PROTECT proteinuria −49.8% vs −15.1% irbesartan at W36; eGFR slope favoured sparsentan."
+ },
+ "BMRN": {
+  "eff": "VOXZOGO approved in achondroplasia: Ph3 annualized growth velocity +1.57 cm/yr vs placebo."
+ },
+ "MDGL": {
+  "eff": "Rezdiffra approved in MASH F2-F3: Ph3 MAESTRO-NASH resolution 26-30% vs 10% placebo; fibrosis improvement 24-26% vs 14%."
+ },
+ "SRPT": {
+  "eff": "ELEVIDYS: Ph3 EMBARK missed primary (NSAA +0.65 pts vs placebo, p=0.24); key secondaries favoured treatment. Label now limited to ambulatory pts."
+ },
+ "NVAX": {
+  "eff": "Nuvaxovid: Ph3 PREVENT-19 efficacy 90.4% against symptomatic COVID-19."
+ },
+ "SPRY": {
+  "eff": "neffy approved for anaphylaxis on PK/PD comparable to injected epinephrine (no efficacy trial needed)."
+ },
+ "ARQT": {
+  "eff": "ZORYVE cream approved in PsO: Ph3 DERMIS-1/2 IGA success 42%/38% vs 6%/7% vehicle at W8."
+ },
+ "ARDX": {
+  "eff": "IBSRELA approved in IBS-C: Ph3 T3MPO-1 combined responders 27.0% vs 18.7% placebo."
+ },
+ "XFOR": {
+  "eff": "XOLREMDI approved in WHIM: Ph3 4WHIM time above ANC threshold 15.0 vs 2.8 h placebo. Lead chronic neutropenia Ph3 4WARD ongoing."
+ },
+ "ZVRA": {
+  "eff": "MIPLYFFA approved in NPC: Ph2/3 disease progression (5-domain NPCCSS) +0.76 vs +2.15 placebo at 12 mo."
+ },
+ "SRRK": {
+  "eff": "Ph3 SAPPHIRE (apitegromab, SMA): HFMSE +1.8 pts vs placebo (p=0.019)."
+ },
+ "RYTM": {
+  "eff": "IMCIVREE approved in genetic obesity: Ph3 ≥10% weight loss in 80% (POMC) and 46% (LEPR) of pts at ~1 yr."
+ },
+ "SIGA": {
+  "eff": "TPOXX approved for smallpox under the animal rule; human STOMP trial (mpox) missed primary (lesion resolution)."
+ },
+ "VCEL": {
+  "eff": "MACI approved for knee cartilage defects: Ph3 SUMMIT KOOS pain and function superior to microfracture at 2 yrs."
+ },
+ "HALO": {
+  "eff": "Delivery platform: ENHANZE subcutaneous versions approved on PK non-inferiority vs IV partner drugs."
+ },
+ "PHAR": {
+  "eff": "Joenja approved in APDS: Ph3 met both co-primaries (lymph-node size reduction and naive B-cell increase vs placebo)."
+ },
+ "NTRB": {
+  "eff": "Abuse-deterrent fentanyl patch; efficacy relies on approved fentanyl. Pivotal human abuse potential study planned."
+ },
+ "YARW": {
+  "eff": "No efficacy data yet for YB-101 in Graves'. Context: no new Graves' drug approved in the US since 1950."
+ },
+ "TLX": {
+  "eff": "Illuccix/Gozellix approved for PSMA-PET imaging. Lead therapy TLX591 Ph3 ProstACT Global: Part 1 met objectives; no efficacy readout yet."
+ },
+ "LQDA": {
+  "eff": "YUTREPIA approved in PAH and PH-ILD via 505(b)(2) on treprostinil's established efficacy; Ph3 INSPIRE showed tolerability on switch."
+ },
+ "HUMA": {
+  "eff": "Symvess approved for vascular trauma. Ph3 V012 (dialysis access, women): ATEV 220 vs 129 catheter-free days vs AV fistula."
+ },
+ "AVBP": {
+  "eff": "Ph3 FURVENT (1L ex20ins): mPFS 11.0 vs 9.5 mo by BICR (HR 0.75, p=0.0654), missed primary despite confirmed BICR ORR 60% vs 33%."
+ },
+ "AVXL": {
+  "eff": "Ph2/3: ADAS-Cog13 −2.03 (36% slowing) ITT (p=0.0079), CDR-SB benefit — but FDA/EMA found the subgroup analyses insufficient; confirmatory trial needed."
+ },
+ "COGT": {
+  "eff": "Ph3 SUMMIT (NonAdvSM) met primary: TSS −24.3 vs −15.4 placebo at W24 (p=0.0002), deepening to −32.0 (65% mean improvement) at W48. Also positive: Ph3 PEAK (GIST, + sunitinib) and AdvSM."
+ },
+ "PRTA": {
+  "eff": "Ph2b PADOVA (early PD): time to motor progression HR 0.84 (p=0.0657, narrowly missed) with a consistent motor-slowing trend; OLE showed a sustained effect and exploratory MRI (neuromelanin/iron) suggests biological activity. Roche moved to Ph3 PARAISO."
+ },
+ "MLYS": {
+  "eff": "Two positive pivotals: Ph3 Launch-HTN placebo-adjusted SBP −9.1 mmHg (W6); Ph2 Advance-HTN −7.9 mmHg (W12), both on background therapy. 374× selective for aldosterone synthase vs cortisol."
+ },
+ "SNDX": {
+  "eff": "REVUFORJ approved in r/r KMT2Ar and NPM1m acute leukemia: pivotal AUGMENT-101 CR/CRh ~23% in each cohort. Expansion: SAVE combo (r/r) ORR 88% (CR/CRh 60%); 1L revumenib + chemo CRc ~97%."
+ },
+ "VANI": {
+  "eff": "SLIM-1 (open-label, n=10/arm, 4 wks): weight loss 0.79% vs 0.82% Wegovy 0.25 mg; TRAEs 0/10 vs 5/10 (all GI); no SAEs; peak exposure ~16 vs ~2.4 days."
+ },
+ "KRSA": {
+  "eff": "No efficacy data yet; Ph1 healthy-volunteer data mid-27. Design: validated anti-amyloid targeting (lecanemab, donanemab) with TfR1 brain shuttling to raise brain exposure, speed plaque clearance and cut ARIA risk."
+ }
 }
