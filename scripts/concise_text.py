@@ -226,7 +226,7 @@ def clean_sentence(s):
     s = re.sub(r'\s*\((?:[A-Z][A-Za-z]*(?:,\s*|\s+and\s+|\)))+', lambda m: '' if m[0].count(',') >= 2 else m[0], s)   # (US, EU, China, ...) lists
     s = re.sub(r'\s*\((?:company|source|per)[^)]*\)', '', s, flags=re.I)
     s = re.sub(r',?\s*and now (?:in|approved in) \d+ countries', '', s, flags=re.I)
-    s = re.split(r'\s+—\s+(?=(?:the|a|an|this|real|not|which|and|but|already|so|now)\b)', s)[0]   # trailing commentary after a dash
+    s = re.split(r'\s+—\s+(?=(?:real|not previously)\b)', s, flags=re.I)[0]   # only bookkeeping notes go; quick editorial context stays
     for rx, rep in DOSE:
         s = re.sub(rx, rep, s, flags=re.I)
     s = tidy(s)
@@ -277,8 +277,9 @@ def eff_short(t, ind='', limit=250, stage='', nxt=None):
     if re.search(r'\b(?:NHP|mouse|mice|murine|animal|preclinical)\b', out, re.I) and not re.search(r'\bPh\d|\bpatients?\b|\bpts\b|\bhealthy\b', out, re.I) and not out.lower().startswith('preclinical'):
         sp = re.match(r'^(NHP|mouse|mice)\s+data\s*:\s*', out, re.I)
         out = 'Preclinical only' + (' (' + sp[1] + ')' if sp else '') + ': ' + re.sub(r'^(?:NHP data|mouse data|mice data|Preclinical)\s*:\s*', '', out, flags=re.I)
-    if not re.search(r'\bPh\d', out) and re.match(r'^[A-Z][A-Z0-9]+(?:-[A-Z0-9]+)+\b', out) and re.search(r'phase 3|ph3|nda|bla|filed|pdufa|approved', stage or '', re.I):
-        out = 'Ph3 ' + out                            # registrational trial named without its phase
+    m0 = re.match(r'^([A-Z][A-Z0-9]+(?:-[A-Z0-9]+)+)\b', out)
+    if not re.search(r'\bPh\d', out) and m0 and re.search(r'(?:Ph(?:ase)?\s?3|pivotal)[^.;]{0,40}' + re.escape(m0[1]) + '|' + re.escape(m0[1]) + r'[^.;]{0,40}(?:Ph(?:ase)?\s?3|pivotal)', t, re.I):
+        out = 'Ph3 ' + out                            # the source calls this trial Ph3/pivotal but the kept sentence omits it
     out = re.sub(r'\s*[;,]\s*$', '.', out)
     if len(out) > limit:                            # drop wordy asides without numbers
         out = re.sub(r'\s*\((?=[^()]*\s[^()]*\s[^()]*\s)[^()\d]*\)', '', out)
@@ -300,7 +301,7 @@ def main():
     for r in D:
         r['ind_short'] = ind_short(r.get('indication'))
         cur = CUR.get(r['ticker'])
-        r['eff_short'] = style(cur['eff']) if cur else eff_short(r.get('efficacy'), r['ind_short'], stage=(r.get('stage') or '') + ' ' + (r.get('stage_full') or ''), nxt=r.get('next_cat'))
+        r['eff_short'] = style(cur['eff']) if cur else eff_short(r.get('efficacy'), r['ind_short'], stage=(r.get('stage') or ''), nxt=r.get('next_cat'))
         r['eff_src'] = 'curated' if cur else 'rule'
         cav = [x for x in sentences(r.get('efficacy') or '') if CAVEAT.search(x) and clean_sentence(x) not in r['eff_short']]
         r['eff_caveat'] = (cur.get('caveat') if cur and cur.get('caveat') is not None else ' '.join(clean_sentence(x) for x in cav[:2]))

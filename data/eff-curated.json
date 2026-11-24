@@ -29,7 +29,7 @@
   "caveat": "All responses unconfirmed; confirmed ORR, PFS and grade 3+ rash/GI rates not disclosed. Not comparable to RASolute-302 (randomized Ph3, OS HR 0.40)."
  },
  "ANAB": {
-  "eff": "Royalties on Jemperli (GSK) in endometrial cancer: Ph3 RUBY Part 1 dMMR PFS HR 0.28; overall population OS HR 0.69 vs chemo alone."
+  "eff": "Royalty on partner GSK's Jemperli in endometrial cancer: Ph3 RUBY Part 1 dMMR PFS HR 0.28; overall OS HR 0.69 vs chemo alone."
  },
  "CRVS": {
   "eff": "Lead (r/r PTCL): registrational Ph3 ongoing; no new PTCL efficacy in our file. Secondary AD program: Ph1 (n=72) mean EASI −72% vs −40% placebo."
@@ -219,5 +219,17 @@
  },
  "ORKA": {
   "eff": "Ph2a EVERLAST-A (600 mg at W0 + W4 only): PASI100 63.5% vs 4.8% pbo at W16, deepening to PASI100 71%, PASI90 87% at W28, ~6 mo after last dose (supports yearly dosing). Ph2b EVERLAST-B (n=187) W16: PASI100 61% (high dose), PASI90 and IGA 0/1 86%; no pbo responders."
+ },
+ "PTGX": {
+  "eff": "Royalty on partner J&J's ICOTYDE (icotrokinra), approved in PsO Mar 2026: Ph3 ICONIC-LEAD IGA 0/1 65% vs 8% pbo, PASI90 50% vs 4% at W16."
+ },
+ "ZYME": {
+  "eff": "Royalty on partner Jazz's Ziihera (approved 1L GEA Aug 2026, + 2L BTC): Ph3 HERIZON-GEA-01 final OS HR 0.65 for Ziihera + tislelizumab + chemo (0.72 at interim)."
+ },
+ "INVA": {
+  "eff": "Royalties on partner GSK's BREO/ANORO inhalers. Own XACDURO approved for Acinetobacter: Ph3 ATTACK 28-day mortality 19% vs 32% colistin."
+ },
+ "TGTX": {
+  "eff": "BRIUMVI approved in relapsing MS: Ph3 ULTIMATE I/II annualized relapse rate 0.08 vs 0.19 and 0.09 vs 0.18 teriflunomide. Ph1 SubQ: bioavailability >60% vs IV, supporting Q3M."
  }
 }
