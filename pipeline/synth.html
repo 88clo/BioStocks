@@ -777,7 +777,7 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
     return out;}
   function ceoHtml(r,max){var N=ceoNotes(r).slice(0,max||4);if(!N.length)return '';return '<ol class="ceo-l">'+N.map(function(n){return '<li><span class="ceo-cat">'+B.E(n.l)+'</span> '+n.t+'</li>';}).join('')+'</ol>';}
   window.ceoNotes=ceoNotes;window.ceoHtml=ceoHtml;window.CEO_CATS=CEO_CATS;
-  window.SYN_AUDIT=function(){rows().forEach(function(y){XU[y.t]=y.out?null:y.u;});return setups().map(function(o){var k=skewOf(o)||{};return {t:o.t,call:o.r.call,pos:o.r.pos,stage:o.r.stage,u:XU[o.t],m:o.m,ty:o.ty,lead:o.lead,ev:o.e.e,d:o.e.lab,imp:impOf(o),up:o.up,dn:o.dn,s:k.s,why:k.why,mc:o.mc,eff:o.r.effsig};});};
+  window.SYN_AUDIT=function(){rows().forEach(function(y){XU[y.t]=y.out?null:y.u;});return setups().map(function(o){var k=skewOf(o)||{};return {t:o.t,call:o.r.call,pos:o.r.pos,stage:o.r.stage,u:XU[o.t],m:o.m,ty:o.ty,lead:o.lead,ev:o.e.e,d:o.e.lab,imp:impOf(o),up:o.up,dn:o.dn,s:k.s,sc:k.sc,why:k.why,mc:o.mc,eff:o.r.effsig,date:o.e.d};});};
   window.SYN={supplyChart:supplyChart,ipoMarket:ipoMarket,AR:AR,drillGroups:drillGroups,drillCrumbs:drillCrumbs,upcoming:upcoming,nextCat:nextCat,clusterOf:clusterOf,clusterOrder:clusterOrder,CLCOL:CLCOL,CLUSTERS:CLUSTERS,rows:rows,events:events,thesis:thesis,fdate:fdate,sugOf:sugOf,inPort:inPort,CO:CO,big:big,lt:lt,PT:PT,HO:HO,SPEC:SPEC,NICK:NICK,J:J};
   window.BRF_PAGES=window.BRF_PAGES||{};
   window.BRF_PAGES.co={html:coHtml,after:coAfter};

@@ -155,7 +155,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
   function brief(){
     var d=(ASOF.snapshot||{}).asof||'';
     return '<div class="brf-sub"><b>Prices as of '+E(d)+'.</b> Read in this order: (1) best ideas, (2) what is coming, (3) who needs money, (4) whether the calls have worked. Each line links to the full card.</div>'
-      +kpis()+(window.BRF_CHANGES?window.BRF_CHANGES():'')+ideas()+cats()+radarMini()+trackMini()+fresh();
+      +(window.BRIEF_Q3?window.BRIEF_Q3():'')+kpis()+(window.BRF_CHANGES?window.BRF_CHANGES():'')+ideas()+cats()+radarMini()+trackMini()+fresh();
   }
   function track(){
     var h='<div class="brf-sub">'+E(TR.method||'')+' Latest close: '+E(TR.asof||'')+'.</div>'+(window.WW_HTML?window.WW_HTML():'');
@@ -235,6 +235,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
     var XP=(window.BRF_PAGES||{})[page];
     doc.innerHTML=XP?XP.html():page==='brief'?brief():page==='track'?track():page==='radar'?radar():page==='flow'?flow():gaps();
     if(XP&&XP.after)try{XP.after(doc);}catch(e){console.log(e);}
+    if(page==='brief'&&window.BRIEF_Q3_AFTER)try{BRIEF_Q3_AFTER(doc);}catch(e){console.log(e);}
     if(page==='track'){if(window.WW_AFTER)try{WW_AFTER(doc);}catch(e){console.log(e);}embed('retrowrap','brfRetroHost',function(){renderRetro(DA);});}
     if(page==='gaps')embed('sugwrap','brfSugHost',function(){renderSug(DA);});
     document.querySelectorAll('#brf .brf-tab[data-p]').forEach(function(b){b.classList.toggle('on',b.dataset.p===page);});

@@ -99,4 +99,5 @@ The calls live in `data/backdrop.json`: `backdrop` (4–6 plain sentences on the
 - Catalyst stakes (after the Nov 25 audit): unapproved lead = market's pipeline value; approved company = 15% of cap for a new indication of the lead, 6% for another program; other programs at unapproved companies = 15% of pipeline value (max 20% of cap). Only lead readouts/FDA decisions can be Major.
 - Specialist set = SPECIALIST_INVESTORS + data/specialists-extra.json (biotech-focused filers found in the SEC data set: ≥30% of book and ≥$200M in our names). Re-scan each new data set (see the scan in the Nov 25 session: rank filers by $ in our names and biotech share of book) and add new ones; `watch` lists large generalists to know.
 - Net supply uses public-target M&A cash: data/capital-markets.json ma_pub_usd (yearly public share from William Blair's private-target totals; exact where a recap gives the split) × 90% cash.
-
+- Brief › The three questions (synth2.html BRIEF_Q3): built from What worked (WW_SUMMARY + backdrop calls), the priority trades with variant views, Major catalysts with skew (written views first) and the raise model. Each refresh, open Brief and check every answer still reads true.
+- Scheduled task "BioStocks monthly refresh" runs on the 14th at 2:40 PM ET with a general prompt covering all of the above.
