@@ -55,6 +55,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112426-v9.html | Nov 24 version with Modality, before Novelty, red/green What worked cells, fixed future-chart scale and clickable return labels |
 | backup-112526-v1.html | Nov 24 final version, before fixed Areas scales/faded context, Call in Thesis group, rNPV column, What worked holding periods and line chart, and Catalyst setups |
 | backup-112526-v2.html | Nov 25 early version, before the Capital tab (Investors, Liquidity), setups merged into the catalyst list, rNPV hidden before Ours and $0.00 prices in What worked |
+| backup-112526-v3.html | Nov 25 version with the first Capital tab, before odds on every catalyst, event-based expectations, ownership by size, fund style deviations and net equity supply |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 
