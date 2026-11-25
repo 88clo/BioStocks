@@ -1,0 +1,286 @@
+{
+ "asof": "2026-11-25",
+ "note": "Our judged view on the most important catalysts of the next six months: odds of a positive outcome, the expected share-price move each way, and why. Written from the dashboard's research notes (efficacy, benchmark, competition, call rationale) plus what is known about the program and its class. Overrides the formula on the matching event. Review at each monthly refresh; delete a view once its event has happened.",
+ "views": [
+  {
+   "t": "PYPD",
+   "m": "PDUFA decision (Nov 28",
+   "p": 0.85,
+   "up": 0.8,
+   "dn": -0.55,
+   "why": "SHIELD II hit its primary on surgical-site infection with a clean safety record; local antibiotic delivery is a low-bar regulatory path. A $129M cap still prices approval as a coin flip."
+  },
+  {
+   "t": "BBIO",
+   "m": "BBP-418",
+   "p": 0.85,
+   "up": 0.03,
+   "dn": -0.06,
+   "why": "Accelerated-approval path on a glycosylated alpha-dystroglycan biomarker the FDA has engaged on; a small slice of value next to Attruby, so moves are small either way."
+  },
+  {
+   "t": "COGT",
+   "m": "Sequential PDUFAs",
+   "p": 0.92,
+   "up": 0.08,
+   "dn": -0.3,
+   "why": "PEAK (GIST) was positive and the label is the first of three; the hepatotoxicity imbalance (22% vs 6.6%) is the only real risk and shapes the label, not approval."
+  },
+  {
+   "t": "CGON",
+   "m": "SUO late-breaker",
+   "p": 0.8,
+   "up": 0.06,
+   "dn": -0.08,
+   "why": "Topline is out (RFS HR 0.32); the late-breaker mainly adds durability and subgroups. Upside is limited at $7.1B; a soft subgroup could trim it."
+  },
+  {
+   "t": "ORKA",
+   "m": "EVERLAST-A 52",
+   "p": 0.65,
+   "up": 0.25,
+   "dn": -0.3,
+   "why": "PASI100 rose from 64% to 71% between weeks 16 and 28 with no further dosing, which argues for durability; once-yearly dosing needs most responders to hold to week 52, and the stock already prices a lot of it."
+  },
+  {
+   "t": "KYMR",
+   "m": "BROADEN2",
+   "p": 0.45,
+   "up": 0.35,
+   "dn": -0.5,
+   "why": "An oral STAT6 degrader needs about 40% placebo-adjusted EASI-75 to matter next to dupilumab, and the only patient data is a 22-person Ph1b; at $11.7B the price assumes success."
+  },
+  {
+   "t": "PRAX",
+   "m": "Relutrigine NDA PDUFA",
+   "p": 0.85,
+   "up": 0.12,
+   "dn": -0.2,
+   "why": "Rare developmental epilepsy with priority review and large seizure reductions; the first of two near-term approvals, and the market focuses on the essential-tremor drug instead."
+  },
+  {
+   "t": "RLAY",
+   "m": "ReInspire",
+   "p": 0.6,
+   "up": 0.08,
+   "dn": -0.08,
+   "why": "PI3Ka-mutant-selective drug in PIK3CA vascular anomalies, where alpelisib (Vijoice) already validates the target; a secondary indication, so the move is modest."
+  },
+  {
+   "t": "DNTH",
+   "m": "MoMeNtum",
+   "p": 0.6,
+   "up": 0.25,
+   "dn": -0.25,
+   "why": "Argenx's empasiprubart validated classical-complement blockade in MMN; DNTH-103 hits the same pathway with less frequent dosing. Positive data would add a second validated indication."
+  },
+  {
+   "t": "EXEL",
+   "m": "Zanzalintinib mCRC PDUFA",
+   "p": 0.85,
+   "up": 0.04,
+   "dn": -0.08,
+   "why": "Overall survival met (HR 0.80 vs regorafenib), so approval is likely; the 1.5-month benefit and a subgroup miss limit the label and the commercial read."
+  },
+  {
+   "t": "DYN",
+   "m": "PDUFA decision (Jan 21",
+   "p": 0.85,
+   "up": 0.25,
+   "dn": -0.35,
+   "why": "Dystrophin about 5x Sarepta's exon-51 drug with functional benefit to 24 months; the accelerated-approval precedent in DMD is well set."
+  },
+  {
+   "t": "BLTE",
+   "m": "Stargardt",
+   "p": 0.8,
+   "up": 0.1,
+   "dn": -0.45,
+   "why": "First drug ever to slow Stargardt lesion growth (36%, p=0.0033) with priority review; approval is likely, but a $5.2B cap for about 50,000 patients already prices it, so the reaction skews down."
+  },
+  {
+   "t": "PVLA",
+   "m": "QTORIN rapamycin PDUFA",
+   "p": 0.9,
+   "up": 0.1,
+   "dn": -0.4,
+   "why": "SELVA was clean and the drug is topical rapamycin; approval is largely priced and the orphan market caps the upside."
+  },
+  {
+   "t": "NAMS",
+   "m": "PREVAIL interim",
+   "p": 0.25,
+   "up": 0.4,
+   "dn": -0.1,
+   "why": "Positive here means stopping early for efficacy, which needs a large MACE effect at the interim (BROADWAY showed HR 0.79); the trial simply continuing is the likely outcome and only a mild negative."
+  },
+  {
+   "t": "MIRM",
+   "m": "Brelovitug HDV",
+   "p": 0.85,
+   "up": 0.08,
+   "dn": -0.2,
+   "why": "AZURE-1 already hit (56%/45% vs 0%); the second pivotal is the same design, so replication is likely."
+  },
+  {
+   "t": "TGTX",
+   "m": "SubQ BRIUMVI",
+   "p": 0.85,
+   "up": 0.08,
+   "dn": -0.2,
+   "why": "Subcutaneous ublituximab needs exposure and B-cell-depletion parity, and the Ph1 showed bioavailability above 60%; a miss would hurt the franchise's life-cycle plan."
+  },
+  {
+   "t": "BEAM",
+   "m": "Risto-cel",
+   "p": 0.8,
+   "up": 0.15,
+   "dn": -0.2,
+   "why": "Earlier risto-cel data were consistent, and filing on time is in the company's hands; the market still values BEAM mostly on BEAM-302."
+  },
+  {
+   "t": "LKFT",
+   "m": "gamgertamig",
+   "p": 0.7,
+   "up": 0.15,
+   "dn": -0.2,
+   "why": "The abstract already showed 90% ITP response with only grade 1 CRS; the poster needs durability and infection rates to hold (30% infections is the watch item)."
+  },
+  {
+   "t": "AXSM",
+   "m": "ENGAGE",
+   "p": 0.55,
+   "up": 0.08,
+   "dn": -0.06,
+   "why": "Solriamfetol's dopamine/norepinephrine profile fits binge-eating disorder (Vyvanse is approved there); a third leg for a franchise valued mostly on Auvelity."
+  },
+  {
+   "t": "INSM",
+   "m": "Arikayce sNDA",
+   "p": 0.9,
+   "up": 0.03,
+   "dn": -0.08,
+   "why": "Label expansion of an approved drug on a positive Ph3 with priority review; small relative to Brinsupri's launch."
+  },
+  {
+   "t": "UTHR",
+   "m": "Tyvaso IPF",
+   "p": 0.95,
+   "up": 0.06,
+   "dn": -0.15,
+   "why": "Two positive Ph3s (TETON-1 and -2, +130 mL FVC); approval is close to certain and the debate is uptake."
+  },
+  {
+   "t": "PHVS",
+   "m": "Deucrictibant IR on-demand PDUFA",
+   "p": 0.92,
+   "up": 0.08,
+   "dn": -0.3,
+   "why": "An oral on-demand HAE drug with positive pivotal data; prophylaxis data (83% attack cut) adds confidence in the molecule."
+  },
+  {
+   "t": "MBX",
+   "m": "MBX 4291",
+   "p": 0.5,
+   "up": 0.2,
+   "dn": -0.1,
+   "why": "A monthly GLP-1/GIP prodrug; 12-week weight loss in line with the class would re-rate an underfollowed option, and expectations are low."
+  },
+  {
+   "t": "HCM",
+   "m": "Sovleplenib",
+   "p": 0.85,
+   "up": 0.04,
+   "dn": -0.06,
+   "why": "ESLIM-02 full data (70% vs 22%) strengthens the China filings; a China-only approval moves the stock little."
+  },
+  {
+   "t": "XENE",
+   "m": "X-NOVA2",
+   "p": 0.4,
+   "up": 0.15,
+   "dn": -0.08,
+   "why": "The earlier Ph2 X-NOVA missed its MADRS primary with only nominal signals; Kv7 opening in depression is unproven, so we are below the market on this secondary readout."
+  },
+  {
+   "t": "NTLA",
+   "m": "PDUFA decision on lonvo-z",
+   "p": 0.85,
+   "up": 0.4,
+   "dn": -0.45,
+   "why": "HAELO showed a deep attack reduction from one dose; the risk is FDA caution on in vivo editing after the liver death in the separate nex-z ATTR program, which is why the price only half-believes it."
+  },
+  {
+   "t": "MLYS",
+   "m": "Lorundrostat FDA PDUFA",
+   "p": 0.88,
+   "up": 0.25,
+   "dn": -0.4,
+   "why": "Two positive Ph3s in uncontrolled hypertension and a validated class (AstraZeneca's baxdrostat filed in parallel); hyperkalemia monitoring shapes the label, not approval."
+  },
+  {
+   "t": "RGNX",
+   "m": "Sura-vec",
+   "p": 0.65,
+   "up": 0.6,
+   "dn": -0.45,
+   "why": "A one-time subretinal gene therapy needs non-inferiority to aflibercept on vision; Ph2 showed a large cut in injection burden, but pivotal non-inferiority with surgery-related losses is a real risk."
+  },
+  {
+   "t": "HELP",
+   "m": "APPROACH",
+   "p": 0.6,
+   "up": 0.8,
+   "dn": -0.5,
+   "why": "Compass's COMP005 showed psilocybin can win a Ph3 in depression; deuteration aims at a shorter, more practical session, so efficacy should track the class, but functional-unblinding and placebo issues persist."
+  },
+  {
+   "t": "APMD",
+   "m": "AD109",
+   "p": 0.85,
+   "up": 0.3,
+   "dn": -0.4,
+   "why": "Two positive Ph3s (SynAIRgy, LunAIRo) on AHI in obstructive sleep apnea with a known combination of drugs; the first oral OSA drug would be a large market."
+  },
+  {
+   "t": "IRON",
+   "m": "Bitopertin NDA resubmission",
+   "p": 0.9,
+   "up": 0.04,
+   "dn": -0.2,
+   "why": "APOLLO cleared the bar that led to the earlier filing setback; resubmitting is in the company's hands."
+  },
+  {
+   "t": "KOD",
+   "m": "Zenkuda multi-indication BLA",
+   "p": 0.9,
+   "up": 0.03,
+   "dn": -0.15,
+   "why": "Filing after DAYBREAK met non-inferiority; a delay would mostly matter for the financing we expect alongside it."
+  },
+  {
+   "t": "ABVX",
+   "m": "Obefazimod UC NDA",
+   "p": 0.95,
+   "up": 0.02,
+   "dn": -0.15,
+   "why": "Both Ph3 parts decisively positive (39-40 point remission gap); submitting is in the company's hands."
+  },
+  {
+   "t": "IONS",
+   "m": "TRYNGOLZA in sHTG",
+   "p": 0.95,
+   "up": 0.02,
+   "dn": -0.05,
+   "why": "Positive CHMP opinion; EU approval nearly always follows."
+  },
+  {
+   "t": "ASND",
+   "m": "YUVIWEL",
+   "p": 0.95,
+   "up": 0.02,
+   "dn": -0.06,
+   "why": "Positive CHMP opinion; EU approval nearly always follows, and US launch metrics matter more."
+  }
+ ]
+}
