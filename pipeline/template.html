@@ -2587,6 +2587,9 @@ function abbrevIndication(text){
   if(metFlag && /^[A-Z]/.test(abbrev) && abbrev.length<=6) abbrev='m'+abbrev;
   return [lineTag,rrFlag?'R/R':'',abbrev].filter(Boolean).join(' ');
 }
+// Net cash = cash minus debt (Nov 25 2026). Valuing equity off gross cash overstated levered companies (COLL, AMPH, CELC, ANAB).
+function netCash(r){const c=(typeof r.cash==='number'&&r.cash>0)?r.cash:0,d=(!r.debt_excl&&typeof r.debt==='number'&&r.debt>0)?r.debt:0;return c-d;}
+window.netCash=netCash;
 function callUpPct(r){ // upside = 1/(MC/NPV) - 1, computed off the SAME rounded % shown in the MC/NPV column
   const pv=pvVal(r); if(pv==null||pv<=0)return null;
   const pct=Math.round(pv*100); if(pct<=0)return null;   // the integer % rendered in the MC/NPV cell
@@ -3029,24 +3032,24 @@ function valParts(r){
   return {lead:lead,book:book,cost:cost,npv:lead+book-cost,notes:N,pk:pk,pos:pos,df:df,y:y,y0:y0,run:run};
 }
 
-function impliedOdds(r){const v=valParts(r);if(!v||typeof r.mc!=='number')return null;const cash=(typeof r.cash==='number'&&r.cash>0)?r.cash:0,mkt=r.mc-cash-v.book+v.cost,M=state.psMult;
+function impliedOdds(r){const v=valParts(r);if(!v||typeof r.mc!=='number')return null;const cash=netCash(r),mkt=r.mc-cash-v.book+v.cost,M=state.psMult;
   if(v.y0===0)return {approved:true,mktSales:mkt/M,ourSales:Math.max(v.pk*v.pos,v.run||0),run:v.run,y:0};
   const den=M*v.pk*v.df;return den>0?{approved:false,imp:mkt/den,ours:v.pos,pk:v.pk,y:v.y,y0:v.y0,cost:v.cost}:null;}
 window.impliedOdds=impliedOdds;
 // Variant view: what the current price implies about the lead program vs what we assume, in one sentence.
 function variantView(r){
   const v=valParts(r); if(!v||typeof r.mc!=='number')return '';
-  const cash=(typeof r.cash==='number'&&r.cash>0)?r.cash:0, mkt=r.mc-cash-v.book+v.cost, M=state.psMult;
+  const cash=netCash(r), mkt=r.mc-cash-v.book+v.cost, M=state.psMult;
   const drug=String(r.drug||'the lead').split(/ \(| — | - |;|,/)[0].trim().slice(0,40)||'the lead';
   const e=r.effsig,d=r.diffscore, sciTxt=(typeof e==='number'&&typeof d==='number')?('efficacy '+e+'/5, differentiation '+d+'/5'):'';
   const neg=v.notes.filter(n=>/undifferentiated|weak data|capped/i.test(n)&&n!==r.val_note).slice(0,1).join('');
   const stg=String(r.stage||'').split(/[ (]/).slice(0,2).join(' ');
-  const why=(up)=>{let k=r._keystat;if(k==null&&window._keySpan){const ef=r.eff_short||'',sp=window._keySpan(ef,r.efkey);k=r._keystat=sp?ef.slice(sp[0],sp[1]):'';}k=k||'';if(up){if(typeof e==='number'&&e<=2)return 'the price assumes near-certain failure, and even thin evidence ('+sciTxt+') is worth more than that';return k?'the data clears the bar ('+k+')':sciTxt?'the evidence scores well ('+sciTxt+')':'our evidence read is stronger';}
+  const why=(up)=>{let k=r._keystat;if(k==null&&window._keySpan){const ef=r.eff_short||'',sp=window._keySpan(ef,r.efkey);k=r._keystat=sp?ef.slice(sp[0],sp[1]):'';}k=k||'';if(!/\d(\.\d+)?\s?(%|mmHg|mL|letters|points?|pts|mo\b|months)|HR\s?0\.|p\s?[<=]\s?0\./i.test(k)||/retains|randomi[sz]ed|enrolled|CRL|No new/i.test(k))k='';if(up){if(typeof e==='number'&&e<=2)return 'the price assumes near-certain failure, and even thin evidence ('+sciTxt+') is worth more than that';return k?'the data clears the bar ('+k+')':sciTxt?'the evidence scores well ('+sciTxt+')':'our evidence read is stronger';}
     if(neg)return 'we haircut it: '+neg;
     if(v.y>=4)return 'it is still '+(stg||'early')+', with approval ~'+v.y+' yrs away and most of the risk ahead';
     if(typeof d==='number'&&d<=3)return 'differentiation is only '+d+'/5 in a competitive field';
     return sciTxt?'the evidence is thinner ('+sciTxt+')':'our evidence read is weaker';};
-  const pre='At '+fmtB(r.mc)+(cash?' ('+fmtB(cash)+' cash'+(v.book>0?', '+fmtB(v.book)+' existing business':'')+')':'');
+  const pre='At '+fmtB(r.mc)+(cash?' ('+(r.debt>0?(cash<0?fmtB(-cash)+' net debt':fmtB(cash)+' net cash'):fmtB(cash)+' cash')+(v.book>0?', '+fmtB(v.book)+' existing business':'')+')':'');
   if(v.y0===0){ const impS=mkt/M, ours=Math.max(v.pk*v.pos,v.run||0);
     if(impS<=0)return pre+' the market pays nothing for '+esc(drug)+'’s sales beyond cash; we model '+fmtB(ours)+'/yr.';
     const g=ours/impS; return pre+' the market pays for about '+fmtB(impS)+'/yr of '+esc(drug)+' sales; we model '+fmtB(ours)+(v.run?' (company sales now '+fmtB(v.run)+'/yr)':'')+(g>1.25?', so we see more demand than priced in.':g<0.8?', so the price assumes a bigger launch than we do.':', close to what’s priced in.'); }
@@ -3083,10 +3086,17 @@ function thesis3(r){
   const view=r.th_view?liveNums(r,r.th_view):liveNums(r,r.pitch||r.pitch_concise||'');
   const miss=r.th_miss?esc(liveNums(r,r.th_miss)):variantView(r);
   const nc=nextCat(r);
-  let chg='';if(nc){const L=/LONG|BUY/.test(r.call||''),S=/SHORT/.test(r.call||''),ev=nc.toLowerCase(),io=window.impliedOdds?impliedOdds(r):null;
-    if(/pdufa|fda (action|decision)|approval decision|approval\b/.test(ev))chg=L?' A CRL or a restrictive label would change our mind.':S?' Approval with a broad label would make us cover.':' The decision itself decides our next call.';
-    else if(/topline|data|readout|results|interim/.test(ev))chg=L?' A miss on the primary endpoint would change our mind.':S?' A clear win on the primary endpoint would make us cover.':' A clean win or a miss would move us off the sidelines.';
-    else if(io&&io.approved)chg=L?' Falling quarterly sales would change our mind.':S?' Accelerating sales would make us cover.':' Sales against guidance are the check.';}
+  const KEY=/pdufa|fda (action|decision)|approval|topline|data|readout|results|interim/i;
+  const ups=(r.cat_sched||[]).filter(c=>c.st==='up'&&c.d&&c.d<='2028-06-30').sort((a,b)=>a.d<b.d?-1:1);
+  const kc=ups.find(c=>KEY.test(c.e));const L=/LONG|BUY/.test(r.call||''),S=/SHORT/.test(r.call||''),io=window.impliedOdds?impliedOdds(r):null;
+  const chgFor=ev=>{ev=ev.toLowerCase();
+    if(/pdufa|fda (action|decision)|approval decision|approval\b/.test(ev))return L?'a CRL or a restrictive label would change our mind':S?'approval with a broad label would make us cover':'the decision sets our next call';
+    if(/topline|data|readout|results|interim/.test(ev))return L?'a miss on the primary endpoint would change our mind':S?'a clear win on the primary endpoint would make us cover':'a clean win or a miss would move us off the sidelines';return '';};
+  let chg='';
+  if(nc&&chgFor(nc))chg=' '+chgFor(nc).replace(/^./,c=>c.toUpperCase())+'.';
+  else if(kc){const d=new Date(kc.d+'T00:00:00');chg=' The real test is '+esc(kc.e.replace(/\s*\([^)]*\)\s*$/,''))+' ('+d.toLocaleString('en-US',{month:'short'})+' '+d.getFullYear()+'): '+chgFor(kc.e)+'.';}
+  else if(io&&io.approved)chg=L?' Falling quarterly sales would change our mind.':S?' Accelerating sales would make us cover.':' Sales against guidance are the check.';
+  else chg=L?' With no dated readout, we would cut if the cash runway falls under a year without funding.':S?' We would cover on a partnership that validates the asset.':' We would act on new data or a price move that changes the gap to our value.';
   const cat=r.th_cat?esc(liveNums(r,r.th_cat)):(nc?'Next: '+esc(nc)+'.'+chg:'No dated catalyst in our calendar; the next earnings report is the check.');
   return {view:esc(view),miss,cat,hand:!!r.th_view};
 }
@@ -3099,8 +3109,8 @@ function valNotes(r){ const v=valParts(r); return v?v.notes.join('; '):''; }
 window.valNotes=valNotes;window.valParts=valParts;
 function pvVal(r){ // MC / (risk-adjusted value + cash); <1 = cheap. A value that the remaining cost wipes out = only cash left
   const v=valParts(r); if(!v||typeof r.mc!=='number')return null;
-  const cash=(typeof r.cash==='number'&&r.cash>0)?r.cash:0;
-  const tot=Math.max(v.npv,0)+cash; if(tot<=0)return null;
+  const cash=netCash(r);
+  const tot=Math.max(v.npv,0)+cash; if(tot<=0)return 100; // net debt exceeds the risk-adjusted value: equity worth ~nothing on our model (-99%)
   return r.mc/tot;
 }
 function lerpHex(a,b,t){
@@ -4077,7 +4087,7 @@ function dcfFull(r,riskAdj){ // full P&L build: gross sales → net income → d
     npv+=dni;
     years.push({t,rf,prev,pctTreated,patients,price,implied,calib,gross,gtn,cogs,net,sgna,rnd,rndPre,rndPost,ebit,nolOpen,nolUsed,nolAdd,nolClose,taxable,tax,ni,df,dni,phase:(t<=launch?'dev':'comm')});
   }
-  const cash=(typeof r.cash==='number')?r.cash:0, equity=npv+cash;
+  const cash=netCash(r), equity=npv+cash;
   const upside=(typeof r.mc==='number'&&r.mc>0)?(equity/r.mc-1):null;
   return {years,launch,pos,peak,peakPadj:peak*pos,npv,cash,equity,upside,prev,trt,price,peakShare,impliedPeak,calib,w};
 }

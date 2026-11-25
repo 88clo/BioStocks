@@ -64,6 +64,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112526-v9.html | Nov 25 version before the Brief three-questions panel and the expanded North star questions |
 | backup-112526-v10.html | Nov 25 version before concentrated holders (Enavate, Bain) joined the leaderboard and style lines were coloured by return gap |
 | backup-112526-v11.html | Nov 25 version before the KYMR/CAPR/SVRA/HELP event updates, 13D/13G holders and the three-line theses (batch 1) |
+| backup-112526-v12.html | Nov 25 version before net-cash valuation, thesis batch 2 (102 names) and the Brief's moved-since-review check |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 

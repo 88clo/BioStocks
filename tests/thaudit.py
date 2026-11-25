@@ -23,13 +23,13 @@ async def main():
             if x['mc'] and abs(B(m.group(0)) / x['mc'] - 1) > .2: P['stale_cap'].append(x['t']); break
         if not x['miss']: P['no_miss'].append(x['t'])
         if not x['cat']: P['no_cat'].append(x['t'])
-        if not re.search(r"risk|miss|fail|wrong|change our mind|if |unless|downside|dilut", txt, re.I): P['no_risk'].append(x['t'])
+        if not re.search(r"risk|miss|fail|wrong|change our mind|if |unless|downside|dilut|would (cover|cut|exit|turn)|the check|sidelines|next call|act on new data", txt, re.I): P['no_risk'].append(x['t'])
         if any('Investors are asking' in n['t'] for n in x['ceo']): P['generic_ceo'].append(x['t'])
         if re.search(r"in ~\d+ yrs?", txt): P['odd_phrase'].append(x['t'])
         if any(n['c'] == 'err' for n in x['ceo']) or 'err' in x: P['err'].append(x['t'])
         if len(x['view'].split()) > 75: P['long_view'].append(x['t'])
         if x['hand']:
-            d = 'L' if re.match(r'long', x['view'], re.I) else 'S' if re.match(r'short', x['view'], re.I) else 'N'
+            v0 = re.sub(r'^strong\s+', '', x['view'], flags=re.I); d = 'L' if re.match(r'long', v0, re.I) else 'S' if re.match(r'short', v0, re.I) else 'N'
             c = 'L' if x['call'] in ('LONG', 'STRONG BUY') else 'S' if x['call'] in ('SHORT', 'STRONG SHORT') else 'N'
             if d != c: P['call_mismatch'].append(x['t'] + ':' + x['call'])
     print('companies', len(R), 'hand-written', sum(x['hand'] for x in R), 'page errors', errs[:3])

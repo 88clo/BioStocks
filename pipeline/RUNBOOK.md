@@ -4,6 +4,9 @@
 
 Target cadence: one full refresh mid-month (memo edition), plus a short close-out when quarterly filings land.
 
+## Daily (or before any meeting): what moved since our review
+- `python3 scripts/moves_since.py && python3 scripts/build.py` → data/moves.json; the Brief shows every name that beat or lagged XBI by 15%+ (or had a 15% day beyond XBI) since the snapshot. Research each one (news, 8-K) and patch outcomes before trusting its thesis. Built Nov 25 after KYMR's Nov 23 readout went unnoticed for two days.
+
 ## 0. Freeze first
 `python3 scripts/snapshot_calls.py ledger/<date>_before-refresh.json` — writes every name's page-computed call, upside, top/short-pick flags and a sha256. Never edit a ledger after writing it; the track record depends on it.
 
@@ -63,6 +66,11 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - CEO notes: 0-3, company-specific. Hand-written ceo_notes replace the rule-based ones. Rules no longer append the generic "Investors are asking…" line, compare only programs in the same indication (and only unapproved ones), and no longer suggest unrelated "under-served fields".
 - Audit after every batch: `python3 /tmp/t/thaudit.py [TICKERS]` (copy in tests/thaudit.py) counts stale caps, missing misses/catalysts/risks, generic CEO lines and odd phrasing, and prints named companies in full. Batch 1 (40 priority names) done Nov 25; ~360 to go, next batch = remaining STRONG BUY / STRONG SHORT / SHORT, then LONG.
 - Call reasons that contradicted their calls (COLL, MLYS, HRMY, CELC, NTLA, ZVRA, XNCR, ARVN, SLS, MLTX, RZLT) were rewritten through th_view; keep call and reason in step when either changes.
+
+## Net cash and model inputs (Nov 25 2026)
+- Equity value now uses net cash (cash − debt; template `netCash()`), in Ours, rNPV/MC, implied odds and the variant text. 20 calls changed (e.g. COLL S.BUY→LONG, CELC S.BUY→LONG, ADCT/STRO/BHC worth ~nothing to equity). Set `debt_excl: true` when the debt belongs to a business the row does not value (BHC).
+- COLL peak $3.2B→$1.05B and ACOG $0.96B→$0.15B (pipeline/patches/2026-11-25_valuation_coll.py).
+- Batch 2 of the theses (102 remaining STRONG BUY / STRONG SHORT / SHORT names) is in data/theses.json; remaining ~260 LONG / WATCH / HOLD / AVOID names use the computed lines, whose catalyst line now names the real test (the next readout or FDA date within 18 months) and what flips us.
 
 ## 13D/13G holders (Nov 25 2026)
 - `python3 scripts/fetch_13dg.py` (~25 min; cached 20 days in cache/13dg): for each company, its Schedule 13D/13G filings from the last 30 months via data.sec.gov submissions; one reporting entity per filing (the fund, not its co-filing principals); latest per holder; drops holders whose latest filing is < 5%. → data/13dg.json.

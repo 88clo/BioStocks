@@ -1,5 +1,5 @@
 {
- "_about": "Hand-written theses, merged into each company at page load. Format (approved Nov 25 2026): th_view = call + one fact with a number; th_miss = what the market misses (implied vs our odds/sales + evidence-based reason); th_cat = dated catalyst + the result that would change our mind. ceo_notes: 0-3 company-specific notes, cat in money/message/moves/miles. Tokens rendered live: {cap} {cash} {px} {imp} {ours} {mktsales} {oursales}. Batch 1 = 40 priority longs/shorts, written Nov 25 2026 from the record (efficacy, catalysts, cash, call reasons).",
+ "_about": "Hand-written theses, merged into each company at page load. Format (approved Nov 25 2026): th_view = call + one fact with a number; th_miss = what the market misses (implied vs our odds/sales + evidence-based reason); th_cat = dated catalyst + the result that would change our mind. ceo_notes: 0-3 company-specific notes, cat in money/message/moves/miles. Tokens rendered live: {cap} {cash} {px} {imp} {ours} {mktsales} {oursales}. Batch 1 = 40 priority longs/shorts, written Nov 25 2026 from the record (efficacy, catalysts, cash, call reasons). Batch 2 = 102 remaining STRONG BUY / STRONG SHORT / SHORT names (view + catalyst; misses computed unless written), Nov 25 2026.",
  "theses": {
   "COLL": {
    "th_view": "Long: a cash-generative specialty pharma on ~$865M of 2026 sales (FY guide $825-855M reaffirmed), with JORNAY PM growing 24% while the pain portfolio shrinks 18%.",
@@ -458,6 +458,420 @@
      "t": "With ~5 quarters of cash, raise immediately after a positive upLIFT; it is the last clear catalyst before a long gap."
     }
    ]
+  },
+  "ROIV": {
+   "th_view": "Short on valuation: the company is worth {cap} against {cash} of cash, with LISRAYA newly launched in dermatomyositis and Immunovant's Graves' and MG readouts not until 2027.",
+   "th_cat": "IMVT-1402 Graves' and MG registrational readouts (2027). We would cover if IMVT-1402 shows euthyroid rates near batoclimab's ~76% with a clean lipid and albumin profile."
+  },
+  "SMMT": {
+   "th_view": "Short: FDA rejected ivonescimab in EGFR-mutant NSCLC (Nov 13 CRL) because HARMONi missed overall survival (HR 0.79, not significant), yet the company is still worth {cap}.",
+   "th_cat": "HARMONi-3 first-line NSCLC final PFS (squamous cohort) and OS data. We would cover if HARMONi-3 shows a significant survival benefit in a Western-weighted population."
+  },
+  "TGTX": {
+   "th_view": "Short: BRIUMVI guidance is ~$925M of revenue, but at {cap} the market pays for roughly three times our modelled sales in a crowded anti-CD20 MS market.",
+   "th_cat": "Subcutaneous BRIUMVI Ph3 topline (around YE2026 or early 2027). We would cover if SC data show quarterly dosing with ocrelizumab-class relapse control and guidance rises again."
+  },
+  "ERAS": {
+   "th_view": "Short on valuation: ERAS-0015 has unconfirmed Ph1 responses (62% in 37 NSCLC patients) but the company is worth {cap} while RevMed already has randomized Ph3 survival data.",
+   "th_cat": "ERAS-0015 updates and ERAS-4001 monotherapy data (2H26). We would cover if confirmed responses hold above ~50% with durability that matches daraxonrasib."
+  },
+  "PBLS": {
+   "th_view": "Short on valuation: zolucatetide's 72% response rate in desmoids is real, but it comes from 18 patients in a small indication and the company is worth {cap}.",
+   "th_cat": "Mature desmoid data and FDA Ph3 alignment (Q4 2026). We would cover if activity in a larger Wnt-driven tumor (colorectal, liver) appears."
+  },
+  "KRSA": {
+   "th_view": "Strong short: a preclinical Alzheimer's antibody with no human data, valued at {cap}.",
+   "th_cat": "Ph1 healthy-volunteer data (mid-2027). We would cover if brain exposure is several times lecanemab's with no ARIA signal."
+  },
+  "DMRA": {
+   "th_view": "Short: DMR-001 has no human data until mid-2027, yet the company is worth {cap}.",
+   "th_cat": "CLARITY-101 first-in-human data (mid-2027). We would cover if early patients show platelet control plus falling mutant-CALR allele burden."
+  },
+  "COAG": {
+   "th_view": "Short: HMB-002 has one interim signal (>50% fewer treated bleeds) in von Willebrand disease, and the company is worth {cap}.",
+   "th_cat": "HMB-002 Ph1/2 bleed data and SOLARA Ph3 run-in (Q4 2026). We would cover if annualized bleed rates fall to IV-concentrate levels (~2-4) with monthly SC dosing."
+  },
+  "TRAX": {
+   "th_view": "Strong short: one positive gluten-challenge cohort (villus:crypt +0.49 vs placebo) supports a {cap} valuation, and a same-mechanism competitor is about a year ahead.",
+   "th_cat": "Cohort 2 mucosal-healing topline (Q1 2027). We would cover if Cohort 2 confirms histologic protection with a larger effect."
+  },
+  "NBTX": {
+   "th_view": "Short: the Ph3 asset has only Ph1 survival data (23 vs ~12 months, historical), and J&J economics leave a small peak (~$150M to Nanobiotix) against a {cap} cap.",
+   "th_cat": "NANORAY-312 Ph3 progress after the protocol amendment (2027). We would cover if J&J expands NBTXR3 into lung cancer with positive CONVERGE data."
+  },
+  "JBIO": {
+   "th_view": "Short: JADE101 has only healthy-volunteer IgA data, while atacicept was approved in IgA nephropathy in July; the company is worth {cap}.",
+   "th_cat": "EVERGREEN Ph3 start (Q4 2026) and first patient data (2027). We would cover if patient proteinuria cuts beat sibeprenlimab's ~50% with dosing every 12 weeks."
+  },
+  "AVLN": {
+   "th_view": "Short: inhaled pirfenidone has no randomized data until 2H 2027 and must beat cheap generic oral pirfenidone; the company is worth {cap}.",
+   "th_cat": "MIST Ph2b 52-week FVC topline (2H 2027). We would cover if FVC decline is clearly smaller than with oral pirfenidone, with fewer GI side effects."
+  },
+  "DRTS": {
+   "th_view": "Strong short: Alpha DaRT has no pivotal efficacy data yet and the company is worth {cap} against a small skin-cancer niche.",
+   "th_cat": "ReSTART cSCC pivotal topline (late 2026 to early 2027). We would cover on a local response rate well above cemiplimab's ~47% with durable control."
+  },
+  "AKTS": {
+   "th_view": "Short: AKY-1189 has no efficacy data until 1Q27, and the company trades well above its {cash} of cash.",
+   "th_cat": "AKY-1189 preliminary Ph1b data (Q1 2027). We would cover if responses approach enfortumab vedotin's ~52% with manageable kidney and marrow toxicity."
+  },
+  "STTK": {
+   "th_view": "Strong short: SL-325 has no efficacy data until 2028, about two years behind Merck's tulisokibart in the same TL1A pathway.",
+   "th_cat": "RECEPTIVE-CD1 Ph2b data (1H 2028). We would cover if a partner pays for SL-325 before data, which would validate the DR3 approach."
+  },
+  "BBTX": {
+   "th_view": "Strong short: a fresh IPO valued at {cap} on small IV data (week-6 EASI-75 64%) in a field Dupixent dominates.",
+   "th_cat": "12-week SC proof-of-concept in AD (1H 2027). We would cover if SC dosing every quarter keeps EASI-75 above 50% without conjunctivitis."
+  },
+  "ATTO": {
+   "th_view": "Short: ATTO-1310's Ph1b itch data are encouraging (PP-NRS4 82% vs 22%), but the company is worth {cap} in a field led by nemolizumab and dupilumab.",
+   "th_cat": "Full Ph1 data (YE2026); Ph2 starts (1H 2027). We would cover if Ph2 shows dosing every 3-6 months with itch relief beyond nemolizumab."
+  },
+  "CBIO": {
+   "th_view": "Short: CR-001 is a PD-1×VEGF bispecific with no human data, chasing ivonescimab, which itself just received a CRL.",
+   "th_cat": "ASCEND Ph1/2 proof-of-concept data (Q1 2027). We would cover if early responses are competitive with ivonescimab's and a partner signs."
+  },
+  "DSGN": {
+   "th_view": "Short: DT-216P2's 4-week frataxin rise (+65% mRNA) and small mFARS change come from ~20 patients, which does not support a {cap} value.",
+   "th_cat": "12-week RESTORE-FA durability data and registrational-path update (Q4 2026). We would cover if frataxin gains hold and mFARS improves versus natural history."
+  },
+  "CGEM": {
+   "th_view": "Short: CLN-978's lupus and RA signals are early (71% hSLEDAI response in 14 SLE patients) and the company is worth well above its {cash} of cash.",
+   "th_cat": "CLN-978 multi-dose data (Dec 2026 webcast); zipalertinib PDUFA Feb 27 2027. We would cover on approval of zipalertinib plus durable drug-free remissions with CLN-978."
+  },
+  "ACRS": {
+   "th_view": "Short: bosakitug missed its Ph2 in AD on Nov 16, leaving value on ATI-052, which has only Ph1b data.",
+   "th_cat": "ATI-052 Ph2b start in eosinophilic esophagitis (Q1 2027). We would cover if a partner funds ATI-052 or Ph2b data match dupilumab."
+  },
+  "ANL": {
+   "th_view": "Short: AN9025 has no clinical data, ex-China rights only, and a {cap} cap against a pan-RAS field led by RevMed.",
+   "th_cat": "Initial Ph1a data (1H 2027). We would cover if early responses in pancreatic cancer match daraxonrasib's."
+  },
+  "OVID": {
+   "th_view": "Short: OV329 has target-engagement data in healthy volunteers but no seizure efficacy, and the company is worth {cap}.",
+   "th_cat": "Photosensitivity study topline (Q1 2027). We would cover if OV329 cuts photoparoxysmal responses in most patients without vision effects."
+  },
+  "EPRX": {
+   "th_view": "Short: EP-104GI's open-label EoE data (66.7% remission at 12 months in cohort 5) still lack a placebo comparison, and that readout slipped to Q4 2026.",
+   "th_cat": "RESOLVE Ph2b placebo-controlled topline (Q4 2026). We would cover if histologic remission beats placebo by 40 points or more after one injection."
+  },
+  "DMAC": {
+   "th_view": "Strong short: DM199 has no efficacy data in stroke, a field with almost no Ph3 successes, and only {cash} of cash.",
+   "th_cat": "ReMEDy2 interim analysis (Q1 2027). We would cover if the DSMB recommends continuing without a sample-size increase."
+  },
+  "PHAT": {
+   "th_view": "Long: VOQUEZNA is approved in erosive and non-erosive GERD (92.9% healing vs 84.6% for lansoprazole) with $339M of annualized sales, yet the company is worth {cap}.",
+   "th_cat": "EoE Ph2 topline and FDA exclusivity decision (Q4 2026). We would cut if exclusivity is lost early or quarterly sales growth stalls."
+  },
+  "CADL": {
+   "th_view": "Long: CAN-2409 cut prostate cancer recurrence or death by 30% (HR 0.70) in a 745-patient randomized Ph3, and the company is worth {cap}.",
+   "th_cat": "BLA submission (mid-2027, after FDA dialogue on the assay). We would cut if FDA requires a new trial or the BLA slips past 2027."
+  },
+  "ATYR": {
+   "th_view": "Strong short: efzofitimod missed its Ph3 primary endpoint (p=0.33), and a new Ph3 needs funding the company does not have ({cash} of cash).",
+   "th_cat": "Global Ph3 start or a funding partner (2027). We would cover if a partner funds the FVC-primary Ph3."
+  },
+  "AVTX": {
+   "th_view": "Long: abdakibart met its HS Ph2 primary endpoint (HiSCR75 ~42% vs 25.6% placebo) and the company trades below its {cash} of cash.",
+   "th_cat": "FDA feedback on the Ph3 plan (YE2026). We would cut if FDA asks for a larger program than the cash can fund."
+  },
+  "ALEC": {
+   "th_view": "Short: after two failed programs, Alector's value rests on a preclinical brain-carrier platform and AL137, whose IND slipped to Q1 2027.",
+   "th_cat": "AL137 IND and first dosing (by Apr 2027). We would cover if a partner pays meaningfully for the brain-carrier platform."
+  },
+  "CAMP": {
+   "th_view": "Short: CMP-002 has only mouse seizure data for SYNGAP1 and the company is worth well above its {cash} of cash.",
+   "th_cat": "ASCEND Ph1/2 first patient dosed (YE2026). We would cover on early human biomarker evidence of SYNGAP1 protein increase."
+  },
+  "CCCC": {
+   "th_view": "Long: cemsidomide showed a 53% response rate at the Ph2 dose in heavily pretreated myeloma, and the company trades near its {cash} of cash.",
+   "th_cat": "Cemsidomide and elranatamab combination update. We would cut if responses fall below ~35% in larger cohorts or neutropenia limits dosing."
+  },
+  "TRXB": {
+   "th_view": "Short: TRB-061 has only healthy-volunteer data in AD, a market with many approved biologics and orals.",
+   "th_cat": "Ph1b AD topline (mid-2027). We would cover if patients show EASI improvement with durable Treg expansion."
+  },
+  "PROK": {
+   "th_view": "Long: rilparencel slowed eGFR decline by 4.6 mL/min/yr (78%) in Ph2, and the Ph3 accelerated-approval cohort uses an FDA-agreed surrogate endpoint.",
+   "th_cat": "PROACT-1 Ph3 eGFR-slope topline (1H 2027). We would cut if the eGFR-slope benefit falls below ~2 mL/min/yr."
+  },
+  "IAM": {
+   "th_view": "Short: IAM1363's 36% response rate comes from a Ph1 basket while zongertinib (approved, ~70% ORR) and T-DXd set the HER2 bar.",
+   "th_cat": "Registrational breast cancer study start (2027). We would cover if brain-metastasis responses (41% so far) hold in a larger cohort, a niche the competitors serve poorly."
+  },
+  "SLBT": {
+   "th_view": "Strong short: the cell-therapy pipeline is preclinical with no IND, and cash is {cash}.",
+   "th_cat": "CD19 Armed-T IND (Q1 2027). We would cover on an IND clearance plus financing."
+  },
+  "QTTB": {
+   "th_view": "Long: bempikibart cut SALT scores 35% in open-label alopecia data with responses holding off-drug, and the company trades near its {cash} of cash.",
+   "th_cat": "Week-52 follow-up and FDA discussions (Q4 2026). We would cut if off-drug responses fade or FDA requires two new Ph3s."
+  },
+  "WHWK": {
+   "th_view": "Short: HWK-007 has no human data, and an earlier PTK7 ADC (cofetuzumab pelidotin) was discontinued.",
+   "th_cat": "HWK-007 Ph1 data (1H 2027). We would cover if early responses appear in NSCLC or ovarian cancer at tolerable doses."
+  },
+  "GLSI": {
+   "th_view": "Short: the HER2 vaccine's case rests on a small Ph2 (100% vs 89.4% 5-year invasion-free survival), cash is {cash}, and the company has a Nasdaq notice.",
+   "th_cat": "FLAMINGO-01 first interim at 28 events (undated). We would cover on a clean interim with funding secured."
+  },
+  "ADCT": {
+   "th_view": "Strong short: FDA raised concerns about more deaths on drug in LOTIS-5 with no survival gain, and the company carries $420M of debt against a {cap} cap.",
+   "th_cat": "LOTIS-5 full data and LOTIS-7 update at ASH (Dec 2026). We would cover if LOTIS-7 with glofitamab supports a new label path."
+  },
+  "ALT": {
+   "th_view": "Long: pemvidutide has Breakthrough designation and the company trades below its {cash} of cash, though the 24-week fibrosis biopsy endpoint missed.",
+   "th_cat": "FDA end-of-Ph2 meeting for alcohol use disorder (Dec 2026). We would cut if FDA does not accept non-invasive fibrosis measures for Ph3."
+  },
+  "KYTX": {
+   "th_view": "Long: miv-cel is the first CAR-T with a significant registrational result in stiff-person syndrome (49% median walking-speed gain, 92% off immunotherapy at one year).",
+   "th_cat": "Rolling BLA completion (Q4 2026). We would cut if the BLA slips or FDA requests a randomized trial."
+  },
+  "AGMB": {
+   "th_view": "Long: ontunisertib targets strictures in Crohn's disease, which have no approved drug, and the company trades near its {cash} of cash.",
+   "th_cat": "NOV-ERA Ph2b start and STENOVA extension data (YE2026). We would cut if gut-restricted exposure fails to show fibrosis biomarker change."
+  },
+  "VCRE": {
+   "th_view": "Long: buloxibutid improved FVC by 23 mL vs a 115 mL decline in external controls over 36 weeks in IPF, a rare improvement signal.",
+   "th_cat": "ASPIRE Ph2b futility analysis (Q4 2026); 52-week topline (mid-2027). We would cut if futility triggers or placebo-controlled FVC benefit is under 50 mL."
+  },
+  "OCGN": {
+   "th_view": "Long: OCU400 is a gene-agnostic retinitis pigmentosa therapy with completed Ph3 enrollment, against a {cap} cap.",
+   "th_cat": "liMeliGhT Ph3 topline (Q1 2027). We would cut if the low-luminance visual acuity gain misses, which would end the program."
+  },
+  "EBS": {
+   "th_view": "Long on valuation, low conviction: Q3 revenue fell 52% as OTC NARCAN sales dropped, but at {cap} plus net debt the company trades at a low multiple of guided EBITDA.",
+   "th_cat": "Q4 results and 2027 guidance; interim CFO from Jan 1 2027. We would exit if NARCAN declines continue and EBITDA guidance is cut."
+  },
+  "TTRX": {
+   "th_view": "Strong short: GX-03's topical AD trial was redesigned with four endpoints and a broader population, raising the bar, and cash is {cash}.",
+   "th_cat": "Stage-2 topline (Q4 2026 to Q1 2027). We would cover on a clean win on vIGA and EASI-75 against vehicle."
+  },
+  "PLX": {
+   "th_view": "Short: the gout optionality (PRX-115, Ph2 in 2027) is priced in, while value today rests on Elfabrio royalties.",
+   "th_cat": "PRX-115 Ph2 data (2027). We would cover if PRX-115 shows urate control with less immunogenicity than pegloticase."
+  },
+  "AUTL": {
+   "th_view": "Long: AUCATZYL is approved in adult B-ALL with ~0% severe CRS, and early lupus data (83% DORIS remission in 6 patients) add an autoimmune option.",
+   "th_cat": "AUCATZYL launch update and ALARIC data at ASH (Dec 2026). We would cut if launch sales stall, given $360M of debt."
+  },
+  "ANTX": {
+   "th_view": "Short: epetraborole's polycythemia vera pivot has no human data and lags rusfertide (77% responders).",
+   "th_cat": "Ph2 PV first data (YE2026). We would cover if oral dosing controls hematocrit without phlebotomy in most patients."
+  },
+  "CUVL": {
+   "th_view": "Long: SCENESSE is the only approved EPP therapy and profitable, and cash of {cash} covers most of the {cap} cap.",
+   "th_cat": "CUV105 vitiligo Ph3 topline (Dec 2026). We would cut on a vitiligo miss only if core EPP sales also slow."
+  },
+  "DTIL": {
+   "th_view": "Short: PBGENE-HBV has paired-biopsy evidence of cccDNA editing in 16 patients, but durable HBsAg loss is unproven.",
+   "th_cat": "Ph2 dose selection and PBGENE-DMD safety data (YE2026). We would cover on sustained HBsAg loss off therapy in several patients."
+  },
+  "PYXS": {
+   "th_view": "Strong short: MICVO's monotherapy response rate fell from 46% to 36% as the head and neck cohort grew to 33, and cash is {cash}.",
+   "th_cat": "First-line MICVO plus pembrolizumab data (Dec 2026). We would cover if the combination holds ~70% responses in 20+ patients."
+  },
+  "RNAC": {
+   "th_view": "Long: Descartes-08 is an outpatient mRNA CAR-T in myasthenia gravis with a 6.6-point MG-ADL reduction at 12 months after retreatment and an SPA-locked Ph3.",
+   "th_cat": "AURORA Ph3 topline (Q1 2027). We would cut if the placebo-adjusted MG-ADL benefit is under 2 points."
+  },
+  "ACOG": {
+   "th_view": "Long, low conviction: ZUNVEYL sales grew 30% to ~$7.8M in Q3, but this is a better-tolerated galantamine against generic donepezil, so the upside is modest.",
+   "th_cat": "CONVERGE real-world data (Dec 2026) and quarterly sales. We would exit if quarterly growth falls below 15%."
+  },
+  "BIOA": {
+   "th_view": "Long: BGE-102, an oral NLRP3 inhibitor, cut hsCRP ≥85% in Ph1, and the company trades below its {cash} of cash.",
+   "th_cat": "QUELL-CV Ph2 12-week hsCRP topline (Q4 2026). We would cut if the hsCRP reduction falls below ~60% in patients."
+  },
+  "LCTX": {
+   "th_view": "Strong short: OpRegen's vision gains (+6.2 letters) come from 5 uncontrolled patients, and cash is {cash}.",
+   "th_cat": "OpRegen Ph2 GA data from Roche. We would cover if Roche expands the program on controlled data."
+  },
+  "ARTV": {
+   "th_view": "Long as a liquidation: the lead was discontinued Oct 27 and a strategic review includes liquidation, but cash of {cash} exceeds the {cap} cap.",
+   "th_cat": "Strategic review outcome. We would exit if management spends the cash on a new pipeline rather than returning it.",
+   "th_miss": "With the lead discontinued, value is cash less wind-down costs; the {cap} cap is below {cash} of cash."
+  },
+  "VTVT": {
+   "th_view": "Long: cadisegliatin, an oral adjunct for type 1 diabetes with Breakthrough designation, halved hypoglycemic events in Ph2 (p=0.0017).",
+   "th_cat": "CATT1 Ph3 topline (mid-2027). We would cut if level 2/3 hypoglycemia is not reduced versus placebo.",
+   "th_miss": "At {cap} the market implies ~{imp} odds; we use {ours} because Ph2 halved hypoglycemia and the mechanism is liver-selective."
+  },
+  "ANIK": {
+   "th_view": "Long: Cingal beat triamcinolone in a Ph3 for knee osteoarthritis pain, while the core HA business grows 6-10%.",
+   "th_cat": "Cingal US regulatory path (NDA by end-2027). We would cut if FDA requires another trial for Cingal."
+  },
+  "CABA": {
+   "th_view": "Long: rese-cel showed 83% drug-free responses in myositis in early data, and the company trades below its {cash} of cash.",
+   "th_cat": "RESET-Myositis registrational topline (2H 2027). We would cut if drug-free response durability falls below 50%."
+  },
+  "NERV": {
+   "th_view": "Long: roluperidone targets negative symptoms of schizophrenia, which have no approved drug, against a {cap} cap.",
+   "th_cat": "MIN-101C19 confirmatory Ph3 Part A (2H 2027). We would cut if the confirmatory trial misses PANSS negative-symptom separation."
+  },
+  "ABEO": {
+   "th_view": "Long: ZEVASKYN is approved for RDEB wounds (81% vs 16% healing) and its launch is ahead of plan, against a {cap} cap.",
+   "th_cat": "Q4 sales and treatment-center growth. We would cut if quarterly revenue stalls."
+  },
+  "VRXA": {
+   "th_view": "Strong short: VXA-102 is preclinical (IND ~2028) and cash is {cash}.",
+   "th_cat": "Partnering of VXA-901 (2027). We would cover on a funded partnership."
+  },
+  "STRO": {
+   "th_view": "Strong short: STRO-004 has no disclosed response rates and net debt (cash $142M, debt $249M) leaves equity with little backing.",
+   "th_cat": "STRIVE-01 data update (1H 2027). We would cover on disclosed response rates above ~30% in a defined tumor type."
+  },
+  "ZNTL": {
+   "th_view": "Long: azenosertib doubled overall survival in Cyclin E1+ ovarian cancer (15.9 vs 7.5 months, cross-cohort), and the company trades below its {cash} of cash.",
+   "th_cat": "DENALI Part 2 registration-intent topline (1H 2027). We would cut if response rate falls below ~30%, given relacorilant's approval."
+  },
+  "GUTS": {
+   "th_view": "Long: Revita met its Ph3 co-primary (patients kept ~80% of GLP-1 weight loss vs 67% with sham), against a {cap} cap.",
+   "th_cat": "De Novo submission (late Q4 2026). We would cut if the submission slips, given runway into Q2 2027."
+  },
+  "PYPD": {
+   "th_view": "Long into the PDUFA: D-PLEX100 cut surgical-site infections 60% (p=0.0013) in Ph3.",
+   "th_cat": "FDA decision (Nov 28 2026). We would cut on a CRL or if no US commercial partner is signed."
+  },
+  "CMPX": {
+   "th_view": "Long: tovecimig beat paclitaxel in second-line biliary cancer (PFS HR 0.44) and the company trades below its {cash} of cash, though FDA wants an OS trial.",
+   "th_cat": "FDA engagement on the BLA path. We would cut if Compass commits to a costly OS trial without a partner."
+  },
+  "HUMA": {
+   "th_view": "Long: ATEV beat fistula on catheter-free days (220 vs 129) in women on dialysis, and a dialysis sBLA would open a much larger market than trauma.",
+   "th_cat": "Dialysis-access sBLA filing (late 2026). We would cut if trauma sales stay near today's ~$4M/yr after the filing."
+  },
+  "ELOX": {
+   "th_view": "Short: exaluren has biopsy data from 3 Alport patients, and the company's cash is {cash}.",
+   "th_cat": "EXACT Ph2b 16-week topline (mid-2027). We would cover on significant slit-density improvement versus placebo."
+  },
+  "EQ": {
+   "th_view": "Short: EQ504 is preclinical and the company's value is not backed by data.",
+   "th_cat": "EQ504 Ph1 proof-of-mechanism data (mid-2027). We would cover on clear IL-22 target engagement."
+  },
+  "ARMP": {
+   "th_view": "Strong short: Armata carries $222M of debt against {cash} of cash, so equity has little backing even if the phage Ph3 succeeds.",
+   "th_cat": "Ph3 start (late 2026). We would cover if Innoviva converts debt to equity and funds the Ph3."
+  },
+  "SPRB": {
+   "th_view": "Long: TA-ERT showed six years of CSF heparan-sulfate normalization and stable cognition in Sanfilippo B, and the BLA delay is manufacturing, not data.",
+   "th_cat": "BLA submission (Dec 2026). We would cut if the BLA slips again."
+  },
+  "MENS": {
+   "th_view": "Strong short: the US pivotal trial of MCS-2 failed, the NDA is guided to 2029-2030, and cash is {cash}.",
+   "th_cat": "Strategy update. We would cover only on new approvable data."
+  },
+  "GNLX": {
+   "th_view": "Short: Olvi-Vec's Ph3 in platinum-resistant ovarian cancer is a binary readout with {cash} of cash.",
+   "th_cat": "OnPrime Ph3 topline (YE2026). We would cover if PFS clearly beats chemotherapy plus bevacizumab (~3.8 months)."
+  },
+  "VANI": {
+   "th_view": "Strong short: SLIM-1 showed weight loss equal to low-dose Wegovy (0.79% vs 0.82% at 4 weeks) in 10 patients per arm, and cash is {cash}.",
+   "th_cat": "SLIM-1 topline (Nov 2026) and Novo evaluation. We would cover if Novo exercises its option."
+  },
+  "LENZ": {
+   "th_view": "Long as cash value: VIZZ beat VUITY on near-vision response but sold only $2.6M in Q3; the company trades below its {cash} of cash.",
+   "th_cat": "Interim CEO from Dec 1 and reorganization. We would exit if cash burn continues without a sales inflection."
+  },
+  "DERM": {
+   "th_view": "Long: Q3 revenue was $19.0M (+8%) with Emrosi beating Oracea head to head, against a {cap} cap.",
+   "th_cat": "Quarterly Emrosi growth. We would cut if Emrosi growth stalls."
+  },
+  "UPB": {
+   "th_view": "Long: verekitug cut asthma exacerbations 56% vs placebo (p<0.001) with dosing every 12 weeks, and the company trades well below its {cash} of cash.",
+   "th_cat": "End-of-Ph2 meetings and Ph3 starts (Q1 2027). We would cut if Ph3 cannot be funded without heavy dilution."
+  },
+  "RTSN": {
+   "th_view": "Strong short: RTN-001 has a 40-patient crossover study with undisclosed blood-pressure magnitudes and {cash} of cash.",
+   "th_cat": "Ph2b dose-ranging data (1H 2027). We would cover if placebo-adjusted SBP falls 8 mmHg or more."
+  },
+  "NTHI": {
+   "th_view": "Strong short: NEO100 has a 24-patient single-arm glioma study and {cash} of cash.",
+   "th_cat": "FDA end-of-phase meetings (Nov 2026). We would cover if FDA agrees to an accelerated-approval path on the current data."
+  },
+  "ANIX": {
+   "th_view": "Strong short: lira-cel has no confirmed RECIST responses after 14 patients over 4 years, and cash is {cash}.",
+   "th_cat": "Further lira-cel dose cohorts. We would cover on confirmed responses."
+  },
+  "HURA": {
+   "th_view": "Strong short: IFx-2.0 has no efficacy data and cash is {cash}.",
+   "th_cat": "IFx-2.0 Ph1b/2a MCC data. We would cover if responses clearly exceed pembrolizumab's 56%."
+  },
+  "IPHA": {
+   "th_view": "Strong short: lacutamab roughly matches mogamulizumab in Sézary syndrome (ORR 43% vs 37%), a small market, and cash is {cash}.",
+   "th_cat": "AstraZeneca's PACIFIC-9 readout (monalizumab). We would cover on a positive PACIFIC-9."
+  },
+  "KZIA": {
+   "th_view": "Short: paxalisib missed in glioblastoma, and the TNBC signal comes from 6 patients.",
+   "th_cat": "TNBC Ph1b expansion (early 2027). We would cover if responses hold in the expanded cohort."
+  },
+  "RANI": {
+   "th_view": "Short: the RaniPill has bioavailability data but no weight-loss data, and cash is {cash}.",
+   "th_cat": "RT-114 Ph1b repeat-dose data (2027). We would cover on weight loss near injected GLP-1s."
+  },
+  "PLYX": {
+   "th_view": "Strong short: PLX-200 has no clinical efficacy data and cash is {cash}.",
+   "th_cat": "SOTERIA first patient dosed (Q4 2026). We would cover on funded progress to a readout."
+  },
+  "PMVP": {
+   "th_view": "Long: rezatapopt achieved a 46% response rate in TP53 Y220C ovarian cancer (n=76) with an NDA due Q1 2027, and the company trades below its {cash} of cash.",
+   "th_cat": "NDA submission (Q1 2027). We would cut if FDA requires a randomized trial before approval."
+  },
+  "CING": {
+   "th_view": "Long: CTx-1301 met its Ph3 endpoints and its CRL was manufacturing only, against a {cap} cap.",
+   "th_cat": "NDA resubmission (Dec 2026 to Jan 2027). We would cut if the resubmission slips or cash runs out first ({cash}).",
+   "th_miss": "At {cap} the market implies ~{imp} odds; we use {ours} because the CRL cited manufacturing only, with efficacy endpoints met."
+  },
+  "ATRA": {
+   "th_view": "Short: tab-cel has a PDUFA on Mar 31 2027, but the company has {cash} of cash and $41M of debt, so value may go to new money.",
+   "th_cat": "PDUFA Mar 31 2027. We would cover on approval with non-dilutive funding."
+  },
+  "MNOV": {
+   "th_view": "Short: ibudilast in ALS is a non-specific mechanism with a binary Ph2b topline.",
+   "th_cat": "COMBAT-ALS topline (YE2026). We would cover on a 25%+ slowing of ALSFRS-R decline."
+  },
+  "FBIO": {
+   "th_view": "Long: the company trades below its net cash after the $205M PRV sale, with ZYCUBO approved in Menkes disease.",
+   "th_cat": "Holding-company actions. We would exit if cash is spent on new subsidiaries."
+  },
+  "NTRB": {
+   "th_view": "Strong short: AVERSA has no human abuse-potential data, and cash is {cash}.",
+   "th_cat": "HAP study start (2027). We would cover on funded HAP progress."
+  },
+  "VRCA": {
+   "th_view": "Long: VP-315 cleared basal cell carcinoma completely in some patients (3 of 14 histologic clearance), and YCANTH supports revenue.",
+   "th_cat": "VP-315 Ph3 design and funding decision. We would cut if funding requires heavy dilution."
+  },
+  "CGTX": {
+   "th_view": "Short: zervimesine's DLB signal was exploratory (p=0.0545) and the Ph3 depends on funding.",
+   "th_cat": "Ph3 start (mid-2027). We would cover on a funding partner for Ph3."
+  },
+  "CNXU": {
+   "th_view": "Strong short: CXU is a device with no 510(k) filed and cash of {cash}.",
+   "th_cat": "510(k) submission (Q1 2027). We would cover on clearance."
+  },
+  "LGVN": {
+   "th_view": "Strong short: ELPIS II missed its primary endpoint and FDA rejected the endpoint; cash is {cash}.",
+   "th_cat": "FDA meeting and strategic review. We would cover on a sale or funded path."
+  },
+  "MIST": {
+   "th_view": "Long: CARDAMYST is approved for PSVT (64% vs 31% conversion) and cash of {cash} roughly matches debt, against a {cap} cap.",
+   "th_cat": "Launch metrics and cost cuts (Q1 2027). We would cut if scripts stay flat after formulary wins."
+  },
+  "ACRV": {
+   "th_view": "Long: ACR-368 shows 39% responses in biomarker-positive endometrial cancer and the company trades below its {cash} of cash.",
+   "th_cat": "Arms 3+4 interim and Arm 1 update (Q4 2026). We would cut if responses in the serous arms fall below ~30%.",
+   "th_miss": "At {cap}, below cash, the market gives ACR-368 no value; we use {ours} odds because biomarker-selected responses (39%) are about twice the ~15-20% standard of care."
+  },
+  "HRTX": {
+   "th_view": "Long as a deal spread: Heron agreed to sell its assets to CorMedix (Nov 9), with value to holders depending on debt payoff and costs.",
+   "th_cat": "Stockholder vote and close (Q1 2027). We would exit if the deal is cut or HSR delays push the close past mid-2027.",
+   "th_miss": "Value depends on the CorMedix price net of $126M of debt and deal costs."
+  },
+  "SPRO": {
+   "th_view": "Long as cash and royalties: UTEBZI is approved and partnered with GSK (up to $351M of milestones), and the company trades near its net cash.",
+   "th_cat": "UTEBZI launch milestones and SP001 Ph2 start (Q2 2027). We would cut if launch milestones slip.",
+   "th_miss": "At {cap}, the market prices Spero at about net cash and ignores the 35% residual interest in UTEBZI milestones and royalties from GSK."
   }
  }
 }
