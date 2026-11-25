@@ -39,11 +39,20 @@ for fund, cik in CIK.items():
     for f in d.glob("*.json"):
         x = json.load(open(f)); F.setdefault(fund, {})[qlab(x["period"])] = x["rows"]
 
+BIGC = json.load(open(C / "big_ciks.json")) if (C / "big_ciks.json").exists() else {}
+BIG = {}
+for fund, cik in BIGC.items():
+    d = C / str(cik)
+    if not d.exists(): continue
+    fs = sorted(d.glob("*.json"))
+    if fs: x = json.load(open(fs[-1])); BIG[fund] = (qlab(x["period"]), x["rows"])
 # ---- CUSIP -> ticker
 cmap, cname = {}, {}
 for fund, Q in F.items():
     for q, rows in Q.items():
         for nm, cu, sh, v in rows: cname.setdefault(cu, nm)
+for fund, (q, rows) in BIG.items():
+    for nm, cu, sh, v in rows: cname.setdefault(cu, nm)
 for cu, nm in cname.items():
     k = nn(nm)
     if k in names: cmap[cu] = names[k]; continue
@@ -129,15 +138,69 @@ for fund, Q in F.items():
             if pq and bench.get(q) and bench.get(pq): x *= bench[q] / bench[pq]
         return r - 1, x - 1
     r4, x4 = chain(4); r8, x8 = chain(8)
+    steps = [q for q in qs if nextq(q) in QL][-4:]
+    pr4 = {}
+    for t in set().union(*[set(book[q]) for q in steps]) if steps else []:
+        acc, ok = 1.0, False
+        for q in steps:
+            if book[q].get(t):
+                p0, p1 = px(t, q), px(t, nextq(q))
+                if p0 and p1: acc *= p1 / p0; ok = True
+        if ok: pr4[t] = round(acc - 1, 4)
     last = qs[-1]
     out.append({"name": fund, "nick": NICK.get(fund), "spec": fund in spec, "cik": CIK[fund], "q": qs,
                 "aum": {q: round(aum[q]) for q in qs}, "bio": {q: round(bio[q]) for q in qs}, "n": {q: len(book[q]) for q in qs},
                 "hold": hold, "hold_cens": sum(1 for _, o in allr if o) / len(allr) if allr else None, "turn": turn,
                 "rq": {q: round(v, 4) for q, v in rq.items()}, "r4": r4, "x4": x4, "r8": r8, "x8": x8,
-                "top": [[t, round(v)] for t, v in book[last].most_common(10)], "pos": [[t, round(v)] for t, v in book[last].items()], "last": last})
+                "top": [[t, round(v), pr4.get(t)] for t, v in book[last].most_common(10)], "pos": [[t, round(v), pr4.get(t)] for t, v in book[last].items()], "last": last})
 out.sort(key=lambda f: -(f["bio"].get(f["last"]) or 0))
+# ---- who owns each company: shares held by type / shares outstanding (latest 13Fs, mostly Sep 30 2026)
+PASS = {"BlackRock Inc (new)", "State Street", "Geode Capital", "Northern Trust", "Dimensional Fund Advisors", "Charles Schwab Investment Mgmt", "Norges Bank", "Vanguard Capital Management", "Vanguard Portfolio Management"}
+BANK = {"Morgan Stanley", "Goldman Sachs", "JPMorgan Chase", "Bank of America", "Wells Fargo", "UBS Group"}
+MQ = json.load(open(root / "data/mcq.json"))
+def shares_out(t):
+    r = MQ["rows"].get(t)
+    if r:
+        for v in reversed(r["sh"]):
+            if v: return v
+    d = next((x for x in D if x["ticker"] == t), None)
+    return d["mc"] / d["price"] if d and d.get("mc") and d.get("price") else None
+HOLD = collections.defaultdict(lambda: collections.Counter())   # ticker -> {category: shares}
+WHO = collections.defaultdict(list)                              # ticker -> [(holder, shares, category)]
+def add(fund, rows, cat):
+    agg = collections.Counter()
+    for nm, cu, sh, v in rows:
+        t = cmap.get(cu)
+        if t: agg[t] += sh
+    for t, sh in agg.items(): HOLD[t][cat] += sh; WHO[t].append((NICK.get(fund) or fund, sh, cat))
+GEN = {"Wellington Management Group, LLP", "Citadel Advisors Llc", "Balyasny Asset Management LP"}
+for f in out:
+    if f["spec"]: add(f["name"], F[f["name"]][f["last"]], "act" if f["name"] in GEN else "spec")
+for fund, (q, rows) in BIG.items():
+    add(fund, rows, "pass" if fund in PASS else "bank" if fund in BANK else "act")
+STRAT = re.compile(r"\b(plc|pharma|pharmaceutical|novartis|roche|sanofi|gilead|amgen|abbvie|lilly|bristol|merck|pfizer|johnson & johnson|takeda|astellas|regeneron|biogen|astrazeneca|gsk|bayer|daiichi|eisai|otsuka|vertex|novo nordisk|servier|ipsen|lundbeck|ono|chugai|jazz|incyte)\b", re.I)
+own = {}
+for r in D:
+    t = r["ticker"]
+    if r.get("ta") == "Acquired / Inactive" or not r.get("mc"): continue
+    so = shares_out(t)
+    if not so: continue
+    c = HOLD.get(t, {})
+    strat = 0
+    for row in (H.get(t) or {}).get("rows", []):
+        if STRAT.search(row.get("name") or "") and (row.get("name") not in spec): strat += (row.get("pct") or 0) / 100 * so
+    o = {k: min(1, v / so) for k, v in c.items()}; o["strat"] = min(1, strat / so)
+    tot = sum(o.values())
+    if tot > 1: o = {k: v / tot for k, v in o.items()}
+    top = sorted(WHO.get(t, []), key=lambda x: -x[1])[:6]
+    own[t] = {"mc": r["mc"], **{k: round(v, 4) for k, v in o.items()}, "top": [[n, round(sh / so * 100, 1), c] for n, sh, c in top]}
+
 json.dump({"built": dt.date.today().isoformat(), "funds": out, "pool": {q: round(v) for q, v in pool.items()},
-           "cusips_mapped": len(cmap)}, open(root / "data/13f.json", "w"), separators=(",", ":"))
+           "cusips_mapped": len(cmap), "own": own, "big_funds": sorted(BIG)}, open(root / "data/13f.json", "w"), separators=(",", ":"))
+import statistics
+for lo, hi, lab in [(0, 3e8, "<$300M"), (3e8, 1e9, "$300M-1B"), (1e9, 5e9, "$1-5B"), (5e9, 2e10, "$5-20B"), (2e10, 1e13, ">$20B")]:
+    L = [o for o in own.values() if lo <= o["mc"] < hi]
+    if L: print(lab, len(L), {k: round(statistics.median([o.get(k, 0) for o in L]) * 100) for k in ("spec", "pass", "act", "bank", "strat")})
 print(len(out), "funds;", "pool by quarter ($B):", {q: round(v / 1e9) for q, v in sorted(pool.items(), key=lambda x: (int(x[0][2:]), int(x[0][0])))})
 for f in out[:8]:
     print(f["nick"] or f["name"], f["last"], "bio $%.1fB" % (f["bio"][f["last"]] / 1e9), "of $%.1fB" % (f["aum"][f["last"]] / 1e9), "n", f["n"][f["last"]],

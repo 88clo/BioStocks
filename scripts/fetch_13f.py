@@ -1,4 +1,4 @@
-"""Fetch 13F-HR holdings for every specialist fund from SEC EDGAR -> cache/13f/ and data/13f-raw.json.
+"""Fetch 13F-HR holdings for every specialist fund (or, with --big, the largest index funds, banks and generalists) from SEC EDGAR -> cache/13f/ and data/13f-raw.json.
 
 For each fund in SPECIALIST_INVESTORS (pipeline/template.html): find its CIK (EDGAR company search), list its 13F-HR filings
 (data.sec.gov submissions), and download the last N quarters' information tables (www.sec.gov Archives).
@@ -8,7 +8,9 @@ import json, re, time, pathlib, urllib.request, urllib.parse, sys
 root = pathlib.Path(__file__).resolve().parents[1]
 CACHE = root / "cache/13f"; CACHE.mkdir(parents=True, exist_ok=True)
 UA = {"User-Agent": "BioStocks research dashboard (88clo) contact@example.com"}
-NQ = int(sys.argv[1]) if len(sys.argv) > 1 else 9
+BIG = "--big" in sys.argv
+args = [a for a in sys.argv[1:] if not a.startswith("--")]
+NQ = int(args[0]) if args else (1 if BIG else 9)
 _last = [0.0]
 def get(url, binary=False):
     for k in range(4):
@@ -25,7 +27,8 @@ def get(url, binary=False):
 
 tpl = (root / "pipeline/template.html").read_text(encoding="utf-8")
 SPEC = json.loads(re.search(r"const SPECIALIST_INVESTORS=new Set\((\[.*?\])\);", tpl).group(1))
-cikf = CACHE / "ciks.json"; CIK = json.load(open(cikf)) if cikf.exists() else {}
+cikf = CACHE / ("big_ciks.json" if BIG else "ciks.json"); CIK = json.load(open(cikf)) if cikf.exists() else {}
+if BIG: SPEC = list(CIK)   # --big: the largest index funds, banks and generalists (cache/13f/big_ciks.json), latest quarter only
 
 def norm(n): return re.sub(r"[^a-z0-9 ]", "", re.sub(r",? (llc|l\.?p\.?|lp|inc\.?|ltd\.?|limited|corp\.?|co\.?|ag|plc|gp|l\.l\.c\.)\b", " ", n.lower())).split()
 def find_cik(name):
