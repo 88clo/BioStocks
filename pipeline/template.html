@@ -3057,7 +3057,7 @@ function variantView(r){
 window.variantView=variantView;
 function npvVal(r){ const v=valParts(r); return v?v.npv:null; }
 function valNotes(r){ const v=valParts(r); return v?v.notes.join('; '):''; }
-window.valNotes=valNotes;
+window.valNotes=valNotes;window.valParts=valParts;
 function pvVal(r){ // MC / (risk-adjusted value + cash); <1 = cheap. A value that the remaining cost wipes out = only cash left
   const v=valParts(r); if(!v||typeof r.mc!=='number')return null;
   const cash=(typeof r.cash==='number'&&r.cash>0)?r.cash:0;
