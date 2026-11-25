@@ -61,3 +61,5 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - data/retro-2025.json holds researched drivers of the biggest 2025 moves; data/stage-sep12.json the Sep 12 snapshot stages.
 - Point-in-time clinical phase needs ClinicalTrials.gov, which the workspace allowlist blocks; allow clinicaltrials.gov to add it.
 - `python3 scripts/classify_modality.py` tags each lead program with a broad modality (data.json and parked rows; hand overrides inside); What worked uses it.
+- `python3 scripts/classify_novelty.py` tags each lead program First-in-class / Next-gen, validated / Late entrant from diff_detail, threat and pitch (hand overrides inside; checked by hand for the 45 largest). Rerun after rewriting differentiation text. Modality and Novelty rows in What worked are benchmarked against classified names only, since dropped-out names are mostly unclassified.
+- Point-in-time clinical phase needs clinicaltrials.gov, which the workspace network allowlist blocks; once allowed, fetch each lead drug's trial history and feed it to DIMS.stage.

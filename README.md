@@ -52,6 +52,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112426-v6.html | Nov 24 night version, before removing the quarter cards and adding the examples dot plot |
 | backup-112426-v7.html | Nov 24 night version, before corrected quarterly prices, point-in-time market caps and 2025 drivers |
 | backup-112426-v8.html | Nov 24 late version, before the Modality dimension in What worked |
+| backup-112426-v9.html | Nov 24 version with Modality, before Novelty, red/green What worked cells, fixed future-chart scale and clickable return labels |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 
