@@ -54,3 +54,9 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - Every thesis shows a computed *Variant view* (template `variantView()`): the odds or sales today's price implies vs ours, and why. When rewriting a written thesis, state the variant in words too: what the market believes, what we believe and the evidence, what proves us wrong and when.
 - *What I'd tell the CEO* notes are rule-based (`ceoNotes()` in pipeline/synth.html, the 4 Ms: Money, Message, Moves, Milestones). Review the priority names' notes each refresh and refresh stale researched suggestions in data/sug-data.json.
 - *What worked* (Record, 2025–26) reads quarterly prices plus `approved_on` (pipeline/patches/2026-11-24_approval_dates.py; add new first approvals there). Point-in-time market cap needs quarterly share counts (`scripts/fetch_fundamentals.py` → cache/fund) and point-in-time phase needs trial history; both still to wire in.
+
+## Quarterly prices, market caps and What worked (Nov 24 2026)
+- `python3 scripts/rebuild_priceq.py` after fetching daily prices: rebuilds quarter-end adjusted closes from cache/prices (the old file was only gap-filled and partly unadjusted).
+- `python3 scripts/fetch_shares_hist.py` (Yahoo share counts → cache/shares) then `python3 scripts/build_mcq.py` → data/mcq.json, point-in-time quarter-end market caps (split-adjusted, calibrated on the Sep 12 2026 snapshot).
+- data/retro-2025.json holds researched drivers of the biggest 2025 moves; data/stage-sep12.json the Sep 12 snapshot stages.
+- Point-in-time clinical phase needs ClinicalTrials.gov, which the workspace allowlist blocks; allow clinicaltrials.gov to add it.

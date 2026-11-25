@@ -1,0 +1,277 @@
+{
+"asof": "2026-11-24",
+"method": "Drivers of the largest 2025 moves (quarter-start cap >= $150M), researched from news and filings on Nov 24 2026. Same shape as retro-data.json quarters.",
+"quarters": [
+{
+"q": "1Q25",
+"longs": [
+{
+"t": "CORT",
+"drv": {
+"driver_type": "data readout",
+"note": "ROSELLA Ph3 of relacorilant plus nab-paclitaxel in platinum-resistant ovarian cancer met its PFS primary endpoint (Mar 31); shares more than doubled that day.",
+"sources": [
+"https://www.zacks.com/stock/news/2438274/cort-shares-rise-as-relacorilant-combo-meets-ovarian-cancer-study-goal"
+],
+"conf": "high"
+}
+},
+{
+"t": "XERS",
+"drv": {
+"driver_type": "commercial",
+"note": "Recorlev revenue up ~141% y/y and total revenue up 48%, with positive adjusted EBITDA; guidance raised.",
+"sources": [
+"https://www.businesswire.com/news/home/20250508156644/en"
+],
+"conf": "med"
+}
+},
+{
+"t": "IBIO",
+"drv": {
+"driver_type": "sentiment",
+"note": "Preclinical obesity antibody pipeline drew momentum buying; hit a 52-week high in late February (microcap, no clinical data).",
+"sources": [
+"https://ng.investing.com/news/company-news/ibio-stock-soars-to-52week-high-reaches-503-93CH-1787332"
+],
+"conf": "med"
+}
+}
+],
+"shorts": [
+{
+"t": "NMRA",
+"drv": {
+"driver_type": "data readout",
+"note": "Navacaprant failed the KOASTAL-1 Ph3 in depression on primary and secondary endpoints (Jan 2); shares fell ~80% in a day.",
+"sources": [
+"https://www.biopharmadive.com/news/neumora-depression-drug-data-results-stock-navacaprant/736263/"
+],
+"conf": "high"
+}
+},
+{
+"t": "PLRX",
+"drv": {
+"driver_type": "safety",
+"note": "BEACON-IPF Ph2b/3 of bexotegrast paused on a DSMB recommendation (Feb 7), then stopped in March over an imbalance in IPF-related adverse events.",
+"sources": [
+"https://www.thepharmaletter.com/pharmaceutical/pliant-halts-lung-fibrosis-trial-amid-safety-concerns"
+],
+"conf": "high"
+}
+},
+{
+"t": "SEPN",
+"drv": {
+"driver_type": "safety",
+"note": "Discontinued the Ph1 of lead oral PTH1R agonist SEP-786 after two grade 3 bilirubin elevations (Feb 18); stock fell ~60%, four months after its IPO.",
+"sources": [
+"https://www.fiercebiotech.com/biotech/septerna-drops-lead-asset-over-bilirubin-side-effects-4-months-after-ipo"
+],
+"conf": "high"
+}
+},
+{
+"t": "ALGS",
+"drv": {
+"driver_type": "financing",
+"note": "Cash fell to $57M with a dilutive PIPE in February while looking to out-license; stock down ~73% year to date by mid-March.",
+"sources": [
+"https://ng.investing.com/news/analyst-ratings/hc-wainwright-cuts-aligos-stock-target-to-70-maintains-buy-93CH-1810716"
+],
+"conf": "low"
+}
+}
+]
+},
+{
+"q": "2Q25",
+"longs": [
+{
+"t": "VOR",
+"drv": {
+"driver_type": "in-license",
+"note": "Licensed ex-China rights to RemeGen’s telitacicept (approved in China; global Ph3 in myasthenia gravis) with a $175M PIPE and a new CEO, after cutting 95% of staff; a sub-$1 shell re-rated overnight.",
+"sources": [
+"https://www.fiercebiotech.com/pharma/vor-bio-surprise-4b-revival-deal-remegen-autoimmune-drug-triggers-divergent-stock-reactions"
+],
+"conf": "high"
+}
+},
+{
+"t": "LXRX",
+"drv": {
+"driver_type": "partnering",
+"note": "Licensed obesity drug LX9851 to Novo Nordisk ($45M upfront, up to $1B in milestones), turning the quarter profitable.",
+"sources": [
+"https://lexiconpharma.gcs-web.com/node/16241/pdf"
+],
+"conf": "high"
+}
+},
+{
+"t": "TNXP",
+"drv": {
+"driver_type": "regulatory run-up",
+"note": "Ran up into the Aug 15 PDUFA for TNX-102 SL in fibromyalgia, later approved as Tonmya, the first new fibromyalgia drug in 15+ years.",
+"sources": [
+"https://www.biospace.com/tonix-pharmaceuticals-announces-fda-approval-of-tonmya-cyclobenzaprine-hcl-sublingual-tablets-for-the-treatment-of-fibromyalgia"
+],
+"conf": "med"
+}
+}
+],
+"shorts": [
+{
+"t": "JBIO",
+"drv": {
+"driver_type": "corporate action",
+"note": "Aerovate (a failed-asset cash shell) did a 1-for-35 reverse split and merged with private Jade Biosciences on Apr 28; the quarterly return reflects the reverse merger, not a readout.",
+"sources": [
+"https://www.sec.gov/Archives/edgar/data/0001798749/000141588925011576/primary_doc.xml"
+],
+"conf": "high"
+}
+},
+{
+"t": "SPRB",
+"drv": {
+"driver_type": "corporate action",
+"note": "Delisted to the OTC with a ~$5M market cap before a 1-for-75 reverse split in August to relist; the move reflects distress, not data.",
+"sources": [
+"https://www.investing.com/news/company-news/spruce-biosciences-to-implement-1for75-reverse-stock-split-93CH-4152403"
+],
+"conf": "med"
+}
+}
+]
+},
+{
+"q": "3Q25",
+"longs": [
+{
+"t": "ABVX",
+"drv": {
+"driver_type": "data readout",
+"note": "Obefazimod met the primary endpoint in both ABTECT Ph3 induction trials in ulcerative colitis (Jul 22; 50 mg pbo-adj remission 19.3% and 13.4%); shares rose ~586% in a day.",
+"sources": [
+"https://www.clinicaltrialsarena.com/newsletters/abivax-stock-surges-580-following-dual-phase-iii-success-in-uc"
+],
+"conf": "high"
+}
+},
+{
+"t": "MENS",
+"drv": {
+"driver_type": "low float",
+"note": "June IPO at $7.50 with a small float; shares climbed to ~$65 on Ph2 enrollment news in September, then fell when the lock-up expired in December.",
+"sources": [
+"https://business-news-today.com/jyong-biotech-stock-surges-26-8-as-phase-ii-prostate-cancer-trial-enrollment-milestone-boosts-investor-confidence/",
+"https://www.quiverquant.com/news/Jyong+Biotech+Ltd.+Addresses+Share+Price+Fluctuations+and+Ongoing+Compliance+with+SEC+Regulations"
+],
+"conf": "med"
+}
+},
+{
+"t": "KOD",
+"drv": {
+"driver_type": "data readout",
+"note": "Strong Ph1b APEX data for KSI-101 in macular edema (over half of patients gained 15+ letters) and faster Ph3 enrollment re-rated all three late-stage programs.",
+"sources": [
+"https://ir.kodiak.com/news-releases/news-release-details/kodiak-sciences-announces-recent-business-highlights-and-third-0"
+],
+"conf": "med"
+}
+}
+],
+"shorts": [
+{
+"t": "ATYR",
+"drv": {
+"driver_type": "data readout",
+"note": "Efzofitimod missed the primary endpoint (steroid reduction at week 48) in the EFZO-FIT Ph3 in pulmonary sarcoidosis (Sep 15); shares fell ~83% to about cash.",
+"sources": [
+"https://www.biopharmadive.com/news/atyr-efzofitimod-pulmonary-sarcoidosis-study-results/760115/?.tsrc=rss"
+],
+"conf": "high"
+}
+},
+{
+"t": "MLTX",
+"drv": {
+"driver_type": "data readout",
+"note": "Sonelokimab missed significance in VELA-2 (placebo response 25.6%) in hidradenitis suppurativa (Sep 28); shares fell ~89% from a $3.9B cap.",
+"sources": [
+"https://www.benzinga.com/news/health-care/25/09/47926249/moonlakes-immunotherapeutics-stock-plummets"
+],
+"conf": "high"
+}
+}
+]
+},
+{
+"q": "4Q25",
+"longs": [
+{
+"t": "PRAX",
+"drv": {
+"driver_type": "data readout",
+"note": "Ulixacaltamide met primary endpoints in both Essential3 Ph3 studies in essential tremor (Oct 16), the first positive Ph3 program in ET; shares rose ~250% in a week.",
+"sources": [
+"https://www.fiercebiotech.com/biotech/praxis-bounces-back-shaky-ground-phase-3-win-essential-tremors-sending-stocks-soaring"
+],
+"conf": "high"
+}
+},
+{
+"t": "OMER",
+"drv": {
+"driver_type": "asset sale",
+"note": "Sold zaltenibart (MASP-3 inhibitor) to Novo Nordisk for up to $2.1B (Oct 15), its largest one-day gain ever; narsoplimab was approved in December.",
+"sources": [
+"https://news.bgov.com/pharma-and-life-sciences/novo-buys-omeros-rare-disease-drug-for-as-much-as-2-1-billion"
+],
+"conf": "high"
+}
+}
+],
+"shorts": [
+{
+"t": "MENS",
+"drv": {
+"driver_type": "lock-up",
+"note": "Lock-up expiry in December brought heavy selling into a thinly traded, low-float post-IPO stock.",
+"sources": [
+"https://www.quiverquant.com/news/Jyong+Biotech+Ltd.+Addresses+Share+Price+Fluctuations+and+Ongoing+Compliance+with+SEC+Regulations"
+],
+"conf": "med"
+}
+},
+{
+"t": "TVRD",
+"drv": {
+"driver_type": "data readout",
+"note": "STAT3 inhibitor TTI-101 failed the Ph2 REVERT trial in IPF, with ~60% dropouts on drug vs 10% on placebo (Oct 13); shares fell ~85%.",
+"sources": [
+"https://www.fiercebiotech.com/biotech/tvardis-stat3-inhibitor-flunks-phase-2-ipf-trial-amid-high-dropout-rates"
+],
+"conf": "high"
+}
+},
+{
+"t": "KRRO",
+"drv": {
+"driver_type": "data readout",
+"note": "RNA editor KRRO-110 in AATD produced far less functional protein than projected (Nov 12); the company dropped it, cut 34% of staff and Novo paused a deal; shares fell ~80%.",
+"sources": [
+"https://www.biopharmadive.com/news/korro-rna-editing-aatd-results-layoffs-restructuring/805381/"
+],
+"conf": "high"
+}
+}
+]
+}
+]
+}
