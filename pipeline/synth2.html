@@ -1,5 +1,7 @@
 <!-- SYNTH2-START: priority list, card peers/valuation/one-pager, returns over time, what changed (pipeline/synth2.html) -->
 <script type="application/json" id="north-data">{{DATA:north-star}}</script>
+<script type="application/json" id="investors-data">{{DATA:investors}}</script>
+<script type="application/json" id="capmkt-data">{{DATA:capital-markets}}</script>
 <script type="application/json" id="mcq-data">{{DATA:mcq}}</script>
 <script type="application/json" id="drv2025-data">{{DATA:retro-2025}}</script>
 <script type="application/json" id="stage-sep12">{{DATA:stage-sep12}}</script>
@@ -253,7 +255,7 @@
     CACHE={hold:HD,Q:Q,cols:cols,cell:cell,uni:uni,ukm:ukm,xbi:xbi,cnt:cnt,buckets:buckets};return CACHE;}
   function uniOf(c,k,q){return DIMS[k]&&DIMS[k].cov&&c.ukm[k+'|'+q]!=null?c.ukm[k+'|'+q]:c.uni[q];}
   function stat(c,k,b,q){var L=c.cell[k+'|'+b+'|'+q]||[],m=med(L),u=uniOf(c,k,q);return {n:L.length,m:m,x:m==null||u==null?null:m-u};}
-  function px(v){return v==null?'—':v>=100?v.toFixed(0):v>=10?v.toFixed(1):v.toFixed(2);}
+  function px(v){return v==null?'—':v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
   function pct(v,s){return v==null?'—':(v>0?'+':v<0?'−':'')+Math.abs(Math.round(v*100))+'%'+(s||'');}
   function ranked(c,q){var L=[];Object.keys(DIMS).forEach(function(k){if(DIMS[k].today&&!WW.today)return;Object.keys(c.buckets[k]||{}).forEach(function(b){var st=stat(c,k,b,q);if(st.n>=8&&st.x!=null)L.push({k:k,b:b,n:st.n,x:st.x,m:st.m});});});return L.sort(function(a,b){return b.x-a.x;});}
   function bucketsOf(c,k){var K=Object.keys(c.buckets[k]||{}),o=DIMS[k].order;if(o)K.sort(function(a,b){return o.indexOf(a)-o.indexOf(b);});return K;}
@@ -328,6 +330,60 @@
     doc.querySelectorAll('.ww-wrap .ww-cell').forEach(function(el){el.onclick=function(){WW.sel={k:el.dataset.wwk,q:+el.dataset.wwq};WW.dim=el.dataset.wwk;re();};});
     doc.querySelectorAll('.ww-wrap [data-wwtk]').forEach(function(el){el.onclick=function(e){e.stopPropagation();var i=H().IDX[el.dataset.wwtk];if(i!=null)openDrawer(i);};});}
   window.WW_HTML=html;window.WW_AFTER=after;
+})();
+
+// ===== Capital: who owns biotech and how they did (Investors), and when capital is plentiful or scarce (Liquidity) =====
+(function(){
+  function J(id){try{return JSON.parse(document.getElementById(id).textContent);}catch(e){return null;}}
+  function B(){return window.BRF;}
+  var IV=null,CM=null,INV={who:'spec',sort:'r12',min:5};
+  function P(v,d){return v==null?'—':(v>0?'+':v<0?'−':'')+Math.abs(v*100).toFixed(d||0)+'%';}
+  function PC(v){return v==null?'':v>=0?'brf-pos':'brf-neg';}
+  function invHtml(){IV=IV||J('investors-data');if(!IV)return '<div class="brf-note">No investor data.</div>';var b=B(),E=b.E,M=b.M,BN=IV.bench||{},xb=BN.XBI||{},md=BN['Median covered stock']||{};
+    var h='<div class="brf-h"><b>Who owns biotech, and how their books have done</b><span>Top ~10 holders of every company we track (13F filings via Yahoo, snapshot '+E(IV.holders_asof)+'), priced at the snapshot (Sep 11 close) and now ('+E(IV.asof_now)+')</span></div>';
+    // ownership bar
+    var H=IV.held||{},tot=(H.spec||0)+(H.passive||0)+(H.other||0),cap=IV.cap||1;
+    var seg=function(v,c,l){return v?'<div style="flex:'+v+';background:'+c+';color:#fff;padding:6px 8px;font-size:11.5px;white-space:nowrap;overflow:hidden" title="'+l+' '+M(v)+'">'+l+' '+M(v)+' ('+Math.round(v/cap*100)+'%)</div>':'';};
+    h+='<div class="ww-sub">Covered universe '+M(cap)+' of market cap. Held in top-10 positions: '+M(tot)+' ('+Math.round(tot/cap*100)+'%); the rest is smaller holders, retail, insiders and pharma partners.</div><div style="display:flex;border-radius:6px;overflow:hidden;margin:6px 0 14px">'+seg(H.spec,'#0e9c6b','Specialist funds')+seg(H.passive,'#607d8b','Index & bank')+seg(H.other,'#1d8fd1','Other active')+seg(Math.max(0,cap-tot),'var(--line)','')+'</div>';
+    // leaderboard
+    var L=(IV.funds||[]).filter(function(f){return (INV.who==='all'||(INV.who==='spec'?f.spec:!f.spec&&!f.passive))&&f.n>=INV.min&&f.v1>=1e8;});
+    var key={r12:function(f){return f.r12==null?-9:f.r12;},r:function(f){return f.r==null?-9:f.r;},v1:function(f){return f.v1;},n:function(f){return f.n;}}[INV.sort];L.sort(function(a,c){return key(c)-key(a);});
+    var mx=Math.max.apply(null,L.map(function(f){return Math.abs(f.r12||0);}).concat([.01]));
+    h+='<div class="ww-ctl"><span class="syn-seg">'+[['spec','Specialist funds'],['oth','Other active'],['all','Everyone']].map(function(o){return '<button data-invw="'+o[0]+'" class="'+(INV.who===o[0]?'on':'')+'">'+o[1]+'</button>';}).join('')+'</span> <span class="syn-seg">'+[['r12','Sort: 12M look-back'],['r','Since 13F'],['v1','Book size'],['n','Positions']].map(function(o){return '<button data-invs="'+o[0]+'" class="'+(INV.sort===o[0]?'on':'')+'">'+o[1]+'</button>';}).join('')+'</span><span class="cnt">'+L.length+' holders with ≥'+INV.min+' positions and ≥$100M in our names · XBI '+P(xb.r12)+' over 12 months, '+P(xb.r)+' since Sep 11 · median covered stock '+P(md.r12)+' / '+P(md.r)+'</span></div>';
+    h+='<div style="overflow-x:auto"><table class="brf-t inv-t"><tr><th>#</th><th>Holder</th><th class="r">Positions</th><th class="r">Book now</th><th class="r" title="Value-weighted return of the positions they held at the snapshot, Sep 11 close to now">Since 13F</th><th class="r" title="How the same book would have done over the last 12 months had it been held throughout: a test of stock picking, not the fund\'s realised return">12M look-back</th><th style="width:150px">vs XBI (12M)</th><th>Largest positions (return since 13F)</th><th>Best picks since 13F</th></tr>'
+      +L.slice(0,60).map(function(f,i){var ex=f.r12!=null&&xb.r12!=null?f.r12-xb.r12:null,w=ex==null?0:Math.min(70,Math.abs(ex)/mx*70);
+        return '<tr><td class="r dim">'+(i+1)+'</td><td><b>'+E(f.nick||f.name)+'</b>'+(f.nick?'<div class="sm">'+E(f.name)+'</div>':'')+'</td><td class="r">'+f.n+'</td><td class="r"><b>'+M(f.v1)+'</b></td><td class="r '+PC(f.r)+'">'+P(f.r)+'</td><td class="r '+PC(f.r12)+'"><b>'+P(f.r12)+'</b></td><td><div style="position:relative;height:12px;background:var(--raised);border-radius:3px"><div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--dim)"></div>'+(ex==null?'':'<div title="'+P(ex)+' vs XBI" style="position:absolute;top:1px;bottom:1px;'+(ex>=0?'left:50%':'right:50%')+';width:'+w+'px;max-width:50%;background:'+(ex>=0?'var(--long)':'var(--short)')+';border-radius:2px"></div>')+'</div><div class="sm r" style="text-align:right">'+P(ex)+'</div></td><td class="sm">'+f.top.slice(0,5).map(function(x){return (b.IDX[x.t]!=null?b.tk(x.t):'<b>'+E(x.t)+'</b>')+' <span class="'+PC(x.r)+'">'+P(x.r)+'</span>';}).join(' · ')+'</td><td class="sm">'+(f.best||[]).map(function(x){return (b.IDX[x.t]!=null?b.tk(x.t):'<b>'+E(x.t)+'</b>')+' <span class="brf-pos">'+P(x.r)+'</span>';}).join(' · ')+'</td></tr>';}).join('')+'</table></div>';
+    h+='<div class="syn-cap"><b>Read with care.</b> 13F filings show long US-listed holdings at quarter-end, not trades, shorts, options or private stakes, and only the top ~10 holders of each company are captured, so a fund\'s smaller positions are missing. "Since 13F" prices the positions they held. "12M look-back" holds today\'s book for the past year: it rewards picking stocks that went up, not timing. Index providers and banks hold for clients; their "returns" are the market\'s. Built by scripts/build_investors.py from data/holders-baked.json and daily closes.</div>';
+    return h;}
+  function invAfter(doc){var re=function(){window.BRF.rerender();};doc.querySelectorAll('[data-invw]').forEach(function(el){el.onclick=function(){INV.who=el.dataset.invw;re();};});doc.querySelectorAll('[data-invs]').forEach(function(el){el.onclick=function(){INV.sort=el.dataset.invs;re();};});}
+  // ---- liquidity ----
+  function liqChart(){var C=CM,Q=C.q,n=Q.length,W=1000,Hh=300,ml=50,mr=60,mt=20,mb=34;
+    var S=[['ipo_usd','IPOs','#1d8fd1'],['fo_usd','Follow-ons & registered directs','#0e9c6b'],['pipe_usd','PIPEs','#e08a00'],['priv_usd','Venture rounds','#9575cd']];
+    var tot=Q.map(function(q,i){return S.reduce(function(a,s){return a+(C[s[0]][i]||0);},0);}),mx=Math.max.apply(null,tot.concat(C.ma_usd.map(function(v){return (v||0)/3;})))*1.1;
+    var X=function(i){return ml+(i+.5)*(W-ml-mr)/n;},bw=(W-ml-mr)/n*.55,Y=function(v){return Hh-mb-v/mx*(Hh-mt-mb);},Y2=function(v){return Hh-mb-v/(mx*3)*(Hh-mt-mb);};
+    var g='<svg viewBox="0 0 '+W+' '+Hh+'" role="img" aria-label="Capital raised and M&A by quarter">';
+    for(var k=0;k<=4;k++){var v=mx*k/4;g+='<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--line)" stroke-width=".6"/><text x="'+(ml-6)+'" y="'+(Y(v)+3)+'" font-size="10.5" text-anchor="end">$'+Math.round(v)+'B</text><text x="'+(W-mr+6)+'" y="'+(Y(v)+3)+'" font-size="10.5" style="fill:#c2185b">$'+Math.round(v*3)+'B</text>';}
+    Q.forEach(function(q,i){var y=0;S.forEach(function(s){var v=C[s[0]][i];if(!v)return;g+='<rect x="'+(X(i)-bw/2)+'" y="'+Y(y+v)+'" width="'+bw+'" height="'+(Y(y)-Y(y+v))+'" fill="'+s[2]+'" fill-opacity=".8"><title>'+q+' '+s[1]+': $'+v.toFixed(1)+'B'+(C[s[0].replace('usd','n')]&&C[s[0].replace('usd','n')][i]!=null?' ('+C[s[0].replace('usd','n')][i]+' deals)':'')+'</title></rect>';y+=v;});
+      if(y)g+='<text x="'+X(i)+'" y="'+(Y(y)-4)+'" font-size="10" font-weight="700" text-anchor="middle">$'+y.toFixed(0)+'B</text>';
+      g+='<text x="'+X(i)+'" y="'+(Hh-mb+14)+'" font-size="10.5" text-anchor="middle"'+(i===n-1?' style="fill:var(--dim)"':'')+'>'+q+(i===n-1?'*':'')+'</text>';});
+    var d='';C.ma_usd.forEach(function(v,i){if(v==null)return;d+=(d?'L':'M')+X(i)+' '+Y2(v);});g+='<path d="'+d+'" fill="none" stroke="#c2185b" stroke-width="2.5"/>';C.ma_usd.forEach(function(v,i){if(v!=null)g+='<circle cx="'+X(i)+'" cy="'+Y2(v)+'" r="3.5" fill="#c2185b"><title>'+Q[i]+' M&A: $'+v+'B across '+C.ma_n[i]+' deals</title></circle>';});
+    var lx=ml;S.concat([['','M&A deal value (right axis)','#c2185b']]).forEach(function(s){g+='<rect x="'+lx+'" y="4" width="10" height="10" fill="'+s[2]+'"/><text x="'+(lx+14)+'" y="13" font-size="10.5">'+s[1]+'</text>';lx+=s[1].length*6+30;});
+    return g+'</svg>';}
+  function liqIndex(){var C=CM,Q=C.q,raw=Q.map(function(q,i){var r=(C.ipo_usd[i]||0)+(C.fo_usd[i]||0)+(C.pipe_usd[i]||0),m=C.ma_usd[i];return (C.fo_usd[i]==null||m==null)?null:{r:r,m:m};});
+    var ok=raw.filter(Boolean),mr=ok.reduce(function(a,o){return a+o.r;},0)/ok.length,mm=ok.reduce(function(a,o){return a+o.m;},0)/ok.length;
+    return raw.map(function(o,i){if(!o)return null;var s=.6*(o.r/mr)+.4*(o.m/mm);return {q:Q[i],s:s,l:s>=1.3?'High':s<=.7?'Low':'Normal',r:o.r,m:o.m};});}
+  function liqHtml(){CM=CM||J('capmkt-data');var b=B(),E=b.E,h='';
+    if(CM){var LI=liqIndex();
+      h+='<div class="brf-h"><b>Biotech capital liquidity by quarter</b><span>Money raised by public and private US biopharma companies (bars) and M&A deal value, the cash returned to investors (line). * '+E(CM.flags['4Q26']||'')+'</span></div><div class="syn-chart">'+liqChart()+'</div>';
+      h+='<div class="ww-sub" style="margin-top:10px"><b>Liquidity read</b>: public equity raised (IPOs + follow-ons + PIPEs) and M&A, each against its 2024–26 average, weighted 60/40. High ≥ 1.3× average, low ≤ 0.7×.</div><div style="display:flex;gap:4px;flex-wrap:wrap;margin:6px 0 4px">'+LI.filter(Boolean).map(function(o){var c=o.l==='High'?'var(--long)':o.l==='Low'?'var(--short)':'var(--faint)';return '<div style="flex:1;min-width:64px;border-radius:6px;padding:6px;background:'+c+';color:#fff;text-align:center;font-size:11px" title="Equity raised $'+o.r.toFixed(1)+'B · M&A $'+o.m+'B"><b>'+o.q+'</b><br>'+o.l+' '+o.s.toFixed(1)+'×</div>';}).join('')+'</div>';
+      h+='<div class="syn-cap">What it shows: liquidity was low through 1Q–3Q25 (no IPOs in 2Q25, the longest drought since the financial crisis), turned high in 4Q25 on a record follow-on quarter, and stayed high through 2Q26 as IPOs reopened and M&A hit records; 3Q26 eased back to normal as follow-ons slowed. '+E(CM.note)+' Sources: '+CM.sources.map(function(s){return '<a href="'+E(s.u)+'" target="_blank" rel="noopener">'+E(s.t)+'</a>';}).join('; ')+'.</div>';}
+    var s=window.SYN;
+    if(s&&s.supplyChart)h+='<div class="brf-h" style="margin-top:22px"><b>Potential biotech equity supply, next six months</b><span>If every company the raise model flags does raise, spread over its likely window · bar label = $ and approximate number of companies · hover a bar for the largest contributors</span></div><div class="syn-chart">'+s.supplyChart()+'</div><div class="syn-cap"><b>How it is built.</b> Companies are flagged by the raise model (short runway, a catalyst within four months, a recent run-up, a history of selling stock; executable size). Each gets a size of about 18 months of cash burn, kept between 10% and 30% of its market cap. Timing: window open now = this month; after a catalyst = 40/40/20% over the catalyst month and the next two; before cash runs short = the three months before runway reaches about four quarters; opportunistic = spread evenly. Real issuance will be lower: some companies partner, use ATMs, or wait.</div>';
+    if(s&&s.ipoMarket)h+=s.ipoMarket();
+    return h;}
+  window.BRF_PAGES=window.BRF_PAGES||{};
+  window.BRF_PAGES.investors={html:invHtml,after:invAfter};
+  window.BRF_PAGES.liquidity={html:liqHtml,after:function(){}};
 })();
 </script>
 <!-- SYNTH2-END -->

@@ -230,7 +230,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
   function embed(wrapId,hostId,fn){var host=document.getElementById(hostId),w=document.getElementById(wrapId);if(!host||!w)return;EMB.push({w:w,p:w.parentNode,n:w.nextSibling});host.appendChild(w);w.style.display='block';try{fn();}catch(e){host.insertAdjacentHTML('beforeend','<div class="brf-note">Could not draw this section: '+E(e.message)+'</div>');}}
   function unembed(){while(EMB.length){var x=EMB.pop();try{x.p.insertBefore(x.w,x.n);x.w.style.display='none';}catch(e){}}}
   function render(){
-    unembed();document.body.classList.toggle('syn-wide',page==='co'||page==='next');
+    unembed();document.body.classList.toggle('syn-wide',page==='co'||page==='next'||page==='investors'||page==='liquidity');
     var doc=document.getElementById('brfDoc');
     var XP=(window.BRF_PAGES||{})[page];
     doc.innerHTML=XP?XP.html():page==='brief'?brief():page==='track'?track():page==='radar'?radar():page==='flow'?flow():gaps();
