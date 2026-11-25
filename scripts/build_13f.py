@@ -195,8 +195,86 @@ for r in D:
     top = sorted(WHO.get(t, []), key=lambda x: -x[1])[:6]
     own[t] = {"mc": r["mc"], **{k: round(v, 4) for k, v in o.items()}, "top": [[n, round(sh / so * 100, 1), c] for n, sh, c in top]}
 
+# ---- complete institutional ownership from SEC's quarterly 13F data set (every filer), if downloaded to cache/13f_bulk/q2
+BULK = root / "cache/13f_bulk/q2"; own_all = {}; bulk_period = None
+if (BULK / "INFOTABLE.tsv").exists():
+    import csv
+    csv.field_size_limit(10**9)
+    sub = {}
+    for r in csv.DictReader(open(BULK / "SUBMISSION.tsv"), delimiter="\t"):
+        if r["SUBMISSIONTYPE"] == "13F-HR": sub[r["ACCESSION_NUMBER"]] = (r["CIK"].lstrip("0"), r["PERIODOFREPORT"])
+    per = collections.Counter(v[1] for v in sub.values()).most_common(1)[0][0]; bulk_period = per
+    sub = {a: c for a, (c, p) in sub.items() if p == per}
+    nm = {r["ACCESSION_NUMBER"]: r["FILINGMANAGER_NAME"] for r in csv.DictReader(open(BULK / "COVERPAGE.tsv"), delimiter="\t")}
+    SPECCIK = {str(CIK[f["name"]]) for f in out if f["spec"] and f["name"] not in GEN}
+    PASSRE = re.compile(r"vanguard|blackrock|state street|geode|northern trust|dimensional fund|charles schwab|norges|ishares|ssga", re.I)
+    BANKRE = re.compile(r"morgan stanley|goldman sachs|jpmorgan|bank of america|wells fargo|ubs |citigroup|barclays|bnp|deutsche bank|royal bank of canada|td |raymond james|lpl financial|ameriprise", re.I)
+    # map every bulk CUSIP to our tickers by issuer name (adds to cmap)
+    acc = collections.defaultdict(collections.Counter); holders = collections.Counter(); seen = set()
+    with open(BULK / "INFOTABLE.tsv") as fh:
+        rd = csv.reader(fh, delimiter="\t"); hdr = next(rd); ix = {h: i for i, h in enumerate(hdr)}
+        for row in rd:
+            a = row[ix["ACCESSION_NUMBER"]]
+            if a not in sub or row[ix["PUTCALL"]] or row[ix["SSHPRNAMTTYPE"]] != "SH": continue
+            cu = row[ix["CUSIP"]].upper(); t = cmap.get(cu)
+            if not t:
+                if cu in seen: continue
+                k = nn(row[ix["NAMEOFISSUER"]])
+                if k in names: t = names[k]; cmap[cu] = t
+                else: seen.add(cu); continue
+            try: sh = float(row[ix["SSHPRNAMT"]] or 0)
+            except ValueError: continue
+            cik = sub[a]; fn = nm.get(a, "")
+            cat = "spec" if cik in SPECCIK else "pass" if PASSRE.search(fn) else "bank" if BANKRE.search(fn) else "inst"
+            acc[t][cat] += sh; holders[(t, cik)] += 1
+    nh = collections.Counter(t for t, c in holders)
+    qi = MQ["quarters"].index("2Q26") if "2Q26" in MQ["quarters"] else None
+    for r in D:
+        t = r["ticker"]
+        if r.get("ta") == "Acquired / Inactive" or not r.get("mc") or t not in acc: continue
+        so = (MQ["rows"].get(t, {}).get("sh") or [None] * 99)[qi] if qi is not None else None
+        so = so or shares_out(t)
+        if not so: continue
+        o = {k: v / so for k, v in acc[t].items()}
+        strat = (own.get(t) or {}).get("strat", 0); o["strat"] = strat
+        tot = sum(o.values())
+        if tot > 1: o = {k: v / tot for k, v in o.items()}
+        own_all[t] = {"mc": r["mc"], "n": nh[t], **{k: round(v, 4) for k, v in o.items()}}
+    print("bulk 13F", per, ":", len(sub), "filers;", len(own_all), "companies; CUSIPs mapped now", len(cmap))
+# ---- who is buying and selling: specialist position changes between each fund's last two 13Fs,
+# measured as position value / company market cap at each quarter-end (split-proof; mcq.json has point-in-time caps)
+IPO = {r.get("ticker") for r in (json.load(open(root / "data/ipo-data.json")).get("recent") or []) if (r.get("first_trade_date") or "") >= "2026-01-01"}
+def mcq(t, q):
+    r = MQ["rows"].get(t)
+    if not r or q not in MQ["quarters"]: return None
+    return r["mc"][MQ["quarters"].index(q)]
+flow = collections.defaultdict(lambda: {"new": [], "add": [], "cut": [], "exit": [], "net": 0.0})
+for f in out:
+    if not f["spec"] or len(f["q"]) < 2: continue
+    q1, q0 = f["q"][-1], f["q"][-2]
+    def vbook(q):
+        c = collections.Counter()
+        for nm_, cu, sh, v in F[f["name"]][q]:
+            t = cmap.get(cu)
+            if t: c[t] += v
+        return c
+    a, b = vbook(q0), vbook(q1); who = f["nick"] or f["name"]
+    for t in set(a) | set(b):
+        m0, m1 = mcq(t, q0), mcq(t, q1)
+        if not m0 or not m1: continue
+        p0, p1 = a.get(t, 0) / m0, b.get(t, 0) / m1
+        if p0 > 0.6 or p1 > 0.6: continue                       # bad match or unit error
+        d = p1 - p0
+        if p0 == 0 and p1 > 0: flow[t]["new"].append([who, round(p1 * 100, 2)])
+        elif p1 == 0 and p0 > 0: flow[t]["exit"].append([who, round(p0 * 100, 2)])
+        elif d > 0.001: flow[t]["add"].append([who, round(d * 100, 2)])
+        elif d < -0.001: flow[t]["cut"].append([who, round(d * 100, 2)])
+        flow[t]["net"] += d
+for t, v in flow.items():
+    v["net"] = round(v["net"] * 100, 2); v["ipo"] = t in IPO
+    for k in ("new", "add", "cut", "exit"): v[k].sort(key=lambda x: -abs(x[1]))
 json.dump({"built": dt.date.today().isoformat(), "funds": out, "pool": {q: round(v) for q, v in pool.items()},
-           "cusips_mapped": len(cmap), "own": own, "big_funds": sorted(BIG)}, open(root / "data/13f.json", "w"), separators=(",", ":"))
+           "cusips_mapped": len(cmap), "own": own, "own_all": own_all, "bulk_period": bulk_period, "flow": flow, "big_funds": sorted(BIG)}, open(root / "data/13f.json", "w"), separators=(",", ":"))
 import statistics
 for lo, hi, lab in [(0, 3e8, "<$300M"), (3e8, 1e9, "$300M-1B"), (1e9, 5e9, "$1-5B"), (5e9, 2e10, "$5-20B"), (2e10, 1e13, ">$20B")]:
     L = [o for o in own.values() if lo <= o["mc"] < hi]

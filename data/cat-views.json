@@ -37,7 +37,7 @@
   {
    "t": "ORKA",
    "m": "EVERLAST-A 52",
-   "p": 0.65,
+   "p": 0.6,
    "up": 0.25,
    "dn": -0.3,
    "why": "PASI100 rose from 64% to 71% between weeks 16 and 28 with no further dosing, which argues for durability; once-yearly dosing needs most responders to hold to week 52, and the stock already prices a lot of it."
@@ -94,16 +94,16 @@
    "t": "BLTE",
    "m": "Stargardt",
    "p": 0.8,
-   "up": 0.1,
-   "dn": -0.45,
+   "up": 0.05,
+   "dn": -0.55,
    "why": "First drug ever to slow Stargardt lesion growth (36%, p=0.0033) with priority review; approval is likely, but a $5.2B cap for about 50,000 patients already prices it, so the reaction skews down."
   },
   {
    "t": "PVLA",
    "m": "QTORIN rapamycin PDUFA",
    "p": 0.9,
-   "up": 0.1,
-   "dn": -0.4,
+   "up": 0.06,
+   "dn": -0.45,
    "why": "SELVA was clean and the drug is topical rapamycin; approval is largely priced and the orphan market caps the upside."
   },
   {
