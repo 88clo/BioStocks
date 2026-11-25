@@ -34,12 +34,13 @@ Also record each catalyst's date as it stands at the refresh (the ledger keeps `
 Open `index.html` headless (`snapshot_calls.py` prints page errors) and click through Brief, Track record, Raise radar, White space, Full table, TA summary and Monthly memo. Spot-check five prices against a quote page.
 
 ## Known gaps
-- 13F holders: no reachable source from the workspace shell; lists date from Sep 13.
+- 13F holders: now from SEC EDGAR (see Capital below). Investors with < 5% who don't file 13F (most retail, non-US funds) remain unidentified.
+- 13D/G parsing: pre-Dec-2024 text filings (SC 13D/G) are read with regexes and can miss the percent; new XML filings (SCHEDULE 13D/G) are exact.
 - Oct 2026 frozen ledger (`ledger/2026-10.json`) was not recovered; the Oct memo's printed names stand in for it.
 - Insight suggestions and lens scores cover ~65 names.
 
 ## December 2026 refresh checklist (from the Nov 23 review)
-- Re-check SVRA and CAPR Nov 22 PDUFA outcomes; resolve the other ~60 "past due, verify" catalysts (list: run normalize_catalysts.py and grep st=late).
+- Done Nov 25: CAPR (second CRL Nov 20), SVRA (FDA missed Nov 22, no new date), KYMR (BROADEN2 positive Nov 23), HELP (APPROACH positive Nov 16) in pipeline/patches/2026-11-25_*.py. Each refresh: search for readouts and FDA actions between the last snapshot and today before anything else; resolve the other ~60 "past due, verify" catalysts (list: run normalize_catalysts.py and grep st=late).
 - Fix source text where efficacy describes a non-lead program or has no numbers (concise_text.py prints the count; hand-written overrides live in data/eff-curated.json, remove an override once the source text is right).
 - CGEM: benchmark text describes EGFR NSCLC but the lead is a CD19 engager in autoimmunity; rewrite.
 - Run log_catalysts.py so the Dec ledger has a point-in-time calendar.
@@ -54,6 +55,18 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - Every thesis shows a computed *Variant view* (template `variantView()`): the odds or sales today's price implies vs ours, and why. When rewriting a written thesis, state the variant in words too: what the market believes, what we believe and the evidence, what proves us wrong and when.
 - *What I'd tell the CEO* notes are rule-based (`ceoNotes()` in pipeline/synth.html, the 4 Ms: Money, Message, Moves, Milestones). Review the priority names' notes each refresh and refresh stale researched suggestions in data/sug-data.json.
 - *What worked* (Record, 2025–26) reads quarterly prices plus `approved_on` (pipeline/patches/2026-11-24_approval_dates.py; add new first approvals there). Point-in-time market cap needs quarterly share counts (`scripts/fetch_fundamentals.py` → cache/fund) and point-in-time phase needs trial history; both still to wire in.
+
+## Theses in three lines (Nov 25 2026; format approved by the PM)
+- Each thesis renders as **View** (call + one fact with a number) / **What the market misses** (implied vs our odds or sales, plus the evidence) / **Catalyst & what would change our mind** (dated event + the specific result that flips us). Code: `thesis3()` / `thesis3Html()` in pipeline/template.html.
+- Hand-written lines live in `data/theses.json` (th_view, th_miss, th_cat, ceo_notes), merged by ticker at page load so the data refresh never overwrites them. Use tokens, never typed numbers, for anything the market moves: {cap} {cash} {px} {imp} (market-implied odds) {ours} (our PoS) {mktsales} {oursales}. A hand-written th_view also replaces call_reason on the page.
+- Without hand-written lines: View = pitch with "$X cap"/"$X cash" (and "N% of the cap") recomputed from today's data; Misses = variantView(); Catalyst = next dated event + a rule-based disconfirming result.
+- CEO notes: 0-3, company-specific. Hand-written ceo_notes replace the rule-based ones. Rules no longer append the generic "Investors are asking…" line, compare only programs in the same indication (and only unapproved ones), and no longer suggest unrelated "under-served fields".
+- Audit after every batch: `python3 /tmp/t/thaudit.py [TICKERS]` (copy in tests/thaudit.py) counts stale caps, missing misses/catalysts/risks, generic CEO lines and odd phrasing, and prints named companies in full. Batch 1 (40 priority names) done Nov 25; ~360 to go, next batch = remaining STRONG BUY / STRONG SHORT / SHORT, then LONG.
+- Call reasons that contradicted their calls (COLL, MLYS, HRMY, CELC, NTLA, ZVRA, XNCR, ARVN, SLS, MLTX, RZLT) were rewritten through th_view; keep call and reason in step when either changes.
+
+## 13D/13G holders (Nov 25 2026)
+- `python3 scripts/fetch_13dg.py` (~25 min; cached 20 days in cache/13dg): for each company, its Schedule 13D/13G filings from the last 30 months via data.sec.gov submissions; one reporting entity per filing (the fund, not its co-filing principals); latest per holder; drops holders whose latest filing is < 5%. → data/13dg.json.
+- `python3 scripts/build_13f.py` merges them into own_all: holders matching a 13F filer name are listed only; others count as vc (venture/family office/other entity), insider (individual) or strat (pharma). Stakes older than 18 months are listed but not counted.
 
 ## Quarterly prices, market caps and What worked (Nov 24 2026)
 - `python3 scripts/rebuild_priceq.py` after fetching daily prices: rebuilds quarter-end adjusted closes from cache/prices (the old file was only gap-filled and partly unadjusted).

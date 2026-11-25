@@ -243,6 +243,50 @@ if (BULK / "INFOTABLE.tsv").exists():
         if tot > 1: o = {k: v / tot for k, v in o.items()}
         own_all[t] = {"mc": r["mc"], "n": nh[t], **{k: round(v, 4) for k, v in o.items()}}
     print("bulk 13F", per, ":", len(sub), "filers;", len(own_all), "companies; CUSIPs mapped now", len(cmap))
+    # ---- 5%+ holders from Schedule 13D/13G (data/13dg.json, scripts/fetch_13dg.py): adds owners that 13F misses
+    # (venture funds and family offices that don't file 13F, founders and insiders, pharma partners). A holder whose name
+    # matches a 13F filer is already counted above and is only listed. Percent of class is as of the holder's latest filing.
+    DGP = root / "data/13dg.json"
+    if DGP.exists():
+        DG = json.load(open(DGP))["holders"]
+        STOP = {"the", "inc", "llc", "lp", "l", "p", "ltd", "co", "corp", "corporation", "company", "group", "holdings", "management", "capital", "advisors", "advisers", "partners", "fund", "funds", "investment", "investments", "asset", "global", "and", "of", "plc", "sa", "ag", "nv", "trust"}
+        def key(n):
+            w = [x for x in re.sub(r"[^a-z0-9 ]", " ", (n or "").lower()).split() if x not in STOP and len(x) > 1]
+            return " ".join(w[:2])
+        F13 = {key(v) for v in nm.values() if key(v)}
+        ENT = re.compile(r"\b(LLC|L\.?L\.?C|LP|L\.P|Inc|Corp|Ltd|Limited|plc|AG|SA|N\.V|GmbH|Fund|Funds|Trust|Partners|Capital|Management|Advisors|Advisers|Investments?|Holdings?|Group|Ventures?|Company|Foundation|Bank|Asset|Master|Associates|S\.?A\.?R\.?L|B\.V|Pte|Co\.)\b", re.I)
+        today = dt.date.today()
+        for t, L in DG.items():
+            if t not in own_all: continue
+            rows, extra = [], {"vc": 0.0, "insider": 0.0, "strat": 0.0}
+            seenpd = set()  # the same stake reported by a fund and its owner in separate filings (same % and date) counts once
+            for h in L:
+                if not h.get("pct"): continue
+                nmh = h["name"].strip(); k = key(nmh)
+                age = (today - dt.date.fromisoformat(h["date"])).days
+                if STRAT.search(nmh) and not re.search(r"capital|fund|partners|ventures|investment", nmh, re.I): cls = "strat"
+                elif k and k in F13: cls = "13f"
+                elif not ENT.search(nmh): cls = "insider"
+                else: cls = "vc"
+                pd_ = (round(h["pct"], 1), h["date"])
+                if pd_ in seenpd: continue
+                seenpd.add(pd_)
+                rows.append([nmh, h["pct"], cls, h["date"], h["form"]])
+                if cls != "13f" and age <= 550: extra[cls] += h["pct"] / 100
+            # an individual reporting the same stake as an entity they control (e.g. a fund and its founder) counts once
+            for rr in rows:
+                if rr[2] == "insider" and any(q[2] in ("vc", "13f", "strat") and abs(q[1] - rr[1]) < 1 for q in rows):
+                    if (today - dt.date.fromisoformat(rr[3])).days <= 550: extra["insider"] -= rr[1] / 100
+                    rr[2] = "same"
+            o = own_all[t]
+            o["strat"] = round(max(o.get("strat", 0), extra["strat"]), 4)
+            o["vc"] = round(extra["vc"], 4); o["insider"] = round(extra["insider"], 4)
+            tot = sum(v for kk, v in o.items() if kk in ("spec", "pass", "inst", "bank", "strat", "vc", "insider"))
+            if tot > 1:
+                for kk in ("spec", "pass", "inst", "bank", "strat", "vc", "insider"):
+                    if kk in o: o[kk] = round(o[kk] / tot, 4)
+            o["dg"] = sorted(rows, key=lambda x: -x[1])[:12]
+        print("13D/G merged:", len(DG), "companies;", sum(1 for t in own_all if own_all[t].get("vc") or own_all[t].get("insider")), "with non-13F 5%+ holders")
 # ---- who is buying and selling: specialist position changes between each fund's last two 13Fs,
 # measured as position value / company market cap at each quarter-end (split-proof; mcq.json has point-in-time caps)
 IPO = {r.get("ticker") for r in (json.load(open(root / "data/ipo-data.json")).get("recent") or []) if (r.get("first_trade_date") or "") >= "2026-01-01"}

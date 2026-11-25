@@ -1707,7 +1707,8 @@ table.tam tr.tcrow .tc-tk:hover{text-decoration:underline;text-decoration-color:
 .rv-ctl{margin:6px 0;font-size:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}.rv-cnt{margin-left:auto}
 .rv-tbl{border-collapse:collapse;width:100%;font-size:12px}.rv-tbl th,.rv-tbl td{padding:4px 6px;border-bottom:1px solid #e1e6ec;text-align:right;white-space:nowrap}.rv-tbl th{background:#eef1f5;position:sticky;top:0;cursor:pointer}.rv-tbl th.l,.rv-tbl td.l{text-align:left;white-space:normal}
 .rv-stage{display:inline-block;font-size:9.5px;font-weight:600;padding:0 5px;border-radius:8px;background:#eef1f5;color:#445;margin-right:4px}.rv-row{cursor:pointer}.rv-row:hover{background:#f0f6ff}.rv-g{color:#1f7a3d;font-weight:600}.rv-b{color:#b3261e;font-weight:600}.rv-src{display:inline-block;padding:0 5px;border-radius:8px;font-size:10px;font-weight:600}.rv-src.verified{background:#dff3e4;color:#17612f}.rv-src.dashboard{background:#fdf0d5;color:#8a5a00}
-.rv-qbtn{border:1px solid #cfdbe7;background:#fff;border-radius:14px;padding:3px 12px;cursor:pointer;font-size:12px}.rv-qbtn.on{background:#1f4e79;color:#fff;border-color:#1f4e79}</style>
+.rv-qbtn{border:1px solid #cfdbe7;background:#fff;border-radius:14px;padding:3px 12px;cursor:pointer;font-size:12px}.rv-qbtn.on{background:#1f4e79;color:#fff;border-color:#1f4e79}.th3{margin:3px 0;line-height:1.45}.th3-l{color:var(--dim);font-weight:600;margin-right:4px}
+</style>
 <style id="memo-v4">
 /* ===== memo v4 polish ===== */
 .mm-doc .mm-ptitle{font-family:var(--disp);font-size:24px;letter-spacing:-.01em;margin:0 0 2px;padding-bottom:5px;border-bottom:3px solid var(--cyan);display:flex;align-items:baseline;gap:10px}
@@ -2331,6 +2332,7 @@ table.rv-tbl tr.rv-row.m-open td:nth-child(4):before{content:"WHY  ";font-size:9
 </div>
 
 <script type="application/json" id="data">{{DATA:data}}</script>
+<script type="application/json" id="theses-data">{{DATA:theses}}</script>
 <script type="application/json" id="memo-baked">{{DATA:memo-baked}}</script>
 <script type="application/json" id="priceq-baked">{{DATA:priceq-baked}}</script>
 <script type="application/json" id="pr-baked">{{DATA:pr-baked}}</script>
@@ -2343,6 +2345,8 @@ table.rv-tbl tr.rv-row.m-open td:nth-child(4):before{content:"WHY  ";font-size:9
 <script type="application/json" id="holders-baked">{{DATA:holders-baked}}</script>
 <script>
 const DATA = JSON.parse(document.getElementById('data').textContent);
+// Hand-written theses (data/theses.json): th_view / th_miss / th_cat / ceo_notes, merged by ticker so the monthly data refresh never overwrites them.
+try{const TH=JSON.parse(document.getElementById('theses-data').textContent||'{}').theses||{};const _fb=v=>typeof v!=='number'?'—':(Math.abs(v)>=1e9?'$'+(v/1e9).toFixed(v>=1e10?0:1)+'B':'$'+Math.round(v/1e6)+'M');DATA.forEach(r=>{const h=TH[r.ticker];if(h){Object.assign(r,h);if(h.th_view){r.call_reason_orig=r.call_reason;r.call_reason=h.th_view.replace(/\{cap\}/g,_fb(r.mc)).replace(/\{cash\}/g,_fb(r.cash));}}});}catch(e){}
 let PRICEQ_RAW={quarters:[],prices:{}}; try{ PRICEQ_RAW=JSON.parse(document.getElementById('priceq-baked').textContent||'{}'); }catch(e){}
 const QTRS = PRICEQ_RAW.quarters||[];
 const PRICEQ = PRICEQ_RAW.prices||{};
@@ -3051,10 +3055,45 @@ function variantView(r){
   if(mkt<=0)return pre+' the market gives '+esc(drug)+' no value after the '+fmtB(v.cost)+' still to spend; we use '+pc(ours)+' odds, so success is nearly free upside'+(r.runway_q!=null&&r.runway_q<6?', but the runway ('+Math.round(r.runway_q)+' quarters) means dilution first.':'.');
   if(imp>1)return pre+' even certain success on a '+fmtB(v.pk)+' peak doesn’t cover the price: the market is paying for more than '+esc(drug)+' (a bigger peak, the pipeline or a takeout). We use '+pc(ours)+' odds.';
   const g=ours/Math.max(imp,.005);
-  if(g>=0.8&&g<=1.25)return pre+' the market implies ~'+pc(imp)+' odds that '+esc(drug)+' reaches a '+fmtB(v.pk)+' peak'+(v.y?' in ~'+v.y+(v.y===1?' yr':' yrs'):'')+'; we use '+pc(ours)+', roughly what\u2019s priced in, so the stock needs new information (the next readout) to move.';
-  return pre+' the market implies ~'+pc(imp)+' odds that '+esc(drug)+' reaches a '+fmtB(v.pk)+' peak'+(v.y?' in ~'+v.y+(v.y===1?' yr':' yrs'):'')+'; we use '+pc(ours)+' because '+(g>=1?why(true):why(false))+(g>=1.5?' — about '+(g>=10?'10+':g.toFixed(1))+'× the market’s odds.':g<=0.67?' — the market is about '+(1/g).toFixed(1)+'× more optimistic than we are.':'.');
+  if(g>=0.8&&g<=1.25)return pre+' the market implies ~'+pc(imp)+' odds that '+esc(drug)+' reaches a '+fmtB(v.pk)+' peak'+(v.y?' by '+(2026+v.y):'')+'; we use '+pc(ours)+', roughly what\u2019s priced in, so the stock needs new information (the next readout) to move.';
+  return pre+' the market implies ~'+pc(imp)+' odds that '+esc(drug)+' reaches a '+fmtB(v.pk)+' peak'+(v.y?' by '+(2026+v.y):'')+'; we use '+pc(ours)+' because '+(g>=1?why(true):why(false))+(g>=1.5?' — about '+(g>=10?'10+':g.toFixed(1))+'× the market’s odds.':g<=0.67?' — the market is about '+(1/g).toFixed(1)+'× more optimistic than we are.':'.');
 }
 window.variantView=variantView;
+// Thesis in three labelled lines (format approved Nov 25 2026): View / What the market misses / Catalyst & what would change our mind.
+// Hand-written lines (th_view, th_miss, th_cat) may use {cap} {cash} {px} tokens, rendered from current data so numbers never go stale.
+// Without them: View = the pitch with any "$X cap" / "$X cash" figures replaced by today's values; Misses = variantView(); Catalyst = next dated event.
+function liveNums(r,t){
+  t=String(t||'');
+  const io=(/\{(imp|ours|mktsales|oursales)\}/.test(t)&&window.impliedOdds)?impliedOdds(r):null,pc=x=>x==null?'—':Math.round(x*100)+'%';
+  const tok=(s)=>s.replace(/\{imp\}/g,io&&io.imp!=null?pc(Math.min(io.imp,.99)):'—').replace(/\{ours\}/g,io&&io.ours!=null?pc(io.ours):'—').replace(/\{mktsales\}/g,io&&io.mktSales!=null?fmtB(Math.max(io.mktSales,0)):'—').replace(/\{oursales\}/g,io&&io.ourSales!=null?fmtB(io.ourSales):'—').replace(/\{cap\}/g,fmtB(r.mc)).replace(/\{cash\}/g,fmtB(r.cash)).replace(/\{px\}/g,typeof r.price==='number'?'$'+r.price.toFixed(2):'—');
+  t=tok(t);
+  if(typeof r.mc==='number')t=t.replace(/\$[\d.,]+\s?[BM](?=\s*(?:market\s+)?(?:cap\b|market cap|valuation|EV\b))/g,fmtB(r.mc));
+  if(typeof r.cash==='number'&&r.cash>0)t=t.replace(/\$[\d.,]+\s?[BM](?=\s+(?:of\s+)?(?:net\s+)?cash\b)/g,fmtB(r.cash));
+  if(typeof r.cash==='number'&&r.cash>0&&r.mc>0)t=t.replace(/\b\d{1,3}% of (the )?(\$[\d.,]+\s?[BM]) ((?:market )?cap)/g,(m,a,b,c)=>{const q=r.cash/r.mc;return q>=1?'more than '+(a||'')+b+' '+c:Math.round(q*100)+'% of '+(a||'')+b+' '+c;});
+  return t;
+}
+function nextCat(r){
+  const L=(r.cat_sched||[]).filter(c=>c.st==='up'&&c.d).sort((a,b)=>a.d<b.d?-1:1);
+  const c=L[0]; if(!c)return '';
+  const d=new Date(c.d+'T00:00:00'),mo=d.toLocaleString('en-US',{month:'short'}),y=d.getFullYear();
+  const lab=/-12-31$/.test(c.d)?'by YE'+y:(/-(03-31|06-30|09-30)$/.test(c.d)?'by '+mo+' '+y:mo+' '+y);
+  return c.e.replace(/\s*\([^)]*\)\s*$/,'')+' ('+lab+')';
+}
+function thesis3(r){
+  const view=r.th_view?liveNums(r,r.th_view):liveNums(r,r.pitch||r.pitch_concise||'');
+  const miss=r.th_miss?esc(liveNums(r,r.th_miss)):variantView(r);
+  const nc=nextCat(r);
+  let chg='';if(nc){const L=/LONG|BUY/.test(r.call||''),S=/SHORT/.test(r.call||''),ev=nc.toLowerCase(),io=window.impliedOdds?impliedOdds(r):null;
+    if(/pdufa|fda (action|decision)|approval decision|approval\b/.test(ev))chg=L?' A CRL or a restrictive label would change our mind.':S?' Approval with a broad label would make us cover.':' The decision itself decides our next call.';
+    else if(/topline|data|readout|results|interim/.test(ev))chg=L?' A miss on the primary endpoint would change our mind.':S?' A clear win on the primary endpoint would make us cover.':' A clean win or a miss would move us off the sidelines.';
+    else if(io&&io.approved)chg=L?' Falling quarterly sales would change our mind.':S?' Accelerating sales would make us cover.':' Sales against guidance are the check.';}
+  const cat=r.th_cat?esc(liveNums(r,r.th_cat)):(nc?'Next: '+esc(nc)+'.'+chg:'No dated catalyst in our calendar; the next earnings report is the check.');
+  return {view:esc(view),miss,cat,hand:!!r.th_view};
+}
+function thesis3Html(r,opt){opt=opt||{};const t=thesis3(r);
+  const L=(k,v)=>v?`<div class="th3"><b class="th3-l">${k}</b> ${v}</div>`:'';
+  return (opt.noView?'':L('View',t.view))+(opt.short?'':L('What the market misses',t.miss)+L('Catalyst &amp; what would change our mind',t.cat));}
+window.thesis3=thesis3;window.thesis3Html=thesis3Html;window.liveNums=liveNums;window.nextCat=nextCat;
 function npvVal(r){ const v=valParts(r); return v?v.npv:null; }
 function valNotes(r){ const v=valParts(r); return v?v.notes.join('; '):''; }
 window.valNotes=valNotes;window.valParts=valParts;
@@ -4687,7 +4726,7 @@ function openDrawer(i){
   const ret=(lbl,v)=>{const f=fmtRet(v);const c=v==null?'na':(v>=0?'pos':'neg');return `<div class="pcell"><div class="pl">${lbl}</div><div class="pv ${c}">${f||'—'}</div></div>`;};
   const sec=(title,icon,body)=>body?`<div class="sec"><h3><svg class="ic" viewBox="0 0 24 24">${icon}</svg>${title}</h3>${body}</div>`:'';
 
-  const thesisHtml=`<div class="thesis ${thesisCls}"><div class="tlabel">${callBadge}${up!=null?`<span class="up ${up>=0?'pos':'neg'}" style="font-size:13px">${up>=0?'+':''}${Math.round(up)}% to MC/NPV 100%</span>`:''}</div><p>${thesis}</p></div>`;
+  const thesisHtml=`<div class="thesis ${thesisCls}"><div class="tlabel">${callBadge}${up!=null?`<span class="up ${up>=0?'pos':'neg'}" style="font-size:13px">${up>=0?'+':''}${Math.round(up)}% to MC/NPV 100%</span>`:''}</div>${r.th_view?thesis3Html(r):`<p>${thesis}</p>`+thesis3Html(r,{noView:1})}</div>`;
 
   const assetsListHtml=(Array.isArray(r.assets)&&r.assets.length>1)?`<div class="assets-list">${r.assets.map(a=>`<div class="asset-row${a.key?' asset-key':''}">${a.key?'<span class=\"asset-star\">★</span> ':''}${a.stage?`<span class=\"asset-stage\">${esc(a.stage)}</span> `:''}<b>${esc(a.name)}</b> — ${esc(a.moa)} — ${esc(a.indication)}</div>`).join('')}</div><div class="assets-note">★ = key asset</div>`:'';
 

@@ -1,0 +1,463 @@
+{
+ "_about": "Hand-written theses, merged into each company at page load. Format (approved Nov 25 2026): th_view = call + one fact with a number; th_miss = what the market misses (implied vs our odds/sales + evidence-based reason); th_cat = dated catalyst + the result that would change our mind. ceo_notes: 0-3 company-specific notes, cat in money/message/moves/miles. Tokens rendered live: {cap} {cash} {px} {imp} {ours} {mktsales} {oursales}. Batch 1 = 40 priority longs/shorts, written Nov 25 2026 from the record (efficacy, catalysts, cash, call reasons).",
+ "theses": {
+  "COLL": {
+   "th_view": "Long: a cash-generative specialty pharma on ~$865M of 2026 sales (FY guide $825-855M reaffirmed), with JORNAY PM growing 24% while the pain portfolio shrinks 18%.",
+   "th_miss": "The market treats Collegium as a melting pain business carrying $1.08B of debt. At a {cap} cap plus net debt, the enterprise value is about 2x sales, and JORNAY PM plus AZSTARYS are becoming the larger profit pool as debt is paid down.",
+   "th_cat": "FY26 results and 2027 guidance (Feb 2027). We are wrong if 2027 guidance shows total revenue falling faster than the ADHD growth, or if cash goes to an expensive acquisition instead of debt paydown.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With debt of $1.08B against a {cap} cap, every dollar of free cash flow that goes to paydown accrues to equity. A stated leverage target and timetable would do more for the stock than another buyback."
+    },
+    {
+     "cat": "message",
+     "t": "Report ADHD (JORNAY PM + AZSTARYS) and pain as separate segments with their own growth and margin, so investors value the growing part on its own instead of the blended +3%."
+    }
+   ]
+  },
+  "BEAM": {
+   "th_view": "Long: two base-editing assets with human data. BEAM-302 lifted total AAT to 12.4 µM at 60 mg in 29 AATD patients, above the 11 µM protective level, and risto-cel is on track for a sickle-cell BLA as early as YE2026.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds for BEAM-302; we use {ours} because a one-time edit that clears the protective AAT threshold and cuts toxic Z-AAT up to 78% treats both lung and liver disease, and risto-cel adds a second near-term asset.",
+   "th_cat": "Risto-cel updated data and BLA submission (by YE2026); BEAM-302 pivotal dosing complete 1H27. We would cut if the BLA slips into 2027 without a reason, or if longer follow-up shows AAT falling back below 11 µM.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "The market still values Beam on BEAM-302 alone. Give risto-cel its own launch plan, price and patient numbers at BLA filing so investors can value the second asset."
+    },
+    {
+     "cat": "money",
+     "t": "With ~9.6 quarters of cash, raising on the risto-cel BLA acceptance rather than before it would be the cheaper capital."
+    }
+   ]
+  },
+  "MLYS": {
+   "th_view": "Long into the Dec 22 PDUFA: lorundrostat has two positive pivotals (placebo-adjusted SBP −9.1 mmHg in Launch-HTN, −7.9 mmHg in Advance-HTN) on top of background therapy.",
+   "th_miss": "At {cap} with {cash} of cash, the price implies ~{imp} odds of reaching a $2.8B peak; we use {ours}. The debate is not approval but uptake as the #2 aldosterone synthase inhibitor behind AstraZeneca's baxdrostat, and we think a large resistant-hypertension market fits two drugs.",
+   "th_cat": "FDA decision Dec 22 2026. We are wrong on the long if the label carries a hyperkalemia restriction tighter than baxdrostat's or if payers require step-through after MRAs.",
+   "ceo_notes": [
+    {
+     "cat": "moves",
+     "t": "As the second drug in class, a commercial partner with primary-care reach would launch faster than a standalone sales force; settle that before the PDUFA, not after."
+    }
+   ]
+  },
+  "NKTR": {
+   "th_view": "Long: REZPEG hit its Ph2b in atopic dermatitis (n=393, p<0.001, Lancet) with durable responses on maintenance dosing, and the Treg mechanism aims at durable control rather than suppression.",
+   "th_miss": "At {cap} against {cash} of cash, the market pays almost nothing for REZPEG (~{imp} implied odds); we use {ours} because a positive randomized Ph2b plus a second indication (alopecia areata) is worth more than the cash.",
+   "th_cat": "ZENITH alopecia areata Ph3 start (Dec 2026); AD Ph3 topline mid-2028. Our view changes if Ph3 maintenance data show responses fading off-drug, which would make REZPEG just another injectable.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "The stock trades near cash with Ph3 topline in mid-2028; a partner for ex-US rights or for alopecia would fund the program without dilution at today's price."
+    }
+   ]
+  },
+  "LEGN": {
+   "th_view": "Long: Carvykti is the best-selling myeloma CAR-T (Q2 net trade sales $657M, ~$2.6B annualized) with a PFS hazard ratio of 0.26 in CARTITUDE-4.",
+   "th_miss": "At {cap} the market pays for ~{mktsales}/yr of sales against a ~$2.6B run rate. It is pricing the 2026 problems (CEO exit, the raise at $29.35 that broke, J&J clawing back funding advances), not the franchise, which still grows and has CARTITUDE-5/6 in newly diagnosed disease.",
+   "th_cat": "Quarterly Carvykti sales and J&J repayment schedule. We are wrong if sales stall below a $700M quarter or if repayments to J&J consume the cash before profitability.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "Name a permanent CEO and publish the J&J repayment schedule; the discount is about governance and cash claims, not the drug."
+    },
+    {
+     "cat": "money",
+     "t": "After a raise that traded 35% below its price within six weeks, avoid new equity until profitability is visible in reported numbers."
+    }
+   ]
+  },
+  "ACHV": {
+   "th_view": "Long: cytisinicline's June CRL was manufacturing and labeling only. The clinical package is intact: ORCA-2 abstinence 32.6% vs 7.0% at weeks 9-12, and 31.2% quit at one year.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds; we use {ours} because a CMC-only CRL with the manufacturing transfer largely complete is a timing problem, not a data problem.",
+   "th_cat": "NDA resubmission (Q4 2026), then an FDA decision in 1H27. We would change our view if FDA classifies the resubmission as Class 2 with a new inspection finding, or asks for clinical work.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "Confirm the resubmission date and its class the day it goes in; until then investors discount a slip."
+    },
+    {
+     "cat": "moves",
+     "t": "Smoking cessation needs primary-care reach. Line up a commercial partner before approval so the launch does not depend on a raise."
+    }
+   ]
+  },
+  "ANAB": {
+   "th_view": "Long: a pure Jemperli royalty. Jemperli net sales reached $365M (+20%) and rectal cancer was added in October; RUBY showed an overall-survival HR of 0.69 in first-line endometrial cancer.",
+   "th_miss": "At {cap} the market pays for ~{mktsales}/yr of royalty-bearing sales; GSK guides Jemperli to more than $2.7B at peak. The discount is the Tesaro lawsuit seeking to halve the royalty, which we think is priced as if Tesaro wins.",
+   "th_cat": "Tesaro litigation ruling (Q4 2026 to Q1 2027) and imsidolimab PDUFA Dec 12 2026. We are wrong if the court cuts the royalty rate, which would remove most of the upside.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With $257M of debt against $164M of cash, use the royalty stream to retire debt or buy back stock once the litigation is resolved, not to rebuild a pipeline."
+    }
+   ]
+  },
+  "HRMY": {
+   "th_view": "Long: WAKIX grew 30% to a record ~$261M in Q2, and cash of {cash} covers a large part of the {cap} cap.",
+   "th_miss": "At {cap} the market pays for ~{mktsales}/yr of sales against a $1.1B run rate. It prices WAKIX as if orexin agonists end the franchise; we think pitolisant GR (PDUFA Apr 1 2027) and the pediatric label extend it, and TEMPO in Prader-Willi is free optionality.",
+   "th_cat": "AET ANDA injunction hearing Jan 26 2027; pitolisant GR PDUFA Apr 1 2027. We are wrong if generic entry is allowed before 2030 or if orexin-agonist launch data show fast switching from WAKIX.",
+   "ceo_notes": [
+    {
+     "cat": "moves",
+     "t": "With {cash} of cash and orexin agonists coming, buying a second commercial-stage sleep or rare-neurology asset now, while WAKIX funds it, is the move investors would reward."
+    }
+   ]
+  },
+  "MLTX": {
+   "th_view": "Long: sonelokimab showed 67-69% HiSCR75 at week 52 in hidradenitis suppurativa (VELA-1/2), against ~50% for bimekizumab, and the HS BLA went in on Sep 30.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds of a $2.2B peak; we use {ours}. The market is weighing the single VELA-2 miss and the lack of a head-to-head trial; the pooled week-52 durability is the better guide to how doctors will use it.",
+   "th_cat": "FDA acceptance and PDUFA date for the HS BLA (around Nov-Dec 2026). We would change our mind on a refuse-to-file or a standard review with an advisory committee focused on VELA-2.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "Show the week-52 data against bimekizumab's on the same as-observed basis; investors will not credit the durability claim without a like-for-like table."
+    }
+   ]
+  },
+  "OCUL": {
+   "th_view": "Long: AXPAXLI beat aflibercept on maintained vision in SOL-1 (74.1% vs 65.9%, p=0.0006), the first superiority win over an approved anti-VEGF in wet AMD.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds of a $3.6B peak; we use {ours} because a superiority result with FDA alignment on the filing is rarer than the price suggests.",
+   "th_cat": "NDA submission (Q4 2026). Our view changes if the filing slips or FDA requires SOL-R (2028) before approval.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With ~8 quarters of cash and an NDA going in, raise on FDA acceptance rather than before it."
+    }
+   ]
+  },
+  "LYEL": {
+   "th_view": "Long: ronde-cel (CD19/CD20 CAR-T) delivered 91% ORR and 77% CR in 3L+ large B-cell lymphoma, with 75% of complete responses still in CR at 12 months and lower severe toxicity than approved CAR-Ts.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds for ronde-cel; we use {ours} because response and durability already meet the approved-product bar and the safety profile supports outpatient use, which the crowded-field discount ignores.",
+   "th_cat": "ASH oral with 80+ patients (Dec 12-15 2026). We would cut if the 12-month CR rate falls below ~60% in the larger cohort or severe ICANS rises above 10%.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With ~5.4 quarters of cash, raise after the ASH data if they hold; a raise before a pivotal readout in mid-2027 would be priced off today's discount."
+    }
+   ]
+  },
+  "APMD": {
+   "th_view": "Long: AD109 could be the first oral drug for obstructive sleep apnea; two Ph3s cut AHI 55.6% vs 19.1% (SynAIRgy) and 46.8% vs 6.8% (LunAIRo), with a PDUFA on Feb 28 2027.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds of a $4.0B peak; we use {ours}. The stock is priced as if dry mouth and insomnia will keep patients off it, but CPAP's poor adherence leaves a very large group with no tolerable option.",
+   "th_cat": "FDA decision Feb 28 2027. We would cut on a CRL, or on a label limited to CPAP-intolerant patients with a strong warning on cardiovascular effects.",
+   "ceo_notes": [
+    {
+     "cat": "moves",
+     "t": "OSA is a primary-care and sleep-clinic market; a partner with that reach, or a co-promote, would de-risk the launch more than a standalone build."
+    }
+   ]
+  },
+  "SANA": {
+   "th_view": "Short: the 14-month islet result that drives the stock is one patient given donor cells (UP421), not SC451, which has no human data.",
+   "th_miss": "At {cap} the market implies ~{imp} odds that SC451 reaches a $2.5B peak; we use {ours}. One donor-islet patient shows hypoimmune editing can work, but says little about a stem-cell product that has not been dosed, and Vertex is years ahead.",
+   "th_cat": "SC451 IND clearance and Ph1 start (guided as early as 2026). We would turn more positive if SC451 itself shows C-peptide production without immunosuppression in its first patients.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With ~3.4 quarters of cash, raise now while the UP421 result supports the price; waiting for SC451 data risks a raise from a weaker position."
+    }
+   ]
+  },
+  "CTY": {
+   "th_view": "Short: a {cap} company whose lead has only healthy-volunteer data (85% FXI knockdown after one 150 mg dose) and no bleeding or clotting endpoints.",
+   "th_miss": "At {cap}, the price exceeds what certain success on CITY-FXI would be worth; we use {ours} odds. Factor XI already has three Ph3 programs from Bayer, BMS/J&J and Novartis/Anthos, so knockdown alone does not differentiate.",
+   "th_cat": "ASH oral Dec 12 2026, then TKA Ph2 design. We would cover if the data show dosing twice a year or less with clean bleeding, which would give a real point of difference.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With ~4.7 quarters of cash and a post-IPO valuation, a follow-on after ASH would be cheap capital; do not wait for Ph2."
+    }
+   ]
+  },
+  "ABSI": {
+   "th_view": "Short: ABS-201 has safety and a ~65-day half-life from 32 healthy adults, and no efficacy data, yet the company trades at {cap}.",
+   "th_miss": "At {cap} the market implies ~{imp} odds that ABS-201 reaches a $1.8B peak; we use {ours}. Hair loss is crowded (generic finasteride and minoxidil, oral minoxidil, newer topicals), and the AI-design premium has not yet produced a validated drug.",
+   "th_cat": "13-week AGA interim (Dec 2026). We would cover if hair-count gain beats placebo by 20% or more, the level that justifies Ph3.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "State the hair-count bar for the December interim in advance; a pre-set threshold protects the stock if the result is good and limits the damage if it is not."
+    }
+   ]
+  },
+  "SRZN": {
+   "th_view": "Short: SZN-8141 has dosed its first DME patient and has no efficacy data, while four retinal competitors are in late-stage trials.",
+   "th_miss": "At {cap} the market implies ~{imp} odds that SZN-8141 reaches a $1.0B peak; we use {ours}. Wnt modulation is unproven in the retina, and by its 2H27 Ph1b readout AXPAXLI, 4D-150 and others may have reset the bar.",
+   "th_cat": "DUET Ph1b topline (2H 2027). We would cover if early patients show vision or fluid gains beyond anti-VEGF alone.",
+   "ceo_notes": []
+  },
+  "SEPN": {
+   "th_view": "Short: SEP-479, an oral PTH1R agonist, is in healthy-volunteer Ph1, yet the stock rose ~70% in a year to a {cap} cap.",
+   "th_miss": "At {cap}, the price is more than certain success on SEP-479 would justify; we use {ours} odds. The first candidate was dropped, and a same-mechanism program (EVO756) missed its Ph2b in June, so the read-through risk is not priced.",
+   "th_cat": "SEP-479 SAD/MAD data (Q1 2027). We would cover if Ph1 shows dose-dependent calcium increases with a once-daily oral profile.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With {cash} of cash and a 70% run, the valuation is currency: a partnership or in-licensing deal now is cheaper than after Ph1 data."
+    }
+   ]
+  },
+  "KYMR": {
+   "th_view": "Watch after the win: BROADEN2 (244 patients) showed EASI −72% vs −27% and vIGA 0/1 38% vs 11% at the mid dose, dupilumab-class efficacy from a once-daily pill.",
+   "th_miss": "At {cap} the market already pays for more than a $5.4B atopic dermatitis peak; we moved our odds to {ours}. After a 49% move the stock prices a Phase 3 win plus asthma and other type 2 diseases, so the asymmetry has gone.",
+   "th_cat": "Phase 3 start in AD (by mid-2027); BREADTH asthma Ph2b (late 2027). We would turn long on a pullback that prices only AD, or short if Phase 3 dose selection reveals a safety signal (conjunctivitis above dupilumab's rate).",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "The stock is up ~49% on the data with $1.6B of cash. A raise now funds Phase 3 and asthma at the best price Kymera may see before Phase 3 data."
+    },
+    {
+     "cat": "moves",
+     "t": "Big pharma will want an oral STAT6 asset; decide whether to partner ex-US now, while the data are fresh, or keep full rights through Phase 3."
+    }
+   ]
+  },
+  "TARS": {
+   "th_view": "Long: XDEMVY sold $194.6M in Q3 (+64% year on year, >$1B cumulative) as the only approved Demodex blepharitis treatment.",
+   "th_miss": "At {cap} the market pays for ~{mktsales}/yr of XDEMVY sales; we model {oursales}. Eye-care launches usually slow after year two, but XDEMVY is still growing over 60% with no direct competitor.",
+   "th_cat": "Q4 sales (Feb 2027); TP-04 ocular rosacea and TP-05 Lyme prevention Ph2 toplines (1H 2027). We would cut if quarterly growth falls below 30% or a copay-practices inquiry hits net price.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "Disclose new-to-brand prescriptions and refill rates; investors need to see whether growth comes from new patients or repeat use before paying for a $5B peak."
+    }
+   ]
+  },
+  "OCS": {
+   "th_view": "Long, with low conviction: after OCS-01 failed in DME, privosegtor has Breakthrough designation and Ph2 signals in acute optic neuritis (+18 letters of low-contrast acuity, lower NfL and GFAP).",
+   "th_miss": "At {cap}, of which {cash} is cash, the market implies ~{imp} odds for privosegtor; we use {ours}. The evidence is thin (Ph2, biomarkers and one visual measure), but no neuroprotectant is approved for optic neuropathies.",
+   "th_cat": "R&D Day Dec 8 2026; licaminlimab PREDICT-1 topline (YE2026). We would cut to Hold if the R&D Day shows no Ph3 design agreed with FDA for privosegtor.",
+   "ceo_notes": [
+    {
+     "cat": "miles",
+     "t": "After the DME miss, investors need an FDA-agreed registrational design for privosegtor; put the endpoint and size on the table at the Dec 8 R&D Day."
+    }
+   ]
+  },
+  "CELC": {
+   "th_view": "Long: REVTORPYK launched Sep 30 after cutting progression or death by 76% (HR ~0.24) in PIK3CA wild-type HR+/HER2- breast cancer, with no direct wild-type competitor.",
+   "th_miss": "At {cap} (with $754M of debt against {cash} of cash) the market pays for ~{mktsales}/yr of sales; management targets a $2.5-3B peak. The PIK3CA-mutant sNDA (PDUFA Jun 25 2027) would roughly double the eligible population.",
+   "th_cat": "First full quarter of sales (Q4 results); mutant sNDA PDUFA Jun 25 2027. We would cut if early sales show tolerability (hyperglycemia, stomatitis) limiting use, or the mutant label goes to inavolisib-first.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "Report new patient starts and duration on therapy from the first quarter; the market's question is tolerability in practice, and early data answer it."
+    }
+   ]
+  },
+  "SLS": {
+   "th_view": "Short on valuation: REGAL hit overall survival (24.0 vs 14.7 months, HR 0.59, p=0.035, n=126), but the company is worth {cap} for a drug we see peaking at ~$500M.",
+   "th_miss": "At {cap} the price exceeds what certain approval of GPS would be worth; we use {ours} odds. A single 126-patient trial with p=0.035 in a small AML maintenance niche leaves room for FDA questions, and the cap prices a much larger market.",
+   "th_cat": "FDA meeting on the filing strategy (1H 2027). We would cover if FDA agrees REGAL alone supports a BLA and the company shows a path to larger AML settings.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "The stock is valued far above the drug's near-term sales; the proposed $150M offering should be upsized while that holds."
+    }
+   ]
+  },
+  "XNCR": {
+   "th_view": "Short: XmAb819 showed 45.5% confirmed ORR in only 11 RCC patients with 72% grade 3+ related side effects, behind Merck's 52.6%, and registration work starts only by end-2027.",
+   "th_miss": "At {cap}, more than certain success on XmAb819 would justify; we use {ours} odds. The platform royalties are smaller than modelled after the Alexion settlement ended US Ultomiris royalties, so the premium has less behind it.",
+   "th_cat": "XmAb819 subcutaneous data and FDA engagement (1H 2027). We would cover if SC dosing brings grade 3+ side effects below ~40% while holding response near 45%.",
+   "ceo_notes": [
+    {
+     "cat": "moves",
+     "t": "The platform has not produced a wholly owned winner; out-licensing XmAb819 and focusing spend would extend cash past the next data."
+    }
+   ]
+  },
+  "LYCA": {
+   "th_view": "Short: a {cap} post-IPO valuation rests on one cohort of ~8 healthy atopic volunteers whose free IgE fell 96%.",
+   "th_miss": "At {cap} the market implies ~{imp} odds that LCA-0061 reaches a $1.8B peak; we use {ours}. Xolair already removes IgE, so deeper depletion must show better clinical results, and no patient data exist; the lock-up expiry adds supply.",
+   "th_cat": "Ph1 data in elevated-IgE and food-allergy patients (2027). We would cover if patients show larger and longer IgE suppression than omalizumab with a clinical signal.",
+   "ceo_notes": []
+  },
+  "TSHA": {
+   "th_view": "Long: TSHA-102 is the only Rett syndrome gene therapy with a self-regulating MECP2 construct; all 12 Part A patients gained or regained at least one milestone by 12 months, with no dose-limiting toxicity.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds; we use {ours} because 100% milestone response against a ~7% natural-history rate is a large effect, and REVEAL Part B is fully dosed (17 patients).",
+   "th_cat": "REVEAL Part B 6-month interim and FDA feedback on the BLA path (1H 2027). We would cut if fewer than half of Part B patients gain a milestone or a liver or MECP2-overexpression signal appears.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "Neurogene is ahead on enrollment; publish the milestone definitions and natural-history comparator now so the interim is judged on your terms."
+    }
+   ]
+  },
+  "PGEN": {
+   "th_view": "Long: Papzimeos is the first approved therapy for recurrent respiratory papillomatosis (51% surgery-free at 12 months) and turned profitable in Q3 ($35.8M net income on $72.9M revenue).",
+   "th_miss": "At {cap} the market pays for ~{mktsales}/yr of sales against a $292M run rate after two quarters. With no competitor and a +37% quarter-on-quarter ramp, we think the launch has further to go.",
+   "th_cat": "Q4 sales and EMA review outcome (2027). We would cut if quarterly revenue stalls, which would suggest the prevalent patient pool is smaller than modelled.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "Cash is only $51M against $100M of debt; use launch profits to build a buffer before spending on the AdenoVerse pipeline."
+    }
+   ]
+  },
+  "NTLA": {
+   "th_view": "Long: lonvo-z met all HAELO endpoints (NEJM), with most patients attack-free and off treatment after one 50 mg dose; priority review sets a Mar 10 2027 PDUFA with no advisory committee.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds of a $4.0B peak; we use {ours}. The stock trades on launch-funding fears, but a one-time cure in a disease treated with lifelong injectables (Takhzyro, ~87% attack reduction) should take share fast.",
+   "th_cat": "FDA decision Mar 10 2027. We would cut on a CRL or a label requiring long-term follow-up that slows uptake.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With ~6 quarters of cash and a launch ahead, raise on approval, or sign royalty financing now, rather than letting the cash runway set the price."
+    }
+   ]
+  },
+  "AMPH": {
+   "th_view": "Avoid: BAQSIMI, the growth driver, faces rebate and 340B price erosion and competition from Lilly and Xeris, and Amphastar carries $613M of debt with an open FDA warning letter.",
+   "th_miss": "The market prices Amphastar as a stable generics company with a growing branded product. Q3 BAQSIMI grew 10%, but earlier in 2026 net revenue fell 15% on price while units rose, and generic injectables face steady price decline.",
+   "th_cat": "FY26 results and 2027 guidance (Feb-Mar 2027). We would turn positive if the warning letter is closed and BAQSIMI net price stabilizes for two quarters.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "Give BAQSIMI net price and volume separately each quarter; mixing them hides whether 340B erosion has stopped."
+    }
+   ]
+  },
+  "GPCR": {
+   "th_view": "Long: aleniglipron gave 16.3% placebo-adjusted weight loss at 44 weeks with no plateau and 2-3% discontinuation for side effects, and {cash} of cash is about the whole {cap} cap.",
+   "th_miss": "At {cap} the market implies ~{imp} odds of a $3.0B peak; we use {ours}. An oral small molecule at orforglipron's level or better is valuable to every company without one, and the stock prices it at roughly zero.",
+   "th_cat": "Q4 2026 toplines (44-week body composition, 30-week T2D, SWITCH). We would cut if the T2D study shows weaker HbA1c than orforglipron or liver-enzyme signals.",
+   "ceo_notes": [
+    {
+     "cat": "moves",
+     "t": "With cash covering the cap, the fastest way to show the value is a partnership: big pharma without an oral GLP-1 should be competing for aleniglipron now."
+    }
+   ]
+  },
+  "ARDX": {
+   "th_view": "Long: IBSRELA grew 23% to $96.3M in Q3 and Ardelyx sells two approved drugs at a {cap} cap, ~1.6x annualized revenue.",
+   "th_miss": "At {cap} the market pays for ~{mktsales}/yr of sales against a $502M run rate. It is pricing the FY26 guidance cut ($350-370M) as permanent payer friction; IBSRELA's prescription growth suggests access will improve.",
+   "th_cat": "2027 IBSRELA guidance (Feb 2027); ACCEL Ph3 in chronic idiopathic constipation (2H 2027). We would cut if 2027 guidance implies under 15% growth.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "Explain the guidance cut by payer and channel, with the date each contract renews; the market assumes the worst when it cannot see the timeline."
+    }
+   ]
+  },
+  "FDMT": {
+   "th_view": "Long: 4D-150, a one-time intravitreal gene therapy, cut aflibercept injections 78% over two years in PRISM (n=45), and both Ph3s are fully enrolled.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds of a $3.8B peak; we use {ours} because two-year durability is already shown and the Ph3 bar is non-inferior vision with fewer injections.",
+   "th_cat": "4FRONT-1 Ph3 topline vs aflibercept (Q2 2027). We would cut if vision is not non-inferior or inflammation needs chronic steroids.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With ~6.7 quarters of cash, a raise before 4FRONT-1 is likely; size it to reach the readout and tie it to the enrollment news so it does not look forced."
+    }
+   ]
+  },
+  "ANNX": {
+   "th_view": "Long: tanruprubart is the first drug to beat placebo in Guillain-Barré syndrome with one infusion (Ph3, n=241), where no drug is approved.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds; we use {ours} because the EU review is under way and the effect is visible from week 1. The discount reflects the unfiled US BLA and short cash runway, not the data.",
+   "th_cat": "US BLA submission (guided Q4 2026). We would cut if the filing slips into 2027 or FDA asks for a second trial.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With ~4.4 quarters of cash, file the BLA and raise on acceptance; a raise before filing would be priced off the delay."
+    },
+    {
+     "cat": "message",
+     "t": "Give a firm BLA date; missing the earlier guidance is why the market discounts the program."
+    }
+   ]
+  },
+  "HELP": {
+   "th_view": "Long: APPROACH (n=222) hit with MADRS −7.6 vs placebo at week 6 and remission 50.9% vs 18.2%, and the stock fell 21% on the day.",
+   "th_miss": "At {cap} with {cash} of cash, the market implies ~{imp} odds; we use {ours}. The sell-off priced three treatment-related serious side effects and the need for a second trial, but the effect size beats most adjunctive depression drugs.",
+   "th_cat": "EMBRACE second pivotal topline (4Q 2027). We would cut if EMBRACE shows less than half APPROACH's effect or more serious psychiatric events.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With ~4.8 quarters of cash and EMBRACE a year away, raise now on the positive Ph3 rather than into the next binary."
+    },
+    {
+     "cat": "message",
+     "t": "Detail the three treatment-related serious events and the monitoring plan; the stock fell on the uncertainty, not the efficacy."
+    }
+   ]
+  },
+  "GERN": {
+   "th_view": "Long, valuation only: with myelofibrosis gone (IMpactMF stopped Oct 28), RYTELO grew to $60.1M in Q3 (+27%) and Geron is now profitable.",
+   "th_miss": "At {cap}, with {cash} of cash and $122M of debt, the market pays for ~{mktsales}/yr of RYTELO sales against a $240M run rate. It values the company as if RYTELO is shrinking; we model {oursales}.",
+   "th_cat": "Germany launch (YE2026) and 2027 guidance. We would exit if quarterly sales fall, which would mean luspatercept is taking the LR-MDS market.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "Without myelofibrosis, Geron is a single-product company; cut R&D to keep it profitable and return or preserve cash rather than start a new program."
+    }
+   ]
+  },
+  "GYRE": {
+   "th_view": "Long: hydronidone showed fibrosis regression in a China Ph3 in hepatitis B liver fibrosis and is under NMPA priority review, with no approved competitor.",
+   "th_miss": "At {cap} the market implies ~{imp} odds; we use {ours} because priority review and a met Ph3 endpoint usually lead to approval in China. The market discounts China-only value and the 69.7% ownership of the operating subsidiary.",
+   "th_cat": "China NDA decision (expected by YE2026 to 1H 2027). We would cut on a request for more data or a narrow conditional label.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "US investors discount China-only assets; show pricing, reimbursement timing and the share of profits that reaches Gyre shareholders."
+    }
+   ]
+  },
+  "ZVRA": {
+   "th_view": "Long: MIPLYFFA is the only approved Niemann-Pick type C drug ($34.0M in Q3), and cash of {cash} is about half the {cap} cap.",
+   "th_miss": "At {cap} the market pays for ~{mktsales}/yr of sales against a $151M run rate. It reads the flat sequential quarters as a peak; the infant sNDA and celiprolol in vascular EDS add patients it does not price.",
+   "th_cat": "Infant (<24 months) sNDA filing (Q1 2027). We would cut if MIPLYFFA revenue declines for two more quarters.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "Report patients on therapy and discontinuations; flat revenue with growing patients is a pricing story, with falling patients it is a demand story, and investors cannot tell which."
+    }
+   ]
+  },
+  "ALMS": {
+   "th_view": "Long: envudeucitinib hit two Ph3s in psoriasis (PASI90 68.0% and 62.1% at week 24, beating apremilast), with an NDA due Q4 2026.",
+   "th_miss": "At {cap}, with {cash} of cash, the market implies ~{imp} odds; we use {ours}. The 57% fall on the lupus miss removed optionality, but the psoriasis data (PASI75 ~74% vs ~58% for Sotyktu, cross-trial) are untouched.",
+   "th_cat": "NDA submission (Q4 2026). We would cut if the NDA slips or a commercial partner does not emerge before approval.",
+   "ceo_notes": [
+    {
+     "cat": "moves",
+     "t": "As the second oral TYK2, a commercial partner with dermatology reach is worth more than a standalone launch; that deal is the next re-rating event."
+    }
+   ]
+  },
+  "RGNX": {
+   "th_view": "Long: RGX-202 met its Duchenne pivotal endpoint, with 93% of patients above 10% micro-dystrophin (p<0.0001) and functional gains; BLA due Q1 2027.",
+   "th_miss": "At {cap} with {cash} of cash and $186M of debt, the market implies ~{imp} odds; we use {ours}. The ELEVIDYS safety history weighs on the whole class, but RGX-202's construct and expression are differentiated and the accelerated-approval bar is met.",
+   "th_cat": "Pre-BLA meeting (Q4 2026), BLA submission (Q1 2027); sura-vec wet AMD pivotal topline (Q4 2026). We would cut if FDA rejects external-control functional data or a liver-safety signal appears.",
+   "ceo_notes": [
+    {
+     "cat": "message",
+     "t": "Publish the full liver-safety data next to ELEVIDYS's; class safety is the discount, and only your own data can separate you from it."
+    }
+   ]
+  },
+  "ARVN": {
+   "th_view": "Long, as a cash shell with options: the company trades below its {cash} of cash with no debt, and owns ARV-102, a brain-penetrant LRRK2 degrader with >50% CSF knockdown for 28 days.",
+   "th_miss": "At {cap}, below cash, the market gives ARV-102 and the half-share of vepdegestrant royalties (via Rigel) no value. Our {ours} odds are low, but the downside is limited by the cash.",
+   "th_cat": "ARV-393 data at ASH (Dec 12-15 2026); ARV-102 Ph1 progression. We would exit if the cash is spent on a broad early pipeline without returning capital.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "The market values the company below cash; a buyback or a special dividend, with ARV-102 funded through Ph1 only, is the move holders would reward."
+    }
+   ]
+  },
+  "RZLT": {
+   "th_view": "Short: after the congenital-HI Ph3 missed, the stock depends on upLIFT, a 16-patient open-label study in tumor hyperinsulinism that reads in mid-December.",
+   "th_miss": "At {cap} the price exceeds what certain success in a market we size at ~$18M peak would be worth; we use {ours} odds. Interim responders (7 of 8) look good, but the indication is tiny.",
+   "th_cat": "upLIFT topline (mid-Dec 2026). We would cover if the company shows a path back to congenital HI or a larger indication; a clean upLIFT alone does not justify the cap.",
+   "ceo_notes": [
+    {
+     "cat": "money",
+     "t": "With ~5 quarters of cash, raise immediately after a positive upLIFT; it is the last clear catalyst before a long gap."
+    }
+   ]
+  }
+ }
+}

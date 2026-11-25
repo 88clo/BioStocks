@@ -43,14 +43,6 @@
    "why": "PASI100 rose from 64% to 71% between weeks 16 and 28 with no further dosing, which argues for durability; once-yearly dosing needs most responders to hold to week 52, and the stock already prices a lot of it."
   },
   {
-   "t": "KYMR",
-   "m": "BROADEN2",
-   "p": 0.45,
-   "up": 0.35,
-   "dn": -0.5,
-   "why": "An oral STAT6 degrader needs about 40% placebo-adjusted EASI-75 to matter next to dupilumab, and the only patient data is a 22-person Ph1b; at $11.7B the price assumes success."
-  },
-  {
    "t": "PRAX",
    "m": "Relutrigine NDA PDUFA",
    "p": 0.85,
@@ -225,14 +217,6 @@
    "up": 0.6,
    "dn": -0.45,
    "why": "A one-time subretinal gene therapy needs non-inferiority to aflibercept on vision; Ph2 showed a large cut in injection burden, but pivotal non-inferiority with surgery-related losses is a real risk."
-  },
-  {
-   "t": "HELP",
-   "m": "APPROACH",
-   "p": 0.6,
-   "up": 0.8,
-   "dn": -0.5,
-   "why": "Compass's COMP005 showed psilocybin can win a Ph3 in depression; deuteration aims at a shorter, more practical session, so efficacy should track the class, but functional-unblinding and placebo issues persist."
   },
   {
    "t": "APMD",
