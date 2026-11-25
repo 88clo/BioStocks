@@ -60,3 +60,4 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - `python3 scripts/fetch_shares_hist.py` (Yahoo share counts → cache/shares) then `python3 scripts/build_mcq.py` → data/mcq.json, point-in-time quarter-end market caps (split-adjusted, calibrated on the Sep 12 2026 snapshot).
 - data/retro-2025.json holds researched drivers of the biggest 2025 moves; data/stage-sep12.json the Sep 12 snapshot stages.
 - Point-in-time clinical phase needs ClinicalTrials.gov, which the workspace allowlist blocks; allow clinicaltrials.gov to add it.
+- `python3 scripts/classify_modality.py` tags each lead program with a broad modality (data.json and parked rows; hand overrides inside); What worked uses it.
