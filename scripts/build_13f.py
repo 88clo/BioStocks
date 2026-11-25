@@ -13,6 +13,8 @@ import json, re, pathlib, difflib, collections, datetime as dt
 root = pathlib.Path(__file__).resolve().parents[1]
 C = root / "cache/13f"
 CIK = json.load(open(C / "ciks.json"))
+EXTRA = json.load(open(root / "data/specialists-extra.json"))["funds"] if (root / "data/specialists-extra.json").exists() else {}
+for _n, _c in EXTRA.items(): CIK.setdefault(_n, _c)
 D = json.load(open(root / "data/data.json")); PK = json.load(open(root / "data/parked-data.json")); PK = PK["rows"] if isinstance(PK, dict) else PK
 H = json.load(open(root / "data/holders-baked.json"))
 PQ = json.load(open(root / "data/priceq-baked.json")); QL = PQ["quarters"]; PR = PQ["prices"]
@@ -84,7 +86,7 @@ try: TR = None
 except Exception: pass
 
 out, pool = [], collections.Counter()
-spec = set(json.loads(re.search(r"const SPECIALIST_INVESTORS=new Set\((\[.*?\])\);", tpl).group(1)))
+spec = set(json.loads(re.search(r"const SPECIALIST_INVESTORS=new Set\((\[.*?\])\);", tpl).group(1))) | set(EXTRA)
 for fund, Q in F.items():
     qs = sorted(Q, key=lambda q: (int(q[2:]), int(q[0])))
     qs = [q for q in qs if int(q[2:]) * 4 + int(q[0]) >= 24 * 4 + 3]       # last 9 quarters only (3Q24 on)

@@ -60,6 +60,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112526-v5.html | Nov 25 version before judged catalyst views, the 13F specialist leaderboard and the specialist-pool comparison |
 | backup-112526-v6.html | Nov 25 version before simplified catalyst impact/skew, 13F-based ownership by investor type, raw 4Q/8Q returns with style and position returns |
 | backup-112526-v7.html | Nov 25 version before the four-signal skew, complete 13F ownership, specialist flows, card holders, style hover and the What worked forecast/exceptions |
+| backup-112526-v8.html | Nov 25 version before the catalyst audit fixes, 24 added specialist funds, public-target M&A split, style hover card and the written 1Q27 backdrop |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 

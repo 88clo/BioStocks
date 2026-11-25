@@ -28,6 +28,10 @@ def get(url, binary=False):
 tpl = (root / "pipeline/template.html").read_text(encoding="utf-8")
 SPEC = json.loads(re.search(r"const SPECIALIST_INVESTORS=new Set\((\[.*?\])\);", tpl).group(1))
 cikf = CACHE / ("big_ciks.json" if BIG else "ciks.json"); CIK = json.load(open(cikf)) if cikf.exists() else {}
+EXTRA = json.load(open(root / "data/specialists-extra.json"))["funds"] if (root / "data/specialists-extra.json").exists() else {}
+if not BIG:
+    for n, c in EXTRA.items(): CIK.setdefault(n, c)
+    SPEC = list(SPEC) + [n for n in EXTRA if n not in SPEC]
 if BIG: SPEC = list(CIK)   # --big: the largest index funds, banks and generalists (cache/13f/big_ciks.json), latest quarter only
 
 def norm(n): return re.sub(r"[^a-z0-9 ]", "", re.sub(r",? (llc|l\.?p\.?|lp|inc\.?|ltd\.?|limited|corp\.?|co\.?|ag|plc|gp|l\.l\.c\.)\b", " ", n.lower())).split()

@@ -159,5 +159,21 @@
   "ipo_usd:3Q25": "one IPO (LB Pharma), about $0.3B",
   "ipo_usd:4Q25": "two IPOs; proceeds not in our sources",
   "4Q26": "quarter to date (Oct 1 - Nov 20)"
- }
+ },
+ "ma_pub_usd": [
+  10.7,
+  11.2,
+  5.3,
+  4.8,
+  24.6,
+  19.2,
+  23.1,
+  46.1,
+  32.6,
+  50.9,
+  27.1,
+  null
+ ],
+ "ma_pub_cash_share": 0.9,
+ "ma_pub_note": "Public-target share of M&A value per year from William Blair's private-target totals (2024: $28B of $60B private, so 53% public; 2025: $34B of $147B, 77%; 2026 YTD: $58B of $167B, 65%), applied to each quarter; 3Q26 is exact ($27.1B public across 5 deals). Cash returned to public holders = 90% of public deal value (most biotech takeouts are all cash plus small CVRs); cross-checks: William Blair counted $22B returned by six public all-cash deals in 3Q25 (our estimate $21B) and ~$17B to institutional holders alone in 3Q26."
 }

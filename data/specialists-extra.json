@@ -1,0 +1,105 @@
+{
+ "note": "Biotech-focused 13F filers found in SEC's full 13F data set (>=30% of their 13F book and >=$200M in the companies we track) that were not on SPECIALIST_INVESTORS. Added to the specialist set for 13F analytics (fetch_13f.py / build_13f.py).",
+ "funds": {
+  "First Turn Management, LLC": "1993440",
+  "Qvt Financial LP": "1290162",
+  "Two Seas Capital LP": "1823138",
+  "Palo Alto Investors LP": "1306923",
+  "Venbio Partners LLC": "1776382",
+  "Davern Capital Partners, LP": "2003147",
+  "Elmind Capital, LP": "2052213",
+  "683 Capital Management, LLC": "1404574",
+  "Tri Locum Partners LP": "1826434",
+  "Infinitum Asset Management, LLC": "2058093",
+  "Acorn Capital Advisors, LLC": "2054410",
+  "Remedium Capital Partners, LLC": "2104501",
+  "Findell Capital Management LLC": "1814465",
+  "Eagle Health Investments LP": "1842545",
+  "Highvista Strategies LLC": "1335325",
+  "Checkpoint Capital L.P.": "1977548",
+  "Diadema Partners LP": "2026172",
+  "Nvp Associates, LLC": "1545692",
+  "Boone Capital Management LLC": "1882053"
+ },
+ "watch": [
+  {
+   "name": "AMERICAN CENTURY COMPANIES INC",
+   "v": 4711711954,
+   "share": 0.021,
+   "n": 170
+  },
+  {
+   "name": "ARROWSTREET CAPITAL, LIMITED PARTNERSHIP",
+   "v": 4225437943,
+   "share": 0.019,
+   "n": 75
+  },
+  {
+   "name": "Pictet Asset Management Holding SA",
+   "v": 4187137922,
+   "share": 0.04,
+   "n": 130
+  },
+  {
+   "name": "Dodge & Cox",
+   "v": 4076959762,
+   "share": 0.021,
+   "n": 5
+  },
+  {
+   "name": "ADAGE CAPITAL PARTNERS GP, L.L.C.",
+   "v": 4048545305,
+   "share": 0.057,
+   "n": 116
+  },
+  {
+   "name": "Polar Capital Holdings Plc",
+   "v": 3770469427,
+   "share": 0.107,
+   "n": 42
+  },
+  {
+   "name": "Driehaus Capital Management LLC",
+   "v": 3304417783,
+   "share": 0.191,
+   "n": 60
+  },
+  {
+   "name": "ALLIANCEBERNSTEIN L.P.",
+   "v": 3116441584,
+   "share": 0.01,
+   "n": 255
+  },
+  {
+   "name": "WESTFIELD CAPITAL MANAGEMENT CO LP",
+   "v": 3063777064,
+   "share": 0.1,
+   "n": 21
+  },
+  {
+   "name": "MARSHALL WACE, LLP",
+   "v": 3062341269,
+   "share": 0.026,
+   "n": 499
+  },
+  {
+   "name": "JENNISON ASSOCIATES LLC",
+   "v": 3052948568,
+   "share": 0.018,
+   "n": 59
+  },
+  {
+   "name": "FEDERATED HERMES, INC.",
+   "v": 3029219698,
+   "share": 0.044,
+   "n": 244
+  },
+  {
+   "name": "Orbis Allan Gray Ltd",
+   "v": 2908969214,
+   "share": 0.1,
+   "n": 16
+  }
+ ],
+ "watch_note": "Generalists with $1.5B+ in the companies we track as of Jun 30 2026 (SEC 13F data set), excluding index funds and banks: not specialists, but large enough to move these stocks when they rotate."
+}

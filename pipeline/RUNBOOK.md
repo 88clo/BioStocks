@@ -79,5 +79,24 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - Ownership: `python3 scripts/fetch_13f.py --big` pulls the latest 13F for the 31 largest index funds, banks and generalists (cache/13f/big_ciks.json; Vanguard now files as Vanguard Capital Management and Vanguard Portfolio Management); build_13f.py combines them with the specialist books into own[ticker] = share of shares outstanding by type.
 - Skew (What's next) = four ±1 signals: our odds vs typical step odds (10pt gap for FDA/Ph3, 20pt for Ph1–2); valuation once (25%+ above our value −, else cash ≥70% of cap or ≥100% upside +); 3-month move (≥+75% −; ≤−40% + unless prior data weak); prior data strength for readouts. ±2 = skewed. For approved companies only events naming the lead drug count as lead. Events whose text points to 2H/year-end 2027 or 2028 are treated as undated.
 - Complete ownership: download SEC's quarterly Form 13F data set (sec.gov/data-research/sec-markets-data/form-13f-data-sets; newest zip) to cache/13f_bulk/q2 and run build_13f.py → own_all (every 13F filer, by type) and flow (specialist buys/sells, value ÷ point-in-time cap, 2026 IPOs excluded). The Sep 30 data set appears after November; swap it in when it does.
-- What worked: the "Next quarter" column blends each group's hit rate, last quarter and a hand-written backdrop (CTX in synth2.html): update CTX each quarter.
 - Public-target M&A cash (proposal for net supply): tag each M&A deal in the William Blair/BioPharma Dive deal lists as public or private target and cash vs stock, sum cash paid to public holders per quarter (equity value × cash share). Cross-check with our own coverage: names leaving coverage as "acquired" × their last market cap.
+
+## Next-quarter backdrop (What worked › "Next quarter: our call") — every quarter, and check monthly
+
+The calls live in `data/backdrop.json`: `backdrop` (4–6 plain sentences on the market), `calls` (one per What-worked dimension: `favour`, `avoid`, `why`), `sources`. They are judgment, not a formula. The page shows each group's 2025–26 record next to the call.
+
+1. **Gather the evidence** (30 minutes):
+   - XBI level and quarter-to-date move; clinical- vs commercial-stage and small- vs large-cap performance (latest William Blair / Jefferies recap, or our quarter-end prices).
+   - Rates: last Fed move and what the market expects next.
+   - Capital: our Capital › Liquidity page (IPOs, follow-ons, public-target M&A cash, net supply) and the specialist pool trend.
+   - The next quarter's catalyst calendar (What's next: Major events by area and stage) and conferences (JPM in January, AACR/AAN in April, ASCO in June, ESMO/EASD in the autumn, ASH in December).
+   - Policy: FDA leadership and review behaviour, drug pricing, vaccines, tariffs, China licensing.
+   - The What-worked strip: each group's record and its last two quarters.
+2. **Write the backdrop**: 4–6 sentences, each a fact with a number, from the evidence above. No predictions in the backdrop itself.
+3. **Make the calls**: for each dimension (stage, size, momentum, share price, modality, novelty, area) name the group to favour and the group to avoid, and say why in one or two sentences, quoting the record where it supports the call. A call may go against the record only if the backdrop has changed, and the `why` must say so (e.g. vaccines in 1Q27).
+4. **Sanity checks**: every number in a `why` must match the page (record and last quarter); favour and avoid must be different groups; no group is favoured on record alone without a reason from the backdrop.
+5. **Monthly refresh**: re-read the calls; if the backdrop has shifted (a rate surprise, a big sell-off, an M&A pause, a policy shock), edit the affected calls and update `written`. At quarter-end, score last quarter's calls (did the favoured group beat the avoided one?) in a line at the top of the backdrop, then write the new quarter.
+- Catalyst stakes (after the Nov 25 audit): unapproved lead = market's pipeline value; approved company = 15% of cap for a new indication of the lead, 6% for another program; other programs at unapproved companies = 15% of pipeline value (max 20% of cap). Only lead readouts/FDA decisions can be Major.
+- Specialist set = SPECIALIST_INVESTORS + data/specialists-extra.json (biotech-focused filers found in the SEC data set: ≥30% of book and ≥$200M in our names). Re-scan each new data set (see the scan in the Nov 25 session: rank filers by $ in our names and biotech share of book) and add new ones; `watch` lists large generalists to know.
+- Net supply uses public-target M&A cash: data/capital-markets.json ma_pub_usd (yearly public share from William Blair's private-target totals; exact where a recap gives the split) × 90% cash.
+

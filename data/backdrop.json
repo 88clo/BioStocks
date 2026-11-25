@@ -1,0 +1,63 @@
+{
+ "quarter": "1Q27",
+ "written": "2026-11-25",
+ "how": "Written by hand each quarter (see RUNBOOK, 'Next-quarter backdrop'). Start from the evidence: XBI and sub-sector moves this quarter, rates, financing and M&A data, our net-supply read, the catalyst calendar, and policy news. Then make one call per What-worked dimension: the group to favour, the group to avoid, and why in one or two sentences. The dashboard shows each group's 2025-26 record next to the call; a call may go against the record if the backdrop has changed, but it must say why.",
+ "backdrop": [
+  "Biotech gave back ground this quarter: XBI hit a five-year high (~$170) in August, closed Q3 near $158 and is about $140 now. In Q3 clinical-stage names fell 11% while commercial-stage names rose 4.5%, so the market has been paying for revenue over risk.",
+  "The Fed raised rates 25bp in September and the market expects more; higher rates hurt long-duration, cash-burning small caps most.",
+  "M&A is still the main source of liquidity: $39B of deals in Q3 and 40 deals over $1B this year, a record; public takeovers handed shareholders an estimated $17B of cash in Q3. Since 1Q25 cash back from takeovers has exceeded new equity raised every quarter.",
+  "Supply is rising: 49 companies have gone public this year (IPOs, reverse mergers, SPACs) and follow-ons stay heavy around data, so investors are asked to fund more names.",
+  "January brings the J.P. Morgan conference, year-start guidance and a dense first-quarter readout calendar; historically deals and catalysts cluster early in the year."
+ ],
+ "calls": {
+  "stage": {
+   "favour": "Ph3 / filed",
+   "avoid": "Preclinical / Ph1",
+   "why": "Acquirers keep paying for late-stage, de-risked assets, and Ph3/filed names beat the market in 7 of 8 quarters; early-stage names need cheap money, which a rate hike and heavy supply take away."
+  },
+  "size": {
+   "favour": "$1–5B",
+   "avoid": "< $300M",
+   "why": "$1–5B names led by 10 points last quarter; most 2026 takeouts were $1–10B companies and specialists own about 30% of these, so takeover cash recycles here first. Micro caps lagged by 10 points and are the most exposed to rising rates and dilution. Large caps (+22% last quarter) are the defensive alternative."
+  },
+  "mom": {
+   "favour": "Rose 0–50%",
+   "avoid": "Fell > 40%",
+   "why": "Moderate winners beat the market in 6 of 8 quarters and again last quarter; stocks already down 40%+ lagged by 7 points last quarter, and with money tightening, broken stories tend to keep falling until they raise or restructure."
+  },
+  "px": {
+   "favour": "> $20",
+   "avoid": "< $2",
+   "why": "Higher-priced names led by 14 points last quarter and are where institutions can build positions; sub-$2 stocks lagged by 12 points last quarter (their 2025–26 record is mixed, 4 of 8) and face reverse splits, delisting notices and toxic financing when money tightens."
+  },
+  "mod": {
+   "favour": "Antibody & protein",
+   "avoid": "Cell therapy",
+   "why": "Antibodies have beaten the market the last two quarters (record 4 of 8) and big pharma keeps paying for them in immunology and oncology (e.g. AbbVie/Apogee, $10.9B); cell therapy beat the market in only 1 of 8 quarters on manufacturing cost and slow launches. We are not following the vaccine group's 5 of 8 record into 1Q27, given US vaccine-policy uncertainty."
+  },
+  "nov": {
+   "favour": "First-in-class",
+   "avoid": "Late entrant",
+   "why": "Novel mechanisms with clinical data have held their premium (6 of 8 quarters), and late entrants in crowded classes lagged on every 4-quarter hold."
+  },
+  "cl": {
+   "favour": "Immunology & inflammation",
+   "avoid": "Neuroscience & neuromuscular",
+   "why": "I&I beat the market in 6 of 8 quarters and has the deepest pool of big-pharma buyers and late-stage readouts in 1Q27; neuroscience beat it in 2 of 8 and lagged on every 2-quarter hold, as it depends on binary readouts with high failure rates. Oncology (2 of 8) is a close second to avoid."
+  }
+ },
+ "sources": [
+  {
+   "t": "William Blair, The Quarterly Rx: Q3 2026 US Biopharma Recap (XBI, clinical vs commercial, rate hike, M&A, IPOs and reverse mergers, $17B returned)",
+   "u": "https://www.williamblair.com/Insights/The-Quarterly-Rx-Q3-2026-US-Biopharma-Recap"
+  },
+  {
+   "t": "IQVIA, Biopharma M&A: mid-year 2026 update (AbbVie/Apogee, deal sizes)",
+   "u": "https://www.iqvia.com/en-gb/locations/emea/blogs/2026/07/biopharma-ma-mid-year-2026-update"
+  },
+  {
+   "t": "This dashboard: What worked record, net equity supply, 13F ownership",
+   "u": ""
+  }
+ ]
+}
