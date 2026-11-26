@@ -3042,6 +3042,11 @@ function valParts(r){
   const rq=r.rev_q, run=(typeof rq==='number'&&rq>0)?4*rq:0;
   if(run){ if(y0===0&&run>pk*pos){N.push('current sales '+fmtB(run)+'/yr above peak×PoS');lead=state.psMult*run;}
     else if(y0>0&&r.book_add){book=state.psMult*run-(typeof r.debt==='number'?r.debt:0);N.push('+ existing business 3×'+fmtB(run)+(r.debt?' − debt '+fmtB(r.debt):''));} }
+  // Other programs (Nov 25 2026): the model valued only the lead, so a company whose second program is the bigger prize (CRVS:
+  // soquelitinib in atopic dermatitis behind PTCL) was undervalued next to single-asset peers. r.programs = [{name, peak, pos, y}]
+  // adds each at the same sales multiple, discounted to its own approval year, less 60% of typical spend to get there.
+  let other=0;(r.programs||[]).forEach(p=>{if(!(p.peak>0&&p.pos>0))return;const yy=p.y||6,v2=state.psMult*p.peak*p.pos/Math.pow(1+state.discRate,yy)-0.6*(DEV_COST[yy]||0)*.5;other+=Math.max(0,v2);N.push('+ '+p.name+' '+fmtB(p.peak)+' peak × '+Math.round(p.pos*100)+'% PoS, '+yy+' yrs');});
+  book+=other;
   const prev=r.prevalence, sf=(typeof prev==='number'&&prev>0&&prev<50000)?.6:(typeof prev==='number'&&prev>2e6)?1.5:1;
   const cost=0.6*(DEV_COST[y]||0)*sf; if(cost)N.push('− '+fmtB(cost)+' expected spend to approval');
   if(r.val_note)N.unshift(r.val_note);

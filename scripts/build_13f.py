@@ -149,12 +149,19 @@ for fund, Q in F.items():
                 p0, p1 = px(t, q), px(t, nextq(q))
                 if p0 and p1: acc *= p1 / p0; ok = True
         if ok: pr4[t] = round(acc - 1, 4)
+    # dollar P&L per position over the last four quarters (value at each filing x the next quarter's price change), for
+    # the concentration view: how much of a fund's result comes from its few biggest winners and losers
+    pnl4 = collections.Counter()
+    for q in steps:
+        for t, v in book[q].items():
+            p0, p1 = px(t, q), px(t, nextq(q))
+            if p0 and p1: pnl4[t] += v * (p1 / p0 - 1)
     last = qs[-1]
     out.append({"name": fund, "nick": NICK.get(fund), "spec": fund in spec, "cik": CIK[fund], "q": qs,
                 "aum": {q: round(aum[q]) for q in qs}, "bio": {q: round(bio[q]) for q in qs}, "n": {q: len(book[q]) for q in qs},
                 "hold": hold, "hold_cens": sum(1 for _, o in allr if o) / len(allr) if allr else None, "turn": turn,
                 "rq": {q: round(v, 4) for q, v in rq.items()}, "r4": r4, "x4": x4, "r8": r8, "x8": x8,
-                "top": [[t, round(v), pr4.get(t)] for t, v in book[last].most_common(10)], "pos": [[t, round(v), pr4.get(t)] for t, v in book[last].items()], "last": last})
+                "top": [[t, round(v), pr4.get(t)] for t, v in book[last].most_common(10)], "pos": [[t, round(v), pr4.get(t)] for t, v in book[last].items()], "pnl4": {t: round(v) for t, v in pnl4.items() if abs(v) >= 1e5}, "last": last})
 out.sort(key=lambda f: -(f["bio"].get(f["last"]) or 0))
 # ---- who owns each company: shares held by type / shares outstanding (latest 13Fs, mostly Sep 30 2026)
 PASS = {"BlackRock Inc (new)", "State Street", "Geode Capital", "Northern Trust", "Dimensional Fund Advisors", "Charles Schwab Investment Mgmt", "Norges Bank", "Vanguard Capital Management", "Vanguard Portfolio Management"}
