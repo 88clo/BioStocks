@@ -2616,7 +2616,17 @@ function computeCall(r){ // formulaic call: valuation band (MC/fNPV) × science 
   if(pv==null||typeof e!=='number'||typeof d!=='number')return 'HOLD';
   const sci=(e+d)/2;
   const weak=sci<2.5, strong=sci>=3.5;               // else "solid"
-  const p=pv;                                         // MC/fNPV ratio (1 = fair)
+  let p=pv;                                           // MC/fNPV ratio (1 = fair)
+  // Financing penalty (Nov 26 2026): a company with under 8 quarters of cash must raise R = the shortfall to 8 quarters
+  // (burn = cash ÷ runway) before it can realise our value F. New money comes in near today's price, typically at a 15%
+  // discount, so new holders get R ÷ (0.85·MC + R) of the company: value left for today's holders = (F + R) × 0.85·MC ÷
+  // (0.85·MC + R), never more than F. This bites hardest where the gap between our value and the price is widest and the
+  // raise is large relative to the market cap (cheap micro caps), and barely at all for large caps. Under 4 quarters of
+  // cash a name cannot be a STRONG BUY; under 2 quarters it cannot be a LONG.
+  const rw=r.runway_q, cash=r.cash||0; r._fin=null;
+  if(rw!=null&&rw<8&&cash>0&&r.mc>0){const burn=cash/Math.max(rw,.25),R=(8-rw)*burn,m=.85*r.mc,F=r.mc/p,Fa=Math.min(F,(F+R)*m/(m+R));p=r.mc/Fa;r._fin={cost:F-Fa,rw:rw,burn:burn,R:R,dil:R/(m+R)};}
+  const cap=c=>{if(rw==null)return c;if(rw<2&&(c==='STRONG BUY'||c==='LONG'))return 'HOLD';if(rw<4&&c==='STRONG BUY')return 'LONG';return c;};
+  return cap((()=>{
   if(weak){
     if(p>=3.0)return 'STRONG SHORT';
     if(p>=1.5)return 'SHORT';
@@ -2633,6 +2643,7 @@ function computeCall(r){ // formulaic call: valuation band (MC/fNPV) × science 
   if(p<1.5)return 'HOLD';
   if(p<3.0)return 'SHORT';
   return 'STRONG SHORT';
+  })());
 }
 function refreshCalls(){ DATA.forEach(r=>{ r.call = (r.call_override!=null && r.call_override!=="") ? r.call_override : computeCall(r); }); }
 function openMeth(){document.getElementById('methmodal').classList.add('open');}
@@ -3047,6 +3058,7 @@ function valParts(r){
   // adds each at the same sales multiple, discounted to its own approval year, less 60% of typical spend to get there.
   let other=0;(r.programs||[]).forEach(p=>{if(!(p.peak>0&&p.pos>0))return;const yy=p.y||6,v2=state.psMult*p.peak*p.pos/Math.pow(1+state.discRate,yy)-0.6*(DEV_COST[yy]||0)*.5;other+=Math.max(0,v2);N.push('+ '+p.name+' '+fmtB(p.peak)+' peak × '+Math.round(p.pos*100)+'% PoS, '+yy+' yrs');});
   book+=other;
+  if(r._fin)N.push('Financing: '+(Math.round(r._fin.rw*10)/10)+' quarters of cash; raising '+fmtB(r._fin.R)+' to reach 8 quarters at ~15% below today\u2019s price hands new holders '+Math.round(r._fin.dil*100)+'% of the company, worth ≈ '+fmtB(r._fin.cost)+' of our value; the call uses value after that');
   const prev=r.prevalence, sf=(typeof prev==='number'&&prev>0&&prev<50000)?.6:(typeof prev==='number'&&prev>2e6)?1.5:1;
   const cost=0.6*(DEV_COST[y]||0)*sf; if(cost)N.push('− '+fmtB(cost)+' expected spend to approval');
   if(r.val_note)N.unshift(r.val_note);

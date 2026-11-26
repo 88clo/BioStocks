@@ -452,34 +452,41 @@
   function niceAxis(mx){if(!(mx>0))return {top:1,step:1};var raw=mx/4,p=Math.pow(10,Math.floor(Math.log10(raw))),st=[1,2,2.5,5,10].map(function(m){return m*p;}).filter(function(v){return v>=raw;})[0];return {top:Math.ceil(mx/st)*st,step:st};}
   function fundDetail(f){var b=B(),E=b.E,M=b.M,Q=f.q,n=Q.length,H=f.hist||{},TR=f.trd||{};if(!Object.keys(H).length)return '<div class="dim">No position history.</div>';
     var K=Object.keys(H),peak=function(t){return Math.max.apply(null,H[t]);};K.sort(function(a,c){return peak(c)-peak(a);});
-    var TOP=K.slice(0,8),COL=['#2563eb','#16a34a','#d97706','#9333ea','#0891b2','#dc2626','#65a30d','#db2777'];
+    var cur=function(t){return H[t][n-1]||0;},TOP=K.filter(function(t){return cur(t)>0;}).sort(function(a,c){return cur(c)-cur(a);}).slice(0,8),COL=['#2563eb','#16a34a','#d97706','#9333ea','#0891b2','#dc2626','#65a30d','#db2777'];
     var bio=Q.map(function(q){return f.bio[q]||0;}),Pc=function(v){var r=Math.round(v*100);return (r>0?'+':r<0?'−':'')+Math.abs(r)+'%';},SM=function(v){return (v>=0?'+':'−')+M(Math.abs(v));};
     // per quarter: bought, sold, price effect, largest position, largest gain and loss (gain = change in value − estimated trade)
     var QS=[];for(var i=1;i<n;i++){var bu=0,se=0,gains=[],big=null;K.forEach(function(t){var v=(TR[t]||[])[i]||0;if(v>0)bu+=v*1e3;else se+=v*1e3;var h0=H[t][i-1],h1=H[t][i];if(h0>0){var g=(h1-h0-v)*1e3;gains.push([t,g,g/(h0*1e3)]);}if(!big||h1>big[1])big=[t,h1*1e3];});
       gains.sort(function(a,c){return c[1]-a[1];});var pe=bio[i]-bio[i-1]-bu-se;QS.push({bu:bu,se:se,pe:pe,pp:bio[i-1]?pe/bio[i-1]:null,big:big,win:gains[0]&&gains[0][1]>0?gains[0]:null,lose:gains.length&&gains[gains.length-1][1]<0?gains[gains.length-1]:null});}
-    var W=1200,ml=60,mr=150,top=30,h1=200,gap=40,h2=120,lab=86,Ht=top+h1+gap+h2+20+lab,X=function(i){return ml+i*(W-ml-mr)/(n-1);};
+    var W=1200,ml=60,mr=150,top=30,h1=200,gap=40,h2=170,lab=64,Ht=top+h1+gap+h2+20+lab,X=function(i){return ml+i*(W-ml-mr)/(n-1);};
     var ax=niceAxis(Math.max.apply(null,bio)),mx1=ax.top,Y1=function(v){return top+h1-v/mx1*h1;};
     var g='<svg viewBox="0 0 '+W+' '+Ht+'" style="width:100%;max-width:'+W+'px;font:11px system-ui">';
     for(var v=0;v<=mx1+1;v+=ax.step)g+='<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+Y1(v)+'" y2="'+Y1(v)+'" stroke="var(--line)"/><text x="'+(ml-4)+'" y="'+(Y1(v)+4)+'" text-anchor="end" fill="var(--dim)">'+(v?M(v):'$0')+'</text>';
-    var base=Q.map(function(){return 0;}),layers=TOP.map(function(t,k){return {t:t,c:COL[k],o:.6,v:H[t].map(function(x){return x*1e3;})};});
+    var base=Q.map(function(){return 0;}),layers=TOP.map(function(t,k){return {t:t,c:COL[k],o:.6,v:H[t].map(function(x){return x*1e3;})};}).reverse();
     layers.unshift({t:'Everything else',c:'#94a3b8',o:.25,v:Q.map(function(q,i){return Math.max(0,bio[i]-TOP.reduce(function(a,t){return a+H[t][i]*1e3;},0));})});
     layers.forEach(function(L){var lo=base.slice(),hi=base.map(function(v,i){return v+L.v[i];});var d='M'+Q.map(function(q,i){return X(i).toFixed(1)+','+Y1(hi[i]).toFixed(1);}).join('L')+'L'+Q.map(function(q,i){return X(n-1-i).toFixed(1)+','+Y1(lo[n-1-i]).toFixed(1);}).join('L')+'Z';
       g+='<path d="'+d+'" fill="'+L.c+'" fill-opacity="'+L.o+'" stroke="'+L.c+'" stroke-width=".5"><title>'+E(L.t)+': '+Q.map(function(q,i){return q+' '+M(L.v[i]);}).join(' · ')+'</title></path>';
       var mid=(lo[n-1]+hi[n-1])/2;if(L.v[n-1]>mx1*.035)g+='<text x="'+(X(n-1)+5)+'" y="'+(Y1(mid)+4)+'" fill="'+L.c+'" font-weight="700">'+E(L.t)+' '+M(L.v[n-1])+'</text>';base=hi;});
     // total book at each quarter-end
     Q.forEach(function(q,i){g+='<circle cx="'+X(i)+'" cy="'+Y1(bio[i])+'" r="2.5" fill="var(--text)"/><text x="'+X(i)+'" y="'+(Y1(bio[i])-7)+'" text-anchor="middle" font-weight="700" fill="var(--text)" style="paint-order:stroke;stroke:var(--panel);stroke-width:3px">'+M(bio[i])+'</text>';});
-    g+='<text x="'+ml+'" y="12" fill="var(--text)" font-weight="700">Biotech book by position: total at each quarter-end; 8 largest coloured on top of everything else (hover for values)</text>';
+    g+='<text x="'+ml+'" y="12" fill="var(--text)" font-weight="700">Biotech book by position: total at each quarter-end; today\u2019s 8 largest positions coloured, largest on top, everything else at the bottom (hover for values)</text>';
     Q.forEach(function(q,i){g+='<text x="'+X(i)+'" y="'+(top+h1+14)+'" text-anchor="middle" fill="var(--dim)">'+q+'</text>';});
     // flows panel with labelled bars, then a per-quarter caption block
-    var y0=top+h1+gap+h2/2,mx2=Math.max.apply(null,QS.map(function(o){return Math.max(o.bu,-o.se,Math.abs(o.pe));}))||1,S=(h2/2-12)/mx2,bw=Math.min(18,(W-ml-mr)/(n-1)/4.2);
+    var y0=top+h1+gap+h2/2,mx2=Math.max.apply(null,QS.map(function(o){return Math.max(o.bu,-o.se,Math.abs(o.pe));}))||1,S=(h2/2-30)/mx2,bw=Math.min(18,(W-ml-mr)/(n-1)/4.2);
     g+='<text x="'+ml+'" y="'+(top+h1+gap-6)+'" fill="var(--text)" font-weight="700">Change each quarter: <tspan fill="#16a34a">bought</tspan> · <tspan fill="#dc2626">sold</tspan> · <tspan fill="#2563eb">price effect on holdings</tspan></text><line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y0+'" y2="'+y0+'" stroke="var(--line)"/>';
     QS.forEach(function(o,j){var i=j+1,cx=(X(i-1)+X(i))/2;[[o.bu,'#16a34a','bought'],[o.se,'#dc2626','sold'],[o.pe,'#2563eb','price effect']].forEach(function(v,k){var x=cx+(k-1.5)*bw,hh=Math.abs(v[0])*S;g+='<rect x="'+x.toFixed(1)+'" y="'+(v[0]>=0?y0-hh:y0).toFixed(1)+'" width="'+(bw-2)+'" height="'+Math.max(.5,hh).toFixed(1)+'" fill="'+v[1]+'"><title>'+Q[i-1]+'→'+Q[i]+': '+v[2]+' '+SM(v[0])+'</title></rect>';});
-      var ly=top+h1+gap+h2+14,line=function(dy,txt,col,w){g+='<text x="'+cx+'" y="'+(ly+dy)+'" text-anchor="middle" font-size="10" fill="'+col+'"'+(w?' font-weight="700"':'')+'>'+txt+'</text>';};
-      g+='<text x="'+cx+'" y="'+(ly-2)+'" text-anchor="middle" font-size="10" font-weight="700" fill="var(--dim)">'+Q[i-1]+'→'+Q[i]+'</text>';
-      line(12,'Bought '+M(o.bu),'#16a34a',1);line(24,'Sold '+M(-o.se),'#dc2626',1);line(36,'Price '+SM(o.pe)+(o.pp!=null?' ('+Pc(o.pp)+')':''),'#2563eb',1);
-      line(50,o.big?'Top: '+E(o.big[0])+' '+M(o.big[1]):'','var(--text)');
-      line(62,o.win?'▲ '+E(o.win[0])+' '+SM(o.win[1])+' ('+Pc(o.win[2])+')':'','#16a34a');
-      line(74,o.lose?'▼ '+E(o.lose[0])+' '+SM(o.lose[1])+' ('+Pc(o.lose[2])+')':'','#dc2626');});
+      // value labels on the bars: bought above its bar and sold below its bar (both right-aligned, clear of the price bar), price effect above or below its
+      // bar (left-aligned, $ then % on a second line)
+      var xb=cx-1.5*bw,xs=cx-.5*bw,xp=cx+.5*bw,lb=function(x,y,anc,col,txt){g+='<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" text-anchor="'+anc+'" font-size="10" font-weight="700" fill="'+col+'">'+txt+'</text>';};
+      lb(xb+bw-2,y0-o.bu*S-5,'end','#16a34a','+'+M(o.bu));
+      lb(xs+bw-2,y0-o.se*S+12,'end','#dc2626','−'+M(-o.se));
+      if(o.pe>=0){lb(xp,y0-o.pe*S-16,'start','#2563eb',SM(o.pe));if(o.pp!=null)lb(xp,y0-o.pe*S-5,'start','#2563eb','('+Pc(o.pp)+')');}
+      else{lb(xp,y0-o.pe*S+12,'start','#2563eb',SM(o.pe));if(o.pp!=null)lb(xp,y0-o.pe*S+23,'start','#2563eb','('+Pc(o.pp)+')');}
+      var ly=top+h1+gap+h2+16,line=function(dy,txt,col,w){g+='<text x="'+cx+'" y="'+(ly+dy)+'" text-anchor="middle" font-size="10" fill="'+col+'"'+(w?' font-weight="700"':'')+'>'+txt+'</text>';};
+      line(0,Q[i-1]+'→'+Q[i],'var(--dim)',1);
+      line(13,o.big?'Top: '+E(o.big[0])+' '+M(o.big[1]):'','var(--text)');
+      line(26,o.win?'▲ '+E(o.win[0])+' '+SM(o.win[1])+' ('+Pc(o.win[2])+')':'','#16a34a');
+      line(39,o.lose?'▼ '+E(o.lose[0])+' '+SM(o.lose[1])+' ('+Pc(o.lose[2])+')':'','#dc2626');});
+    g+='<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+(top+h1+gap+h2+2)+'" y2="'+(top+h1+gap+h2+2)+'" stroke="var(--line)" stroke-dasharray="2 3"/><text x="'+(W-mr+6)+'" y="'+(top+h1+gap+h2+29)+'" font-size="10" fill="var(--dim)">largest position,</text><text x="'+(W-mr+6)+'" y="'+(top+h1+gap+h2+42)+'" font-size="10" fill="var(--dim)">best and worst</text><text x="'+(W-mr+6)+'" y="'+(top+h1+gap+h2+55)+'" font-size="10" fill="var(--dim)">holding that quarter</text>';
     g+='</svg>';
     var tb=QS.reduce(function(a,o){return a+o.bu;},0),ts=QS.reduce(function(a,o){return a+o.se;},0),tp=QS.reduce(function(a,o){return a+o.pe;},0);
     var sum='<div class="syn-cap" style="margin:4px 0">From '+Q[0]+' to '+Q[n-1]+' the biotech book went '+M(bio[0])+' → <b>'+M(bio[n-1])+'</b>: bought '+M(tb)+', sold '+M(-ts)+', price effect '+SM(tp)+'. Under each quarter: the largest position at the quarter-end and the biggest dollar gain and loss on positions held at the start (price effect only, % of the starting value). Trades are estimated from quarter-end values (end value − start value × the stock’s price change), so buying and selling within a quarter nets out.</div>';
