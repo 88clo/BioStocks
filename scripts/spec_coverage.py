@@ -12,6 +12,7 @@ cov = {r["ticker"] for r in D if r.get("ta") != "Acquired / Inactive"}
 tracked_cik = {str(f["cik"]).lstrip("0") for f in F["funds"]}
 tracked_names = {re.sub(r"[^a-z]", "", f["name"].lower())[:12] for f in F["funds"]}
 cmap = json.load(open(root / "cache/13f/cusip_map.json")) if (root / "cache/13f/cusip_map.json").exists() else {}
+cov |= set(cmap.values())   # same biotech universe as build_13f (includes a few large biotechs we don't cover)
 names = {}
 def nn(s): return re.sub(r"\s+", " ", re.sub(r"\b(inc|corp|corporation|ltd|plc|co|holdings|therapeutics|pharmaceuticals|bio|n v|sa|ag|com|new)\b", " ", re.sub(r"[^a-z0-9 ]", " ", (s or "").lower()))).strip()
 for r in D: names[nn(r.get("name"))] = r["ticker"]
@@ -47,7 +48,7 @@ for cik, o in by.items():
     if o["bio"] >= 5e7 and sh >= .25 and not PASS.search(o["name"]): cand.append(row)
 cand.sort(key=lambda r: -r["bio"]); trk.sort(key=lambda r: -r["bio"])
 big = [r for r in by.values() if r["bio"] >= 1.5e8 and r["tot"] and r["bio"] / r["tot"] >= .35]
-out = {"period": per, "filers": len(by), "tracked": len(trk), "tracked_bio": sum(r["bio"] for r in trk), "candidates": cand,
+out = {"tracked_rows": trk, "period": per, "filers": len(by), "tracked": len(trk), "tracked_bio": sum(r["bio"] for r in trk), "candidates": cand,
        "cand_bio": sum(r["bio"] for r in cand), "rule": "covered biotech >= $50M and >= 25% of the 13F book; not passive, bank or multi-strategy"}
 json.dump(out, open(root / "data/spec_coverage.json", "w"), separators=(",", ":"))
 print(per, len(by), "filers; tracked", len(trk), "with $%.1fB covered biotech;" % (out["tracked_bio"] / 1e9), len(cand), "untracked concentrated filers with $%.2fB" % (out["cand_bio"] / 1e9))

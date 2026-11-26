@@ -108,6 +108,13 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - What's next month tables share one colgroup (table-layout fixed) so columns line up across months. What worked: the next-quarter column has 40% of the table width.
 - Options-implied moves: cdn-api.cboe.com returns 403 to automated requests; do not work around it. The move column keeps the big-day proxy (h).
 
+## 13F holdings checks and fund drill-down (Nov 25 2026, late night)
+- Click any row of the Capital › Investors leaderboard for that fund over time: stacked biotech book by position, bought / sold / price effect each quarter, and a position × quarter table with estimated trades (end value − start value × price change). Data: `hist` and `trd` per fund in data/13f.json (positions ≥ $1M at any quarter-end, $K).
+- build_13f.py now (1) maps CUSIPs found in SEC's bulk 13F data set before building fund books (Abivax ADRs, Scholar Rock were being dropped), (2) rejects CUSIP→ticker matches whose issuer name doesn't start like the company's name, nickname or "formerly" name (Terns→NKTR, iRhythm→RYTM, PTC Inc→PTCT, Eton→XENE were wrong; Chemomab→COAG allowed as a known rename), (3) lists one fund per CIK (Suvretta now files as Montanova). It saves cache/13f/cusip_map.json for spec_coverage.py.
+- Check after each 13F refresh: `python3 scripts/spec_coverage.py`, then compare each tracked fund's 2Q26 biotech book with the bulk data (`tracked_rows` in data/spec_coverage.json). As of Nov 25 every fund's total 13F book matches SEC to within ~3%, and biotech books match except Deerfield (the bulk figure includes convertible notes, which we exclude).
+- The old Yahoo top-10-holder snapshot (which showed e.g. Balyasny at $219M, counting only stakes where a fund was a top-10 holder) is no longer shown.
+- What worked: the quarter strip spans the full window width (.ww-full) on screens wider than 1240px.
+
 ## Quarterly prices, market caps and What worked (Nov 24 2026)
 - `python3 scripts/rebuild_priceq.py` after fetching daily prices: rebuilds quarter-end adjusted closes from cache/prices (the old file was only gap-filled and partly unadjusted).
 - `python3 scripts/fetch_shares_hist.py` (Yahoo share counts → cache/shares) then `python3 scripts/build_mcq.py` → data/mcq.json, point-in-time quarter-end market caps (split-adjusted, calibrated on the Sep 12 2026 snapshot).

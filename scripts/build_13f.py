@@ -23,8 +23,8 @@ NICK = json.loads(re.search(r"const SPECIALIST_NICKNAMES=(\{.*?\});", tpl).group
 
 def qlab(period):  # 2026-09-30 -> 3Q26
     y, m = int(period[:4]), int(period[5:7]); return f"{(m - 1) // 3 + 1}Q{str(y)[2:]}"
-STOP = r"\b(inc|incorporated|corp|corporation|co|company|ltd|limited|plc|ag|sa|nv|n v|se|holdings?|group|the|class [a-z]|cl [a-z]|com|ord|shs|adr|ads|sponsored|new|de|del)\b"
-def nn(s): return re.sub(r"\s+", " ", re.sub(STOP, " ", re.sub(r"[^a-z0-9 ]", " ", (s or "").lower()))).strip()
+STOP = r"\b(inc|incorporated|corp|corporation|co|company|ltd|limited|plc|ag|sa|nv|n v|se|holdings?|hldgs?|group|the|class [a-z]|cl [a-z]|com|ord|shs|adr|ads|sponsored|new|de|del)\b"
+def nn(s): return re.sub(r"\s+", " ", re.sub(STOP, " ", re.sub(r"[^a-z0-9 ]", " ", re.sub(r"<!\[CDATA\[|\]\]>", "", s or "").lower()))).strip()
 
 names = {}
 for r in D + PK:
@@ -72,7 +72,15 @@ for t, h in H.items():
                 if cu in cmap or not s2 or abs(s2 - sh) / sh > 0.001: continue
                 if difflib.SequenceMatcher(None, nn(nm), TN.get(t, "")).ratio() >= 0.5:
                     cmap[cu] = t; added += 1
-print(len(cname), "CUSIPs seen;", len(cmap), "mapped to our tickers;", added, "added by share-count match")
+# Reject mappings whose issuer name doesn't start like the company's name or nickname (the fuzzy and share-count
+# matches produced e.g. Terns -> NKTR, iRhythm -> RYTM, PTC Inc -> PTCT). Known renames are allowed explicitly.
+RENAMED = {"16385C203": "COAG"}   # Chemomab -> Hemab (reverse merger)
+L4 = lambda x: re.sub(r"[^a-z]", "", re.sub(r"<!\[CDATA\[", "", (x or "").lower()))[:4]
+TNAME = {r["ticker"]: (L4(r.get("name")), L4(r.get("nick")), L4((re.search(r"formerly ([A-Za-z][\w .-]+)", r.get("name") or "") or [None, ""])[1])) for r in D + PK}
+def okmap(cu, raw, t): return RENAMED.get(cu) == t or L4(raw) in [x for x in TNAME.get(t, ()) if x]
+bad = [cu for cu, t in cmap.items() if not okmap(cu, cname.get(cu), t)]
+for cu in bad: del cmap[cu]
+print(len(cname), "CUSIPs seen;", len(cmap), "mapped to our tickers;", added, "added by share-count match;", len(bad), "rejected as name mismatches")
 
 def px(t, q):
     p = PR.get(t); i = QL.index(q) if q in QL else None
@@ -85,9 +93,29 @@ TR = None
 try: TR = None
 except Exception: pass
 
+# Map CUSIPs seen in SEC's full 13F data set before building fund books, so a holding whose CUSIP only appears there
+# (e.g. TCGX's Abivax ADRs, Samsara's Scholar Rock) is not dropped. Short issuer names need a biotech word to match
+# (stops "TREX INC" matching a company whose name strips to "trex").
+BIOW = re.compile(r"thera|pharm|bio|gene|medic|scien|oncol|immun|health|rx|cell|cure|vax", re.I)
+if (root / "cache/13f_bulk/q2/INFOTABLE.tsv").exists():
+    import csv as _csv
+    _csv.field_size_limit(10**9); _seen = set(); pre_added = 0
+    with open(root / "cache/13f_bulk/q2/INFOTABLE.tsv") as fh:
+        rd = _csv.reader(fh, delimiter="\t"); ix = {h: i for i, h in enumerate(next(rd))}
+        for row in rd:
+            cu = row[ix["CUSIP"]].upper()
+            if cu in cmap or cu in _seen: continue
+            _seen.add(cu); raw = row[ix["NAMEOFISSUER"]]; k = nn(raw)
+            if k in names and (len(k) >= 8 or BIOW.search(raw)) and okmap(cu, raw, names[k]): cmap[cu] = names[k]; pre_added += 1
+    print("pre-mapped", pre_added, "CUSIPs from the bulk data set")
 out, pool = [], collections.Counter()
 spec = set(json.loads(re.search(r"const SPECIALIST_INVESTORS=new Set\((\[.*?\])\);", tpl).group(1))) | set(EXTRA)
-for fund, Q in F.items():
+seen_cik = set()
+# Suvretta Capital now files as Montanova Capital under the same CIK (1569064); one fund, listed once
+ORDER = sorted(F.items(), key=lambda kv: kv[0].startswith("Suvretta"))
+for fund, Q in ORDER:
+    if str(CIK.get(fund)) in seen_cik: continue                           # same filer listed under two names
+    seen_cik.add(str(CIK.get(fund)))
     qs = sorted(Q, key=lambda q: (int(q[2:]), int(q[0])))
     qs = [q for q in qs if int(q[2:]) * 4 + int(q[0]) >= 24 * 4 + 3]       # last 9 quarters only (3Q24 on)
     if len(qs) < 4 or qs[-1] not in ("2Q26", "3Q26"): continue            # skip stale filers and one-off matches
@@ -156,12 +184,25 @@ for fund, Q in F.items():
         for t, v in book[q].items():
             p0, p1 = px(t, q), px(t, nextq(q))
             if p0 and p1: pnl4[t] += v * (p1 / p0 - 1)
+    # position history for the fund drill-down: value at each quarter-end ($K) and the trade in each quarter ($K):
+    # end value − start value × price change, so price moves are removed (new position = its value; exit = −start × change)
+    hist, trd = {}, {}
+    keep = {t for q in qs for t, v in book[q].items() if v >= 1e6}
+    for t in keep:
+        hist[t] = [round(book[q].get(t, 0) / 1e3) for q in qs]
+        row = [None]
+        for a, b2 in zip(qs, qs[1:]):
+            v0, v1 = book[a].get(t, 0), book[b2].get(t, 0)
+            p0, p1 = px(t, a), px(t, b2)
+            g = (p1 / p0) if (p0 and p1) else 1
+            row.append(round((v1 - v0 * g) / 1e3))
+        trd[t] = row
     last = qs[-1]
     out.append({"name": fund, "nick": NICK.get(fund), "spec": fund in spec, "cik": CIK[fund], "q": qs,
                 "aum": {q: round(aum[q]) for q in qs}, "bio": {q: round(bio[q]) for q in qs}, "n": {q: len(book[q]) for q in qs},
                 "hold": hold, "hold_cens": sum(1 for _, o in allr if o) / len(allr) if allr else None, "turn": turn,
                 "rq": {q: round(v, 4) for q, v in rq.items()}, "r4": r4, "x4": x4, "r8": r8, "x8": x8,
-                "top": [[t, round(v), pr4.get(t)] for t, v in book[last].most_common(10)], "pos": [[t, round(v), pr4.get(t)] for t, v in book[last].items()], "pnl4": {t: round(v) for t, v in pnl4.items() if abs(v) >= 1e5}, "last": last})
+                "top": [[t, round(v), pr4.get(t)] for t, v in book[last].most_common(10)], "pos": [[t, round(v), pr4.get(t)] for t, v in book[last].items()], "pnl4": {t: round(v) for t, v in pnl4.items() if abs(v) >= 1e5}, "hist": hist, "trd": trd, "last": last})
 out.sort(key=lambda f: -(f["bio"].get(f["last"]) or 0))
 # ---- who owns each company: shares held by type / shares outstanding (latest 13Fs, mostly Sep 30 2026)
 PASS = {"BlackRock Inc (new)", "State Street", "Geode Capital", "Northern Trust", "Dimensional Fund Advisors", "Charles Schwab Investment Mgmt", "Norges Bank", "Vanguard Capital Management", "Vanguard Portfolio Management"}
@@ -229,7 +270,7 @@ if (BULK / "INFOTABLE.tsv").exists():
             if not t:
                 if cu in seen: continue
                 k = nn(row[ix["NAMEOFISSUER"]])
-                if k in names: t = names[k]; cmap[cu] = t
+                if k in names and okmap(cu, row[ix["NAMEOFISSUER"]], names[k]): t = names[k]; cmap[cu] = t
                 else: seen.add(cu); continue
             try: sh = float(row[ix["SSHPRNAMT"]] or 0)
             except ValueError: continue
@@ -336,3 +377,4 @@ print(len(out), "funds;", "pool by quarter ($B):", {q: round(v / 1e9) for q, v i
 for f in out[:8]:
     print(f["nick"] or f["name"], f["last"], "bio $%.1fB" % (f["bio"][f["last"]] / 1e9), "of $%.1fB" % (f["aum"][f["last"]] / 1e9), "n", f["n"][f["last"]],
           "hold %.1fQ" % (f["hold"] or 0), "turn %.0f%%" % ((f["turn"] or 0) * 100), "r4", f["r4"] and round(f["r4"] * 100), "xbi4", f["x4"] and round(f["x4"] * 100))
+json.dump(cmap, open(root / "cache/13f/cusip_map.json", "w"))  # reused by scripts/spec_coverage.py
