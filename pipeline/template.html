@@ -2617,15 +2617,14 @@ function computeCall(r){ // formulaic call: valuation band (MC/fNPV) × science 
   const sci=(e+d)/2;
   const weak=sci<2.5, strong=sci>=3.5;               // else "solid"
   let p=pv;                                           // MC/fNPV ratio (1 = fair)
-  // Financing penalty (Nov 26 2026): a company with under 8 quarters of cash must raise R = the shortfall to 8 quarters
-  // (burn = cash ÷ runway) before it can realise our value F. New money comes in near today's price, typically at a 15%
-  // discount, so new holders get R ÷ (0.85·MC + R) of the company: value left for today's holders = (F + R) × 0.85·MC ÷
-  // (0.85·MC + R), never more than F. This bites hardest where the gap between our value and the price is widest and the
-  // raise is large relative to the market cap (cheap micro caps), and barely at all for large caps. Under 4 quarters of
-  // cash a name cannot be a STRONG BUY; under 2 quarters it cannot be a LONG.
+  // Financing (Nov 26 2026, revised after PM review): under 8 quarters of cash we work out what a raise to reach 8 quarters
+  // would cost today's holders (new money at ~15% below today's price takes R ÷ (0.85·MC + R) of the company), but it does
+  // NOT change the call. Thin financing is a question to answer, not a verdict: the market may be missing something or
+  // fearing an overhang that a fund supplying the capital can remove, or it may know the setup is wrong. finCheck() shows
+  // the evidence either way in the drawer.
   const rw=r.runway_q, cash=r.cash||0; r._fin=null;
-  if(rw!=null&&rw<8&&cash>0&&r.mc>0){const burn=cash/Math.max(rw,.25),R=(8-rw)*burn,m=.85*r.mc,F=r.mc/p,Fa=Math.min(F,(F+R)*m/(m+R));p=r.mc/Fa;r._fin={cost:F-Fa,rw:rw,burn:burn,R:R,dil:R/(m+R)};}
-  const cap=c=>{if(rw==null)return c;if(rw<2&&(c==='STRONG BUY'||c==='LONG'))return 'HOLD';if(rw<4&&c==='STRONG BUY')return 'LONG';return c;};
+  if(rw!=null&&rw<8&&cash>0&&r.mc>0){const burn=cash/Math.max(rw,.25),R=(8-rw)*burn,m=.85*r.mc,F=r.mc/p,Fa=Math.min(F,(F+R)*m/(m+R));r._fin={cost:F-Fa,rw:rw,burn:burn,R:R,dil:R/(m+R)};}
+  const cap=c=>c;
   return cap((()=>{
   if(weak){
     if(p>=3.0)return 'STRONG SHORT';
@@ -3058,7 +3057,7 @@ function valParts(r){
   // adds each at the same sales multiple, discounted to its own approval year, less 60% of typical spend to get there.
   let other=0;(r.programs||[]).forEach(p=>{if(!(p.peak>0&&p.pos>0))return;const yy=p.y||6,v2=state.psMult*p.peak*p.pos/Math.pow(1+state.discRate,yy)-0.6*(DEV_COST[yy]||0)*.5;other+=Math.max(0,v2);N.push('+ '+p.name+' '+fmtB(p.peak)+' peak × '+Math.round(p.pos*100)+'% PoS, '+yy+' yrs');});
   book+=other;
-  if(r._fin)N.push('Financing: '+(Math.round(r._fin.rw*10)/10)+' quarters of cash; raising '+fmtB(r._fin.R)+' to reach 8 quarters at ~15% below today\u2019s price hands new holders '+Math.round(r._fin.dil*100)+'% of the company, worth ≈ '+fmtB(r._fin.cost)+' of our value; the call uses value after that');
+  if(r._fin)N.push('Financing: '+(Math.round(r._fin.rw*10)/10)+' quarters of cash; raising '+fmtB(r._fin.R)+' to reach 8 quarters at ~15% below today\u2019s price would hand new holders '+Math.round(r._fin.dil*100)+'% of the company (≈ '+fmtB(r._fin.cost)+' of our value). Not in the call; see the financing check');
   const prev=r.prevalence, sf=(typeof prev==='number'&&prev>0&&prev<50000)?.6:(typeof prev==='number'&&prev>2e6)?1.5:1;
   const cost=0.6*(DEV_COST[y]||0)*sf; if(cost)N.push('− '+fmtB(cost)+' expected spend to approval');
   if(r.val_note)N.unshift(r.val_note);
@@ -3143,6 +3142,32 @@ function thesis3Html(r,opt){opt=opt||{};const t=thesis3(r);
   return (opt.noView?'':L('View',t.view))+(opt.short?'':L('What the market misses',t.miss,t.ms>0?'th3-pos':t.ms<0?'th3-neg':'')+L('Catalyst &amp; what would change our mind',t.cat));}
 window.thesis3=thesis3;window.thesis3Html=thesis3Html;window.liveNums=liveNums;window.nextCat=nextCat;
 function npvVal(r){ const v=valParts(r); return v?v.npv:null; }
+// ---- Financing check (Nov 26 2026): for names with under 8 quarters of cash, the evidence on WHY it is thinly financed.
+// Leans "overhang / opportunity" when the data are solid, specialists are adding and the stock has been sold down;
+// leans "the market may know something" when the data are thin, specialists are leaving or short volume is heavy.
+let _F13=null,_TIx=null;
+function _j(id){try{return JSON.parse(document.getElementById(id).textContent);}catch(e){return null;}}
+function finCheck(r){
+  const rw=r.runway_q; if(rw==null||rw>=8)return '';
+  if(_F13===null)_F13=_j('f13-data')||{funds:[]}; if(_TIx===null)_TIx=(_j('tradeinfo-data')||{});
+  const e=r.effsig,d=r.diffscore,sci=(typeof e==='number'&&typeof d==='number')?e+d:null;
+  let add=0,cut=0,nb=0,ns=0,held=0,hv=0;
+  (_F13.funds||[]).forEach(f=>{if(!f.spec||!f.hist||!f.hist[r.ticker])return;const h=f.hist[r.ticker],t=(f.trd&&f.trd[r.ticker])||[],v=t[t.length-1]||0;if(h[h.length-1]>0){held++;hv+=h[h.length-1]*1e3;}if(v>0){add+=v*1e3;nb++;}else if(v<0){cut+=v*1e3;ns++;}});
+  const ti=_TIx[r.ticker]||(_TIx.rows||{})[r.ticker]||{},sv=ti.svr20,r3=r.r3m;
+  const pro=[],con=[];
+  if(sci!=null){if(sci>=7)pro.push('Data are strong (efficacy '+e+'/5, differentiation '+d+'/5): the drug itself is not the obvious problem');else if(sci<=5)con.push('Data are thin (efficacy '+e+'/5, differentiation '+d+'/5): weak financing may reflect doubts about the drug');}
+  if(nb+ns&&Math.abs(add+cut)>=Math.max(5e6,.02*(r.mc||0))){const net=add+cut;(net>0?pro:con).push('Specialists '+(net>0?'added':'cut')+' a net '+fmtB(Math.abs(net))+' last quarter ('+nb+' funds buying, '+ns+' selling; '+held+' hold '+fmtB(hv)+')');}
+  else if(held===0&&nb+ns===0)con.push('No specialist fund holds it in size: nobody informed is underwriting the story yet');
+  if(r3!=null){if(r3<=-.3)pro.push('Down '+Math.round(-r3*100)+'% in 3 months: an overhang or forced selling can push price below value');else if(r3>=.5)con.push('Up '+Math.round(r3*100)+'% in 3 months: a raise into strength is likely and dilution may be priced too lightly');}
+  if(sv!=null){if(sv>=.55)con.push('Short volume is '+Math.round(sv*100)+'% of trading (20-day): others are leaning against it');else if(sv<=.35)pro.push('Short volume is low ('+Math.round(sv*100)+'% of trading)');}
+  const size=r._fin?'Size of the fix: raising '+fmtB(r._fin.R)+' for 8 quarters of cash would be '+Math.round(r._fin.dil*100)+'% of the company at ~15% below today\u2019s price'+(r._fin.dil>.4?', large enough that whoever leads it sets the terms':', small enough to place easily')+'.':'';
+  const lean=pro.length>con.length+0?'Leans overhang: if the drug holds up, a financing that removes the overhang can be the opportunity':con.length>pro.length?'Leans caution: the market may know something about the setup; find what before buying':'Mixed: answer why the market will not fund it before sizing';
+  const li=a=>a.map(x=>'<li>'+esc(x)+'</li>').join('');
+  return '<div class="fin-chk" style="margin-top:10px;padding:8px 10px;border-left:3px solid var(--amber);background:rgba(244,183,64,.08);font-size:12px"><b>Financing check: '+(Math.round(rw*10)/10)+' quarters of cash.</b> Why is it thinly funded? '+esc(lean)+'.'
+    +(pro.length?'<div style="margin-top:4px;color:var(--long)">Points to an overhang / opportunity:</div><ul style="margin:2px 0 0 16px">'+li(pro)+'</ul>':'')
+    +(con.length?'<div style="margin-top:4px;color:var(--short)">Points to the market knowing something:</div><ul style="margin:2px 0 0 16px">'+li(con)+'</ul>':'')+(size?'<div style="margin-top:4px" class="dim">'+esc(size)+'</div>':'')+'</div>';
+}
+window.finCheck=finCheck;
 function valNotes(r){ const v=valParts(r); return v?v.notes.join('; '):''; }
 window.valNotes=valNotes;window.valParts=valParts;
 function pvVal(r){ // MC / (risk-adjusted value + cash); <1 = cheap. A value that the remaining cost wipes out = only cash left
@@ -4828,6 +4853,7 @@ function openDrawer(i){
     ['Cash % of mkt cap',r.cash_pct_mc,pctf],['Funded through catalyst?',r.funded_cat],
     ['Next dilution event',r.dilution],['Economics owned',r.pct_owned,pctf],
   ]);
+  const finHtml2=finHtml+finCheck(r);
   const _tk=encodeURIComponent(r.ticker);
   const _ptb=PRICE_TARGETS_BAKED[r.ticker];
   const _ptDisplay=(function(){
@@ -4884,7 +4910,7 @@ function openDrawer(i){
       ${sec('Press releases',ICON.news,prHtml)}
       ${sec('Key risks',ICON.risk,riskHtml)}
       ${phSec('Ownership',ICON.perf,posHtml)}
-      ${phSec('Financials & survival',ICON.comm,finHtml)}
+      ${phSec('Financials & survival',ICON.comm,finHtml2)}
       ${phSec('Regulatory & clinical',ICON.risk,regHtml)}
       ${sec('Price performance',ICON.perf,perfHtml)}
     </div>`;
