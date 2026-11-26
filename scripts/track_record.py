@@ -107,6 +107,47 @@ out["factors"] = [
     fac("Runway (current data)", lambda r, x: None if x.get("runway_q") is None else "1 <6Q" if x["runway_q"] < 6 else "2 6-12Q" if x["runway_q"] < 12 else "3 12Q+", "uses today's runway, small look-ahead"),
     fac("Quality screen (current scores)", lambda r, x: "1 pass" if (sci(x) or 0) >= 3.5 and r["mc"] >= 500e6 and (x.get("runway_q") or 0) >= 8 else "2 fail", "science >=3.5, cap >=$500M, runway >=8Q; science scores are today's, so some look-ahead"),
 ]
+# --- scorecard of our own calls (Nov 25 2026): which KINDS of call worked? Sep 12 snapshot (the oldest full set, longest window).
+# Each long and short is scored as its return minus the covered-universe median over the same window ("excess"; for shorts we
+# report the short's P&L, i.e. minus the stock's excess, so positive = the call worked). Split by stage, size, modality, novelty,
+# science score and model upside. t = mean excess / standard error across stocks (stocks in one window share a market, so this
+# overstates confidence; read |t| >= 2 as a hint, not proof). Modality, novelty and science are today's labels (small look-ahead).
+def tstat(xs):
+    if len(xs) < 3: return None
+    m = st.mean(xs); sd = st.stdev(xs)
+    return round(m / (sd / len(xs) ** .5), 2) if sd else None
+uni_med = st.median([r["ret"] for r in sep if r.get("ret") is not None])
+DIMSC = [
+    ("Stage at call", lambda r, x: "Approved" if str(r["stage"]).startswith("Approved") else "Ph3 / filed" if re.search("3|Filed", str(r["stage"])) else "Ph2" if "2" in str(r["stage"]) else "Preclinical / Ph1"),
+    ("Market cap at call", lambda r, x: "< $300M" if r["mc"] < 3e8 else "$300M-1B" if r["mc"] < 1e9 else "$1-5B" if r["mc"] < 5e9 else "> $5B"),
+    ("Modality (today)", lambda r, x: x.get("modality")),
+    ("Novelty (today)", lambda r, x: x.get("novelty")),
+    ("Science score (today)", lambda r, x: None if sci(x) is None else "Weak < 2.5" if sci(x) < 2.5 else "Mid 2.5-3.5" if sci(x) < 3.5 else "Strong >= 3.5"),
+    ("Model upside at call", lambda r, x: None if not isinstance(r.get("up"), (int, float)) else "< 0%" if r["up"] < 0 else "0-100%" if r["up"] < 100 else "100-300%" if r["up"] < 300 else "> 300%"),
+]
+SC = {"cohort": "Sep 12 snapshot", "date": "2026-09-11", "days": (END - dt.date(2026, 9, 11)).days, "universe_median": round(uni_med, 1), "sides": []}
+for side, calls in (("long", LONG), ("short", SHORT + ("AVOID",))):
+    sel = [r for r in sep if r.get("ret") is not None and r["call"] in calls]
+    pnl = lambda r: (r["ret"] - uni_med) * (1 if side == "long" else -1)
+    xs = [pnl(r) for r in sel]
+    block = {"side": side, "n": len(sel), "mean": round(st.mean(xs), 1) if xs else None, "median": round(st.median(xs), 1) if xs else None,
+             "hit": round(100 * sum(x > 0 for x in xs) / len(xs)) if xs else None, "t": tstat(xs), "dims": []}
+    for dl, f in DIMSC:
+        g = {}
+        for r in sel:
+            k = f(r, D.get(r["ticker"], {}))
+            if k: g.setdefault(k, []).append(r)
+        rows_ = []
+        for k, rs in g.items():
+            v = [pnl(r) for r in rs]
+            if len(v) < 5: continue
+            rs2 = sorted(rs, key=pnl)
+            rows_.append({"g": k, "n": len(v), "mean": round(st.mean(v), 1), "median": round(st.median(v), 1), "hit": round(100 * sum(x > 0 for x in v) / len(v)), "t": tstat(v),
+                          "best": [[r["ticker"], round(pnl(r), 1)] for r in rs2[::-1][:3]], "worst": [[r["ticker"], round(pnl(r), 1)] for r in rs2[:3]]})
+        rows_.sort(key=lambda z: -z["mean"])
+        block["dims"].append({"dim": dl, "rows": rows_})
+    SC["sides"].append(block)
+out["scorecard"] = SC
 json.dump(out, open(root/"data/track-data.json", "w"), indent=1)
 
 # --- join the hindsight list (biggest moves per quarter, researched drivers) with our calls ---

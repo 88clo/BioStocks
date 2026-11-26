@@ -18,3 +18,17 @@ def rep(m):
 out = re.sub(r"\{\{DATA:([A-Za-z0-9_-]+)\}\}", rep, t)
 (root / "index.html").write_text(out, encoding="utf-8")
 print(f"built index.html {len(out)//1024} KB")
+
+# Thesis audit on every build (Nov 25 2026): calls are computed live from price, so a written thesis can drift out of step
+# with its call. tests/thaudit.py loads the page headless and counts stale caps, missing lines, generic CEO notes and any
+# hand-written thesis whose direction disagrees with the page's call. Skipped quietly if Playwright/Chrome is missing.
+import subprocess, sys
+if "--no-audit" not in sys.argv and (root / "tests/thaudit.py").exists():
+    try:
+        r = subprocess.run([sys.executable, str(root / "tests/thaudit.py")], capture_output=True, text=True, timeout=180)
+        lines = [l for l in r.stdout.splitlines() if l.strip()]
+        bad = [l for l in lines[1:] if l.split() and l.split()[0] in ("stale_cap", "call_mismatch", "generic_ceo", "odd_phrase", "err") and len(l.split()) > 1 and l.split()[1] != "0"]
+        print("audit:", lines[0] if lines else (r.stderr.strip().splitlines() or ["no output"])[-1])
+        for l in bad: print("  AUDIT WARNING:", l)
+    except Exception as e:
+        print("audit skipped:", e)

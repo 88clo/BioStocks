@@ -13,7 +13,7 @@
   "stage": {
    "favour": "Ph3 / filed",
    "avoid": "Preclinical / Ph1",
-   "why": "Acquirers keep paying for late-stage, de-risked assets, and Ph3/filed names beat the market in 7 of 8 quarters; early-stage names need cheap money, which a rate hike and heavy supply take away."
+   "why": "Acquirers keep paying for late-stage, de-risked assets, and Ph3/filed names beat the market in 7 of 8 quarters (only ~2% a quarter, not significant on its own); the stronger, tested signal is the avoid side, since Preclinical / Ph1 lagged ~4% a quarter and that holds after controlling for size, momentum and modality; early-stage names need cheap money, which a rate hike and heavy supply take away."
   },
   "size": {
    "favour": "$1–5B",
@@ -33,12 +33,12 @@
   "mod": {
    "favour": "Antibody & protein",
    "avoid": "Cell therapy",
-   "why": "Antibodies have beaten the market the last two quarters (record 4 of 8) and big pharma keeps paying for them in immunology and oncology (e.g. AbbVie/Apogee, $10.9B); cell therapy beat the market in only 1 of 8 quarters on manufacturing cost and slow launches. We are not following the vaccine group's 5 of 8 record into 1Q27, given US vaccine-policy uncertainty."
+   "why": "Antibodies have beaten the market the last two quarters (record 4 of 8) and big pharma keeps paying for them in immunology and oncology (e.g. AbbVie/Apogee, $10.9B); cell therapy beat the market in only 1 of 8 quarters on manufacturing cost and slow launches. We are not following the vaccine group's 5 of 8 record into 1Q27, given US vaccine-policy uncertainty. The tested signal is the avoid: cell therapy lagged ~8% a quarter, significant after controls."
   },
   "nov": {
    "favour": "First-in-class",
    "avoid": "Late entrant",
-   "why": "Novel mechanisms with clinical data have held their premium (6 of 8 quarters), and late entrants in crowded classes lagged on every 4-quarter hold."
+   "why": "Novel mechanisms with clinical data have held their premium (6 of 8 quarters), and late entrants in crowded classes lagged on every 4-quarter hold. Tested: the late-entrant lag (~2% a quarter) is significant after controls; the first-in-class premium is not."
   },
   "cl": {
    "favour": "Immunology & inflammation",
@@ -59,5 +59,6 @@
    "t": "This dashboard: What worked record, net equity supply, 13F ownership",
    "u": ""
   }
- ]
+ ],
+ "test_note": "Nov 25 2026: What worked now tests each group (average gap, t-stat, pooled regression). Only three hold up: Preclinical/Ph1, cell therapy and late entrants all lag. Favour calls rest on the backdrop, not on statistically proven records."
 }

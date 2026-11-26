@@ -1,385 +1,385 @@
 {
- "asof": "2026-11-20",
+ "asof": "2026-11-25",
  "cohorts": [
   {
    "label": "Sep 12 snapshot",
    "date": "2026-09-11",
-   "days": 70,
+   "days": 75,
    "kind": "snapshot",
    "note": "Earliest full call set still on file (repo upload, 482 names). Calls were formula-driven off the then-current sheet; first five weeks overlap the rebuild of the baseline.",
-   "xbi": -10.3,
-   "ibb": -1.7,
+   "xbi": 0.3,
+   "ibb": 7.6,
    "universe": {
     "n": 468,
-    "median": -29.3,
-    "mean": -26.9,
-    "pct_pos": 13
+    "median": -20.7,
+    "mean": -18.7,
+    "pct_pos": 20
    },
    "groups": [
     {
      "n": 32,
-     "median": -37.4,
-     "mean": -39.1,
+     "median": -29.3,
+     "mean": -33.2,
      "pct_pos": 3,
      "label": "Best ideas (primary)",
      "side": "long",
-     "vs_universe": -8.1,
+     "vs_universe": -8.6,
      "beat_xbi_pct": 3
     },
     {
      "n": 54,
-     "median": -31.8,
-     "mean": -28.7,
-     "pct_pos": 11,
+     "median": -21.3,
+     "mean": -21.7,
+     "pct_pos": 15,
      "label": "Strong Buy",
      "side": "long",
-     "vs_universe": -2.5,
-     "beat_xbi_pct": 17
+     "vs_universe": -0.6,
+     "beat_xbi_pct": 11
     },
     {
      "n": 124,
-     "median": -34.9,
-     "mean": -30.9,
-     "pct_pos": 10,
+     "median": -25.4,
+     "mean": -23.6,
+     "pct_pos": 15,
      "label": "Long",
      "side": "long",
-     "vs_universe": -5.6,
+     "vs_universe": -4.7,
      "beat_xbi_pct": 15
     },
     {
      "n": 116,
-     "median": -19.4,
-     "mean": -19.1,
-     "pct_pos": 20,
+     "median": -11.1,
+     "mean": -9.8,
+     "pct_pos": 32,
      "label": "Watch",
      "side": "neutral",
-     "vs_universe": 9.9,
+     "vs_universe": 9.6,
      "beat_xbi_pct": 32
     },
     {
      "n": 57,
-     "median": -31.1,
-     "mean": -22.4,
-     "pct_pos": 12,
+     "median": -21.8,
+     "mean": -14.0,
+     "pct_pos": 18,
      "label": "Hold",
      "side": "neutral",
-     "vs_universe": -1.8,
-     "beat_xbi_pct": 19
+     "vs_universe": -1.1,
+     "beat_xbi_pct": 18
     },
     {
      "n": 56,
-     "median": -40.0,
-     "mean": -38.6,
-     "pct_pos": 7,
+     "median": -30.1,
+     "mean": -27.9,
+     "pct_pos": 16,
      "label": "Avoid",
      "side": "short",
-     "vs_universe": -10.7,
-     "beat_xbi_pct": 12
+     "vs_universe": -9.4,
+     "beat_xbi_pct": 16
     },
     {
      "n": 35,
-     "median": -25.3,
-     "mean": -21.2,
-     "pct_pos": 14,
+     "median": -17.5,
+     "mean": -12.6,
+     "pct_pos": 29,
      "label": "Short",
      "side": "short",
-     "vs_universe": 4.0,
+     "vs_universe": 3.2,
      "beat_xbi_pct": 29
     },
     {
      "n": 26,
-     "median": -35.4,
-     "mean": -31.9,
+     "median": -29.4,
+     "mean": -26.7,
      "pct_pos": 12,
      "label": "Strong Short",
      "side": "short",
-     "vs_universe": -6.1,
-     "beat_xbi_pct": 15
+     "vs_universe": -8.7,
+     "beat_xbi_pct": 12
     }
    ],
    "best": [
     {
      "t": "KOD",
      "call": "STRONG BUY",
-     "r": 195.4
-    },
-    {
-     "t": "PDSB",
-     "call": "LONG",
-     "r": 163.4
+     "r": 235.6
     },
     {
      "t": "XERS",
      "call": "LONG",
-     "r": 127.8
+     "r": 133.2
     },
     {
-     "t": "REPL",
+     "t": "PDSB",
      "call": "LONG",
-     "r": 47.6
+     "r": 83.0
     },
     {
      "t": "VRDN",
      "call": "LONG",
-     "r": 41.1
+     "r": 78.5
+    },
+    {
+     "t": "REPL",
+     "call": "LONG",
+     "r": 67.7
     }
    ],
    "worst": [
     {
      "t": "ABOS",
      "call": "LONG",
-     "r": -93.6
+     "r": -93.8
     },
     {
      "t": "GUTS",
      "call": "STRONG BUY",
-     "r": -89.3
-    },
-    {
-     "t": "CUE",
-     "call": "HOLD",
-     "r": -85.6
+     "r": -91.1
     },
     {
      "t": "ZURA",
      "call": "LONG",
-     "r": -82.1
+     "r": -83.4
     },
     {
-     "t": "KYNB",
+     "t": "TNXP",
+     "call": "STRONG BUY",
+     "r": -77.8
+    },
+    {
+     "t": "ACET",
      "call": "LONG",
-     "r": -80.4
+     "r": -76.8
     }
    ]
   },
   {
    "label": "Oct 13 memo",
    "date": "2026-10-13",
-   "days": 38,
+   "days": 43,
    "kind": "memo",
    "note": "Only the names printed in the memo are on file; the full Oct ledger (ledger/2026-10.json) was not recovered, so the universe here is just these names.",
-   "xbi": -4.5,
-   "ibb": -0.2,
+   "xbi": 6.7,
+   "ibb": 9.1,
    "universe": {
     "n": 63,
-    "median": -14.7,
-    "mean": -11.3,
-    "pct_pos": 29
+    "median": -6.4,
+    "mean": -3.4,
+    "pct_pos": 38
    },
    "groups": [
     {
      "n": 10,
-     "median": -13.5,
-     "mean": -9.2,
-     "pct_pos": 20,
+     "median": -1.7,
+     "mean": 1.8,
+     "pct_pos": 40,
      "label": "Highest-conviction longs (memo \u00a72)",
      "side": "long",
-     "vs_universe": 1.2,
-     "beat_xbi_pct": 30
+     "vs_universe": 4.7,
+     "beat_xbi_pct": 40
     },
     {
      "n": 34,
-     "median": -15.8,
-     "mean": -14.5,
-     "pct_pos": 24,
+     "median": -13.1,
+     "mean": -9.0,
+     "pct_pos": 32,
      "label": "Best long per TA (memo \u00a73)",
      "side": "long",
-     "vs_universe": -1.1,
-     "beat_xbi_pct": 29
+     "vs_universe": -6.7,
+     "beat_xbi_pct": 26
     },
     {
      "n": 19,
-     "median": -14.4,
-     "mean": -6.7,
-     "pct_pos": 42,
+     "median": -0.7,
+     "mean": 3.8,
+     "pct_pos": 47,
      "label": "Best short per TA (memo \u00a73)",
      "side": "short",
-     "vs_universe": 0.3,
-     "beat_xbi_pct": 42
+     "vs_universe": 5.7,
+     "beat_xbi_pct": 37
     }
    ],
    "best": [
     {
      "t": "LYEL",
      "call": "STRONG BUY",
-     "r": 83.8
+     "r": 106.1
     },
     {
      "t": "INO",
      "call": "STRONG BUY",
-     "r": 76.0
-    },
-    {
-     "t": "LRMR",
-     "call": "LONG",
-     "r": 45.4
-    },
-    {
-     "t": "LRMR",
-     "call": "LONG",
-     "r": 45.4
+     "r": 81.0
     },
     {
      "t": "XNCR",
      "call": "SHORT",
-     "r": 41.4
+     "r": 63.1
+    },
+    {
+     "t": "GMAB",
+     "call": "SHORT",
+     "r": 55.3
+    },
+    {
+     "t": "LRMR",
+     "call": "LONG",
+     "r": 46.3
     }
    ],
    "worst": [
     {
      "t": "GUTS",
      "call": "STRONG BUY",
-     "r": -79.6
+     "r": -82.9
     },
     {
      "t": "SLBT",
      "call": "STRONG SHORT",
-     "r": -64.1
-    },
-    {
-     "t": "UPB",
-     "call": "STRONG BUY",
-     "r": -55.2
+     "r": -67.7
     },
     {
      "t": "MIST",
      "call": "STRONG BUY",
-     "r": -51.6
+     "r": -53.0
+    },
+    {
+     "t": "UPB",
+     "call": "STRONG BUY",
+     "r": -47.0
     },
     {
      "t": "AKBA",
      "call": "LONG",
-     "r": -49.9
+     "r": -44.2
     }
    ]
   },
   {
    "label": "Nov 17 ledger",
    "date": "2026-11-16",
-   "days": 4,
+   "days": 9,
    "kind": "ledger",
    "note": "Full 402-name ledger frozen before this refresh (sha256 in the file). Four trading days old: a baseline, not evidence.",
-   "xbi": -3.9,
-   "ibb": -4.1,
+   "xbi": 7.3,
+   "ibb": 4.9,
    "universe": {
-    "n": 402,
-    "median": -6.2,
-    "mean": -6.2,
-    "pct_pos": 19
+    "n": 401,
+    "median": 4.4,
+    "mean": 4.6,
+    "pct_pos": 70
    },
    "groups": [
     {
-     "n": 36,
-     "median": -6.7,
-     "mean": -7.3,
-     "pct_pos": 8,
+     "n": 35,
+     "median": 4.2,
+     "mean": 4.6,
+     "pct_pos": 63,
      "label": "Rule-based top picks",
      "side": "long",
-     "vs_universe": -0.5,
-     "beat_xbi_pct": 22
+     "vs_universe": -0.2,
+     "beat_xbi_pct": 31
     },
     {
-     "n": 63,
-     "median": -7.3,
-     "mean": -7.5,
-     "pct_pos": 16,
+     "n": 62,
+     "median": 2.3,
+     "mean": 2.8,
+     "pct_pos": 58,
      "label": "Strong Buy",
      "side": "long",
-     "vs_universe": -1.1,
-     "beat_xbi_pct": 32
+     "vs_universe": -2.1,
+     "beat_xbi_pct": 34
     },
     {
      "n": 121,
-     "median": -6.5,
-     "mean": -6.9,
-     "pct_pos": 19,
+     "median": 4.0,
+     "mean": 4.4,
+     "pct_pos": 73,
      "label": "Long",
      "side": "long",
-     "vs_universe": -0.3,
-     "beat_xbi_pct": 30
+     "vs_universe": -0.4,
+     "beat_xbi_pct": 37
     },
     {
      "n": 43,
-     "median": -4.7,
-     "mean": -5.5,
-     "pct_pos": 19,
+     "median": 2.1,
+     "mean": 2.9,
+     "pct_pos": 67,
      "label": "Short + Strong Short",
      "side": "short",
-     "vs_universe": 1.5,
-     "beat_xbi_pct": 40
+     "vs_universe": -2.3,
+     "beat_xbi_pct": 35
     },
     {
      "n": 34,
-     "median": -6.3,
-     "mean": -5.6,
-     "pct_pos": 18,
+     "median": 8.5,
+     "mean": 9.8,
+     "pct_pos": 79,
      "label": "Avoid",
      "side": "short",
-     "vs_universe": -0.1,
-     "beat_xbi_pct": 41
+     "vs_universe": 4.1,
+     "beat_xbi_pct": 56
     }
    ],
    "best": [
     {
-     "t": "PYXS",
+     "t": "CPIX",
      "call": "LONG",
-     "r": 28.4
+     "r": 53.4
     },
     {
-     "t": "INO",
+     "t": "ALXO",
      "call": "LONG",
-     "r": 25.7
+     "r": 53.0
+    },
+    {
+     "t": "PYXS",
+     "call": "LONG",
+     "r": 49.6
+    },
+    {
+     "t": "TNYA",
+     "call": "LONG",
+     "r": 37.9
     },
     {
      "t": "CING",
      "call": "STRONG BUY",
-     "r": 20.3
-    },
-    {
-     "t": "ACOG",
-     "call": "STRONG BUY",
-     "r": 14.9
-    },
-    {
-     "t": "CPIX",
-     "call": "LONG",
-     "r": 12.1
+     "r": 34.1
     }
    ],
    "worst": [
     {
+     "t": "CAPR",
+     "call": "LONG",
+     "r": -76.5
+    },
+    {
      "t": "CUE",
      "call": "LONG",
-     "r": -70.6
+     "r": -40.3
     },
     {
-     "t": "CRBP",
-     "call": "LONG",
-     "r": -39.0
+     "t": "GUTS",
+     "call": "STRONG BUY",
+     "r": -30.7
     },
     {
-     "t": "ENTA",
-     "call": "LONG",
-     "r": -28.6
+     "t": "PYPD",
+     "call": "STRONG BUY",
+     "r": -25.7
     },
     {
      "t": "CHRS",
      "call": "LONG",
-     "r": -26.9
-    },
-    {
-     "t": "PMVP",
-     "call": "STRONG BUY",
-     "r": -26.4
+     "r": -25.1
     }
    ]
   }
  ],
  "method": "Price-only returns from the close on the call date to the latest close; split-adjusted; equal-weighted; no dividends, costs or borrow. Universe = every covered name priced on both dates. Shorts are reported as stock returns (a falling stock is a winning short).",
  "bench": {
-  "xbi_1m": -8.247156829551594,
-  "xbi_3m": -15.416643764211601,
-  "ibb_1m": -5.677149417334981
+  "xbi_1m": 4.073904986430654,
+  "xbi_3m": -7.0015994589151305,
+  "ibb_1m": 4.585745341642156
  },
  "bench_q": {
   "quarters": [
@@ -440,7 +440,7 @@
    127.73,
    158.25,
    157.68,
-   140.18
+   156.6
   ],
   "IBB": [
    null,
@@ -470,7 +470,7 @@
    168.85,
    190.19,
    210.53,
-   199.54
+   218.26
   ]
  },
  "signal": {
@@ -478,9 +478,9 @@
   "by_model_upside": [
    {
     "n": 93,
-    "median": -22.5,
-    "mean": -21.1,
-    "pct_pos": 18,
+    "median": -13.8,
+    "mean": -12.8,
+    "pct_pos": 30,
     "label": "Richest 20%",
     "up_range": [
      -99,
@@ -489,9 +489,9 @@
    },
    {
     "n": 93,
-    "median": -29.7,
-    "mean": -25.6,
-    "pct_pos": 13,
+    "median": -20.1,
+    "mean": -17.4,
+    "pct_pos": 19,
     "label": "2",
     "up_range": [
      -35,
@@ -500,9 +500,9 @@
    },
    {
     "n": 93,
-    "median": -26.7,
-    "mean": -29.3,
-    "pct_pos": 14,
+    "median": -19.6,
+    "mean": -19.8,
+    "pct_pos": 23,
     "label": "3",
     "up_range": [
      4,
@@ -511,9 +511,9 @@
    },
    {
     "n": 93,
-    "median": -32.8,
-    "mean": -29.8,
-    "pct_pos": 9,
+    "median": -24.2,
+    "mean": -21.4,
+    "pct_pos": 15,
     "label": "4",
     "up_range": [
      82,
@@ -522,9 +522,9 @@
    },
    {
     "n": 93,
-    "median": -36.7,
-    "mean": -32.9,
-    "pct_pos": 11,
+    "median": -27.5,
+    "mean": -26.1,
+    "pct_pos": 14,
     "label": "Cheapest 20%",
     "up_range": [
      270,
@@ -540,30 +540,30 @@
    "buckets": [
     {
      "n": 121,
-     "median": -37.3,
-     "mean": -34.9,
-     "pct_pos": 6,
+     "median": -30.4,
+     "mean": -27.2,
+     "pct_pos": 13,
      "label": "1 <$150M"
     },
     {
      "n": 110,
-     "median": -36.1,
-     "mean": -34.1,
-     "pct_pos": 12,
+     "median": -26.8,
+     "mean": -25.7,
+     "pct_pos": 14,
      "label": "2 $150-500M"
     },
     {
      "n": 129,
-     "median": -27.6,
-     "mean": -23.9,
-     "pct_pos": 14,
+     "median": -19.8,
+     "mean": -16.5,
+     "pct_pos": 18,
      "label": "3 $0.5-2B"
     },
     {
      "n": 108,
-     "median": -14.9,
-     "mean": -14.3,
-     "pct_pos": 21,
+     "median": -4.3,
+     "mean": -4.5,
+     "pct_pos": 38,
      "label": "4 >$2B"
     }
    ]
@@ -574,23 +574,23 @@
    "buckets": [
     {
      "n": 81,
-     "median": -20.8,
-     "mean": -17.1,
-     "pct_pos": 25,
+     "median": -12.7,
+     "mean": -9.8,
+     "pct_pos": 32,
      "label": "1 Approved"
     },
     {
      "n": 171,
-     "median": -25.0,
-     "mean": -24.1,
-     "pct_pos": 12,
+     "median": -17.2,
+     "mean": -15.5,
+     "pct_pos": 23,
      "label": "2 Ph3/Filed"
     },
     {
      "n": 216,
-     "median": -35.7,
-     "mean": -32.8,
-     "pct_pos": 9,
+     "median": -29.6,
+     "mean": -24.5,
+     "pct_pos": 14,
      "label": "3 Earlier"
     }
    ]
@@ -601,30 +601,30 @@
    "buckets": [
     {
      "n": 93,
-     "median": -37.3,
-     "mean": -37.4,
-     "pct_pos": 9,
+     "median": -29.1,
+     "mean": -30.1,
+     "pct_pos": 13,
      "label": "1 cheap <$500M"
     },
     {
      "n": 23,
-     "median": -23.5,
-     "mean": -17.7,
-     "pct_pos": 13,
+     "median": -14.0,
+     "mean": -9.9,
+     "pct_pos": 17,
      "label": "1 cheap >$500M"
     },
     {
      "n": 138,
-     "median": -36.1,
-     "mean": -32.6,
-     "pct_pos": 9,
+     "median": -29.7,
+     "mean": -24.1,
+     "pct_pos": 14,
      "label": "2 not cheap <$500M"
     },
     {
      "n": 214,
-     "median": -21.0,
-     "mean": -19.7,
-     "pct_pos": 18,
+     "median": -13.1,
+     "mean": -11.2,
+     "pct_pos": 28,
      "label": "2 not cheap >$500M"
     }
    ]
@@ -635,23 +635,23 @@
    "buckets": [
     {
      "n": 89,
-     "median": -29.3,
-     "mean": -23.8,
-     "pct_pos": 15,
+     "median": -25.0,
+     "mean": -17.3,
+     "pct_pos": 22,
      "label": "1 <6Q"
     },
     {
      "n": 118,
-     "median": -31.1,
-     "mean": -29.6,
-     "pct_pos": 8,
+     "median": -19.7,
+     "mean": -19.6,
+     "pct_pos": 14,
      "label": "2 6-12Q"
     },
     {
      "n": 174,
-     "median": -21.9,
-     "mean": -21.2,
-     "pct_pos": 18,
+     "median": -13.5,
+     "mean": -13.1,
+     "pct_pos": 28,
      "label": "3 12Q+"
     }
    ]
@@ -662,21 +662,1585 @@
    "buckets": [
     {
      "n": 124,
-     "median": -19.2,
-     "mean": -19.3,
-     "pct_pos": 18,
+     "median": -10.4,
+     "mean": -10.2,
+     "pct_pos": 30,
      "label": "1 pass"
     },
     {
      "n": 344,
-     "median": -33.3,
-     "mean": -29.7,
-     "pct_pos": 11,
+     "median": -25.5,
+     "mean": -21.8,
+     "pct_pos": 17,
      "label": "2 fail"
     }
    ]
   }
  ],
+ "scorecard": {
+  "cohort": "Sep 12 snapshot",
+  "date": "2026-09-11",
+  "days": 75,
+  "universe_median": -20.7,
+  "sides": [
+   {
+    "side": "long",
+    "n": 178,
+    "mean": -2.3,
+    "median": -4.6,
+    "hit": 45,
+    "t": -0.83,
+    "dims": [
+     {
+      "dim": "Stage at call",
+      "rows": [
+       {
+        "g": "Approved",
+        "n": 40,
+        "mean": 3.2,
+        "median": 3.1,
+        "hit": 52,
+        "t": 0.63,
+        "best": [
+         [
+          "VRDN",
+          99.2
+         ],
+         [
+          "REPL",
+          88.5
+         ],
+         [
+          "AYTU",
+          55.4
+         ]
+        ],
+        "worst": [
+         [
+          "TNXP",
+          -57.0
+         ],
+         [
+          "CHRS",
+          -50.8
+         ],
+         [
+          "MIST",
+          -42.5
+         ]
+        ]
+       },
+       {
+        "g": "Ph3 / filed",
+        "n": 73,
+        "mean": 1.7,
+        "median": -3.3,
+        "hit": 49,
+        "t": 0.34,
+        "best": [
+         [
+          "KOD",
+          256.3
+         ],
+         [
+          "XERS",
+          153.9
+         ],
+         [
+          "INO",
+          65.5
+         ]
+        ],
+        "worst": [
+         [
+          "GUTS",
+          -70.3
+         ],
+         [
+          "CAPR",
+          -56.0
+         ],
+         [
+          "CMPX",
+          -42.3
+         ]
+        ]
+       },
+       {
+        "g": "Ph2",
+        "n": 50,
+        "mean": -9.9,
+        "median": -12.4,
+        "hit": 34,
+        "t": -2.15,
+        "best": [
+         [
+          "PDSB",
+          103.7
+         ],
+         [
+          "PEPG",
+          59.7
+         ],
+         [
+          "PRME",
+          49.8
+         ]
+        ],
+        "worst": [
+         [
+          "ABOS",
+          -73.0
+         ],
+         [
+          "ZURA",
+          -62.7
+         ],
+         [
+          "ACTU",
+          -55.1
+         ]
+        ]
+       },
+       {
+        "g": "Preclinical / Ph1",
+        "n": 15,
+        "mean": -11.4,
+        "median": -9.6,
+        "hit": 40,
+        "t": -1.43,
+        "best": [
+         [
+          "LKFT",
+          53.4
+         ],
+         [
+          "ANAB",
+          15.6
+         ],
+         [
+          "IBIO",
+          11.6
+         ]
+        ],
+        "worst": [
+         [
+          "ACET",
+          -56.1
+         ],
+         [
+          "KYNB",
+          -55.9
+         ],
+         [
+          "PMN",
+          -55.7
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "dim": "Market cap at call",
+      "rows": [
+       {
+        "g": "$1-5B",
+        "n": 36,
+        "mean": 20.7,
+        "median": 8.2,
+        "hit": 69,
+        "t": 2.27,
+        "best": [
+         [
+          "KOD",
+          256.3
+         ],
+         [
+          "XERS",
+          153.9
+         ],
+         [
+          "VRDN",
+          99.2
+         ]
+        ],
+        "worst": [
+         [
+          "NKTR",
+          -32.5
+         ],
+         [
+          "ALMS",
+          -29.9
+         ],
+         [
+          "MLYS",
+          -24.6
+         ]
+        ]
+       },
+       {
+        "g": "$300M-1B",
+        "n": 56,
+        "mean": -5.8,
+        "median": -5.6,
+        "hit": 43,
+        "t": -1.84,
+        "best": [
+         [
+          "LYEL",
+          50.2
+         ],
+         [
+          "PRME",
+          49.8
+         ],
+         [
+          "COLL",
+          30.6
+         ]
+        ],
+        "worst": [
+         [
+          "ZURA",
+          -62.7
+         ],
+         [
+          "CAPR",
+          -56.0
+         ],
+         [
+          "UPB",
+          -46.5
+         ]
+        ]
+       },
+       {
+        "g": "< $300M",
+        "n": 84,
+        "mean": -10.4,
+        "median": -12.6,
+        "hit": 36,
+        "t": -3.07,
+        "best": [
+         [
+          "PDSB",
+          103.7
+         ],
+         [
+          "INO",
+          65.5
+         ],
+         [
+          "PEPG",
+          59.7
+         ]
+        ],
+        "worst": [
+         [
+          "ABOS",
+          -73.0
+         ],
+         [
+          "GUTS",
+          -70.3
+         ],
+         [
+          "TNXP",
+          -57.0
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "dim": "Modality (today)",
+      "rows": [
+       {
+        "g": "Antibody & protein",
+        "n": 19,
+        "mean": 22.0,
+        "median": 6.8,
+        "hit": 68,
+        "t": 1.4,
+        "best": [
+         [
+          "KOD",
+          256.3
+         ],
+         [
+          "PDSB",
+          103.7
+         ],
+         [
+          "VRDN",
+          99.2
+         ]
+        ],
+        "worst": [
+         [
+          "CHRS",
+          -50.8
+         ],
+         [
+          "UPB",
+          -46.5
+         ],
+         [
+          "ACRV",
+          -17.8
+         ]
+        ]
+       },
+       {
+        "g": "Gene therapy & editing",
+        "n": 16,
+        "mean": 4.5,
+        "median": 2.2,
+        "hit": 56,
+        "t": 0.85,
+        "best": [
+         [
+          "PRME",
+          49.8
+         ],
+         [
+          "RARE",
+          47.4
+         ],
+         [
+          "BEAM",
+          20.1
+         ]
+        ],
+        "worst": [
+         [
+          "CADL",
+          -25.0
+         ],
+         [
+          "VYGR",
+          -23.5
+         ],
+         [
+          "PGEN",
+          -10.8
+         ]
+        ]
+       },
+       {
+        "g": "Bispecific & multispecific",
+        "n": 7,
+        "mean": -2.7,
+        "median": 7.5,
+        "hit": 57,
+        "t": -0.18,
+        "best": [
+         [
+          "LKFT",
+          53.4
+         ],
+         [
+          "MLTX",
+          26.4
+         ],
+         [
+          "ZBIO",
+          7.9
+         ]
+        ],
+        "worst": [
+         [
+          "ZURA",
+          -62.7
+         ],
+         [
+          "CMPX",
+          -42.3
+         ],
+         [
+          "ACRS",
+          -9.1
+         ]
+        ]
+       },
+       {
+        "g": "Small molecule",
+        "n": 75,
+        "mean": -3.2,
+        "median": -4.6,
+        "hit": 40,
+        "t": -1.01,
+        "best": [
+         [
+          "XERS",
+          153.9
+         ],
+         [
+          "CPIX",
+          45.8
+         ],
+         [
+          "COLL",
+          30.6
+         ]
+        ],
+        "worst": [
+         [
+          "NMRA",
+          -46.6
+         ],
+         [
+          "MIST",
+          -42.5
+         ],
+         [
+          "ATHE",
+          -39.6
+         ]
+        ]
+       },
+       {
+        "g": "Cell therapy",
+        "n": 11,
+        "mean": -10.1,
+        "median": -12.2,
+        "hit": 36,
+        "t": -1.14,
+        "best": [
+         [
+          "LYEL",
+          50.2
+         ],
+         [
+          "LEGN",
+          15.4
+         ],
+         [
+          "RNAC",
+          8.3
+         ]
+        ],
+        "worst": [
+         [
+          "CAPR",
+          -56.0
+         ],
+         [
+          "CABA",
+          -39.7
+         ],
+         [
+          "ABEO",
+          -31.3
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "dim": "Novelty (today)",
+      "rows": [
+       {
+        "g": "Next-gen, validated",
+        "n": 48,
+        "mean": 8.6,
+        "median": 3.7,
+        "hit": 58,
+        "t": 1.23,
+        "best": [
+         [
+          "KOD",
+          256.3
+         ],
+         [
+          "PDSB",
+          103.7
+         ],
+         [
+          "REPL",
+          88.5
+         ]
+        ],
+        "worst": [
+         [
+          "ZURA",
+          -62.7
+         ],
+         [
+          "CAPR",
+          -56.0
+         ],
+         [
+          "NMRA",
+          -46.6
+         ]
+        ]
+       },
+       {
+        "g": "First-in-class",
+        "n": 68,
+        "mean": 2.1,
+        "median": -1.4,
+        "hit": 49,
+        "t": 0.55,
+        "best": [
+         [
+          "XERS",
+          153.9
+         ],
+         [
+          "VRDN",
+          99.2
+         ],
+         [
+          "INO",
+          65.5
+         ]
+        ],
+        "worst": [
+         [
+          "GUTS",
+          -70.3
+         ],
+         [
+          "MIST",
+          -42.5
+         ],
+         [
+          "CMPX",
+          -42.3
+         ]
+        ]
+       },
+       {
+        "g": "Late entrant",
+        "n": 27,
+        "mean": -6.7,
+        "median": -11.7,
+        "hit": 41,
+        "t": -1.36,
+        "best": [
+         [
+          "RDY",
+          49.7
+         ],
+         [
+          "COLL",
+          30.6
+         ],
+         [
+          "KMDA",
+          25.8
+         ]
+        ],
+        "worst": [
+         [
+          "CHRS",
+          -50.8
+         ],
+         [
+          "CRDL",
+          -35.6
+         ],
+         [
+          "ALT",
+          -34.9
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "dim": "Science score (today)",
+      "rows": [
+       {
+        "g": "Mid 2.5-3.5",
+        "n": 54,
+        "mean": 3.1,
+        "median": 1.4,
+        "hit": 54,
+        "t": 0.74,
+        "best": [
+         [
+          "PDSB",
+          103.7
+         ],
+         [
+          "REPL",
+          88.5
+         ],
+         [
+          "PEPG",
+          59.7
+         ]
+        ],
+        "worst": [
+         [
+          "ZURA",
+          -62.7
+         ],
+         [
+          "CHRS",
+          -50.8
+         ],
+         [
+          "NMRA",
+          -46.6
+         ]
+        ]
+       },
+       {
+        "g": "Strong >= 3.5",
+        "n": 89,
+        "mean": 2.3,
+        "median": -2.1,
+        "hit": 48,
+        "t": 0.53,
+        "best": [
+         [
+          "KOD",
+          256.3
+         ],
+         [
+          "XERS",
+          153.9
+         ],
+         [
+          "VRDN",
+          99.2
+         ]
+        ],
+        "worst": [
+         [
+          "GUTS",
+          -70.3
+         ],
+         [
+          "CAPR",
+          -56.0
+         ],
+         [
+          "UPB",
+          -46.5
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "dim": "Model upside at call",
+      "rows": [
+       {
+        "g": "100-300%",
+        "n": 73,
+        "mean": 0.3,
+        "median": -3.5,
+        "hit": 45,
+        "t": 0.09,
+        "best": [
+         [
+          "XERS",
+          153.9
+         ],
+         [
+          "VRDN",
+          99.2
+         ],
+         [
+          "INO",
+          65.5
+         ]
+        ],
+        "worst": [
+         [
+          "ACET",
+          -56.1
+         ],
+         [
+          "CAPR",
+          -56.0
+         ],
+         [
+          "ACTU",
+          -55.1
+         ]
+        ]
+       },
+       {
+        "g": "> 300%",
+        "n": 71,
+        "mean": -2.7,
+        "median": -4.6,
+        "hit": 45,
+        "t": -0.53,
+        "best": [
+         [
+          "KOD",
+          256.3
+         ],
+         [
+          "PDSB",
+          103.7
+         ],
+         [
+          "AYTU",
+          55.4
+         ]
+        ],
+        "worst": [
+         [
+          "ABOS",
+          -73.0
+         ],
+         [
+          "GUTS",
+          -70.3
+         ],
+         [
+          "TNXP",
+          -57.0
+         ]
+        ]
+       },
+       {
+        "g": "0-100%",
+        "n": 33,
+        "mean": -6.7,
+        "median": -8.4,
+        "hit": 45,
+        "t": -1.2,
+        "best": [
+         [
+          "REPL",
+          88.5
+         ],
+         [
+          "LKFT",
+          53.4
+         ],
+         [
+          "PRME",
+          49.8
+         ]
+        ],
+        "worst": [
+         [
+          "ZURA",
+          -62.7
+         ],
+         [
+          "NMRA",
+          -46.6
+         ],
+         [
+          "CMPX",
+          -42.3
+         ]
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "side": "short",
+    "n": 117,
+    "mean": 2.3,
+    "median": 5.9,
+    "hit": 57,
+    "t": 0.82,
+    "dims": [
+     {
+      "dim": "Stage at call",
+      "rows": [
+       {
+        "g": "Preclinical / Ph1",
+        "n": 40,
+        "mean": 6.3,
+        "median": 11.4,
+        "hit": 65,
+        "t": 1.2,
+        "best": [
+         [
+          "SCLX",
+          66.4
+         ],
+         [
+          "SLBT",
+          55.3
+         ],
+         [
+          "DCOY",
+          51.2
+         ]
+        ],
+        "worst": [
+         [
+          "SRZN",
+          -87.6
+         ],
+         [
+          "XNCR",
+          -77.9
+         ],
+         [
+          "ALEC",
+          -48.3
+         ]
+        ]
+       },
+       {
+        "g": "Ph2",
+        "n": 44,
+        "mean": 3.6,
+        "median": 4.8,
+        "hit": 57,
+        "t": 0.96,
+        "best": [
+         [
+          "LGVN",
+          55.8
+         ],
+         [
+          "FTH",
+          53.7
+         ],
+         [
+          "CNTB",
+          46.8
+         ]
+        ],
+        "worst": [
+         [
+          "TRAX",
+          -60.5
+         ],
+         [
+          "NNVC",
+          -46.2
+         ],
+         [
+          "KROS",
+          -40.6
+         ]
+        ]
+       },
+       {
+        "g": "Ph3 / filed",
+        "n": 31,
+        "mean": -1.7,
+        "median": 0.5,
+        "hit": 52,
+        "t": -0.29,
+        "best": [
+         [
+          "EYPT",
+          71.7
+         ],
+         [
+          "AARD",
+          60.6
+         ],
+         [
+          "ATYR",
+          51.5
+         ]
+        ],
+        "worst": [
+         [
+          "DMAC",
+          -62.5
+         ],
+         [
+          "ADCT",
+          -53.4
+         ],
+         [
+          "GOSS",
+          -51.9
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "dim": "Market cap at call",
+      "rows": [
+       {
+        "g": "< $300M",
+        "n": 70,
+        "mean": 7.1,
+        "median": 9.6,
+        "hit": 66,
+        "t": 1.96,
+        "best": [
+         [
+          "SCLX",
+          66.4
+         ],
+         [
+          "AARD",
+          60.6
+         ],
+         [
+          "LGVN",
+          55.8
+         ]
+        ],
+        "worst": [
+         [
+          "SRZN",
+          -87.6
+         ],
+         [
+          "ADCT",
+          -53.4
+         ],
+         [
+          "GOSS",
+          -51.9
+         ]
+        ]
+       },
+       {
+        "g": "$300M-1B",
+        "n": 19,
+        "mean": 0.9,
+        "median": 9.6,
+        "hit": 63,
+        "t": 0.13,
+        "best": [
+         [
+          "EYPT",
+          71.7
+         ],
+         [
+          "SION",
+          40.1
+         ],
+         [
+          "MPLT",
+          24.0
+         ]
+        ],
+        "worst": [
+         [
+          "DMAC",
+          -62.5
+         ],
+         [
+          "FENC",
+          -44.0
+         ],
+         [
+          "AMPH",
+          -43.2
+         ]
+        ]
+       },
+       {
+        "g": "$1-5B",
+        "n": 23,
+        "mean": -5.7,
+        "median": -9.0,
+        "hit": 39,
+        "t": -0.86,
+        "best": [
+         [
+          "SLBT",
+          55.3
+         ],
+         [
+          "FTH",
+          53.7
+         ],
+         [
+          "AVBP",
+          35.8
+         ]
+        ],
+        "worst": [
+         [
+          "XNCR",
+          -77.9
+         ],
+         [
+          "TRAX",
+          -60.5
+         ],
+         [
+          "SEPN",
+          -37.7
+         ]
+        ]
+       },
+       {
+        "g": "> $5B",
+        "n": 5,
+        "mean": -21.9,
+        "median": -21.5,
+        "hit": 0,
+        "t": -12.47,
+        "best": [
+         [
+          "IMVT",
+          -16.6
+         ],
+         [
+          "ERAS",
+          -20.3
+         ],
+         [
+          "INCY",
+          -21.5
+         ]
+        ],
+        "worst": [
+         [
+          "NBIX",
+          -27.0
+         ],
+         [
+          "ROIV",
+          -24.1
+         ],
+         [
+          "INCY",
+          -21.5
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "dim": "Modality (today)",
+      "rows": [
+       {
+        "g": "Cell therapy",
+        "n": 9,
+        "mean": 16.3,
+        "median": 18.3,
+        "hit": 56,
+        "t": 1.53,
+        "best": [
+         [
+          "LGVN",
+          55.8
+         ],
+         [
+          "SLBT",
+          55.3
+         ],
+         [
+          "NKTX",
+          40.8
+         ]
+        ],
+        "worst": [
+         [
+          "SLS",
+          -31.3
+         ],
+         [
+          "ANIX",
+          -17.5
+         ],
+         [
+          "COYA",
+          -4.7
+         ]
+        ]
+       },
+       {
+        "g": "ADC & radioconjugate",
+        "n": 6,
+        "mean": 0.8,
+        "median": 10.2,
+        "hit": 83,
+        "t": 0.07,
+        "best": [
+         [
+          "MGNX",
+          20.3
+         ],
+         [
+          "STRO",
+          15.1
+         ],
+         [
+          "MOLN",
+          13.8
+         ]
+        ],
+        "worst": [
+         [
+          "ADCT",
+          -53.4
+         ],
+         [
+          "WHWK",
+          2.6
+         ],
+         [
+          "AKTS",
+          6.5
+         ]
+        ]
+       },
+       {
+        "g": "Small molecule",
+        "n": 33,
+        "mean": -0.1,
+        "median": -6.4,
+        "hit": 45,
+        "t": -0.02,
+        "best": [
+         [
+          "FTH",
+          53.7
+         ],
+         [
+          "ATYR",
+          51.5
+         ],
+         [
+          "AVXL",
+          45.6
+         ]
+        ],
+        "worst": [
+         [
+          "GOSS",
+          -51.9
+         ],
+         [
+          "FENC",
+          -44.0
+         ],
+         [
+          "AMPH",
+          -43.2
+         ]
+        ]
+       },
+       {
+        "g": "Antibody & protein",
+        "n": 17,
+        "mean": -24.3,
+        "median": -24.1,
+        "hit": 29,
+        "t": -3.45,
+        "best": [
+         [
+          "HURA",
+          16.8
+         ],
+         [
+          "OTLK",
+          11.9
+         ],
+         [
+          "CLYM",
+          9.6
+         ]
+        ],
+        "worst": [
+         [
+          "SRZN",
+          -87.6
+         ],
+         [
+          "DMAC",
+          -62.5
+         ],
+         [
+          "TRAX",
+          -60.5
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "dim": "Novelty (today)",
+      "rows": [
+       {
+        "g": "Next-gen, validated",
+        "n": 21,
+        "mean": 1.4,
+        "median": 6.7,
+        "hit": 52,
+        "t": 0.26,
+        "best": [
+         [
+          "FTH",
+          53.7
+         ],
+         [
+          "AVXL",
+          45.6
+         ],
+         [
+          "FHTX",
+          29.0
+         ]
+        ],
+        "worst": [
+         [
+          "FENC",
+          -44.0
+         ],
+         [
+          "SLS",
+          -31.3
+         ],
+         [
+          "RZLT",
+          -29.3
+         ]
+        ]
+       },
+       {
+        "g": "First-in-class",
+        "n": 17,
+        "mean": -3.8,
+        "median": -4.7,
+        "hit": 47,
+        "t": -0.5,
+        "best": [
+         [
+          "ATYR",
+          51.5
+         ],
+         [
+          "SION",
+          40.1
+         ],
+         [
+          "IPHA",
+          33.0
+         ]
+        ],
+        "worst": [
+         [
+          "XNCR",
+          -77.9
+         ],
+         [
+          "ABSI",
+          -30.3
+         ],
+         [
+          "COAG",
+          -27.2
+         ]
+        ]
+       },
+       {
+        "g": "Late entrant",
+        "n": 43,
+        "mean": -4.6,
+        "median": -3.2,
+        "hit": 49,
+        "t": -0.95,
+        "best": [
+         [
+          "LGVN",
+          55.8
+         ],
+         [
+          "SLBT",
+          55.3
+         ],
+         [
+          "CNXU",
+          44.5
+         ]
+        ],
+        "worst": [
+         [
+          "SRZN",
+          -87.6
+         ],
+         [
+          "DMAC",
+          -62.5
+         ],
+         [
+          "TRAX",
+          -60.5
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "dim": "Science score (today)",
+      "rows": [
+       {
+        "g": "Mid 2.5-3.5",
+        "n": 21,
+        "mean": -1.2,
+        "median": -2.8,
+        "hit": 48,
+        "t": -0.21,
+        "best": [
+         [
+          "FTH",
+          53.7
+         ],
+         [
+          "CNXU",
+          44.5
+         ],
+         [
+          "IPHA",
+          33.0
+         ]
+        ],
+        "worst": [
+         [
+          "TRAX",
+          -60.5
+         ],
+         [
+          "SLS",
+          -31.3
+         ],
+         [
+          "RZLT",
+          -29.3
+         ]
+        ]
+       },
+       {
+        "g": "Weak < 2.5",
+        "n": 53,
+        "mean": -1.7,
+        "median": 1.9,
+        "hit": 53,
+        "t": -0.39,
+        "best": [
+         [
+          "LGVN",
+          55.8
+         ],
+         [
+          "SLBT",
+          55.3
+         ],
+         [
+          "ATYR",
+          51.5
+         ]
+        ],
+        "worst": [
+         [
+          "SRZN",
+          -87.6
+         ],
+         [
+          "XNCR",
+          -77.9
+         ],
+         [
+          "DMAC",
+          -62.5
+         ]
+        ]
+       },
+       {
+        "g": "Strong >= 3.5",
+        "n": 7,
+        "mean": -16.3,
+        "median": -20.3,
+        "hit": 29,
+        "t": -2.47,
+        "best": [
+         [
+          "CLYM",
+          9.6
+         ],
+         [
+          "NBTX",
+          0.5
+         ],
+         [
+          "ELVN",
+          -14.1
+         ]
+        ],
+        "worst": [
+         [
+          "FENC",
+          -44.0
+         ],
+         [
+          "ROIV",
+          -24.1
+         ],
+         [
+          "INCY",
+          -21.5
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "dim": "Model upside at call",
+      "rows": [
+       {
+        "g": "> 300%",
+        "n": 17,
+        "mean": 15.5,
+        "median": 8.3,
+        "hit": 76,
+        "t": 2.37,
+        "best": [
+         [
+          "EYPT",
+          71.7
+         ],
+         [
+          "AARD",
+          60.6
+         ],
+         [
+          "DCOY",
+          51.2
+         ]
+        ],
+        "worst": [
+         [
+          "CRVO",
+          -19.6
+         ],
+         [
+          "MREO",
+          -15.7
+         ],
+         [
+          "XBIT",
+          -10.2
+         ]
+        ]
+       },
+       {
+        "g": "100-300%",
+        "n": 15,
+        "mean": 11.0,
+        "median": 11.9,
+        "hit": 73,
+        "t": 1.2,
+        "best": [
+         [
+          "SCLX",
+          66.4
+         ],
+         [
+          "LGVN",
+          55.8
+         ],
+         [
+          "ATYR",
+          51.5
+         ]
+        ],
+        "worst": [
+         [
+          "ADCT",
+          -53.4
+         ],
+         [
+          "GOSS",
+          -51.9
+         ],
+         [
+          "FLNA",
+          -25.9
+         ]
+        ]
+       },
+       {
+        "g": "0-100%",
+        "n": 14,
+        "mean": 1.2,
+        "median": 7.8,
+        "hit": 57,
+        "t": 0.14,
+        "best": [
+         [
+          "CNTB",
+          46.8
+         ],
+         [
+          "NKTX",
+          40.8
+         ],
+         [
+          "FHTX",
+          29.0
+         ]
+        ],
+        "worst": [
+         [
+          "APUS",
+          -51.8
+         ],
+         [
+          "ALEC",
+          -48.3
+         ],
+         [
+          "KROS",
+          -40.6
+         ]
+        ]
+       },
+       {
+        "g": "< 0%",
+        "n": 71,
+        "mean": -2.4,
+        "median": -2.8,
+        "hit": 49,
+        "t": -0.71,
+        "best": [
+         [
+          "SLBT",
+          55.3
+         ],
+         [
+          "FTH",
+          53.7
+         ],
+         [
+          "TELO",
+          49.7
+         ]
+        ],
+        "worst": [
+         [
+          "SRZN",
+          -87.6
+         ],
+         [
+          "XNCR",
+          -77.9
+         ],
+         [
+          "DMAC",
+          -62.5
+         ]
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
  "misses": {
   "quarters": [
    "1Q26",

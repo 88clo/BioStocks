@@ -3,16 +3,17 @@
  2) White space: indications where patients are many but public assets are weak or few; crowded fields; cash shells
     (negative-EV companies that are natural reverse-merger / pivot vehicles for private companies).
 Writes data/radar-data.json and data/gaps-data.json."""
-import json, pathlib, statistics as st, datetime as dt
+import json, re, pathlib, statistics as st, datetime as dt
 root = pathlib.Path(__file__).resolve().parents[1]
 D = json.load(open(root/"data/data.json"))
 L = {r["ticker"]: r for r in json.load(open(root/"ledger/2026-11-22_refresh.json"))["rows"]} if (root/"ledger/2026-11-22_refresh.json").exists() else {}
-TODAY = dt.date(2026, 11, 22)
+TODAY = dt.date.today()
 def fund(tk):
     f = root/"cache/fund"/f"{tk}.json"
     return json.load(open(f)) if f.exists() else {}
 def sci(r): return ((r.get("effsig") or 0) + (r.get("diffscore") or 0))/2 if r.get("effsig") is not None else None
 LONGS = {"STRONG BUY", "LONG"}; SHORTS = {"SHORT", "STRONG SHORT"}
+MOVES = json.load(open(root/'data/moves.json')).get('moves', {}) if (root/'data/moves.json').exists() else {}
 radar = []
 for r in D:
     if r.get("ta") == "Acquired / Inactive": continue
@@ -23,13 +24,24 @@ for r in D:
     F = fund(r["ticker"]); iss = F.get("IssuanceOfCapitalStock", {})
     raised_4q = sum(v for k, v in iss.items() if k >= "2025-10-01" and v and v > 0)
     call = (L.get(r["ticker"], {}).get("call") or r.get("call") or "").upper()
-    cm = r.get("cat_mos"); r1, r3 = r.get("r1m"), r.get("r3m")
+    r1, r3 = r.get("r1m"), r.get("r3m")
+    # Catalyst status (Nov 25 2026): time the raise off the next catalyst that is still upcoming, and off what just happened.
+    # A stale 'cat_mos' kept SMMT on "right after the catalyst, if positive" after its CRL; now a done or late catalyst cannot set the window.
+    cs = r.get("cat_sched") or []
+    ups = sorted([c for c in cs if c.get("st") == "up" and c.get("d") and c["d"] >= TODAY.isoformat()], key=lambda c: c["d"])
+    cm = ((dt.date.fromisoformat(ups[0]["d"]) - TODAY).days / 30.4) if ups else None
+    txt = " ".join(str(r.get(k) or "") for k in ("stage", "call_reason", "pitch")) + " " + " ".join(str(c.get("outcome") or "") for c in cs)
+    recent = [c for c in cs if c.get("st") in ("done", "late") and c.get("d") and (TODAY - dt.date.fromisoformat(c["d"])).days <= 60]
+    setback = bool(re.search(r"\bCRL\b|complete response|missed|failed|did not meet|discontinu|stopped|futility", txt, re.I)) and (bool(recent) or bool(re.search(r"\b(Oct|Nov|Dec)\w* 2026|\(Nov 2026\)", txt)))
+    good = any(re.match(r"positive", str(c.get("outcome") or ""), re.I) for c in recent)
     # --- need: quarters of cash left ---
     need = 0 if rw is None else (3 if rw < 4 else 2 if rw < 6 else 1 if rw < 9 else 0)
     if rw is None and (r.get("net_income") or 0) >= 0: need = 0
     # --- window: a catalyst inside 4 months (companies sell stock into good data), or a run-up open now ---
     win = 0; why = []
     if cm is not None and 0 <= cm <= 4: win += 1; why.append(f"catalyst in ~{max(cm,0.1):.0f} mo")
+    mv = MOVES.get(r["ticker"], {}).get("chg")  # move since the snapshot (moves_since.py): fresher than r1m
+    if mv is not None and mv > 0.30 and not ((r1 or 0) > 0.30): r1 = mv
     if (r1 or 0) > 0.30 or (r3 or 0) > 0.60: win += 2; why.append(f"stock {'+'+str(round((r1 or 0)*100))+'% 1M' if (r1 or 0)>0.30 else '+'+str(round((r3 or 0)*100))+'% 3M'}: window open now")
     if raised_4q > 0.10*mc: why.append(f"raised ${raised_4q/1e6:.0f}M in last 4 quarters (repeat issuer)")
     ev = (r.get("inputs") or {}).get("events") or ""
@@ -41,14 +53,16 @@ for r in D:
     size = None
     if burn: size = min(max(6*burn, 0.10*mc), 0.30*mc)            # ~18 months of burn, bounded 10-30% of cap
     else: size = 0.15*mc
-    if need >= 2 and win == 0: timing = "Before runway gets short (next 1-2 quarters)"
+    if setback: timing = "After the setback: a raise funds the fix (new trial or resubmission), likely at a discount"; why.append("recent setback: " + (next((c.get('outcome') for c in recent if c.get('outcome')), '') or 'CRL / miss in 2026')[:90])
+    elif good: timing = "Now: window open after positive data"; why.append("positive data: " + next(c["outcome"] for c in recent if re.match(r"positive", str(c.get("outcome") or ""), re.I))[:90])
+    elif need >= 2 and win == 0: timing = "Before runway gets short (next 1-2 quarters)"
     elif (r1 or 0) > 0.30 or (r3 or 0) > 0.60: timing = "Now — window open after run-up"
     elif cm is not None and 0 <= cm <= 4: timing = f"Right after the catalyst (~{(TODAY + dt.timedelta(days=int(30*max(cm,0)))).strftime('%b %Y')}), if positive"
     else: timing = "Opportunistic, next 6 months"
     s_ = sci(r)
     view = ("Participate" if call in LONGS and (s_ or 0) >= 3 else "Short into the deal" if call in SHORTS else "Pass" if call in {"AVOID"} or (s_ or 0) < 2.5 else "Price-sensitive")
     radar.append({"ticker": r["ticker"], "name": r.get("nick") or r.get("name"), "ta": r.get("ta"), "stage": r.get("stage"), "mc": mc, "cash": cash,
-        "runway_q": rw, "burn_q": burn, "cat": r.get("nc") or r.get("catalyst"), "cat_mos": cm, "r1m": r1, "r3m": r3, "adv": r.get("adv"),
+        "runway_q": rw, "burn_q": burn, "cat": (ups[0]["e"] if ups else None) or r.get("nc") or r.get("catalyst"), "cat_mos": cm, "r1m": r1, "r3m": r3, "adv": r.get("adv"),
         "raised_4q": raised_4q, "score": score, "size": size, "size_pct": size/mc if mc else None, "timing": timing, "why": why,
         "call": call, "sci": s_, "view": view, "need": need})
 radar.sort(key=lambda x: (-x["score"], x["runway_q"] if x["runway_q"] is not None else 99))

@@ -4,7 +4,13 @@
 
 Target cadence: one full refresh mid-month (memo edition), plus a short close-out when quarterly filings land.
 
-## Daily (or before any meeting): what moved since our review
+## Daily (or before any meeting): news, moves, the book
+1. `python3 scripts/scan_8k.py` (~4 min): every 8-K since 10 days ago for covered companies, with the press-release headline; the Brief lists those that look like news. Read each one and patch outcomes (pipeline/patches/) before trusting that thesis. The first scan (Nov 25) found the Sanofi–Insmed deal, Arcus's PRISM-1 failure and Kymera's $1.5B offering.
+2. `python3 scripts/fetch_prices.py && python3 scripts/moves_since.py && python3 scripts/trade_info.py` → prices, moves vs XBI, liquidity (ADV, days to build $10M), volatility and the market-move proxy.
+3. `python3 scripts/mark_book.py` → data/book-marks.json (paper book P&L vs XBI). Then `python3 scripts/build.py` (now also runs the thesis audit; any AUDIT WARNING must be fixed).
+At each monthly refresh, after build: `python3 tests/freeze_book.py` re-freezes the paper book from the page's calls (dated copy in ledger/book-YYYY-MM-DD.json); then mark_book.py.
+
+### What moved since our review
 - `python3 scripts/moves_since.py && python3 scripts/build.py` → data/moves.json; the Brief shows every name that beat or lagged XBI by 15%+ (or had a 15% day beyond XBI) since the snapshot. Research each one (news, 8-K) and patch outcomes before trusting its thesis. Built Nov 25 after KYMR's Nov 23 readout went unnoticed for two days.
 
 ## 0. Freeze first
@@ -66,6 +72,15 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - CEO notes: 0-3, company-specific. Hand-written ceo_notes replace the rule-based ones. Rules no longer append the generic "Investors are asking…" line, compare only programs in the same indication (and only unapproved ones), and no longer suggest unrelated "under-served fields".
 - Audit after every batch: `python3 /tmp/t/thaudit.py [TICKERS]` (copy in tests/thaudit.py) counts stale caps, missing misses/catalysts/risks, generic CEO lines and odd phrasing, and prints named companies in full. Batch 1 (40 priority names) done Nov 25; ~360 to go, next batch = remaining STRONG BUY / STRONG SHORT / SHORT, then LONG.
 - Call reasons that contradicted their calls (COLL, MLYS, HRMY, CELC, NTLA, ZVRA, XNCR, ARVN, SLS, MLTX, RZLT) were rewritten through th_view; keep call and reason in step when either changes.
+
+## Decision tools added Nov 25 2026
+- **What worked, tested:** each group's average quarterly gap, its t-stat, and a pooled regression on all dimensions (synth2 `sig()`, `regress()`). A lesson is 'real' only if |t| ≥ 2.4, ≥ 2%/quarter and it survives the regression. Only the avoid side passes today (Preclinical/Ph1, cell therapy, late entrants). Keep data/backdrop.json calls honest about this.
+- **Call scorecard** (scripts/track_record.py → track-data.json `scorecard`): Sep 12 calls by stage, size, modality, novelty, science and model upside vs the universe. Clearest lesson: our sub-$300M longs lost, $1–5B longs won.
+- **Expected return to the next catalyst** (Companies › Trading › To catalyst; Brief Q2 ranking): our odds × success/failure moves for the next lead-program readout or FDA decision. **Move: ours vs mkt** compares the size of move we expect with the market's (options straddle when cdn.cboe.com is reachable; otherwise the average of the stock's 5 biggest days vs XBI, which understates binary events). What's next has a filter for events whose move we think the market under-prices.
+- **Trading constraints:** ADV, days to build $10M at 20% of volume, 60-day vol (scripts/trade_info.py). Short interest and borrow need cdn.finra.org or a broker feed: blocked; shown as n/a.
+- **Paper book** (Record › Paper book): $250M sleeve, 20 longs / ~12 shorts + XBI hedge to +20% net, sized by conviction, volatility and liquidity caps; book catalyst calendar with P&L per event.
+- **Raise radar** keys timing off catalyst status: done/late catalysts no longer set the window; a recent CRL or miss gives "after the setback"; recent positive data gives "now"; price moves since the snapshot can open the window.
+- To unlock options-implied moves and short interest, allow these hosts in claude.ai Settings > Capabilities: cdn.cboe.com, cdn.finra.org. trade_info.py uses them automatically when reachable.
 
 ## Net cash and model inputs (Nov 25 2026)
 - Equity value now uses net cash (cash − debt; template `netCash()`), in Ours, rNPV/MC, implied odds and the variant text. 20 calls changed (e.g. COLL S.BUY→LONG, CELC S.BUY→LONG, ADCT/STRO/BHC worth ~nothing to equity). Set `debt_excl: true` when the debt belongs to a business the row does not value (BHC).

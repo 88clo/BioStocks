@@ -1,5 +1,5 @@
 {
- "asof": "2026-11-22",
+ "asof": "2026-11-25",
  "under": [
   {
    "group": "Alopecia",
@@ -152,7 +152,7 @@
    "ta": "Muscle",
    "n": 10,
    "n_strong": 4,
-   "n_late": 5,
+   "n_late": 4,
    "prevalence": 42000000,
    "treated": 30000,
    "best": {
@@ -162,17 +162,17 @@
     "drug": "DYNE-251 (exon 51) + multi-exon (53/45) \u2014 muscle-targeted ol",
     "eff": "DELIVER: dystrophin 0.83%\u21925.46% of normal at 6mo (p<0.00001), functional benefit sustained to 24mo across 6 measures \u2014 a next-gen (muscle-targeted) exon-skipper"
    },
-   "cap": 7416261600.0,
+   "cap": 7091845980.0,
    "tickers": [
     "DYN",
     "SRPT",
     "SLDB",
     "WVE",
     "RGNX",
-    "CAPR",
     "KROS",
     "TRDA",
     "MSLE",
+    "CAPR",
     "CPIX"
    ]
   },
@@ -185,13 +185,13 @@
    "prevalence": 17000000,
    "treated": 300000,
    "best": {
-    "t": "NKTR",
-    "sci": 4.0,
-    "stage": "Phase 3",
-    "drug": "Rezpegaldesleukin (REZPEG) \u2014 regulatory-T-cell (IL-2) agonis",
-    "eff": "REZOLVE-AD Ph2b (393 patients, AD): met primary + key secondary endpoints at Wk16 (p<0.001), published in The Lancet; 36-week maintenance data showed durable, d"
+    "t": "KYMR",
+    "sci": 5.0,
+    "stage": "Phase 2b complete (Phase 3 start by mid-2027)",
+    "drug": "KT-621 \u2014 oral STAT6 degrader (\"oral dupilumab\")",
+    "eff": "Ph2b BROADEN2 (moderate-to-severe AD, 244 patients incl. adolescents, 16 weeks, three once-daily oral doses vs placebo; topline Nov 23 2026): mid dose mean EASI"
    },
-   "cap": 16550215905.000002,
+   "cap": 22240916545.0,
    "tickers": [
     "KYMR",
     "NKTR",
@@ -800,6 +800,19 @@
    "drug": "Abdakibart (AVTX-009) \u2014 anti-IL-1\u03b2 antibody",
    "sci": 3.5,
    "runway_q": 28.2,
+   "status": ""
+  },
+  {
+   "ticker": "CAPR",
+   "name": "Capricor",
+   "ta": "Muscle",
+   "mc": 116859390,
+   "net_cash": 198500000.0,
+   "ev": -81640610.0,
+   "stage": "CRL (Nov 2026)",
+   "drug": "Deramiocel (CAP-1002) \u2014 cardiosphere-derived cell therapy",
+   "sci": 4.0,
+   "runway_q": 5.0,
    "status": ""
   },
   {
