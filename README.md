@@ -69,6 +69,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112526-v14.html | Nov 25 evening, before catalyst hygiene, best-long-per-area panel, top catalysts, faint full distributions, takeover-cash recycling and FINRA short volume |
 | backup-112526-v15.html | Nov 25 night, before conviction scores (strong buys / strong shorts), other-program valuation, specialist coverage check, specialist flows and P&L concentration |
 | backup-112526-v16.html | Nov 25 late night, before fund drill-down, 13F mapping fixes (bulk CUSIPs, name check, Suvretta/Montanova dedupe) and full-width What worked |
+| backup-112626-v17.html | Nov 26, before labelled fund drill-down (even axis ticks, per-quarter bought/sold/price, top position, biggest gain/loss) and one-line causes on What worked examples |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 
