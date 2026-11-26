@@ -126,7 +126,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
     var TD=today.toISOString().slice(0,10),ED=end.toISOString().slice(0,10),C=[];
     DA.forEach(function(r){if(!(LONG[(r.call||'').toUpperCase()]||SHORT[(r.call||'').toUpperCase()]||(r.mc||0)>=1e9))return;
       if(!r.cat_sched){if(r.cat_date&&r.cat_date>=TD&&r.cat_date<=ED)C.push({r:r,c:{d:r.cat_date,lab:r.cat_timing||r.cat_date,e:r.nc||r.catalyst||'',p:3}});return;}
-      (r.cat_sched||[]).forEach(function(c){if(c.d&&c.st!=='done'&&c.d>=TD&&c.d<=ED&&(c.p||0)>=3)C.push({r:r,c:c});});});
+      (r.cat_sched||[]).forEach(function(c){if(c.d&&c.st!=='done'&&c.st!=='note'&&c.d>=TD&&c.d<=ED&&(c.p||0)>=3)C.push({r:r,c:c});});});
     C.sort(function(a,b){return (b.c.p>=4)-(a.c.p>=4)||(a.c.d<b.c.d?-1:a.c.d>b.c.d?1:0);});
     if(!C.length)return '';
     return '<div class="brf-h"><b><span class="brf-n">2</span> What is coming in the next 45 days</b><span>Catalysts due within 45 days on names with a Long/Short call or a $1B+ cap: exact and month dates first, then quarter-end windows (4Q26) that close in the period.</span></div>'

@@ -1707,7 +1707,7 @@ table.tam tr.tcrow .tc-tk:hover{text-decoration:underline;text-decoration-color:
 .rv-ctl{margin:6px 0;font-size:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}.rv-cnt{margin-left:auto}
 .rv-tbl{border-collapse:collapse;width:100%;font-size:12px}.rv-tbl th,.rv-tbl td{padding:4px 6px;border-bottom:1px solid #e1e6ec;text-align:right;white-space:nowrap}.rv-tbl th{background:#eef1f5;position:sticky;top:0;cursor:pointer}.rv-tbl th.l,.rv-tbl td.l{text-align:left;white-space:normal}
 .rv-stage{display:inline-block;font-size:9.5px;font-weight:600;padding:0 5px;border-radius:8px;background:#eef1f5;color:#445;margin-right:4px}.rv-row{cursor:pointer}.rv-row:hover{background:#f0f6ff}.rv-g{color:#1f7a3d;font-weight:600}.rv-b{color:#b3261e;font-weight:600}.rv-src{display:inline-block;padding:0 5px;border-radius:8px;font-size:10px;font-weight:600}.rv-src.verified{background:#dff3e4;color:#17612f}.rv-src.dashboard{background:#fdf0d5;color:#8a5a00}
-.rv-qbtn{border:1px solid #cfdbe7;background:#fff;border-radius:14px;padding:3px 12px;cursor:pointer;font-size:12px}.rv-qbtn.on{background:#1f4e79;color:#fff;border-color:#1f4e79}.th3{margin:3px 0;line-height:1.45}.th3-l{color:var(--dim);font-weight:600;margin-right:4px}
+.rv-qbtn{border:1px solid #cfdbe7;background:#fff;border-radius:14px;padding:3px 12px;cursor:pointer;font-size:12px}.rv-qbtn.on{background:#1f4e79;color:#fff;border-color:#1f4e79}.th3{margin:3px 0;line-height:1.45}.th3-pos{background:rgba(22,163,74,.09);border-left:3px solid #16a34a;padding:3px 7px;border-radius:4px}.th3-neg{background:rgba(220,38,38,.08);border-left:3px solid #dc2626;padding:3px 7px;border-radius:4px}.th3-l{color:var(--dim);font-weight:600;margin-right:4px}
 </style>
 <style id="memo-v4">
 /* ===== memo v4 polish ===== */
@@ -2346,6 +2346,22 @@ table.rv-tbl tr.rv-row.m-open td:nth-child(4):before{content:"WHY  ";font-size:9
 <script>
 const DATA = JSON.parse(document.getElementById('data').textContent);
 // Hand-written theses (data/theses.json): th_view / th_miss / th_cat / ceo_notes, merged by ticker so the monthly data refresh never overwrites them.
+// Catalyst hygiene (Nov 25 2026): the catalyst list must hold events, not states. Entries that describe an ongoing condition
+// (a launch ramp, revenue trajectory, cash runway, share gains, an estimated lock-up), fragments cut off by earlier parsing, and
+// entries whose own text dates them later than their slot are fixed or set aside as notes (st:'note', kept on the card).
+(function(){const HARD=/pdufa|topline|top-line|readout|data|results|approv|decision|crl|advisory|adcomm|interim|filing|submission|bla|nda|maa|sNDA|acceptance|meeting|hearing|ruling|judgment|vote|close|closing|start|initiat|dosed|enrol|guidance|earnings|report|launch(?!\s*(ramp|metrics|trajectory|update))|option|expir/i;
+  const RAMP=/\b(sales|launch|commercial|revenue)?\s*ramp\b/;const STATE=/\bdelivered\b|trajectory|run-rate|uptake|share gains|\bvolume\b|competition|procurement|royalty streams|cash runway|funded through|breakeven|commercial reset|reorgani[sz]ation|cost cuts|revenue vs|revenue growth|launch metrics|\bscripts\b|lock-up expiry|no guided date|no date guided|continued|ongoing|showing partial responses/i;
+  const END={'1q':'03-31','q1':'03-31','2q':'06-30','q2':'06-30','mid':'06-30','1h':'06-30','3q':'09-30','q3':'09-30','4q':'12-31','q4':'12-31','2h':'12-31','late':'12-31','ye':'12-31','end':'12-31','early':'03-31'};
+  const later=t=>{t=String(t);if(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2}\b/.test(t))return null;const m=t.match(/\b(1Q|2Q|3Q|4Q|Q[1-4]|mid|1H|2H|late|YE|early|end)[- ]?(20\d\d)\b/i);if(!m)return null;const k=m[1].toLowerCase(),y=m[2];return y+'-'+(END[k]||'12-31');};
+  window.CAT_NOTES=[];
+  DATA.forEach(r=>{(r.cat_sched||[]).forEach(c=>{if(!c.e||c.st==='done')return;const e=c.e.trim();
+    const frag=(e.split(/\s+/).length<3&&!HARD.test(e))||(/\([^)]*$/.test(e)&&e.length<28);
+    // quarterly results already reported: 10-Q is due ~45 days after quarter end (Q3 by mid-Nov)
+    const qm=e.match(/\b(?:Q([1-4])|([1-4])Q)\s*(?:20(\d\d))?\s*(?:results|earnings|10-Q)/i);
+    if(qm){const q=+(qm[1]||qm[2]),y=qm[3]?2000+ +qm[3]:new Date().getFullYear(),due=new Date(y,q*3,15+14);if(due<new Date()&&!/FY|full[- ]year|Q4|4Q|\bdata\b|readout|topline|PDUFA/i.test(e)){c.st_orig=c.st;c.st='note';window.CAT_NOTES.push([r.ticker,c.d,e,'already reported']);return;}}
+    if(frag||((STATE.test(e)||RAMP.test(e))&&!/pdufa|topline|readout|decision|approv|crl|\bdata\b|results from|\bBLA\b|\bNDA\b|\bPh ?[123]\b|phase [123]|submission|start/i.test(e))){c.st_orig=c.st;c.st='note';window.CAT_NOTES.push([r.ticker,c.d,e,frag?'fragment':'state']);return;}
+    const L=later(e);if(L&&c.d&&L>c.d&&(new Date(L)-new Date(c.d))/864e5>45&&!/\b(1Q|Q1|early)\b/i.test(e)){c.d_orig=c.d;c.d=L;}
+  });});})();
 try{const TH=JSON.parse(document.getElementById('theses-data').textContent||'{}').theses||{};const _fb=v=>typeof v!=='number'?'—':(Math.abs(v)>=1e9?'$'+(v/1e9).toFixed(v>=1e10?0:1)+'B':'$'+Math.round(v/1e6)+'M');DATA.forEach(r=>{const h=TH[r.ticker];if(h){Object.assign(r,h);if(h.th_view){r.call_reason_orig=r.call_reason;r.call_reason=h.th_view.replace(/\{cap\}/g,_fb(r.mc)).replace(/\{cash\}/g,_fb(r.cash));}}});}catch(e){}
 let PRICEQ_RAW={quarters:[],prices:{}}; try{ PRICEQ_RAW=JSON.parse(document.getElementById('priceq-baked').textContent||'{}'); }catch(e){}
 const QTRS = PRICEQ_RAW.quarters||[];
@@ -3098,11 +3114,16 @@ function thesis3(r){
   else if(io&&io.approved)chg=L?' Falling quarterly sales would change our mind.':S?' Accelerating sales would make us cover.':' Sales against guidance are the check.';
   else chg=L?' With no dated readout, we would cut if the cash runway falls under a year without funding.':S?' We would cover on a partnership that validates the asset.':' We would act on new data or a price move that changes the gap to our value.';
   const cat=r.th_cat?esc(liveNums(r,r.th_cat)):(nc?'Next: '+esc(nc)+'.'+chg:'No dated catalyst in our calendar; the next earnings report is the check.');
-  return {view:esc(view),miss,cat,hand:!!r.th_view};
+  // which way the gap points for the stock: + when we see more than the market prices (our odds or sales above implied), − when less
+  let ms=0;try{const io=window.impliedOdds?impliedOdds(r):null;
+    if(io&&io.approved&&io.ourSales!=null&&io.mktSales!=null)ms=io.ourSales>io.mktSales*1.1?1:io.ourSales<io.mktSales*0.9?-1:0;
+    else if(io&&io.ours!=null&&io.imp!=null)ms=io.ours>io.imp+0.05?1:io.ours<io.imp-0.05?-1:0;
+    if(!ms){const u=callUpPct(r);if(u!=null)ms=u>=20?1:u<=-20?-1:0;}}catch(e){}
+  return {view:esc(view),miss,cat,hand:!!r.th_view,ms};
 }
 function thesis3Html(r,opt){opt=opt||{};const t=thesis3(r);
-  const L=(k,v)=>v?`<div class="th3"><b class="th3-l">${k}</b> ${v}</div>`:'';
-  return (opt.noView?'':L('View',t.view))+(opt.short?'':L('What the market misses',t.miss)+L('Catalyst &amp; what would change our mind',t.cat));}
+  const L=(k,v,c)=>v?`<div class="th3${c?' '+c:''}"><b class="th3-l">${k}</b> ${v}</div>`:'';
+  return (opt.noView?'':L('View',t.view))+(opt.short?'':L('What the market misses',t.miss,t.ms>0?'th3-pos':t.ms<0?'th3-neg':'')+L('Catalyst &amp; what would change our mind',t.cat));}
 window.thesis3=thesis3;window.thesis3Html=thesis3Html;window.liveNums=liveNums;window.nextCat=nextCat;
 function npvVal(r){ const v=valParts(r); return v?v.npv:null; }
 function valNotes(r){ const v=valParts(r); return v?v.notes.join('; '):''; }
@@ -3906,7 +3927,7 @@ function renderCalendar(rows){
   // one chip per scheduled event (cleaned schedule: scripts/normalize_catalysts.py); rows without one fall back to the key date
   const TD=new Date().toISOString().slice(0,10);
   const withDate=[];
-  rows.forEach(r=>{const ev=(r.cat_sched||[]).filter(c=>c.d&&c.st!=='done');
+  rows.forEach(r=>{const ev=(r.cat_sched||[]).filter(c=>c.d&&c.st!=='done'&&c.st!=='note');
     if(!ev.length){const d=catDate(r);if(d)withDate.push({r,d,e:null});return;}
     ev.forEach(c=>{if(c.d<TD&&c.st!=='late'&&c.st!=='up')return;withDate.push({r,d:new Date(c.d+'T00:00:00'),e:c});});});
   let end=new Date(start);

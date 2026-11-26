@@ -27,8 +27,31 @@ def reach(url):
         urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=8).read(200); return True
     except Exception:
         return False
-CBOE = reach("https://cdn.cboe.com/api/global/delayed_quotes/options/XBI.json")
-FINRA = reach("https://cdn.finra.org/equity/regsho/daily/")
+CBOE = reach("https://cdn-api.cboe.com/api/global/delayed_quotes/options/XBI.json")  # cdn.cboe.com 307-redirects here
+# FINRA Reg SHO daily short-sale volume (consolidated NMS file): share of each day's volume that was sold short. This is
+# NOT short interest (open short positions): FINRA's short-interest files on cdn.finra.org return Access Denied, and exchange
+# short interest is published via Nasdaq/NYSE, which this workspace cannot reach. Short-volume share is a flow signal:
+# ~45-55% is normal (market makers short to fill buys); a sustained 60%+ suggests heavy shorting.
+def finra_days(n=20):
+    out, d = {}, dt.date.today()
+    tries = 0
+    while len(out) < n and tries < 40:
+        d -= dt.timedelta(days=1); tries += 1
+        if d.weekday() >= 5: continue
+        try:
+            txt = urllib.request.urlopen(urllib.request.Request(f"https://cdn.finra.org/equity/regsho/daily/CNMSshvol{d:%Y%m%d}.txt", headers={"User-Agent": "Mozilla/5.0"}), timeout=30).read().decode()
+        except Exception:
+            continue
+        day = {}
+        for line in txt.splitlines()[1:]:
+            p = line.split("|")
+            if len(p) >= 5:
+                try: day[p[1]] = (float(p[2]), float(p[4]))
+                except ValueError: pass
+        out[d.isoformat()] = day
+    return out
+SV = finra_days()
+FINRA = bool(SV)
 D = [r for r in json.load(open(root / "data/data.json")) if r.get("ta") != "Acquired / Inactive"]
 nxt = {}
 for r in D:
@@ -37,7 +60,7 @@ for r in D:
 def options_move(tk, after):
     """ATM straddle / spot for the first expiry on or after `after` (Cboe delayed quotes)."""
     try:
-        j = json.loads(urllib.request.urlopen(urllib.request.Request(f"https://cdn.cboe.com/api/global/delayed_quotes/options/{tk}.json", headers={"User-Agent": "Mozilla/5.0"}), timeout=15).read())
+        j = json.loads(urllib.request.urlopen(urllib.request.Request(f"https://cdn-api.cboe.com/api/global/delayed_quotes/options/{tk}.json", headers={"User-Agent": "Mozilla/5.0"}), timeout=15).read())
         dta = j["data"]; spot = dta["current_price"]; by = {}
         for o in dta["options"]:
             sym = o["option"]; exp = "20" + sym[-15:-9]; exp = f"{exp[:4]}-{exp[4:6]}-{exp[6:8]}"; cp = sym[-9]; k = int(sym[-8:]) / 1000
@@ -66,11 +89,15 @@ for r in D:
     rec = {"adv20": round(adv), "days10": round(1e7 / (0.2 * adv), 1) if adv > 0 else None, "vol60": round(vol, 3) if vol else None,
            "bigday": round(big, 4) if big else None, "bigday_n": len(xs)}
     if CBOE and t in nxt: rec["opt"] = options_move(t, nxt[t])
+    if SV:
+        sh = sum(SV[d].get(t, (0, 0))[0] for d in SV); tv = sum(SV[d].get(t, (0, 0))[1] for d in SV)
+        last5 = sorted(SV)[-5:]; sh5 = sum(SV[d].get(t, (0, 0))[0] for d in last5); tv5 = sum(SV[d].get(t, (0, 0))[1] for d in last5)
+        if tv > 0: rec["svr20"] = round(sh / tv, 3); rec["svr5"] = round(sh5 / tv5, 3) if tv5 else None
     out[t] = rec
 json.dump({"built": dt.date.today().isoformat(), "asof": str(max(XB)) if XB else None, "options_source": "cboe" if CBOE else None,
-           "short_source": "finra" if FINRA else None, "position_usd": 1e7, "participation": 0.2, "rows": out},
+           "short_source": "finra_regsho_short_volume" if FINRA else None, "short_days": len(SV), "position_usd": 1e7, "participation": 0.2, "rows": out},
           open(root / "data/tradeinfo.json", "w"), separators=(",", ":"))
-print(len(out), "tickers; options", "reachable" if CBOE else "blocked", "; short interest", "reachable" if FINRA else "blocked")
+print(len(out), "tickers; options", "reachable" if CBOE else "blocked (allow cdn-api.cboe.com)", "; FINRA short volume", f"{len(SV)} days" if FINRA else "blocked")
 L = sorted(out.items(), key=lambda kv: kv[1]["adv20"])
 print("thinnest:", [(t, round(v["adv20"] / 1e3), v["days10"]) for t, v in L[:6]])
 print("median ADV $M", round(st.median(v["adv20"] for v in out.values()) / 1e6, 1), "median big day", round(st.median(v["bigday"] for v in out.values() if v["bigday"]) * 100, 1), "%")

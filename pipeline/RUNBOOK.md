@@ -80,7 +80,15 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - **Trading constraints:** ADV, days to build $10M at 20% of volume, 60-day vol (scripts/trade_info.py). Short interest and borrow need cdn.finra.org or a broker feed: blocked; shown as n/a.
 - **Paper book** (Record › Paper book): $250M sleeve, 20 longs / ~12 shorts + XBI hedge to +20% net, sized by conviction, volatility and liquidity caps; book catalyst calendar with P&L per event.
 - **Raise radar** keys timing off catalyst status: done/late catalysts no longer set the window; a recent CRL or miss gives "after the setback"; recent positive data gives "now"; price moves since the snapshot can open the window.
-- To unlock options-implied moves and short interest, allow these hosts in claude.ai Settings > Capabilities: cdn.cboe.com, cdn.finra.org. trade_info.py uses them automatically when reachable.
+- cdn.finra.org is allowed (Nov 25): trade_info.py pulls 20 days of Reg SHO short-sale volume (Short vol column; not short interest, whose FINRA files return Access Denied). Options: cdn.cboe.com redirects to **cdn-api.cboe.com**, which must also be allowed before straddle-implied moves replace the historical proxy.
+
+## Nov 25 2026 (evening) additions
+- Catalyst hygiene (template, at page load): entries that describe a state (ramp, trajectory, runway, share gains, estimated lock-up, 'delivered'), fragments, and already-reported quarterly results become st:'note' (window.CAT_NOTES lists them, 63 on Nov 25); entries whose text says 'mid-2027' etc. move to that date. Raise windows are no longer listed as dated events. Fix the source text when you see a note that is really an event.
+- What's next: 'The catalysts that matter most' panel (Major + clearly skewed, up to 8 positive / 4 negative, ranked by skew strength and swing) and a 'Major and skewed' filter.
+- Companies: 'Strongest long in each area' panel + Top 12 overall + '★ Best long per area' filter (bestLongs() in synth.html; score and flags documented there). Trading group shows only ADV collapsed; Short vol column. 'What the market misses' is green/red by direction (thesis3().ms).
+- Areas: every stock drawn faintly behind the clusters on both charts.
+- Capital › Liquidity: 'Where takeover cash goes' table (break-even recycling, net demand at the ownership-weighted recycling rate). Investors page: filing-rules and copy-the-book explainer.
+- Record: Paper book is the last lens; What worked next-quarter column min 440px.
 
 ## Net cash and model inputs (Nov 25 2026)
 - Equity value now uses net cash (cash − debt; template `netCash()`), in Ours, rNPV/MC, implied odds and the variant text. 20 calls changed (e.g. COLL S.BUY→LONG, CELC S.BUY→LONG, ADCT/STRO/BHC worth ~nothing to equity). Set `debt_excl: true` when the debt belongs to a business the row does not value (BHC).

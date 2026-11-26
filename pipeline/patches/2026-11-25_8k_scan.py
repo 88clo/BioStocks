@@ -27,6 +27,15 @@ for r in D:
                        'outcome': 'Negative: discontinued after the interim analysis showed no OS benefit (IDMC, Nov 23 2026).'})
         r['cat_sched'] = cs
         r['pipeline_note'] = 'PRISM-1 (quemliclustat, pancreatic) discontinued Nov 23 2026 for futility on OS; casdatifan (HIF-2α, ccRCC) remains the lead.'
+    if t == 'RARE':  # 8-K Nov 23: the FAYUVI priority review voucher sale closed on Nov 20
+        for c in r.get('cat_sched') or []:
+            if 'PRV sale' in c.get('e', '') and c.get('st') != 'done': c['st'] = 'done'; c['d'] = '2026-11-20'; c['outcome'] = 'Closed Nov 20 2026 (8-K Nov 23).'
+    if t == 'QURE':  # uniQure release Nov 2 2026: BLA accepted with priority review, PDUFA May 1 2027, advisory committee tentatively planned
+        for c in r.get('cat_sched') or []:
+            if 'BLA acceptance' in c.get('e', '') and c.get('st') != 'done':
+                c['st'] = 'done'; c['d'] = '2026-11-02'; c['outcome'] = 'Accepted with priority review (Nov 2 2026); PDUFA May 1 2027; FDA tentatively plans an advisory committee.'
+        if not any('advisory committee' in c.get('e', '').lower() for c in r['cat_sched']):
+            r['cat_sched'].append({'d': '2027-03-31', 'e': 'FDA advisory committee on AMT-130 (tentative; before the May 1 2027 PDUFA)', 'st': 'up', 'k': 1})
     if t == 'KYMR':
         r['offering_note'] = 'Proposed $1.5B public offering (+$225M underwriter option) announced Nov 23 2026; cash shown before proceeds.'
 json.dump(D, open(path, 'w'), ensure_ascii=False, separators=(',', ':'))
