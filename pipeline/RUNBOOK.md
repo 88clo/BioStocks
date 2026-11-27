@@ -108,6 +108,11 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - What's next month tables share one colgroup (table-layout fixed) so columns line up across months. What worked: the next-quarter column has 40% of the table width.
 - Options-implied moves: cdn-api.cboe.com returns 403 to automated requests; do not work around it. The move column keeps the big-day proxy (h).
 
+## One ranking everywhere (Nov 27 2026)
+- window.TOP20() (synth2.html, Record › Top-20 book) is the single best-ideas ranking. Brief › Best ideas (brief.html), the three questions' strongest longs/shorts (synth2.html), Companies › Best longs / Best shorts chips (Top-20 names plus high scorers too small to size), What's next highlighted rows and the 'Top-20 book names' filter (synth.html) all read it. SYN_PRIORITY remains only as a fallback.
+- The paper book is now a frozen copy of the Top-20 book (tests/freeze_book.py, rewritten): 15 longs / 5 shorts, long-biased, no XBI hedge. The Nov 25 book (20/15 with hedge) is kept as data/book-v1-2026-11-25.json. Refreeze only at a deliberate rebalance; mark daily with scripts/mark_book.py.
+- A Long call can rank above a Strong Buy in the book when its catalyst tilt is larger: the call is the valuation view, the book rank adds timing.
+
 ## Checks, overhang, deal comps, holders, backtest and Top-20 book (Nov 26 2026, evening)
 - Prices refreshed to the Nov 25 close (scripts/refresh_apply.py; asof-baked snapshot date updated). scripts/price_check.py compares every Jun 30 close with the price implied by SEC's bulk 13F data and flags stale series and data.json/cache gaps.
 - Runway: scripts/runway_check.py recomputes burn from 10-Q operating cash flow (SEC XBRL companyfacts, cache/xbrl) for names under 10 quarters; data/runway-check.json. Patch 2026-11-26_runway_ocf.py applied 19 fixes (our cash kept: XBRL 'current' tags miss long-term investments). Burn ≤ 0 from one-off inflows (VIR, ZURA, OBX) and MNKD left alone.

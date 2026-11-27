@@ -73,6 +73,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112626-v18.html | Nov 26 midday, before the financing penalty in the formula call, SLS/NERV/KOD input fixes and bar labels in the fund drill-down |
 | backup-112626-v19.html | Nov 26 noon, before financing became a drawer check instead of a call penalty, and the compact fund position table |
 | backup-112626-v20.html | Nov 26 evening, before the Nov 25 price refresh, runway/peak/13F checks, overhang tracker, deal comps, holders over time, backtest and Top-20 book |
+| backup-112726-v21.html | Nov 27, before one ranking everywhere (Brief best ideas, three questions, Companies filters, What's next highlights and the paper book all from the Top-20 book) |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 
