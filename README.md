@@ -76,6 +76,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112726-v21.html | Nov 27, before one ranking everywhere (Brief best ideas, three questions, Companies filters, What's next highlights and the paper book all from the Top-20 book) |
 | backup-112726-v22.html | Nov 27 morning, before the rebalance rule, thesis watch, post-mortems, ranking audit and weekly run |
 | backup-112726-v23.html | Nov 27 midday, before Record was merged into Book and Lessons, stage-weighted evidence and cash-shell handling, stale-data scan, balanced calls and SEC-based holders |
+| backup-112726-v24.html | Nov 27 late morning, before the stage discount and fixed call thresholds were removed and three evidence scores were re-judged |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 

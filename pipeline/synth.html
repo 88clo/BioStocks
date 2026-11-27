@@ -347,12 +347,12 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
     var out={},L=[],S=[];
     A.forEach(function(x){var r=x.r,e=r.effsig,d=r.diffscore,o=tocOf(x.t),k=clusterOf(r.ta)+'|'+stB(r),pm=peer[k]&&peer[k].length>=4?med(peer[k]):null,E=Math.max(ev(r),1e7),pr=(pm&&stB(r)!=='A')?E/pm:null,u=x.u;
       var pl=[],ps=[],a=function(arr,v,t){v=Math.round(v*10)/10;if(v){arr.push([v,t]);}};
-      // Nov 27 2026: no credit for stale or early evidence. A discontinued lead or a wind-down (pos 0, or the thesis says
-      // discontinued / liquidation / wind-down) gets no evidence or prize credit: it is scored on value and cash alone and
-      // marked as a cash shell. Evidence counts in full at Ph3 / filed / approved, 80% at Ph2 and 50% at Ph1 or earlier
-      // (target engagement is not efficacy).
+      // Nov 27 2026: no credit for stale evidence. A discontinued lead or a wind-down (pos 0, or the thesis says the lead was
+      // discontinued / liquidation / wind-down) gets no evidence or prize credit: it is scored on value and cash alone and marked
+      // as a cash shell. Evidence is NOT discounted by stage: the efficacy and differentiation scores are judgements on the
+      // totality of the data (an unprecedented Ph1 result in a big, poorly served market can outrank incremental Ph3 data).
       var thx=String(r.th_view||'')+' '+String(r.call_reason||''),shell=r.pos===0||/lead (?:was |has been )?discontinued|discontinued (?:development of )?(?:the|its) lead|liquidation|wind[- ]down/i.test(thx)&&!/approved|launch/i.test(String(r.stage||''));
-      var sb=stB(r),sw=sb==='A'||sb==='3'?1:sb==='2'?.8:.5;
+      var sw=1;
       if(shell){e=null;d=null;pl.push([0,'cash shell: lead discontinued, scored on value and cash only']);}
       if(e!=null){a(pl,(e-3)*.8*sw,'efficacy '+e+'/5'+(sw<1?' (×'+sw+' for stage)':''));a(ps,(3-e)*.8,'efficacy '+e+'/5');}
       if(d!=null){a(pl,(d-3)*.8*sw,'differentiation '+d+'/5'+(sw<1?' (×'+sw+' for stage)':''));a(ps,(3-d)*.8,'differentiation '+d+'/5');}
@@ -387,12 +387,10 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
   // ---- Financing overhang (Nov 26 2026): shelf, ATM and last raise from SEC filings (scripts/overhang.py).
   var OVH=null;function ovh(t){if(!OVH)OVH=((J('overhang-data')||{}).rows)||{};var o=OVH[t];return o&&!o.err?o:null;}
   function ovhCut(days){var d=new Date(Date.now()-days*864e5);return d.toISOString().slice(0,10);}
-  // ---- Balanced calls (Nov 27 2026): the formula call is a valuation view; conviction can confirm or temper it. A Strong
-  // Buy that rests on cheapness alone with thin evidence (long score < 3) shows as Long; a Long with high conviction
-  // (long score ≥ 7) shows as Strong Buy. Value or conviction can each carry a name, ideally both; neither alone at an extreme.
-  window.BALANCE_CALLS=function(){try{CVC=null;var C=conviction();DATA.forEach(function(r){var c=C.m[r.ticker];r.call_basis=null;if(!c||r.call_override)return;
-      if(r.call==='STRONG BUY'&&c.l<3){r.call='LONG';r.call_basis='cheap, thin evidence (long score '+c.l.toFixed(1)+')';}
-      else if(r.call==='LONG'&&c.l>=7){r.call='STRONG BUY';r.call_basis='high conviction (long score '+c.l.toFixed(1)+')';}});CVC=null;}catch(e){}};
+  // ---- Calls and conviction (Nov 27 2026, revised after PM review): no fixed conviction thresholds change a call. The call is
+  // the valuation view; value and conviction are blended continuously in the ranking (Record › Book), which is what drives
+  // the best-ideas lists. BALANCE_CALLS only records how each call and its conviction relate, for the audit.
+  window.BALANCE_CALLS=function(){};
   function coHtml(){
     H();var A=rows().concat(CO.parked?parkedRows():[]),q=CO.q.trim().toLowerCase();
     var SB={},SS={};if(CO.sbuy||CO.sshort){var T20=window.TOP20?window.TOP20():null;if(T20){T20.P.concat(T20.skip||[]).forEach(function(p){(p.side>0?SB:SS)[p.x.t]=1;});}else{var CV=conviction();CV.topL.forEach(function(t){SB[t]=1;});CV.topS.forEach(function(t){SS[t]=1;});}}
