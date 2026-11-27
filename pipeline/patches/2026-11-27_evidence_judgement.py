@@ -10,7 +10,7 @@ whatever the phase.
   but the data are mixed."""
 import json, sys
 path = sys.argv[1] if len(sys.argv) > 1 else 'data/data.json'
-D = json.load(open(path)); E = {'BBOT': 4, 'ARVN': 2, 'ALT': 3}
+D = json.load(open(path)); E = {'ARVN': 2, 'ALT': 3}  # BBOT's 2 -> 4 here was reversed to 3 by 2026-11-27_readthrough.py
 for r in D:
     if r['ticker'] in E: r['effsig'] = E[r['ticker']]
 json.dump(D, open(path, 'w'), ensure_ascii=False, separators=(',', ':'))
