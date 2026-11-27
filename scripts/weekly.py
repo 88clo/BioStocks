@@ -22,15 +22,16 @@ def set_asof():
 D_before = {r["ticker"]: r.get("call") for r in json.load(open(root / "data/data.json"))}
 B_before = json.load(open(root / "data/book-marks.json")) if (root / "data/book-marks.json").exists() else {}
 if "--digest" not in sys.argv:
-    run("scripts/moves_since.py"); run("scripts/scan_8k.py")
+    run("scripts/moves_since.py"); run("scripts/scan_8k.py"); run("scripts/latest_filings.py")
     run("scripts/fetch_prices.py", t=3600); run("scripts/refresh_apply.py"); set_asof(); run("scripts/rebuild_priceq.py")
     run("scripts/fetch_targets.py", t=1200)  # analyst consensus targets (stockanalysis.com), Nov 27 2026
+    run("scripts/fetch_shortint.py", t=1200)  # short interest (stockanalysis.com), Nov 27 2026
     run("scripts/trade_info.py", t=3600); run("scripts/fetch_13dg.py", t=3600); run("scripts/price_check.py", t=1800)
     run("scripts/overhang.py", t=3600)
     run("scripts/build.py", "--no-audit")
     run("scripts/stale_scan.py", t=3600); run("scripts/build.py", "--no-audit")
     run("scripts/mark_book.py"); ok, rb = run("scripts/rebalance_book.py"); run("scripts/mark_book.py")
-    run("scripts/thesis_watch.py"); run("scripts/snapshot_expect.py"); run("scripts/postmortem.py")
+    run("scripts/thesis_watch.py"); run("scripts/snapshot_expect.py"); run("scripts/postmortem.py"); run("scripts/calibrate.py")
     run("scripts/backtest_calls.py"); run("scripts/explain_moves.py", t=3600)
     run("scripts/build.py")
 # ---- digest

@@ -81,7 +81,7 @@ for (t, _), (asof, r) in seen.items():
     right = None if outcome == "unclear" or exp_dir == 0 else ((outcome == "good") == (exp_dir > 0))
     exp_abs = (e["pe"] * abs(e["up"]) + (1 - e["pe"]) * abs(e["dn"])) if e.get("pe") is not None and e.get("up") is not None else None
     out.append({"t": t, "asof": asof, "event": e.get("e", ""), "lab": e.get("lab"), "ty": e.get("ty"), "d": e["d"][:10], "call": r.get("call"), "rank": r.get("rank"),
-                "pe": e.get("pe"), "up": e.get("up"), "dn": e.get("dn"), "ev": e.get("ev"), "big_day": bd.isoformat(), "big": round(br, 4), "move": round(tot, 4),
+                "pe": e.get("pe"), "pm": e.get("pm"), "up": e.get("up"), "dn": e.get("dn"), "ev": e.get("ev"), "sc": r.get("sc"), "big_day": bd.isoformat(), "big": round(br, 4), "move": round(tot, 4),
                 "xbi": round(xr, 4), "headline": hl[:200], "outcome": outcome, "right": right, "exp_abs": round(exp_abs, 4) if exp_abs is not None else None,
                 "news": bool(hl) or abs(br) >= 0.10})
 cal = {}

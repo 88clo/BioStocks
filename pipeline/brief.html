@@ -81,7 +81,9 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
   var up=function(r){try{return typeof callUpPct==='function'?callUpPct(r):null;}catch(e){return null;}};
   var isTop=function(r){try{return typeof topPick==='function'&&topPick(r);}catch(e){return false;}};
   // Quality overlay: what survived the Sep-Nov drawdown best (see Track record): strong science, >= $500M cap, >= 8 quarters of cash (or self-funding)
-  var quality=function(r){var s=sci(r);return s!=null&&s>=3.5&&(r.mc||0)>=5e8&&((r.runway_q!=null&&r.runway_q>=8)||(r.runway_q==null&&(r.net_income||0)>=0));};
+  // Nov 27 2026: no fixed quality screen (it was science >= 3.5, cap >= $500M, runway >= 8q). 'Q' now marks names the one ranking puts in the book.
+  var quality=function(r){return r.call==='STRONG BUY';};
+  var kg=function(r){var o=window.scen?scen(r):null;return o?o.gL:0;};
   var LONG={'STRONG BUY':1,'LONG':1}, SHORT={'SHORT':1,'STRONG SHORT':1};
   var cb=function(c){c=(c||'').toUpperCase();var k=LONG[c]?'l':SHORT[c]?'s':'n';return '<span class="brf-cb '+k+'">'+E(c.replace('STRONG ','S.')||'—')+'</span>';};
   var tk=function(t){return '<span class="tk" data-tk="'+E(t)+'">'+E(t)+'</span>';};
@@ -108,10 +110,10 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
   }
   function ideas(){
     var L=DA.filter(function(r){return LONG[(r.call||'').toUpperCase()]&&!r.veto&&r.ta!=='Acquired / Inactive'&&(r.mc||0)>=1e8;});
-    L.sort(function(a,b){var qa=quality(a)?1:0,qb=quality(b)?1:0;if(qa!==qb)return qb-qa;var ta=isTop(a)?1:0,tb=isTop(b)?1:0;if(ta!==tb)return tb-ta;return (up(b)||0)-(up(a)||0);});
+    L.sort(function(a,b){return kg(b)-kg(a);});
     var S=DA.filter(function(r){return SHORT[(r.call||'').toUpperCase()]&&(r.mc||0)>=1.5e8&&(r.adv||0)>=1e6;});
     S.sort(function(a,b){return (up(a)||0)-(up(b)||0);});
-    // Nov 27 2026: one ranking everywhere: the Top-20 book's order (conviction + catalyst tilt, sizeable to 1% of $250M)
+    // Nov 27 2026: one ranking everywhere: the Top-20 book's order (Kelly growth on the scenarios)
     var T20=null;try{T20=window.TOP20?window.TOP20():null;}catch(e){}
     if(T20&&T20.P&&T20.P.length){var BYT={};DA.forEach(function(r){BYT[r.ticker]=r;});L=T20.P.filter(function(p){return p.side>0;}).map(function(p){return BYT[p.x.t];}).filter(Boolean);S=T20.P.filter(function(p){return p.side<0;}).map(function(p){return BYT[p.x.t];}).filter(Boolean);}
     var row=function(r,side){var q=quality(r),u=up(r),k=kill(r);
@@ -119,7 +121,7 @@ table.brf-t{width:100%;border-collapse:collapse;font-size:12px;background:var(--
       +'<td class="r">'+M(r.mc)+'</td><td class="r '+PC(u)+'">'+(u==null?'—':P(u))+'</td>'
       +'<td>'+E(trunc(r.pitch_concise||r.pitch,170))+(k?'<div class="sm"><b>Wrong if:</b> '+E(trunc(k,130))+'</div>':'')+'<div class="sm"><b>Next:</b> '+E(trunc(r.nc||r.catalyst,90))+'</div></td></tr>';};
     var head='<tr><th>Name</th><th>Call</th><th class="r">Cap</th><th class="r">Upside</th><th>Why, and what would prove it wrong</th></tr>';
-    return '<div class="brf-h"><b><span class="brf-n">1</span> Best ideas now</b><span>'+(T20&&T20.P&&T20.P.length?'The top of the Top-20 book (Record › Book): conviction score plus a tilt for the next catalyst, among names that can be sized to 1% of a $250M sleeve. The same list drives the three questions and the Companies › Best longs / shorts filters.':'Longs ranked quality-screen first, then rule-based top pick, then model upside.')+' Click a ticker for the full card.</span></div>'
+    return '<div class="brf-h"><b><span class="brf-n">1</span> Best ideas now</b><span>'+(T20&&T20.P&&T20.P.length?'The top of the Top-20 book (Record › Book): ranked by the Kelly growth rate of a bet on our scenarios (our odds vs the price\u2019s, value if it works and if it fails), sized at quarter Kelly within liquidity. The same list drives the three questions and the Companies › Best longs / shorts filters.':'Longs ranked by the Kelly growth rate of a bet on our scenarios.')+' Click a ticker for the full card.</span></div>'
       +'<div class="brf-cols"><div><table class="brf-t">'+head+L.slice(0,8).map(function(r){return row(r,'l');}).join('')+'</table></div>'
       +'<div><table class="brf-t">'+head.replace('Upside','Up/down')+S.slice(0,6).map(function(r){return row(r,'s');}).join('')+'</table>'
       +'<div class="brf-note">Shorts: liquid names (cap ≥$150M, ADV ≥$1M) priced most above their risk-adjusted value. The Sep–Nov record says Short calls fell less than the universe, so treat these as pair legs against a long in the same field, not stand-alone shorts.</div></div></div>';

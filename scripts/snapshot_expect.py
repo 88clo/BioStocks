@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 root = pathlib.Path(__file__).resolve().parents[1]
 JS = r"""(()=>{const T=TOP20(),rk={};T.allL.forEach((p,i)=>rk[p.x.t]='L'+(i+1));T.allS.forEach((p,i)=>rk[p.x.t]='S'+(i+1));const C=CONVICTION().m;
  return DATA.filter(r=>r.ta!=='Acquired / Inactive').map(r=>{const o=tocOf(r.ticker),c=C[r.ticker];return {t:r.ticker,call:r.call,price:r.price,mc:r.mc,rank:rk[r.ticker]||null,
-  conv:c?{l:c.l,s:c.s}:null,ev:o?{pe:o.pe,up:o.up,dn:o.dn,ev:o.ev,d:o.d,lab:o.lab,e:o.e,ty:o.ty,view:o.view}:null};});})()"""
+  conv:c?{l:c.l,s:c.s}:null,sc:(function(){r._sc=undefined;const q=scen(r);return q?{p:q.p??null,pImp:q.pImp??null,pu:q.pu??null,Vs:q.Vs??null,Vf:q.Vf??null,ER:q.ER,ERo:q.ERo??null,W:q.W,bin:q.binary,stage:r.stage}:null;})(),ev:o?{pe:o.pe,pm:(o.up>0&&o.dn<0)?-o.dn/(o.up-o.dn):null,up:o.up,dn:o.dn,ev:o.ev,d:o.d,lab:o.lab,e:o.e,ty:o.ty,view:o.view}:null};});})()"""
 with sync_playwright() as p:
     b = p.chromium.launch(executable_path="/usr/bin/google-chrome", args=["--no-sandbox"]); pg = b.new_page()
     pg.goto((root / "index.html").resolve().as_uri(), wait_until="load", timeout=120000); pg.wait_for_timeout(3000)

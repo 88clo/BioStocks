@@ -184,8 +184,8 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
   window.tocOf=tocOf;
   var CG=[
     {k:'thesis',l:'Thesis',cols:[
-      ['Call',function(x){return B.cb(x.r.call)+(!x.parked&&B.quality(x.r)&&x.side==='l'?'<span class="brf-q">Q</span>':'');},null,null,1,'Rule-based call from valuation (market cap vs our value) and science (efficacy + differentiation). Q = passes the quality screen.'],
-      ['Conv.',function(x){var C=conviction().m[x.t];if(!C)return '—';var sh=x.side==='s'||x.side==='a',v=sh?C.s:C.l,P=sh?C.ps:C.pl;var tip=(sh?'Short score: ':'Long score: ')+P.map(function(p){return (p[0]>0?'+':'')+p[0]+' '+p[1];}).join(' · ');return '<span title="'+B.E(tip)+'" style="font-weight:700;color:'+(v>=6?(sh?'var(--short)':'var(--long)'):'var(--dim)')+'">'+v.toFixed(1)+'</span>'+(sh?'<span class="sm"> S</span>':'');},'_cv',null,1,'Conviction score (hover for the parts). Longs: evidence, our value, EV vs same-stage peers, size of prize, next event, balance sheet, and a sell-off despite strong data. Shorts: the mirror, plus financing pressure, a big run-up and late entry. Strong buys: the 20 highest long scores of 6+, among approved companies or those with efficacy + differentiation ≥ 7/10 (so cash shells and weak-data names need more than cheapness). Strong shorts: the 20 highest short scores of 4.5+. Liquidity and size are for sizing, not scored.'],
+      ['Call',function(x){return B.cb(x.r.call)+(!x.parked&&B.quality(x.r)&&x.side==='l'?'<span class="brf-q">Q</span>':'');},null,null,1,'Call from the scenarios: LONG / SHORT when a quarter-Kelly bet would be at least 1% of the book, STRONG for names in the book, WATCH otherwise. Q = in the book. Q = passes the quality screen.'],
+      ['Conv.',function(x){var C=conviction().m[x.t];if(!C)return '—';var sh=x.side==='s'||x.side==='a',v=sh?C.s:C.l,P=sh?C.ps:C.pl;var tip=(sh?'Short: ':'Long: ')+P.map(function(p){return p[0]==null?p[1]:(p[0]>0?'+':'')+p[0]+' '+p[1];}).join(' · ');return '<span title="'+B.E(tip)+'" style="font-weight:700;color:'+(v>=6?(sh?'var(--short)':'var(--long)'):'var(--dim)')+'">'+v.toFixed(1)+'</span>'+(sh?'<span class="sm"> S</span>':'');},'_cv',null,1,'Conviction = the Kelly growth rate (% per bet) of a long (or short) on our scenarios: our PoS vs the PoS the price implies, what the stock is worth if the lead works and if it fails. Hover for the reasoning. Higher = a better bet for compounding; it falls for long-shots and for likely wins with little payoff. Liquidity only sets the size.'],
       ['Thesis',function(x){var r=x.r;if(x.parked)return '<span class="syn-thesis"><b>Parked ('+B.E(r.reason||'')+')</b></span>';var t=r.pitch||r.pitch_concise||'';if(r._keystat==null){var _ef=r.eff_short||'',_sp=keySpan(_ef,r.efkey);r._keystat=_sp?_ef.slice(_sp[0],_sp[1]):'';}var T3=window.thesis3?window.thesis3(r):{view:B.E(t),miss:'',cat:''};return '<span class="syn-thesis">'+T3.view+(CO.x.thesis?(T3.miss?'<span class="th-var'+(T3.ms>0?' th3-pos':T3.ms<0?' th3-neg':'')+'"><b>What the market misses.</b> '+T3.miss+'</span>':'')+(T3.cat?'<span class="th-var"><b>Catalyst &amp; what would change our mind.</b> '+T3.cat+'</span>':''):'')+(r.eff_caveat?'<br><b>Data caveat:</b> '+B.E(r.eff_caveat):'')+(CO.x.thesis&&r.value_driver?'<br><b>Beyond the lead:</b> '+B.E(r.value_driver):'')+'</span>';},null,null,1,'The thesis from the company card. Expand for the full text and the value driver beyond the lead program.'],
       ['To the CEO',function(x){return x.parked?'':'<span class="syn-thesis">'+(window.ceoHtml?ceoHtml(x.r,4):'')+'</span>';},null,null,0,'What I\'d tell the CEO: one note per M (Money, Message, Moves, Milestones), from what an investor sees across the universe.']]},
     {k:'core',l:'Valuation',cols:[
@@ -338,39 +338,23 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
   //  Short = weak evidence (mirror) + overvaluation (our downside, log, ±2) + peer value (mirror) + crowded (late entrant +0.5)
   //          + financing pressure (runway < 4 quarters +1; up 75%+ in 3 months +0.5: supply tends to follow) + next event skews down (up to +1).
   var CVC=null;
-  function conviction(){var sig=rows().length+'|'+(rows()[0]&&rows()[0].t);if(CVC&&CVC.sig===sig)return CVC;
+  // Nov 27 2026 (PM review): conviction is no longer a sum of points (the old +-0.8 per evidence point, peer-EV bonuses, runway
+  // and momentum bumps are gone). It comes from the scenarios (template scen()): our PoS against the PoS the price implies,
+  // what the stock is worth if the lead works and if it fails, and the Kelly growth rate of a bet on those odds. l / s are
+  // that growth rate (in % per bet) for a long / short; the parts say why in words.
+  function conviction(){var sig=rows().length+'|'+(rows()[0]&&rows()[0].t)+'|'+B.DA.reduce(function(z,r){return z+(r.call==='LONG'||r.call==='STRONG BUY'?1:0);},0);if(CVC&&CVC.sig===sig)return CVC;
     var A=rows().filter(function(x){return x.r.ta&&x.r.ta!=='Acquired / Inactive';});
-    var stB=function(r){var s=String(r.stage||'');return /approved|market/i.test(s)?'A':/filed|bla|nda|3/i.test(s)?'3':/2/.test(s)?'2':'1';};
-    var ev=function(r){return (r.mc||0)-(window.netCash?netCash(r):(r.cash||0));};
-    var peer={};A.forEach(function(x){var k=clusterOf(x.r.ta)+'|'+stB(x.r);(peer[k]=peer[k]||[]).push(Math.max(ev(x.r),1e7));});
-    var med=function(v){v=v.slice().sort(function(a,b){return a-b;});return v.length?v[Math.floor(v.length/2)]:null;};
-    var out={},L=[],S=[];
-    A.forEach(function(x){var r=x.r,e=r.effsig,d=r.diffscore,o=tocOf(x.t),k=clusterOf(r.ta)+'|'+stB(r),pm=peer[k]&&peer[k].length>=4?med(peer[k]):null,E=Math.max(ev(r),1e7),pr=(pm&&stB(r)!=='A')?E/pm:null,u=x.u;
-      var pl=[],ps=[],a=function(arr,v,t){v=Math.round(v*10)/10;if(v){arr.push([v,t]);}};
-      // Nov 27 2026: no credit for stale evidence. A discontinued lead or a wind-down (pos 0, or the thesis says the lead was
-      // discontinued / liquidation / wind-down) gets no evidence or prize credit: it is scored on value and cash alone and marked
-      // as a cash shell. Evidence is NOT discounted by stage: the efficacy and differentiation scores are judgements on the
-      // totality of the data (an unprecedented Ph1 result in a big, poorly served market can outrank incremental Ph3 data).
-      var thx=String(r.th_view||'')+' '+String(r.call_reason||''),shell=r.pos===0||/lead (?:was |has been )?discontinued|discontinued (?:development of )?(?:the|its) lead|liquidation|wind[- ]down/i.test(thx)&&!/approved|launch/i.test(String(r.stage||''));
-      var sw=1;
-      if(shell){e=null;d=null;pl.push([0,'cash shell: lead discontinued, scored on value and cash only']);}
-      if(e!=null){a(pl,(e-3)*.8*sw,'efficacy '+e+'/5'+(sw<1?' (×'+sw+' for stage)':''));a(ps,(3-e)*.8,'efficacy '+e+'/5');}
-      if(d!=null){a(pl,(d-3)*.8*sw,'differentiation '+d+'/5'+(sw<1?' (×'+sw+' for stage)':''));a(ps,(3-d)*.8,'differentiation '+d+'/5');}
-      if(u!=null){var lv=Math.max(-2,Math.min(2,Math.log10(1+u/100)*2.2));a(pl,Math.round(lv*10)/10,'our value '+B.P(u));a(ps,Math.round(-lv*10)/10,'our value '+B.P(u));}
-      if(pr!=null){var pv=pr<1/3?1.5:pr<.5?1:pr>3?-1.5:pr>2?-1:0;a(pl,pv,'EV '+B.M(E)+' vs peer median '+B.M(pm));a(ps,-pv,'EV '+B.M(E)+' vs peer median '+B.M(pm));}
-      var pk=shell?0:(r.peak_sales||0),rp=pk*(r.pos||0);a(pl,rp>=1e9?1:rp>=3e8?.5:0,'risk-adjusted peak '+B.M(rp)+' ('+B.M(pk)+' × '+Math.round((r.pos||0)*100)+'%)');
-      if(o){a(pl,o.ev>0?Math.min(1,o.ev*2):0,'next event '+(o.ev>=0?'+':'')+Math.round(o.ev*100)+'%');a(ps,o.ev<0?Math.min(1,-o.ev*2):0,'next event '+Math.round(o.ev*100)+'%');}
-      var nc=window.netCash?netCash(r):0,rw=r.runway_q;
-      if(nc>(r.mc||0))a(pl,1,'net cash above the market cap');
-      if(rw!=null){if(rw>=8)a(pl,.5,'runway '+Math.round(rw)+' quarters');else if(rw<4){a(pl,-1,'runway '+Math.round(rw)+' quarters');a(ps,1,'runway '+Math.round(rw)+' quarters: a raise is likely');}}
-      if(r.r3m!=null&&r.r3m<=-.4&&e!=null&&e>=4)a(pl,.5,'down '+Math.round(-r.r3m*100)+'% in 3 months with strong data: possible overreaction');
-      if(r.r3m!=null&&r.r3m>=.75)a(ps,.5,'up '+Math.round(r.r3m*100)+'% in 3 months: supply tends to follow');
-      if(/late entrant/i.test(r.novelty||''))a(ps,.5,'late entrant');
-      var sm=function(arr){return Math.round(arr.reduce(function(z,p){return z+p[0];},0)*10)/10;};
-      out[x.t]={l:sm(pl),s:sm(ps),pl:pl,ps:ps,side:x.side,shell:shell};
+    var out={},L=[],S=[],P=function(v){return Math.round(v*100)+'%';},X=function(v){return v>=10?Math.round(v)+'x':v.toFixed(1)+'x';};
+    A.forEach(function(x){var r=x.r,o=window.scen?scen(r):null;if(!o)return;var d=[];
+      if(o.binary){d.push((o.v.y0===0?'our odds the launch reaches peak ':'our PoS ')+P(o.p)+(o.pImp!=null?', the price implies '+P(o.pImp)+'; we bet on '+P(o.pu)+' (our view weighted '+P(o.W)+' against the market\u2019s, from our track record)':''));
+        d.push((o.v.y0===0?'if it does ':'if it works ')+X(o.Vs/o.mc)+' ('+B.M(o.Vs)+'); if it fails '+(o.Vf>=o.mc?'+':'-')+Math.round(Math.abs(o.Vf/o.mc-1)*100)+'% ('+B.M(o.Vf)+(o.v.y0===0?', today\u2019s sales and cash':', cash after burn to the readout')+')');}
+      else{d.push(o.shell?'cash shell: worth its cash after burn and wind-down ('+B.M(o.EV)+')':'no binary event ahead: our base case '+B.M(o.EV)+' vs '+B.M(o.mc)+', volatility '+P(o.sigma)+'/yr');}
+      d.push('expected '+B.P(o.ER*100)+(o.ERo!=null&&Math.abs(o.ERo-o.ER)>.005?' (on our view alone '+B.P(o.ERo*100)+')':''));
+      var pl=d.map(function(t){return [null,t];}),ps=pl.slice();
+      pl.push([null,'quarter-Kelly long '+P(o.kL)]);ps.push([null,'quarter-Kelly short '+P(o.kS)]);
+      out[x.t]={l:Math.round(o.gL*1000)/10,s:Math.round(o.gS*1000)/10,pl:pl,ps:ps,side:x.side,shell:o.shell,o:o};
       if(x.side==='l')L.push(x.t);if(x.side==='s'||x.side==='a')S.push(x.t);});
-    var gate=function(t){var r=A.filter(function(x){return x.t===t;})[0].r;return stB(r)==='A'||((r.effsig||0)+(r.diffscore||0))>=7;};
-    var topL=L.filter(function(t){return out[t].l>=6&&gate(t);}).sort(function(a,b){return out[b].l-out[a].l;}).slice(0,20),topS=S.filter(function(t){return out[t].s>=4.5;}).sort(function(a,b){return out[b].s-out[a].s;}).slice(0,20);
+    var topL=L.sort(function(a,b){return out[b].l-out[a].l;}).slice(0,20),topS=S.sort(function(a,b){return out[b].s-out[a].s;}).slice(0,20);
     CVC={sig:sig,m:out,topL:topL,topS:topS};return CVC;}
   window.CONVICTION=conviction;
   // ---- Deal comparables (Nov 26 2026): 2023-25 acquisitions and large upfronts by cluster and stage (data/deals.json).
@@ -390,7 +374,8 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
   // ---- Calls and conviction (Nov 27 2026, revised after PM review): no fixed conviction thresholds change a call. The call is
   // the valuation view; value and conviction are blended continuously in the ranking (Record › Book), which is what drives
   // the best-ideas lists. BALANCE_CALLS only records how each call and its conviction relate, for the audit.
-  window.BALANCE_CALLS=function(){};
+  window.BALANCE_CALLS=function(){CACHE=null;CVC=null;if(!window.TOP20)return;var R;try{R=window.TOP20(true);}catch(e){return;}if(!R)return;
+    R.P.forEach(function(p){var r=p.x.r;if(r.call_override)return;r.call=p.side>0?'STRONG BUY':'STRONG SHORT';});CACHE=null;CVC=null;};
   function coHtml(){
     H();var A=rows().concat(CO.parked?parkedRows():[]),q=CO.q.trim().toLowerCase();
     var SB={},SS={};if(CO.sbuy||CO.sshort){var T20=window.TOP20?window.TOP20():null;if(T20){T20.P.concat(T20.skip||[]).forEach(function(p){(p.side>0?SB:SS)[p.x.t]=1;});}else{var CV=conviction();CV.topL.forEach(function(t){SB[t]=1;});CV.topS.forEach(function(t){SS[t]=1;});}}
@@ -416,7 +401,7 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
     h+='<div class="syn-ctl"><input id="coQ" placeholder="Search ticker, drug, indication or fund" value="'+B.E(CO.q)+'" style="min-width:250px">'
       +'<select id="coTa"><option value="">All areas</option>'+tas.map(function(t){return '<option'+(t===CO.ta?' selected':'')+'>'+B.E(t)+'</option>';}).join('')+'</select>'
       +seg('side',CO.side,[['all','All calls'],['l','Long side'],['s','Short / Avoid']])
-      +chip('sbuy','Best longs',CO.sbuy,'The 15 longs in the Top-20 book (conviction score + catalyst tilt), plus high scorers too small to size to 1% of a $250M sleeve. Same list as Brief › Best ideas.')+chip('sshort','Best shorts',CO.sshort,'The 5 shorts in the Top-20 book, plus high scorers too small to size. Same list as Brief › Best ideas.')+chip('qual','Quality',CO.qual,'Science >=3.5, cap >=$500M, runway >=8Q')+chip('dis','Big disagreements',CO.dis,'Ours vs Street differ by 150+ pts, 3+ analysts')+chip('below','Below cash',CO.below,'Net cash above market cap')+chip('sug','Value-raising action',CO.sug,'Our suggestion is an action, not better disclosure')+chip('port','My portfolio',CO.port)+chip('parked','Include parked',CO.parked,'Add the '+PK.length+' names outside the $50M-$30B band')
+      +chip('sbuy','Best longs',CO.sbuy,'The 15 longs in the Top-20 book (ranked by Kelly growth on our scenarios). Same list as Brief › Best ideas.')+chip('sshort','Best shorts',CO.sshort,'The 5 shorts in the Top-20 book. Same list as Brief › Best ideas.')+chip('qual','Quality',CO.qual,'Science >=3.5, cap >=$500M, runway >=8Q')+chip('dis','Big disagreements',CO.dis,'Ours vs Street differ by 150+ pts, 3+ analysts')+chip('below','Below cash',CO.below,'Net cash above market cap')+chip('sug','Value-raising action',CO.sug,'Our suggestion is an action, not better disclosure')+chip('port','My portfolio',CO.port)+chip('parked','Include parked',CO.parked,'Add the '+PK.length+' names outside the $50M-$30B band')
       +(CO.ig?'<span class="chip on" data-chip="ig">Group: '+B.E(CO.ig)+' ✕</span>':'')+'</div>';
     h+='<div class="syn-ctl">Group rows '+seg('grp',CO.grp,[['area','By area'],['ind','Area › indication'],['none','No grouping']])+' Order areas '+seg('cl',CO.cl,[['cap','Market cap'],['az','A–Z']])
       +' <span class="chip" id="coFold">'+(Object.keys(CO.closed).some(function(k){return CO.closed[k];})?'Unfold all':'Fold all')+'</span>'+(CO.port?' <a href="#" id="coPortEd" class="sm">Edit portfolio notes →</a>':'')+'<span class="cnt">'+L.length+' of '+A.length+(L.filter(function(x){return x.out;}).length?' · ⚠ '+L.filter(function(x){return x.out;}).length+' implausible upside':'')+'</span></div>';
@@ -502,7 +487,7 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
       var sup=L.reduce(function(a,x){return a+(x.rad?x.rad.size:0);},0);
       var o={ta:t,n:L.length,cap:cap,r1:m(function(x){return x.r.r1m==null?null:x.r.r1m*100;}),r3:m(function(x){return x.r.r3m==null?null:x.r.r3m*100;}),r12:m(function(x){return x.r.r12m==null?null:x.r.r12m*100;}),
         u:m(function(x){return x.u;}),su:m(function(x){return x.su;}),s:m(function(x){return x.s;}),nl:L.filter(function(x){return x.side==='l';}).length,ns:L.filter(function(x){return x.side==='s';}).length,nq:L.filter(function(x){return x.side==='l'&&B.quality(x.r);}).length,
-        n90:n90,sup:sup,supPct:cap?sup/cap*100:0,und:und[t]||[],crw:crw[t]||[],sh:sh[t]||0,n6:n6,top:L.filter(function(x){return x.side==='l';}).sort(function(a,b){return (B.quality(b.r)?1:0)-(B.quality(a.r)?1:0)||(b.u||0)-(a.u||0);}).slice(0,3).map(function(x){return x.t;}),
+        n90:n90,sup:sup,supPct:cap?sup/cap*100:0,und:und[t]||[],crw:crw[t]||[],sh:sh[t]||0,n6:n6,top:L.filter(function(x){return x.side==='l';}).sort(function(a,b){var ga=window.scen?(scen(a.r)||{}).gL||0:0,gb=window.scen?(scen(b.r)||{}).gL||0:0;return gb-ga;}).slice(0,3).map(function(x){return x.t;}),
         shorts:L.filter(function(x){return x.side==='s';}).sort(function(a,b){var sa=/STRONG/i.test(a.r.call||'')?1:0,sb=/STRONG/i.test(b.r.call||'')?1:0;return sb-sa||(a.u==null?1e9:a.u)-(b.u==null?1e9:b.u);}).slice(0,3).map(function(x){return x.t;})};
       var rd=[];if(o.u!=null)rd.push(o.u>150?'cheap':o.u<30?'rich':'fairly valued');if(o.r3!=null)rd.push(o.r3<-15?'falling hard':o.r3<-5?'drifting lower':o.r3>10?'rising':'flat');
       if(o.s!=null&&o.s>=3.5)rd.push('strong science');if(o.n90>=4)rd.push(o.n90+' catalysts in 90 days');if(o.supPct>=5)rd.push('heavy expected supply ('+Math.round(o.supPct)+'% of cap)');if(o.und.length)rd.push('white space: '+o.und.slice(0,2).join(', '));if(o.crw.length)rd.push('crowded: '+o.crw.slice(0,2).join(', '));
@@ -565,7 +550,7 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
     var chipT=function(x,sign){return '<span class="ig-c '+(sign>0?'l':'s')+'">'+B.tk(x.t)+' <b>'+(x.out?'<span title="Model upside above +1,000%: check inputs">⚠ >1,000%</span>':B.P(x.u))+'</b></span>';};
     var G2=Object.keys(G).map(function(g){var L=G[g];
       var best=L.slice().sort(function(a,b){return (b.s||0)-(a.s||0)||((b.r.pos||0)-(a.r.pos||0));})[0];
-      var lo=L.filter(function(x){return x.side==='l';}).sort(function(a,b){return (B.quality(b.r)?1:0)-(B.quality(a.r)?1:0)||(b.u||0)-(a.u||0);});
+      var lo=L.filter(function(x){return x.side==='l';}).sort(function(a,b){var ga=window.scen?(scen(a.r)||{}).gL||0:0,gb=window.scen?(scen(b.r)||{}).gL||0:0;return gb-ga;});
       var sh=L.filter(function(x){return x.side==='s'||x.side==='a';}).sort(function(a,b){return (a.u==null?1e9:a.u)-(b.u==null?1e9:b.u);});
       var ev=[];L.forEach(function(x){upcoming(x.r).forEach(function(e){ev.push({x:x,e:e});});});ev.sort(function(a,b){return a.e.m<b.e.m?-1:1;});
       var mo=B.med(L.map(function(x){return x.out?null:x.u;})),ms=B.med(L.map(function(x){return x.su;}));

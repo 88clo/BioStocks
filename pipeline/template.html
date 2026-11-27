@@ -2191,9 +2191,9 @@ table.rv-tbl tr.rv-row.m-open td:nth-child(4):before{content:"WHY  ";font-size:9
   <div class="resvwrap" id="lenswrap" style="display:none"></div>
   <div class="resvwrap" id="scorewrap" style="display:none"></div>
   <script type="application/json" id="v2-data">{{DATA:v2-data}}</script>
-  <script type="application/json" id="lens-data">{{DATA:lens-data}}</script>
-  <script type="application/json" id="sug-data">{{DATA:sug-data}}</script>
-  <script type="application/json" id="retro-data">{{DATA:retro-data}}</script>
+  <script type="application/json" id="lens-data">{}</script>
+  <script type="application/json" id="sug-data">{}</script>
+  <script type="application/json" id="retro-data">{}</script>
   <div class="empty" id="empty" style="display: none;">No names match these filters.</div>
 </div>
 </div>
@@ -2335,12 +2335,14 @@ table.rv-tbl tr.rv-row.m-open td:nth-child(4):before{content:"WHY  ";font-size:9
 <script type="application/json" id="theses-data">{{DATA:theses}}</script>
 <script type="application/json" id="memo-baked">{{DATA:memo-baked}}</script>
 <script type="application/json" id="priceq-baked">{{DATA:priceq-baked}}</script>
-<script type="application/json" id="pr-baked">{{DATA:pr-baked}}</script>
+<script type="application/json" id="pr-baked">{{DATA:latest-filings}}</script>
 <script type="application/json" id="tanotes-baked">{{DATA:tanotes-baked}}</script>
 <script type="application/json" id="taexpnotes-baked">{{DATA:taexpnotes-baked}}</script>
-<script type="application/json" id="portfolio-baked">{{DATA:portfolio-baked}}</script>
-<script type="application/json" id="livebaked">{{DATA:livebaked}}</script>
+<script type="application/json" id="portfolio-baked">{}</script>
+<script type="application/json" id="livebaked">{}</script>
 <script type="application/json" id="price-targets-baked">{{DATA:price-targets-baked}}</script>
+<script type="application/json" id="calibration-data">{{DATA:calibration}}</script>
+<script type="application/json" id="shortint-data">{{DATA:short-interest}}</script>
 <script type="application/json" id="asof-baked">{{DATA:asof-baked}}</script>
 <script type="application/json" id="holders-baked">{{DATA:holders-baked}}</script>
 <script>
@@ -2611,38 +2613,16 @@ function callUpPct(r){ // upside = 1/(MC/NPV) - 1, computed off the SAME rounded
   const pct=Math.round(pv*100); if(pct<=0)return null;   // the integer % rendered in the MC/NPV cell
   return (100/pct-1)*100;
 }
-function computeCall(r){ // formulaic call: valuation band (MC/fNPV) × science band (effsig+diffscore)
-  const pv=pvVal(r), e=r.effsig, d=r.diffscore;
-  if(pv==null||typeof e!=='number'||typeof d!=='number')return 'HOLD';
-  const sci=(e+d)/2;
-  const weak=sci<2.5, strong=sci>=3.5;               // else "solid"
-  let p=pv;                                           // MC/fNPV ratio (1 = fair)
-  // Financing (Nov 26 2026, revised after PM review): under 8 quarters of cash we work out what a raise to reach 8 quarters
-  // would cost today's holders (new money at ~15% below today's price takes R ÷ (0.85·MC + R) of the company), but it does
-  // NOT change the call. Thin financing is a question to answer, not a verdict: the market may be missing something or
-  // fearing an overhang that a fund supplying the capital can remove, or it may know the setup is wrong. finCheck() shows
-  // the evidence either way in the drawer.
+function computeCall(r){ // Nov 27 2026: the call is what the scenarios say a position is worth, nothing else. LONG / SHORT when a
+  // quarter-Kelly bet on that side would be at least 1% of the book (a smaller bet would not be worth the attention); WATCH
+  // otherwise. STRONG BUY / STRONG SHORT are given afterwards to the names the ranking puts in the book (BALANCE_CALLS).
   const rw=r.runway_q, cash=r.cash||0; r._fin=null;
-  if(rw!=null&&rw<8&&cash>0&&r.mc>0){const burn=cash/Math.max(rw,.25),R=(8-rw)*burn,m=.85*r.mc,F=r.mc/p,Fa=Math.min(F,(F+R)*m/(m+R));r._fin={cost:F-Fa,rw:rw,burn:burn,R:R,dil:R/(m+R)};}
-  const cap=c=>c;
-  return cap((()=>{
-  if(weak){
-    if(p>=3.0)return 'STRONG SHORT';
-    if(p>=1.5)return 'SHORT';
-    return 'AVOID';                                   // cheap/fair but broken science = value trap
-  }
-  if(strong){
-    if(p<0.33)return 'STRONG BUY';
-    if(p<0.66)return 'LONG';
-    if(p<3.0)return 'WATCH';                          // fair..rich w/ great science = watch for entry
-    return 'SHORT';                                   // very rich even for great science
-  }
-  // solid science
-  if(p<0.66)return 'LONG';
-  if(p<1.5)return 'HOLD';
-  if(p<3.0)return 'SHORT';
-  return 'STRONG SHORT';
-  })());
+  if(rw!=null&&rw<8&&cash>0&&r.mc>0){const pv=pvVal(r);if(pv){const burn=cash/Math.max(rw,.25),R=(8-rw)*burn,m=.85*r.mc,F=r.mc/pv,Fa=Math.min(F,(F+R)*m/(m+R));r._fin={cost:F-Fa,rw:rw,burn:burn,R:R,dil:R/(m+R)};}}
+  r._sc=undefined;const o=scen(r);if(!o)return 'HOLD';
+  if(o.kL>=0.01&&o.gL>=o.gS)return 'LONG';
+  if(o.kS>=0.01)return 'SHORT';
+  return 'WATCH';
+
 }
 function refreshCalls(){ DATA.forEach(r=>{ r.call = (r.call_override!=null && r.call_override!=="") ? r.call_override : computeCall(r); }); if(window.BALANCE_CALLS)window.BALANCE_CALLS(); }
 function openMeth(){document.getElementById('methmodal').classList.add('open');}
@@ -2925,7 +2905,7 @@ const COLS=[
   {k:'mc',label:'MC',sortable:true,num:true},
   {k:'npv',label:'fNPV',sortable:true,num:true,tip:'fNPV = discounted forward takeout value = Acq P/S multiple (default 3×) × prob-adj peak sales × discount factor 1/(1+disc)^yrs-to-approval. A quick forward P/S-based NPV, distinct from the bottom-up DCF rNPV in the DCF tab.'},
   {k:'probadj_sales',label:'P-adj / Peak',sortable:true,num:true,hide:'col-hide',cls:'salescol',tip:'Prob-adjusted peak sales (analyst peak-sales estimate × probability of success), shown over unadjusted peak sales. Both are analyst estimates in USD.'},
-  {k:'call',label:'Call',sortable:true,tip:'Rule-based call from MC/NPV and Efficacy/Differentiation scores. LONG: MC/NPV<50% & Eff,Diff≥3. WATCH: >50% & Eff,Diff≥4. SHORT: >100% & Eff,Diff≤3. AVOID: <100% & Eff,Diff≤2. Else HOLD. The % beside it is the move needed for MC/NPV to reach 100%.'},
+  {k:'call',label:'Call',sortable:true,tip:'Call from the scenarios (value if the lead works and if it fails, our odds blended with the price\u2019s): LONG / SHORT when a quarter-Kelly bet would be at least 1% of the book, STRONG BUY / STRONG SHORT for names in the book, WATCH otherwise. The % beside it is the move to our value.'},
   {k:'price_target',label:'Px Target',sortable:true,num:true,hide:'col-hide',cls:'ptcol',tip:'Analyst mean price target (TipRanks) and the % implied upside from the latest share price. Populated per-company as sourced.'},
   {k:'ret',label:'3M / 12M',num:true,hide:'col-hide3'},
   {k:'yrsdf',label:'Yrs / DF',sortable:true,num:true,hide:'col-hide2',cls:'yrscol',tip:'Average years from the current stage to approval (glossary), and the discount factor = 1 ÷ (1 + discount rate)^years. Approved = 0 yrs, factor 1.00.'},
@@ -3039,31 +3019,96 @@ function discFactor(r){ const y=yrsToApproval(r); return y==null?null:1/Math.pow
 //     spending it all; x0.6 rare, x1.5 >2M patients). Backtest on the Sep 12 cohort: rank correlation of model upside
 //     with 70-day returns went from -0.19 (cheapest did worst) to about zero.
 const DEV_COST={10:280e6,8:250e6,7:220e6,6:200e6,5:180e6,4:160e6,3:120e6,1:50e6,0:0};
+function commMed(){return 0.5;} // our peak is a central estimate: as likely to be missed as beaten, until the launch odds are judged
+function devCost(y){if(DEV_COST[y]!=null)return DEV_COST[y];const k=Object.keys(DEV_COST).map(Number).sort((a,b)=>a-b);let lo=0,hi=10;k.forEach(x=>{if(x<=y)lo=x;if(x>=y&&hi===10&&x!==10)hi=x;});if(y>=10)return DEV_COST[10];const a=DEV_COST[lo],b=DEV_COST[hi];return hi===lo?a:a+(b-a)*(y-lo)/(hi-lo);}
 function valParts(r){
+  // r.ps_mult: a judged sales multiple for businesses the standard takeout multiple does not fit (mature, declining or
+  // indebted commercial products are worth less per $ of sales than a growing launch)
+  const PM=(typeof r.ps_mult==='number')?r.ps_mult:state.psMult;
   const y0=yrsToApproval(r); if(y0==null||typeof r.mc!=='number')return null;
   let pk=r.peak_sales,pos=r.pos;
   if(typeof pk!=='number'||typeof pos!=='number'){ if(typeof r.probadj_sales!=='number')return null; pk=r.probadj_sales; pos=1; }
-  const e=r.effsig,d=r.diffscore,N=[];const pct=v=>Math.round(v*100)+'%';
-  if(typeof e==='number'&&y0>=4){const fl=y0>=7?{4:.25,5:.30}:{4:.38,5:.45}; if(fl[e]&&pos<fl[e]){N.push('PoS raised '+pct(pos)+'→'+pct(fl[e])+' (strong early data)');pos=fl[e];}}
-  if(typeof e==='number'&&e<=2&&y0>=1){const cap={10:.06,8:.08,7:.10,6:.15,4:.22,3:.25,1:.5}[y0]; if(cap!=null&&pos>cap){N.push('PoS capped '+pct(pos)+'→'+pct(cap)+' (weak data)');pos=cap;}}
-  if(typeof d==='number'&&d<=2&&y0>0){const f=d<=1?.4:.7;N.push('peak ×'+f+' (undifferentiated)');pk*=f;}
-  let y=y0; if(typeof e==='number'&&typeof d==='number'&&e>=4&&d>=4&&y0>=4&&y0<=8){y=Math.max(3,y0-2);N.push('approval '+y0+'→'+y+' yrs (strong data)');}
-  const df=1/Math.pow(1+state.discRate,y); let lead=state.psMult*pk*pos*df, book=0;
+  const N=[];
+  // Nov 27 2026 (PM review): no rule adjusts PoS, peak or timing from the efficacy/differentiation scores any more (the old
+  // floors, caps, x0.4/x0.7 peak haircuts and two-years-sooner rule are gone). PoS, peak sales and years to approval are
+  // judged inputs set from all the evidence, including read-through; the values those rules produced on Nov 27 were written
+  // into the data as explicit inputs (patch 2026-11-27_bake_rule_values.py) and flagged for review (r.inp_review).
+  let y=(typeof r.yrs_appr==='number')?r.yrs_appr:y0; if(y!==y0)N.push('approval in ~'+y+' yrs (judged; typical for the stage '+y0+')');
+  const df=1/Math.pow(1+state.discRate,y); let lead=PM*pk*pos*df, book=0, Lu=PM*pk*df, Lf=0, pc=pos;
   const rq=r.rev_q, run=(typeof rq==='number'&&rq>0)?4*rq:0;
-  if(run){ if(y0===0&&run>pk*pos){N.push('current sales '+fmtB(run)+'/yr above peak×PoS');lead=state.psMult*run;}
-    else if(y0>0&&r.book_add){book=state.psMult*run-(typeof r.debt==='number'?r.debt:0);N.push('+ existing business 3×'+fmtB(run)+(r.debt?' − debt '+fmtB(r.debt):''));} }
+  // Approved products (Nov 27 2026): a launch is a bet too. If it reaches our peak, the product is worth peak x the multiple,
+  // discounted to the peak year (r.yrs_peak, else ~4 years); if it stalls it is worth today's sales run-rate x the multiple.
+  // The odds of reaching our peak are r.pos_comm when judged, else PoS when it is below 100%, else the median of the launch
+  // odds we have judged for other approved products (flagged for review). This replaces "peak x 3, undiscounted, certain".
+  if(y0===0){const yp=(typeof r.yrs_peak==='number')?r.yrs_peak:4,dfp=1/Math.pow(1+state.discRate,yp);
+    pc=(typeof r.pos_comm==='number')?r.pos_comm:(pos<1?pos:commMed());if(typeof r.pos_comm!=='number'&&!(pos<1))N.push('launch odds not judged yet: even odds on reaching our peak (a central estimate)');
+    // if the launch stalls at today's sales and the company is losing money at that scale, the product does not cover its
+    // costs: worth about a year of sales, not the multiple a profitable product earns
+    const lossy=typeof r.net_income==='number'&&r.net_income<0;Lf=run*(lossy?Math.min(PM,1):PM);Lu=Math.max(Lf,PM*pk*dfp);lead=Lf+pc*(Lu-Lf);
+    if(lossy&&run)N.push('stall case: today\u2019s sales at 1x (loss-making at this scale)');
+    N.push(pk>run?'launch: '+fmtB(run)+'/yr now, '+fmtB(pk)+' peak in ~'+yp+' yrs at '+Math.round(pc*100)+'% odds':'current sales '+fmtB(run)+'/yr at or above our peak');}
+  else if(run&&r.book_add){book=PM*run-(typeof r.debt==='number'?r.debt:0);N.push('+ existing business 3×'+fmtB(run)+(r.debt?' − debt '+fmtB(r.debt):''));}
   // Other programs (Nov 25 2026): the model valued only the lead, so a company whose second program is the bigger prize (CRVS:
   // soquelitinib in atopic dermatitis behind PTCL) was undervalued next to single-asset peers. r.programs = [{name, peak, pos, y}]
   // adds each at the same sales multiple, discounted to its own approval year, less 60% of typical spend to get there.
-  let other=0;(r.programs||[]).forEach(p=>{if(!(p.peak>0&&p.pos>0))return;const yy=p.y||6,v2=state.psMult*p.peak*p.pos/Math.pow(1+state.discRate,yy)-0.6*(DEV_COST[yy]||0)*.5;other+=Math.max(0,v2);N.push('+ '+p.name+' '+fmtB(p.peak)+' peak × '+Math.round(p.pos*100)+'% PoS, '+yy+' yrs');});
+  let other=0;(r.programs||[]).forEach(p=>{if(!(p.peak>0&&p.pos>0))return;const yy=p.y||6,v2=PM*p.peak*p.pos/Math.pow(1+state.discRate,yy)-0.6*devCost(yy)*.5;other+=Math.max(0,v2);N.push('+ '+p.name+' '+fmtB(p.peak)+' peak × '+Math.round(p.pos*100)+'% PoS, '+yy+' yrs');});
   book+=other;
   if(r._fin)N.push('Financing: '+(Math.round(r._fin.rw*10)/10)+' quarters of cash; raising '+fmtB(r._fin.R)+' to reach 8 quarters at ~15% below today\u2019s price would hand new holders '+Math.round(r._fin.dil*100)+'% of the company (≈ '+fmtB(r._fin.cost)+' of our value). Not in the call; see the financing check');
   const prev=r.prevalence, sf=(typeof prev==='number'&&prev>0&&prev<50000)?.6:(typeof prev==='number'&&prev>2e6)?1.5:1;
-  const cost=0.6*(DEV_COST[y]||0)*sf; if(cost)N.push('− '+fmtB(cost)+' expected spend to approval');
+  const cost=(typeof r.dev_cost==='number')?r.dev_cost:0.6*devCost(y)*sf; if(cost)N.push('− '+fmtB(cost)+' expected spend to approval');
   if(r.val_note)N.unshift(r.val_note);
-  return {lead:lead,book:book,cost:cost,npv:lead+book-cost,notes:N,pk:pk,pos:pos,df:df,y:y,y0:y0,run:run};
+  return {lead:lead,book:book,cost:cost,npv:lead+book-cost,notes:N,pk:pk,pos:pos,df:df,y:y,y0:y0,run:run,Lu:Lu,Lf:Lf,pc:pc};
 }
 
+// ---- Scenarios (Nov 27 2026, PM review: first principles, no point scores). Each company is two outcomes for its lead:
+// IF IT WORKS: peak sales x our sales multiple, discounted to approval, less the spend to get there, plus other programs /
+// existing business and net cash. IF IT FAILS: the lead is worth nothing and its spend stops; holders keep net cash less the
+// burn until the readout and a wind-down quarter, plus other programs / business. Our PoS weights the two; the price
+// implies its own PoS; the gap is the edge. Size and rank come from the Kelly criterion (the bet size that compounds wealth
+// fastest for those odds and payoffs): a long-shot with a big payoff gets a small bet, a likely win with a modest payoff can
+// get a big one. Names with no binary event ahead (approved products, cash shells) use the stock's own volatility instead.
+var KELLY_FRAC=0.25; // we bet a quarter of full Kelly: our PoS and peak estimates are uncertain, and over-betting on a wrong
+                     // estimate costs far more than under-betting (half of full Kelly gives ~75% of the growth at half the risk;
+                     // a quarter is the usual allowance when the odds themselves are estimates)
+function calW(){if(window._calW!=null)return window._calW;let w=.5;try{const c=JSON.parse(document.getElementById('calibration-data').textContent||'{}');if(typeof c.w==='number')w=Math.max(.1,Math.min(.9,c.w));}catch(e){}window._calW=w;return w;}
+function scen(r){
+  if(r._sc!==undefined)return r._sc;r._sc=null;
+  const v=valParts(r),mc=r.mc;if(!v||!(mc>0))return null;
+  const cash=netCash(r),burn=(r.runway_q>0&&r.cash>0)?r.cash/r.runway_q:0,qs=(r.cat_mos!=null&&r.cat_mos>=0&&r.cat_mos<36)?r.cat_mos/3:4;
+  // cash left after burning to the readout plus a wind-down quarter; it can go below zero (losses beyond cash are paid for by
+  // dilution, which comes out of the shareholders' outcome)
+  const keep=cash-burn*(qs+1);
+  const thx=String(r.th_view||'')+' '+String(r.call_reason||'');
+  const shell=r.pos===0||(/lead (?:was |has been )?discontinued|discontinued (?:development of )?(?:the|its) lead|liquidation|wind[- ]down/i.test(thx)&&!/approved|launch/i.test(String(r.stage||'')));
+  const o={mc:mc,cash:cash,keep:keep,v:v,shell:shell};
+  const lg=x=>Math.log(Math.max(1e-9,x));
+  // a binary bet needs a real upside: when the price is already above our 'if it works' value the market sees something our
+  // model does not (another asset, a bigger indication), so we fall back to volatility with our view weighted against the market
+  const vsChk=Math.max(0,v.Lu+v.book-v.cost+cash);
+  if(!shell&&vsChk>mc&&((v.y0>0&&v.pos>0&&v.pos<1)||(v.y0===0&&v.Lu>v.Lf&&v.pc>0&&v.pc<1))){
+    const p=v.y0===0?v.pc:v.pos,Vs=Math.max(0,v.Lu+v.book-v.cost+cash),Vf=Math.max(0,v.Lf+keep+Math.max(0,v.book));
+    const b=Vs/mc-1,a=1-Vf/mc,pImp=(Vs>Vf)?Math.max(0,Math.min(1,(mc-Vf)/(Vs-Vf))):null,W=calW();
+    // The price is an informed forecast too: we bet on our PoS blended with the market's, weighted by our track record
+    // against the market on resolved events (calibration-data; 50/50 until the record says otherwise).
+    const pu=pImp==null?p:W*p+(1-W)*pImp,EV=pu*Vs+(1-pu)*Vf;
+    Object.assign(o,{binary:true,p:p,pu:pu,W:W,Vs:Vs,Vf:Vf,b:b,a:a,EV:EV,EVo:p*Vs+(1-p)*Vf,ER:EV/mc-1,ERo:(p*Vs+(1-p)*Vf)/mc-1,pImp:pImp});
+    // long: win b if it works, lose a if it fails
+    const P=pu;let fL=0;if(b>0){fL=a>0?P/a-(1-P)/b:1;fL=Math.max(0,Math.min(fL,a>0?.99/a:1,1));}
+    // short: win a if it fails, lose b if it works
+    let fS=0;if(a>0){fS=b>0?(1-P)/b-P/a:1;fS=Math.max(0,Math.min(fS,b>0?.99/b:1,1));}
+    // growth from the position we would actually hold (quarter Kelly, within the position cap), not an uncapped bet
+    const uL=Math.min(KELLY_FRAC*fL,.08),uS=Math.min(KELLY_FRAC*fS,.05);
+    const gL=uL>0?P*lg(1+uL*b)+(1-P)*lg(1-uL*Math.max(a,0)):0,gS=uS>0?(1-P)*lg(1+uS*a)+P*lg(1-uS*Math.max(b,0)):0;
+    Object.assign(o,{fL:fL,fS:fS,gL:gL,gS:gS});
+  }else{
+    if(!window._TIR||!Object.keys(window._TIR).length){try{var _te=document.getElementById('tradeinfo-data');window._TIR=_te?((JSON.parse(_te.textContent||'{}').rows)||{}):{};}catch(e){window._TIR={};}}
+    const EV=Math.max(0,shell?keep+Math.max(0,v.book):Math.max(0,v.npv)+cash),ER=EV/mc-1,ti=window._TIR[r.ticker]||null,sg=(ti&&ti.vol60>0)?Math.max(.25,ti.vol60):.7;
+    const W=calW(),ERu=W*ER,f=ERu/(sg*sg),fL=Math.max(0,Math.min(1,f)),fS=Math.max(0,Math.min(1,-f)),uL=Math.min(KELLY_FRAC*fL,.08),uS=Math.min(KELLY_FRAC*fS,.05);
+    Object.assign(o,{binary:false,EV:mc*(1+ERu),EVo:EV,ER:ERu,ERo:ER,W:W,sigma:sg,fL:fL,fS:fS,gL:uL>0?uL*ERu-uL*uL*sg*sg/2:0,gS:uS>0?-uS*ERu-uS*uS*sg*sg/2:0});
+  }
+  o.side=o.gL>o.gS?'l':o.gS>o.gL?'s':'n';o.g=Math.max(o.gL,o.gS);o.kL=KELLY_FRAC*o.fL;o.kS=KELLY_FRAC*o.fS;
+  r._sc=o;return o;}
+window.scen=scen;window.KELLY_FRAC=KELLY_FRAC;
 function impliedOdds(r){const v=valParts(r);if(!v||typeof r.mc!=='number')return null;const cash=netCash(r),mkt=r.mc-cash-v.book+v.cost,M=state.psMult;
   if(v.y0===0)return {approved:true,mktSales:mkt/M,ourSales:Math.max(v.pk*v.pos,v.run||0),run:v.run,y:0};
   const den=M*v.pk*v.df;return den>0?{approved:false,imp:mkt/den,ours:v.pos,pk:v.pk,y:v.y,y0:v.y0,cost:v.cost}:null;}
@@ -3546,6 +3591,23 @@ function ideaScore(r){
   tot=Math.max(0,Math.min(cap,tot));
   r._is={score:Math.round(tot),side:side,level:level,capped:tot===cap&&(A+B+C+D+Vr+E+F+G+pen)>cap,comp:{payoff:A,asym:B,lens:C,verif:D,vari:Vr,liq:E,pos:F,time:G,pen:pen},pn:pn,res:res,ic:ic,cr:cr,lens:L,v2:v2};
   return r._is;}
+// Card section (Nov 27 2026): the scenarios behind the call, ranking and size, in plain numbers.
+function scenHtml(r){r._sc=undefined;const o=scen(r);if(!o)return '';const P=v=>Math.round(v*100)+'%',X=v=>v>=10?Math.round(v)+'x':v.toFixed(1)+'x',v=o.v;
+  const row=(k,t)=>`<div style="margin:4px 0"><b>${k}.</b> ${t}</div>`;let h='';
+  if(o.binary){const appr=v.y0===0;
+    h+=row(appr?'If the launch reaches our peak':'If it works',`${fmtB(o.Vs)} (${X(o.Vs/o.mc)} today’s ${fmtB(o.mc)}): ${appr?fmtB(v.pk)+' peak sales':fmtB(v.pk)+' peak sales, approval in ~'+v.y+' yrs'} at ${(r.ps_mult||state.psMult)}x, less ${fmtB(v.cost)} spend${v.book>0?', plus '+fmtB(v.book)+' other programs / business':''}, plus net cash.`);
+    h+=row(appr?'If it stalls':'If it fails',`${fmtB(o.Vf)} (${o.Vf>=o.mc?'+':'-'}${Math.round(Math.abs(o.Vf/o.mc-1)*100)}%): ${appr?'today’s sales value':'the lead is worth nothing'} plus cash left after burning to the readout${v.book>0?' and the other programs':''}.`);
+    if(!appr&&o.p>0&&v.df>0){const PMx=(r.ps_mult||state.psMult),pki=((o.mc-(1-o.p)*o.Vf)/o.p-v.book+v.cost-o.cash)/(PMx*v.df);h+=row('What the price pays for',pki>0?`at our ${P(o.p)} PoS, today\u2019s price pays for about ${fmtB(pki)} of peak sales; we model ${fmtB(v.pk)}${pki<v.pk*.5?' (the market sees a much smaller drug, or doubts the odds: which is it?)':pki>v.pk*1.5?' (the market sees a bigger drug than we do)':''}.`:'at our PoS the price pays for nothing beyond the cash left if it fails.');}
+    h+=row('Odds',`we put ${appr?'the launch reaching our peak':'success'} at ${P(o.p)}; today’s price implies ${o.pImp==null?'more than our best case':P(o.pImp)}. We bet on ${P(o.pu)}, our view weighted ${P(o.W)} against the market’s (from our track record).`);}
+  else h+=row(o.shell?'Cash shell':'No binary event ahead',`${o.shell?'worth its cash after burn and wind-down':'our base case'} ${fmtB(o.EVo)} vs ${fmtB(o.mc)}; the stock moves about ${P(o.sigma)} a year, which sets the bet size.`);
+  h+=row('Expected',`${o.ER>=0?'+':''}${Math.round(o.ER*100)}%${o.ERo!=null&&Math.abs(o.ERo-o.ER)>.005?' (on our view alone '+(o.ERo>=0?'+':'')+Math.round(o.ERo*100)+'%)':''}.`);
+  const SI=window._SI||(window._SI=(()=>{try{return JSON.parse(document.getElementById('shortint-data').textContent||'{}');}catch(e){return {};}})()),si=SI[r.ticker];
+  if(si)h+=row('Short interest',`${si.pct_out!=null?si.pct_out.toFixed(1)+'% of shares out':''}${si.pct_float!=null?' ('+si.pct_float.toFixed(1)+'% of float)':''}${si.dtc!=null?', '+si.dtc.toFixed(1)+' days to cover':''}${si.si_prev?', '+(si.si>=si.si_prev?'up':'down')+' '+Math.abs(Math.round((si.si/si.si_prev-1)*100))+'% on the prior report':''}${o.side==='s'&&si.dtc>=7?': crowded, a squeeze risk for a short':o.side==='s'&&si.pct_out>=20?': heavily shorted already':''}. Borrow cost is not available free.`);
+  h+=row('The bet',`a quarter of full Kelly: ${o.side==='s'?'short '+P(o.kS):'long '+P(o.kL)} of the book before position and liquidity caps.`);
+  const vn=v.notes.filter(n=>n!==r.val_note);if(r.val_note)h+=`<p class="dim" style="margin-top:6px;font-size:11.5px"><b>Input judgement.</b> ${esc(r.val_note)}</p>`;
+  if(r.inp_review)h+=`<p class="dim" style="font-size:11.5px;color:var(--amber)"><b>To review.</b> ${esc(r.inp_review)}</p>`;
+  if(vn.length)h+=`<p class="dim" style="font-size:11px">${vn.map(esc).join(' · ')}</p>`;
+  return h;}
 function tradeCard(r){
   const S=ideaScore(r);if(!S||S.level==='Screen only'&&!S.res&&!S.lens)return '';
   const res=S.res,v2=S.v2,L=S.lens,n=L&&L.nom;const rt=r.rt||{};
@@ -4857,7 +4919,7 @@ function openDrawer(i){
   const prHtml=(prd&&prd.date)?`<div class="pr-box">
       <div class="pr-row"><span class="pr-date">${esc(prd.date)}</span><span class="pr-badge pr-${(prd.sentiment||'neutral').toLowerCase()}">${esc(prd.sentiment||'\u2014')}</span></div>
       <div class="pr-headline">${esc(prd.headline||'')}</div>
-      <a class="pr-link" href="${prStLink}" target="_blank" rel="noopener">\u29c9\u00a0View on StockTitan\u00a0\u2197</a>
+      <a class="pr-link" href="${prd.url||prStLink}" target="_blank" rel="noopener">\u29c9\u00a0${prd.url?'Open the filing':'View on StockTitan'}\u00a0\u2197</a>
     </div>`:`<div class="pr-box pr-empty">No recent press release on file. <a class="pr-link" href="${prStLink}" target="_blank" rel="noopener">Check StockTitan\u00a0\u2197</a></div>`;
 
   const riskHtml=(r.sci_risk||r.val_risk)?`${r.sci_risk?`<div class="risk"><svg class="ri" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2z"/><path d="M12 9v4M12 17h.01"/></svg><div class="rt"><b style="color:var(--short)">Scientific:</b> ${esc(r.sci_risk)}</div></div>`:''}${r.val_risk?`<div class="risk val"><svg class="ri" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2z"/><path d="M12 9v4M12 17h.01"/></svg><div class="rt"><b style="color:var(--amber)">Valuation:</b> ${esc(r.val_risk)}</div></div>`:''}`:'';
@@ -4925,12 +4987,11 @@ function openDrawer(i){
     <div class="dbody">
       ${sec('Asset pipeline',ICON.asset,assetsListHtml+`<div class="sec-sublabel">Commercial model — key asset</div>`+funnel+`<div style="height:14px"></div>`+assetKV)}
       ${effHtml?sec('Latest efficacy & benchmark',ICON.eff,effHtml):''}
-      ${tradeCard(r)?sec('Trade card',ICON.asset,tradeCard(r)):''}
+      ${scenHtml(r)?sec('Scenarios: if it works, if it fails, and the bet',ICON.asset,scenHtml(r)):''}
       ${sec('Thesis','<path d="M12 2L2 7l10 5 10-5-10-5z"/>',thesisHtml)}
       ${vdHtml?sec('Bigger value driver',ICON.asset,vdHtml):''}
       ${(()=>{const c=window.ceoHtml?window.ceoHtml(r,4):'',sg=sugHtml(r);return (c||sg)?sec("What I'd tell the CEO",ICON.asset,(c?'<div class="ceo-card">'+c+'<div class="dim" style="font-size:11px;margin-top:4px">The 4 Ms, generated from the dashboard: <b>Money</b> (when and how to fund, where to spend), <b>Message</b> (how investors price you and what they are asking for), <b>Moves</b> (pivots, acquisitions, partners, strategic review), <b>Milestones</b> (the path to approval and launch). Most pressing first.</div></div>':'')+(sg?'<div style="margin-top:10px"><div class="dim" style="font-size:11px;margin-bottom:4px">From our company research (check the date; some of these predate recent events):</div>'+sg+'</div>':'')):'';})()}
       ${window.holdersCard?sec('Who owns it (13F)',ICON.asset,window.holdersCard(r.ticker)):''}
-      ${lensHtml(r)?sec('Lens: mechanism, tailwind, data',ICON.asset,lensHtml(r)):''}
       ${sec('Next catalyst',ICON.cat,catHtml)}
       ${schedHtml?sec('Catalyst schedule',ICON.cat,schedHtml):''}
       ${sec('Press releases',ICON.news,prHtml)}
@@ -7123,7 +7184,7 @@ Mkt cap ${fmtMC(r.mc)} · 6M ${ps} · ${CALLAB[r.call]||'no call'} ${os}`;
   };
 })();
 </script>
-<script type="application/json" id="pitch-ext">{{DATA:pitch-ext}}</script><script type="application/json" id="tp-extra">{{DATA:tp-extra}}</script><style id="taprint-css">
+<script type="application/json" id="pitch-ext">{}</script><script type="application/json" id="tp-extra">{}</script><style id="taprint-css">
 .tas-ext .tas-row,.tas-ext .tas-colhead{grid-template-columns:62px 54px 54px 132px minmax(170px,1fr)!important}
 .tas-ext .xc-cat.tas-row,.tas-ext .xc-cat.tas-colhead{grid-template-columns:62px 54px 54px 88px minmax(170px,1fr) 165px!important}
 .tas-ext .xc-ceo.tas-row,.tas-ext .xc-ceo.tas-colhead{grid-template-columns:62px 54px 54px 88px minmax(170px,1fr) 150px!important}

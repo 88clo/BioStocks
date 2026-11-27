@@ -1,0 +1,12 @@
+{
+ "w": 0.5,
+ "n": 0,
+ "brier_ours": null,
+ "brier_market": null,
+ "w_raw": null,
+ "prior_events": 20,
+ "by_type": [],
+ "lessons": [],
+ "built": "2026-11-27",
+ "basis": "No resolved events with a clear outcome yet: our PoS and the market's implied PoS are weighted equally until the record builds."
+}
