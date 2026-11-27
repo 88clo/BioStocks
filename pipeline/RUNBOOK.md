@@ -108,6 +108,28 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 - What's next month tables share one colgroup (table-layout fixed) so columns line up across months. What worked: the next-quarter column has 40% of the table width.
 - Options-implied moves: cdn-api.cboe.com returns 403 to automated requests; do not work around it. The move column keeps the big-day proxy (h).
 
+## Monthly input checks (added Nov 27 2026; part of every monthly refresh)
+1. After quarterly reports: `python3 scripts/runway_check.py`; patch runway where filed operating cash flow differs materially (dated patch in pipeline/patches/).
+2. `python3 scripts/stale_scan.py`: update the inputs (efficacy, PoS, peak, catalyst, thesis) of every flagged name; flagged names are held out of the book until then.
+3. Review Record › Book › "Today's ranking and audit" conflicts and fix those caused by wrong inputs.
+4. Add the month's large acquisitions and licensing upfronts to data/deals.json.
+5. When a newer SEC Form 13F data set is in cache/13f_bulk/q2: `build_13f.py`, `spec_coverage.py` (add real specialists to data/specialists-extra.json, then fetch_13f + build_13f), `build_holders.py` (top holders per company, replacing the Yahoo snapshot) and `price_check.py`.
+6. Analyst price targets (data/price-targets-baked.json, Nov 22 2026) cannot be fetched automatically (Yahoo refuses automated requests): say so in the summary.
+
+## What refreshes when (Nov 27 2026)
+- Weekly (scheduled, Monday 7:23 ET, scripts/weekly.py): prices and returns, quarter prices, liquidity and short volume, 13D/G, 8-K scan, moves, overhang, stale scan, paper book mark + rebalance, thesis watch, expectation snapshot, post-mortems, backtest, why-lines, stored-call sync, price check (when the 13F data set is present).
+- Monthly (scheduled, 14th): fundamentals and balance sheets, event check and catalysts, theses and cat-views, 13F filings and investors, backdrop, three questions, the input checks above.
+- Quarterly (inside the monthly run when SEC publishes): bulk 13F data set, specialist coverage, top holders.
+- Manual only: analyst price targets (blocked), hand theses and deal comps beyond the monthly additions, peak-sales reviews.
+
+## Record restructure, stale data and balanced calls (Nov 27 2026, midday)
+- Record has four views: Track record (line chart now above the example dot plot), Lessons (call backtest + catalyst post-mortems), North star, Book (tracked paper book + rebalance check + thesis watch + today's ranking and audit, with the stale list). The separate Top-20, Backtest, Post-mortems and Ranking audit views are folded in.
+- Conviction score: evidence counts in full at Ph3/filed/approved, 80% at Ph2, 50% at Ph1 or earlier; size of prize uses risk-adjusted peak (peak × PoS); cash shells (lead discontinued, liquidation, wind-down) get no evidence or prize credit.
+- Balanced calls (synth.html BALANCE_CALLS, run after every refreshCalls): a Strong Buy resting on cheapness with long score < 3 shows as Long; a Long with long score ≥ 7 shows as Strong Buy.
+- Stale scan found ZURA (HS Ph2 failed Nov 9, was in the book), ADCT (Oct debt restructuring) and RCUS (PRISM-1 stopped): patched in 2026-11-27_stale_fixes.py. The book was refrozen (same Nov 25 prices, no P&L lost) without ARTV, ARVN, NKTR, ZURA.
+- Holders: scripts/build_holders.py rebuilds top holders from the SEC data set (Jun 30 2026) with specialist tags by SEC identity; older Yahoo rows kept for names not in the set.
+- Capital drill-down cells shade green (bought) / red (sold) by size of the change relative to the position; the drawer's holders-over-time table does the same.
+
 ## Closing the loop: rebalance, thesis watch, post-mortems, ranking audit, weekly run (Nov 27 2026)
 - Weekly: `python3 scripts/weekly.py` does the whole refresh and writes data/weekly-digest.md (a scheduled task runs it Monday mornings and posts the digest). `--digest` rewrites the digest only.
 - Rebalance: scripts/rebalance_book.py (`--dry` to preview) applies the rule against the live Top-20 ranking: exit longs below #25 / shorts below #8 or whose call changed; fill empty slots with the best-ranked names not held; resize when live size differs by > 2% of NAV. Each rebalance appends a segment to data/book.json (NAV carried forward); scripts/mark_book.py chains segments. The paper book page shows the live check (same rule, window.REBALANCE) and the history.

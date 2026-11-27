@@ -10,6 +10,9 @@ root = pathlib.Path(__file__).resolve().parents[1]; csv.field_size_limit(10**9)
 D = json.load(open(root / "data/data.json")); cov = {r["ticker"]: r for r in D if r.get("ta") != "Acquired / Inactive"}
 cmap = json.load(open(root / "cache/13f/cusip_map.json"))
 B = root / "cache/13f_bulk/q2"
+import sys as _sys
+if not (B / "INFOTABLE.tsv").exists():
+    print("price_check: SEC bulk 13F data set not downloaded (cache/13f_bulk/q2); skipped"); _sys.exit(0)
 acc = {r["ACCESSION_NUMBER"] for r in csv.DictReader(open(B / "SUBMISSION.tsv"), delimiter="\t") if r["PERIODOFREPORT"] == "30-JUN-2026"}
 px = collections.defaultdict(list)
 with open(B / "INFOTABLE.tsv") as fh:

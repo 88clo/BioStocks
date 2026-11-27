@@ -12,13 +12,22 @@ def run(*a, t=2400):
     tail = (r.stdout.strip().splitlines() or [""])[-1]
     print("  ", tail if r.returncode == 0 else "FAILED: " + (r.stderr.strip().splitlines() or [""])[-1], flush=True)
     return r.returncode == 0, r.stdout
+def set_asof():
+    # the snapshot date = the latest XBI close in the price cache (snapshot_expect files are keyed by it)
+    try:
+        j = json.load(open(root / "cache/prices/XBI.json"))["chart"]["result"][0]
+        d = max(dt.datetime.fromtimestamp(a, dt.timezone.utc).date() for a, c in zip(j["timestamp"], j["indicators"]["quote"][0]["close"]) if c).isoformat()
+        A = json.load(open(root / "data/asof-baked.json")); A["snapshot"]["asof"] = d; json.dump(A, open(root / "data/asof-baked.json", "w"), ensure_ascii=False); print("   snapshot date", d)
+    except Exception as e: print("   set_asof skipped:", e)
 D_before = {r["ticker"]: r.get("call") for r in json.load(open(root / "data/data.json"))}
 B_before = json.load(open(root / "data/book-marks.json")) if (root / "data/book-marks.json").exists() else {}
 if "--digest" not in sys.argv:
     run("scripts/moves_since.py"); run("scripts/scan_8k.py")
-    run("scripts/fetch_prices.py", t=3600); run("scripts/refresh_apply.py")
+    run("scripts/fetch_prices.py", t=3600); run("scripts/refresh_apply.py"); set_asof(); run("scripts/rebuild_priceq.py")
+    run("scripts/trade_info.py", t=3600); run("scripts/fetch_13dg.py", t=3600); run("scripts/price_check.py", t=1800)
     run("scripts/overhang.py", t=3600)
     run("scripts/build.py", "--no-audit")
+    run("scripts/stale_scan.py", t=3600); run("scripts/build.py", "--no-audit")
     run("scripts/mark_book.py"); ok, rb = run("scripts/rebalance_book.py"); run("scripts/mark_book.py")
     run("scripts/thesis_watch.py"); run("scripts/snapshot_expect.py"); run("scripts/postmortem.py")
     run("scripts/backtest_calls.py"); run("scripts/explain_moves.py", t=3600)
@@ -52,5 +61,10 @@ if news: L += ["**8-Ks for book names:** " + "; ".join(f"{x.get('t')} {x.get('da
 OV = json.load(open(root / "data/overhang.json"))["rows"]
 raises = [(t, o["last_raise"]) for t, o in OV.items() if o.get("last_raise") and o["last_raise"]["date"] >= (dt.date.today() - dt.timedelta(days=8)).isoformat()]
 if raises: L += ["**New raises this week:** " + "; ".join(f"{t} {('$%.0fM' % (lr['amt']/1e6)) if lr.get('amt') else ''} {lr['date']}" + (f" at {lr['disc']*100:+.0f}%" if lr.get('disc') is not None else "") for t, lr in raises[:15]), ""]
+ST = json.load(open(root / "data/stale-flags.json")).get("flags", {}) if (root / "data/stale-flags.json").exists() else {}
+L += ["**Possibly stale inputs (held out of the book until updated):** " + ("; ".join(f"{t} {v[0]['date']} {v[0]['what']}: {v[0]['headline'][:80]}" for t, v in ST.items()) if ST else "none"), ""]
+PCK = json.load(open(root / "data/price-check.json")).get("rows", []) if (root / "data/price-check.json").exists() else []
+pf = [o for o in PCK if o.get("flag")]
+if pf: L += ["**Price-data flags:** " + "; ".join(f"{o['t']}: {o['flag'][:70]}" for o in pf[:10]), ""]
 (root / "data/weekly-digest.md").write_text("\n".join(L))
 print("\n".join(L))

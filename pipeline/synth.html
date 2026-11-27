@@ -136,7 +136,7 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
     if(CACHE)return CACHE;H();var RAD={};(B.RD.rows||[]).forEach(function(x){RAD[x.ticker]=x;});
     CACHE=B.DA.filter(function(r){return r.ta!=='Acquired / Inactive';}).map(function(r){
       var u=B.up(r), pt=PT[r.ticker], su=(pt&&pt.target&&r.price)?(pt.target/r.price-1)*100:null;
-      var h=HO[r.ticker], sp=0, sn=[];if(h&&h.rows)h.rows.forEach(function(x){if(SPEC.has(x.name)){sp+=x.pct||0;sn.push(NICK[x.name]||x.name.split(' ')[0]);}});
+      var h=HO[r.ticker], sp=0, sn=[];if(h&&h.rows)h.rows.forEach(function(x){if(x.spec||SPEC.has(x.name)){sp+=x.pct||0;sn.push(x.nick||NICK[x.name]||x.name.split(' ')[0]);}});
       var s=B.sci(r), rad=RAD[r.ticker], nx=nextCat(r);
       return {r:r,t:r.ticker,u:u,su:su,an:pt?pt.analysts:0,gap:(u!=null&&su!=null)?u-su:null,s:s,rw:r.runway_q,sp:sp,sn:sn,rad:rad,nx:nx,cd:nx?nx.d:'',nm:nx?nx.m:null,out:(u!=null&&u>1000),side:B.LONG[(r.call||'').toUpperCase()]?'l':B.SHORT[(r.call||'').toUpperCase()]?'s':(r.call||'').toUpperCase()==='AVOID'?'a':'n'};
     });
@@ -191,7 +191,7 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
     {k:'core',l:'Valuation',cols:[
       ['rNPV',function(x){var v=window.valParts?window.valParts(x.r):null;if(!v)return '—';var c=window.netCash?window.netCash(x.r):((typeof x.r.cash==='number'&&x.r.cash>0)?x.r.cash:0);return '<span title="Lead '+B.M(v.lead)+(v.book?' + existing business '+B.M(v.book):'')+(v.cost?' − spend to approval '+B.M(v.cost):'')+' = rNPV '+B.M(v.npv)+'; + cash '+B.M(c)+' = value '+B.M(Math.max(v.npv,0)+c)+' vs cap '+B.M(x.r.mc)+'" style="cursor:help">'+B.M(v.npv)+'</span>';},'_rnpv',null,0,'Risk-adjusted NPV of the lead program (plus any existing business, less expected spend to approval), before cash. Ours = (rNPV + cash) / market cap − 1. Hover for the build-up.'],
       ['Ours',function(x){var vn=window.valNotes?window.valNotes(x.r):'';return (x.out?'<span title="Model upside above +1,000%: usually a tiny cap against large modelled sales; check inputs" style="cursor:help">⚠ </span>':'')+(vn?'<span class="val-adj" title="Model adjustments: '+B.E(vn)+'">'+B.P(x.u)+'</span>':B.P(x.u));},'u',function(x){return x.out?'':tint(x.u,100,0);},1,'Our upside: risk-adjusted value (takeout multiple x PoS x peak sales, discounted, net of the cost still to spend, plus existing business and cash) vs market cap. Hover a value for the adjustments applied.'],
-      ['Street',function(x){return B.P(x.su)+(x.an?'<span class="sm"> ('+x.an+')</span>':'');},'su',function(x){return tint(x.su,100,0).replace('c','f');},1,'Mean analyst price target vs current price (number of analysts in brackets).'],
+      ['Street',function(x){return B.P(x.su)+(x.an?'<span class="sm"> ('+x.an+')</span>':'');},'su',function(x){return tint(x.su,100,0).replace('c','f');},1,'Mean analyst price target vs today\u2019s price (number of analysts). Targets are a snapshot from Nov 22 2026 (Yahoo); Yahoo now refuses automated requests, so targets are not refreshed automatically: treat moves since then with care.'],
       ['Deal comps',function(x){var C=dealComp(x.r);if(!C)return '—';var tip='Median of '+C.L.length+' '+C.basis+' deals: '+C.L.map(function(d){return d[1]+' ('+d[0]+', '+d[2]+') $'+d[5]+'B';}).join('; ')+'. Takeout or upfront values for assets at the same stage; a ceiling-style reference, not a value: most targets had better data than a typical name at that stage.';return '<span title="'+B.E(tip)+'">'+B.M(C.med*1e9)+(C.x!=null?'<span class="sm"> · '+(C.x>=10?Math.round(C.x):C.x.toFixed(1))+'× EV</span>':'')+'</span>';},'_dc',function(x){var C=dealComp(x.r);return C&&C.x!=null?(C.x>=5?'cg':C.x<1?'cr':''):'';},1,'Deal comparables: median takeout/upfront value of 2023-25 deals for assets at the same stage in the same cluster (falls back to the same stage across clusters when fewer than 3), and that value as a multiple of this company’s enterprise value. Hover for the deals.'],
       ['Gap',function(x){return x.gap==null?'—':(x.gap>0?'+':'')+Math.round(x.gap);},'gap',function(x){return x.out?'':tint(x.gap,150,-150).replace('c','f');},0,'Our upside minus Street upside, in percentage points. Positive = we are more bullish than analysts.'],
       ['Next',function(x){var c=x.nx;if(!c)return '—';return '<span class="'+(c.k?'nx-k ':'')+((c.p||0)<4?'nx-v':'')+'" title="'+B.E(c.e)+(c.k?' (key catalyst)':'')+'">'+(c.k?'★ ':'')+B.E(c.lab)+'</span>';},'_nx',function(x){if(!x.cd)return '';var d=(new Date(x.cd+'T00:00:00')-TODAYMS)/864e5;return d>=0&&d<=45?'ca':'';},1,'Next catalyst, at the precision the company gave: Dec 2 = exact day, Dec \'26 = month, 4Q26 = quarter, 2H26 = half, YE26 = by year-end. ★ = the key catalyst. Amber = window closes within ~6 weeks. Hover for the event.']]},
@@ -347,11 +347,18 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
     var out={},L=[],S=[];
     A.forEach(function(x){var r=x.r,e=r.effsig,d=r.diffscore,o=tocOf(x.t),k=clusterOf(r.ta)+'|'+stB(r),pm=peer[k]&&peer[k].length>=4?med(peer[k]):null,E=Math.max(ev(r),1e7),pr=(pm&&stB(r)!=='A')?E/pm:null,u=x.u;
       var pl=[],ps=[],a=function(arr,v,t){v=Math.round(v*10)/10;if(v){arr.push([v,t]);}};
-      if(e!=null){a(pl,(e-3)*.8,'efficacy '+e+'/5');a(ps,(3-e)*.8,'efficacy '+e+'/5');}
-      if(d!=null){a(pl,(d-3)*.8,'differentiation '+d+'/5');a(ps,(3-d)*.8,'differentiation '+d+'/5');}
+      // Nov 27 2026: no credit for stale or early evidence. A discontinued lead or a wind-down (pos 0, or the thesis says
+      // discontinued / liquidation / wind-down) gets no evidence or prize credit: it is scored on value and cash alone and
+      // marked as a cash shell. Evidence counts in full at Ph3 / filed / approved, 80% at Ph2 and 50% at Ph1 or earlier
+      // (target engagement is not efficacy).
+      var thx=String(r.th_view||'')+' '+String(r.call_reason||''),shell=r.pos===0||/lead (?:was |has been )?discontinued|discontinued (?:development of )?(?:the|its) lead|liquidation|wind[- ]down/i.test(thx)&&!/approved|launch/i.test(String(r.stage||''));
+      var sb=stB(r),sw=sb==='A'||sb==='3'?1:sb==='2'?.8:.5;
+      if(shell){e=null;d=null;pl.push([0,'cash shell: lead discontinued, scored on value and cash only']);}
+      if(e!=null){a(pl,(e-3)*.8*sw,'efficacy '+e+'/5'+(sw<1?' (×'+sw+' for stage)':''));a(ps,(3-e)*.8,'efficacy '+e+'/5');}
+      if(d!=null){a(pl,(d-3)*.8*sw,'differentiation '+d+'/5'+(sw<1?' (×'+sw+' for stage)':''));a(ps,(3-d)*.8,'differentiation '+d+'/5');}
       if(u!=null){var lv=Math.max(-2,Math.min(2,Math.log10(1+u/100)*2.2));a(pl,Math.round(lv*10)/10,'our value '+B.P(u));a(ps,Math.round(-lv*10)/10,'our value '+B.P(u));}
       if(pr!=null){var pv=pr<1/3?1.5:pr<.5?1:pr>3?-1.5:pr>2?-1:0;a(pl,pv,'EV '+B.M(E)+' vs peer median '+B.M(pm));a(ps,-pv,'EV '+B.M(E)+' vs peer median '+B.M(pm));}
-      var pk=r.peak_sales||0;a(pl,pk>=3e9?1:pk>=1e9?.5:0,'peak '+B.M(pk));
+      var pk=shell?0:(r.peak_sales||0),rp=pk*(r.pos||0);a(pl,rp>=1e9?1:rp>=3e8?.5:0,'risk-adjusted peak '+B.M(rp)+' ('+B.M(pk)+' × '+Math.round((r.pos||0)*100)+'%)');
       if(o){a(pl,o.ev>0?Math.min(1,o.ev*2):0,'next event '+(o.ev>=0?'+':'')+Math.round(o.ev*100)+'%');a(ps,o.ev<0?Math.min(1,-o.ev*2):0,'next event '+Math.round(o.ev*100)+'%');}
       var nc=window.netCash?netCash(r):0,rw=r.runway_q;
       if(nc>(r.mc||0))a(pl,1,'net cash above the market cap');
@@ -360,7 +367,7 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
       if(r.r3m!=null&&r.r3m>=.75)a(ps,.5,'up '+Math.round(r.r3m*100)+'% in 3 months: supply tends to follow');
       if(/late entrant/i.test(r.novelty||''))a(ps,.5,'late entrant');
       var sm=function(arr){return Math.round(arr.reduce(function(z,p){return z+p[0];},0)*10)/10;};
-      out[x.t]={l:sm(pl),s:sm(ps),pl:pl,ps:ps,side:x.side};
+      out[x.t]={l:sm(pl),s:sm(ps),pl:pl,ps:ps,side:x.side,shell:shell};
       if(x.side==='l')L.push(x.t);if(x.side==='s'||x.side==='a')S.push(x.t);});
     var gate=function(t){var r=A.filter(function(x){return x.t===t;})[0].r;return stB(r)==='A'||((r.effsig||0)+(r.diffscore||0))>=7;};
     var topL=L.filter(function(t){return out[t].l>=6&&gate(t);}).sort(function(a,b){return out[b].l-out[a].l;}).slice(0,20),topS=S.filter(function(t){return out[t].s>=4.5;}).sort(function(a,b){return out[b].s-out[a].s;}).slice(0,20);
@@ -380,6 +387,12 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
   // ---- Financing overhang (Nov 26 2026): shelf, ATM and last raise from SEC filings (scripts/overhang.py).
   var OVH=null;function ovh(t){if(!OVH)OVH=((J('overhang-data')||{}).rows)||{};var o=OVH[t];return o&&!o.err?o:null;}
   function ovhCut(days){var d=new Date(Date.now()-days*864e5);return d.toISOString().slice(0,10);}
+  // ---- Balanced calls (Nov 27 2026): the formula call is a valuation view; conviction can confirm or temper it. A Strong
+  // Buy that rests on cheapness alone with thin evidence (long score < 3) shows as Long; a Long with high conviction
+  // (long score ≥ 7) shows as Strong Buy. Value or conviction can each carry a name, ideally both; neither alone at an extreme.
+  window.BALANCE_CALLS=function(){try{CVC=null;var C=conviction();DATA.forEach(function(r){var c=C.m[r.ticker];r.call_basis=null;if(!c||r.call_override)return;
+      if(r.call==='STRONG BUY'&&c.l<3){r.call='LONG';r.call_basis='cheap, thin evidence (long score '+c.l.toFixed(1)+')';}
+      else if(r.call==='LONG'&&c.l>=7){r.call='STRONG BUY';r.call_basis='high conviction (long score '+c.l.toFixed(1)+')';}});CVC=null;}catch(e){}};
   function coHtml(){
     H();var A=rows().concat(CO.parked?parkedRows():[]),q=CO.q.trim().toLowerCase();
     var SB={},SS={};if(CO.sbuy||CO.sshort){var T20=window.TOP20?window.TOP20():null;if(T20){T20.P.concat(T20.skip||[]).forEach(function(p){(p.side>0?SB:SS)[p.x.t]=1;});}else{var CV=conviction();CV.topL.forEach(function(t){SB[t]=1;});CV.topS.forEach(function(t){SS[t]=1;});}}
@@ -873,6 +886,7 @@ mark.syn-key{background:rgba(255,214,0,.42);color:var(--text);font-weight:700;bo
   window.BRF_PAGES.co={html:coHtml,after:coAfter};
   window.BRF_PAGES.areas={html:areasHtml,after:function(d){areasAfter(d);}};
   window.BRF_PAGES.next={html:nextHtml,after:nextAfter};
+  if(window.BALANCE_CALLS)window.BALANCE_CALLS();
 })();
 </script>
 <!-- SYNTH-END -->
