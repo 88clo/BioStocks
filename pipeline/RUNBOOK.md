@@ -114,17 +114,17 @@ Open `index.html` headless (`snapshot_calls.py` prints page errors) and click th
 3. Review Record › Book › "Today's ranking and audit" conflicts and fix those caused by wrong inputs.
 4. Add the month's large acquisitions and licensing upfronts to data/deals.json.
 5. When a newer SEC Form 13F data set is in cache/13f_bulk/q2: `build_13f.py`, `spec_coverage.py` (add real specialists to data/specialists-extra.json, then fetch_13f + build_13f), `build_holders.py` (top holders per company, replacing the Yahoo snapshot) and `price_check.py`.
-6. Analyst price targets (data/price-targets-baked.json, Nov 22 2026) cannot be fetched automatically (Yahoo refuses automated requests): say so in the summary.
 
 ## What refreshes when (Nov 27 2026)
 - Weekly (scheduled, Monday 7:23 ET, scripts/weekly.py): prices and returns, quarter prices, liquidity and short volume, 13D/G, 8-K scan, moves, overhang, stale scan, paper book mark + rebalance, thesis watch, expectation snapshot, post-mortems, backtest, why-lines, stored-call sync, price check (when the 13F data set is present).
 - Monthly (scheduled, 14th): fundamentals and balance sheets, event check and catalysts, theses and cat-views, 13F filings and investors, backdrop, three questions, the input checks above.
 - Quarterly (inside the monthly run when SEC publishes): bulk 13F data set, specialist coverage, top holders.
-- Manual only: analyst price targets (blocked), hand theses and deal comps beyond the monthly additions, peak-sales reviews.
+- Manual only: hand theses and deal comps beyond the monthly additions, peak-sales reviews.
 
 ## Record restructure, stale data and balanced calls (Nov 27 2026, midday)
 - Record has four views: Track record (line chart now above the example dot plot), Lessons (call backtest + catalyst post-mortems), North star, Book (tracked paper book + rebalance check + thesis watch + today's ranking and audit, with the stale list). The separate Top-20, Backtest, Post-mortems and Ranking audit views are folded in.
 - Conviction score: no stage discount (rejected by the PM: an unprecedented Ph1 result in a large, poorly served market can matter more than incremental Ph3 data). Efficacy and differentiation are judged on the totality of the data when they are set, including read-through from outside the company: an older drug with the same mechanism (proven efficacy, toxicity problems), competitors' trials, and adjacent failures or successes (patch 2026-11-27_readthrough.py: BBOT efficacy 3, BIOA 3, ARVN PoS 0.07, OCGN PoS 0.30). Each such judgement adds a "Read-through:" sentence to the company's efficacy text so the card shows why; biomarker-only or mixed data score lower whatever the phase (patch 2026-11-27_evidence_judgement.py: BBOT 4, ARVN 2, ALT 3). Size of prize uses risk-adjusted peak (peak × PoS); cash shells (lead discontinued, liquidation, wind-down) get no evidence or prize credit.
+- Analyst price targets: scripts/fetch_targets.py, weekly (Monday run, after prices). Source: stockanalysis.com forecast pages (free, S&P Global consensus; robots.txt allows them; the domain is on this account's allowlist). One request at a time with a pause and an honest user agent; a page that fails keeps last week's entry (keep:1); names with no target in the past year are dropped.
 - Areas charts: the faint background stocks narrow to the cluster, area or indication group drilled into.
 - Calls are the valuation view; no fixed conviction threshold changes them (the 3 / 7 rule was removed at the PM's request so cheap, mediocre names are not favoured for lack of 7+ scores). Value and conviction are blended continuously in the ranking, which drives every best-ideas list.
 - Stale scan found ZURA (HS Ph2 failed Nov 9, was in the book), ADCT (Oct debt restructuring) and RCUS (PRISM-1 stopped): patched in 2026-11-27_stale_fixes.py. The book was refrozen (same Nov 25 prices, no P&L lost) without ARTV, ARVN, NKTR, ZURA.
