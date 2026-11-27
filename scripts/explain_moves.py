@@ -76,7 +76,7 @@ def filings(t):
                     out.append({"cik": cik, "acc": rc["accessionNumber"][j], "date": rc["filingDate"][j], "items": (rc.get("items") or [""] * len(rc["form"]))[j] or "", "prim": rc["primaryDocument"][j], "form": form})
     SUB[t] = out; return out
 NEWS = re.compile(r"topline|top-line|primary endpoint|met |did not meet|positive|negative|results|data|phase [123]|pivotal|FDA|approv|complete response|CRL|PDUFA|BLA|NDA|clinical hold|acqui|merger|license|collaborat|offering|private placement|pricing|delist|reverse split|chief executive|CEO|resign|restructur|workforce|strategic alternatives|wind[- ]down|discontinu|halt|terminat", re.I)
-JUNKRE = r"corporate presentation|for immediate release|media contact|investor contact|contact:|inquiries|forward ?[- ] ?looking|filed herewith|presentation dated|annual healthcare conference|no assurance|^\S+_\S+"
+JUNKRE = r"corporate presentation|for immediate release|media contact|investor contact|contact:|inquiries|forward ?[- ] ?looking|filed herewith|presentation dated|annual healthcare conference|no assurance|has not obtained marketing approval|^\S+_\S+"
 def headline(t, f):
     a = f["acc"].replace("-", ""); cf = root / f"cache/8k/{a}.json"
     if cf.exists():
@@ -127,6 +127,7 @@ def tidy(t, title, name):
         if nm and len(nm) > 2: s = re.sub(r"^" + re.escape(nm) + r"[\w.,&\- ]{0,30}?(?= (Announces|Reports|Provides|Receives|Enters|Presents|Completes|Prices|Achieves|Highlights|Shares|Initiates|to ))", "", s, flags=re.I)
     s = re.sub(r"^\s*(Announces|Reports|Provides|Highlights|Shares)\s+", "", s, flags=re.I).strip(" :-–,")
     s = re.sub(r"[\s,]+[A-Z]{3,}(?: [A-Z]{2,})*,?$", "", s).strip(" :-–,")
+    if re.search(r"has not obtained|no certainty|there can be no|is not approved", s, re.I): return ""
     if re.search(r"VOLUNTARY ANNOUNCEMENT|HONG KONG STOCK EXCHANGE", s, re.I): return ""
     s = s[:1].upper() + s[1:]
     return (s[:115].rsplit(" ", 1)[0] + "…") if len(s) > 115 else s
@@ -156,8 +157,13 @@ for n, ((t, ql, hold), c) in enumerate(sorted(W.items())):
         if br * sgn < 0.08: continue
         near = [f for f in fl if -1 <= (dt.date.fromisoformat(f["date"]) - bd).days <= 3]
         best, bt = None, ""
-        for f in sorted(near, key=lambda f: abs((dt.date.fromisoformat(f["date"]) - bd).days)):
+        PRI = re.compile(r"topline|top-line|results|data|endpoint|approv|complete response|CRL|acqui|merger|tender|terminat|discontinu|halt|license|collaborat", re.I)
+        def _rank(f):
+            ttl = tidy(t, headline(t, f), c.get("name")) or ""
+            return (0 if PRI.search(ttl) else 1 if ttl else 2, abs((dt.date.fromisoformat(f["date"]) - bd).days))
+        for f in sorted(near, key=_rank):
             ttl = tidy(t, headline(t, f), c.get("name"))
+            if ttl and (len(ttl.split()) < 5 or re.match(r"^(The Transaction|After meeting|FIRST QUARTER|[A-Z][A-Za-z]+, [A-Z][A-Za-z.]+\.?)\W*$", ttl)): ttl = ""
             if ttl and (NEWS.search(ttl) or re.search(r"\b(1\.01|2\.01|8\.01)\b", f["items"])): best, bt = f, ttl; break
             if best is None and (ttl or re.search(r"\b(1\.01|2\.01|2\.02|2\.05|3\.01|3\.02|5\.02|8\.01)\b", f["items"])): best, bt = f, ttl
         xd = xday.get(bd)

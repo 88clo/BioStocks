@@ -226,9 +226,9 @@
    ]
   },
   "OCS": {
-   "th_view": "Long, with low conviction: after OCS-01 failed in DME, privosegtor has Breakthrough designation and Ph2 signals in acute optic neuritis (+18 letters of low-contrast acuity, lower NfL and GFAP).",
+   "th_view": "Hold after a 20% run since Nov 20: after OCS-01 failed in DME, privosegtor has Breakthrough designation and Ph2 signals in acute optic neuritis (+18 letters of low-contrast acuity, lower NfL and GFAP), but the price now reflects most of that.",
    "th_miss": "At {cap}, of which {cash} is cash, the market implies ~{imp} odds for privosegtor; we use {ours}. The evidence is thin (Ph2, biomarkers and one visual measure), but no neuroprotectant is approved for optic neuropathies.",
-   "th_cat": "R&D Day Dec 8 2026; licaminlimab PREDICT-1 topline (YE2026). We would cut to Hold if the R&D Day shows no Ph3 design agreed with FDA for privosegtor.",
+   "th_cat": "R&D Day Dec 8 2026; licaminlimab PREDICT-1 topline (YE2026). We would go back to Long if the R&D Day shows an FDA-agreed Ph3 design for privosegtor.",
    "ceo_notes": [
     {
      "cat": "miles",

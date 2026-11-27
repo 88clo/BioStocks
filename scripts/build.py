@@ -32,3 +32,11 @@ if "--no-audit" not in sys.argv and (root / "tests/thaudit.py").exists():
         for l in bad: print("  AUDIT WARNING:", l)
     except Exception as e:
         print("audit skipped:", e)
+# Keep data.json's stored calls in step with the page (Nov 26 2026): offline scripts read data.json.
+if "--no-audit" not in sys.argv and (root / "scripts/sync_calls.py").exists():
+    try:
+        r = subprocess.run([sys.executable, str(root / "scripts/sync_calls.py")], capture_output=True, text=True, timeout=180)
+        print((r.stdout.strip().splitlines() or [r.stderr.strip()[-200:]])[-1])
+    except Exception as e:
+        print("sync_calls skipped:", e)
+

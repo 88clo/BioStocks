@@ -1,5 +1,5 @@
 {
- "note": "Biotech-focused 13F filers found in SEC's full 13F data set (>=30% of their 13F book and >=$200M in the companies we track) that were not on SPECIALIST_INVESTORS. Added to the specialist set for 13F analytics (fetch_13f.py / build_13f.py).",
+ "note": "Biotech-focused 13F filers found in SEC's full 13F data set (>=30% of their 13F book and >=$200M in the companies we track) that were not on SPECIALIST_INVESTORS. Added to the specialist set for 13F analytics (fetch_13f.py / build_13f.py). Nov 26 2026: added First Light Asset Management, Llc, Jones Hill Capital Lp, Rhenman & Partners Asset Management Ab, Tetragon Partners Gp Ltd, B Group, Inc., Privium Fund Management B.V., Superstring Capital Management Lp, Atle Fund Management Ab, Bml Capital Management, Llc, Act Capital Management, Llc, Knott David M Jr from scripts/spec_coverage.py (concentrated biotech books not on the list).",
  "funds": {
   "First Turn Management, LLC": "1993440",
   "Qvt Financial LP": "1290162",
@@ -21,7 +21,18 @@
   "Nvp Associates, LLC": "1545692",
   "Boone Capital Management LLC": "1882053",
   "Sectoral Asset Management Inc": "1274413",
-  "Atlas Venture Advisors, Inc.": "1767432"
+  "Atlas Venture Advisors, Inc.": "1767432",
+  "First Light Asset Management, Llc": "1600004",
+  "Jones Hill Capital Lp": "2102314",
+  "Rhenman & Partners Asset Management Ab": "1599882",
+  "Tetragon Partners Gp Ltd": "1515070",
+  "B Group, Inc.": "2043476",
+  "Privium Fund Management B.V.": "1795097",
+  "Superstring Capital Management Lp": "1931118",
+  "Atle Fund Management Ab": "1381843",
+  "Bml Capital Management, Llc": "1616824",
+  "Act Capital Management, Llc": "1442273",
+  "Knott David M Jr": "1892770"
  },
  "watch": [
   {

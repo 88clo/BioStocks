@@ -3160,6 +3160,10 @@ function finCheck(r){
   else if(held===0&&nb+ns===0)con.push('No specialist fund holds it in size: nobody informed is underwriting the story yet');
   if(r3!=null){if(r3<=-.3)pro.push('Down '+Math.round(-r3*100)+'% in 3 months: an overhang or forced selling can push price below value');else if(r3>=.5)con.push('Up '+Math.round(r3*100)+'% in 3 months: a raise into strength is likely and dilution may be priced too lightly');}
   if(sv!=null){if(sv>=.55)con.push('Short volume is '+Math.round(sv*100)+'% of trading (20-day): others are leaning against it');else if(sv<=.35)pro.push('Short volume is low ('+Math.round(sv*100)+'% of trading)');}
+  try{const OV=((_j('overhang-data')||{}).rows||{})[r.ticker]||{},lr=OV.last_raise,ago=lr?(Date.now()-Date.parse(lr.date))/864e5:null;
+    if(lr&&ago<=120)pro.push('Raised '+(lr.amt?fmtB(lr.amt):'money')+' on '+lr.date+(lr.disc!=null?' at '+Math.round(lr.disc*100)+'% to the prior close':'')+': the overhang may already be cleared');
+    else if(OV.atm&&rw<6)con.push('An at-the-market program is in place ('+OV.atm.date+(OV.atm.amt?', up to '+fmtB(OV.atm.amt):'')+'): steady selling into the market is likely until a larger raise');
+    else if(!OV.shelf&&!OV.atm)con.push('No shelf registration on file: a raise would take longer to arrange');}catch(e){}
   const size=r._fin?'Size of the fix: raising '+fmtB(r._fin.R)+' for 8 quarters of cash would be '+Math.round(r._fin.dil*100)+'% of the company at ~15% below today\u2019s price'+(r._fin.dil>.4?', large enough that whoever leads it sets the terms':', small enough to place easily')+'.':'';
   const lean=pro.length>con.length+0?'Leans overhang: if the drug holds up, a financing that removes the overhang can be the opportunity':con.length>pro.length?'Leans caution: the market may know something about the setup; find what before buying':'Mixed: answer why the market will not fund it before sizing';
   const li=a=>a.map(x=>'<li>'+esc(x)+'</li>').join('');
@@ -3168,6 +3172,27 @@ function finCheck(r){
     +(con.length?'<div style="margin-top:4px;color:var(--short)">Points to the market knowing something:</div><ul style="margin:2px 0 0 16px">'+li(con)+'</ul>':'')+(size?'<div style="margin-top:4px" class="dim">'+esc(size)+'</div>':'')+'</div>';
 }
 window.finCheck=finCheck;
+// ---- Who owns this, over time (Nov 26 2026): every specialist fund's position in this stock at each of the last four
+// 13F quarter-ends, with estimated buying/selling (end value − start value × price change). The Companies table shows only
+// today's specialist share among the top 7 holders; this shows who built or cut, and when.
+function specHold(r){
+  if(_F13===null)_F13=_j('f13-data')||{funds:[]};
+  const F=(_F13.funds||[]).filter(f=>f.spec&&f.hist&&f.hist[r.ticker]&&f.hist[r.ticker].some(v=>v>0));
+  if(!F.length)return '<div class="sm-lbl" style="margin-top:11px">Specialist funds over time</div><div class="dim" style="font-size:12px">No specialist fund has held $1M+ in the last nine quarters.</div>';
+  const Q=F[0].q,n=Q.length,k0=Math.max(1,n-4),idx=[];for(let i=k0;i<n;i++)idx.push(i);
+  const M=v=>fmtB(v),rows=F.map(f=>({f,h:f.hist[r.ticker],t:(f.trd&&f.trd[r.ticker])||[]})).sort((a,b)=>(b.h[n-1]-a.h[n-1])||(b.h[n-2]-a.h[n-2]));
+  const tot=idx.map(i=>rows.reduce((a,x)=>a+(x.h[i]||0)*1e3,0)),cnt=idx.map(i=>rows.filter(x=>x.h[i]>0).length);
+  const cell=(x,i)=>{const v=(x.h[i]||0)*1e3,tr=(x.t[i]||0)*1e3,pv=x.h[i-1]||0;
+    const tag=!pv&&v?'<span style="color:var(--long);font-size:10px;margin-right:5px">new</span>':pv&&!v?'<span style="color:var(--short);font-size:10px;margin-right:5px">exit</span>':(Math.abs(tr)>=Math.max(1e6,.1*pv*1e3)?'<span style="color:'+(tr>0?'var(--long)':'var(--short)')+';font-size:10px;margin-right:5px">'+(tr>0?'▲+':'▼−')+M(Math.abs(tr))+'</span>':'');
+    return '<td style="text-align:right;white-space:nowrap;padding:2px 6px">'+tag+(v?M(v):'<span class="dim">·</span>')+'</td>';};
+  const net=idx.map(i=>rows.reduce((a,x)=>a+(x.t[i]||0)*1e3,0));
+  let h='<div class="sm-lbl" style="margin-top:11px">Specialist funds over time (13F, $ held; ▲/▼ = estimated buying or selling that quarter)</div><div style="overflow-x:auto"><table style="font-size:11.5px;border-collapse:collapse;width:100%"><tr><th style="text-align:left;padding:2px 6px">Fund</th>'+idx.map(i=>'<th style="text-align:right;padding:2px 6px">'+Q[i]+'</th>').join('')+'</tr>';
+  h+='<tr style="font-weight:700;border-bottom:1px solid var(--line)"><td style="padding:2px 6px">All specialists</td>'+idx.map((i,j)=>'<td style="text-align:right;padding:2px 6px;white-space:nowrap">'+(Math.abs(net[j])>=1e6?'<span style="color:'+(net[j]>0?'var(--long)':'var(--short)')+';font-size:10px;margin-right:5px">'+(net[j]>0?'▲+':'▼−')+M(Math.abs(net[j]))+'</span>':'')+M(tot[j])+'<div class="dim" style="font-size:10px;font-weight:400">'+cnt[j]+' funds</div></td>').join('')+'</tr>';
+  rows.slice(0,15).forEach(x=>{h+='<tr><td style="padding:2px 6px;white-space:nowrap">'+esc(x.f.nick||x.f.name)+'</td>'+idx.map(i=>cell(x,i)).join('')+'</tr>';});
+  if(rows.length>15)h+='<tr><td colspan="'+(idx.length+1)+'" class="dim" style="padding:2px 6px;font-size:11px">+'+(rows.length-15)+' more funds with smaller or past positions</td></tr>';
+  return h+'</table></div>';
+}
+window.specHold=specHold;
 function valNotes(r){ const v=valParts(r); return v?v.notes.join('; '):''; }
 window.valNotes=valNotes;window.valParts=valParts;
 function pvVal(r){ // MC / (risk-adjusted value + cash); <1 = cheap. A value that the remaining cost wipes out = only cash left
@@ -4876,7 +4901,7 @@ function openDrawer(i){
     </div>
     ${_ptDisplay}
   </div>`;
-  const posHtml=smartMoney+phKV([
+  const posHtml=smartMoney+specHold(r)+phKV([
     ['Short interest (% float)',r.short_int,pctf],['Days to cover',r.days_cover,v=>(+v).toFixed(1)],
     ['Float',r.float_pct],['Institutional own',r.inst_own,pctf],['Insider own',r.insider_own,pctf],
     ['Recent insider activity',r.insider_tx],['Competing programs',r.competitors],

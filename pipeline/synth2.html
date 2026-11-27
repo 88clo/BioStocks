@@ -3,6 +3,7 @@
 <script type="application/json" id="investors-data">{{DATA:investors}}</script>
 <script type="application/json" id="speccov-data">{{DATA:spec_coverage}}</script>
 <script type="application/json" id="movewhy-data">{{DATA:move-why}}</script>
+<script type="application/json" id="backtest-data">{{DATA:backtest}}</script>
 <script type="application/json" id="capmkt-data">{{DATA:capital-markets}}</script>
 <script type="application/json" id="catviews-data">{{DATA:cat-views}}</script>
 <script type="application/json" id="f13-data">{{DATA:13f}}</script>
@@ -717,6 +718,69 @@
       +CAL.map(function(x){return '<tr><td class="r">'+E(x.o.lab)+'</td><td>'+B.tk(x.p.t)+'</td><td>'+(x.p.w>0?'Long':'Short')+' '+pc(x.p.w,1)+'</td><td class="sm"><b>'+E(x.o.ty)+'</b> '+E(B.trunc(x.o.e,80))+'</td><td class="r">'+Math.round(x.o.pe*100)+'%</td><td class="r '+(x.up>=0?'brf-pos':'brf-neg')+'">'+usd(x.up)+'</td><td class="r '+(x.dn>=0?'brf-pos':'brf-neg')+'">'+usd(x.dn)+'</td><td class="r '+(x.ev>=0?'brf-pos':'brf-neg')+'"><b>'+usd(x.ev)+'</b></td></tr>';}).join('')+'</table>';
     h+='<details class="ww-math"><summary>How the book is built</summary><pre style="white-space:pre-wrap;font-size:12px">'+E(BK.rules||'')+'</pre></details>';
     return h;}
+  // ---- Top-20 book (Nov 26 2026): 20 positions, long-biased (15 longs, 5 shorts), from our calls, the conviction score and
+  // the next-catalyst view, sized for a $250M sleeve. Live: recomputed from today's data each time the page loads.
+  // Selection: longs = STRONG BUY / LONG calls, ranked by conviction (long score) + catalyst tilt (expected return into the
+  // next lead-program event: + up to 1.5; event within 6 months +0.5); shorts = SHORT / STRONG SHORT, ranked the same way on
+  // the short score and a negative-skew event. Sizing: longs 5% of NAV and shorts 3% × conviction (score ÷ median score of the
+  // picks, 0.6-1.6) × catalyst skew (1 ± expected return, 0.8-1.3) × volatility (median vol ÷ own vol, 0.6-1.4), then capped at
+  // 8% (longs) / 5% (shorts) of NAV, at 10 days of 20% of average daily volume, and at 4.9% of the company; names that
+  // cannot reach 1% of NAV go to a watch list and the next name takes the slot.
+  (function(){var B=function(){return window.BRF;},J=function(id){try{return JSON.parse(document.getElementById(id).textContent);}catch(e){return null;}};
+    var NAV=250e6;
+    function build(){var b=B(),A=(window.SYN&&window.SYN.rows)?window.SYN.rows():[],C=window.CONVICTION?window.CONVICTION():null;if(!C)return null;
+      var vols=A.map(function(x){var t=window.TI&&window.TI(x.t);return t&&t.vol60;}).filter(function(v){return v>0;}).sort(function(a,c){return a-c;}),mv=vols[Math.floor(vols.length/2)]||.7;
+      var pick=function(side){var L=A.filter(function(x){var c=x.r.call;return side>0?(c==='STRONG BUY'||c==='LONG'):(c==='SHORT'||c==='STRONG SHORT');}).map(function(x){var cv=C.m[x.t];if(!cv)return null;var o=window.tocOf?window.tocOf(x.t):null,base=side>0?cv.l:cv.s,tilt=0,why=[];
+          if(o){var ev=o.ev*side;if(ev>0){tilt+=Math.min(1.5,ev*3);why.push('next event '+(o.ev>=0?'+':'')+Math.round(o.ev*100)+'% expected');}var dd=(Date.parse(o.d)-Date.now())/864e5;if(dd>=0&&dd<=183&&ev>0)tilt+=.5;}
+          var parts=(side>0?cv.pl:cv.ps).slice().sort(function(a,c){return c[0]-a[0];}).slice(0,2).map(function(p){return p[1];});
+          return {x:x,side:side,score:base+tilt,base:base,tilt:tilt,o:o,why:parts.concat(why)};}).filter(function(z){return z&&z.base>0;});
+        return L.sort(function(a,c){return c.score-a.score;});};
+      var CL=pick(1),CS=pick(-1),P=CL.concat(CS);
+      var med=function(side){var v=P.filter(function(p){return p.side===side;}).map(function(p){return p.score;}).sort(function(a,c){return a-c;});return v[Math.floor(v.length/2)]||1;},mL=med(1),mS=med(-1);
+      P.forEach(function(p){var t=window.TI&&window.TI(p.x.t),cl=function(v,a,c){return Math.max(a,Math.min(c,v));};
+        var conv=cl(p.score/(p.side>0?mL:mS),.6,1.6),skew=p.o?cl(1+p.o.ev*p.side,.8,1.3):1,vol=t&&t.vol60?cl(mv/t.vol60,.6,1.4):1;
+        var w=(p.side>0?.05:.03)*conv*skew*vol,cap=p.side>0?.08:.05,bind='conviction';
+        if(w>cap){w=cap;bind='position cap';}
+        var adv=t&&t.adv20&&p.x.r.price?t.adv20*p.x.r.price:null;if(adv){var liq=adv*.2*10/NAV;if(w>liq){w=liq;bind='liquidity (10 days of 20% ADV)';}}
+        var mc=p.x.r.mc||0;if(mc&&w*NAV>.049*mc){w=.049*mc/NAV;bind='4.9% of the company';}
+        p.w=w;p.usd=w*NAV;p.days=adv?p.usd/(adv*.2):null;p.bind=bind;p.conv=conv;p.skew=skew;p.vol=vol;});
+      // a position that cannot reach 1% of NAV does not move a $250M book: keep it on a watch list and take the next name
+      var keep=function(L,k){var out=[],skip=[];L.forEach(function(p){if(out.length>=k)return;(p.w>=.01?out:skip).push(p);});return {out:out,skip:skip};};
+      var KL=keep(CL,15),KS=keep(CS,5);P=KL.out.concat(KS.out);var SKIP=KL.skip.concat(KS.skip);
+      var gl=P.filter(function(p){return p.side>0;}).reduce(function(a,p){return a+p.w;},0),gs=P.filter(function(p){return p.side<0;}).reduce(function(a,p){return a+p.w;},0);
+      var er=P.reduce(function(a,p){return a+(p.o?p.o.ev*p.side*p.w:0);},0);
+      return {P:P,gl:gl,gs:gs,er:er,skip:SKIP};}
+    window.TOP20=build;
+    function html(){var b=B(),E=b.E,M=b.M,R=build();if(!R)return '<div class="dim">Loading…</div>';
+      var mo=function(d){var D=new Date(d+'T00:00:00Z');return isNaN(D)?'':['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][D.getUTCMonth()]+' '+D.getUTCDate();};
+      var h='<div class="brf-h"><b>Top-20 book: 15 longs, 5 shorts, sized for a $250M sleeve</b><span>Live from today’s calls, the conviction score (Companies › Conv.) and the next-catalyst view (What’s next). Gross long '+Math.round(R.gl*100)+'%, gross short '+Math.round(R.gs*100)+'%, net '+Math.round((R.gl-R.gs)*100)+'% before any XBI hedge. Weighted expected return into the next events: '+(R.er>=0?'+':'')+(R.er*100).toFixed(1)+'% of NAV.</span></div>';
+      h+='<table class="brf-t" style="font-size:12px"><tr><th>#</th><th>Name</th><th>Side</th><th>Call</th><th class="r" title="Conviction score + catalyst tilt">Score</th><th>Next catalyst</th><th class="r" title="Expected return into the next lead-program event (probability-weighted up/down)">Exp. move</th><th class="r">Weight</th><th class="r">$ size</th><th class="r" title="Days to build at 20% of average daily volume">Days to build</th><th>Size set by</th><th>Why</th></tr>';
+      R.P.forEach(function(p,i){var x=p.x,o=p.o;h+='<tr'+(i===15?' style="border-top:2px solid var(--line)"':'')+'><td class="r dim">'+(i+1)+'</td><td>'+b.tk(x.t)+'</td><td style="color:'+(p.side>0?'var(--long)':'var(--short)')+';font-weight:700">'+(p.side>0?'Long':'Short')+'</td><td>'+b.cb(x.r.call)+'</td><td class="r"><b>'+p.score.toFixed(1)+'</b>'+(p.tilt?'<span class="sm dim"> ('+p.base.toFixed(1)+'+'+p.tilt.toFixed(1)+')</span>':'')+'</td><td style="font-size:11px">'+(o?E(mo(o.d))+' · '+E(String(o.lab||o.e||'').slice(0,60)):'<span class="dim">none dated</span>')+'</td><td class="r '+(o?(o.ev*p.side>=0?'brf-pos':'brf-neg'):'')+'">'+(o?(o.ev>=0?'+':'')+Math.round(o.ev*100)+'%':'—')+'</td><td class="r"><b>'+(p.w*100).toFixed(1)+'%</b></td><td class="r">'+M(p.usd)+'</td><td class="r">'+(p.days==null?'—':p.days<1?'<1':Math.round(p.days))+'</td><td style="font-size:11px">'+E(p.bind)+'</td><td style="font-size:11px">'+E(p.why.slice(0,3).join('; '))+'</td></tr>';});
+      if(R.skip.length)h+='</table><div class="syn-cap" style="margin-top:6px"><b>High scores too small to size to 1% of NAV</b> (liquidity or company size): '+R.skip.map(function(p){return b.tk(p.x.t)+' <span class="dim">'+p.score.toFixed(1)+', max '+(p.w*100).toFixed(1)+'%</span>';}).join(' · ')+'. Worth owning in a smaller sleeve or through a private placement.</div><table class="brf-t" style="display:none">';
+      h+='</table><details class="ww-math" style="margin-top:8px"><summary>How the book is built</summary><div class="ww-sub">Longs: Strong Buy and Long calls ranked by the long conviction score (evidence, our value, value vs same-stage peers, size of prize, next event, balance sheet) plus a catalyst tilt (expected return into the next lead-program event, up to +1.5; +0.5 more if that event is within six months and skews our way). Shorts: Short and Strong Short calls ranked the same way on the short score and a negative-skew event. Weight = base (longs 5%, shorts 3% of NAV) × conviction (score ÷ the median pick, 0.6-1.6) × catalyst skew (1 ± expected return, 0.8-1.3) × volatility (median 60-day vol ÷ own, 0.6-1.4), capped at 8% / 5% of NAV, 10 days of 20% of average daily volume and 4.9% of the company (below the 5% ownership filing line). Names that cannot reach 1% of NAV are listed separately and the next name takes their place. Thin financing is not a filter (see each drawer’s financing check). The frozen book under Paper book tracks P&L; this list changes as prices, calls and catalysts change.</div></details>';
+      return '<div class="brf-doc" style="max-width:1400px">'+h+'</div>';}
+    window.BRF_PAGES=window.BRF_PAGES||{};window.BRF_PAGES.top20={html:html,after:function(doc){}};
+  })();
+  // ---- Backtest of our calls (Nov 26 2026): data/backtest.json from scripts/backtest_calls.py
+  (function(){var B=function(){return window.BRF;},J=function(id){try{return JSON.parse(document.getElementById(id).textContent);}catch(e){return null;}};
+    function html(){var b=B(),E=b.E,BT=J('backtest-data');if(!BT||!BT.calls)return '<div class="brf-doc">No backtest data.</div>';
+      var P=function(v){return (v>=0?'+':'−')+Math.abs(v*100).toFixed(1)+'%';},W=900,Ht=260,ml=50,mr=150,top=14,n=BT.days.length;
+      var all=BT.calls.concat(BT.upside),mx=Math.max.apply(null,BT.calls.map(function(g){return Math.max.apply(null,g.upath.map(Math.abs));}))||.1;
+      var X=function(i){return ml+i*(W-ml-mr)/(n-1);},Y=function(v){return top+(Ht-top-24)/2-v/mx*(Ht-top-24)/2;};
+      var COL={'Strong buy':'#15803d','Long':'#4ade80','Watch / hold':'#94a3b8','Avoid':'#fca5a5','Short':'#f87171','Strong short':'#b91c1c'};
+      var g='<svg viewBox="0 0 '+W+' '+Ht+'" style="width:100%;max-width:'+W+'px;font:11px system-ui"><line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+Y(0)+'" y2="'+Y(0)+'" stroke="var(--line)"/>';
+      [-mx,-mx/2,mx/2,mx].forEach(function(v){g+='<text x="'+(ml-4)+'" y="'+(Y(v)+4)+'" text-anchor="end" fill="var(--dim)">'+P(v)+'</text>';});
+      BT.calls.forEach(function(c){g+='<path d="M'+c.upath.map(function(v,i){return X(i).toFixed(1)+','+Y(v).toFixed(1);}).join('L')+'" fill="none" stroke="'+COL[c.name]+'" stroke-width="2.2"/><text x="'+(X(n-1)+5)+'" y="'+(Y(c.upath[n-1])+4)+'" fill="'+COL[c.name]+'" font-weight="700">'+E(c.name)+' '+P(c.vs_uni)+'</text>';});
+      [0,Math.floor(n/2),n-1].forEach(function(i){g+='<text x="'+X(i)+'" y="'+(Ht-6)+'" text-anchor="middle" fill="var(--dim)">'+BT.days[i]+'</text>';});g+='</svg>';
+      var row=function(c){return '<tr><td>'+E(c.name)+'</td><td class="r">'+c.n+'</td><td class="r '+(c.vs_uni*(c.side||1)>=0?'brf-pos':'brf-neg')+'"><b>'+P(c.vs_uni)+'</b></td><td class="r">'+P(c.ret)+'</td><td class="r">'+P(c.vs_xbi)+'</td><td class="r">'+Math.round(c.hit*100)+'%</td><td class="r">'+P(c.m1)+'</td><td class="r">'+P(c.m2)+'</td><td class="r">'+Math.round(c.down30*100)+'%</td><td class="r">'+Math.round(c.up50*100)+'%</td><td style="font-size:11px">'+c.best.map(function(z){return E(z[0])+' '+P(z[1]);}).join(', ')+'</td><td style="font-size:11px">'+c.worst.map(function(z){return E(z[0])+' '+P(z[1]);}).join(', ')+'</td></tr>';};
+      var th='<tr><th>Group</th><th class="r">Names</th><th class="r" title="Equal-weight return minus the average covered stock">vs average stock</th><th class="r">Return</th><th class="r">vs XBI</th><th class="r" title="Share that beat the average stock (longs/upper groups) or lagged it (shorts/lower groups)">Hit rate</th><th class="r" title="vs XBI after ~1 month">1 mo vs XBI</th><th class="r">2 mo vs XBI</th><th class="r">Down 30%+</th><th class="r">Up 50%+</th><th>Best</th><th>Worst</th></tr>';
+      var h='<div class="brf-h"><b>Backtest: our calls from '+E(BT.from)+' to '+E(BT.to)+'</b><span>'+BT.n+' names with the call they had in the Sep 11 snapshot (the oldest frozen call set). Over this window XBI returned '+P(BT.xbi)+' but the average covered stock '+P(BT.uni)+' (small caps sold off), so groups are measured against the average covered stock; lines show each group’s excess return over time.</span></div>'+g;
+      h+='<table class="brf-t" style="font-size:12px">'+th+BT.calls.map(row).join('')+'</table>';
+      h+='<div class="brf-h" style="margin-top:16px"><b>By our Sep upside to value</b><span>Quintiles of the model upside each name had on Sep 11 (5 = cheapest on our numbers).</span></div><table class="brf-t" style="font-size:12px">'+th+BT.upside.map(row).join('')+BT.starred.map(row).join('')+'</table>';
+      h+='<div class="q3-k" style="margin-top:12px;font-size:12.5px;line-height:1.5"><b>How to read this.</b> Two and a half months is one window, and the calls were made by an older version of the model (before the hand theses, program values and the conviction score). What it says: (1) Avoid and Strong short calls worked (−9% and −7% vs the average stock); plain Shorts did not. (2) Strong buys and Longs lagged the average stock by 3-5%, and the cheapest names on our Sep numbers did worst: in a sell-off, cheap on our model kept getting cheaper. (3) 41-46% of Strong buys and Longs are down 30% or more. That is the case you flagged: a good long can fall for reasons unrelated to the drug (financing overhangs, fund redemptions, small-cap outflows) before it works, so a short window can mislabel a sound call, and it can also hide a model that overrates cheapness. Re-run monthly (scripts/backtest_calls.py) and judge on 6-12 months, reading the down-30% names one by one: did the thesis break, or only the price?</div>';
+      return '<div class="brf-doc" style="max-width:1400px">'+h+'</div>';}
+    window.BRF_PAGES=window.BRF_PAGES||{};window.BRF_PAGES.bt={html:html,after:function(doc){}};
+  })();
   window.BRF_PAGES=window.BRF_PAGES||{};window.BRF_PAGES.book={html:html,after:function(doc){}};
   window.BOOK_SUMMARY=function(){var L=MK.marks||[],last=L[L.length-1];return BK.positions?{inc:BK.inception,asof:MK.asof,ret:last?last.ret:0,xbi:last?last.xbi:0,n:BK.positions.length,net:BK.net,gross:BK.gross}:null;};
 })();

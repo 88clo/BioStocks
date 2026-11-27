@@ -107,6 +107,36 @@ if (root / "cache/13f_bulk/q2/INFOTABLE.tsv").exists():
             if cu in cmap or cu in _seen: continue
             _seen.add(cu); raw = row[ix["NAMEOFISSUER"]]; k = nn(raw)
             if k in names and (len(k) >= 8 or BIOW.search(raw)) and okmap(cu, raw, names[k]): cmap[cu] = names[k]; pre_added += 1
+    # Price check on every mapping (Nov 26 2026): the median value/shares for a CUSIP across all Jun 30 filers is its Jun 30
+    # price. If it is far from our Jun 30 close for the mapped ticker (and no split since explains it), the CUSIP belongs
+    # to a different company with a similar name (e.g. Compass Pathways mapped to Compass Therapeutics).
+    import statistics as _st
+    _pc = {}
+    with open(root / "cache/13f_bulk/q2/INFOTABLE.tsv") as fh:
+        rd = _csv.reader(fh, delimiter="\t"); ix = {h: i for i, h in enumerate(next(rd))}
+        for row in rd:
+            cu = row[ix["CUSIP"]].upper()
+            if cu not in cmap or row[ix["PUTCALL"]] or row[ix["SSHPRNAMTTYPE"]] != "SH": continue
+            try:
+                v, sh = float(row[ix["VALUE"]]), float(row[ix["SSHPRNAMT"]])
+                if v > 0 and sh > 0: _pc.setdefault(cu, []).append(v / sh)
+            except ValueError: pass
+    def _split_factor(t):
+        f = root / f"cache/prices/{t}.json"; fac = 1.0
+        try:
+            ev = (json.load(open(f))["chart"]["result"][0].get("events") or {}).get("splits", {})
+            for x in ev.values():
+                if x["date"] > 1782777600: fac *= x["numerator"] / x["denominator"]      # after Jun 30 2026
+        except Exception: pass
+        return fac
+    _bad = []
+    for cu, obs in _pc.items():
+        t = cmap[cu]; ours = px(t, "2Q26")
+        if len(obs) < 2 or not ours: continue
+        r_ = ours / _st.median(obs) * _split_factor(t)
+        if not (0.5 <= r_ <= 2.0): _bad.append((cu, t, round(_st.median(obs), 2), ours))
+    for cu, t, a, b_ in _bad: del cmap[cu]
+    print("price check removed", len(_bad), "CUSIP mappings:", [(t, cu, a, b_) for cu, t, a, b_ in _bad][:15])
     print("pre-mapped", pre_added, "CUSIPs from the bulk data set")
 out, pool = [], collections.Counter()
 spec = set(json.loads(re.search(r"const SPECIALIST_INVESTORS=new Set\((\[.*?\])\);", tpl).group(1))) | set(EXTRA)
