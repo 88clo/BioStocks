@@ -4,6 +4,8 @@
 <script type="application/json" id="speccov-data">{{DATA:spec_coverage}}</script>
 <script type="application/json" id="movewhy-data">{{DATA:move-why}}</script>
 <script type="application/json" id="backtest-data">{{DATA:backtest}}</script>
+<script type="application/json" id="thesiswatch-data">{{DATA:thesis-watch}}</script>
+<script type="application/json" id="postmortems-data">{{DATA:postmortems}}</script>
 <script type="application/json" id="capmkt-data">{{DATA:capital-markets}}</script>
 <script type="application/json" id="catviews-data">{{DATA:cat-views}}</script>
 <script type="application/json" id="f13-data">{{DATA:13f}}</script>
@@ -752,7 +754,7 @@
       var KL=keep(CL,15),KS=keep(CS,5);P=KL.out.concat(KS.out);var SKIP=KL.skip.concat(KS.skip);
       var gl=P.filter(function(p){return p.side>0;}).reduce(function(a,p){return a+p.w;},0),gs=P.filter(function(p){return p.side<0;}).reduce(function(a,p){return a+p.w;},0);
       var er=P.reduce(function(a,p){return a+(p.o?p.o.ev*p.side*p.w:0);},0);
-      return {P:P,gl:gl,gs:gs,er:er,skip:SKIP};}
+      return {P:P,gl:gl,gs:gs,er:er,skip:SKIP,allL:CL,allS:CS};}
     window.TOP20=build;
     function html(){var b=B(),E=b.E,M=b.M,R=build();if(!R)return '<div class="dim">Loading…</div>';
       var mo=function(d){var D=new Date(d+'T00:00:00Z');return isNaN(D)?'':['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][D.getUTCMonth()]+' '+D.getUTCDate();};
@@ -786,6 +788,60 @@
   })();
   window.BRF_PAGES=window.BRF_PAGES||{};window.BRF_PAGES.book={html:html,after:function(doc){}};
   window.BOOK_SUMMARY=function(){var L=MK.marks||[],last=L[L.length-1];return BK.positions?{inc:BK.inception,asof:MK.asof,ret:last?last.ret:0,xbi:last?last.xbi:0,n:BK.positions.length,net:BK.net,gross:BK.gross}:null;};
+})();
+// ---- Closing the loop (Nov 27 2026): rebalance check and thesis watch on the paper book; post-mortems; ranking audit.
+(function(){
+  var B=function(){return window.BRF;},J=function(id){try{return JSON.parse(document.getElementById(id).textContent);}catch(e){return null;}};
+  var P=function(v){return (v>=0?'+':'−')+Math.abs(v*100).toFixed(1)+'%';};
+  // live rebalance check, same rule as scripts/rebalance_book.py
+  function rebalance(){var BK=J('book-data')||{},MK=J('bookmarks-data')||{},R=window.TOP20?window.TOP20():null;if(!R||!BK.positions)return null;
+    var nav=(MK.marks&&MK.marks.length?MK.marks[MK.marks.length-1].nav:BK.nav),last={};(MK.positions||[]).forEach(function(p){last[p.t]=p.px;});
+    var rk={l:{},s:{}};R.allL.forEach(function(p,i){rk.l[p.x.t]={rank:i+1,w:p.w,score:p.score};});R.allS.forEach(function(p,i){rk.s[p.x.t]={rank:i+1,w:p.w,score:p.score};});
+    var T=[],keep={},held={};BK.positions.forEach(function(p){if(p.side!=='l'&&p.side!=='s')return;held[p.t]=p;var lv=rk[p.side][p.t],lim=p.side==='l'?25:8,cw=Math.abs(p.shares*(last[p.t]||p.px0))/nav;
+      if(!lv||lv.rank>lim){T.push({t:p.t,act:'exit',side:p.side,from:cw,to:0,why:lv?'now ranked #'+lv.rank:'no longer a '+(p.side==='l'?'Long':'Short')+' call'});return;}
+      if(Math.abs(lv.w-cw)>.02){T.push({t:p.t,act:'resize',side:p.side,from:cw,to:lv.w,why:'live size '+(lv.w*100).toFixed(1)+'%'});}keep[p.t]=p.side;});
+    [['l',R.allL,15],['s',R.allS,5]].forEach(function(z){var have=Object.keys(keep).filter(function(t){return keep[t]===z[0];}).length;z[1].some(function(p,i){if(have>=z[2])return true;if(keep[p.x.t]||p.w<.01)return false;keep[p.x.t]=z[0];have++;T.push({t:p.x.t,act:'add',side:z[0],from:0,to:p.w,why:'live rank #'+(i+1)+', score '+p.score.toFixed(1)});return false;});});
+    return {T:T,nav:nav};}
+  function extra(){var b=B(),E=b.E,M=b.M,h='',RB=rebalance(),TW=J('thesiswatch-data')||{},MK=J('bookmarks-data')||{};
+    var SEG=MK.segments||[];
+    h+='<div class="brf-h" style="margin-top:18px"><b>Rebalance check: book vs today’s Top-20 ranking</b><span>Rule: exit a long ranked below #25 (a short below #8) or whose call has changed; fill empty slots with the best-ranked names not held; resize when the live size differs by more than 2% of NAV; otherwise leave it. The buffer stops names flipping in and out on small score changes. Applied weekly by scripts/rebalance_book.py (Monday, on Friday’s close) and after a book name’s catalyst resolves; each rebalance starts a new segment with NAV carried forward.</span></div>';
+    if(RB&&RB.T.length)h+='<table class="brf-t" style="font-size:12px"><tr><th>Trade</th><th>Name</th><th>Side</th><th class="r">From</th><th class="r">To</th><th class="r">$</th><th>Why</th></tr>'+RB.T.map(function(x){return '<tr><td><b style="color:'+(x.act==='exit'?'var(--short)':x.act==='add'?'var(--long)':'var(--text)')+'">'+x.act+'</b></td><td>'+b.tk(x.t)+'</td><td>'+(x.side==='l'?'Long':'Short')+'</td><td class="r">'+(x.from*100).toFixed(1)+'%</td><td class="r">'+(x.to*100).toFixed(1)+'%</td><td class="r">'+M(Math.abs(x.to-x.from)*RB.nav)+'</td><td style="font-size:11px">'+E(x.why)+'</td></tr>';}).join('')+'</table>';
+    else h+='<div class="syn-cap">No trades due: every holding is still inside the buffer and at its live size.</div>';
+    if(SEG.length>1)h+='<details class="ww-math"><summary>Rebalance history ('+(SEG.length-1)+')</summary><div class="ww-sub">'+SEG.slice(1).map(function(s){return '<b>'+E(s.start)+'</b> (NAV '+M(s.nav0)+'): '+(s.trades||[]).map(function(x){return x.act+' '+E(x.t)+' '+(x.from*100).toFixed(1)+'→'+(x.to*100).toFixed(1)+'%';}).join(', ');}).join('<br>')+'</div></details>';
+    var rows=TW.rows||[];if(rows.length){var ord={'break?':0,check:1,intact:2};rows=rows.slice().sort(function(a,c){return ord[a.status]-ord[c.status];});
+      h+='<div class="brf-h" style="margin-top:18px"><b>Thesis watch</b><span>For each book name: what would make us wrong, the move since entry vs XBI, and every 8-K since entry, sorted into thesis-break language (discontinued, failed, CRL, clinical hold, going concern, CEO exit, restructuring) and setup changes (financing, delays, listing notices, officer changes). A flag means reread the thesis, not sell: the aim is to tell a broken thesis apart from a falling price. Checked weekly by scripts/thesis_watch.py, as of '+E(TW.asof||'')+'.</span></div>';
+      h+='<table class="brf-t" style="font-size:12px"><tr><th>Name</th><th>Status</th><th class="r">vs XBI since entry</th><th>We are wrong if</th><th>Flags and filings since entry</th></tr>'+rows.map(function(o){var col=o.status==='break?'?'var(--short)':o.status==='check'?'var(--amber)':'var(--long)';
+        return '<tr><td>'+b.tk(o.t)+' <span class="sm">'+(o.side==='l'?'L':'S')+'</span></td><td><b style="color:'+col+'">'+E(o.status)+'</b></td><td class="r '+(o.vs_xbi>=0?'brf-pos':'brf-neg')+'">'+P(o.vs_xbi)+'</td><td style="font-size:11px;max-width:380px">'+E(o.wrong_if||'—')+'</td><td style="font-size:11px;max-width:420px">'+(o.flags.length?'<b>'+o.flags.map(E).join('; ')+'</b><br>':'')+(o.filings||[]).slice(-3).map(function(f){return E(f.date)+': '+E((f.items&&f.items[0])||f.headline||'8-K').slice(0,110);}).join('<br>')+'</td></tr>';}).join('')+'</table>';}
+    return '<div class="brf-doc" style="max-width:1400px">'+h+'</div>';}
+  var bk=window.BRF_PAGES&&window.BRF_PAGES.book;if(bk){var h0=bk.html;bk.html=function(){return h0.apply(this,arguments)+extra();};}
+  window.REBALANCE=rebalance;
+  // post-mortems page
+  function pm(){var b=B(),E=b.E,PM=J('postmortems-data')||{events:[],calibration:{}},ev=PM.events||[],cal=PM.calibration||{};
+    var h='<div class="brf-h"><b>Catalyst post-mortems</b><span>Each week we freeze what we expect from every name’s next lead-program event (probability of a good outcome, move if good or bad: data/expect/). When an event’s window closes, it is graded here against what happened: the biggest one-day move in the window, the company’s 8-K near it, and the move vs XBI. Outcome is read from that move (good ≥ +10%, bad ≤ −10%, else unclear). Snapshots so far: '+E((PM.snapshots||[]).join(', ')||'none')+'.</span></div>';
+    var K=Object.keys(cal);
+    if(K.length)h+='<div class="brf-h" style="margin-top:8px"><b>Calibration by event type</b><span>Are our odds right? Compare the average probability we gave with the share that turned out good, and the move we expected with the move that came.</span></div><table class="brf-t" style="font-size:12px"><tr><th>Event type</th><th class="r">Graded</th><th class="r">Our avg odds of good</th><th class="r">Turned out good</th><th class="r">Direction right</th><th class="r">Expected |move|</th><th class="r">Actual |move|</th></tr>'+K.map(function(k){var c=cal[k];return '<tr><td>'+E(k)+'</td><td class="r">'+c.n+'</td><td class="r">'+Math.round(c.pe*100)+'%</td><td class="r"><b>'+Math.round(c.good*100)+'%</b></td><td class="r">'+Math.round(c.right*100)+'%</td><td class="r">'+(c.exp_abs!=null?Math.round(c.exp_abs*100)+'%':'—')+'</td><td class="r">'+Math.round(c.act_abs*100)+'%</td></tr>';}).join('')+'</table>';
+    if(!ev.length)h+='<div class="q3-k" style="margin-top:10px">No event has been graded yet: the first expectation snapshot was frozen on '+E((PM.snapshots||[])[0]||'—')+', and grades appear as each event’s window closes (many 4Q26 / 2H26 windows close Dec 31). A slipped event is carried into the next snapshot rather than graded early.</div>';
+    else h+='<table class="brf-t" style="font-size:12px;margin-top:10px"><tr><th>Window closed</th><th>Name</th><th>Event</th><th>Our call</th><th class="r">Odds good</th><th class="r">If good / bad</th><th class="r">Biggest day</th><th>What the 8-K said</th><th class="r">Move vs XBI</th><th>Grade</th></tr>'+ev.map(function(o){return '<tr><td>'+E(o.d)+'</td><td>'+b.tk(o.t)+'</td><td style="font-size:11px;max-width:300px">'+E(String(o.event).slice(0,120))+'</td><td>'+b.cb(o.call)+'</td><td class="r">'+(o.pe!=null?Math.round(o.pe*100)+'%':'—')+'</td><td class="r">'+(o.up!=null?P(o.up)+' / '+P(o.dn):'—')+'</td><td class="r '+(o.big>=0?'brf-pos':'brf-neg')+'">'+P(o.big)+' <span class="sm">'+E(o.big_day.slice(5))+'</span></td><td style="font-size:11px;max-width:300px">'+E(o.headline||(o.news?'':'no clear news yet'))+'</td><td class="r">'+P(o.move-o.xbi)+'</td><td><b style="color:'+(o.right===true?'var(--long)':o.right===false?'var(--short)':'var(--dim)')+'">'+(o.outcome)+(o.right===true?' · we were right':o.right===false?' · we were wrong':'')+'</b></td></tr>';}).join('')+'</table>';
+    return '<div class="brf-doc" style="max-width:1400px">'+h+'</div>';}
+  // ranking audit page
+  function audit(){var b=B(),E=b.E,R=window.TOP20?window.TOP20():null,C=window.CONVICTION?window.CONVICTION():null;if(!R||!C)return '<div class="brf-doc">Loading…</div>';
+    var A=(window.SYN&&window.SYN.rows)?window.SYN.rows():[],rk={};R.allL.forEach(function(p,i){rk[p.x.t]={side:'l',rank:i+1,p:p};});R.allS.forEach(function(p,i){rk[p.x.t]={side:'s',rank:i+1,p:p};});
+    var inBook={};R.P.forEach(function(p){inBook[p.x.t]=1;});
+    var conf=[];A.forEach(function(x){var c=x.r.call,cv=C.m[x.t];if(!cv)return;var k=rk[x.t];
+      if(c==='STRONG BUY'&&(!k||k.rank>40))conf.push([x.t,c,'Strong Buy but ranked '+(k?'#'+k.rank:'outside the long list')+' (long score '+cv.l.toFixed(1)+'): the valuation call is strong, the evidence or catalyst is not']);
+      if((c==='LONG'||c==='STRONG BUY')&&cv.s>cv.l+2)conf.push([x.t,c,'Long call but the short score ('+cv.s.toFixed(1)+') beats the long score ('+cv.l.toFixed(1)+')']);
+      if((c==='SHORT'||c==='STRONG SHORT')&&cv.l>cv.s+2)conf.push([x.t,c,'Short call but the long score ('+cv.l.toFixed(1)+') beats the short score ('+cv.s.toFixed(1)+')']);
+      if(k&&k.side==='l'&&k.rank<=15&&!inBook[x.t])conf.push([x.t,c,'Top-15 long by score but not in the book: too small to size to 1% of NAV']);
+      var th=String(x.r.th_view||'');if(th&&/^(Short|Avoid)/i.test(th)&&(c==='LONG'||c==='STRONG BUY'))conf.push([x.t,c,'Thesis opens "'+th.slice(0,30)+'…" but the call is '+c]);
+      if(th&&/^(Long|Buy|Strong buy)/i.test(th)&&(c==='SHORT'||c==='STRONG SHORT'||c==='AVOID'))conf.push([x.t,c,'Thesis opens "'+th.slice(0,30)+'…" but the call is '+c]);});
+    var parts=function(p){return p.x?((p.side>0?C.m[p.x.t].pl:C.m[p.x.t].ps)||[]).map(function(z){return (z[0]>0?'+':'')+z[0]+' '+z[1];}).join(' · '):'';};
+    var tb=function(L,side,n){return '<table class="brf-t" style="font-size:11.5px"><tr><th>#</th><th>Name</th><th>Call</th><th class="r">Score</th><th class="r">Base</th><th class="r">Catalyst tilt</th><th class="r">Size</th><th>In book</th><th>Score parts</th></tr>'+L.slice(0,n).map(function(p,i){return '<tr><td class="r dim">'+(i+1)+'</td><td>'+b.tk(p.x.t)+'</td><td>'+b.cb(p.x.r.call)+'</td><td class="r"><b>'+p.score.toFixed(1)+'</b></td><td class="r">'+p.base.toFixed(1)+'</td><td class="r">'+(p.tilt?'+'+p.tilt.toFixed(1):'—')+'</td><td class="r">'+(p.w*100).toFixed(1)+'%</td><td>'+(inBook[p.x.t]?'<b style="color:var(--long)">yes</b>':p.w<.01?'<span class="dim">too small</span>':'')+'</td><td style="font-size:10.5px;max-width:520px">'+E(parts(p))+'</td></tr>';}).join('')+'</table>';};
+    var h='<div class="brf-h"><b>Ranking audit</b><span>Why each name sits where it does in the one ranking that drives Brief › Best ideas, the three questions, the Companies filters, What’s next highlights and the paper book, and every place where a call, a score and a thesis disagree.</span></div>';
+    h+='<div class="brf-h" style="margin-top:8px"><b>Conflicts ('+conf.length+')</b><span>Each one is either a reason to revisit an input or a deliberate difference (a cheap name with thin evidence can be a Strong Buy on value yet rank low).</span></div>'+(conf.length?'<table class="brf-t" style="font-size:12px"><tr><th>Name</th><th>Call</th><th>Conflict</th></tr>'+conf.map(function(c){return '<tr><td>'+b.tk(c[0])+'</td><td>'+b.cb(c[1])+'</td><td style="font-size:11.5px">'+E(c[2])+'</td></tr>';}).join('')+'</table>':'<div class="syn-cap">None.</div>');
+    h+='<div class="brf-h" style="margin-top:14px"><b>Long ranking (top 30)</b><span>Score = long conviction score + catalyst tilt.</span></div>'+tb(R.allL,1,30);
+    h+='<div class="brf-h" style="margin-top:14px"><b>Short ranking (top 12)</b><span>Score = short conviction score + catalyst tilt.</span></div>'+tb(R.allS,-1,12);
+    return '<div class="brf-doc" style="max-width:1400px">'+h+'</div>';}
+  window.BRF_PAGES=window.BRF_PAGES||{};window.BRF_PAGES.pm={html:pm,after:function(){}};window.BRF_PAGES.audit={html:audit,after:function(){}};
 })();
 </script>
 <!-- SYNTH2-END -->

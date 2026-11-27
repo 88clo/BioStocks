@@ -1,0 +1,6 @@
+{
+ "asof": "2026-11-25",
+ "nav": 250000001,
+ "trades": [],
+ "rule": "- Exit a long that has fallen below #25 in the live long ranking (or lost its Long / Strong Buy call), and a short below #8\n    (or no longer a Short call). The buffer (25 vs 15, 8 vs 5) stops names flipping in and out on small score changes.\n  - Fill empty slots with the highest-ranked live names not held, at their live size.\n  - Resize a kept name when its live weight differs from its current weight by more than 2% of NAV.\n  - Otherwise leave it alone. Run weekly (Monday, before the open, on Friday's close) and after a book name's catalyst resolves."
+}
