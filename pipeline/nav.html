@@ -39,7 +39,24 @@ body:not(.n5-model) .controls .psflt,body:not(.n5-model) #stageRateBtn,body:not(
 body.n5-val #dcfwrap{max-height:none!important}
 #n5model.on{border-color:var(--cyan)!important;color:var(--text)!important}
 @media(max-width:600px){#nav5 .n5-logo{display:none}}
-@media print{#nav5,#n5pop{display:none!important}body{padding-top:0}}
+@media print{#n5guide{display:none!important}#nav5,#n5pop{display:none!important}body{padding-top:0}}
+
+#n5guide{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.45);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:40px 16px}
+#n5guide .g-box{background:var(--bg);border:1px solid var(--line);border-radius:12px;max-width:1180px;width:100%;padding:22px 26px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+#n5guide h2{font-family:var(--disp);font-size:18px;margin:0 0 4px}#n5guide h3{font-size:13px;margin:18px 0 8px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+#n5guide .g-sub{font-size:12.5px;color:var(--dim);margin:0 0 6px}
+#n5guide .g-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+#n5guide .g-card{border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:var(--panel)}
+#n5guide .g-card b.t{font-size:13.5px;cursor:pointer;color:var(--text)}#n5guide .g-card b.t:hover{color:var(--cyan)}
+#n5guide .g-card .w{font-size:11.5px;color:var(--dim);margin:2px 0 6px}
+#n5guide .g-it{font-size:12px;margin:5px 0;display:flex;gap:6px;align-items:flex-start}
+#n5guide .g-dot{flex:0 0 auto;font-size:10px;font-weight:700;border-radius:9px;padding:1px 6px;color:#fff;margin-top:1px}
+#n5guide .d-w{background:#16a34a}#n5guide .d-m{background:#2563eb}#n5guide .d-q{background:#7c3aed}#n5guide .d-h{background:#6b7280}
+#n5guide .g-flow{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap}
+#n5guide .g-step{flex:1 1 170px;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-size:11.5px;background:var(--panel)}
+#n5guide .g-step b{display:block;font-size:12.5px;margin-bottom:4px}
+#n5guide .g-arr{align-self:center;font-size:20px;color:var(--faint)}
+#n5guide .g-x{float:right;background:none;border:1px solid var(--line);border-radius:7px;padding:4px 10px;cursor:pointer;color:var(--dim)}
 </style>
 <script id="nav5-js">
 (function(){
@@ -56,11 +73,11 @@ body.n5-val #dcfwrap{max-height:none!important}
     {k:'companies',l:'Companies',lens:[{k:'co',l:'Companies'}]},
     {k:'areas',l:'Areas',lens:[{k:'areas',l:'Areas'}]},
     {k:'next',l:"What's next",lens:[{k:'next',l:"What's next"}]},
-    {k:'capital',l:'Capital',lens:[{k:'investors',l:'Investors'},{k:'liquidity',l:'Liquidity'}]},
+    {k:'capital',l:'Capital',lens:[{k:'investors',l:'Investors'},{k:'liquidity',l:'Liquidity'},{k:'issuers',l:'Issuers'}]},
     {k:'record',l:'Record',lens:[{k:'track',l:'Track record'},{k:'lessons',l:'Lessons'},{k:'north',l:'North star'},{k:'book',l:'Book'}]}
   ];
   var LEGACY=[['table','All fields table'],['dcf','DCF model and assumptions'],['map','Value vs momentum (per company)'],['crowd','Holders and analysts by company'],['sh','Holders by fund'],['returns','Company returns 1M–36M'],['cal','Catalyst calendar grid'],['flow','Raise and IPO lists'],['ipo','IPO detail'],['gaps','Value gaps lists'],['ta','Area notes (TA summary)'],['parked','Parked names'],['port','Portfolio editor'],['board','Return tiles']];
-  var BRF={brief:1,book:1,bt:1,top20:1,pm:1,audit:1,lessons:1,track:1,flow:1,gaps:1,co:1,areas:1,next:1,north:1,investors:1,liquidity:1}, MAIN={table:1,parked:1,crowd:1,sh:1,board:1,returns:1,cal:1,ipo:1,port:1,map:1,dcf:1};
+  var BRF={brief:1,book:1,bt:1,top20:1,pm:1,audit:1,lessons:1,track:1,flow:1,gaps:1,co:1,areas:1,next:1,north:1,investors:1,liquidity:1,issuers:1}, MAIN={table:1,parked:1,crowd:1,sh:1,board:1,returns:1,cal:1,ipo:1,port:1,map:1,dcf:1};
   var mode={brief:'brief'};
   var last={};TABS.forEach(function(t){last[t.k]=t.lens[0].k;});
   var cur={tab:'brief',lens:'brief'};
@@ -69,6 +86,36 @@ body.n5-val #dcfwrap{max-height:none!important}
   var pop=document.createElement('div');pop.id='n5pop';document.body.appendChild(pop);
   if(!document.getElementById('n5ql')){var dl=document.createElement('datalist');dl.id='n5ql';dl.innerHTML=(typeof DATA!=='undefined'?DATA:[]).map(function(r){return '<option value="'+r.ticker+' — '+String(r.nick||r.name||'').replace(/"/g,'')+'">';}).join('');document.body.appendChild(dl);}
   function el(id){return document.getElementById(id);}
+  // ---- Visual guide (Nov 27 2026): where everything is, what feeds it and how often it refreshes.
+  function openGuide(){pop.style.display='none';var g=document.getElementById('n5guide');if(g){g.remove();}
+    var D=function(c,l){return '<span class="g-dot d-'+c+'">'+l+'</span>';},W=D('w','weekly'),Mo=D('m','monthly'),Q=D('q','quarterly'),H=D('h','by hand');
+    var it=function(d,t){return '<div class="g-it">'+d+'<span>'+t+'</span></div>';};
+    var card=function(tab,lens,title,what,items){return '<div class="g-card"><b class="t" data-go="'+tab+'|'+lens+'">'+title+' →</b><div class="w">'+what+'</div>'+items.join('')+'</div>';};
+    var h='<div class="g-box"><button class="g-x" id="n5gx">Close ✕</button><h2>How to find your way around</h2><p class="g-sub">Six tabs, one ranking. Click a card title to go there. Coloured tags show how often each piece refreshes.</p>'+
+    '<p class="g-sub">'+W+' Monday 7:23 ET run &nbsp; '+Mo+' 14th of the month, with judgement &nbsp; '+Q+' when SEC posts new 13F data &nbsp; '+H+' edited directly</p>'+
+    '<h3>Where things are</h3><div class="g-grid">'+
+    card('brief','brief','Brief','Start here: what matters now',[it(W,'Best ideas: the top of the one ranking'),it(W,'What changed this week (moves, filings, why)'),it(Mo,'The three questions and the next-quarter backdrop')])+
+    card('companies','co','Companies','Every covered name in one sortable table',[it(W,'Price, returns, analyst targets, short interest, overhang'),it(Mo,'Call inputs: PoS, peak sales, timing, theses'),it(Q,'Who owns it (13F holders)'),it(W,'Click any ticker for its card: scenarios, filings, financing check')])+
+    card('areas','areas','Areas','Therapeutic areas, drill down to companies',[it(W,'History chart: returns by area; background narrows as you drill in'),it(Mo,'Outlook chart: next-quarter view per area')])+
+    card('next','next',"What's next",'Catalysts by date',[it(Mo,'Catalyst dates, odds and written views'),it(W,'Expected moves, book names flagged, 8-K updates')])+
+    card('capital','investors','Capital','Who owns, who buys, who raises',[it(Q,'Investors: specialist leaderboard and fund holdings over time'),it(Q,'Liquidity: money raised and M&A by quarter'),it(W,'Issuers: who is likely to raise, likely anchors, and how past deals traded')])+
+    card('record','book','Record','How we are doing, and why',[it(W,'Book: paper book of 20, sizes, risk (beta, hedge, stresses), full ranking'),it(W,'Lessons: calibration vs the market, backtest, post-mortems'),it(Mo,'Track record of calls'),it(H,'North star: what the dashboard is for')])+
+    '</div><h3>How data gets in</h3><div class="g-flow">'+
+    '<div class="g-step"><b>Public sources</b>Prices and volume (Yahoo daily history) · analyst targets and short interest (stockanalysis.com) · SEC EDGAR: 8-Ks, prospectuses, 13F, 13D/G, financial statements · William Blair and deal data (quarterly)</div><div class="g-arr">→</div>'+
+    '<div class="g-step"><b>'+W+' Weekly run</b>Prices, targets, short interest, filings, overhang, deal history, betas, stale-data scan, book mark and rebalance, calibration, digest</div><div class="g-arr">→</div>'+
+    '<div class="g-step"><b>'+Mo+' Monthly run</b>Event check with judgement: PoS, peak sales and theses re-judged from first principles, read-through, catalysts, fund 13Fs, deal comps, backdrop</div><div class="g-arr">→</div>'+
+    '<div class="g-step"><b>This page</b>Rebuilt and tested after each run; backups kept for every version</div></div>'+
+    '<h3>How a company is judged</h3><div class="g-flow">'+
+    '<div class="g-step"><b>1. Judged inputs</b>PoS, peak sales (patients × price), timing; each with a written reason</div><div class="g-arr">→</div>'+
+    '<div class="g-step"><b>2. Two scenarios</b>Value if the lead works; value if it fails (cash left after burn)</div><div class="g-arr">→</div>'+
+    '<div class="g-step"><b>3. Odds vs the price</b>The price implies its own PoS; ours is blended with it by track record</div><div class="g-arr">→</div>'+
+    '<div class="g-step"><b>4. Rank and size</b>Kelly growth ranks every name; quarter Kelly sizes it within liquidity and ownership caps</div></div>'+
+    '<p class="g-sub" style="margin-top:14px">Older full-data tables (all fields, DCF, holders by fund and more) stay under ⓘ About.</p></div>';
+    g=document.createElement('div');g.id='n5guide';g.innerHTML=h;document.body.appendChild(g);
+    g.onclick=function(ev){if(ev.target===g||ev.target.id==='n5gx'){g.remove();return;}var t=ev.target.closest('[data-go]');if(t){var a=t.getAttribute('data-go').split('|');g.remove();try{navGo(a[0],a[1]);}catch(e){}}};
+    document.addEventListener('keydown',function esc(e){if(e.key==='Escape'){var x=document.getElementById('n5guide');if(x)x.remove();document.removeEventListener('keydown',esc);}});}
+  window.openGuide=openGuide;
+
   function closeOverlays(){
     try{if(window.closeBrief)window.closeBrief();}catch(e){}
     try{var tp=el('tapage');if(tp&&tp.classList.contains('open')&&typeof closeTApage==='function')closeTApage();}catch(e){}
@@ -86,19 +133,19 @@ body.n5-val #dcfwrap{max-height:none!important}
       +'<span class="n5-sp"></span>'
       +(legacy&&MAIN[legacy]?'<button class="n5-about" id="n5model" title="Show the valuation knobs and score filters">⚙ Model</button>':'')
       +'<input id="n5q" list="n5ql" placeholder="Jump to ticker or company…" autocomplete="off">'
-      +'<button class="n5-about" id="n5aboutBtn">ⓘ About ▾</button>';
+      +'<button class="n5-about" id="n5aboutBtn">ⓘ About ▾</button><button class="n5-about" id="n5guideBtn" title="Visual guide: where everything is and how it refreshes" style="margin-left:4px">?</button>';
     nav.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){go(b.dataset.t,last[b.dataset.t]);};});
     nav.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){go(cur.tab,b.dataset.l);};});
     nav.querySelectorAll('[data-m]').forEach(function(b){b.onclick=function(){mode[cur.lens]=b.dataset.m;go(cur.tab,cur.lens);};});
     var ms=el('n5msel');if(ms)ms.onchange=function(){mode[cur.lens]=ms.value;go(cur.tab,cur.lens);};
     var m=el('n5model');if(m){m.classList.toggle('on',document.body.classList.contains('n5-model'));m.onclick=function(){document.body.classList.toggle('n5-model');m.classList.toggle('on');};}
     var q=el('n5q');if(q){var go1=function(){var v=(q.value||'').trim();if(!v)return;var t=v.split(' — ')[0].toUpperCase();var i=DATA.findIndex(function(r){return r.ticker===t;});if(i<0){var lv=v.toLowerCase();i=DATA.findIndex(function(r){return ((r.nick||'')+' '+(r.name||'')).toLowerCase().indexOf(lv)>=0;});}if(i>=0&&typeof openDrawer==='function'){openDrawer(i);q.value='';q.blur();}};q.onchange=go1;q.onkeydown=function(e){if(e.key==='Enter')go1();};}
-    el('n5aboutBtn').onclick=function(ev){ev.stopPropagation();pop.style.display=pop.style.display==='block'?'none':'block';};
+    el('n5aboutBtn').onclick=function(ev){ev.stopPropagation();pop.style.display=pop.style.display==='block'?'none':'block';};el('n5guideBtn').onclick=function(ev){ev.stopPropagation();openGuide();};
   }
-  pop.innerHTML='<div class="n5-h">How it works</div><div data-a="meth">◈ Methodology: call grid and thesis format</div><div data-a="rf">⏱ Refresh status: as-of date and coverage per section</div><div class="n5-h">Full data tables (everything the pages summarize)</div>'+LEGACY.map(function(l){return '<div data-a="legacy:'+l[0]+'">'+l[1]+'</div>';}).join('')+'<div class="n5-h">Output</div><div data-a="print">⎙ Print or save this view as PDF</div>';
+  pop.innerHTML='<div class="n5-h">How it works</div><div data-a="guide">🧭 Visual guide: where everything is, and how it refreshes</div><div class="n5-h">Full data tables (everything the pages summarize)</div>'+LEGACY.map(function(l){return '<div data-a="legacy:'+l[0]+'">'+l[1]+'</div>';}).join('')+'<div class="n5-h">Output</div><div data-a="print">⎙ Print or save this view as PDF</div>';
   pop.querySelectorAll('[data-a]').forEach(function(d){d.onclick=function(){pop.style.display='none';var a=d.dataset.a;
     if(/^legacy:/.test(a)){goLegacy(a.split(':')[1]);}
-    else if(a==='meth'){var b=el('methbtn');if(b)b.click();}else if(a==='rf'){var r=el('rfbtn');if(r)r.click();}else if(a==='print'){window.print();}};});
+    else if(a==='guide'){openGuide();}else if(a==='meth'){var b=el('methbtn');if(b)b.click();}else if(a==='rf'){var r=el('rfbtn');if(r)r.click();}else if(a==='print'){window.print();}};});
   document.addEventListener('click',function(){pop.style.display='none';});
   function act(lens){return mode[lens]||lens;}
   var legacy=null;

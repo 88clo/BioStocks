@@ -79,6 +79,7 @@ Upside above +1,000% is flagged ⚠ (usually a tiny cap against large modelled s
 | backup-112726-v24.html | Nov 27 late morning, before the stage discount and fixed call thresholds were removed and three evidence scores were re-judged |
 | backup-112726-v25.html | Nov 27 midday, before the read-through review (BBOT, BIOA, ARVN, OCGN) and the Areas drill narrowing |
 | backup-112726-v26.html | Nov 27 afternoon, before the scenario / Kelly ranking, the first-principles input review, retiring legacy data and the learning loop |
+| backup-112726-v27.html | Nov 28, before the deal-history base rates, Capital › Issuers, the Book risk panel and betas, the visual guide, review pass 2 and the view-stance fix |
 | backup-112326-v1.html | Nov 22 evening version, before the grouped Companies table, all-area returns chart, clusters and calendar |
 | backup-112226-v5.html | Nov 22 five pages, before priority list, card valuation/peers, one-pager, returns over time, search |
 

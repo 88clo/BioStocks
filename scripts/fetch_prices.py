@@ -16,7 +16,7 @@ def get(tk, rng="5y"):
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{yq(tk)}?range={rng}&interval=1d&events=splits"
     for a in range(3):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            req = urllib.request.Request(url, headers={"User-Agent": "BioStocks-dashboard/1.0 (weekly research script; low volume)"})  # honest UA (Nov 27 2026); no browser impersonation
             with urllib.request.urlopen(req, timeout=20) as r: body = r.read()
             j = json.loads(body)
             if j["chart"]["result"]:
@@ -31,7 +31,7 @@ def get(tk, rng="5y"):
 if __name__ == "__main__":
     ts = sys.argv[1:] or tickers()
     res = {}
-    with cf.ThreadPoolExecutor(6) as ex:
+    with cf.ThreadPoolExecutor(2) as ex:  # gentle: 2 at a time (Nov 27 2026)
         for tk, st in ex.map(get, ts): res[tk] = st
     bad = {k: v for k, v in res.items() if v != "ok"}
     print(f"{len(ts)} tickers, {len(ts)-len(bad)} ok; problems: {bad}")

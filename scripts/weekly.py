@@ -28,6 +28,7 @@ if "--digest" not in sys.argv:
     run("scripts/fetch_shortint.py", t=1200)  # short interest (stockanalysis.com), Nov 27 2026
     run("scripts/trade_info.py", t=3600); run("scripts/fetch_13dg.py", t=3600); run("scripts/price_check.py", t=1800)
     run("scripts/overhang.py", t=3600)
+    run("scripts/deal_history.py", t=3600); run("scripts/betas.py")  # post-deal base rates and betas to XBI (Nov 27 2026)
     run("scripts/build.py", "--no-audit")
     run("scripts/stale_scan.py", t=3600); run("scripts/build.py", "--no-audit")
     run("scripts/mark_book.py"); ok, rb = run("scripts/rebalance_book.py"); run("scripts/mark_book.py")
